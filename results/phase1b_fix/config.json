@@ -1,0 +1,20 @@
+{
+  "phase": "1B-Fix",
+  "phase0_calibration_commit": "0337837b43ddf78821839d86be6a89ae2a7c164a",
+  "context_cap": 131072,
+  "footprints": [
+    57344,
+    131072
+  ],
+  "token_mapping": "input_tokens_total + max(0, output_tokens - reasoning_output_tokens)",
+  "deadline": "max(result_at), conservative earliest result availability; timing_events lacks next GPU inference start",
+  "session_replay": "closed loop: each promotion stall shifts later events in its own session; offsets U[0,60], M=4/8/16/32/64, 10 seeds",
+  "poisson": "tuple-preserving 5000 jobs, rho=.25/.5/.75/.9, 10 seeds",
+  "skips": {
+    "missing_tool_timing": 751,
+    "nonpositive_pause": 10313,
+    "nonpositive_reusable_tokens": 222
+  },
+  "valid_before_cap": 563199,
+  "retained_after_cap": 283193
+}

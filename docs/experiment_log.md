@@ -41,3 +41,13 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Anomalies:** Trace token counts map to very large hypothetical 128-KiB/token KVs (P50 17.10 decimal GB), making many short pauses infeasible on the single-resource model.  The public raw database and derived per-event output remain under gitignored `data/tracelab/`.
 - **Results:** `results/phase1b/`; TraceLab reference: Zhu et al., 2026, arXiv:2606.30560.
 - **Execution status:** COMPLETE.
+
+## 2026-09-14 — Phase 1B-Fix: closed-loop TraceLab replay audit
+
+- **Objective:** Correct the material open-loop replay defect in Phase 1B, apply target-model context filtering, and audit token/continuation semantics without changing QueueJIT.
+- **Commands:** `/home/a6000/anaconda3/bin/python -m pytest -q tests/test_phase1b_fix.py tests/test_phase1a_simulator.py`; `/home/a6000/anaconda3/bin/python experiments/phase1b_fix/run_phase1b_fix.py`; `/home/a6000/anaconda3/bin/python scripts/plot_phase1b_fix.py`.
+- **Workloads:** Context-capped subset `reusable_tokens <= 131072`, with 56 KiB/token Qwen-like primary and 128 KiB/token stress sensitivity on exactly the same events.  Session replay causally propagates each session's resume stall.  M=4/8/16/32/64 has ten seeds; tuple-Poisson sensitivity has 5,000 jobs and rho=0.25/0.50/0.75/0.90.
+- **Key results:** 283,193/563,199 (50.283%) valid opportunities are retained.  At primary 56 KiB/token M=64, QueueJIT improves median miss rate 60.44%→56.94% and P95 281.5→258.1 ms versus NaiveJIT.  In the 128-KiB M=64 stress case, closed-loop QueueJIT P95 is 2,817.9 ms versus 44,576.1 ms under the identical open-loop audit.
+- **Conclusion:** Open-loop replay materially overstated the high-stress tail; after correction, QueueJIT-alone gains remain below 20% in primary session replay.  This does not evaluate selective offload or real-model execution.
+- **Results:** `results/phase1b_fix/`.
+- **Execution status:** COMPLETE.
