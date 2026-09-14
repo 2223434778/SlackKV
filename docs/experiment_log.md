@@ -58,3 +58,9 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Key result:** At primary 56 KiB/token M=32, gamma 2 reduces OffloadAll miss/P95 from 67.33%/4855.0 ms to 5.53%/115.0 ms at normalized paused-KV memory-time 0.258. C0, C1, and programmed C2 pass.
 - **Results:** `results/phase1c/`; D2H is deliberately immediate and non-contended.
 - **Execution status:** COMPLETE.
+
+## 2026-09-14 — Phase 1C-Fix
+
+- **Objective:** Correct directional transfer calibration and cross-seed evaluation criteria without changing Phase 1C workloads or policies.
+- **Result:** D2H uses `gpu0_to_pinned_cpu`, H2D uses `pinned_cpu_to_gpu0`; C0 and robust C1 pass.  Selective policies remain substantially better than OffloadAll.
+- **Results:** `results/phase1c_fix/`.

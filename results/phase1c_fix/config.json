@@ -1,0 +1,38 @@
+{
+  "phase0_calibration_commit": "0337837b43ddf78821839d86be6a89ae2a7c164a",
+  "d2h_direction": "gpu0_to_pinned_cpu",
+  "h2d_direction": "pinned_cpu_to_gpu0",
+  "retained_events": 283193,
+  "context_cap": 131072,
+  "footprints": [
+    57344,
+    131072
+  ],
+  "policies": [
+    "KeepAll",
+    "OffloadAll-QueueJIT",
+    "FeasibilityOracle",
+    "FixedTTL-0.1",
+    "FixedTTL-0.25",
+    "FixedTTL-0.5",
+    "FixedTTL-1",
+    "FixedTTL-2",
+    "FixedTTL-5",
+    "FixedTTL-10",
+    "SlackRatio-1",
+    "SlackRatio-1.25",
+    "SlackRatio-1.5",
+    "SlackRatio-2",
+    "SlackRatio-3",
+    "SlackRatio-4"
+  ],
+  "c0": true,
+  "c1": true,
+  "c2_pairwise": true,
+  "d2h_assumption": "immediate and non-contended; optimistic",
+  "skips": {
+    "missing_tool_timing": 751,
+    "nonpositive_pause": 10313,
+    "nonpositive_reusable_tokens": 222
+  }
+}

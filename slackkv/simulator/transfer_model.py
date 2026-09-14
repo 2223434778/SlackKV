@@ -36,6 +36,19 @@ class TransferModel:
             raise RuntimeError("cannot identify Phase 0 calibration commit")
         return cls(source_tier, DIRECTION_BY_TIER[source_tier], values, commit)
 
+    @classmethod
+    def from_phase0_direction(cls, repository_root: Path, direction: str) -> "TransferModel":
+        path = repository_root / "results" / "phase0" / "summary_metrics.csv"
+        values = {}
+        with path.open(newline="") as handle:
+            for row in csv.DictReader(handle):
+                if row["direction"] == direction:
+                    values[int(row["size_bytes"])] = float(row["latency_ms_p50"]) / 1000.0
+        if not values:
+            raise ValueError(f"Phase 0 has no direction {direction}")
+        commit = subprocess.check_output(["git", "log", "-1", "--format=%H", "--", str(path.relative_to(repository_root))], cwd=repository_root, text=True).strip()
+        return cls(direction, direction, values, commit)
+
     def service_time_s(self, size_bytes: int, multiplier: float = 1.0) -> float:
         if multiplier <= 0:
             raise ValueError("service multiplier must be positive")
