@@ -1,11 +1,13 @@
 """Event-driven one-resource promotion simulator; times are seconds and bytes are decimal GB for costs."""
 from dataclasses import dataclass
+import heapq
 import math
+import random
 from statistics import mean
 from typing import Dict, List, Sequence
 
 from .jobs import PromotionJob
-from .policies import Policy, earliest_deadline, eligibility_time, queue_safe_idle_s
+from .policies import Policy, eligibility_time
 
 
 EPS = 1e-12
@@ -37,30 +39,84 @@ class SimulationResult:
     busy_time_s: float
 
 
+@dataclass
+class _QueueNode:
+    key: tuple
+    job: PromotionJob
+    priority: float
+    left: object = None
+    right: object = None
+    service_sum: float = 0.0
+    min_deadline_minus_prefix: float = 0.0
+
+    def __post_init__(self):
+        self.service_sum = self.job.service_time_s
+        self.min_deadline_minus_prefix = self.job.deadline_s - self.job.service_time_s
+
+
+def _sum(node): return node.service_sum if node else 0.0
+def _minimum(node): return node.min_deadline_minus_prefix if node else math.inf
+def _update(node):
+    if node:
+        left_sum = _sum(node.left); own_end = left_sum + node.job.service_time_s
+        node.service_sum = own_end + _sum(node.right)
+        node.min_deadline_minus_prefix = min(_minimum(node.left), node.job.deadline_s - own_end, _minimum(node.right) - own_end)
+    return node
+def _split(node, key):
+    if not node: return None, None
+    if node.key < key:
+        node.right, right = _split(node.right, key); return _update(node), right
+    left, node.left = _split(node.left, key); return left, _update(node)
+def _merge(left, right):
+    if not left or not right: return left or right
+    if left.priority < right.priority:
+        left.right = _merge(left.right, right); return _update(left)
+    right.left = _merge(left, right.left); return _update(right)
+def _insert(root, node):
+    if not root: return node
+    if node.priority < root.priority:
+        node.left, node.right = _split(root, node.key); return _update(node)
+    if node.key < root.key: root.left = _insert(root.left, node)
+    else: root.right = _insert(root.right, node)
+    return _update(root)
+def _pop_first(root):
+    if not root.left: return root.job, _merge(root.left, root.right)
+    job, root.left = _pop_first(root.left); return job, _update(root)
+
+
 def simulate(jobs: Sequence[PromotionJob], policy: Policy) -> SimulationResult:
     if not jobs:
         return SimulationResult(policy, (), 0.0)
     future = sorted(((eligibility_time(job, policy), job) for job in jobs), key=lambda item: (item[0], item[1].job_id))
-    pending: List[PromotionJob] = []
+    pending = []
+    queue_root = None
+    priorities = random.Random(0)
     outcomes: List[JobOutcome] = []
     index = 0
     now_s = future[0][0]
     busy_s = 0.0
-    while index < len(future) or pending:
+    while index < len(future) or (queue_root is not None if policy is Policy.QUEUE_JIT else bool(pending)):
         while index < len(future) and future[index][0] <= now_s + EPS:
-            pending.append(future[index][1]); index += 1
-        if not pending:
+            job = future[index][1]
+            if policy is Policy.QUEUE_JIT:
+                queue_root = _insert(queue_root, _QueueNode((job.deadline_s, job.release_time_s, job.job_id), job, priorities.random()))
+            else:
+                heapq.heappush(pending, (job.deadline_s, job.release_time_s, job.job_id, job))
+            index += 1
+        if (queue_root is None) if policy is Policy.QUEUE_JIT else (not pending):
             now_s = max(now_s, future[index][0])
             continue
         if policy is Policy.QUEUE_JIT:
-            safe_idle_s = queue_safe_idle_s(now_s, pending)
+            safe_idle_s = queue_root.min_deadline_minus_prefix - now_s
             if safe_idle_s > EPS:
                 idle_end = now_s + safe_idle_s
                 next_release = future[index][0] if index < len(future) else math.inf
                 now_s = min(idle_end, next_release)
                 continue
-        job = earliest_deadline(pending)
-        pending.remove(job)
+        if policy is Policy.QUEUE_JIT:
+            job, queue_root = _pop_first(queue_root)
+        else:
+            job = heapq.heappop(pending)[3]
         start_s = now_s
         finish_s = start_s + job.service_time_s
         if finish_s < start_s:

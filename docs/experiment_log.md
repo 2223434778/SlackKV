@@ -29,3 +29,15 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Anomalies:** The controlled-burst and stochastic tradeoffs differ materially; peer-source and CPU-source results are nearly identical on this topology. The raw audit CSV is 51 MB and compactly preserves all 341,200 job outcomes.
 - **Results:** `results/phase1a/`.
 - **Execution status:** COMPLETE.
+
+## 2026-09-14 — Phase 1B: TraceLab real-workload simulator validation
+
+- **Objective:** Validate the unchanged oracle-deadline QueueJIT mechanism using public sanitized TraceLab coding-agent characteristics, without real-LLM or vLLM integration.
+- **Dataset and calibration:** TraceLab v0.0.2 `syfi_coding_trace.duckdb`, SHA256 `a7bab286bc640844560850965ccf47975cf66407154132abaab90f27ec9be744`; Phase 0 CPU→GPU0 calibration commit `0337837b43ddf78821839d86be6a89ae2a7c164a`.
+- **Commands:** `/home/a6000/anaconda3/bin/python -m pytest -q tests/test_phase1a_simulator.py`; `/home/a6000/anaconda3/bin/python experiments/phase1b/run_phase1b.py`; `/home/a6000/anaconda3/bin/python scripts/plot_phase1b.py`.
+- **Workloads:** Strict per-round extraction (latest emission to latest result, no continuation latency summing); 563,199 valid opportunities.  Session-preserving M=4/8/16/32/64 replay uses ten seeds and U[0,60] s offsets.  Tuple-preserving Poisson replay has 5,000 jobs, rho=0.25/0.50/0.75/0.90, and ten seeds.  KV footprint sensitivity is 64/128/256 KiB per token.
+- **Key results:** At representative M=32, QueueJIT reduces miss rate 71.38%→68.89% and P95 stall 1,114.1→1,100.4 ms versus NaiveJIT, while reducing VRAM-time 579,891.2→181.7 GB*s versus ASAP-EDF with P95 stall +80.5 ms.  Best primary session run is M=32 seed 7: 65.86%→62.81% miss rate.
+- **Success criteria:** R1 FAIL and R2 FAIL.  The dominant QueueJIT miss class is service time exceeding the trace pause (`late_arrival`), followed by large-KV domination.
+- **Anomalies:** Trace token counts map to very large hypothetical 128-KiB/token KVs (P50 17.10 decimal GB), making many short pauses infeasible on the single-resource model.  The public raw database and derived per-event output remain under gitignored `data/tracelab/`.
+- **Results:** `results/phase1b/`; TraceLab reference: Zhu et al., 2026, arXiv:2606.30560.
+- **Execution status:** COMPLETE.

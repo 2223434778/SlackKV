@@ -1,0 +1,42 @@
+{
+  "phase0_calibration_commit": "0337837b43ddf78821839d86be6a89ae2a7c164a",
+  "transfer_direction": "pinned_cpu_to_gpu0",
+  "transfer_model": "P50 CPU->GPU0 all Phase 0 payloads; linear interpolation between knots; >8GiB equals repeated 8GiB chunks plus interpolated remainder",
+  "kv_bytes_per_token_primary": 131072,
+  "kv_footprint_sensitivity": [
+    65536,
+    131072,
+    262144
+  ],
+  "extraction_rule": "per round: release=max(emitted_at), deadline=max(result_at); all tool calls in the round require timestamps; pause must be positive. write_stdin continuations remain their own round calls and are not latency-summed.",
+  "session_replay": {
+    "M": [
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "seeds": 10,
+    "eligible_session_event_range": [
+      50,
+      100
+    ],
+    "selection_rationale": "complete moderately sized sessions only; no truncation or policy-dependent filtering",
+    "initial_offset_window_s": [
+      0,
+      60
+    ]
+  },
+  "poisson_replay": {
+    "rho": [
+      0.25,
+      0.5,
+      0.75,
+      0.9
+    ],
+    "jobs": 5000,
+    "seeds": 10,
+    "tuple_sampling": "sample complete TraceLab event tuple jointly"
+  }
+}
