@@ -1,0 +1,70 @@
+# Python bytecode, environments, and tooling caches
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Hugging Face and other model caches
+.cache/
+hf_cache/
+huggingface_cache/
+transformers_cache/
+**/.cache/huggingface/
+
+# Model weights and checkpoints
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.onnx
+*.h5
+*.hdf5
+checkpoints/
+weights/
+models/
+
+# Downloaded datasets and large data artifacts
+data/
+datasets/
+downloads/
+*.parquet
+*.arrow
+*.npz
+*.npy
+*.pkl
+
+# Experiment tracking caches and build artifacts
+wandb/
+mlruns/
+lightning_logs/
+build/
+dist/
+*.egg-info/
+
+# Local secrets, temporary files, and raw logs
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.token
+*.tmp
+*.temp
+tmp/
+temp/
+*.log
+logs/
+raw_logs/
+*.out
+*.err
