@@ -1,0 +1,88 @@
+{
+  "phase": "Phase 1A \u2014 Queue-Aware JIT KV Promotion Simulator",
+  "phase0_calibration_commit": "0337837b43ddf78821839d86be6a89ae2a7c164a",
+  "calibration_p50_latency_ms": {
+    "cpu_to_gpu0": {
+      "268435456": 10.329536000000001,
+      "1073741824": 40.858353,
+      "4294967296": 164.426918
+    },
+    "gpu1_to_gpu0": {
+      "268435456": 10.183456,
+      "1073741824": 40.7222385,
+      "4294967296": 162.876709
+    }
+  },
+  "payload_sizes_mib": [
+    256,
+    1024,
+    4096
+  ],
+  "resource_model": "one serialized, non-preemptive inbound promotion resource to GPU0",
+  "oracle_deadlines": true,
+  "policies": [
+    "OnDemand",
+    "ASAP-EDF",
+    "NaiveJIT",
+    "SlackKV-QueueJIT"
+  ],
+  "controlled_burst": {
+    "job_counts": [
+      4,
+      8,
+      16,
+      32
+    ],
+    "seeds": [
+      11,
+      22,
+      33,
+      44,
+      55
+    ],
+    "resume_gap_s": [
+      0.1,
+      0.25,
+      0.5,
+      1,
+      2,
+      5,
+      10
+    ]
+  },
+  "stochastic_stream": {
+    "job_count_per_configuration": 5000,
+    "seeds": [
+      101,
+      202,
+      303
+    ],
+    "nominal_rho": [
+      0.25,
+      0.5,
+      0.75,
+      0.9
+    ],
+    "arrival_process": "Poisson",
+    "resume_gap_distribution": "log-uniform 0.1 to 10 s",
+    "size_weights": {
+      "256MiB": 0.5,
+      "1GiB": 0.35,
+      "4GiB": 0.15
+    }
+  },
+  "sensitivity": {
+    "rho": 0.75,
+    "seed": 101,
+    "multipliers": [
+      1.0,
+      1.05,
+      1.15,
+      1.3
+    ]
+  },
+  "peer_ablation": {
+    "rho": 0.75,
+    "seed": 101
+  }
+}

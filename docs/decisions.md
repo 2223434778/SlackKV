@@ -14,3 +14,10 @@ Record material technical and experimental decisions, including context and rati
 - **Decision:** Native Phase 0 transfer timing uses CUDA events around asynchronous copies; synchronized CPU wall-clock timing is used only for the concurrent makespan.
 - **Reason:** CUDA events measure asynchronous GPU copy timing without timing host scheduling overhead as transfer latency.
 - **Consequence:** Reported transfer latency and bandwidth are device-timed and reproducible from the committed raw CSV.
+
+## 2026-09-14 — Phase 1A isolates queue-aware resume-slack scheduling
+
+- **Decision:** After Phase 0 found no substantial peer-versus-CPU transfer advantage on the current `SYS` topology, Phase 1A uses CPU→GPU0 as its primary calibrated promotion path and treats peer GPU memory as an optional topology-dependent ablation.
+- **Reason:** The Phase 0 P50 latency advantage for GPU1→GPU0 over pinned CPU→GPU0 was small, so assuming a universally superior peer tier would confound the scheduling question.
+- **Alternative considered:** Making peer GPU memory the default faster tier in the simulator.
+- **Consequence:** Phase 1A isolates resume-slack queue scheduling without changing the overall SlackKV research direction; peer behavior remains explicitly measurable through the optional source-tier switch.
