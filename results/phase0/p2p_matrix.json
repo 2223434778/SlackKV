@@ -1,0 +1,5 @@
+{
+  "devices": [0, 1],
+  "can_access_peer": [[true, true], [true, true]],
+  "method": "cudaDeviceCanAccessPeer"
+}

@@ -50,6 +50,7 @@ lightning_logs/
 build/
 dist/
 *.egg-info/
+phase0_transfer
 
 # Local secrets, temporary files, and raw logs
 .env

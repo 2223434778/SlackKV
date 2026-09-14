@@ -1,0 +1,26 @@
+{
+  "phase": "Phase 0 — Hardware and Data-Movement Feasibility",
+  "transfer_backend": "native_cuda",
+  "overlap_backend": "pytorch",
+  "gpu_ids": [0, 1],
+  "payload_sizes_bytes": [16777216, 67108864, 268435456, 536870912, 1073741824, 2147483648, 4294967296, 8589934592],
+  "payload_sizes_mib": [16, 64, 256, 512, 1024, 2048, 4096, 8192],
+  "transfer_directions": ["gpu0_to_gpu1", "gpu1_to_gpu0", "gpu0_to_pinned_cpu", "pinned_cpu_to_gpu0", "gpu1_to_pinned_cpu", "pinned_cpu_to_gpu1"],
+  "transfer_warmup_iterations": 10,
+  "transfer_measurement_iterations": 30,
+  "smoke_test": {"size_mib": 16, "warmup_iterations": 2, "measurement_iterations": 3},
+  "bandwidth_definition": "size_bytes / elapsed_seconds / 1e9 (decimal GB/s)",
+  "peer_transfer_api": "cudaMemcpyPeerAsync after cudaDeviceCanAccessPeer and cudaDeviceEnablePeerAccess",
+  "host_transfer_api": "cudaMallocHost plus cudaMemcpyAsync",
+  "timing": "CUDA events for transfer/component timings; synchronized CPU wall clock only for concurrent makespan",
+  "correctness": "deterministic byte pattern checked at beginning, middle, and end of each successful configuration",
+  "overlap_payload_sizes_mib": [256, 1024, 4096],
+  "overlap_warmup_iterations": 5,
+  "overlap_measurement_iterations": 30,
+  "compute_workloads": {
+    "gemm_fp16": "4096x4096 FP16 GEMM on GPU0, calibrated toward 200 ms",
+    "synthetic_memory_bandwidth": "repeated 512 MiB float32 elementwise addition on GPU0, calibrated toward 200 ms"
+  },
+  "compute_calibration_target_ms": 200,
+  "data_types": ["uint8 transfers", "float16 GEMM", "float32 synthetic memory workload"]
+}
