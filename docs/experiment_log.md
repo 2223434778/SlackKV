@@ -51,3 +51,10 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Conclusion:** Open-loop replay materially overstated the high-stress tail; after correction, QueueJIT-alone gains remain below 20% in primary session replay.  This does not evaluate selective offload or real-model execution.
 - **Results:** `results/phase1b_fix/`.
 - **Execution status:** COMPLETE.
+
+## 2026-09-14 — Phase 1C: transfer-normalized selective KV offload
+
+- **Objective:** Evaluate KeepAll, OffloadAll, all seven FixedTTL values, FeasibilityOracle, and all six SlackRatio gamma values using Phase 1B-Fix closed-loop replay.
+- **Key result:** At primary 56 KiB/token M=32, gamma 2 reduces OffloadAll miss/P95 from 67.33%/4855.0 ms to 5.53%/115.0 ms at normalized paused-KV memory-time 0.258. C0, C1, and programmed C2 pass.
+- **Results:** `results/phase1c/`; D2H is deliberately immediate and non-contended.
+- **Execution status:** COMPLETE.
