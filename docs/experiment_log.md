@@ -62,5 +62,12 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 ## 2026-09-14 — Phase 1C-Fix
 
 - **Objective:** Correct directional transfer calibration and cross-seed evaluation criteria without changing Phase 1C workloads or policies.
-- **Result:** D2H uses `gpu0_to_pinned_cpu`, H2D uses `pinned_cpu_to_gpu0`; C0 and robust C1 pass.  Selective policies remain substantially better than OffloadAll.
+- **Commands:** `/home/a6000/anaconda3/bin/python experiments/phase1c_fix/analyze_phase1c_fix.py`; `/home/a6000/anaconda3/bin/python scripts/plot_phase1c_fix.py`; `/home/a6000/anaconda3/bin/python -m pytest -q tests/test_phase1a_simulator.py tests/test_phase1b_fix.py tests/test_phase1c_fix.py`.
+- **Calibration:** D2H is `gpu0_to_pinned_cpu`; H2D is `pinned_cpu_to_gpu0`, both from Phase 0 commit `0337837b43ddf78821839d86be6a89ae2a7c164a`. At 1 GiB their P50 times are 41.488 and 40.858 ms.
+- **Method:** Reused completed ten-seed primary 56-KiB/token closed-loop rows; post-processing did not re-sample sessions or change policies. C1 uses ten-seed medians plus >=0.80 seed-pass fraction. C2 uses the same-M FixedTTL ten-seed-median Pareto frontier and strict three-metric dominance.
+- **Key results:** At M=32, OffloadAll is 68.52% miss / 5543.1-ms P95 / 0.2707 normalized local-memory time. SlackRatio-2 is 5.70% / 138.8 ms / 0.2462 and strictly dominates FixedTTL-0.5 (6.75% / 636.1 ms / 0.2515); FixedTTL-2 remains a 2.18% / 0-ms / 0.2526 lower-stall frontier point.
+- **Criteria:** C0 PASS; C1 PASS (SlackRatio-4 at M=32 has 8/10 seed passes; SlackRatio-3/-4 at M=64 have 8/10 and 9/10); C2 PASS through M=32 SlackRatio-2, with 78.2% P95 improvement over its dominated TTL point.
+- **Outcome:** A = Strong GO under this simulator. This is a frontier extension, not universal SlackRatio superiority over every TTL point.
+- **Anomalies:** The prior per-seed pairwise C2 export was not a valid cross-seed Pareto test and is replaced by compact aggregate artifacts. D2H remains immediate and non-contended.
 - **Results:** `results/phase1c_fix/`.
+- **Execution status:** COMPLETE.

@@ -28,11 +28,13 @@
   ],
   "c0": true,
   "c1": true,
-  "c2_pairwise": true,
   "d2h_assumption": "immediate and non-contended; optimistic",
   "skips": {
     "missing_tool_timing": 751,
     "nonpositive_pause": 10313,
     "nonpositive_reusable_tokens": 222
-  }
+  },
+  "c2": true,
+  "c1_definition": "10-seed primary closed-loop median plus >=0.80 seed-pass fraction",
+  "c2_definition": "same-M 10-seed median strict three-metric TTL-frontier comparison"
 }

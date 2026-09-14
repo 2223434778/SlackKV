@@ -1,0 +1,14 @@
+{
+  "python": "3.8.8 (default, Apr 13 2021, 19:58:26) \n[GCC 7.3.0]",
+  "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.10",
+  "kernel": "5.15.0-139-generic",
+  "git_commit": "ff8a83d14b90e5c4e2f68e58a6a44ebc2fcda295",
+  "base_commit": "09902dc3ed2b852b6461c9b9f7c28e94667b58ec",
+  "phase0_calibration_commit": "0337837b43ddf78821839d86be6a89ae2a7c164a",
+  "gpu_names": [
+    "NVIDIA RTX A6000",
+    "NVIDIA RTX A6000"
+  ],
+  "torch": "2.2.0",
+  "cuda": "12.1"
+}

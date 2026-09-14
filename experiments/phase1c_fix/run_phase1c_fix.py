@@ -93,17 +93,13 @@ def main():
   if fp==PRIMARY:
    for lo,hi,label in ((0,1,'<1'),(1,1.25,'1-1.25'),(1.25,1.5,'1.25-1.5'),(1.5,2,'1.5-2'),(2,3,'2-3'),(3,4,'3-4'),(4,math.inf,'>=4')):char.append({'footprint_bytes_per_token':fp,'measure':'slack_ratio_fraction','statistic':label,'value':sum(lo<=x<hi for x in vals['slack_ratio'])/len(events)})
  write_csv(out/'characterization.csv',('footprint_bytes_per_token','measure','statistic','value'),char)
- # C0 and C1/C2 inputs; C2 compares per instance with all memory/latency-matched TTLs.
- c0=True  # Assertions above verify every individual admission before aggregation.
- c1=any(r['policy'].startswith('SlackRatio-') and r['workload']=='closed_loop_session' and int(r['concurrency'])>=16 and r['job_count']>=1000 and r['deadline_miss_rate']<=.1 and r['stall_ms_p95']<=100 and r['normalized_local_memory_time']<=.5 for r in rows)
- pareto=[];c2=False
- for s in [r for r in rows if r['policy'].startswith('SlackRatio-') and r['job_count']>=1000]:
-  ttl=[r for r in rows if all(r[k]==s[k] for k in ('workload','footprint_bytes_per_token','concurrency','rho','seed')) and r['policy'].startswith('FixedTTL-')]; mem=[r for r in ttl if abs(r['normalized_local_memory_time']-s['normalized_local_memory_time'])<=.1*max(s['normalized_local_memory_time'],1e-12)];lat=[r for r in ttl if abs(r['stall_ms_p95']-s['stall_ms_p95'])<=.1*max(r['stall_ms_p95'],1e-12)]
-  for t in mem+lat:
-   mode='memory' if t in mem else 'latency';p95=(t['stall_ms_p95']-s['stall_ms_p95'])/max(t['stall_ms_p95'],1e-12);mr=(t['deadline_miss_rate']-s['deadline_miss_rate'])/max(t['deadline_miss_rate'],1e-12);mm=(t['normalized_local_memory_time']-s['normalized_local_memory_time'])/max(t['normalized_local_memory_time'],1e-12);ok=(mode=='memory' and (p95>=.15 or mr>=.15)) or (mode=='latency' and mm>=.15);pareto.append({'slack_policy':s['policy'],'ttl_policy':t['policy'],'workload':s['workload'],'footprint_bytes_per_token':s['footprint_bytes_per_token'],'concurrency':s['concurrency'],'rho':s['rho'],'seed':s['seed'],'match':mode,'p95_reduction':p95,'miss_reduction':mr,'memory_reduction':mm,'passes_pair':ok});c2=c2 or ok
- write_csv(out/'pareto_comparison.csv',('slack_policy','ttl_policy','workload','footprint_bytes_per_token','concurrency','rho','seed','match','p95_reduction','miss_reduction','memory_reduction','passes_pair'),pareto)
+ # C0 is an event-level invariant asserted above.  C1/C2 are intentionally
+ # computed by the separate cross-seed aggregation after all rows are written.
+ c0=True
  sanity=[]
  for size in (256<<20,1<<30,4<<30,max(e['reusable_tokens'] for e in events)*PRIMARY): sanity.append({'size_bytes':size,'d2h_ms':model[0].piecewise_service_time_s(size)*1000,'h2d_ms':model[1].piecewise_service_time_s(size)*1000,'roundtrip_ms':(model[0].piecewise_service_time_s(size)+model[1].piecewise_service_time_s(size))*1000})
  write_csv(out/'transfer_sanity.csv',('size_bytes','d2h_ms','h2d_ms','roundtrip_ms'),sanity)
- config={'phase0_calibration_commit':model[0].phase0_commit,'d2h_direction':model[0].direction,'h2d_direction':model[1].direction,'retained_events':len(events),'context_cap':MAX_CONTEXT,'footprints':[PRIMARY,STRESS],'policies':POLICIES,'c0':c0,'c1':c1,'c2_pairwise':c2,'d2h_assumption':'immediate and non-contended; optimistic','skips':dict(skips)};(out/'config.json').write_text(json.dumps(config,indent=2)+'\n');(out/'commands.sh').write_text('#!/usr/bin/env bash\nset -euo pipefail\n/home/a6000/anaconda3/bin/python experiments/phase1c_fix/run_phase1c_fix.py\n');print('rows',len(rows),'C0',c0,'C1',c1,'C2-pair',c2)
+ config={'phase0_calibration_commit':model[0].phase0_commit,'d2h_direction':model[0].direction,'h2d_direction':model[1].direction,'retained_events':len(events),'context_cap':MAX_CONTEXT,'footprints':[PRIMARY,STRESS],'policies':POLICIES,'c0':c0,'d2h_assumption':'immediate and non-contended; optimistic','skips':dict(skips)};(out/'config.json').write_text(json.dumps(config,indent=2)+'\n');print('rows',len(rows),'C0',c0)
+ from experiments.phase1c_fix.analyze_phase1c_fix import main as analyze
+ analyze()
 if __name__=='__main__':main()
