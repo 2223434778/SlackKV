@@ -94,3 +94,15 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Result:** C — neither specified adaptive rule consistently dominates Fixed500ms; high-noise latency gains require substantially more local memory, and the low-noise Adaptive-0.5 tradeoff is worse. No additional k values were tested.
 - **Results:** results/phase1f/.
 - **Execution status:** COMPLETE.
+
+## 2026-09-15 — Phase 2A: real GPU tensor offload/prefetch runtime
+
+- **Objective:** Validate the real CUDA tensor D2H -> pinned CPU -> allocator reuse -> JIT H2D path without vLLM or a language model.
+- **Base/configuration:** Base 7f3c4966e7e1d6657cedd1a1a6bf73a3afe1a5e1; GPU0 RTX A6000 (48 GiB), PyTorch 2.2.0/CUDA 12.1, float16 contiguous tensors. Sizes are 256 MiB/1 GiB/4 GiB with three warm-ups and ten CUDA-event-timed runs. JIT is 1 GiB, pauses 1/2/5 s, margins 0/250/500 ms, five repetitions per cell. CPU buffers are pinned; empty_cache is not used in the primary run.
+- **Validation/commands:** python -m pytest -q tests/test_phase2a.py (3 passed); python experiments/phase2a/run_phase2a.py; python scripts/plot_phase2a.py.
+- **Key results:** Runtime D2H/H2D are 43.74/44.40 ms for 1 GiB and 169.84/170.52 ms for 4 GiB, versus Phase 0 P50 41.49/40.86 and 162.65/164.43 ms. Relative errors are 5.4%/8.7% and 4.4%/3.7%; 256 MiB is 26.3%/20.7% slower. Allocated memory decreased after every offload deletion and replacement allocation succeeded; all sampled round trips passed.
+- **JIT result:** At 1 GiB and a 2-s pause, 0-ms margin gives 2.59-ms median stall; 250/500-ms margins yield 0-ms median stall with 247.79/497.65-ms median early residency.
+- **Conclusion:** A — real tensor transfer, memory reuse, correctness, and the expected margin tradeoff are validated. This remains one-tensor, one-GPU runtime validation only.
+- **Anomaly:** An initial O(numel) random-permutation sampling implementation was terminated before result writing and replaced with fixed-seed direct index sampling; reported metrics come from the complete rerun.
+- **Results:** results/phase2a/.
+- **Execution status:** COMPLETE.

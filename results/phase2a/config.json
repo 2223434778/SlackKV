@@ -1,0 +1,26 @@
+{
+  "base_commit": "7f3c4966e7e1d6657cedd1a1a6bf73a3afe1a5e1",
+  "gpu": 0,
+  "dtype": "torch.float16",
+  "sizes_bytes": [
+    268435456,
+    1073741824,
+    4294967296
+  ],
+  "warmup_runs": 3,
+  "measured_runs": 10,
+  "jit_pauses_s": [
+    1.0,
+    2.0,
+    5.0
+  ],
+  "jit_margins_ms": [
+    0.0,
+    250.0,
+    500.0
+  ],
+  "jit_repetitions": 5,
+  "sample_count": 1024,
+  "phase0_calibration_commit": "0337837b43ddf78821839d86be6a89ae2a7c164a",
+  "no_empty_cache_during_primary_experiment": true
+}
