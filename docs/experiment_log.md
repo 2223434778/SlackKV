@@ -118,3 +118,22 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Conclusion:** B — the real-model path and correctness are validated, but fragmented-cache transfer calibration requires adjustment.
 - **Results:** results/phase2b/.
 - **Execution status:** COMPLETE.
+
+## 2026-09-15 — Phase 2C: vLLM selective-offload capability gate
+
+- **Objective:** Validate selective KV offload in native vLLM serving with a
+  normal-offload Session A, a `max_offload_tokens=0` keep-local Session B, and
+  observable GPU-pressure/cache evidence.
+- **Capability check:** An isolated Python 3.11/CUDA 12.4 runtime imports vLLM
+  0.11.2 and provides `OffloadingConnector`, but has no
+  `max_offload_tokens` source implementation.  vLLM 0.29.0 contains that
+  per-request cap but fails to import on this host because it requires
+  `libcudart.so.13`.
+- **Validation:** `/home/a6000/anaconda3/bin/python -m pytest -q
+  tests/test_phase2c.py` (4 passed).  The capability gate deliberately aborts
+  before starting a server, so no unvalidated A/B comparison, TTFT, cache hit,
+  or eviction metric is reported.
+- **Result:** INCOMPLETE; the current deployment cannot enforce the required
+  Session B keep-local control.  This is an integration-environment blocker,
+  not a mechanism result.
+- **Results:** `results/phase2c/`.

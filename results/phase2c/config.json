@@ -1,0 +1,7 @@
+{
+  "base_commit": "0b85a5a5a5df8068f17bfade142e8ef406ab91c3",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "target_gpu_kv_capacity": "320 MiB",
+  "target_cpu_offload_capacity": "2 GiB",
+  "phase_status": "INCOMPLETE: capability gate failed"
+}

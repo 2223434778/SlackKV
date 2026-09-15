@@ -1,0 +1,13 @@
+{
+  "python_version": "3.11.9",
+  "vllm_version": "0.11.2",
+  "torch_version": "2.5.1+cu124",
+  "torch_cuda_version": "12.4",
+  "gpu_name": "NVIDIA RTX A6000",
+  "gpu_total_memory_bytes": 51033931776,
+  "available_vllm_version": "0.11.2",
+  "offloading_connector_present": true,
+  "max_offload_tokens_present": false,
+  "selective_offload_runnable": false,
+  "blocker": "vLLM 0.11.2 imports on CUDA 12.4 and contains OffloadingConnector, but lacks max_offload_tokens; vLLM 0.29.0 contains the required per-request cap but cannot import because its wheel requires CUDA 13 (libcudart.so.13: cannot open shared object file)."
+}
