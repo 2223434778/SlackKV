@@ -1,0 +1,26 @@
+{
+  "base_commit": "2586d3ac1a0c99a09b76d21de564614e2eb74ae8",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "sigmas": [
+    0.0,
+    0.1,
+    0.25,
+    0.5
+  ],
+  "policies": [
+    "KeepAll",
+    "OffloadAll-QueueJIT",
+    "FixedTTL-0.5",
+    "FixedTTL-1",
+    "SlackRatio-1.25",
+    "SlackRatio-2"
+  ],
+  "footprint_bytes_per_token": 57344,
+  "M": 32
+}
