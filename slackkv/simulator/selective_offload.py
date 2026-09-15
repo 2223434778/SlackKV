@@ -7,10 +7,10 @@ def local_metrics(records):
     for r in records:
         p=r['pause']; size=r['size_gb']; keep += size*p; stalls.append(r['stall']*1000)
         if not r['offload']: intervals.append((r['release'],r['deadline'],size)); continue
-        d2h += r['size']; h2d += r['size']; down_end=min(r['deadline'],r['release']+r['down'])
+        d2h += r['size']; h2d += r['size']; down_end=r['release']+r['down']
         intervals.append((r['release'],down_end,size))
         if r['completion'] < r['deadline']-EPS: intervals.append((r['completion'],r['deadline'],size))
-    first=min(r['release'] for r in records); last=max(r['deadline'] for r in records); events=[]
+    first=min(r['release'] for r in records); last=max([r['deadline'] for r in records]+[b for _,b,_ in intervals]); events=[]
     for a,b,s in intervals:
         if b>a: events += [(a,1,s),(b,0,-s)]
     level=0.; prev=first; weighted=[]
