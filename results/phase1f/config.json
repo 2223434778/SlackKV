@@ -1,0 +1,26 @@
+{
+  "base_commit": "df931dfe238d221ff07800049385fb1c475dd883",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "sigmas": [
+    0.1,
+    0.25,
+    0.5
+  ],
+  "strategies": [
+    "NoMargin",
+    "Fixed500ms",
+    "Adaptive-0.5",
+    "Adaptive-1.0"
+  ],
+  "admission_policy": "FixedTTL-1: predicted_pause >= 1.0 s",
+  "footprint_bytes_per_token": 57344,
+  "max_context_tokens": 131072,
+  "M": 32,
+  "prediction_noise": "Phase 1D/1E deterministic per-event multiplicative Gaussian draw, shared across strategies"
+}

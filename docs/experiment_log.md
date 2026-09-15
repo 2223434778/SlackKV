@@ -83,3 +83,14 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Result:** B — fixed margins help, but medium/high prediction error requires a large margin and makes the GPU-memory tradeoff more costly. No extra margin or policy was tuned.
 - **Results:** `results/phase1e/`.
 - **Execution status:** COMPLETE.
+
+## 2026-09-15 — Phase 1F: adaptive safety margins
+
+- **Objective:** Compare a fixed 500-ms JIT safety margin against two uncertainty-scaled margins without changing FixedTTL-1 admission.
+- **Base/configuration:** Phase 1E base df931dfe238d221ff07800049385fb1c475dd883; 56 KiB/token, context <=131072, closed-loop TraceLab replay, M=32, seeds 0–4, sigma=0.10/0.25/0.50. Strategies are NoMargin, Fixed500ms, Adaptive-0.5, and Adaptive-1.0.
+- **Method:** Adaptive margin is k * sigma * predicted_pause; safe deadline retains the Phase 1E physical D2H+H2D lower bound. The exact deterministic Phase 1D/1E event prediction is shared across all strategies. Actual deadlines alone determine stall and memory accounting.
+- **Validation:** pytest tests/test_phase1f.py (4 passed); full run produced 60 compact seed rows and 12 five-seed medians. Row count, finite/nonnegative metrics, shared-noise admission fractions, and adaptive-margin monotonicity were asserted. Plot command: python scripts/plot_phase1f.py.
+- **Key results:** At sigma=0.10, Fixed500ms is 6.03% miss / 193.9-ms P95 / 0.0614 normalized memory-time; Adaptive-0.5 is worse in P95 and memory. At sigma=0.50, Adaptive-0.5 improves 11.56% / 2794.9 ms / 0.2477 to 8.26% / 370.9 ms / 0.3328, requiring 34.4% more memory-time. Adaptive-1.0 costs 93.6–132.6% more memory-time than Fixed500ms across sigmas.
+- **Result:** C — neither specified adaptive rule consistently dominates Fixed500ms; high-noise latency gains require substantially more local memory, and the low-noise Adaptive-0.5 tradeoff is worse. No additional k values were tested.
+- **Results:** results/phase1f/.
+- **Execution status:** COMPLETE.

@@ -1,0 +1,10 @@
+{
+  "python": "3.8.8",
+  "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.10",
+  "gpus": [
+    "NVIDIA RTX A6000, 550.54.14",
+    "NVIDIA RTX A6000, 550.54.14"
+  ],
+  "base_commit": "df931dfe238d221ff07800049385fb1c475dd883",
+  "phase0_calibration_commit": "0337837b43ddf78821839d86be6a89ae2a7c164a"
+}
