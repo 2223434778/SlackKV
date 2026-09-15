@@ -1,0 +1,6 @@
+{
+  "python": "3.8.8",
+  "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.10",
+  "base_commit": "69814f4411b433a447dac4419b9d8732e930f9ea",
+  "phase0_calibration_commit": "0337837b43ddf78821839d86be6a89ae2a7c164a"
+}

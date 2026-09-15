@@ -71,3 +71,15 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Anomalies:** The prior per-seed pairwise C2 export was not a valid cross-seed Pareto test and is replaced by compact aggregate artifacts. D2H remains immediate and non-contended.
 - **Results:** `results/phase1c_fix/`.
 - **Execution status:** COMPLETE.
+
+## 2026-09-15 — Phase 1E: JIT safety-margin robustness
+
+- **Objective:** Test whether a fixed margin applied to the Phase 1D predicted resume deadline makes QueueJIT robust to prediction error, without changing admission or introducing a new policy.
+- **Base/calibration:** Phase 1D base `69814f4411b433a447dac4419b9d8732e930f9ea`; directional D2H/H2D Phase 0 calibration commit `0337837b43ddf78821839d86be6a89ae2a7c164a`.
+- **Frozen workload:** 56 KiB/token, context <=131072, closed-loop TraceLab session replay, M=32, seeds 0–4. Policies are KeepAll, OffloadAll-QueueJIT, and FixedTTL-1 only; admission remains `predicted_pause >= 1.0 s`.
+- **Method:** For sigma=0.10/0.25/0.50 and margins 0/100/250/500/1000 ms, QueueJIT uses `max(predicted_deadline - margin, release + D2H + H2D)`; actual deadline remains the sole stall and memory-accounting reference. Prediction draws are deterministically shared across margins for each seed/event/sigma.
+- **Validation:** `/home/a6000/anaconda3/bin/python -m pytest -q tests/test_phase1a_simulator.py tests/test_phase1b_fix.py tests/test_phase1c_fix.py tests/test_phase1c_fix2.py tests/test_phase1d.py tests/test_phase1e.py` (28 passed); `/home/a6000/anaconda3/bin/python experiments/phase1e/run_phase1e.py`; `/home/a6000/anaconda3/bin/python scripts/plot_phase1e.py`.
+- **Key results:** At sigma=0.10, 250 ms reduces median miss rate 17.03%→8.26% at normalized local-memory time 0.0562. At sigma=0.25, 1000 ms reduces miss rate 16.84%→5.89% at 0.1287. At sigma=0.50, 1000 ms reduces miss rate 16.99%→8.71%, but P95 remains 2294.9 ms and memory-time rises to 0.2570.
+- **Result:** B — fixed margins help, but medium/high prediction error requires a large margin and makes the GPU-memory tradeoff more costly. No extra margin or policy was tuned.
+- **Results:** `results/phase1e/`.
+- **Execution status:** COMPLETE.
