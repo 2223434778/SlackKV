@@ -1,0 +1,11 @@
+{
+  "gpu_index": 0,
+  "gpu_name": "NVIDIA RTX A6000",
+  "total_gpu_memory_bytes": 51033931776,
+  "driver_version": "550.54.14",
+  "cuda_version": "12.1",
+  "torch_version": "2.2.0",
+  "transformers_version": "4.45.2",
+  "python_version": "3.8.8 (default, Apr 13 2021, 19:58:26) \n[GCC 7.3.0]",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct"
+}

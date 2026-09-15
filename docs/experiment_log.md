@@ -106,3 +106,15 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Anomaly:** An initial O(numel) random-permutation sampling implementation was terminated before result writing and replaced with fixed-seed direct index sampling; reported metrics come from the complete rerun.
 - **Results:** results/phase2a/.
 - **Execution status:** COMPLETE.
+
+## 2026-09-15 — Phase 2B: real Transformer KV offload/restore
+
+- **Objective:** Validate a real Qwen past_key_values GPU -> pinned CPU -> GPU restore path, allocator reuse, and deterministic continuation correctness without vLLM.
+- **Base/configuration:** Base 11c26582e86d20c7edfa67b775523033b1f69734; Qwen/Qwen2.5-1.5B-Instruct, Transformers 4.45.2, PyTorch 2.2.0/CUDA 12.1, GPU0, float16, 4096-token deterministic text prefix, 16 greedy continuation tokens, one warm-up and three measured full runs.
+- **Compatibility:** This Transformers/model pair returns a public legacy cache tuple rather than DynamicCache. The final implementation snapshots that tuple and restores through DynamicCache.from_legacy_cache(); no private model cache fields are used.
+- **Validation/commands:** python -m pytest -q tests/test_phase2b.py (3 passed); python experiments/phase2b/run_phase2b.py.
+- **Key results:** The 28-layer cache is 112 MiB (K/V shape [1,2,4096,128] per layer). Median D2H/H2D are 7.61/6.29 ms, 112 MiB of allocated GPU memory is released, an 89.6-MiB replacement allocation succeeds, and all 16 continuation tokens match with zero first-step logit difference. Baseline/restored first decode is 22.84/22.79 ms; cold resume latency is 29.08 ms.
+- **Comparison:** D2H is 39.1% slower than the Phase 2A contiguous-tensor scaled estimate (75.6% versus the Phase 0 piecewise estimate); H2D is 15.4% slower than the Phase 2A scaled estimate. The 56 separate cache tensors add real dispatch overhead.
+- **Conclusion:** B — the real-model path and correctness are validated, but fragmented-cache transfer calibration requires adjustment.
+- **Results:** results/phase2b/.
+- **Execution status:** COMPLETE.

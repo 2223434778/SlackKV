@@ -1,0 +1,15 @@
+{
+  "base_commit": "11c26582e86d20c7edfa67b775523033b1f69734",
+  "preferred_model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "fallback_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "selected_model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "preferred_model_load_error": null,
+  "context_tokens": 4096,
+  "decode_tokens": 16,
+  "warmup_runs": 1,
+  "measured_runs": 3,
+  "dtype": "torch.float16",
+  "gpu": 0,
+  "phase2a_calibration_commit": "11c26582e86d20c7edfa67b775523033b1f69734",
+  "no_empty_cache_during_primary_experiment": true
+}
