@@ -1,0 +1,19 @@
+{
+  "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "gpu": "GPU0",
+  "gpu_kv_capacity_bytes": 335544320,
+  "cpu_offload_bytes": 2147483648,
+  "prefix_tokens": 4096,
+  "pressure_tokens_each": 9500,
+  "pressure_requests": 2,
+  "repetitions": [
+    0,
+    1,
+    2
+  ],
+  "control": {
+    "ttft_ms": 93.11795234680176,
+    "local_hit_tokens": 4096.0,
+    "first_text": " It"
+  }
+}

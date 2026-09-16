@@ -137,3 +137,14 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
   Session B keep-local control.  This is an integration-environment blocker,
   not a mechanism result.
 - **Results:** `results/phase2c/`.
+
+## 2026-09-17 — Phase 2C-Fix: real vLLM selective-offload A/B
+
+- **Objective:** Establish an isolated CUDA-compatible vLLM runtime that supports both `OffloadingConnector` and per-request `max_offload_tokens`, then rerun the original two-session selective-offload experiment.
+- **Runtime:** vLLM 0.23.0 source build (`0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665`) in a dedicated CUDA 12.6/PyTorch 2.11.0+cu126 environment. FlashInfer 0.6.12 was installed without dependency resolution that would replace Torch. The capability gate passed import, CUDA, connector, and request-level `kv_transfer_params` checks.
+- **Design:** GPU0 RTX A6000, Qwen/Qwen2.5-1.5B-Instruct, 320 MiB GPU KV capacity, 2 GiB CPU offload, distinct 4096-token A/B prefixes, two distinct 9500-token pressure requests, and three independent restarts in A,B; B,A; A,B order. A used normal offload; B sent `max_offload_tokens=0`.
+- **Validation:** `pytest -q tests/test_phase2c.py tests/test_phase2c_fix.py` (7 passed). A first-turn offloaded 117,440,512 bytes in every repetition; B offloaded 0 bytes. After pressure, A recovered 4096 external KV tokens; B recovered 0 and recomputed a median 4106 prompt tokens. The no-pressure A control hit 4096 local tokens.
+- **Key result:** Median resume TTFT was 94.82 ms for A and 148.51 ms for B, a 36.15% reduction (1.57x). All six streamed resumes were valid. This validates selective offload in real vLLM serving, not deadline-aware JIT promotion.
+- **Anomaly:** One 9500-token pressure request did not consistently evict B's local prefix, so the frozen pressure workload was increased to two distinct 9500-token requests; no admission, model, or KV-capacity parameter was changed.
+- **Results:** `results/phase2c_fix/`.
+- **Execution status:** COMPLETE.

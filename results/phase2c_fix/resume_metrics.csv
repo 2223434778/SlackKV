@@ -1,0 +1,7 @@
+repetition,resume_order,session,admission,resume_ttft_ms,resume_e2e_ms,local_prefix_hit_tokens,external_prefix_hit_tokens,recomputed_prompt_tokens,external_cache_hit_tokens,gpu_kv_usage_before_resume,gpu_kv_usage_after_resume,generation_validity
+0,0,A,OFFLOAD,101.49979591369629,101.63044929504395,0.0,4096.0,10.0,4096.0,0.0,0.0,PASS
+0,1,B,KEEP,148.5130786895752,148.61083030700684,0.0,0.0,4106.0,0.0,0.0,0.0,PASS
+1,0,B,KEEP,163.86723518371582,163.96307945251465,0.0,0.0,4106.0,0.0,0.0,0.0,PASS
+1,1,A,OFFLOAD,37.91236877441406,38.07234764099121,0.0,4096.0,10.0,4096.0,0.0,0.0,PASS
+2,0,A,OFFLOAD,94.82169151306152,94.94471549987793,0.0,4096.0,10.0,4096.0,0.0,0.0,PASS
+2,1,B,KEEP,148.34237098693848,148.43344688415527,0.0,0.0,4106.0,0.0,0.0,0.0,PASS

@@ -1,0 +1,57 @@
+{
+  "vllm_version": "0.23.0",
+  "torch_version": "2.11.0+cu126",
+  "torch_cuda": "12.6",
+  "python_version": "3.11.16",
+  "cuda_available": true,
+  "gpu0": "NVIDIA RTX A6000",
+  "gpu0_memory_mib": 49140,
+  "driver_version": "550.54.14",
+  "source_build_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "flashinfer_version": "0.6.12",
+  "installation": "isolated vLLM source build, CUDA 12.6; FlashInfer 0.6.12 no-deps plus runtime dependencies",
+  "offloading_connector": true,
+  "max_offload_tokens": true,
+  "request_api": "completion.kv_transfer_params -> SamplingParams.extra_args.kv_transfer_params",
+  "first_turn_summaries": [
+    {
+      "repetition": 0,
+      "A": {
+        "e2e_ms": 192.91353225708008,
+        "offload_bytes": 117440512.0,
+        "first_text": " Session"
+      },
+      "B": {
+        "e2e_ms": 135.82468032836914,
+        "offload_bytes": 0.0,
+        "first_text": " Session"
+      }
+    },
+    {
+      "repetition": 1,
+      "A": {
+        "e2e_ms": 194.52834129333496,
+        "offload_bytes": 117440512.0,
+        "first_text": " Session"
+      },
+      "B": {
+        "e2e_ms": 136.86776161193848,
+        "offload_bytes": 0.0,
+        "first_text": " Session"
+      }
+    },
+    {
+      "repetition": 2,
+      "A": {
+        "e2e_ms": 194.88930702209473,
+        "offload_bytes": 117440512.0,
+        "first_text": " Session"
+      },
+      "B": {
+        "e2e_ms": 140.58256149291992,
+        "offload_bytes": 0.0,
+        "first_text": " Session"
+      }
+    }
+  ]
+}
