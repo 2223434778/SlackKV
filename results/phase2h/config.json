@@ -1,0 +1,44 @@
+{
+  "phase": "2H",
+  "base_commit": "81abb72a5916d0cf21b8f1ff1fba85e54414061d",
+  "runtime": "vLLM 0.23.0 / PyTorch 2.11.0+cu126 / CUDA 12.6 / RTX A6000 GPU0",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "gpu_kv_bytes": 1073741824,
+  "cpu_offload_bytes": 2147483648,
+  "max_model_len": 10000,
+  "prefix_tokens": 4096,
+  "session_kv_mib": 112.0,
+  "warmup_session": "W",
+  "measured_sessions": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "pressure_prompts": 4,
+  "pressure_tokens_each": 9500,
+  "expected_offload_bytes_each": 117440512,
+  "estimated_promotion_service_ms": 42.0,
+  "deadlines_ms_from_t0": {
+    "A": 300.0,
+    "B": 320.0,
+    "C": 340.0,
+    "D": 650.0,
+    "E": 900.0,
+    "F": 1300.0
+  },
+  "policies": [
+    "KeepAll",
+    "OnDemand",
+    "ASAP",
+    "NaiveJIT",
+    "QueueJIT"
+  ],
+  "repetitions_each": 3,
+  "percentile_method": "linear interpolation at rank (n-1)*q",
+  "metrics_scrape_during_workload": false,
+  "promotion_proxy": "serialized completion request, max_tokens=1, temperature=0, stream=false, max_offload_tokens=0",
+  "resume_request": "prefix + fixed suffix, max_tokens=1, temperature=0, stream=true, max_offload_tokens=0"
+}
