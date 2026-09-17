@@ -1,0 +1,35 @@
+{
+  "base_commit": "a8688fd62fed53e58c95c65b8f2efd1d85c1932f",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "gpu": "GPU0",
+  "dtype": "float16",
+  "tensor_parallel_size": 1,
+  "gpu_kv_capacity_bytes": 335544320,
+  "cpu_offload_capacity_bytes": 2147483648,
+  "max_model_len": 10000,
+  "prefix_tokens": 4096,
+  "pressure_tokens_each": 9500,
+  "pressure_prompts": 2,
+  "resume_horizon_s": 2.0,
+  "policies": [
+    "OnDemand",
+    "JIT-100",
+    "JIT-250",
+    "JIT-500"
+  ],
+  "repetitions": [
+    0,
+    1,
+    2
+  ],
+  "control": {
+    "ttft_ms": 94.10393098369241,
+    "local_hit_tokens": 4096.0,
+    "first_token_id": 1084,
+    "generation_text": " It",
+    "offload_bytes": 117440512.0,
+    "generation_validity": "PASS"
+  },
+  "expected_offload_bytes": 117440512,
+  "prefetch_proxy": "ordinary completion containing exact original prefix; max_offload_tokens=0; generated token discarded"
+}

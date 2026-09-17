@@ -1,0 +1,89 @@
+Error processing line 1 of /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/lib/python3.11/site-packages/nvidia_cutlass_dsl_packages.pth:
+
+  Traceback (most recent call last):
+    File "<frozen site>", line 195, in addpackage
+    File "<string>", line 1, in <module>
+  ModuleNotFoundError: No module named 'nvidia_cutlass_dsl'
+
+Remainder of file ignored
+{
+  "run_count": 12,
+  "control": {
+    "ttft_ms": 93.24415610171854,
+    "local_hit_tokens": 4096.0,
+    "first_token_id": 1084,
+    "generation_text": " It",
+    "offload_bytes": 117440512.0,
+    "generation_validity": "PASS"
+  },
+  "result": "C",
+  "aggregated": [
+    {
+      "policy": "OnDemand",
+      "n": 3,
+      "median_offload_e2e_ms": 197.00323301367462,
+      "median_offload_transfer_ms": 5.8076159954071045,
+      "median_prefetch_request_ms": null,
+      "median_prefetch_start_lag_ms": null,
+      "median_prefetch_stall_ms": null,
+      "median_early_residency_ms": null,
+      "median_resume_ttft_ms": 98.80595398135483,
+      "median_effective_resume_latency_ms": 98.80595398135483,
+      "median_resume_dispatch_delay_ms": 0.21653692238032818,
+      "median_prefetch_external_hit_tokens": null,
+      "median_resume_local_hit_tokens": 0.0,
+      "median_resume_external_hit_tokens": 4096.0
+    },
+    {
+      "policy": "JIT-100",
+      "n": 3,
+      "median_offload_e2e_ms": 197.4976968485862,
+      "median_offload_transfer_ms": 7.483968019485474,
+      "median_prefetch_request_ms": 114.37160917557776,
+      "median_prefetch_start_lag_ms": 0.1141910906881094,
+      "median_prefetch_stall_ms": 14.49337205849588,
+      "median_early_residency_ms": 0.0,
+      "median_resume_ttft_ms": 42.16687590815127,
+      "median_effective_resume_latency_ms": 56.297380942851305,
+      "median_resume_dispatch_delay_ms": 0.04592095501720905,
+      "median_prefetch_external_hit_tokens": 4096.0,
+      "median_resume_local_hit_tokens": 4096.0,
+      "median_resume_external_hit_tokens": 4096.0
+    },
+    {
+      "policy": "JIT-250",
+      "n": 3,
+      "median_offload_e2e_ms": 198.77672498114407,
+      "median_offload_transfer_ms": 6.016992092132568,
+      "median_prefetch_request_ms": 114.506398094818,
+      "median_prefetch_start_lag_ms": 0.22116885520517826,
+      "median_prefetch_stall_ms": 0.0,
+      "median_early_residency_ms": 135.27243304997683,
+      "median_resume_ttft_ms": 42.590499157086015,
+      "median_effective_resume_latency_ms": 42.590499157086015,
+      "median_resume_dispatch_delay_ms": 0.12302910909056664,
+      "median_prefetch_external_hit_tokens": 4096.0,
+      "median_resume_local_hit_tokens": 4096.0,
+      "median_resume_external_hit_tokens": 4096.0
+    },
+    {
+      "policy": "JIT-500",
+      "n": 3,
+      "median_offload_e2e_ms": 195.96345908939838,
+      "median_offload_transfer_ms": 5.886687994003296,
+      "median_prefetch_request_ms": 110.7103331014514,
+      "median_prefetch_start_lag_ms": 0.13562897220253944,
+      "median_prefetch_stall_ms": 0.0,
+      "median_early_residency_ms": 389.15403792634606,
+      "median_resume_ttft_ms": 42.19736508093774,
+      "median_effective_resume_latency_ms": 42.19736508093774,
+      "median_resume_dispatch_delay_ms": 0.13600196689367294,
+      "median_prefetch_external_hit_tokens": 4096.0,
+      "median_resume_local_hit_tokens": 4096.0,
+      "median_resume_external_hit_tokens": 4096.0
+    }
+  ],
+  "prefetch_validation": true,
+  "local_validation": false,
+  "generation_validity": true
+}

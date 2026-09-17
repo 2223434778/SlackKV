@@ -1,0 +1,8 @@
+{
+  "ttft_ms": 93.74292404390872,
+  "local_hit_tokens": 4096.0,
+  "first_token_id": 1084,
+  "generation_text": " It",
+  "offload_bytes": 117440512.0,
+  "generation_validity": "PASS"
+}
