@@ -1,0 +1,46 @@
+{
+  "base_commit": "4055e134c123e1e2f2562e09d46de5387863e280",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "gpu": "GPU0",
+  "dtype": "float16",
+  "tensor_parallel_size": 1,
+  "gpu_kv_capacity_bytes": 335544320,
+  "cpu_offload_capacity_bytes": 2147483648,
+  "max_model_len": 10000,
+  "prefix_tokens_per_session": 4096,
+  "expected_offload_bytes_per_session": 117440512,
+  "pressure_tokens_each": 9500,
+  "pressure_prompts": 2,
+  "p_est_ms": 120.0,
+  "deadlines_ms_from_t0": {
+    "A": 1500.0,
+    "B": 1560.0
+  },
+  "policies": [
+    "ASAP",
+    "NaiveJIT",
+    "QueueJIT"
+  ],
+  "repetitions": [
+    0,
+    1,
+    2
+  ],
+  "promotion_worker_count": 1,
+  "promotion_proxy": "ordinary completion request with exact prefix; generated token discarded",
+  "control": {
+    "A": {
+      "ttft_ms": 90.94750205986202,
+      "first_token_id": 1084,
+      "local_hit_tokens": 4096.0,
+      "external_hit_tokens": 0.0
+    },
+    "B": {
+      "ttft_ms": 26.12064895220101,
+      "first_token_id": 1084,
+      "local_hit_tokens": 4096.0,
+      "external_hit_tokens": 0.0
+    },
+    "generation_validity": "PASS"
+  }
+}
