@@ -1,0 +1,13 @@
+{
+  "vllm_version": "0.23.0",
+  "torch_version": "2.11.0+cu126",
+  "torch_cuda_version": "12.6",
+  "cuda_available": true,
+  "gpu0": "NVIDIA RTX A6000",
+  "max_offload_tokens_request_control": "PASS",
+  "python_version": "3.11.16",
+  "driver_version": "550.54.14",
+  "gpu0_memory_total": "49140 MiB",
+  "flashinfer_version": "0.6.12",
+  "installation_method": "reused isolated Phase 2C-Fix CUDA 12.6 vLLM 0.23.0 source-build environment"
+}

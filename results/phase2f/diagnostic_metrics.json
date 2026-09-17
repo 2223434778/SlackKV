@@ -1,0 +1,98 @@
+{
+  "status": "COMPLETE",
+  "run_id": "phase2f_transfer_diagnostic",
+  "promotions": [
+    {
+      "session": "A",
+      "position": 1,
+      "promotion_request_ms_excluded_from_primary": 109.8495430778712,
+      "request_sent_unix_s": 1789629910.4024093,
+      "transfer_time_counter": {
+        "series": [
+          {
+            "metric_name": "vllm:kv_offload_total_time_total",
+            "labels": {
+              "engine": "0",
+              "model_name": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+              "transfer_type": "CPU_to_GPU"
+            },
+            "delta": 0.005263519763946533,
+            "unit": "seconds"
+          }
+        ],
+        "metric_names": [
+          "vllm:kv_offload_total_time_total"
+        ],
+        "unit": "seconds",
+        "delta": 0.005263519763946533,
+        "delta_ms": 5.263519763946533
+      },
+      "transfer_bytes_counter": {
+        "series": [
+          {
+            "metric_name": "vllm:kv_offload_total_bytes_total",
+            "labels": {
+              "engine": "0",
+              "model_name": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+              "transfer_type": "CPU_to_GPU"
+            },
+            "delta": 117440512.0,
+            "unit": "bytes"
+          }
+        ],
+        "metric_names": [
+          "vllm:kv_offload_total_bytes_total"
+        ],
+        "unit": "bytes",
+        "delta": 117440512.0
+      },
+      "non_transfer_overhead_ms": 104.586023
+    },
+    {
+      "session": "B",
+      "position": 2,
+      "promotion_request_ms_excluded_from_primary": 35.058993147686124,
+      "request_sent_unix_s": 1789629910.5303745,
+      "transfer_time_counter": {
+        "series": [
+          {
+            "metric_name": "vllm:kv_offload_total_time_total",
+            "labels": {
+              "engine": "0",
+              "model_name": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+              "transfer_type": "CPU_to_GPU"
+            },
+            "delta": 0.005260000228881837,
+            "unit": "seconds"
+          }
+        ],
+        "metric_names": [
+          "vllm:kv_offload_total_time_total"
+        ],
+        "unit": "seconds",
+        "delta": 0.005260000228881837,
+        "delta_ms": 5.260000228881837
+      },
+      "transfer_bytes_counter": {
+        "series": [
+          {
+            "metric_name": "vllm:kv_offload_total_bytes_total",
+            "labels": {
+              "engine": "0",
+              "model_name": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+              "transfer_type": "CPU_to_GPU"
+            },
+            "delta": 117440512.0,
+            "unit": "bytes"
+          }
+        ],
+        "metric_names": [
+          "vllm:kv_offload_total_bytes_total"
+        ],
+        "unit": "bytes",
+        "delta": 117440512.0
+      },
+      "non_transfer_overhead_ms": 29.798993
+    }
+  ]
+}

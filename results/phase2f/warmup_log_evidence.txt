@@ -1,0 +1,51 @@
+Phase 2F compile/warm-up log evidence. Timestamp proximity is observational only and does not prove causality.
+Request monotonic and Unix timestamps are in promotion_metrics.csv.
+rep0 order=AB: first promotion sent 2026-09-17T15:22:23+08:00, duration=115.56 ms
+rep1 order=BA: first promotion sent 2026-09-17T15:22:51+08:00, duration=110.69 ms
+rep2 order=AB: first promotion sent 2026-09-17T15:23:18+08:00, duration=112.38 ms
+rep3 order=BA: first promotion sent 2026-09-17T15:23:46+08:00, duration=111.68 ms
+rep4 order=AB: first promotion sent 2026-09-17T15:24:14+08:00, duration=110.18 ms
+rep5 order=BA: first promotion sent 2026-09-17T15:24:42+08:00, duration=115.27 ms
+Nearest _compute_slot_mapping_kernel JIT log offsets relative to first promotion (s): rep0=-2.31, rep1=-2.16, rep2=-3.00, rep3=-2.85, rep4=-2.69, rep5=-2.54. These events are in the preceding setup/pressure interval; proximity alone is not causal evidence.
+
+[phase2f_rep0.log]
+(APIServer pid=2548509) WARNING 09-17 15:22:04 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2548662) INFO 09-17 15:22:18 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(EngineCore pid=2548662) WARNING 09-17 15:22:19 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2548662) WARNING 09-17 15:22:21 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _compute_slot_mapping_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+
+[phase2f_rep1.log]
+(APIServer pid=2548872) WARNING 09-17 15:22:32 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2548961) INFO 09-17 15:22:46 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(EngineCore pid=2548961) WARNING 09-17 15:22:47 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2548961) WARNING 09-17 15:22:49 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _compute_slot_mapping_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+
+[phase2f_rep2.log]
+(APIServer pid=2549169) WARNING 09-17 15:22:59 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2549260) INFO 09-17 15:23:14 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(EngineCore pid=2549260) WARNING 09-17 15:23:14 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2549260) WARNING 09-17 15:23:16 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _compute_slot_mapping_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+
+[phase2f_rep3.log]
+(APIServer pid=2549480) WARNING 09-17 15:23:27 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2549570) INFO 09-17 15:23:42 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(EngineCore pid=2549570) WARNING 09-17 15:23:43 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2549570) WARNING 09-17 15:23:44 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _compute_slot_mapping_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+
+[phase2f_rep4.log]
+(APIServer pid=2549783) WARNING 09-17 15:23:55 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2549873) INFO 09-17 15:24:09 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(EngineCore pid=2549873) WARNING 09-17 15:24:10 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2549873) WARNING 09-17 15:24:12 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _compute_slot_mapping_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+
+[phase2f_rep5.log]
+(APIServer pid=2550082) WARNING 09-17 15:24:23 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2550175) INFO 09-17 15:24:37 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(EngineCore pid=2550175) WARNING 09-17 15:24:38 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2550175) WARNING 09-17 15:24:40 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _compute_slot_mapping_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+
+[phase2f_transfer_diagnostic.log]
+(APIServer pid=2550452) WARNING 09-17 15:24:51 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2550535) INFO 09-17 15:25:06 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(EngineCore pid=2550535) WARNING 09-17 15:25:06 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=2550535) WARNING 09-17 15:25:08 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _compute_slot_mapping_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
