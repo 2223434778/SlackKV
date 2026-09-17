@@ -183,3 +183,15 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Anomalies:** The isolated Python environment emitted a non-fatal missing optional nvidia_cutlass_dsl .pth warning; experiment requests and all cache-evidence checks passed. Server logs also report torch.compile/CUDA graphs disabled by the frozen enforce-eager runtime; this setting was unchanged.
 - **Results:** results/phase2f/.
 - **Execution status:** COMPLETE.
+
+## 2026-09-17 — Phase 2G: warm-state QueueJIT contention
+
+- **Objective/base:** Repeat the two-session real-serving QueueJIT contention test after explicitly warming the promotion path, using calibrated warm-state service time. Base commit: a74b0893cbc2a19e982701be0948fa1bbd757de4.
+- **Frozen setup:** Reused vLLM 0.23.0 / PyTorch 2.11.0+cu126 / CUDA 12.6 on GPU0 RTX A6000, Qwen2.5-1.5B-Instruct, 320 MiB GPU KV, 2 GiB CPU offload, max model length 10000. Every restart created exact 4096-token A/B/C sessions, verified each first-turn D2H as 117,440,512 bytes, waited one second, and issued the unchanged two 9500-token pressure prompts. C was then promoted once as warm-up and excluded from measured policy timings. After its external-hit validation snapshot, t0 was set; p_est=42 ms, deadlines A=350 ms/B=370 ms, with ASAP/NaiveJIT/QueueJIT and three restarts each.
+- **Commands/validation:** bash results/phase2g/commands.sh (compile, four focused tests, then full experiment); python -m pytest -q tests/test_phase2g.py (4 passed); bash -n results/phase2g/commands.sh; git diff --check. Exactly nine measured runs and 18 A/B job rows completed, plus the single local-hit control. A/B/C offloads, C's 4096 external-hit warm-up, each measured pair's 8192 external hits, and post-promotion 8192 local hits/zero external hits all validated. All resume token IDs matched local controls (1084); no vLLM request errors or server processes remained.
+- **Warm-state evidence:** C warm-up proxy median was 111.22 ms. The 18 measured A/B promotions had 38.71-ms median (range 35.18–43.08 ms), satisfying the frozen <=60-ms warm-state check.
+- **Key results (three-run medians):** ASAP = 0 misses/run, 0-ms max stall, 608.61-ms total early residency. NaiveJIT = 1 miss/run, 19.49-ms max stall, 1.31-ms total early residency; B missed in all three runs, and A had one 1.50-ms miss. QueueJIT = 0 misses/run, 0-ms max stall, 24.93-ms total early residency. QueueJIT began 22.02 ms earlier than NaiveJIT and saved 583.68 ms (95.9%) of early residency versus ASAP.
+- **Result:** A — warm-state real multi-session QueueJIT advantage validated with this request-proxy schedule. The result is not evidence of native PCIe contention.
+- **Anomalies:** The isolated Python environment continued to print a non-fatal optional nvidia_cutlass_dsl .pth warning. NaiveJIT repetition 2 also logged vLLM EngineDeadError from the async output handler during SIGTERM teardown, after the server's shutdown trigger; all 10 requests had returned HTTP 200 and that run's cache, resume and token-ID checks passed. No measurement was removed or retuned.
+- **Results:** results/phase2g/.
+- **Execution status:** COMPLETE.

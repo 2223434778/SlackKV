@@ -1,0 +1,15 @@
+{
+  "A": {
+    "first_token_id": 1084,
+    "ttft_ms": 92.62671205215156,
+    "local_hit_tokens": 4096.0,
+    "external_hit_tokens": 0.0
+  },
+  "B": {
+    "first_token_id": 1084,
+    "ttft_ms": 25.890151038765907,
+    "local_hit_tokens": 4096.0,
+    "external_hit_tokens": 0.0
+  },
+  "generation_validity": "PASS"
+}

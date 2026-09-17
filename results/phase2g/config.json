@@ -1,0 +1,32 @@
+{
+  "phase": "2G",
+  "base_commit": "a74b0893cbc2a19e982701be0948fa1bbd757de4",
+  "runtime": "vLLM 0.23.0 / PyTorch 2.11.0+cu126 / CUDA 12.6 / RTX A6000 GPU0",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "gpu_kv_bytes": 335544320,
+  "cpu_offload_bytes": 2147483648,
+  "max_model_len": 10000,
+  "prefix_tokens": 4096,
+  "pressure_tokens_each": 9500,
+  "sessions": [
+    "A measured",
+    "B measured",
+    "C warm-up only"
+  ],
+  "expected_offload_bytes_each": 117440512,
+  "estimated_warm_promotion_ms": 42.0,
+  "deadlines_ms_from_t0": {
+    "A": 350.0,
+    "B": 370.0
+  },
+  "policies": [
+    "ASAP",
+    "NaiveJIT",
+    "QueueJIT"
+  ],
+  "repetitions_each": 3,
+  "warmup": "one C promotion after two frozen pressure requests, excluded from A/B results",
+  "promotion_proxy": "serialized normal completion request, max_tokens=1, temperature=0, stream=false, max_offload_tokens=0",
+  "metrics_scrape_between_measured_promotions": false,
+  "suffix": "\nTool result: operation completed successfully.\nAssistant:"
+}
