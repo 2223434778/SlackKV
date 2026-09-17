@@ -1,0 +1,21 @@
+Error processing line 1 of /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/lib/python3.11/site-packages/nvidia_cutlass_dsl_packages.pth:
+
+  Traceback (most recent call last):
+    File "<frozen site>", line 195, in addpackage
+    File "<string>", line 1, in <module>
+  ModuleNotFoundError: No module named 'nvidia_cutlass_dsl'
+
+Remainder of file ignored
+RUN OnDemand repetition=0
+RUN OnDemand repetition=1
+RUN OnDemand repetition=2
+RUN ASAP-Native repetition=0
+RUN ASAP-Native repetition=1
+RUN ASAP-Native repetition=2
+RUN NaiveJIT-Native repetition=0
+RUN NaiveJIT-Native repetition=1
+RUN NaiveJIT-Native repetition=2
+RUN QueueJIT-Native repetition=0
+RUN QueueJIT-Native repetition=1
+RUN QueueJIT-Native repetition=2
+WORKLOAD COMPLETE Result B

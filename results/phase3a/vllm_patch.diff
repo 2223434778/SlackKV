@@ -1,0 +1,569 @@
+diff --git a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py
+index c5a251a..d8f9218 100644
+--- a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py
++++ b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py
+@@ -22,6 +22,7 @@ class TransferJob:
+ 
+     req_id: ReqId
+     transfer_spec: TransferSpec
++    slackkv_prefetch_only: bool = False
+ 
+ 
+ @dataclass
+@@ -43,10 +44,25 @@ class OffloadingWorkerMetadata(KVConnectorWorkerMetadata):
+     """
+ 
+     completed_jobs: dict[int, int] = field(default_factory=dict)
+-
+-    def mark_completed(self, job_id: int) -> None:
++    # Research-only SlackKV transfer observations keyed by job id.
++    # Value is (max worker transfer seconds, total worker bytes).
++    slackkv_completed_job_stats: dict[int, tuple[float, int]] = field(
++        default_factory=dict
++    )
++
++    def mark_completed(
++        self,
++        job_id: int,
++        transfer_time: float | None = None,
++        transfer_size: int | None = None,
++    ) -> None:
+         """Record a transfer job completion from this worker."""
+         self.completed_jobs[job_id] = 1
++        if transfer_time is not None and transfer_size is not None:
++            self.slackkv_completed_job_stats[job_id] = (
++                float(transfer_time),
++                int(transfer_size),
++            )
+ 
+     def aggregate(
+         self, other: "KVConnectorWorkerMetadata"
+@@ -56,5 +72,17 @@ class OffloadingWorkerMetadata(KVConnectorWorkerMetadata):
+         merged = dict(self.completed_jobs)
+         for job_id, v in other.completed_jobs.items():
+             merged[job_id] = merged.get(job_id, 0) + v
+-
+-        return OffloadingWorkerMetadata(completed_jobs=merged)
++        merged_stats = dict(self.slackkv_completed_job_stats)
++        for job_id, (transfer_time, transfer_size) in (
++            other.slackkv_completed_job_stats.items()
++        ):
++            old_time, old_size = merged_stats.get(job_id, (0.0, 0))
++            merged_stats[job_id] = (
++                max(old_time, transfer_time),
++                old_size + transfer_size,
++            )
++
++        return OffloadingWorkerMetadata(
++            completed_jobs=merged,
++            slackkv_completed_job_stats=merged_stats,
++        )
+diff --git a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py
+index 6ee827f..79d4f9f 100644
+--- a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py
++++ b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py
+@@ -58,6 +58,8 @@ class TransferJobStatus:
+     # Store src block IDs that may be freed before the request finishes.
+     # Registered in _block_id_to_pending_jobs at store creation time.
+     sliding_window_block_ids: list[int] | None = None
++    slackkv_transfer_time_s: float = 0.0
++    slackkv_transfer_bytes: int = 0
+ 
+ 
+ class GroupOffloadConfig(NamedTuple):
+@@ -186,6 +188,9 @@ class RequestOffloadState:
+     # In-flight job IDs. Per the connector's invariant, at any given time
+     # this contains either a single load job, or one or more store jobs.
+     transfer_jobs: set[int] = field(default_factory=set)
++    slackkv_external_tokens_loaded: int = 0
++    slackkv_cpu_to_gpu_transfer_s: float = 0.0
++    slackkv_transfer_bytes: int = 0
+ 
+     def __post_init__(self) -> None:
+         self.group_states = tuple(
+@@ -577,6 +582,7 @@ class OffloadingConnectorScheduler:
+             return
+ 
+         req_status = self._req_status[request.request_id]
++        req_status.slackkv_external_tokens_loaded = num_external_tokens
+ 
+         num_locally_computed_tokens = req_status.num_locally_computed_tokens
+         num_cached_tokens = num_locally_computed_tokens + num_external_tokens
+@@ -653,6 +659,10 @@ class OffloadingConnectorScheduler:
+         self._current_batch_load_jobs[load_job_id] = TransferJob(
+             req_id=request.request_id,
+             transfer_spec=(src_spec, dst_spec),
++            slackkv_prefetch_only=bool(
++                request.kv_transfer_params
++                and request.kv_transfer_params.get("slackkv_prefetch_only") is True
++            ),
+         )
+         # a load can only be issued when no other jobs are pending.
+         assert not req_status.transfer_jobs
+@@ -962,6 +972,12 @@ class OffloadingConnectorScheduler:
+                 )
+                 continue
+             job_status = self._jobs[job_id]
++            if stats := meta.slackkv_completed_job_stats.get(job_id):
++                transfer_time, transfer_bytes = stats
++                job_status.slackkv_transfer_time_s = max(
++                    job_status.slackkv_transfer_time_s, transfer_time
++                )
++                job_status.slackkv_transfer_bytes += transfer_bytes
+             job_status.pending_count -= count
+             if job_status.pending_count > 0:
+                 continue
+@@ -972,6 +988,10 @@ class OffloadingConnectorScheduler:
+                 self.manager.complete_store(job_status.keys, req_status.req_context)
+             else:
+                 self.manager.complete_load(job_status.keys, req_status.req_context)
++                req_status.slackkv_cpu_to_gpu_transfer_s = (
++                    job_status.slackkv_transfer_time_s
++                )
++                req_status.slackkv_transfer_bytes = job_status.slackkv_transfer_bytes
+                 if self._blocks_being_loaded:
+                     self._blocks_being_loaded.difference_update(job_status.keys)
+             if self._block_id_to_pending_jobs:
+@@ -1013,18 +1033,41 @@ class OffloadingConnectorScheduler:
+         )
+         self.manager.on_request_finished(req_context)
+ 
++        is_slackkv_prefetch = bool(
++            request.kv_transfer_params
++            and request.kv_transfer_params.get("slackkv_prefetch_only") is True
++        )
++        slackkv_result = None
++        if is_slackkv_prefetch:
++            if req_status is None:
++                raise RuntimeError("SlackKV prefetch request lost connector state")
++            slackkv_result = {
++                "slackkv_prefetch": {
++                    "status": "ok",
++                    "external_tokens_loaded": (
++                        req_status.slackkv_external_tokens_loaded
++                    ),
++                    "transfer_bytes": req_status.slackkv_transfer_bytes,
++                    "cpu_to_gpu_transfer_ms": (
++                        req_status.slackkv_cpu_to_gpu_transfer_s * 1000.0
++                    ),
++                    "model_forward_count": 0,
++                    "generated_token_count": 0,
++                }
++            }
++
+         if req_status is None:
+             return False, None
+         if not req_status.transfer_jobs:
+             del self._req_status[request.request_id]
+-            return False, None
++            return False, slackkv_result
+         # Pending stores will outlive the request's block ownership.
+         # Register them so future block reuse triggers a flush.
+         for job_id in req_status.transfer_jobs:
+             job_status = self._jobs[job_id]
+             for bid in job_status.non_sliding_window_block_ids or ():
+                 self._block_id_to_pending_jobs.setdefault(bid, set()).add(job_id)
+-        return False, None
++        return False, slackkv_result
+ 
+     def take_events(self) -> Iterable[KVCacheEvent]:
+         """Take the KV cache events from the connector.
+diff --git a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/worker.py b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/worker.py
+index 8957ce3..af1c437 100644
+--- a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/worker.py
++++ b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/worker.py
+@@ -282,7 +282,11 @@ class OffloadingConnectorWorker:
+                     transfer_type=transfer_result.transfer_type,
+                 )
+ 
+-            self._connector_worker_meta.mark_completed(job_id)
++            self._connector_worker_meta.mark_completed(
++                job_id,
++                transfer_result.transfer_time,
++                transfer_result.transfer_size,
++            )
+             req_id = self._load_jobs.pop(job_id, None)
+             if req_id is not None:
+                 finished_recving.add(req_id)
+diff --git a/vllm/entrypoints/serve/__init__.py b/vllm/entrypoints/serve/__init__.py
+index 57491d4..de5d8d0 100644
+--- a/vllm/entrypoints/serve/__init__.py
++++ b/vllm/entrypoints/serve/__init__.py
+@@ -59,3 +59,9 @@ def register_vllm_dev_api_routers(app: FastAPI):
+     from .dev.sleep.api_router import attach_router as attach_sleep_router
+ 
+     attach_sleep_router(app)
++
++    from .dev.slackkv_prefetch.api_router import (
++        attach_router as attach_slackkv_prefetch_router,
++    )
++
++    attach_slackkv_prefetch_router(app)
+diff --git a/vllm/v1/core/sched/output.py b/vllm/v1/core/sched/output.py
+index b2e9dd8..6df65d9 100644
+--- a/vllm/v1/core/sched/output.py
++++ b/vllm/v1/core/sched/output.py
+@@ -235,6 +235,12 @@ class SchedulerOutput:
+     # EC Cache Connector metadata
+     ec_connector_metadata: ECConnectorMetadata | None = None
+ 
++    # Research-only IDs whose connector load must take the no-forward path.
++    slackkv_prefetch_req_ids: list[str] | None = None
++
++    # Research-only completed requests to emit after their blocks are cached.
++    slackkv_prefetch_finished_req_ids: list[str] | None = None
++
+     # Block IDs freshly allocated from the pool during this scheduling step.
+     # The worker zeros the corresponding GPU memory before the blocks are used,
+     # preventing stale NaN/data from corrupting attention or SSM computation.
+diff --git a/vllm/v1/core/sched/scheduler.py b/vllm/v1/core/sched/scheduler.py
+index 889232c..62d9213 100644
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -49,7 +49,12 @@ from vllm.v1.core.sched.request_queue import (
+     create_request_queue,
+ )
+ from vllm.v1.core.sched.utils import check_stop, remove_all
+-from vllm.v1.engine import EngineCoreEventType, EngineCoreOutput, EngineCoreOutputs
++from vllm.v1.engine import (
++    EngineCoreEventType,
++    EngineCoreOutput,
++    EngineCoreOutputs,
++    FinishReason,
++)
+ from vllm.v1.kv_cache_interface import KVCacheConfig
+ from vllm.v1.metrics.perf import ModelMetrics, PerfStats
+ from vllm.v1.metrics.stats import PrefixCacheStats, SchedulerStats
+@@ -62,6 +67,11 @@ from vllm.v1.utils import record_function_or_nullcontext
+ logger = init_logger(__name__)
+ 
+ 
++def _is_slackkv_prefetch_only(request: Request) -> bool:
++    params = request.kv_transfer_params
++    return bool(params and params.get("slackkv_prefetch_only") is True)
++
++
+ class Scheduler(SchedulerInterface):
+     def __init__(
+         self,
+@@ -180,6 +190,9 @@ class Scheduler(SchedulerInterface):
+         # KV Connector: requests in process of async KV loading or recving
+         self.finished_recving_kv_req_ids: set[str] = set()
+         self.failed_recving_kv_req_ids: set[str] = set()
++        self._slackkv_prefetch_finished: dict[
++            str, tuple[int, dict[str, Any] | None, list[Any], Any]
++        ] = {}
+ 
+         # Encoder-related.
+         # Calculate encoder cache size if applicable
+@@ -574,17 +587,19 @@ class Scheduler(SchedulerInterface):
+                 request_id = request.request_id
+ 
+                 # try to promote blocked statuses while traversing skipped queue.
+-                if self._is_blocked_waiting_status(
+-                    request.status
+-                ) and not self._try_promote_blocked_waiting_request(request):
+-                    if request.status == RequestStatus.WAITING_FOR_REMOTE_KVS:
+-                        logger.debug(
+-                            "%s is still in WAITING_FOR_REMOTE_KVS state.",
+-                            request_id,
+-                        )
+-                    request_queue.pop_request()
+-                    step_skipped_waiting.prepend_request(request)
+-                    continue
++                if self._is_blocked_waiting_status(request.status):
++                    if not self._try_promote_blocked_waiting_request(request):
++                        if request.status == RequestStatus.WAITING_FOR_REMOTE_KVS:
++                            logger.debug(
++                                "%s is still in WAITING_FOR_REMOTE_KVS state.",
++                                request_id,
++                            )
++                        request_queue.pop_request()
++                        step_skipped_waiting.prepend_request(request)
++                        continue
++                    if request.is_finished():
++                        request_queue.pop_request()
++                        continue
+ 
+                 # Check that adding the request still respects the max_loras
+                 # constraint.
+@@ -954,6 +969,20 @@ class Scheduler(SchedulerInterface):
+         if self.connector is not None:
+             meta = self._build_kv_connector_meta(self.connector, scheduler_output)
+             scheduler_output.kv_connector_metadata = meta
++            load_jobs = getattr(meta, "load_jobs", {})
++            slackkv_req_ids = [
++                job.req_id
++                for job in load_jobs.values()
++                if (req := self.requests.get(job.req_id)) is not None
++                and _is_slackkv_prefetch_only(req)
++            ]
++            if slackkv_req_ids:
++                scheduler_output.slackkv_prefetch_req_ids = slackkv_req_ids
++
++        if self._slackkv_prefetch_finished:
++            scheduler_output.slackkv_prefetch_finished_req_ids = list(
++                self._slackkv_prefetch_finished
++            )
+ 
+         # Build the connector meta for ECConnector
+         if self.ec_connector is not None:
+@@ -1345,6 +1374,20 @@ class Scheduler(SchedulerInterface):
+             perf_stats = self.perf_metrics.get_step_perf_stats_per_gpu(scheduler_output)
+ 
+         outputs: dict[int, list[EngineCoreOutput]] = defaultdict(list)
++        for req_id in scheduler_output.slackkv_prefetch_finished_req_ids or ():
++            client_index, kv_params, events, trace_headers = (
++                self._slackkv_prefetch_finished.pop(req_id)
++            )
++            outputs[client_index].append(
++                EngineCoreOutput(
++                    request_id=req_id,
++                    new_token_ids=[],
++                    finish_reason=FinishReason.STOP,
++                    events=events,
++                    kv_transfer_params=kv_params,
++                    trace_headers=trace_headers,
++                )
++            )
+         spec_decoding_stats: SpecDecodingStats | None = None
+         kv_connector_stats: KVConnectorStats | None = (
+             kv_connector_output.kv_connector_stats if kv_connector_output else None
+@@ -2180,7 +2223,10 @@ class Scheduler(SchedulerInterface):
+ 
+             # on a full prompt hit, we need to re-compute the last token
+             # in order to be able to sample the next token
+-            if request.num_computed_tokens == request.num_tokens:
++            if (
++                request.num_computed_tokens == request.num_tokens
++                and not _is_slackkv_prefetch_only(request)
++            ):
+                 request.num_computed_tokens = request.num_tokens - 1
+ 
+         self.finished_recving_kv_req_ids.remove(request.request_id)
+@@ -2196,6 +2242,22 @@ class Scheduler(SchedulerInterface):
+             if request.request_id not in self.finished_recving_kv_req_ids:
+                 return False
+             self._update_waiting_for_remote_kv(request)
++            if _is_slackkv_prefetch_only(request):
++                request.status = RequestStatus.FINISHED_STOPPED
++                kv_params = self._free_request(request)
++                self._slackkv_prefetch_finished[request.request_id] = (
++                    request.client_index,
++                    kv_params,
++                    request.take_events(),
++                    request.trace_headers,
++                )
++                logger.info(
++                    "SLACKKV_NATIVE_PREFETCH_COMPLETE request_id=%s "
++                    "external_tokens=%d model_forward_count=0 generated_tokens=0",
++                    request.request_id,
++                    request.num_computed_tokens,
++                )
++                return True
+             if request.num_preemptions:
+                 request.status = RequestStatus.PREEMPTED
+             else:
+diff --git a/vllm/v1/worker/gpu_model_runner.py b/vllm/v1/worker/gpu_model_runner.py
+index 801a857..8f6e1e8 100644
+--- a/vllm/v1/worker/gpu_model_runner.py
++++ b/vllm/v1/worker/gpu_model_runner.py
+@@ -3425,6 +3425,22 @@ class GPUModelRunner(
+         ECConnectorOutput | None,
+     ]:
+         num_scheduled_tokens = scheduler_output.total_num_scheduled_tokens
++        if scheduler_output.slackkv_prefetch_req_ids:
++            special_req_ids = set(scheduler_output.slackkv_prefetch_req_ids)
++            incorrectly_scheduled = special_req_ids.intersection(
++                scheduler_output.num_scheduled_tokens
++            )
++            if incorrectly_scheduled:
++                raise RuntimeError(
++                    "SlackKV prefetch-only requests attempted to schedule model "
++                    f"tokens: {sorted(incorrectly_scheduled)}"
++                )
++            logger.info(
++                "SLACKKV_NATIVE_PREFETCH_SPECIAL_NO_FORWARD request_ids=%s "
++                "special_model_forward_count=0 co_scheduled_normal_tokens=%d",
++                scheduler_output.slackkv_prefetch_req_ids,
++                num_scheduled_tokens,
++            )
+         is_first_rank = get_pp_group().is_first_rank
+         is_encoder_decoder = self.model_config.is_encoder_decoder
+ 
+diff --git a/vllm/v1/worker/kv_connector_model_runner_mixin.py b/vllm/v1/worker/kv_connector_model_runner_mixin.py
+index 797e59c..03b5ada 100644
+--- a/vllm/v1/worker/kv_connector_model_runner_mixin.py
++++ b/vllm/v1/worker/kv_connector_model_runner_mixin.py
+@@ -36,6 +36,19 @@ class KVConnectorModelRunnerMixin:
+     def kv_connector_no_forward(
+         scheduler_output: "SchedulerOutput", vllm_config: VllmConfig
+     ) -> ModelRunnerOutput:
++        metadata = scheduler_output.kv_connector_metadata
++        load_jobs = getattr(metadata, "load_jobs", {})
++        slackkv_req_ids = [
++            job.req_id
++            for job in load_jobs.values()
++            if getattr(job, "slackkv_prefetch_only", False)
++        ]
++        if slackkv_req_ids:
++            logger.info(
++                "SLACKKV_NATIVE_PREFETCH_NO_FORWARD request_ids=%s "
++                "model_forward_count=0",
++                slackkv_req_ids,
++            )
+         # KV send/recv even if no work to do.
+         with (
+             set_forward_context(None, vllm_config),
+diff --git a/tests/v1/kv_connector/unit/test_slackkv_native_prefetch.py b/tests/v1/kv_connector/unit/test_slackkv_native_prefetch.py
+new file mode 100644
+index 0000000..53297b9
+--- /dev/null
++++ b/tests/v1/kv_connector/unit/test_slackkv_native_prefetch.py
+@@ -0,0 +1,74 @@
++# SPDX-License-Identifier: Apache-2.0
++"""Focused tests for the research-only SlackKV native prefetch path."""
++
++from contextlib import contextmanager, nullcontext
++from types import SimpleNamespace
++from unittest.mock import patch
++
++import pytest
++
++from vllm.distributed.kv_transfer.kv_connector.v1.offloading.common import (
++    OffloadingWorkerMetadata,
++    TransferJob,
++)
++from vllm.v1.core.sched.scheduler import _is_slackkv_prefetch_only
++from vllm.v1.outputs import KVConnectorOutput
++from vllm.v1.worker.kv_connector_model_runner_mixin import (
++    KVConnectorModelRunnerMixin,
++)
++
++pytestmark = pytest.mark.cpu_test
++
++
++def test_prefetch_only_flag_is_isolated_from_normal_requests():
++    special = SimpleNamespace(
++        kv_transfer_params={"slackkv_prefetch_only": True}
++    )
++    normal = SimpleNamespace(kv_transfer_params={"max_offload_tokens": 0})
++    assert _is_slackkv_prefetch_only(special)
++    assert not _is_slackkv_prefetch_only(normal)
++
++
++def test_prefetch_load_metadata_keeps_research_flag():
++    job = TransferJob(
++        req_id="prefetch-1",
++        transfer_spec=(SimpleNamespace(), SimpleNamespace()),
++        slackkv_prefetch_only=True,
++    )
++    assert job.slackkv_prefetch_only is True
++
++
++def test_transfer_observation_aggregates_without_changing_completion_counts():
++    first = OffloadingWorkerMetadata()
++    second = OffloadingWorkerMetadata()
++    first.mark_completed(4, 0.005, 100)
++    second.mark_completed(4, 0.007, 120)
++    merged = first.aggregate(second)
++    assert merged.completed_jobs == {4: 2}
++    assert merged.slackkv_completed_job_stats == {4: (0.007, 220)}
++
++
++def test_no_forward_branch_returns_connector_only_output():
++    @contextmanager
++    def connector_output(*args, **kwargs):
++        yield KVConnectorOutput()
++
++    scheduler_output = SimpleNamespace(
++        kv_connector_metadata=SimpleNamespace(load_jobs={})
++    )
++    with (
++        patch.object(
++            KVConnectorModelRunnerMixin,
++            "_get_kv_connector_output",
++            side_effect=connector_output,
++        ) as mocked,
++        patch(
++            "vllm.v1.worker.kv_connector_model_runner_mixin.set_forward_context",
++            return_value=nullcontext(),
++        ),
++    ):
++        result = KVConnectorModelRunnerMixin.kv_connector_no_forward(
++            scheduler_output, SimpleNamespace()
++        )
++    mocked.assert_called_once()
++    assert result.sampled_token_ids == []
+diff --git a/vllm/entrypoints/serve/dev/slackkv_prefetch/__init__.py b/vllm/entrypoints/serve/dev/slackkv_prefetch/__init__.py
+new file mode 100644
+index 0000000..dd391df
+--- /dev/null
++++ b/vllm/entrypoints/serve/dev/slackkv_prefetch/__init__.py
+@@ -0,0 +1 @@
++# Research-only SlackKV native prefetch endpoint.
+diff --git a/vllm/entrypoints/serve/dev/slackkv_prefetch/api_router.py b/vllm/entrypoints/serve/dev/slackkv_prefetch/api_router.py
+new file mode 100644
+index 0000000..fcb8ca7
+--- /dev/null
++++ b/vllm/entrypoints/serve/dev/slackkv_prefetch/api_router.py
+@@ -0,0 +1,59 @@
++# SPDX-License-Identifier: Apache-2.0
++# Research-only SlackKV native prefetch endpoint.
++
++import time
++import uuid
++
++from fastapi import APIRouter, FastAPI, Request
++from pydantic import BaseModel, Field
++
++from vllm.engine.protocol import EngineClient
++from vllm.sampling_params import SamplingParams
++
++router = APIRouter()
++
++
++class SlackKVPrefetchRequest(BaseModel):
++    prompt_token_ids: list[int] = Field(min_length=1)
++
++
++@router.post("/slackkv/prefetch")
++async def slackkv_prefetch(
++    request: SlackKVPrefetchRequest, raw_request: Request
++) -> dict[str, object]:
++    engine: EngineClient = raw_request.app.state.engine_client
++    request_id = f"slackkv-prefetch-{uuid.uuid4().hex}"
++    params = SamplingParams(
++        temperature=0.0,
++        max_tokens=1,
++        extra_args={
++            "kv_transfer_params": {
++                "slackkv_prefetch_only": True,
++                "max_offload_tokens": 0,
++            }
++        },
++    )
++    started = time.perf_counter()
++    final_output = None
++    async for output in engine.generate(
++        {"prompt_token_ids": request.prompt_token_ids}, params, request_id
++    ):
++        final_output = output
++    elapsed_ms = (time.perf_counter() - started) * 1000.0
++    if final_output is None:
++        raise RuntimeError("SlackKV prefetch finished without structured output")
++    metadata = (final_output.kv_transfer_params or {}).get(
++        "slackkv_prefetch", {}
++    )
++    if metadata.get("status") != "ok":
++        raise RuntimeError(f"SlackKV prefetch failed: {metadata!r}")
++    return {
++        **metadata,
++        "elapsed_ms": elapsed_ms,
++        "generated_tokens": 0,
++        "model_forward_count": 0,
++    }
++
++
++def attach_router(app: FastAPI):
++    app.include_router(router)

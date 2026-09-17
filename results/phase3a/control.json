@@ -1,0 +1,29 @@
+{
+  "A": {
+    "first_token_id": 1084,
+    "ttft_ms": 93.14048802480102
+  },
+  "B": {
+    "first_token_id": 1084,
+    "ttft_ms": 32.582478830590844
+  },
+  "C": {
+    "first_token_id": 1084,
+    "ttft_ms": 31.797904055565596
+  },
+  "D": {
+    "first_token_id": 1084,
+    "ttft_ms": 29.399912105873227
+  },
+  "E": {
+    "first_token_id": 1084,
+    "ttft_ms": 30.306555097922683
+  },
+  "F": {
+    "first_token_id": 1084,
+    "ttft_ms": 30.868381028994918
+  },
+  "aggregate_local_hit_tokens": 24576.0,
+  "aggregate_external_hit_tokens": 0.0,
+  "ordinary_completion_validation": "PASS"
+}

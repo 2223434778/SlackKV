@@ -41,3 +41,9 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 
 - **Decision:** Phase 1B-Fix showed that QueueJIT scheduling alone provides limited benefit because many real pauses are shorter than their KV migration cost. Phase 1C therefore evaluates transfer-normalized selective admission before promotion scheduling.
 - **Mapping:** 56 KiB/token with a 131,072-token cap is primary; 128 KiB/token is only a stress sensitivity on the same retained events.
+
+## 2026-09-17 — Phase 3A reuses vLLM connector lifecycle for native promotion
+
+- **Decision:** The research-only native promotion path enters through a local `slackkv_prefetch_only` request, then reuses vLLM's normal prefix identity, GPU block allocation, OffloadingConnector load metadata, asynchronous worker transfer, completion bookkeeping, and prefix-cache transition. It does not introduce an independent CUDA copy engine.
+- **Reason:** Reusing the pinned runtime's existing connector lifecycle preserves block ownership and cache invariants while allowing `kv_connector_no_forward` to prove that the special request schedules no transformer work and produces no token.
+- **Consequence:** The Phase 3A patch remains isolated and reviewable, normal inference behavior is unchanged, and subsequent runtime work can evaluate a genuine promotion-only mechanism. The endpoint is explicitly experimental rather than a production API.

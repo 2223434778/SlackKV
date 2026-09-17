@@ -1,0 +1,36 @@
+{
+  "phase": "3A",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "gpu_kv_bytes": 1073741824,
+  "cpu_offload_bytes": 2147483648,
+  "prefix_tokens": 4096,
+  "kv_mib_per_session": 112,
+  "deadlines_ms": {
+    "A": 300.0,
+    "B": 320.0,
+    "C": 340.0,
+    "D": 650.0,
+    "E": 900.0,
+    "F": 1300.0
+  },
+  "policies": [
+    "OnDemand",
+    "ASAP-Native",
+    "NaiveJIT-Native",
+    "QueueJIT-Native"
+  ],
+  "repetitions": [
+    0,
+    1,
+    2
+  ],
+  "p_native_ms": 14,
+  "p_native_rule": "ceil(max(three warm native-prefetch endpoint E2E times))",
+  "pressure_prompt_tokens": [
+    9500,
+    9500,
+    9500,
+    9500
+  ],
+  "native_endpoint": "/slackkv/prefetch"
+}
