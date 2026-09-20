@@ -1,0 +1,23 @@
+{
+  "offload_bytes": 117440512.0,
+  "A_first_e2e_ms": 193.815658101812,
+  "external_tokens_loaded": 4096,
+  "transfer_bytes": 117440512,
+  "native_prefetch_e2e_ms": 13.479876099154353,
+  "native_prefetch_client_e2e_ms": 19.57275695167482,
+  "cpu_to_gpu_transfer_ms": 5.393439769744873,
+  "model_forward_count": 0,
+  "generated_token_count": 0,
+  "connector_only_step_count": 7,
+  "connector_only_wall_ms": 9.623969905078411,
+  "mixed_prefetch_model_step_count": 0,
+  "normal_requests_delayed": 0,
+  "post_prefetch_local_hit_tokens": 4096.0,
+  "post_prefetch_external_hit_tokens": 0.0,
+  "resume_ttft_ms": 87.34921715222299,
+  "first_token_id": 1084,
+  "control_token_id": 1084,
+  "token_correctness": "PASS",
+  "max_offload_tokens_zero_validation": "PASS",
+  "native_sanity_validation": "PASS"
+}
