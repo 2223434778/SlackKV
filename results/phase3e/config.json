@@ -1,0 +1,63 @@
+{
+  "phase": "3E",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "gpu_kv_bytes": 1073741824,
+  "cpu_offload_bytes": 2147483648,
+  "prefix_tokens": 4096,
+  "kv_mib_per_session": 112,
+  "deadlines_ms": {
+    "A": 300.0,
+    "B": 320.0,
+    "C": 340.0,
+    "D": 650.0,
+    "E": 900.0,
+    "F": 1300.0
+  },
+  "policies": [
+    "OnDemand",
+    "ResumeAware-QueueJIT-Safe30",
+    "Gated-ResumeAware-QueueJIT-Safe30"
+  ],
+  "repetitions": [
+    0,
+    1,
+    2
+  ],
+  "p_safe_ms": 30,
+  "p_safe_rule": "fixed 30 ms; no recalibration",
+  "resume_guard_ms": 110.0,
+  "resume_spacing_ms": 40.0,
+  "planned_resume_ms": {
+    "A": 300.0,
+    "B": 340.0,
+    "C": 380.0,
+    "D": 650.0,
+    "E": 900.0,
+    "F": 1300.0
+  },
+  "blackouts_ms": [
+    [
+      300.0,
+      450.0
+    ],
+    [
+      650.0,
+      760.0
+    ],
+    [
+      900.0,
+      1010.0
+    ],
+    [
+      1300.0,
+      1410.0
+    ]
+  ],
+  "pressure_prompt_tokens": [
+    9500,
+    9500,
+    9500,
+    9500
+  ],
+  "native_endpoint": "/slackkv/prefetch"
+}
