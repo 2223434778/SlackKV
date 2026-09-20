@@ -1,0 +1,24 @@
+{
+  "phase": "3F-Fix",
+  "base_commit": "bc29bf1167f4d6e5b52474a3a60c7bb11b14073b",
+  "vllm_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "policies": [
+    "OnDemand-Trace",
+    "ResumeAware-Trace",
+    "InEngineFirstTokenGate-ResumeAware"
+  ],
+  "deadlines_ms": {
+    "A": 300.0,
+    "B": 320.0,
+    "C": 340.0,
+    "D": 650.0,
+    "E": 900.0,
+    "F": 1300.0
+  },
+  "p_safe_ms": 30.0,
+  "resume_guard_ms": 110.0,
+  "max_tokens": 1,
+  "client_event_gate": false,
+  "scheduler_gate": "in-engine FIFO/deadline order",
+  "trace_events": ["RESUME_ARRIVED", "WAITING_FOR_REMOTE_KVS", "REMOTE_KV_READY", "GATE_BLOCKED", "RESUME_ADMITTED", "FIRST_MODEL_SCHEDULED", "FIRST_TOKEN", "REQUEST_FINISHED"]
+}

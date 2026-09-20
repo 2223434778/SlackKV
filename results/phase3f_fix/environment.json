@@ -1,0 +1,10 @@
+{
+  "slackkv_base_commit": "bc29bf1167f4d6e5b52474a3a60c7bb11b14073b",
+  "vllm_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "installation_method": "reused Phase 3B connector-first runtime",
+  "cuda": "12.6",
+  "pytorch": "2.11.0+cu126",
+  "gpu": "NVIDIA RTX A6000 GPU0",
+  "client_event_gate_removed": true,
+  "scheduler_patch": "vllm_phase3f_fix.patch"
+}
