@@ -1,0 +1,1 @@
+Phase 3G-Full reuses the existing native prefetch and in-engine FirstTokenGate. The SlackKV runner persists actual endpoint response fields for every promotion, aligns raw server `time.monotonic()` trace records to the client workload t0, and postprocesses scheduler-derived admission/first-token/finish intervals.

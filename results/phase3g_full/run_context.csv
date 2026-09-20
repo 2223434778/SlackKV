@@ -1,0 +1,10 @@
+policy,repetition,t0_monotonic_s
+OnDemand-Trace,0,1601170.08150389
+OnDemand-Trace,1,1601200.957983399
+OnDemand-Trace,2,1601231.832776695
+ResumeAware-Trace,0,1601262.724460302
+ResumeAware-Trace,1,1601293.599320985
+ResumeAware-Trace,2,1601324.475939155
+InEngineFirstTokenGate-ResumeAware,0,1601355.349824958
+InEngineFirstTokenGate-ResumeAware,1,1601386.241482781
+InEngineFirstTokenGate-ResumeAware,2,1601417.163074128

@@ -1,0 +1,2 @@
+No new vLLM algorithm changes for Phase 3G-Full.
+Phase 3F-Fix in-engine FirstTokenGate and Phase 3B connector-first native promotion were reused unchanged.
