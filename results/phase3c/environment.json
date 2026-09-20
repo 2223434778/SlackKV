@@ -1,0 +1,15 @@
+{
+  "slackkv_base_commit": "07d9f97b49857054fc1b595ccedf6011b0009373",
+  "vllm_version": "0.23.0",
+  "vllm_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "vllm_source": "/media/a6000/D/ZhaoBinHe/slackkv-phase2c-fix-sourceprobe",
+  "python_version": "3.11.16",
+  "torch_version": "2.11.0+cu126",
+  "torch_cuda_version": "12.6",
+  "cuda_available": true,
+  "gpu0": "NVIDIA RTX A6000",
+  "gpu0_total_memory_bytes": 51033931776,
+  "driver_version": "550.54.14",
+  "transformers_version": "5.17.0",
+  "installation_method": "reused isolated Phase 2C-Fix CUDA 12.6 vLLM source build"
+}
