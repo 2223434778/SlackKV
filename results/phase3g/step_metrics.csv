@@ -1,0 +1,11 @@
+policy,repetition,step_id,step_timestamp_ms,num_running,num_waiting,num_slackkv_pre_first_token,new_slackkv_resumes_admitted,num_scheduled_requests,total_num_scheduled_tokens,sessions_admitted,sessions_gate_blocked,sessions_first_token
+InEngineFirstTokenGate-ResumeAware,0,70,307.26465000770986,0,1,0,0,NA,NA,,,
+InEngineFirstTokenGate-ResumeAware,0,71,307.91031918488443,1,2,1,1,NA,NA,A,,
+InEngineFirstTokenGate-ResumeAware,0,72,383.40271706692874,1,2,1,0,NA,NA,,B;C,A
+InEngineFirstTokenGate-ResumeAware,0,73,436.24334316700697,2,1,1,1,NA,NA,B,C,
+InEngineFirstTokenGate-ResumeAware,0,74,451.700400095433,2,1,1,0,NA,NA,,C,B
+InEngineFirstTokenGate-ResumeAware,0,75,467.59117813780904,3,0,1,1,NA,NA,C,,
+InEngineFirstTokenGate-ResumeAware,0,76,497.3053061403334,3,0,1,0,NA,NA,,,C
+InEngineFirstTokenGate-ResumeAware,0,103,904.2026600800455,3,0,0,0,NA,NA,,,
+InEngineFirstTokenGate-ResumeAware,0,105,934.0110311750323,2,0,0,0,NA,NA,,,
+InEngineFirstTokenGate-ResumeAware,0,107,948.9565431140363,1,0,0,0,NA,NA,,,

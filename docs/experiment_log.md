@@ -239,3 +239,11 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - Results (medians): OnDemand overall P95 104.63 ms, ABC pairwise overlap 0 ms, memory-time 0. ResumeAware overall P95 124.34 ms, ABC overlap 94.14 ms, max pre-first-token concurrency 3, corrected memory-time 24.85 MiB·s. In-engine gate overall P95 88.10 ms, ABC overlap 0 ms, max concurrency 1, gate wait 48.87 ms, corrected memory-time 24.73 MiB·s. Promotion misses/conflicts/long prefetches were zero; native prefetch forwards/generated tokens and mixed steps were zero.
 - Criterion/result: gate invariant PASS, A→B→C admission order in all repetitions, ABC P95 improved 30.1% versus ResumeAware, memory-time was 6.4% of historical ASAP (383.61 MiB·s). OnDemand implicit backpressure is SUPPORTED by real WAITING_FOR_REMOTE_KVS → REMOTE_KV_READY traces and staggered admissions. Result A.
 - Historical correction: the previous Phase 3F Event-based client gate is exploratory only and is not an algorithm baseline because Event.set() could wake multiple waiters. Phase 3F-Fix results are in `results/phase3f_fix/`; exact vLLM patch is `results/phase3f_fix/vllm_phase3f_fix.patch`.
+
+## 2026-09-20 — Phase 3G: multi-token decode overlap (stopped at integration gate)
+
+- Objective/base: test whether the Phase 3F-Fix in-engine FirstTokenGate releases after the first token while later decode overlaps. Base `c6ffb80b90b8d363dfa62f15dcbc5a1b145d9de5`; vLLM `0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665`.
+- Frozen setup: A/B/C integration gate first; six 32-token controls and `max_tokens=32`, `ignore_eos=true`; no client-side gate or new vLLM source changes.
+- Integration: real scheduler trace showed gate correctness and post-first overlap: A/B/C admitted in order, B before A finish, C before B finish, and max pre-first ownership 1. Every continuation generated exactly 32 tokens.
+- Blocking anomaly: C's measured 32-token sequence diverged from its deterministic control sequence after token 24; A and B matched. Per the protocol the full matrix was not run and the result is Result D, not a performance claim.
+- Validation: `tests/test_phase3g.py` 7 passed; raw monotonic timestamps are aligned to saved client `t0_monotonic_s` without first-event rebasing. Results: `results/phase3g/`.

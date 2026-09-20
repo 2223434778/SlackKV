@@ -1,0 +1,14 @@
+{
+  "phase": "3G",
+  "base_commit": "c6ffb80b90b8d363dfa62f15dcbc5a1b145d9de5",
+  "vllm_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "policies": ["OnDemand-Trace", "ResumeAware-Trace", "InEngineFirstTokenGate-ResumeAware"],
+  "sessions": ["A", "B", "C", "D", "E", "F"],
+  "deadlines_ms": {"A": 300, "B": 320, "C": 340, "D": 650, "E": 900, "F": 1300},
+  "p_safe_ms": 30,
+  "resume_guard_ms": 110,
+  "max_tokens": 32,
+  "ignore_eos": true,
+  "client_gate": false,
+  "status": "STOPPED_AT_INTEGRATION_GATE"
+}
