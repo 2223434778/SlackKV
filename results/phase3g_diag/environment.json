@@ -1,0 +1,10 @@
+{
+  "python": "3.11.16",
+  "host": "a6000",
+  "gpu": "NVIDIA RTX A6000",
+  "cuda": "12.6",
+  "pytorch": "2.11.0+cu126",
+  "vllm": "0.23.0",
+  "vllm_source_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "source": "local vLLM source + Phase3B/3F-Fix patches"
+}

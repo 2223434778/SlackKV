@@ -1,0 +1,4 @@
+{
+  "supported": false,
+  "reason": "optional logprob diagnostic not available in this pinned endpoint"
+}

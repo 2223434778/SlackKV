@@ -1,0 +1,13 @@
+case,repetition,session,client_e2e_ms,server_e2e_ms,cpu_to_gpu_ms,external_tokens_loaded,model_forward_count,generated_token_count,mixed_prefetch_model_step_count,target_ms,actual_ms,completion_ms,status
+S2,0,C,18.87526991777122,13.491933001205325,5.333888053894043,4096,0,0,0,,,,
+S2,1,C,20.24899097159505,14.817404095083475,6.991551876068115,4096,0,0,0,,,,
+S2,2,C,19.314547069370747,14.057005988433957,5.32700777053833,4096,0,0,0,,,,
+S4,0,A,,,,4096,0,0,0,,,,PASS
+S4,0,B,,,,4096,0,0,0,,,,PASS
+S4,0,C,,,,4096,0,0,0,,,,PASS
+S4,1,A,,,,4096,0,0,0,,,,PASS
+S4,1,B,,,,4096,0,0,0,,,,PASS
+S4,1,C,,,,4096,0,0,0,,,,PASS
+S4,2,A,,,,4096,0,0,0,,,,PASS
+S4,2,B,,,,4096,0,0,0,,,,PASS
+S4,2,C,,,,4096,0,0,0,,,,PASS

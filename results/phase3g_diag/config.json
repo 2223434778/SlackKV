@@ -1,0 +1,21 @@
+{
+  "phase": "3G-CorrectnessDiag",
+  "cases": [
+    "S1 LocalKeep-Solo-C",
+    "S2 Prefetch-Solo-C",
+    "S3 LocalKeep-Gated-ABC",
+    "S4 Prefetch-Gated-ABC"
+  ],
+  "repetitions": 3,
+  "max_tokens": 32,
+  "temperature": 0,
+  "ignore_eos": true,
+  "context_tokens": 4096,
+  "deadlines_ms": {
+    "A": 300,
+    "B": 320,
+    "C": 340
+  },
+  "vllm_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct"
+}

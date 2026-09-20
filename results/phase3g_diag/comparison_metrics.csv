@@ -1,0 +1,6 @@
+comparison,session,left_case,right_case,left_unique_sequences,right_unique_sequences,exact_match,matching_prefix_length,first_divergence_position,schedule_structure_matched,interpretation
+S1-vs-S2,C,S1,S2,1,1,True,32,,True,same stable branch
+S1-vs-S3,C,S1,S3,1,1,False,25,26,True,batch/scheduler-sensitive branch
+S3-vs-S4,A,S3,S4,1,1,True,32,,True,same stable branch
+S3-vs-S4,B,S3,S4,1,1,True,32,,True,same stable branch
+S3-vs-S4,C,S3,S4,1,1,True,32,,True,same stable branch

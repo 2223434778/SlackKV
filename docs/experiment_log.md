@@ -247,3 +247,10 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - Integration: real scheduler trace showed gate correctness and post-first overlap: A/B/C admitted in order, B before A finish, C before B finish, and max pre-first ownership 1. Every continuation generated exactly 32 tokens.
 - Blocking anomaly: C's measured 32-token sequence diverged from its deterministic control sequence after token 24; A and B matched. Per the protocol the full matrix was not run and the result is Result D, not a performance claim.
 - Validation: `tests/test_phase3g.py` 7 passed; raw monotonic timestamps are aligned to saved client `t0_monotonic_s` without first-event rebasing. Results: `results/phase3g/`.
+## 2026-09-20 — Phase 3G-CorrectnessDiag
+
+- Objective: diagnose the Phase 3G C continuation mismatch without rerunning the full policy matrix.
+- Cases: S1 LocalKeep-Solo-C, S2 Prefetch-Solo-C, S3 LocalKeep-Gated-ABC, S4 Prefetch-Gated-ABC; three fresh server restarts per case; max_tokens=32, temperature=0, ignore_eos=true.
+- Result: S1 and S2 were deterministic and exactly matched. S3 C was deterministic but diverged from solo C at one-based token 26. S4 matched S3 exactly for A, B, and C. Native transport invariants passed independently (4096 external tokens, zero native model forwards/generated tokens).
+- Interpretation: BATCH_SENSITIVITY; the prior mismatch is not reproduced as an isolated KV-prefetch corruption under the matched gated schedule.
+- Result path: results/phase3g_diag/
