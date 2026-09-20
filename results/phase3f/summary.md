@@ -1,6 +1,6 @@
 # Phase 3F
 
-Phase 3B connector-first implementation reused unchanged. FirstTokenGate is a research admission gate: at most one marked resumed request waits for its first token; with max_tokens=1 this approximately serializes measured completions.
+Phase 3B connector-first implementation reused unchanged. The measured FirstTokenGate is a client-side research admission gate: at most one resumed request waits for its first token; with max_tokens=1 this approximately serializes measured completions. A vLLM-internal scheduler patch and internal scheduler-state trace were not implemented in this run, so this artifact is not a complete in-engine Phase 3F validation.
 
 | Policy | promotion misses | ABC overlap ms | ABC P95 ms | overall P95 ms | corrected memory-time MiB·s |
 |---|---:|---:|---:|---:|---:|
@@ -12,4 +12,4 @@ Gate changed ABC pairwise overlap 290.77 -> 52.79 ms, max pre-first-token concur
 
 OnDemand scheduler-internal WAITING_FOR_REMOTE_KVS transitions are not exposed by this runtime; scheduler_trace.csv records client-visible arrival/admission/first-token transitions without fabricating internal states.
 
-**Result B.** Phase 3F execution status: COMPLETE
+**Result D.** Phase 3F execution status: INCOMPLETE (client-side gate data only; vLLM scheduler patch required).

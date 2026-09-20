@@ -228,3 +228,4 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - Tests: `python -m pytest -q tests/test_phase3f.py` (3 passed).
 - Result: FirstTokenGate reduced median ABC pairwise overlap from 290.77 ms to 52.79 ms and max pre-first-token concurrency from 3 to 2, but ABC P95 improved only from 129.71 ms to 122.75 ms (<10%); classified Result B.
 - Output: `results/phase3f/`.
+- Implementation caveat: the recorded gate was applied at the client admission boundary; no vLLM-internal scheduler patch or internal WAITING_FOR_REMOTE_KVS/first-token hook was added, so the artifact is a partial runtime measurement rather than a complete in-engine Phase 3F validation.
