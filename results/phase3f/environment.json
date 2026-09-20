@@ -1,0 +1,10 @@
+{
+  "slackkv_base_commit": "c78b42433efc3dec36645523c12d7e7707c860c7",
+  "vllm_version": "0.23.0",
+  "vllm_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "torch_version": "2.11.0+cu126",
+  "cuda_version": "12.6",
+  "gpu": "NVIDIA RTX A6000",
+  "installation_method": "reused isolated Phase 3B CUDA 12.6 source build",
+  "vllm_source_modified": false
+}
