@@ -1,0 +1,4 @@
+calibration_index,session,native_prefetch_e2e_ms,native_prefetch_client_e2e_ms,cpu_to_gpu_transfer_ms,transfer_bytes,external_tokens_loaded,model_forward_count,generated_token_count,connector_only_step_count,connector_only_wall_ms,mixed_prefetch_model_step_count,status
+1,C1,13.291464187204838,17.095264978706837,4.903552055358887,117440512,4096,0,0,7,9.850447066128254,0,ok
+2,C2,13.233762001618743,17.222688999027014,4.902656078338623,117440512,4096,0,0,7,9.837826015427709,0,ok
+3,C3,13.29948497004807,17.257779836654663,4.898111820220948,117440512,4096,0,0,7,9.8368760664016,0,ok
