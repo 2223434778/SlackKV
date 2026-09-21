@@ -1,0 +1,12 @@
+{
+  "phase": "3J",
+  "base_commit": "93be69c7f66ba0f5efb0535d9e51e5f58db0938f",
+  "load_states": ["L0", "L1"],
+  "validation_policy": "FirstTokenGate-K2",
+  "validation_repetitions": 5,
+  "p_idle_ms": 30,
+  "resume_guard_ms": 110,
+  "sessions": ["A", "B", "C"],
+  "background_session": "X",
+  "background_tokens": 128
+}

@@ -279,3 +279,10 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - All X requests generated 128 tokens. Native prefetch endpoint responses reported 4096 external tokens, zero model forwards, zero generated tokens, and zero mixed steps.
 - Under the frozen busy-load setup, A/B/C promotions had deadline misses, blackout conflicts, and >50 ms promotions. Therefore the required clean-promotion precondition did not hold and the phase is classified Result D; K1/K2 performance numbers are diagnostic only.
 - No vLLM scheduler algorithm was changed; the Phase 3H generalized K-capacity gate was reused unchanged. No Phase 3J/dynamic-K work was started.
+## Phase 3J - load-aware promotion calibration
+
+- Stage A used five idle L0 promotions and five one-active-decode L1 promotions. L0 client E2E P50/P95/max was 20.57/20.91/21.84 ms; L1 was 53.88/56.58/57.10 ms.
+- The frozen rule produced p_busy_ms=70 ms from max(L1)+10 ms rounded upward to 5 ms. No service-budget sweep was added.
+- Stage B ran five FirstTokenGate K=2 A/B/C+X validations. All promotion deadline misses, blackout conflicts, and budget overruns were zero; native endpoint invariants and cache/token checks passed.
+- K2 reached pre-first concurrency two in all runs, but C was gate-blocked in only one repetition because server intake admitted C after an earlier owner had already produced its first token. The required K2 exercise condition therefore failed and the phase is classified Result D; no K comparison or dynamic-K conclusion is claimed.
+- No vLLM scheduler algorithm changes were made and Phase 3K was not started.
