@@ -1,0 +1,1 @@
+{"phase":"3L","base_commit":"35504db723b6928548c734c7806480cff723621f","states":["L0","L1","L2","L3"],"repetitions_per_state":5,"prefix_tokens":4096,"kv_bytes":117440512,"background_max_tokens":128,"promotion_budget_rule":"raw=max(client_e2e)+10ms; recommended=ceil(raw/5ms)*5ms","no_vllm_source_changes":true}

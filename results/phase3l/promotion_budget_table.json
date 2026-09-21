@@ -1,0 +1,72 @@
+{
+  "valid_runs": 20,
+  "total_runs": 20,
+  "budgets": {
+    "0": {
+      "load_state": "L0",
+      "active_decode_count": 0,
+      "raw_budget_ms": 31.59510087221861,
+      "recommended_budget_ms": 35,
+      "client_p50_ms": 20.92260285280645,
+      "client_p95_ms": 21.466903714463115,
+      "client_max_ms": 21.59510087221861,
+      "server_p50_ms": 14.623871073126793,
+      "server_p95_ms": 16.072918800637126,
+      "server_max_ms": 16.12459495663643,
+      "cpu_to_gpu_p50_ms": 5.506976127624512,
+      "background_slowdown_p50": null
+    },
+    "1": {
+      "load_state": "L1",
+      "active_decode_count": 1,
+      "raw_budget_ms": 68.99665807373822,
+      "recommended_budget_ms": 70,
+      "client_p50_ms": 57.08738905377686,
+      "client_p95_ms": 58.90900483354926,
+      "client_max_ms": 58.99665807373822,
+      "server_p50_ms": 50.453032832592726,
+      "server_p95_ms": 51.85134834609926,
+      "server_max_ms": 52.11432394571602,
+      "cpu_to_gpu_p50_ms": 5.359744071960449,
+      "background_slowdown_p50": 1.003183058225225
+    },
+    "2": {
+      "load_state": "L2",
+      "active_decode_count": 2,
+      "raw_budget_ms": 62.437253994867206,
+      "recommended_budget_ms": 65,
+      "client_p50_ms": 51.39059689827263,
+      "client_p95_ms": 52.388590574264526,
+      "client_max_ms": 52.437253994867206,
+      "server_p50_ms": 44.91420183330774,
+      "server_p95_ms": 45.78069704584777,
+      "server_max_ms": 45.90281308628619,
+      "cpu_to_gpu_p50_ms": 5.407264232635498,
+      "background_slowdown_p50": 1.0488780468140766
+    },
+    "3": {
+      "load_state": "L3",
+      "active_decode_count": 3,
+      "raw_budget_ms": 70.93425489962101,
+      "recommended_budget_ms": 75,
+      "client_p50_ms": 53.53345791809261,
+      "client_p95_ms": 59.798101941123605,
+      "client_max_ms": 60.93425489962101,
+      "server_p50_ms": 46.07768193818629,
+      "server_p95_ms": 51.85724860057235,
+      "server_max_ms": 53.01153101027012,
+      "cpu_to_gpu_p50_ms": 5.58572816848755,
+      "background_slowdown_p50": 1.0710024390303712
+    }
+  },
+  "deltas": {
+    "delta_01_p50_ms": 36.16478620097041,
+    "delta_12_p50_ms": -5.696792155504227,
+    "delta_23_p50_ms": 2.142861019819975
+  },
+  "service_curve_monotonic": "NON_MONOTONIC",
+  "decode_count_useful_predictor": "NO",
+  "recommended_model": "RICHER_RUNTIME_SIGNAL",
+  "next_direction": "STEP_TIME_AWARE_MODEL",
+  "result": "C"
+}

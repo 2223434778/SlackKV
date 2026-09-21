@@ -286,6 +286,15 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - Stage B ran five FirstTokenGate K=2 A/B/C+X validations. All promotion deadline misses, blackout conflicts, and budget overruns were zero; native endpoint invariants and cache/token checks passed.
 - K2 reached pre-first concurrency two in all runs, but C was gate-blocked in only one repetition because server intake admitted C after an earlier owner had already produced its first token. The required K2 exercise condition therefore failed and the phase is classified Result D; no K comparison or dynamic-K conclusion is claimed.
 - No vLLM scheduler algorithm changes were made and Phase 3K was not started.
+## Phase 3L - promotion service curve under decode load
+
+- Objective/base: measure the existing native promotion endpoint under L0/L1/L2/L3 with 0/1/2/3 ordinary 128-token background decodes. Base `35504db723b6928548c734c7806480cff723621f`; pinned vLLM source `0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665`.
+- Frozen matrix: four load states, five fresh-server repetitions per state (20 promotions total), one fixed 4096-token target prefix, no FirstTokenGate and no vLLM source changes.
+- Validation: 20/20 promotions passed active-decode, 128-token background, cache transport, zero-forward, zero-generated-token, and zero-mixed-step checks. Endpoint fields were persisted from actual runtime responses.
+- Service curve: client E2E P50 was 20.92/57.09/51.39/53.53 ms for L0/L1/L2/L3; CPU→GPU P50 was 5.51/5.36/5.41/5.59 ms. Non-copy overhead is load-dependent, while copy time is effectively flat. P50 deltas were Δ01=36.16 ms, Δ12=-5.70 ms, Δ23=2.14 ms; the curve is therefore non-monotonic after the first active decode, but has a clear idle-to-busy gap.
+- Budget table: raw max+10 ms budgets were 31.60/69.00/62.44/70.93 ms; rounded recommendations are 35/70/65/75 ms. Classification: Result C, because all 20 runs were valid but the n=1/2/3 medians are non-monotonic and the active-count budget spread is borderline rather than a stable decode-count curve; a richer runtime signal is required.
+- No Phase 3M work was started. Results: `results/phase3l/`.
+
 ## Phase 3K - calibrated busy-load admission comparison
 
 - Reused p_busy=70 ms and resume_guard=110 ms from Phase 3J. Ran ResumeAware-K3, FirstTokenGate-K1, and FirstTokenGate-K2 for five fresh restarts each with the same X background decode.

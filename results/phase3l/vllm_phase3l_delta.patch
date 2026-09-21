@@ -1,0 +1,2 @@
+No new vLLM source changes for Phase 3L.
+Phase 3B connector-first and Phase 3H gate-capacity code were reused unchanged; no FirstTokenGate was enabled in measured runs.

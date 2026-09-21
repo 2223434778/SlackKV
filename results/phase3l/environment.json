@@ -1,0 +1,9 @@
+{
+  "hostname": "a6000-Super-Server",
+  "python": "3.11.16",
+  "gpu": "NVIDIA RTX A6000, 49140 MiB, 550.54.14\nNVIDIA RTX A6000, 49140 MiB, 550.54.14",
+  "vllm": "0.23.0",
+  "torch": "2.11.0+cu126",
+  "cuda": "12.6",
+  "vllm_source_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665"
+}
