@@ -1,0 +1,6 @@
+policy,repetition,t0_monotonic_s,p_busy_ms
+FirstTokenGate-K2,0,1657647.200373312,70.0
+FirstTokenGate-K2,1,1657677.92714159,70.0
+FirstTokenGate-K2,2,1657708.619328794,70.0
+FirstTokenGate-K2,3,1657739.296732718,70.0
+FirstTokenGate-K2,4,1657769.956024719,70.0

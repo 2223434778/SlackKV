@@ -286,3 +286,9 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - Stage B ran five FirstTokenGate K=2 A/B/C+X validations. All promotion deadline misses, blackout conflicts, and budget overruns were zero; native endpoint invariants and cache/token checks passed.
 - K2 reached pre-first concurrency two in all runs, but C was gate-blocked in only one repetition because server intake admitted C after an earlier owner had already produced its first token. The required K2 exercise condition therefore failed and the phase is classified Result D; no K comparison or dynamic-K conclusion is claimed.
 - No vLLM scheduler algorithm changes were made and Phase 3K was not started.
+## Phase 3K - calibrated busy-load admission comparison
+
+- Reused p_busy=70 ms and resume_guard=110 ms from Phase 3J. Ran ResumeAware-K3, FirstTokenGate-K1, and FirstTokenGate-K2 for five fresh restarts each with the same X background decode.
+- All 15 runs were promotion-clean: zero deadline misses, blackout conflicts, and budget overruns; native endpoint invariants and cache/token checks passed.
+- Busy-load median ABC P95 TTFT was K3 59.53 ms, K2 59.91 ms, K1 80.76 ms. K1 remained exactly pre-first=1 and K2 exactly pre-first=2 in all runs.
+- The busy ranking numerically changed from light-load K2 < K3 < K1 to K3 < K2 < K1, but the K3/K2 gap was only 0.38 ms and K1 did not protect X or improve combined throughput. Dynamic K is not justified; report Result C and do not start Phase 3L.
