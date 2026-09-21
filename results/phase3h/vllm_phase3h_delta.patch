@@ -1,6 +1,76 @@
-Phase 3H delta relative to the Phase 3F-Fix patched vLLM tree:
+diff --git a/vllm/v1/core/sched/scheduler.py b/vllm/v1/core/sched/scheduler.py
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@
+ def _is_slackkv_first_token_gate(request: Request) -> bool:
+@@
+     )
 
-- Replace the single SlackKV first-token gate owner with a set of owners and a run-wide request-specified capacity.
-- Validate the limit on every marked request; mixed limits assert.
-- Block only when the owner-set size reaches capacity; FIRST_TOKEN and abort cleanup discard one owner.
-- Extend SLACKKV_RESUME_TRACE with gate_limit and gate_owner_request_ids.
+
++def _slackkv_first_token_gate_limit(request: Request) -> int:
++    params = request.kv_transfer_params or {}
++    limit = params.get("slackkv_first_token_gate_limit", 1)
++    if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
++        raise AssertionError("invalid SlackKV first-token gate limit")
++    return limit
++
++
++def _slackkv_first_token_gate_can_admit(
++    owners: set[str], configured_limit: int | None, request: Request,
++) -> tuple[bool, int]:
++    request_limit = _slackkv_first_token_gate_limit(request)
++    if configured_limit is not None and configured_limit != request_limit:
++        raise AssertionError("mixed SlackKV first-token gate limits")
++    return len(owners) < request_limit, request_limit
++
+@@
+-        self._slackkv_ft_gate_owner: str | None = None
++        self._slackkv_ft_gate_owners: set[str] = set()
++        self._slackkv_ft_gate_limit: int | None = None
+@@
+-                if _is_slackkv_first_token_gate(request) and self._slackkv_ft_gate_owner is not None:
++                if _is_slackkv_first_token_gate(request):
++                    has_capacity, gate_limit = _slackkv_first_token_gate_can_admit(
++                        self._slackkv_ft_gate_owners, self._slackkv_ft_gate_limit, request
++                    )
++                    if self._slackkv_ft_gate_limit is None:
++                        self._slackkv_ft_gate_limit = gate_limit
++                    if not has_capacity:
+                         request_queue.pop_request()
+                         step_skipped_waiting.prepend_request(request)
+                         self._slackkv_ft_blocked_steps[request.request_id] += 1
+                         self._slackkv_trace(request, "GATE_BLOCKED")
+                         continue
+@@
+                 if _is_slackkv_first_token_gate(request):
+-                    self._slackkv_ft_gate_owner = request.request_id
++                    has_capacity, gate_limit = _slackkv_first_token_gate_can_admit(
++                        self._slackkv_ft_gate_owners, self._slackkv_ft_gate_limit, request
++                    )
++                    if not has_capacity:
++                        raise AssertionError("SlackKV gate admitted without capacity")
++                    self._slackkv_ft_gate_owners.add(request.request_id)
++                    if len(self._slackkv_ft_gate_owners) > gate_limit:
++                        raise AssertionError("SlackKV first-token gate capacity exceeded")
+@@
+-                        if self._slackkv_ft_gate_owner != req_id:
++                        if req_id not in self._slackkv_ft_gate_owners:
+                             raise AssertionError("first token produced without gate ownership")
+-                        self._slackkv_ft_gate_owner = None
++                        self._slackkv_ft_gate_owners.remove(req_id)
+@@
+-                    "gate_owner_request_id": self._slackkv_ft_gate_owner,
+-                    "num_slackkv_pre_first_token": int(self._slackkv_ft_gate_owner is not None),
++                    "gate_limit": self._slackkv_ft_gate_limit,
++                    "gate_owner_request_id": (
++                        next(iter(self._slackkv_ft_gate_owners))
++                        if len(self._slackkv_ft_gate_owners) == 1 else None
++                    ),
++                    "gate_owner_request_ids": sorted(self._slackkv_ft_gate_owners),
++                    "num_slackkv_pre_first_token": len(self._slackkv_ft_gate_owners),
+@@
+-            if self._slackkv_ft_gate_owner == request.request_id:
++            if request.request_id in self._slackkv_ft_gate_owners:
+                 self._slackkv_trace(request, "GATE_OWNER_ABORTED")
+-                self._slackkv_ft_gate_owner = None
++                self._slackkv_ft_gate_owners.discard(request.request_id)
