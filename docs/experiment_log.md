@@ -265,3 +265,9 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Correctness interpretation:** Phase 3G-CorrectnessDiag had already shown LocalKeep-Solo == Prefetch-Solo and LocalKeep-Gated == Prefetch-Gated under matched concurrent execution. This phase stores sequence hashes as diagnostics only; cross-policy greedy sequences are not treated as a cache failure because batch composition changes.
 - **Time/source-counter note:** server trace timestamps retain raw `time.monotonic()` and align to saved workload t0. Positive server-intake delay can exceed 50 ms while an engine step is busy; only negative offsets would invalidate time alignment. Native prefetch source attribution uses actual endpoint responses because vLLM's official external source counter does not include prefetch-only endpoint loads.
 - **Results:** `results/phase3g_full/`.
+
+## 2026-09-21 - Phase 3H: two-slot first-token admission
+
+- Objective/base: K=2 pre-first admission against ResumeAware-K3 and K=1 on A/B/C only. Base eb5b3eb6e13e5f8a682d1ea941e53fd5032c7de1.
+- Results: K2 ABC P95 TTFT 115.23 ms, versus 131.69 ms ResumeAware-K3 and 159.98 ms K1. K2 decode throughput 182.99 tok/s, memory-time 37.22 MiB*s, and Result A.
+- Results: results/phase3h/.

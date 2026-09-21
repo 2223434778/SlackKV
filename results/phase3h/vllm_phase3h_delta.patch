@@ -1,0 +1,6 @@
+Phase 3H delta relative to the Phase 3F-Fix patched vLLM tree:
+
+- Replace the single SlackKV first-token gate owner with a set of owners and a run-wide request-specified capacity.
+- Validate the limit on every marked request; mixed limits assert.
+- Block only when the owner-set size reaches capacity; FIRST_TOKEN and abort cleanup discard one owner.
+- Extend SLACKKV_RESUME_TRACE with gate_limit and gate_owner_request_ids.

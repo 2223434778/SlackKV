@@ -1,0 +1,110 @@
+{
+  "ResumeAware-K3:0:A": {
+    "hash": "5a27756bf6733dfd8b3de0329a3130125ac44c8ac80352d999ccea874afea91a",
+    "token_count": 32
+  },
+  "ResumeAware-K3:0:B": {
+    "hash": "750dab75e299cf279e077bced647c336e3eae043c0b03788abef4577ef0bafd3",
+    "token_count": 32
+  },
+  "ResumeAware-K3:0:C": {
+    "hash": "cf435ed0b932bca3725234458655236af84c9f1d760badbb25b23df3b0db3a97",
+    "token_count": 32
+  },
+  "ResumeAware-K3:1:A": {
+    "hash": "5a27756bf6733dfd8b3de0329a3130125ac44c8ac80352d999ccea874afea91a",
+    "token_count": 32
+  },
+  "ResumeAware-K3:1:B": {
+    "hash": "750dab75e299cf279e077bced647c336e3eae043c0b03788abef4577ef0bafd3",
+    "token_count": 32
+  },
+  "ResumeAware-K3:1:C": {
+    "hash": "cf435ed0b932bca3725234458655236af84c9f1d760badbb25b23df3b0db3a97",
+    "token_count": 32
+  },
+  "ResumeAware-K3:2:A": {
+    "hash": "5a27756bf6733dfd8b3de0329a3130125ac44c8ac80352d999ccea874afea91a",
+    "token_count": 32
+  },
+  "ResumeAware-K3:2:B": {
+    "hash": "750dab75e299cf279e077bced647c336e3eae043c0b03788abef4577ef0bafd3",
+    "token_count": 32
+  },
+  "ResumeAware-K3:2:C": {
+    "hash": "cf435ed0b932bca3725234458655236af84c9f1d760badbb25b23df3b0db3a97",
+    "token_count": 32
+  },
+  "FirstTokenGate-K1:0:A": {
+    "hash": "5a27756bf6733dfd8b3de0329a3130125ac44c8ac80352d999ccea874afea91a",
+    "token_count": 32
+  },
+  "FirstTokenGate-K1:0:B": {
+    "hash": "750dab75e299cf279e077bced647c336e3eae043c0b03788abef4577ef0bafd3",
+    "token_count": 32
+  },
+  "FirstTokenGate-K1:0:C": {
+    "hash": "16e8765313daf52d920de250fecf810c5c7e827895ad9aeb7cea35aacce08b6e",
+    "token_count": 32
+  },
+  "FirstTokenGate-K1:1:A": {
+    "hash": "5a27756bf6733dfd8b3de0329a3130125ac44c8ac80352d999ccea874afea91a",
+    "token_count": 32
+  },
+  "FirstTokenGate-K1:1:B": {
+    "hash": "750dab75e299cf279e077bced647c336e3eae043c0b03788abef4577ef0bafd3",
+    "token_count": 32
+  },
+  "FirstTokenGate-K1:1:C": {
+    "hash": "16e8765313daf52d920de250fecf810c5c7e827895ad9aeb7cea35aacce08b6e",
+    "token_count": 32
+  },
+  "FirstTokenGate-K1:2:A": {
+    "hash": "5a27756bf6733dfd8b3de0329a3130125ac44c8ac80352d999ccea874afea91a",
+    "token_count": 32
+  },
+  "FirstTokenGate-K1:2:B": {
+    "hash": "750dab75e299cf279e077bced647c336e3eae043c0b03788abef4577ef0bafd3",
+    "token_count": 32
+  },
+  "FirstTokenGate-K1:2:C": {
+    "hash": "16e8765313daf52d920de250fecf810c5c7e827895ad9aeb7cea35aacce08b6e",
+    "token_count": 32
+  },
+  "FirstTokenGate-K2:0:A": {
+    "hash": "5a27756bf6733dfd8b3de0329a3130125ac44c8ac80352d999ccea874afea91a",
+    "token_count": 32
+  },
+  "FirstTokenGate-K2:0:B": {
+    "hash": "750dab75e299cf279e077bced647c336e3eae043c0b03788abef4577ef0bafd3",
+    "token_count": 32
+  },
+  "FirstTokenGate-K2:0:C": {
+    "hash": "16e8765313daf52d920de250fecf810c5c7e827895ad9aeb7cea35aacce08b6e",
+    "token_count": 32
+  },
+  "FirstTokenGate-K2:1:A": {
+    "hash": "5a27756bf6733dfd8b3de0329a3130125ac44c8ac80352d999ccea874afea91a",
+    "token_count": 32
+  },
+  "FirstTokenGate-K2:1:B": {
+    "hash": "750dab75e299cf279e077bced647c336e3eae043c0b03788abef4577ef0bafd3",
+    "token_count": 32
+  },
+  "FirstTokenGate-K2:1:C": {
+    "hash": "16e8765313daf52d920de250fecf810c5c7e827895ad9aeb7cea35aacce08b6e",
+    "token_count": 32
+  },
+  "FirstTokenGate-K2:2:A": {
+    "hash": "5a27756bf6733dfd8b3de0329a3130125ac44c8ac80352d999ccea874afea91a",
+    "token_count": 32
+  },
+  "FirstTokenGate-K2:2:B": {
+    "hash": "750dab75e299cf279e077bced647c336e3eae043c0b03788abef4577ef0bafd3",
+    "token_count": 32
+  },
+  "FirstTokenGate-K2:2:C": {
+    "hash": "16e8765313daf52d920de250fecf810c5c7e827895ad9aeb7cea35aacce08b6e",
+    "token_count": 32
+  }
+}

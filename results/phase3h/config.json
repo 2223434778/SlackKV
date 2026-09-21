@@ -1,0 +1,13 @@
+{
+  "phase": "3H",
+  "base_commit": "eb5b3eb6e13e5f8a682d1ea941e53fd5032c7de1",
+  "sessions": ["A", "B", "C"],
+  "deadlines_ms": {"A": 300, "B": 320, "C": 340},
+  "max_tokens": 32,
+  "temperature": 0,
+  "ignore_eos": true,
+  "p_safe_ms": 30,
+  "resume_guard_ms": 110,
+  "repetitions": 3,
+  "policies": ["ResumeAware-K3", "FirstTokenGate-K1", "FirstTokenGate-K2"]
+}
