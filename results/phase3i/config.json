@@ -1,0 +1,1 @@
+{"phase":"3I","base_commit":"416ebaae0e42d26c9c286f4f8656a9295b6fa656","policies":["ResumeAware-K3","FirstTokenGate-K1","FirstTokenGate-K2"],"sessions":["A","B","C"],"background_session":"X","background_max_tokens":128,"p_safe_ms":30,"resume_guard_ms":110}

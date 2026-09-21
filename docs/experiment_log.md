@@ -271,3 +271,11 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - Objective/base: K=2 pre-first admission against ResumeAware-K3 and K=1 on A/B/C only. Base eb5b3eb6e13e5f8a682d1ea941e53fd5032c7de1.
 - Results: K2 ABC P95 TTFT 115.23 ms, versus 131.69 ms ResumeAware-K3 and 159.98 ms K1. K2 decode throughput 182.99 tok/s, memory-time 37.22 MiB*s, and Result A.
 - Results: results/phase3h/.
+## Phase 3I - background decode load
+
+- Frozen policies: ResumeAware-K3, FirstTokenGate-K1, FirstTokenGate-K2.
+- Added one ordinary 128-token background request X. t0 was defined after X first token; X remained active beyond C first token in all recorded runs.
+- X-only baseline median decode duration was 1824.40 ms and median TPOT was 14.37 ms.
+- All X requests generated 128 tokens. Native prefetch endpoint responses reported 4096 external tokens, zero model forwards, zero generated tokens, and zero mixed steps.
+- Under the frozen busy-load setup, A/B/C promotions had deadline misses, blackout conflicts, and >50 ms promotions. Therefore the required clean-promotion precondition did not hold and the phase is classified Result D; K1/K2 performance numbers are diagnostic only.
+- No vLLM scheduler algorithm was changed; the Phase 3H generalized K-capacity gate was reused unchanged. No Phase 3J/dynamic-K work was started.
