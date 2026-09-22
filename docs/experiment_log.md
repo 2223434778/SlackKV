@@ -331,3 +331,9 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Next direction:** `FULL_ABCDEF_E2E` (not started here).
 - **Results:** `results/phase3o/`.
 - **Execution status:** COMPLETE.
+
+## 2026-09-22 — Phase 3P: full six-session async promotion
+
+- **Objective:** Validate frozen Async40-K2 promotion across A–F plus a 192-token X decode.
+- **Result:** Async reached T6 before all 18 resume arrivals, with zero remote waits and frozen K=2. A–F median P95 effective latency was 56.78 ms (Async), 60.80 ms (Blocking70), and 101.32 ms (OnDemand); Async memory-time was 41.42 MiB*s versus Blocking 72.30 MiB*s.
+- **Outcome:** Result A; next direction SCALE_WORKLOAD. Results: `results/phase3p/`.
