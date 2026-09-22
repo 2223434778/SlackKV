@@ -295,6 +295,14 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - Budget table: raw max+10 ms budgets were 31.60/69.00/62.44/70.93 ms; rounded recommendations are 35/70/65/75 ms. Classification: Result C, because all 20 runs were valid but the n=1/2/3 medians are non-monotonic and the active-count budget spread is borderline rather than a stable decode-count curve; a richer runtime signal is required.
 - No Phase 3M work was started. Results: `results/phase3l/`.
 
+## Phase 3M - native promotion latency decomposition
+
+- Objective/base: identify where busy promotion latency is spent using T0–T7 monotonic timestamps, ordinary engine-step timing, and the exact Phase 3L L0–L3 workload. Base `8350af11356913676906b111aabab72e69544172`; pinned vLLM source `0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665`.
+- Frozen matrix: four load states, three fresh-server repetitions per state (12 promotions total), no admission/promotion-policy changes, no FirstTokenGate.
+- Validation: 12/12 promotions passed active-through-promotion, cache transport, native zero-forward/zero-generated/zero-mixed-step checks. Server FIRST_TOKEN events were recorded independently for X1/X2/X3; client delivery lag median/max was 10.69/17.81 ms, confirming Phase 3L's client barrier had a measurable phase bias.
+- Decomposition medians: request-to-connector-start was 2.70/14.74/10.99/13.51 ms for L0/L1/L2/L3; connector phase was 10.15/9.92/10.67/10.02 ms; CPU→GPU was 5.33/5.28/5.38/5.28 ms. A normal model step was in flight at T0 in 9/9 busy runs, with remaining-step medians 16.64/12.90/15.42 ms.
+- Result A: busy overhead is primarily pre-connector blocking associated with an in-flight normal model step; connector phase and copy remain stable. Next direction: `STEP_TIME_ESTIMATOR_E2E`. No Phase 3N work was started. Results: `results/phase3m/`.
+
 ## Phase 3K - calibrated busy-load admission comparison
 
 - Reused p_busy=70 ms and resume_guard=110 ms from Phase 3J. Ran ResumeAware-K3, FirstTokenGate-K1, and FirstTokenGate-K2 for five fresh restarts each with the same X background decode.

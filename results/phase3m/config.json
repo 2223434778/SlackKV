@@ -1,0 +1,12 @@
+{
+  "phase": "3M",
+  "base_commit": "8350af11356913676906b111aabab72e69544172",
+  "states": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "repetitions": 3,
+  "no_policy_changes": true
+}

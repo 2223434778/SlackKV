@@ -1,0 +1,4 @@
+load_state,active_decode_count,repetition,background_id,server_first_token_monotonic,client_first_token_monotonic,client_delivery_lag_ms,request_finished_monotonic,active_through_promotion
+L1,1,0,X1,1721965.744453879,1721965.744453879,0.0,1721967.54246298,True
+L1,1,1,X1,1721996.060931145,1721996.060931145,0.0,1721997.901986516,True
+L1,1,2,X1,1722026.42532714,1722026.42532714,0.0,1722028.274502409,True
