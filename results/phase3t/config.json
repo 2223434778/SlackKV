@@ -1,0 +1,18 @@
+{
+  "phase": "3T",
+  "policy": "ReservationLedger2-Async40-K2",
+  "sessions": "ABCDEFGHIJKL",
+  "deadlines_ms": [300, 320, 340, 360, 900, 920, 940, 960, 1500, 1520, 1540, 1560],
+  "session_lease_blocks": 256,
+  "lease_budget_blocks": 512,
+  "handoff_guard_ms": 100,
+  "promotion_service_ms": 40,
+  "resume_guard_ms": 110,
+  "gate_limit": 2,
+  "resume_tokens": 32,
+  "background_tokens": 256,
+  "gpu_kv_capacity_mib": 1024,
+  "external_cpu_capacity_gib": 2,
+  "stage_a_runs": 1,
+  "stage_b_runs": 3
+}

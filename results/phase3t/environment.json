@@ -1,0 +1,9 @@
+{
+  "slackkv_base_commit": "b5a6817e0a07328e7eff3acfae9dd57f3df438e1",
+  "vllm_version": "0.23.0",
+  "vllm_source_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "python": "3.11.16",
+  "pytorch": "2.11.0+cu126",
+  "cuda": "12.6",
+  "gpu": "NVIDIA RTX A6000"
+}

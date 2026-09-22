@@ -368,3 +368,14 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - Results: unleased controls were evicted 3/3 (0 local, 4096 external, remote wait); leased prefixes remained fully local 3/3 (4096 local, 0 external, no remote wait). All leased runs used 256 blocks. Acquire overhead was 17.701 us median / 17.941 us max; release was 13.081 us median / 15.790 us max.
 - Conclusion: Result A. Retaining one block-pool reference protects native-prefetched KV until the real resume safely takes ownership. Next direction `RESERVATION_LEDGER_12_SESSION` was not started.
 - Results: `results/phase3s/`.
+
+## 2026-09-22 — Phase 3T
+
+- Objective: integrate the Phase 3S physical KV lease into the frozen 12-session Async40/K2 workload through a conservative two-prefix reservation ledger.
+- Configuration: A–L fixed deadlines, X=256, 1-GiB GPU KV, 2-GiB external tier, 256 blocks/session, 512-block ledger, 100-ms handoff guard, Async40, resume guard 110 ms, K=2.
+- Commands: `python -m experiments.phase3t.run_phase3t --stage integration`, then `--stage full`, followed by `python -m experiments.phase3t.postprocess`.
+- Validation: Stage A PASS; Stage B 3/3; tests 5/5; real resumes 36/36; K2 3/3; background 3/3; source conservation 3/3.
+- Results: the controller naturally promoted A/B, E/F, and I/J and skipped the remaining six sessions per run. Across Stage B, 18/18 promotions were local and useful, with zero remote waits, zero T6 misses, zero lease leaks, and zero wasted promotion MiB. Maximum reserved blocks were 512. Aggregate source was 73,728 local + 73,728 external tokens.
+- Timing: target-to-issue 0.079/0.174/0.189 ms median/P95/max; issue-to-T6 25.200/31.105/33.195 ms; target-to-T6 25.279/31.286/33.334 ms. Median-run overall/promoted/skipped P95 resume latency was 83.48/58.06/83.96 ms.
+- Conclusion: Result A. Finite reservation plus physical leases eliminated the Phase 3Q/3R wasted-promotion failure by intentionally routing unreserved sessions to OnDemand. Next direction `RESERVATION_FULL_BASELINE_MATRIX` was not started.
+- Results: `results/phase3t/`.

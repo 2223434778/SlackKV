@@ -1,0 +1,38 @@
+{
+  "integration_gate": true,
+  "stage_b_runs": 3,
+  "real_resume_correctness": "36/36",
+  "reservation_promotions": 18,
+  "reservation_skips": 18,
+  "promoted_local": 18,
+  "promoted_remote_wait": 0,
+  "promoted_internal_ready_miss": 0,
+  "promotion_useful_rate": 1.0,
+  "lease_acquires": 18,
+  "lease_releases": 18,
+  "lease_leaks": 0,
+  "max_reserved_blocks": 512,
+  "wasted_promotion_mib": 0,
+  "local_source_tokens": 73728,
+  "external_source_tokens": 73728,
+  "source_conservation": true,
+  "target_to_issue": {
+    "median": 0.07947161793708801,
+    "P95": 0.17351310234516856,
+    "max": 0.18910295329988003
+  },
+  "issue_to_T6": {
+    "median": 25.200088042765856,
+    "P95": 31.10470561077818,
+    "max": 33.195295836776495
+  },
+  "target_to_T6": {
+    "median": 25.278609013184905,
+    "P95": 31.28626327961683,
+    "max": 33.334096893668175
+  },
+  "K2_valid": 3,
+  "background_valid": 3,
+  "Result": "A",
+  "next_direction": "RESERVATION_FULL_BASELINE_MATRIX"
+}

@@ -1,0 +1,4 @@
+policy,repetition,X_first_token_ms,X_finished_ms,X_decode_duration_ms,X_TPOT_ms,X_slowdown,active_validation
+ReservationLedger2-Async40-K2,0,0.0,3860.9897419810295,3860.9897419810295,15.14113624306286,1.0,PASS
+ReservationLedger2-Async40-K2,1,0.0,3944.9119868222624,3944.9119868222624,15.470243085577499,1.0,PASS
+ReservationLedger2-Async40-K2,2,0.0,3945.671280147508,3945.671280147508,15.473220706460815,1.0,PASS
