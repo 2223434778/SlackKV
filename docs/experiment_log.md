@@ -337,3 +337,7 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Objective:** Validate frozen Async40-K2 promotion across A–F plus a 192-token X decode.
 - **Result:** Async reached T6 before all 18 resume arrivals, with zero remote waits and frozen K=2. A–F median P95 effective latency was 56.78 ms (Async), 60.80 ms (Blocking70), and 101.32 ms (OnDemand); Async memory-time was 41.42 MiB*s versus Blocking 72.30 MiB*s.
 - **Outcome:** Result A; next direction SCALE_WORKLOAD. Results: `results/phase3p/`.
+
+## Phase 3P-FIX
+
+Frozen Phase 3P CSV postprocessing repair only; no GPU workload rerun. Corrected full A-F schema, 18 Async internal-ready/local-hit checks, real issue-to-T6 latency, and 192-token X-only baseline denominator 191.

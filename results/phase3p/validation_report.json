@@ -1,0 +1,87 @@
+{
+  "raw_validation": {
+    "run_rows": 9,
+    "session_rows": 54,
+    "native_rows": 36,
+    "background_rows": 9,
+    "x_only_rows": 3
+  },
+  "async": {
+    "internal_ready": 18,
+    "local_hit": 18,
+    "remote_wait": 0,
+    "native_correct": 18,
+    "token_correct": 0,
+    "background_valid": 9,
+    "k2_valid": 9,
+    "issue_to_T6": {
+      "ABC_median": 28.444528114050627,
+      "ABC_max": 37.44396800175309,
+      "DEF_median": 24.60915595293045,
+      "DEF_max": 30.35622602328658,
+      "overall_median": 24.879142409190536,
+      "overall_p95": 33.719469408970326,
+      "overall_max": 37.44396800175309
+    },
+    "p_async_40_sufficient": true
+  },
+  "x_only": {
+    "tokens": 192,
+    "denominator": 191,
+    "median_decode_ms": 2711.434361990541
+  },
+  "policies": [
+    {
+      "policy": "OnDemand-K2",
+      "ABCDEF_P50_effective_resume_ms": 83.10656603425741,
+      "ABCDEF_P95_effective_resume_ms": 101.32149915676564,
+      "ABCDEF_max_effective_resume_ms": 102.06303193233907,
+      "ABC_P95_effective_resume_ms": 101.32149915676564,
+      "DEF_P95_effective_resume_ms": 79.33474720921367,
+      "ABCDEF_P95_completion_ms": 585.4445589822717,
+      "ABCDEF_decode_tok_s": 127.48166125285067,
+      "combined_decode_tok_s": 131.6948928326635,
+      "full_makespan_ms": 1545.7989960443228,
+      "ABC_memory_time_mib_s": 0.0,
+      "DEF_memory_time_mib_s": 0.0,
+      "total_memory_time_mib_s": 0.0,
+      "X_baseline_decode_ms": 2711.434361990541,
+      "X_slowdown": 1.0557797342206021
+    },
+    {
+      "policy": "Blocking70-K2",
+      "ABCDEF_P50_effective_resume_ms": 52.533704969100654,
+      "ABCDEF_P95_effective_resume_ms": 60.80073379445821,
+      "ABCDEF_max_effective_resume_ms": 61.52678285725415,
+      "ABC_P95_effective_resume_ms": 60.80073379445821,
+      "DEF_P95_effective_resume_ms": 50.45212876051664,
+      "ABCDEF_P95_completion_ms": 572.63473829953,
+      "ABCDEF_decode_tok_s": 127.91482978899107,
+      "combined_decode_tok_s": 127.18860093468115,
+      "full_makespan_ms": 1515.619324799627,
+      "ABC_memory_time_mib_s": 53.500247932970524,
+      "DEF_memory_time_mib_s": 19.18172973021865,
+      "total_memory_time_mib_s": 72.29742958024144,
+      "X_baseline_decode_ms": 2711.434361990541,
+      "X_slowdown": 1.0931860082688214
+    },
+    {
+      "policy": "Async40-K2",
+      "ABCDEF_P50_effective_resume_ms": 49.85997254960239,
+      "ABCDEF_P95_effective_resume_ms": 56.7757570464164,
+      "ABCDEF_max_effective_resume_ms": 57.55097400397062,
+      "ABC_P95_effective_resume_ms": 56.7757570464164,
+      "DEF_P95_effective_resume_ms": 46.95547581650317,
+      "ABCDEF_P95_completion_ms": 551.8467968143523,
+      "ABCDEF_decode_tok_s": 128.88074921652102,
+      "combined_decode_tok_s": 128.9154976647873,
+      "full_makespan_ms": 1500.0873608980328,
+      "ABC_memory_time_mib_s": 30.121441062539816,
+      "DEF_memory_time_mib_s": 9.87560160830617,
+      "total_memory_time_mib_s": 41.4167919754982,
+      "X_baseline_decode_ms": 2711.434361990541,
+      "X_slowdown": 1.0785421572402503
+    }
+  ],
+  "result": "B"
+}

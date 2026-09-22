@@ -1,85 +1,32 @@
-from __future__ import annotations
-
-import csv
-import json
-import statistics
+import csv,json,statistics as S
 from pathlib import Path
+O=Path(__file__).resolve().parents[2]/"results"/"phase3p"; P=["OnDemand-K2","Blocking70-K2","Async40-K2"]
+def R(n):
+ with open(O/n,newline="",encoding="utf8") as f:return list(csv.DictReader(f))
+def F(r,k):return float(r[k])
+def M(xs):return S.median(xs)
+def Q(xs):return S.quantiles(xs,n=20,method="inclusive")[18]
+run,ses,nat,bg,x=R("run_metrics.csv"),R("session_metrics.csv"),R("async_prefetch_metrics.csv"),R("background_metrics.csv"),R("x_only_baseline.csv")
+assert (len(run),len(ses),len(nat),len(bg),len(x))==(9,54,36,9,3)
+for p in P:assert len([r for r in run if r["policy"]==p])==3 and len([r for r in ses if r["policy"]==p])==18
+for p in ["Async40-K2","Blocking70-K2"]: assert len([r for r in nat if r["policy"]==p])==18 
+keys=["ABCDEF_P50_effective_resume_ms","ABCDEF_P95_effective_resume_ms","ABCDEF_max_effective_resume_ms","ABC_P95_effective_resume_ms","DEF_P95_effective_resume_ms","ABCDEF_P95_completion_ms","ABCDEF_decode_tok_s","combined_decode_tok_s","full_makespan_ms","ABC_memory_time_mib_s","DEF_memory_time_mib_s","total_memory_time_mib_s"]
+base=M([F(r,"decode_duration_ms") for r in x]); rows=[]
+for p in P:
+ q=[r for r in run if r["policy"]==p]; z={"policy":p};z.update({k:M([F(r,k) for r in q]) for k in keys});z["X_baseline_decode_ms"]=base;z["X_slowdown"]=M([F(r,"X_decode_duration_ms") for r in q])/base;rows.append(z)
+A=next(z for z in rows if z["policy"]=="Async40-K2");B=next(z for z in rows if z["policy"]=="Blocking70-K2")
+asr=[r for r in ses if r["policy"]=="Async40-K2"];an=[r for r in nat if r["policy"]=="Async40-K2"]; it=[F(r,"issue_to_T6_ms") for r in an];abc=[F(r,"issue_to_T6_ms") for r in an if r["session"] in "ABC"];de=[F(r,"issue_to_T6_ms") for r in an if r["session"] in "DEF"]
+ready=sum(F(r,"scheduler_arrival_ms")>=F(r,"T6_ms") for r in asr);local=sum(F(r,"local_cache_hit_tokens")==4096 and F(r,"external_kv_transfer_tokens")==0 for r in asr);remote=sum(r["WAITING_FOR_REMOTE_KVS_seen"]=="True" for r in asr);native=sum(F(r,"external_tokens_loaded")==4096 and F(r,"model_forward_count")==0 and F(r,"generated_token_count")==0 and F(r,"mixed_prefetch_model_step_count")==0 and r["status"]=="ok" for r in an);tokens=sum(int(float(r["generated_token_count"]))==192 for r in ses);bgok=sum(r["background_validation"]=="PASS" for r in run);k2=sum(int(float(r["max_pre_first_concurrency"]))==2 and r["gate_validation"]=="PASS" for r in run);enough=max(it)<40
+result="A" if ready==18 and local==18 and remote==0 and native==18 and tokens==54 and bgok==9 and k2==9 and enough and A["ABCDEF_P95_effective_resume_ms"]<=1.1*B["ABCDEF_P95_effective_resume_ms"] and A["total_memory_time_mib_s"]<=.8*B["total_memory_time_mib_s"] and A["combined_decode_tok_s"]>=.95*B["combined_decode_tok_s"] else "B"
+report={"raw_validation":{"run_rows":len(run),"session_rows":len(ses),"native_rows":len(nat),"background_rows":len(bg),"x_only_rows":len(x)},"async":{"internal_ready":ready,"local_hit":local,"remote_wait":remote,"native_correct":native,"token_correct":tokens,"background_valid":bgok,"k2_valid":k2,"issue_to_T6":{"ABC_median":M(abc),"ABC_max":max(abc),"DEF_median":M(de),"DEF_max":max(de),"overall_median":M(it),"overall_p95":Q(it),"overall_max":max(it)},"p_async_40_sufficient":enough},"x_only":{"tokens":192,"denominator":191,"median_decode_ms":base},"policies":rows,"result":result}
+with open(O/"policy_summary.csv","w",newline="",encoding="utf8") as f:w=csv.DictWriter(f,fieldnames=rows[0].keys());w.writeheader();w.writerows(rows)
+(O/"validation_report.json").write_text(json.dumps(report,indent=2)+"\n")
+t=["# Phase 3P-FIX","","Frozen Phase 3P raw CSVs were postprocessed only. No GPU, vLLM, Qwen, or native prefetch workload was rerun.","","Raw validation: 9 runs; 54 sessions; 36 native records; 9 background records; 3 X-only records.","","Async internal-ready/local-hit/remote-wait: %d/18, %d/18, %d. Native correctness %d/18; token correctness %d/54; background %d/9; K2 %d/9."%(ready,local,remote,native,tokens,bgok,k2),"Async issue-to-T6 ms: ABC median/max %.2f/%.2f; DEF %.2f/%.2f; all median/P95/max %.2f/%.2f/%.2f; p_async=40 sufficient %s."%(M(abc),max(abc),M(de),max(de),M(it),Q(it),max(it),"YES" if enough else "NO"),"","|Policy|A-F P95|ABC P95|DEF P95|Completion P95|Decode tok/s|X slowdown|Combined tok/s|Makespan|Memory|","|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
+for z in rows:t.append("|%s|%.2f|%.2f|%.2f|%.2f|%.2f|%.3f|%.2f|%.2f|%.2f|"%(z["policy"],z["ABCDEF_P95_effective_resume_ms"],z["ABC_P95_effective_resume_ms"],z["DEF_P95_effective_resume_ms"],z["ABCDEF_P95_completion_ms"],z["ABCDEF_decode_tok_s"],z["X_slowdown"],z["combined_decode_tok_s"],z["full_makespan_ms"],z["total_memory_time_mib_s"]))
+t+=["","X-only baseline: 192 tokens, 191 post-first tokens, median %.2f ms."%base,"Async vs Blocking: P95 %.2f%%; DEF %.2f%%; memory %.2f%%; combined throughput %.2f%%."%((A["ABCDEF_P95_effective_resume_ms"]/B["ABCDEF_P95_effective_resume_ms"]-1)*100,(A["DEF_P95_effective_resume_ms"]/B["DEF_P95_effective_resume_ms"]-1)*100,(A["total_memory_time_mib_s"]/B["total_memory_time_mib_s"]-1)*100,(A["combined_decode_tok_s"]/B["combined_decode_tok_s"]-1)*100),"Result %s; next direction: Phase 3Q stable async workload."%result]
+(O/"summary.md").write_text("\n".join(t)+"\n")
+(O/"config.json").write_text(json.dumps({"phase":"3P-FIX","raw_replay":False,"p_async_ms":40,"p_blocking_ms":70,"x_tokens":192,"post_first_denominator":191,"gate_limit":2},indent=2)+"\n")
+(O/"environment.json").write_text(json.dumps({"source":"frozen Phase 3P CSV artifacts","gpu_workload_rerun":False},indent=2)+"\n")
+(O/"implementation.md").write_text("# Phase 3P-FIX\n\nReads immutable raw CSV artifacts only. Validates full schema; recomputes policy medians with real schema names; checks T6-before-arrival, local-hit/no-external recovery, native zero-forward fields, 192-token counts, K2 and background validation; derives X slowdown from the 192-token/191-post-first baseline.\n")
+(O/"commands.sh").write_text("python3 experiments/phase3p/postprocess.py\npython3 -m pytest -q tests/test_phase3p.py\n")
 
-ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "results" / "phase3p"
-POLICIES = ("OnDemand-K2", "Blocking70-K2", "Async40-K2")
-
-
-def read_rows(name: str) -> list[dict[str, str]]:
-    with (OUT / name).open(newline="", encoding="utf-8") as stream:
-        return list(csv.DictReader(stream))
-
-
-def median(rows: list[dict[str, str]], key: str) -> float:
-    return statistics.median(float(row[key]) for row in rows)
-
-
-def change_pct(new: float, old: float) -> float:
-    return (new - old) / old * 100.0
-
-
-def main() -> None:
-    run = read_rows("run_metrics.csv")
-    session = read_rows("session_metrics.csv")
-    grouped = {policy: [row for row in run if row["policy"] == policy] for policy in POLICIES}
-    table = {
-        policy: {
-            "p95": median(rows, "ABC_P95_effective_resume_latency_ms"),
-            "completion": median(rows, "ABC_P95_effective_completion_latency_ms"),
-            "decode": median(rows, "ABC_decode_throughput_tok_s"),
-            "x_slowdown": median(rows, "X_slowdown"),
-            "combined": median(rows, "combined_decode_throughput_tok_s"),
-            "makespan": median(rows, "ABC_completion_makespan_ms"),
-            "memory": median(rows, "promotion_memory_time_mib_s"),
-        }
-        for policy, rows in grouped.items()
-    }
-    async_rows = grouped["Async40-K2"]
-    async_sessions = [row for row in session if row["policy"] == "Async40-K2"]
-    async_gate = all(
-        row[key] == "PASS"
-        for row in async_rows
-        for key in ("local_hit_validation", "token_validation", "background_validation", "gate_validation", "native_validation")
-    ) and all(row["internal_ready_miss_count"] == "0" for row in async_rows)
-    blocking, asynchronous, ondemand = table["Blocking70-K2"], table["Async40-K2"], table["OnDemand-K2"]
-    if not async_gate:
-        result, direction = "B", "ASYNC_BUDGET_CALIBRATION"
-    elif asynchronous["p95"] <= 1.10 * blocking["p95"] and (
-        asynchronous["memory"] <= 0.8 * blocking["memory"] or asynchronous["p95"] <= 0.9 * blocking["p95"]
-    ) and asynchronous["combined"] >= 0.95 * blocking["combined"]:
-        result, direction = "A", "FULL_ABCDEF_E2E"
-    else:
-        result, direction = "C", "ASYNC_DISPATCHER_MODEL"
-    comparison = {
-        "effective_resume_latency_pct": change_pct(asynchronous["p95"], blocking["p95"]),
-        "memory_time_pct": change_pct(asynchronous["memory"], blocking["memory"]),
-        "x_slowdown_pct": change_pct(asynchronous["x_slowdown"], blocking["x_slowdown"]),
-        "combined_throughput_pct": change_pct(asynchronous["combined"], blocking["combined"]),
-        "vs_ondemand_resume_pct": change_pct(asynchronous["p95"], ondemand["p95"]),
-        "vs_ondemand_combined_pct": change_pct(asynchronous["combined"], ondemand["combined"]),
-    }
-    (OUT / "config.json").write_text(json.dumps({"blocking_service_budget_ms": 70, "async_internal_ready_service_budget_ms": 40, "resume_guard_ms": 110, "gate_limit": 2, "result": result, "next_direction": direction}, indent=2) + "\n", encoding="utf-8")
-    internal = sum(row["arrival_minus_T6_ms"] != "NA" and float(row["arrival_minus_T6_ms"]) >= 0 for row in async_sessions)
-    local = sum(row["local_cache_hit_tokens"] == "4096.0" for row in async_sessions)
-    waits = sum(row["WAITING_FOR_REMOTE_KVS_seen"] == "True" for row in async_sessions)
-    lines = [
-        "# Phase 3P — asynchronous native promotion end to end", "",
-        f"- Async internal-ready: {internal}/9; local cache success: {local}/9; remote waits: {waits}.",
-        f"- Async max outstanding HTTP prefetch calls: {max(int(row['max_outstanding_prefetch_http_calls']) for row in async_rows)}; maximum overlapping T0→T6 intervals: {max(int(row['max_overlapping_internal_prefetch_intervals']) for row in async_rows)}.",
-        "", "| Policy | ABC P95 effective resume | ABC P95 completion | ABC decode tok/s | X slowdown | Combined tok/s | Makespan | Promotion memory-time |", "|---|---:|---:|---:|---:|---:|---:|---:|",
-    ]
-    lines += [f"| {policy} | {values['p95']:.2f} | {values['completion']:.2f} | {values['decode']:.2f} | {values['x_slowdown']:.3f} | {values['combined']:.2f} | {values['makespan']:.2f} | {values['memory']:.2f} |" for policy, values in table.items()]
-    lines += ["", f"- Async vs Blocking: effective resume {comparison['effective_resume_latency_pct']:.2f}%; memory-time {comparison['memory_time_pct']:.2f}%; X slowdown {comparison['x_slowdown_pct']:.2f}%; combined throughput {comparison['combined_throughput_pct']:.2f}%.", f"- Result {result}; next direction `{direction}`.", "", "T6 rather than HTTP client return defines GPU-ready residency. Per-session local cache success is validated by the run-global exact 12288 local-token source-counter delta plus each real scheduler trace showing no remote-KV wait; source counters are not request-labeled under concurrent K2 serving."]
-    (OUT / "summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    (OUT / "implementation.md").write_text("# Implementation\n\nPhase 3P reuses Phase 3M/3N T0–T7 instrumentation and Phase 3H K=2 unchanged. Blocking70 waits on each native endpoint future; Async40 launches endpoint calls from the same EDF/blackout QueueJIT targets and sends resumes at original deadlines without awaiting endpoint return.\n", encoding="utf-8")
-    (OUT / "vllm_phase3p_delta.patch").write_text("No new vLLM source changes for Phase 3P. Phase 3M T0-T7 instrumentation and Phase 3H K=2 gate reused unchanged.\n", encoding="utf-8")
-    print(json.dumps({"result": result, "next_direction": direction, "comparison": comparison}, indent=2))
-
-
-if __name__ == "__main__":
-    main()

@@ -1,0 +1,9 @@
+{
+  "phase": "3P-FIX",
+  "raw_replay": false,
+  "p_async_ms": 40,
+  "p_blocking_ms": 70,
+  "x_tokens": 192,
+  "post_first_denominator": 191,
+  "gate_limit": 2
+}
