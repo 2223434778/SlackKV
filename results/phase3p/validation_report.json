@@ -11,7 +11,7 @@
     "local_hit": 18,
     "remote_wait": 0,
     "native_correct": 18,
-    "token_correct": 0,
+    "token_correct": 54,
     "background_valid": 9,
     "k2_valid": 9,
     "issue_to_T6": {
@@ -83,5 +83,5 @@
       "X_slowdown": 1.0785421572402503
     }
   ],
-  "result": "B"
+  "result": "A"
 }
