@@ -341,3 +341,7 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 ## Phase 3P-FIX
 
 Frozen Phase 3P CSV postprocessing repair only; no GPU workload rerun. Corrected full A-F schema, 18 Async internal-ready/local-hit checks, real issue-to-T6 latency, and 192-token X-only baseline denominator 191.
+
+## Phase 3Q
+
+12-session Async40-K2 integration gate stopped before full matrix: all T6 deadlines were met, but only 16,384/49,152 local-hit tokens remained and E-L waited remotely. Classified as Result C capacity-retention limit; no tuning or full replay performed.
