@@ -1,0 +1,8 @@
+{
+  "gpu_name": "NVIDIA RTX A6000",
+  "driver_version": "550.54.14",
+  "python": "Python 3.11.16",
+  "runtime": "vLLM 0.23.0 / PyTorch 2.11.0+cu126 / CUDA 12.6",
+  "vllm_source_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "slackkv_base_commit": "b7d83992878ab86803f7f0582088ff5873d21838"
+}

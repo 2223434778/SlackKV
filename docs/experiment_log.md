@@ -309,3 +309,14 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - All 15 runs were promotion-clean: zero deadline misses, blackout conflicts, and budget overruns; native endpoint invariants and cache/token checks passed.
 - Busy-load median ABC P95 TTFT was K3 59.53 ms, K2 59.91 ms, K1 80.76 ms. K1 remained exactly pre-first=1 and K2 exactly pre-first=2 in all runs.
 - The busy ranking numerically changed from light-load K2 < K3 < K1 to K3 < K2 < K1, but the K3/K2 gap was only 0.38 ms and K1 did not protect X or improve combined throughput. Dynamic K is not justified; report Result C and do not start Phase 3L.
+
+## 2026-09-22 — Phase 3N: internal KV-ready asynchronous resume handoff
+
+- **Objective:** Determine whether A can safely resume after the scheduler-visible native prefetch completion boundary (T6), before the native HTTP endpoint returns, while an unrelated 9500-token X decode is active.
+- **Frozen design:** One 4096-token A KV is offloaded and pressure-evicted; X begins a 128-token ordinary decode; A native prefetch is launched in a separate thread after X first token; A resume uses exact offsets 5/20/30/40/70 ms from prefetch-client send, three fresh restarts each (15 total). No extra offsets were added.
+- **Instrumentation:** Reused Phase 3M T0–T7 unchanged. Boundary classification uses the real scheduler `RESUME_ARRIVED` monotonic timestamp. Source-token counters around A resume establish local/external cache attribution; traces establish whether A entered `WAITING_FOR_REMOTE_KVS`.
+- **Validation:** `python -m pytest -q tests/test_phase3n.py` (3 passed); 15/15 runs kept X active through prefetch and emitted all required timestamps. Native prefetch always reported real 4096 external tokens, zero forward/generation/mixed steps.
+- **Key results:** 6/15 requests arrived in `INTERNAL_READY_PRE_CLIENT_RETURN`, all six had 4096 local-hit / zero external-transfer tokens and no remote-KV wait. Critical-window median TTFT was 59.83 ms versus 56.42 ms after client return (within the predeclared 10% condition). Median T6-ready latency was 31.76 ms; the median T6→client-return gap was 25.02 ms. The 5-ms offset did not produce PRE_READY arrivals because scheduling/transport moved actual arrival past T6; no new offset was introduced.
+- **Result:** A — the scheduler-visible T6 boundary supports asynchronous promotion handoff; endpoint-return waiting is unnecessary. Next direction is `ASYNC_PROMOTION_E2E`.
+- **Results:** `results/phase3n/`.
+- **Execution status:** COMPLETE.

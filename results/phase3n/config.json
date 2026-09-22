@@ -1,0 +1,14 @@
+{
+  "offsets_ms": [
+    5,
+    20,
+    30,
+    40,
+    70
+  ],
+  "repetitions": 3,
+  "resume_max_tokens": 32,
+  "x_max_tokens": 128,
+  "result": "A",
+  "next_direction": "ASYNC_PROMOTION_E2E"
+}
