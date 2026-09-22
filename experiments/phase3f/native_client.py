@@ -32,13 +32,17 @@ def parse_native_prefetch_response(payload: dict[str, Any]) -> dict[str, Any]:
 def native_prefetch(
     prompt_token_ids: list[int],
     *,
+    lease_key: str | None = None,
     base_url: str = "http://127.0.0.1:8000",
     timeout_s: float = 120.0,
 ) -> dict[str, Any]:
     sent = time.monotonic()
+    request_payload: dict[str, Any] = {"prompt_token_ids": prompt_token_ids}
+    if lease_key is not None:
+        request_payload["lease_key"] = lease_key
     response = requests.post(
         f"{base_url}/slackkv/prefetch",
-        json={"prompt_token_ids": prompt_token_ids},
+        json=request_payload,
         timeout=timeout_s,
     )
     completed = time.monotonic()

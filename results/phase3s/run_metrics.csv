@@ -1,0 +1,7 @@
+mode,repetition,native_correct,lease_acquired,lease_released,lease_leak,leased_block_count,pressure_validation,local_cache_hit_tokens,external_kv_transfer_tokens,local_fraction,external_fraction,remote_wait_seen,generated_token_count,TTFT_ms,completion_ms,lease_acquire_cpu_us,lease_release_cpu_us,source_conservation,run_validation
+UnleasedPrefetch,0,True,False,False,False,0,True,0,4096,0.0,1.0,True,32,159.26632983610034,585.5069018434733,0.0,0.0,True,True
+UnleasedPrefetch,1,True,False,False,False,0,True,0,4096,0.0,1.0,True,32,152.58193598128855,587.7085379324853,0.0,0.0,True,True
+UnleasedPrefetch,2,True,False,False,False,0,True,0,4096,0.0,1.0,True,32,156.87792794778943,591.0438108257949,0.0,0.0,True,True
+LeasedPrefetch,0,True,True,True,False,256,True,4096,0,1.0,0.0,False,32,137.86077802069485,570.7415919750929,12.63,13.081,True,True
+LeasedPrefetch,1,True,True,True,False,256,True,4096,0,1.0,0.0,False,32,145.55987296625972,600.4533499944955,17.701,15.79,True,True
+LeasedPrefetch,2,True,True,True,False,256,True,4096,0,1.0,0.0,False,32,139.58678115159273,578.3275910653174,17.941,13.06,True,True

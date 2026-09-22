@@ -1,0 +1,18 @@
+{
+  "control_runs": "3/3",
+  "leased_runs": "3/3",
+  "control_eviction_evidence": "3/3",
+  "leased_full_local_reuse": "3/3",
+  "leased_remote_waits": "0/3",
+  "leased_source_conservation": "3/3",
+  "native_correctness": "6/6",
+  "token_correctness": "6/6",
+  "lease_acquire": "3/3",
+  "lease_release": "3/3",
+  "lease_leaks": 0,
+  "leased_block_count": {"min": 256, "median": 256, "max": 256},
+  "lease_acquire_cpu_us": {"median": 17.701, "max": 17.941},
+  "lease_release_cpu_us": {"median": 13.081, "max": 15.79},
+  "result": "A",
+  "next_direction": "RESERVATION_LEDGER_12_SESSION"
+}

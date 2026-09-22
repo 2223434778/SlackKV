@@ -1,0 +1,211 @@
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -78,6 +78,31 @@
+     return bool(params and params.get("slackkv_trace_resume") is True)
+
+
++def _slackkv_residency_lease_key(request: Request) -> str | None:
++    params = request.kv_transfer_params or {}
++    lease_key = params.get("slackkv_residency_lease_key")
++    if lease_key is None:
++        return None
++    if not isinstance(lease_key, str) or not lease_key:
++        raise AssertionError("invalid SlackKV residency lease key")
++    return lease_key
++
++
++def _slackkv_session(request: Request) -> str | None:
++    params = request.kv_transfer_params or {}
++    session = params.get("slackkv_session")
++    return session if isinstance(session, str) and session else None
++
++
++def _unique_slackkv_blocks(groups: tuple[list[Any], ...]) -> list[Any]:
++    blocks: dict[int, Any] = {}
++    for group in groups:
++        for block in group:
++            if not block.is_null:
++                blocks.setdefault(block.block_id, block)
++    return list(blocks.values())
++
++
+ def _is_slackkv_first_token_gate(request: Request) -> bool:
+     params = request.kv_transfer_params
+     return bool(
+@@ -282,6 +307,7 @@
+         self._slackkv_ft_first_model_seen: set[str] = set()
+         self._slackkv_ft_first_token_seen: set[str] = set()
+         self._slackkv_ft_blocked_steps: dict[str, int] = defaultdict(int)
++        self._slackkv_residency_leases: dict[str, list[Any]] = {}
+
+         # Encoder-related.
+         # Calculate encoder cache size if applicable
+@@ -946,6 +972,14 @@
+                         self.encoder_cache_manager.free(request)
+                     break
+
++                lease_key = _slackkv_session(request)
++                if lease_key in self._slackkv_residency_leases:
++                    if load_kv_async or num_new_local_computed_tokens <= 0:
++                        raise AssertionError(
++                            "SlackKV leased resume did not acquire local prefix blocks"
++                        )
++                    self._slackkv_release_residency_lease(request, lease_key)
++
+                 # KVTransfer: the connector uses this info to determine
+                 # if a load is needed. Note that
+                 # This information is used to determine if a load is
+@@ -2086,6 +2120,91 @@
+             ),
+         )
+
++    def _slackkv_trace_residency_lease(
++        self,
++        event: str,
++        lease_key: str,
++        request_id: str,
++        blocks: list[Any],
++        *,
++        reason: str,
++        operation_cpu_us: float = 0.0,
++    ) -> None:
++        ref_cnts = [block.ref_cnt for block in blocks]
++        logger.info(
++            "SLACKKV_LEASE_TRACE %s",
++            json.dumps(
++                {
++                    "event": event,
++                    "lease_key": lease_key,
++                    "request_id": request_id,
++                    "timestamp_monotonic": time.monotonic(),
++                    "num_blocks": len(blocks),
++                    "min_ref_cnt": min(ref_cnts),
++                    "max_ref_cnt": max(ref_cnts),
++                    "reason": reason,
++                    "operation_cpu_us": operation_cpu_us,
++                    "active_lease_count": len(self._slackkv_residency_leases),
++                },
++                separators=(",", ":"),
++            ),
++        )
++
++    def _slackkv_acquire_residency_lease(
++        self, request: Request, lease_key: str
++    ) -> None:
++        if lease_key in self._slackkv_residency_leases:
++            raise AssertionError(f"duplicate SlackKV residency lease: {lease_key}")
++        blocks = _unique_slackkv_blocks(
++            self.kv_cache_manager.coordinator.get_blocks(request.request_id)
++        )
++        if not blocks:
++            raise AssertionError("cannot acquire an empty SlackKV residency lease")
++        started_ns = time.perf_counter_ns()
++        self.kv_cache_manager.block_pool.touch(blocks)
++        self._slackkv_residency_leases[lease_key] = blocks
++        operation_cpu_us = (time.perf_counter_ns() - started_ns) / 1000.0
++        self._slackkv_trace_residency_lease(
++            "LEASE_ACQUIRED",
++            lease_key,
++            request.request_id,
++            blocks,
++            reason="PREFETCH_LOAD_COMPLETE",
++            operation_cpu_us=operation_cpu_us,
++        )
++
++    def _slackkv_release_residency_lease(
++        self, request: Request, lease_key: str
++    ) -> None:
++        blocks = self._slackkv_residency_leases.get(lease_key)
++        if blocks is None:
++            raise AssertionError(f"release of unknown SlackKV residency lease: {lease_key}")
++        if not blocks:
++            raise AssertionError("cannot release an empty SlackKV residency lease")
++        if min(block.ref_cnt for block in blocks) < 2:
++            raise AssertionError("SlackKV lease release before real request ownership")
++        self._slackkv_trace_residency_lease(
++            "LEASE_RELEASE_READY",
++            lease_key,
++            request.request_id,
++            blocks,
++            reason="RESUME_ALLOCATED",
++        )
++        started_ns = time.perf_counter_ns()
++        self.kv_cache_manager.block_pool.free_blocks(blocks)
++        del self._slackkv_residency_leases[lease_key]
++        operation_cpu_us = (time.perf_counter_ns() - started_ns) / 1000.0
++        if min(block.ref_cnt for block in blocks) < 1:
++            raise AssertionError("SlackKV lease handoff lost real request ownership")
++        self._slackkv_trace_residency_lease(
++            "LEASE_RELEASED",
++            lease_key,
++            request.request_id,
++            blocks,
++            reason="RESUME_ALLOCATED",
++            operation_cpu_us=operation_cpu_us,
++        )
++
+     def add_request(self, request: Request) -> None:
+         existing = self.requests.get(request.request_id)
+         if existing is not None:
+@@ -2497,8 +2616,19 @@
+             if _is_slackkv_prefetch_only(request):
+                 phase3m = (request.kv_transfer_params or {}).setdefault("slackkv_phase3m", {})
+                 phase3m.setdefault("T6", time.monotonic())
++                lease_key = _slackkv_residency_lease_key(request)
++                if lease_key is not None:
++                    self._slackkv_acquire_residency_lease(request, lease_key)
+                 request.status = RequestStatus.FINISHED_STOPPED
+                 kv_params = self._free_request(request)
++                if lease_key is not None:
++                    self._slackkv_trace_residency_lease(
++                        "LEASE_HELD_AFTER_PREFETCH_FREE",
++                        lease_key,
++                        request.request_id,
++                        self._slackkv_residency_leases[lease_key],
++                        reason="PREFETCH_REQUEST_FREED",
++                    )
+                 state = self._slackkv_connector_first.pop(
+                     request.request_id, None
+                 )
+--- a/vllm/entrypoints/serve/dev/slackkv_prefetch/api_router.py
++++ b/vllm/entrypoints/serve/dev/slackkv_prefetch/api_router.py
+@@ -15,6 +15,7 @@
+
+ class SlackKVPrefetchRequest(BaseModel):
+     prompt_token_ids: list[int] = Field(min_length=1)
++    lease_key: str | None = None
+
+
+ @router.post("/slackkv/prefetch")
+@@ -35,6 +36,10 @@
+             }
+         },
+     )
++    if request.lease_key is not None:
++        params.extra_args["kv_transfer_params"][
++            "slackkv_residency_lease_key"
++        ] = request.lease_key
+     t1 = time.monotonic()
+     params.extra_args["kv_transfer_params"]["slackkv_phase3m"]["T1"] = t1
+     final_output = None
+--- a/experiments/phase3f/native_client.py
++++ b/experiments/phase3f/native_client.py
+@@ -32,13 +32,17 @@
+ def native_prefetch(
+     prompt_token_ids: list[int],
+     *,
++    lease_key: str | None = None,
+     base_url: str = "http://127.0.0.1:8000",
+     timeout_s: float = 120.0,
+ ) -> dict[str, Any]:
+     sent = time.monotonic()
++    request_payload: dict[str, Any] = {"prompt_token_ids": prompt_token_ids}
++    if lease_key is not None:
++        request_payload["lease_key"] = lease_key
+     response = requests.post(
+         f"{base_url}/slackkv/prefetch",
+-        json={"prompt_token_ids": prompt_token_ids},
++        json=request_payload,
+         timeout=timeout_s,
+     )
+     completed = time.monotonic()

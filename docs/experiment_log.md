@@ -358,3 +358,13 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - Observation: all decisions were PROMOTE with measured free capacity 196.13–763.51 MiB, yet E/F/G/I/J/K/L later waited remotely. Capacity-query latency was 21.29 ms median and target-to-T6 was 47.41 ms median.
 - Conclusion: Result B. Instantaneous free capacity is a live but insufficient predictor of future residency. Next direction is `RESIDENCY_RESERVATION`; it was not started.
 - Results: `results/phase3r_fix/`.
+
+## 2026-09-22 — Phase 3S
+
+- Objective: validate a minimal GPU KV residency lease that survives ordinary vLLM prefix-cache eviction pressure and hands ownership safely to one real resume.
+- Configuration: one 4096-token session A, 117,440,512-byte KV, 32-token resume, four fixed 9500-token post-prefetch pressure prompts, 3 Unleased + 3 Leased fresh restarts.
+- Command: `PYTHONPATH=.:/media/a6000/D/ZhaoBinHe/slackkv-phase2c-fix-sourceprobe /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python -m experiments.phase3s.run_phase3s`.
+- Validation: tests 7/7; native 6/6; token count 6/6; source conservation 6/6; lease acquire/release 3/3; no lease leaks.
+- Results: unleased controls were evicted 3/3 (0 local, 4096 external, remote wait); leased prefixes remained fully local 3/3 (4096 local, 0 external, no remote wait). All leased runs used 256 blocks. Acquire overhead was 17.701 us median / 17.941 us max; release was 13.081 us median / 15.790 us max.
+- Conclusion: Result A. Retaining one block-pool reference protects native-prefetched KV until the real resume safely takes ownership. Next direction `RESERVATION_LEDGER_12_SESSION` was not started.
+- Results: `results/phase3s/`.
