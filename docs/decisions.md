@@ -53,3 +53,8 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - Decision: generalize the existing first-token gate to one run-wide request-specified capacity and evaluate K=2 against unlimited and K=1 controls.
 - Reason: K=1 removed pre-first contention but over-serialized multi-token admission; K=2 is the smallest bounded alternative that retains a useful batch.
 - Consequence: the gate keeps a set of owners, asserts mixed limits within a run, and releases one owner on real FIRST_TOKEN output. Promotion and cache lifecycle remain unchanged.
+## Phase 3R-FIX: instantaneous capacity is not a residency guarantee
+
+- Decision: do not treat a target-time `kv_cache_usage_perc` headroom check as a guarantee that promoted KV remains resident until resume.
+- Evidence: all twelve promotions had at least 196.13 MiB measured free space against the frozen 144-MiB requirement, but seven later entered `WAITING_FOR_REMOTE_KVS`; aggregate source conservation showed 48.01% local and 51.99% external tokens.
+- Consequence: retain the negative Result B and evaluate explicit residency reservation only in a separately authorized phase. The 144-MiB threshold was not tuned.

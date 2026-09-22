@@ -1,0 +1,75 @@
+{
+  "experiment_valid": true,
+  "policy_pass": false,
+  "report": {
+    "experiment_valid": true,
+    "capacity_metric_sane": true,
+    "capacity_decisions_persisted": 12,
+    "PROMOTE_count": 12,
+    "CAPACITY_SKIP_count": 0,
+    "free_mib_at_promotion": {
+      "min": 196.13168020521584,
+      "median": 309.3014108593416,
+      "P95": 763.5126122274477,
+      "max": 763.5126122274477
+    },
+    "internal_ready_miss_count": 0,
+    "ready_but_remote_wait_count": 7,
+    "ready_but_remote_wait_sessions": [
+      "E",
+      "F",
+      "G",
+      "I",
+      "J",
+      "K",
+      "L"
+    ],
+    "remote_wait_count": 7,
+    "remote_wait_sessions": [
+      "E",
+      "F",
+      "G",
+      "I",
+      "J",
+      "K",
+      "L"
+    ],
+    "source_local_tokens": 23600.0,
+    "source_external_tokens": 25552.0,
+    "source_total_tokens": 49152.0,
+    "local_fraction": 0.4801432291666667,
+    "external_fraction": 0.5198567708333334,
+    "source_conservation_pass": true,
+    "capacity_query_latency": {
+      "min": 17.65986904501915,
+      "median": 21.29203942604363,
+      "P95": 21.938706887885928,
+      "max": 22.139600943773985
+    },
+    "issue_lateness": {
+      "min": 17.776762833818793,
+      "median": 21.349770482629538,
+      "P95": 22.01031728181988,
+      "max": 22.239943966269493
+    },
+    "issue_to_T6": {
+      "min": 18.129023956134915,
+      "median": 25.615136022679508,
+      "P95": 31.22553766006604,
+      "max": 31.509527936577797
+    },
+    "target_to_T6": {
+      "min": 35.90578678995371,
+      "median": 47.411495936103165,
+      "P95": 52.41568428464234,
+      "max": 52.508251974359155
+    },
+    "K2_valid": "PASS",
+    "background_valid": "PASS",
+    "native_correctness": "12/12",
+    "token_correctness": "12/12",
+    "prometheus_critical_path_too_slow": true,
+    "result": "B",
+    "next_direction": "RESIDENCY_RESERVATION"
+  }
+}

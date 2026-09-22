@@ -349,3 +349,12 @@ Frozen Phase 3P CSV postprocessing repair only; no GPU workload rerun. Corrected
 ## Phase 3R
 
 Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIMENT_INVALID: capacity snapshots were not persisted, so no capacity-aware conclusion was claimed; Stage B was not run.
+## 2026-09-22 — Phase 3R-FIX
+
+- Objective: audit the frozen 144-MiB instantaneous KV-capacity guard with one instrumented 12-session Stage-A run.
+- Configuration: Async40, K=2, 1-GiB GPU KV, 2-GiB external tier, A–L frozen deadlines, X=256; no Stage B.
+- Command: `python -m experiments.phase3r_fix.run_phase3r_fix --stage integration`.
+- Validation: 12/12 decisions persisted; native 12/12; token 12/12; K2/X PASS; source 23,600 local + 25,552 external = 49,152.
+- Observation: all decisions were PROMOTE with measured free capacity 196.13–763.51 MiB, yet E/F/G/I/J/K/L later waited remotely. Capacity-query latency was 21.29 ms median and target-to-T6 was 47.41 ms median.
+- Conclusion: Result B. Instantaneous free capacity is a live but insufficient predictor of future residency. Next direction is `RESIDENCY_RESERVATION`; it was not started.
+- Results: `results/phase3r_fix/`.

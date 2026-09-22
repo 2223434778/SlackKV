@@ -1,0 +1,11 @@
+{
+  "phase": "3R-FIX",
+  "gpu_kv_capacity_mib": 1024,
+  "session_kv_mib": 112,
+  "capacity_reserve_mib": 32,
+  "required_free_mib": 144,
+  "async_service_ms": 40,
+  "resume_guard_ms": 110,
+  "K": 2,
+  "stage_b_ran": false
+}

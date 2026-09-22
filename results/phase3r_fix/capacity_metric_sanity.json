@@ -1,0 +1,20 @@
+[
+  {
+    "stage": "server_ready",
+    "kv_usage_fraction": 0.0,
+    "used_mib": 0.0,
+    "free_mib": 1024.0
+  },
+  {
+    "stage": "after_A_L_setup",
+    "kv_usage_fraction": 0.0,
+    "used_mib": 0.0,
+    "free_mib": 1024.0
+  },
+  {
+    "stage": "after_pressure",
+    "kv_usage_fraction": 0.0,
+    "used_mib": 0.0,
+    "free_mib": 1024.0
+  }
+]
