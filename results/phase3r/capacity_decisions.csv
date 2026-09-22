@@ -1,0 +1,2 @@
+repetition,session,cluster,deadline_ms,target_start_ms,capacity_check_ms,kv_usage_fraction,used_mib,free_mib,session_kv_mib,reserve_mib,required_mib,decision,reason
+99,A-L,NA,NA,NA,NA,NA,NA,NA,112,32,144,PROMOTE,DECISIONS_NOT_PERSISTED_IN_INVALID_STAGE_A

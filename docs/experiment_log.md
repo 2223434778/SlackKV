@@ -345,3 +345,7 @@ Frozen Phase 3P CSV postprocessing repair only; no GPU workload rerun. Corrected
 ## Phase 3Q
 
 12-session Async40-K2 integration gate stopped before full matrix: all T6 deadlines were met, but only 16,384/49,152 local-hit tokens remained and E-L waited remotely. Classified as Result C capacity-retention limit; no tuning or full replay performed.
+
+## Phase 3R
+
+Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIMENT_INVALID: capacity snapshots were not persisted, so no capacity-aware conclusion was claimed; Stage B was not run.
