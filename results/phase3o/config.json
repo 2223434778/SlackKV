@@ -1,0 +1,8 @@
+{
+  "blocking_service_budget_ms": 70,
+  "async_internal_ready_service_budget_ms": 40,
+  "resume_guard_ms": 110,
+  "gate_limit": 2,
+  "result": "A",
+  "next_direction": "FULL_ABCDEF_E2E"
+}

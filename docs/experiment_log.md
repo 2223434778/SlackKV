@@ -320,3 +320,14 @@ Record each experiment with its purpose, configuration, metrics, result paths, a
 - **Result:** A — the scheduler-visible T6 boundary supports asynchronous promotion handoff; endpoint-return waiting is unnecessary. Next direction is `ASYNC_PROMOTION_E2E`.
 - **Results:** `results/phase3n/`.
 - **Execution status:** COMPLETE.
+
+## 2026-09-22 — Phase 3O: asynchronous native promotion end-to-end
+
+- **Objective:** Test whether controller scheduling against native internal T6 readiness, rather than HTTP completion, preserves A/B/C resume latency while reducing promoted-KV residency during a 128-token ordinary X decode.
+- **Frozen setup:** A/B/C deadlines 300/320/340 ms relative to X server first token; K=2, resume guard 110 ms, Blocking70 service budget 70 ms, Async40 T6 budget 40 ms. Three independent restarts for OnDemand-K2, Blocking70-K2, and Async40-K2 (9 runs); no A–F expansion or budget sweep.
+- **Validation:** `python -m pytest -q tests/test_phase3o.py` (4 passed), Async40 integration pre-gate PASS, and all full runs retained X through C first token. T0–T7 instrumentation from Phases 3M/3N and Phase 3H K=2 were reused unchanged.
+- **Key results:** Async40 reached T6 before all 9 real scheduler arrivals. All 9 resumed from the local path (run-global 12,288 local source tokens plus no per-session remote-KV wait) with zero external source tokens. It had up to two outstanding HTTP prefetch calls but only one overlapping T0→T6 interval. Median ABC P95 effective resume latency was 60.64 ms versus 58.32 ms for Blocking70 and 106.51 ms for OnDemand. Async40 cut promoted-KV memory-time 52.29→30.93 MiB*s (40.85% lower than Blocking70), while combined throughput changed +0.58%. X decode slowdown relative to the compatible Phase 3I X-only baseline remained below 5% for all policies.
+- **Result:** A — internal-ready asynchronous promotion works end-to-end; HTTP completion is unnecessary on the controller critical path and p_async=40 ms is sufficient for this A/B/C+X workload.
+- **Next direction:** `FULL_ABCDEF_E2E` (not started here).
+- **Results:** `results/phase3o/`.
+- **Execution status:** COMPLETE.
