@@ -1,0 +1,20 @@
+{
+  "base_commit": "c546881b2ac270aaac555b1c97adb971845baceb",
+  "policies": ["OnDemand-K2", "Blocking70-K2", "NaiveAsync40-K2", "ReservationLedger2-Async40-K2"],
+  "sessions": "ABCDEFGHIJKL",
+  "deadlines_ms": [300,320,340,360,900,920,940,960,1500,1520,1540,1560],
+  "prefix_tokens": 4096,
+  "resume_tokens": 32,
+  "background_prompt_tokens": 9500,
+  "background_max_tokens": 256,
+  "gate_limit": 2,
+  "blocking_service_ms": 70,
+  "async_service_ms": 40,
+  "resume_guard_ms": 110,
+  "session_lease_blocks": 256,
+  "lease_budget_blocks": 512,
+  "handoff_guard_ms": 100,
+  "gpu_kv_bytes": 1073741824,
+  "cpu_external_bytes": 2147483648,
+  "measured_repetitions_per_policy": 3
+}

@@ -1,3 +1,11 @@
+STATUS: INVALIDATED BY PHASE 3U-FIX.
+
+Reason:
+Blocking70-K2 resume threads were incorrectly called with
+async_policy=True, so send_resume() did not execute ready.wait().
+The original Phase 3U baseline matrix must not be used as a
+final policy comparison.
+
 # Phase 3U — full twelve-session baseline matrix
 
 ## Objective

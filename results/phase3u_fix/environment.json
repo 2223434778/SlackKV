@@ -1,0 +1,11 @@
+{
+  "GPU": "NVIDIA RTX A6000",
+  "vLLM": "0.23.0",
+  "vLLM_source_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "PyTorch": "2.11.0+cu126",
+  "CUDA": "12.6",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "dtype": "float16",
+  "TP": 1,
+  "vLLM_patch": "Phase 3S residency lease patch unchanged"
+}
