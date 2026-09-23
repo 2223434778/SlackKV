@@ -1,0 +1,14 @@
+{
+  "CUDA": "12.6",
+  "GPU": "NVIDIA RTX A6000",
+  "GPU_count": 2,
+  "PyTorch": "2.11.0+cu126",
+  "TP": 1,
+  "driver": "550.54.14",
+  "dtype": "float16",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "software_runtime": "slackkv-phase2c-fix",
+  "vLLM": "0.23.0",
+  "vLLM_patch": "Phase 3S residency lease patch reused unchanged; no Phase 3V source patch",
+  "vLLM_source_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665"
+}

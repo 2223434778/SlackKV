@@ -69,3 +69,6 @@ logs/
 raw_logs/
 *.out
 *.err
+
+# External TraceLab release asset (downloaded and SHA256-verified by Phase 3V)
+external/tracelab/*.duckdb

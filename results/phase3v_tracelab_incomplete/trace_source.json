@@ -1,0 +1,11 @@
+{
+  "repository": "uw-syfi/TraceLab",
+  "release": "v0.0.1",
+  "asset": "syfi_coding_trace.duckdb",
+  "expected_sha256": "97715265367cc72376475f5d444c8e1900b88cab1482aa7b9a742894d9f15619",
+  "observed_sha256": "97715265367cc72376475f5d444c8e1900b88cab1482aa7b9a742894d9f15619",
+  "sha256_validation": "PASS",
+  "download_date": "2026-09-23",
+  "committed": false,
+  "privacy": "Only sanitized workload metadata inspected; no re-identification attempted."
+}

@@ -1,0 +1,11 @@
+{
+  "dynamic_max_reserved_blocks": 512,
+  "dynamic_promotions": 6,
+  "fixed_max_reserved_blocks": 512,
+  "fixed_promotions": 6,
+  "pass": true,
+  "policy_valid": {
+    "DynamicBlock512-Async40-K2": true,
+    "FixedCount2-Async40-K2": true
+  }
+}

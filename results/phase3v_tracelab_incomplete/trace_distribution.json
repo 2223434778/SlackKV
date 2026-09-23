@@ -1,0 +1,13 @@
+{
+  "eligible_episode_counts": {
+    "small": 0,
+    "medium": 11,
+    "large": 2
+  },
+  "required_episode_counts": {
+    "small": 2,
+    "medium": 2,
+    "large": 2
+  },
+  "selected_resume_jobs": 0
+}

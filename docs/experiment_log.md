@@ -379,3 +379,15 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - Timing: target-to-issue 0.079/0.174/0.189 ms median/P95/max; issue-to-T6 25.200/31.105/33.195 ms; target-to-T6 25.279/31.286/33.334 ms. Median-run overall/promoted/skipped P95 resume latency was 83.48/58.06/83.96 ms.
 - Conclusion: Result A. Finite reservation plus physical leases eliminated the Phase 3Q/3R wasted-promotion failure by intentionally routing unreserved sessions to OnDemand. Next direction `RESERVATION_FULL_BASELINE_MATRIX` was not started.
 - Results: `results/phase3t/`.
+
+## 2026-09-23 — Phase 3V
+
+- Objective: compare count-based two-session reservations with a 512-block dynamic reservation ledger under a frozen heterogeneous A–L workload; Phase 3S leases and K=2 are reused unchanged.
+- Validation sequence: Phase 3V tests 6/6 (13/13 including archived TraceLab tests); X-only controls 3/3 (median decode 3683.740 ms, TPOT 14.446 ms); uniform FixedCount2/DynamicBlock regression PASS; heterogeneous integration 4/4 PASS; measured workload 12/12 runs and 144/144 exact 32-token responses.
+- Uniform regression: both policies promoted/skipped 6/6 with 100% useful promotions, zero promoted remote waits, zero lease leaks, and 512-block peak.
+- Heterogeneous measurements: FixedCount2 median 6 promotions / 6 skips, 128 peak blocks, 100% useful; DynamicBlock median 12 promotions / 0 skips, 448 peak blocks, 100% useful. Both had zero promoted remote waits, internal-ready misses, lease leaks, duplicate H2D, and block-prediction errors.
+- Traffic and service: all four policies measured 588 MiB total H2D / 0 duplicate MiB. DynamicBlock issue-to-T6 was below the frozen 40-ms budget in 36/36 promotions (max 34.02 ms). NaiveAsync did not reproduce a residency/wasted-traffic failure in this workload.
+- Median AL P95 resume latency: OnDemand 107.75 ms; NaiveAsync 56.38 ms; FixedCount2 79.99 ms; DynamicBlock 56.49 ms. DynamicBlock versus FixedCount2 changed P50/P95 by -24.00%/-29.38%, combined throughput by -3.01%, and X slowdown by +0.032.
+- Result: `RESULT_A`; next direction `DYNAMIC_BLOCK_RESERVATION_VALIDATED`. The arithmetic `448 + 64` equals 512 and is admitted under the explicitly frozen `<=512` rule; no hidden threshold was applied.
+- Results: `results/phase3v/`. Earlier TraceLab-selection artifacts were preserved separately as `results/phase3v_tracelab_incomplete/`; no Phase 3W work was started.
+- Setup instrumentation: one measured attempt stopped on delayed per-request GPU→CPU counter attribution, with aggregate expected bytes conserved; after adding bounded counter-settling polls, the repetition reran successfully. No failed attempt was included in the measured dataset.

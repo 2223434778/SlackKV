@@ -1,0 +1,13 @@
+{
+  "dataset": {"release": "v0.0.1", "SHA256": "PASS"},
+  "selected": {"episodes": 0, "resume_jobs": 0},
+  "eligibility_counts": {
+    "input_tokens_total": {"small": 0, "medium": 11, "large": 2},
+    "prefix_tokens_diagnostic": {"small": 0, "medium": 5, "large": 1}
+  },
+  "integration": "0/3",
+  "measured": "0/9",
+  "real_resume_correctness": "0/216",
+  "Result": "EXPERIMENT_INVALID_SELECTION",
+  "next_direction": "REVISE_TRACE_ELIGIBILITY_OR_DATASET_SNAPSHOT"
+}

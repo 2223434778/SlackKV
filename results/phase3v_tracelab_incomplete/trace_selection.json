@@ -1,0 +1,5 @@
+{
+  "selected": [],
+  "status": "FAILED_ELIGIBILITY_GATE",
+  "reason": "The pinned dataset contains zero eligible small four-boundary episodes; the required 2/2/2 size balance cannot be formed without changing frozen criteria."
+}
