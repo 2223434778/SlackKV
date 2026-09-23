@@ -1,0 +1,17 @@
+{
+  "policies": ["OnDemand-K2", "Blocking70-K2", "NaiveAsync40-K2", "ReservationLedger2-Async40-K2"],
+  "sessions": "ABCDEFGHIJKL",
+  "deadlines_ms": [300, 320, 340, 360, 900, 920, 940, 960, 1500, 1520, 1540, 1560],
+  "gate_limit": 2,
+  "async_service_ms": 40,
+  "blocking_service_ms": 70,
+  "resume_guard_ms": 110,
+  "lease_budget_blocks": 512,
+  "session_lease_blocks": 256,
+  "handoff_guard_ms": 100,
+  "resume_max_tokens": 32,
+  "background_max_tokens": 256,
+  "gpu_kv_bytes": 1073741824,
+  "cpu_external_bytes": 2147483648,
+  "measured_repetitions": 3
+}

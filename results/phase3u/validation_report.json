@@ -1,0 +1,70 @@
+{
+  "x_only_runs": "3/3",
+  "integration_runs": "4/4",
+  "measured_runs": "12/12",
+  "token_correctness": "144/144",
+  "source_conservation": "12/12",
+  "K2_valid": "12/12",
+  "background_valid": "12/12",
+  "policy_summaries": {
+    "OnDemand-K2": {
+      "Policy": "OnDemand-K2",
+      "AL_P95_Resume_ms": 115.1105503309518,
+      "Completion_P95_ms": 584.2084493031725,
+      "AL_tok_s": 214.34244354137283,
+      "X_Slowdown": 1.064404110825724,
+      "Combined_tok_s": 162.3958243215839,
+      "Local_percent": 0.0,
+      "Promotion_Useful_percent": "NA",
+      "Total_H2D_MiB": 1344.0,
+      "Duplicate_H2D_MiB": 0.0
+    },
+    "Blocking70-K2": {
+      "Policy": "Blocking70-K2",
+      "AL_P95_Resume_ms": 96.40595759451388,
+      "Completion_P95_ms": 645.7519586100243,
+      "AL_tok_s": 212.69902331848968,
+      "X_Slowdown": 1.1074926418122488,
+      "Combined_tok_s": 156.07759046233892,
+      "Local_percent": 33.33333333333333,
+      "Promotion_Useful_percent": 33.33333333333333,
+      "Total_H2D_MiB": 2240.0,
+      "Duplicate_H2D_MiB": 896.0
+    },
+    "NaiveAsync40-K2": {
+      "Policy": "NaiveAsync40-K2",
+      "AL_P95_Resume_ms": 115.92727897595614,
+      "Completion_P95_ms": 689.160724463407,
+      "AL_tok_s": 208.1016626701439,
+      "X_Slowdown": 1.136343061100036,
+      "Combined_tok_s": 152.1149632589775,
+      "Local_percent": 33.33333333333333,
+      "Promotion_Useful_percent": 33.33333333333333,
+      "Total_H2D_MiB": 2240.0,
+      "Duplicate_H2D_MiB": 896.0
+    },
+    "ReservationLedger2-Async40-K2": {
+      "Policy": "ReservationLedger2-Async40-K2",
+      "AL_P95_Resume_ms": 89.03603029996157,
+      "Completion_P95_ms": 613.7964328411035,
+      "AL_tok_s": 212.47322224095967,
+      "X_Slowdown": 1.094448963374332,
+      "Combined_tok_s": 157.93772827550742,
+      "Local_percent": 50.0,
+      "Promotion_Useful_percent": 100.0,
+      "Total_H2D_MiB": 1344.0,
+      "Duplicate_H2D_MiB": 0.0
+    }
+  },
+  "Reservation": {
+    "promotions": 18,
+    "skips": 18,
+    "useful": 18,
+    "remote_waits": 0,
+    "internal_ready_misses": 0,
+    "lease_leaks": 0,
+    "max_reserved_blocks": 512
+  },
+  "Result": "A",
+  "next_direction": "TRACE_DRIVEN_RESERVATION"
+}
