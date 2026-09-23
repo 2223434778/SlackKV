@@ -1,0 +1,30 @@
+{
+  "measured_matrix_allowed": false,
+  "oracle": {
+    "present": true,
+    "strict_reservation_pass": true
+  },
+  "pass": false,
+  "raw": {
+    "failure": {
+      "client_error": "stream completed without a generated token",
+      "measurements_included": false,
+      "observed_server_error": "NOT_INDEPENDENTLY_VERIFIABLE_LOG_PATH_REUSED",
+      "policy": "RawPredDynamicBlock512-K2",
+      "repetition": 0,
+      "server_log": "results/phase3w/server_logs/mixed_error_dynamicblock512_async40_k2_0.log",
+      "server_log_caveat": "Phase 3V-derived workload/policy labels shared one filename across the three integration policies; the subsequent Safe run overwrote the Raw log. The current path cannot verify the Raw server exception.",
+      "stage": "mixed-error integration",
+      "status": "REQUEST_FAILURE_ROOT_CAUSE_LOG_NOT_PRESERVED"
+    },
+    "present": false,
+    "universal_pass": false
+  },
+  "reason": "Raw client stream ended without a generated token and its server root cause is not independently verifiable because its log was overwritten; Safe promoted 5/12 instead of the frozen 6/6 requirement.",
+  "safe": {
+    "present": true,
+    "strict_reservation_pass": false
+  },
+  "stage_attempts": 3,
+  "valid_record_count": 2
+}

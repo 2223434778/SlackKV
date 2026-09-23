@@ -1,0 +1,3 @@
+X_TPOT_ms,X_decode_duration_ms,X_finished_ms,X_first_token_ms,X_slowdown,active_through_L_first_token,baseline_X_duration_ms,policy,repetition,workload
+15.634167733336582,3986.7127720008284,3986.7127720008284,0.0,1.0881852423234102,True,3663.634294000076,OracleDynamicBlock512-K2,0,mixed_error
+15.04002718824018,3835.2069330012455,3835.2069330012455,0.0,1.0468312678703096,True,3663.634294000076,SafePred200-DynamicBlock512-K2,0,mixed_error

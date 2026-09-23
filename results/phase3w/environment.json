@@ -1,0 +1,12 @@
+{
+  "CUDA": "12.6",
+  "GPU": "NVIDIA RTX A6000",
+  "PyTorch": "2.11.0+cu126",
+  "TP": 1,
+  "dtype": "float16",
+  "experiment_python": "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "vLLM": "0.23.0",
+  "vLLM_patch": "Phase 3S physical lease patch reused unchanged; no new Phase 3W vLLM source change",
+  "vLLM_source_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665"
+}

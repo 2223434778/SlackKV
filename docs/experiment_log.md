@@ -391,3 +391,11 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - Result: `RESULT_A`; next direction `DYNAMIC_BLOCK_RESERVATION_VALIDATED`. The arithmetic `448 + 64` equals 512 and is admitted under the explicitly frozen `<=512` rule; no hidden threshold was applied.
 - Results: `results/phase3v/`. Earlier TraceLab-selection artifacts were preserved separately as `results/phase3v_tracelab_incomplete/`; no Phase 3W work was started.
 - Setup instrumentation: one measured attempt stopped on delayed per-request GPU→CPU counter attribution, with aggregate expected bytes conserved; after adding bounded counter-settling polls, the repetition reran successfully. No failed attempt was included in the measured dataset.
+
+## 2026-09-23 — Phase 3W
+
+- Objective: evaluate frozen prediction errors for OracleDynamicBlock512, RawPredDynamicBlock512, and SafePred200DynamicBlock512 using the Phase 3V reservation/lease mechanism; no prediction robustness sweep or measured matrix was completed.
+- Validation: focused Phase 3W + Phase 3V tests 12/12; X-only controls 3/3 (median X decode 3663.63 ms, median TPOT 14.37 ms); zero-error Oracle/Raw regression passed with matching 6-promote/6-skip decisions, 100% useful promotions, no remote waits or lease leaks, and 0 duplicate H2D.
+- Mixed-error integration: Oracle passed the strict check (6 promotions, 6 skips, all useful, no T6 misses/remote waits/internal misses/lease leaks, peak 512 blocks). Safe completed correctly but made 5 promotions and 7 skips, so it failed the frozen 6/6 integration requirement. Raw client stream ended without a generated token; its server log was overwritten by the subsequent Safe run, so the precise Raw server-side root cause is not independently verifiable.
+- Stage gate: failed (only Oracle is strictly valid; Safe reservation split failed and Raw request failed). As required, the 9-run measured matrix was not started. No parameters were tuned and no vLLM source was modified.
+- Results: `results/phase3w/`. Phase 3X and later work were not started.

@@ -1,0 +1,12 @@
+PYTHONPATH=. /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python -m pytest -q tests/test_phase3w.py tests/test_phase3v.py
+PYTHONPATH=. /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python experiments/phase3w/run_phase3w.py --stage x-only --repetition 0
+PYTHONPATH=. /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python experiments/phase3w/run_phase3w.py --stage x-only --repetition 1
+PYTHONPATH=. /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python experiments/phase3w/run_phase3w.py --stage x-only --repetition 2
+PYTHONPATH=. /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python experiments/phase3w/run_phase3w.py --stage zero-error --policy OracleDynamicBlock512-K2 --repetition 0
+PYTHONPATH=. /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python experiments/phase3w/run_phase3w.py --stage zero-error --policy RawPredDynamicBlock512-K2 --repetition 0
+PYTHONPATH=. /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python experiments/phase3w/run_phase3w.py --stage validate-zero
+PYTHONPATH=. /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python experiments/phase3w/run_phase3w.py --stage integration --policy OracleDynamicBlock512-K2 --repetition 0
+PYTHONPATH=. /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python experiments/phase3w/run_phase3w.py --stage integration --policy RawPredDynamicBlock512-K2 --repetition 0
+PYTHONPATH=. /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python experiments/phase3w/run_phase3w.py --stage integration --policy SafePred200-DynamicBlock512-K2 --repetition 0
+PYTHONPATH=. /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python experiments/phase3w/run_phase3w.py --stage validate-integration  # failed; measured stage correctly blocked
+PYTHONPATH=. /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python experiments/phase3w/run_phase3w.py --stage finalize-incomplete

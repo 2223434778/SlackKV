@@ -1,0 +1,7 @@
+{
+  "X_TPOT_ms": 14.30817313725414,
+  "X_decode_duration_ms": 3648.584149999806,
+  "generated_token_count": 256,
+  "repetition": 0,
+  "token_validation": "PASS"
+}

@@ -1,0 +1,4 @@
+policy,observation_scope,runs,native_prefetch_count,reservation_skip_count,promotion_useful_rate,promotion_deadline_miss_count,promotion_remote_wait_count,promotion_internal_ready_miss_count,AL_P95_resume_ms,combined_decode_tok_s,X_slowdown,local_fraction,total_KV_H2D_mib,duplicate_KV_H2D_mib,max_reserved_blocks,lease_leak_count,status
+OracleDynamicBlock512-K2,single integration run; not measured statistic,1,6,6,1.0,0,0,0,87.2285872008033,157.27242865437853,1.0881852423234102,0.5,1344.0,0.0,512,0,INTEGRATION_ONLY; strict reservation PASS
+RawPredDynamicBlock512-K2,no valid integration metrics,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,REQUEST_FAILED_ROOT_CAUSE_UNVERIFIED
+SafePred200-DynamicBlock512-K2,single integration run; not measured statistic,1,5,7,1.0,0,0,0,86.15400365120149,163.4853114716656,1.0468312678703096,0.4166666666666667,1344.0,0.0,512,0,INTEGRATION_ONLY; strict reservation FAIL
