@@ -100,7 +100,10 @@ def main():
         r['blocking_wait_call_count'] = r.get('blocking_wait_call_count', 0)
         r['blocking_wait_total_ms'] = r.get('blocking_wait_total_ms', 0.0)
         r['blocking_wait_max_ms'] = r.get('blocking_wait_max_ms', 0.0)
-        r['max_active_leased_blocks'] = lease_peaks.get(int(rep), {}).get('peak_blocks', 0)
+        r['max_active_leased_blocks'] = lease_peaks.get(int(rep), {}).get('peak_blocks', 0) if policy == POLICIES[3] else 'NA'
+        r['max_reserved_blocks'] = r.get('active_reservation_max_blocks', 'NA') if policy == POLICIES[3] else 'NA'
+        if policy != POLICIES[3]:
+            r['lease_acquire_count'] = r['lease_release_count'] = r['lease_leak_count'] = 'NA'
         for field in ('target_to_issue_ms', 'issue_to_T6_ms', 'target_to_T6_ms'):
             values = [float(n[field]) for n in nrows if n.get(field) not in ('', 'NA', None)]
             r[field + '_P50'] = statistics.median(values) if values else 'NA'
@@ -142,7 +145,7 @@ def main():
             'promotion_internal_ready_miss_count': median(subset, 'promotion_internal_ready_miss_count'),
             'reservation_skip_count': median(subset, 'reservation_skip_count'),
             'lease_leak_count': median(subset, 'lease_leak_count'),
-            'max_reserved_blocks': median(subset, 'active_reservation_max_blocks'),
+            'max_reserved_blocks': median(subset, 'active_reservation_max_blocks') if p == POLICIES[3] else 'NA',
             'max_active_leased_blocks': median(subset, 'max_active_leased_blocks'),
             'blocking_wait_call_count': median(subset, 'blocking_wait_call_count'),
             'blocking_wait_total_ms': median(subset, 'blocking_wait_total_ms'),
