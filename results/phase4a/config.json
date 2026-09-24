@@ -1,0 +1,12 @@
+{
+  "phase": "4A",
+  "dataset_release": "v0.0.2",
+  "block_size_tokens": 16,
+  "reference_service_budgets_ms": [
+    40,
+    70,
+    200,
+    240
+  ],
+  "gpu_serving_benchmark": false
+}

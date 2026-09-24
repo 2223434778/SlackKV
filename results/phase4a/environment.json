@@ -1,0 +1,6 @@
+{
+  "python": "3.11.16",
+  "duckdb": "1.4.1",
+  "os": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+  "git_start": "1f3e88d517cb163cf65ff2c761c2ee60fe983624"
+}

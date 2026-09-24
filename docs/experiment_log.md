@@ -399,3 +399,18 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - Mixed-error integration: Oracle passed the strict check (6 promotions, 6 skips, all useful, no T6 misses/remote waits/internal misses/lease leaks, peak 512 blocks). Safe completed correctly but made 5 promotions and 7 skips, so it failed the frozen 6/6 integration requirement. Raw client stream ended without a generated token; its server log was overwritten by the subsequent Safe run, so the precise Raw server-side root cause is not independently verifiable.
 - Stage gate: failed (only Oracle is strictly valid; Safe reservation split failed and Raw request failed). As required, the 9-run measured matrix was not started. No parameters were tuned and no vLLM source was modified.
 - Results: `results/phase3w/`. Phase 3X and later work were not started.
+
+## 2026-09-24 — Phase 4A offline eligibility gate
+
+- Verified TraceLab v0.0.2 `syfi_coding_trace.duckdb` against the frozen SHA256 `a7bab286bc640844560850965ccf47975cf66407154132abaab90f27ec9be744` and inspected the released schema.
+- Applied the frozen next-round `prefix_tokens`, 300–5000-ms tool-pause, 1024–8192-token prefix, at-most-9000-token input, complete-timestamp, adjacent-round, and session-hash split rules. Context shrink was permitted per the request.
+- The replay split contained 19 eligible boundaries and only 4 valid three-boundary episodes from 2 sessions, below the predeclared minimum of 24. Stopped with `TRACE_ELIGIBILITY_INSUFFICIENT` before workload selection, capacity-profile calculation, GPU calibration, integration, or measured policy runs. No filters were relaxed.
+- Focused offline tests passed 5/5. Diagnostic artifacts: `results/phase4a/`. This is an incomplete experiment requiring manual review, not a serving result.
+
+## 2026-09-24 — Phase 4A revised real-trace semantics audit
+
+- Objective: audit real inter-turn slack, KV opportunity, causal predictability, and structural replay readiness in the pinned TraceLab v0.0.2 public DuckDB, without GPU serving or vLLM changes.
+- Command: `PYTHONPATH=/tmp/slackkv-phase4a-deps /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python experiments/phase4a/run_phase4a.py external/tracelab_v002/syfi_coding_trace.duckdb results/phase4a`.
+- Dataset SHA256 matched the pinned `a7bab286bc640844560850965ccf47975cf66407154132abaab90f27ec9be744`; schema contained 665,453 rounds, 743,819 tool calls, 2,688,829 timing events, and 8,058 sessions. Focused tests passed 10/10.
+- Stage A found no explicit next-LLM request/start timestamp. Tool completion, input-ready, and output-side events are not interchangeable with request start. Result: `RESULT_C_NO_VALID_RESUME_SEMANTICS`. Opportunity, predictors, candidate pool, and service-model audit were not run after this mandatory gate; no Phase 4B work began.
+- Results: `results/phase4a/`. This revised protocol supersedes the earlier uncommitted eligibility-only Phase 4A attempt above without changing historical phase directories.

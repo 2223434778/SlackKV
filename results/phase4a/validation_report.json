@@ -1,0 +1,26 @@
+{
+  "dataset_sha256_pass": true,
+  "schema_audit_pass": true,
+  "total_sessions": 8058,
+  "total_tool_boundaries": 574485,
+  "valid_timing_boundaries": null,
+  "replayable_boundaries": null,
+  "actual_resume_semantics": {
+    "explicit_llm_request_start_event_types": [],
+    "actual_resume_time": "UNOBSERVABLE",
+    "tool_result_used_as_resume_time": false,
+    "user_message_used_as_resume_time": false,
+    "first_next_round_event_used_as_resume_time": false
+  },
+  "future_leakage_count": null,
+  "predictor_evaluated_count": 0,
+  "sessions_ge_1": null,
+  "sessions_ge_2": null,
+  "sessions_ge_3": null,
+  "sessions_ge_4": null,
+  "sessions_ge_5": null,
+  "structural_trace_replay": "NO",
+  "structural_trace_replay_reason": "A trace-faithful resume timeline cannot be constructed without a next-LLM-start timestamp; prefix-only reconstruction was not evaluated after the timing gate.",
+  "promotion_service_model_status": "NOT_EVALUATED_AFTER_TIMING_GATE",
+  "result": "RESULT_C_NO_VALID_RESUME_SEMANTICS"
+}

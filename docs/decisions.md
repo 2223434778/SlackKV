@@ -58,3 +58,10 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - Decision: do not treat a target-time `kv_cache_usage_perc` headroom check as a guarantee that promoted KV remains resident until resume.
 - Evidence: all twelve promotions had at least 196.13 MiB measured free space against the frozen 144-MiB requirement, but seven later entered `WAITING_FOR_REMOTE_KVS`; aggregate source conservation showed 48.01% local and 51.99% external tokens.
 - Consequence: retain the negative Result B and evaluate explicit residency reservation only in a separately authorized phase. The 144-MiB threshold was not tuned.
+
+## 2026-09-24 — Phase 4A requires an observed LLM request-start timestamp
+
+- Decision: do not equate TraceLab v0.0.2 `tool_calls.result_at`, a next-round `tool_result`/`user_message`, or any output-side timing event with the actual start of the next LLM request. The public DuckDB does not contain an explicit next-LLM request/start event, so Phase 4A stops at `RESULT_C_NO_VALID_RESUME_SEMANTICS` rather than generating pseudo-slack or predictor errors.
+- Reason: tool completion/input readiness can precede model admission or execution by an unobserved interval. Calling it resume time would invalidate a deadline-aware prediction evaluation. The released `prefix_tokens` value is cached-input-token accounting per TraceLab documentation, not a semantic KV-block identity.
+- Alternative considered: the earlier Phase 4A eligibility-only attempt used latest tool result as the resume boundary. That is a useful proxy for some descriptive analyses but not the actual-resume timestamp required by the revised protocol.
+- Consequence: no real-trace opportunity, causal-predictor, or structural timed-replay conclusion is drawn from this dataset. Existing Phase 1 oracle-proxy interpretations remain historical and are not rewritten.

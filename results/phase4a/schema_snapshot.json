@@ -1,0 +1,473 @@
+{
+  "tables": {
+    "rounds": {
+      "row_count": 665453,
+      "columns": [
+        {
+          "name": "round_pk",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "ingest_seq",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "provider",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "project",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "session_id",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "round_index",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "round_id",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "model",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "input_tokens_total",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "prefix_tokens",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "newly_append_tokens",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "claude_uncached_input_tokens",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "claude_cache_creation_input_tokens",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "claude_cache_read_input_tokens",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "output_tokens",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "current_input_event_count",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "current_user_message_count",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "current_tool_result_count",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "current_user_message_chars",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "current_tool_result_chars",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "current_input_chars",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "first_input_event_type",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "user",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "store",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "trace_key",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "turn_id",
+          "type": "UUID",
+          "nullable": "YES"
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "type": "BIGINT",
+          "nullable": "YES"
+        }
+      ]
+    },
+    "tool_calls": {
+      "row_count": 743819,
+      "columns": [
+        {
+          "name": "round_pk",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "tool_index",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "tool_name",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "tool_call_id",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "emitted_at",
+          "type": "TIMESTAMP",
+          "nullable": "YES"
+        },
+        {
+          "name": "result_at",
+          "type": "TIMESTAMP",
+          "nullable": "YES"
+        },
+        {
+          "name": "tool_wall_latency_ms",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "tool_internal_latency_ms",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "is_error",
+          "type": "BOOLEAN",
+          "nullable": "YES"
+        },
+        {
+          "name": "input_chars",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "result_chars",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "continuation_of_tool_call_id",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "command_status",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "command_exit_code",
+          "type": "HUGEINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "executables",
+          "type": "VARCHAR[]",
+          "nullable": "YES"
+        },
+        {
+          "name": "executable_parse_status",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "executable_parse_reason",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "command_skeleton",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        }
+      ]
+    },
+    "timing_events": {
+      "row_count": 2688829,
+      "columns": [
+        {
+          "name": "round_pk",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "event_index",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "event_type",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP",
+          "nullable": "YES"
+        },
+        {
+          "name": "tool_call_id",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "tool_index",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "tool_name",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        },
+        {
+          "name": "is_error",
+          "type": "BOOLEAN",
+          "nullable": "YES"
+        },
+        {
+          "name": "result_chars",
+          "type": "BIGINT",
+          "nullable": "YES"
+        },
+        {
+          "name": "content_chars",
+          "type": "BIGINT",
+          "nullable": "YES"
+        }
+      ]
+    },
+    "trace_source": {
+      "row_count": 1,
+      "columns": [
+        {
+          "name": "path",
+          "type": "VARCHAR",
+          "nullable": "YES"
+        }
+      ]
+    }
+  },
+  "identifiers": {
+    "logical_session": "rounds.session_id",
+    "round_order": "rounds.round_index",
+    "round_join": "rounds.round_pk"
+  },
+  "timestamp_fields": [
+    "tool_calls.emitted_at",
+    "tool_calls.result_at",
+    "timing_events.timestamp"
+  ],
+  "token_fields": [
+    "rounds.input_tokens_total",
+    "rounds.prefix_tokens",
+    "rounds.newly_append_tokens"
+  ],
+  "event_type_counts": [
+    {
+      "event_type": "usage_report",
+      "source": "event_msg.token_count",
+      "count": 360008
+    },
+    {
+      "event_type": "tool_call",
+      "source": "response_item.function_call",
+      "count": 359728
+    },
+    {
+      "event_type": "tool_result",
+      "source": "response_item.function_call_output",
+      "count": 323097
+    },
+    {
+      "event_type": "tool_call",
+      "source": "assistant.content.tool_use",
+      "count": 305005
+    },
+    {
+      "event_type": "tool_result",
+      "source": "user.content.tool_result",
+      "count": 304627
+    },
+    {
+      "event_type": "reasoning",
+      "source": "response_item.reasoning",
+      "count": 267574
+    },
+    {
+      "event_type": "text",
+      "source": "assistant.content.text",
+      "count": 194602
+    },
+    {
+      "event_type": "text",
+      "source": "response_item.message",
+      "count": 159100
+    },
+    {
+      "event_type": "reasoning",
+      "source": "assistant.content.thinking",
+      "count": 125058
+    },
+    {
+      "event_type": "tool_call",
+      "source": "response_item.custom_tool_call",
+      "count": 79086
+    },
+    {
+      "event_type": "tool_result",
+      "source": "response_item.custom_tool_call_output",
+      "count": 60948
+    },
+    {
+      "event_type": "user_message",
+      "source": "user.message",
+      "count": 57168
+    },
+    {
+      "event_type": "user_message",
+      "source": "event_msg.user_message",
+      "count": 38278
+    },
+    {
+      "event_type": "tool_result",
+      "source": "event_msg.exec_command_end",
+      "count": 36423
+    },
+    {
+      "event_type": "tool_result",
+      "source": "event_msg.patch_apply_end",
+      "count": 18127
+    }
+  ],
+  "first_event_type_counts": [
+    {
+      "event_type": "tool_result",
+      "source": "user.content.tool_result",
+      "count": 261561
+    },
+    {
+      "event_type": "tool_result",
+      "source": "response_item.function_call_output",
+      "count": 210591
+    },
+    {
+      "event_type": "tool_result",
+      "source": "response_item.custom_tool_call_output",
+      "count": 59203
+    },
+    {
+      "event_type": "user_message",
+      "source": "user.message",
+      "count": 43781
+    },
+    {
+      "event_type": "user_message",
+      "source": "event_msg.user_message",
+      "count": 35435
+    },
+    {
+      "event_type": "tool_result",
+      "source": "event_msg.patch_apply_end",
+      "count": 16075
+    },
+    {
+      "event_type": "tool_result",
+      "source": "event_msg.exec_command_end",
+      "count": 16055
+    },
+    {
+      "event_type": "text",
+      "source": "response_item.message",
+      "count": 15172
+    },
+    {
+      "event_type": "reasoning",
+      "source": "response_item.reasoning",
+      "count": 6874
+    },
+    {
+      "event_type": "tool_call",
+      "source": "response_item.function_call",
+      "count": 507
+    },
+    {
+      "event_type": "tool_call",
+      "source": "response_item.custom_tool_call",
+      "count": 96
+    },
+    {
+      "event_type": "text",
+      "source": "assistant.content.text",
+      "count": 45
+    },
+    {
+      "event_type": "reasoning",
+      "source": "assistant.content.thinking",
+      "count": 36
+    },
+    {
+      "event_type": "tool_call",
+      "source": "assistant.content.tool_use",
+      "count": 22
+    }
+  ]
+}
