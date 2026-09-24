@@ -1,0 +1,7 @@
+{
+  "stage": "integration",
+  "policy": "RawPred-ClosedLoop-DynamicBlock512-K2",
+  "repetition": 0,
+  "client_exception": "ValueError: sleep length must be non-negative in inherited wait_until; fixed with saturated Phase 3W-FIX wait loop",
+  "measurements_included": false
+}

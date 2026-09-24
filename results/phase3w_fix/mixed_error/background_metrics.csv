@@ -1,0 +1,10 @@
+X_TPOT_ms,X_decode_duration_ms,X_finished_ms,X_first_token_ms,X_slowdown,active_through_L_first_token,baseline_X_duration_ms,policy,repetition,workload
+15.21854431764451,3880.72880099935,3880.72880099935,0.0,1.0740888329692837,True,3613.0426849995274,OracleDynamicBlock512-K2,0,mixed_error_measured_oracledynamicblock512_k2
+15.130103709787933,3858.176445995923,3858.176445995923,0.0,1.0678469042212346,True,3613.0426849995274,OracleDynamicBlock512-K2,1,mixed_error_measured_oracledynamicblock512_k2
+15.13641429408773,3859.785644992371,3859.785644992371,0.0,1.0682922903228518,True,3613.0426849995274,OracleDynamicBlock512-K2,2,mixed_error_measured_oracledynamicblock512_k2
+15.053828282386759,3838.7262120086234,3838.7262120086234,0.0,1.0624635651126069,True,3613.0426849995274,RawPred-ClosedLoop-DynamicBlock512-K2,0,mixed_error_measured_rawpred_closedloop_dynamicblock512_k2
+15.135191203957861,3859.4737570092548,3859.4737570092548,0.0,1.068205967516755,True,3613.0426849995274,RawPred-ClosedLoop-DynamicBlock512-K2,1,mixed_error_measured_rawpred_closedloop_dynamicblock512_k2
+15.083443525523476,3846.2780990084866,3846.2780990084866,0.0,1.0645537388687092,True,3613.0426849995274,RawPred-ClosedLoop-DynamicBlock512-K2,2,mixed_error_measured_rawpred_closedloop_dynamicblock512_k2
+15.398995650991543,3926.743891002843,3926.743891002843,0.0,1.086824660916885,True,3613.0426849995274,SafePred200-ClosedLoop-DynamicBlock512-K2,0,mixed_error_measured_safepred200_closedloop_dynamicblock512_k2
+15.264007450976209,3892.321899998933,3892.321899998933,0.0,1.0772975133006053,True,3613.0426849995274,SafePred200-ClosedLoop-DynamicBlock512-K2,1,mixed_error_measured_safepred200_closedloop_dynamicblock512_k2
+15.143835058780478,3861.677939989022,3861.677939989022,0.0,1.0688160303286112,True,3613.0426849995274,SafePred200-ClosedLoop-DynamicBlock512-K2,2,mixed_error_measured_safepred200_closedloop_dynamicblock512_k2

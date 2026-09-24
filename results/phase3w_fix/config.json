@@ -1,0 +1,62 @@
+{
+  "K": 2,
+  "X_max_tokens": 256,
+  "X_prompt_tokens": 9500,
+  "actual_deadlines_ms": {
+    "A": 300.0,
+    "B": 320.0,
+    "C": 340.0,
+    "D": 360.0,
+    "E": 900.0,
+    "F": 920.0,
+    "G": 940.0,
+    "H": 960.0,
+    "I": 1500.0,
+    "J": 1520.0,
+    "K": 1540.0,
+    "L": 1560.0
+  },
+  "base_commit": "54ee18f1f03b6333eff524a4c1707a1eee7c4306",
+  "blocks_per_session": 256,
+  "cpu_external_kv_bytes": 2147483648,
+  "gpu_kv_bytes": 1073741824,
+  "handoff_guard_ms": 100.0,
+  "lease_budget_blocks": 512,
+  "policies": [
+    "OracleDynamicBlock512-K2",
+    "RawPred-ClosedLoop-DynamicBlock512-K2",
+    "SafePred200-ClosedLoop-DynamicBlock512-K2"
+  ],
+  "prediction_error_ms": {
+    "A": 200.0,
+    "B": 200.0,
+    "C": 200.0,
+    "D": 200.0,
+    "E": -50.0,
+    "F": -50.0,
+    "G": -50.0,
+    "H": -50.0,
+    "I": 120.0,
+    "J": 120.0,
+    "K": 120.0,
+    "L": 120.0
+  },
+  "prediction_safety_ms": 200,
+  "resume_max_tokens": 32,
+  "service_budget_ms": 40.0,
+  "sessions": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+  ],
+  "tokens_per_session": 4096
+}
