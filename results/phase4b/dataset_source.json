@@ -1,0 +1,11 @@
+{
+  "dataset_id": "netpreme/coding_agent_traces",
+  "resolved_revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
+  "revision_source": "current public HF dataset Files page commit link (main)",
+  "subset_names": ["gpt-oss-120b-pro", "gpt-oss-120b-verified", "opus-pro"],
+  "row_counts": {"gpt-oss-120b-pro": 731, "gpt-oss-120b-verified": 500, "opus-pro": 731},
+  "public_card_turn_counts": {"gpt-oss-120b-pro": 23964, "gpt-oss-120b-verified": 14302},
+  "hub_api_status": "timed out from execution host; revision verified via public dataset page commit link",
+  "data_downloaded_bytes": 0,
+  "raw_prompt_text_downloaded": false
+}

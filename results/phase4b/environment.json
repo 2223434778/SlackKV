@@ -1,0 +1,11 @@
+{
+  "audit_date": "2026-09-24",
+  "execution": "Windows local metadata tools plus read-only GitHub API; HF web viewer",
+  "pyarrow": true,
+  "duckdb": false,
+  "datasets": false,
+  "huggingface_hub": false,
+  "gpu_used": false,
+  "dataset_bytes_downloaded": 0,
+  "network_notes": "GitHub public API succeeded. Hugging Face Hub API timed out; page/viewer was accessible through web browsing."
+}

@@ -1,0 +1,14 @@
+{
+  "repository": "netpreme/coding_agents",
+  "commit_sha": "83d8d1280b406b0484693017900763a0b0ad8d19",
+  "commit_date": "2026-07-08T17:32:57Z",
+  "commit_message": "update readme",
+  "commit_changed_files": ["README.md"],
+  "files_audited": ["README.md", "coding_agents/trace_collection/pipeline/proxy/app.py", "coding_agents/trace_collection/pipeline/proxy/recorder.py", "coding_agents/serving/metric_scraper.py"],
+  "file_blob_sha": {
+    "coding_agents/trace_collection/pipeline/proxy/app.py": "0098f540bf7106eb37729aa0bd2da21fecbd0926",
+    "coding_agents/trace_collection/pipeline/proxy/recorder.py": "49d9836d093f5abb7b1ddcf2bd8fddbcf6c444eb",
+    "coding_agents/serving/metric_scraper.py": "027d4b4896785473cf1b5452104e88ef8cf7ef22"
+  },
+  "audited_by": "GitHub commit/tree/blob API at the pinned SHA; no source checkout retained"
+}

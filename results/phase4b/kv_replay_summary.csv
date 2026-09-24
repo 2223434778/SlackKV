@@ -1,0 +1,3 @@
+subset,sessions,turns,isl_available,isl_new_available,osl_available,token_accounting_valid,reusable_kv_distribution,required_blocks_distribution,status
+gpt-oss-120b-pro,731,23964,aggregate_only,aggregate_only,aggregate_only,NA,NA,NA,NOT_COMPUTED_WITHOUT_ROW_LEVEL_SCHEMA
+gpt-oss-120b-verified,500,14302,aggregate_only,aggregate_only,aggregate_only,NA,NA,NA,NOT_COMPUTED_WITHOUT_ROW_LEVEL_SCHEMA

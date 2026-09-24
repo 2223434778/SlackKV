@@ -1,0 +1,13 @@
+{
+  "phase": "4B",
+  "objective": "Offline public trace timing and replayability audit",
+  "upstream_repository": "netpreme/coding_agents",
+  "upstream_commit": "83d8d1280b406b0484693017900763a0b0ad8d19",
+  "dataset_id": "netpreme/coding_agent_traces",
+  "dataset_revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
+  "primary_subsets": ["gpt-oss-120b-pro", "gpt-oss-120b-verified"],
+  "raw_text_download": false,
+  "parquet_download": false,
+  "timing_slack_calculated": false,
+  "classification": "RESULT_C_TIMING_NOT_RECONSTRUCTABLE"
+}

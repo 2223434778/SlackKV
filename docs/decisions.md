@@ -65,3 +65,10 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - Reason: tool completion/input readiness can precede model admission or execution by an unobserved interval. Calling it resume time would invalidate a deadline-aware prediction evaluation. The released `prefix_tokens` value is cached-input-token accounting per TraceLab documentation, not a semantic KV-block identity.
 - Alternative considered: the earlier Phase 4A eligibility-only attempt used latest tool result as the resume boundary. That is a useful proxy for some descriptive analyses but not the actual-resume timestamp required by the revised protocol.
 - Consequence: no real-trace opportunity, causal-predictor, or structural timed-replay conclusion is drawn from this dataset. Existing Phase 1 oracle-proxy interpretations remain historical and are not rewritten.
+
+## 2026-09-24 — Do not treat coding-agent `tool_exec_ms` as resume slack
+
+- Decision: for the pinned `netpreme/coding_agents` implementation, do not use `tool_exec_ms` as response-completion-to-next-request slack.
+- Evidence: the proxy calls `note_response_time()` when a new request arrives, immediately before forwarding; recorder stores that current timestamp and next call subtracts it. This makes the value an inter-request arrival interval. The metrics scraper separately emits E2E counter deltas averaged per completed request when multiple completions land in one polling tick, so exact request-time pairing is not guaranteed by row order.
+- Alternative considered: following the README field description and using `tool_exec_ms` as ground-truth tool gap. Rejected because pinned code contradicts that description.
+- Consequence: use neither `tool_exec_ms` nor poll-window E2E as an exact slack label without a verified request-ID alignment source. Phase 4B does not create timed replay jobs.

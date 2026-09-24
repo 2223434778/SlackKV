@@ -1,0 +1,13 @@
+{
+  "dataset_id": "netpreme/coding_agent_traces",
+  "revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
+  "subsets": {
+    "gpt-oss-120b-pro": {"split": "train", "rows": 731, "viewer_top_level_fields": {"instance_id": "string", "dataset": "string", "model": "string", "turns": "list<struct>"}, "turn_fields_observed_in_viewer_example": ["isl_new", "osl", "isl_new_text"], "turn_schema_complete": false},
+    "gpt-oss-120b-verified": {"split": "train", "rows": 500, "viewer_top_level_fields": {"instance_id": "string", "dataset": "string", "model": "string", "turns": "list<struct>"}, "turn_schema_complete": false},
+    "opus-pro": {"rows": 731, "timing_analysis_included": false, "reason": "outside primary GPT-OSS timing scope"}
+  },
+  "timing_fields_observed": [],
+  "timing_fields_not_verified": ["request_time", "e2e_ms", "tool_exec_ms", "n", "ts"],
+  "token_fields_documented_by_dataset_card": ["isl", "isl_new", "osl"],
+  "source_note": "The viewer row is truncated because nested turns include text; no full nested Parquet schema was retrieved. Absence of timing fields is therefore an absence of verified public row-level timing evidence, not a claim that every hidden nested field was exhaustively enumerated."
+}

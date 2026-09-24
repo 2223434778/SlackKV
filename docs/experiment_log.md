@@ -414,3 +414,12 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - Dataset SHA256 matched the pinned `a7bab286bc640844560850965ccf47975cf66407154132abaab90f27ec9be744`; schema contained 665,453 rounds, 743,819 tool calls, 2,688,829 timing events, and 8,058 sessions. Focused tests passed 10/10.
 - Stage A found no explicit next-LLM request/start timestamp. Tool completion, input-ready, and output-side events are not interchangeable with request start. Result: `RESULT_C_NO_VALID_RESUME_SEMANTICS`. Opportunity, predictors, candidate pool, and service-model audit were not run after this mandatory gate; no Phase 4B work began.
 - Results: `results/phase4a/`. This revised protocol supersedes the earlier uncommitted eligibility-only Phase 4A attempt above without changing historical phase directories.
+
+## 2026-09-24 — Phase 4B public timing/replayability audit
+
+- Objective: determine whether `netpreme/coding_agent_traces` exposes a request-level timeline sufficient for timed trace replay; CPU/offline only.
+- Pinned inputs: `netpreme/coding_agents@83d8d1280b406b0484693017900763a0b0ad8d19`; HF page revision `d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67`.
+- Source result: proxy `request_time` is receive time; scraper `e2e_ms` is a delta average across completions in a Prometheus polling window when `n>1`; `tool_exec_ms` is current request arrival minus prior request arrival, not response-end slack.
+- Dataset limitation: public viewer row/session shape and aggregate token statistics were visible, but Hub API timed out and nested Parquet schema was not retrieved. No raw text or parquet downloaded; request/e2e coverage and slack distribution remain unmeasured.
+- Result: `RESULT_C_TIMING_NOT_RECONSTRUCTABLE` on verified public timing evidence. Focused tests passed 12/12. No serving, GPU, or predictor stage was run.
+- Results: `results/phase4b/`. Commit/push status recorded after repository sync.

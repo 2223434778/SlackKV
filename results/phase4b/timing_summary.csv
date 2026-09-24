@@ -1,0 +1,4 @@
+scope,sessions,turns,consecutive_pairs,valid_timing_pairs,negative_lt_minus5_count,negative_lt_minus5_fraction,slack_p50_ms,slack_p75_ms,slack_p90_ms,slack_p95_ms,slack_p99_ms,slack_max_ms,status
+gpt-oss-120b-pro,731,23964,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NOT_COMPUTED
+gpt-oss-120b-verified,500,14302,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NOT_COMPUTED
+combined,1231,38266,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NOT_COMPUTED
