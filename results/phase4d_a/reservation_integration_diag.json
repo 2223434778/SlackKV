@@ -1,0 +1,14 @@
+{
+  "K2": true,
+  "X_active_through_last_first_token": true,
+  "lease_leaks": 0,
+  "max_pre_first_concurrency": 1,
+  "native_correct": true,
+  "policy": "SlackKV-Oracle-ReserveLease-K2",
+  "promotion_count": 2,
+  "repetition": 0,
+  "reservation_overcommit": false,
+  "source_conservation": false,
+  "token_count_8_of_8": true,
+  "valid": false
+}

@@ -1,0 +1,31 @@
+{
+  "K2": 2,
+  "P_SAFE_MS": 102,
+  "block_size": 16,
+  "boundary": 0,
+  "cpu_kv_bytes": 8589934592,
+  "episodes": 8,
+  "gpu_kv_bytes": 2147483648,
+  "measured_matrix_started": false,
+  "phase": "4D-A",
+  "policies": [
+    "OnDemand-K2",
+    "NaiveJIT-Async-K2",
+    "SlackKV-Oracle-ReserveLease-K2"
+  ],
+  "reservation_budget_blocks": 3510,
+  "reservation_fraction": 0.75,
+  "resume_guard_ms": 110,
+  "stage_A0": {
+    "actual_block_size": 16,
+    "external_hit_tokens": 0.0,
+    "pass": true,
+    "priming_1024_hit_tokens": 0.0,
+    "shared_768_hit_tokens": 768.0,
+    "shared_770_hit_tokens": 768.0,
+    "stage": "A0"
+  },
+  "start_commit": "2fea2d810305ef94d65068c812a236b08a19e73c",
+  "total_gpu_kv_blocks": 4681,
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

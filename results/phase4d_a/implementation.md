@@ -1,0 +1,1 @@
+Phase 3S residency-lease vLLM patch reused unchanged; no new vLLM source modifications. Stage 0A and 0D passed; X-only baseline completed 3/3; OnDemand and Reservation integrations passed. NaiveJIT repeatedly stalled with three pending connector-only promotions and did not complete its eight resumes. Stage B was not started.

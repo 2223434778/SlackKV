@@ -1,0 +1,18 @@
+{
+  "client_error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=120.0)",
+  "connector_only_step_lines": 53935,
+  "native_http_200": 5,
+  "native_http_500_on_shutdown": 3,
+  "oom_or_server_crash_observed": false,
+  "policy": "NaiveJIT-Async-K2",
+  "read_timeout_seconds": 120,
+  "scheduler_event_counts": {
+    "FIRST_TOKEN": 3,
+    "REMOTE_KV_READY": 3,
+    "REQUEST_FINISHED": 0,
+    "RESUME_ADMITTED": 3,
+    "RESUME_ARRIVED": 8,
+    "WAITING_FOR_REMOTE_KVS": 3
+  },
+  "status": "INTEGRATION_FAILED_NONPROGRESS"
+}

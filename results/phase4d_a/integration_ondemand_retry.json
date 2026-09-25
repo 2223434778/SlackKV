@@ -1,0 +1,27 @@
+{
+  "K2": true,
+  "X_active_through_last_first_token": true,
+  "X_slowdown": 1.206359050333762,
+  "external_source_tokens": 168016,
+  "lease_leaks": 0,
+  "local_source_tokens": 0,
+  "max_pre_first_concurrency": 2,
+  "native_correct": true,
+  "policy": "OnDemand-K2",
+  "promotion_count": 0,
+  "repetition": 1,
+  "reservation_overcommit": false,
+  "resume_token_counts": [
+    84,
+    47,
+    53,
+    42,
+    98,
+    148,
+    63,
+    53
+  ],
+  "source_conservation": true,
+  "token_count_8_of_8": true,
+  "valid": true
+}

@@ -1,0 +1,30 @@
+{
+  "NaiveJIT_diagnostic": {
+    "client_error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=120.0)",
+    "connector_only_step_lines": 53935,
+    "native_http_200": 5,
+    "native_http_500_on_shutdown": 3,
+    "oom_or_server_crash_observed": false,
+    "policy": "NaiveJIT-Async-K2",
+    "read_timeout_seconds": 120,
+    "scheduler_event_counts": {
+      "FIRST_TOKEN": 3,
+      "REMOTE_KV_READY": 3,
+      "REQUEST_FINISHED": 0,
+      "RESUME_ADMITTED": 3,
+      "RESUME_ARRIVED": 8,
+      "WAITING_FOR_REMOTE_KVS": 3
+    },
+    "status": "INTEGRATION_FAILED_NONPROGRESS"
+  },
+  "P_SAFE_MS": 102,
+  "StageB_started": false,
+  "calibration_valid_measurements": 9,
+  "integration_valid": "2/3",
+  "measured_runs": "0/9",
+  "official_result": null,
+  "phase": "4D-A",
+  "result_note": "No A/B/C result assigned; comparative matrix was not run.",
+  "status": "INCOMPLETE_INTEGRATION_GATE",
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

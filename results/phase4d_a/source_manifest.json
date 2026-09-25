@@ -1,0 +1,14 @@
+{
+  "slackkv_start_commit": "2fea2d810305ef94d65068c812a236b08a19e73c",
+  "phase4c_workload_path": "results/phase4c/hybrid_workload.csv",
+  "phase4c_workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "vllm_source_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "boundary_index": 0,
+  "deadline_source": "Turn0.proxy_pause_ms",
+  "resume_prefix_source": "Turn1.target_cached_tokens/blocks and reconstructed Turn1 prompt",
+  "gpu_kv_bytes": 2147483648,
+  "cpu_external_kv_bytes": 8589934592,
+  "bytes_per_kv_token": 28672,
+  "block_size_tokens": 16,
+  "k2": 2
+}

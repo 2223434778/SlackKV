@@ -1,0 +1,199 @@
+{
+  "pass": false,
+  "required_policy_runs": 3,
+  "runs": [
+    {
+      "K2": true,
+      "X_active_through_last_first_token": true,
+      "X_slowdown": 1.206359050333762,
+      "external_source_tokens": 168016,
+      "lease_leaks": 0,
+      "local_source_tokens": 0,
+      "max_pre_first_concurrency": 2,
+      "native_correct": true,
+      "policy": "OnDemand-K2",
+      "promotion_count": 0,
+      "repetition": 1,
+      "reservation_overcommit": false,
+      "resume_token_counts": [
+        84,
+        47,
+        53,
+        42,
+        98,
+        148,
+        63,
+        53
+      ],
+      "source_conservation": true,
+      "token_count_8_of_8": true,
+      "valid": true
+    },
+    {
+      "client_error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=120.0)",
+      "connector_only_step_lines": 53935,
+      "native_http_200": 5,
+      "native_http_500_on_shutdown": 3,
+      "oom_or_server_crash_observed": false,
+      "policy": "NaiveJIT-Async-K2",
+      "read_timeout_seconds": 120,
+      "scheduler_event_counts": {
+        "FIRST_TOKEN": 3,
+        "REMOTE_KV_READY": 3,
+        "REQUEST_FINISHED": 0,
+        "RESUME_ADMITTED": 3,
+        "RESUME_ARRIVED": 8,
+        "WAITING_FOR_REMOTE_KVS": 3
+      },
+      "status": "INTEGRATION_FAILED_NONPROGRESS",
+      "valid": false
+    },
+    {
+      "K2": true,
+      "X_active_through_last_first_token": true,
+      "X_slowdown": 1.2199093110196049,
+      "decisions": [
+        {
+          "budget_blocks": 3510,
+          "decision": "RESERVATION_PROMOTE",
+          "episode_id": "E04",
+          "required_blocks": 1271,
+          "reserved_blocks": 1271,
+          "target_start_ms": 3.1954919977579266
+        },
+        {
+          "budget_blocks": 3510,
+          "decision": "RESERVATION_PROMOTE",
+          "episode_id": "E00",
+          "required_blocks": 1277,
+          "reserved_blocks": 2548,
+          "target_start_ms": 3.9541039732284844
+        },
+        {
+          "budget_blocks": 3510,
+          "decision": "RESERVATION_SKIP",
+          "episode_id": "E05",
+          "reserved_blocks": 2548,
+          "target_start_ms": 5.869866989087313
+        },
+        {
+          "budget_blocks": 3510,
+          "decision": "RESERVATION_SKIP",
+          "episode_id": "E02",
+          "reserved_blocks": 2548,
+          "target_start_ms": 16.67302497662604
+        },
+        {
+          "budget_blocks": 3510,
+          "decision": "RESERVATION_SKIP",
+          "episode_id": "E01",
+          "reserved_blocks": 2548,
+          "target_start_ms": 18.70668597985059
+        },
+        {
+          "budget_blocks": 3510,
+          "decision": "RESERVATION_SKIP",
+          "episode_id": "E06",
+          "reserved_blocks": 2548,
+          "target_start_ms": 583.8984699803405
+        },
+        {
+          "budget_blocks": 3510,
+          "decision": "RESERVATION_SKIP",
+          "episode_id": "E07",
+          "reserved_blocks": 2548,
+          "target_start_ms": 1073.8991709949914
+        },
+        {
+          "budget_blocks": 3510,
+          "decision": "RESERVATION_SKIP",
+          "episode_id": "E03",
+          "reserved_blocks": 2548,
+          "target_start_ms": 1937.2028729994781
+        }
+      ],
+      "external_source_tokens": 127248,
+      "lease_leaks": 0,
+      "lease_sequences": true,
+      "local_source_tokens": 40768,
+      "max_pre_first_concurrency": 1,
+      "native_correct": true,
+      "native_rows": [
+        {
+          "T0_ms": 34.13013098179363,
+          "T6_ms": 126.20488597895019,
+          "T7_ms": 152.95656598755158,
+          "arrival_minus_T6_ms": 25.91485099401325,
+          "arrival_ms": 152.11973697296344,
+          "client_e2e_ms": 150.72956998483278,
+          "client_issue_ms": 3.500295,
+          "connector_only_step_count": 16,
+          "cpu_to_gpu_transfer_ms": 24.299135208129883,
+          "episode_id": "E04",
+          "external_tokens_loaded": 20336,
+          "generated_token_count": 0,
+          "issue_to_T6_ms": 122.70459099090658,
+          "lease_key": "E04:turn:1",
+          "mixed_prefetch_model_step_count": 0,
+          "model_forward_count": 0,
+          "normal_requests_delayed": 1,
+          "policy": "SlackKV-Oracle-ReserveLease-K2",
+          "promotion_classification": "PROMOTION_USEFUL",
+          "repetition": 2,
+          "required_tokens": 20336,
+          "status": "ok",
+          "target_start_ms": 3.1954919977579266,
+          "transfer_bytes": 583073792
+        },
+        {
+          "T0_ms": 30.162226990796626,
+          "T6_ms": 104.46361399954185,
+          "T7_ms": 107.24942598608322,
+          "arrival_minus_T6_ms": 115.1034049980808,
+          "arrival_ms": 219.56701899762265,
+          "client_e2e_ms": 103.56457499437965,
+          "client_issue_ms": 5.234363,
+          "connector_only_step_count": 3,
+          "cpu_to_gpu_transfer_ms": 25.432191848754883,
+          "episode_id": "E00",
+          "external_tokens_loaded": 20432,
+          "generated_token_count": 0,
+          "issue_to_T6_ms": 99.22925100545399,
+          "lease_key": "E00:turn:1",
+          "mixed_prefetch_model_step_count": 0,
+          "model_forward_count": 0,
+          "normal_requests_delayed": 1,
+          "policy": "SlackKV-Oracle-ReserveLease-K2",
+          "promotion_classification": "PROMOTION_USEFUL",
+          "repetition": 2,
+          "required_tokens": 20432,
+          "status": "ok",
+          "target_start_ms": 3.9541039732284844,
+          "transfer_bytes": 585826304
+        }
+      ],
+      "physical_lease_peak_blocks": 2548,
+      "policy": "SlackKV-Oracle-ReserveLease-K2",
+      "promotion_count": 2,
+      "repetition": 2,
+      "reservation_overcommit": false,
+      "reservation_peak_blocks": 2548,
+      "resume_token_counts": [
+        84,
+        47,
+        53,
+        42,
+        98,
+        148,
+        63,
+        53
+      ],
+      "source_conservation": true,
+      "token_count_8_of_8": true,
+      "valid": true
+    }
+  ],
+  "stage_b_started": false,
+  "stop_reason": "NaiveJIT integration failed to complete all eight resumes; frozen gate requires 8/8 before Stage B.",
+  "valid_policy_runs": 2
+}

@@ -1,0 +1,12 @@
+{
+  "P_SAFE_MS": 102,
+  "max_observed_issue_to_T6_ms": 84.49282398214564,
+  "safety_factor": 1.2,
+  "selected_episode_ids": [
+    "E04",
+    "E00",
+    "E07"
+  ],
+  "selection_rule": "min, lower median index floor((N-1)/2), max by required_blocks",
+  "valid_measurements": 9
+}

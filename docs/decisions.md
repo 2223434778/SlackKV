@@ -85,3 +85,9 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - Decision: Future SlackKV serving experiments may use Phase 4C hybrid replay only as a hybrid workload: real token/KV structure + empirical tool-phase timing proxy. It must not be labeled request-timestamp-faithful real trace replay.
 - Reason: Phase 4C reconstructs released ISL/ISL_new/OSL structure and uses empirically observed TraceLab tool-phase durations as controlled inter-request pauses; public traces do not provide request-level real resume timestamps.
 - Consequence: `results/phase4c/hybrid_workload.csv` is a frozen hybrid workload interface, not a real-session timing trace. Phase 4C does not establish performance superiority.
+
+## 2026-09-26 — Phase 4D-A derives capacity and service budget at real prefix scale
+
+- Decision: for frozen Phase 4C boundary-0 jobs, derive reservation capacity from 75% of actual GPU KV blocks and freeze a single promotion service budget from nine real-size calibration measurements plus a 20% margin. Do not carry Phase 3's 512-block/40-ms constants into this larger-prefix workload.
+- Reason: each selected prefix requires 1,271–1,444 blocks, exceeding the former 512-block budget; runtime reported 4,681 blocks, yielding a mechanically derived 3,510-block budget. Calibration produced a frozen 102-ms budget.
+- Consequence: these are Phase 4D-A workload/runtime derivations, not tuned performance settings. The policy matrix did not start because NaiveJIT failed the required integration completion gate; no benefit claim follows.

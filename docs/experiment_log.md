@@ -442,3 +442,13 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - Validation: Stage A0 passed 768-token and 770→768 block-alignment calibration; Stage A1 passed 10/10 prompts/outputs and 8/8 boundaries; Stage B passed 40/40 prompt lengths, 40/40 OSL lengths, 32/32 cached blocks, 8/8 isolated priming turns, 0 external hits, and pause error P50/P95/max 5.10/7.36/7.96 ms. Final unit tests passed 25/25.
 - Result: `RESULT_A_HYBRID_REPLAY_CORRECT`. This establishes a correct hybrid replay harness only; it is not timestamp-faithful replay of a real Agent session and makes no performance-superiority claim. Phase 4D was not started.
 - Results: `results/phase4c/`.
+
+## 2026-09-26 — Phase 4D-A large-prefix runtime integration (stopped at integration gate)
+
+- Objective: connect the frozen Phase 4C boundary-0 hybrid workload to native promotion, T6 readiness, K2, dynamic reservation, and physical leases. No workload or vLLM algorithm changes were made.
+- Frozen Phase 4C workload SHA256: `9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105`; 8 jobs, 168,016 cached tokens, 10,501 blocks, 4,594.1875 MiB minimum H2D.
+- Runtime-derived capacity: 4,681 total GPU KV blocks; the frozen 75% reservation budget was 3,510 blocks. Real-size promotion calibration passed 9/9 and froze P_SAFE=102 ms. Stage A0 prefix calibration passed.
+- X-only baseline passed 3/3. OnDemand and Reservation integration passed 8/8 resumes with source conservation; Reservation promoted two jobs with 2,548-block logical/physical peak and zero lease leaks.
+- NaiveJIT-Async-K2 did not complete its eight resumes in repeated fresh integrations (latest: 3 first tokens, 0 finishes after the 120-s client timeout, 53,935 connector-only steps). The strict 3/3 policy integration gate therefore failed, so Stage B was not started and no performance result is assigned.
+- Interpretation: this is an incomplete mechanism baseline, not a SlackKV lease failure or an invalid environment. Naive non-progress is retained as diagnostic evidence; it is not reported as a latency result.
+- Results: `results/phase4d_a/`; Phase 4D-A did not proceed to later boundaries or prediction work.
