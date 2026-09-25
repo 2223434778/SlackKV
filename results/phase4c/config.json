@@ -1,0 +1,29 @@
+{
+  "phase": "4C",
+  "objective": "hybrid trace-driven replay fidelity only",
+  "coding_agent_revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
+  "configs": [
+    "gpt-oss-120b-pro",
+    "gpt-oss-120b-verified"
+  ],
+  "rows_per_config": 100,
+  "selected_sessions_per_config": 4,
+  "turns_per_session": 5,
+  "requests": 40,
+  "validated_boundaries": 32,
+  "max_replay_osl": 512,
+  "max_model_len": 32768,
+  "block_size_tokens": 16,
+  "block_alignment": "floor(source_cached_tokens / 16) * 16",
+  "max_pause_ms": 3000,
+  "pause_pool_min_ms": 100,
+  "pause_pool_max_ms": 3000,
+  "pause_assignment_seed": 20260925,
+  "pause_error_p95_max_ms": 10,
+  "pause_error_max_ms": 30,
+  "temperature": 0,
+  "ignore_eos": true,
+  "return_token_ids": true,
+  "server_mode": "ordinary local prefix cache; no external connector, promotion, lease, reservation, K2, pressure, or background request",
+  "result": "RESULT_A_HYBRID_REPLAY_CORRECT"
+}

@@ -1,0 +1,83 @@
+{
+  "dataset_id": "netpreme/coding_agent_traces",
+  "revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
+  "revision_verified": true,
+  "configs": [
+    "gpt-oss-120b-pro",
+    "gpt-oss-120b-verified"
+  ],
+  "offsets": {
+    "gpt-oss-120b-pro": {
+      "start": 0,
+      "length": 100
+    },
+    "gpt-oss-120b-verified": {
+      "start": 0,
+      "length": 100
+    }
+  },
+  "rows_received": {
+    "gpt-oss-120b-pro": 100,
+    "gpt-oss-120b-verified": 100
+  },
+  "rows_api_returned_text_fields": true,
+  "raw_text_persisted": false,
+  "raw_instance_id_persisted": false,
+  "full_dataset_downloaded": false,
+  "audited_at_utc": "2026-09-25T13:03:05.650040+00:00",
+  "population": {
+    "gpt-oss-120b-pro": {
+      "sessions": 100,
+      "ge_5_turns": 100,
+      "eligible": 87,
+      "selected": 4,
+      "exclusions": {
+        "invalid_token_accounting;context_limit_violation;osl_cap_violation": 11,
+        "invalid_token_accounting": 1,
+        "invalid_token_accounting;osl_cap_violation": 1
+      }
+    },
+    "gpt-oss-120b-verified": {
+      "sessions": 100,
+      "ge_5_turns": 100,
+      "eligible": 71,
+      "selected": 4,
+      "exclusions": {
+        "invalid_token_accounting;osl_cap_violation": 2,
+        "invalid_token_accounting;context_limit_violation;osl_cap_violation": 19,
+        "invalid_token_accounting;context_limit_violation": 7,
+        "invalid_token_accounting;context_limit_violation;osl_cap_violation;context_shrink;prefix_feasibility_violation": 1
+      }
+    }
+  },
+  "selected_sessions": 8,
+  "selected_turns": 40,
+  "classification": "CANDIDATES_READY",
+  "coding_agent_dataset_id": "netpreme/coding_agent_traces",
+  "coding_agent_revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
+  "coding_agent_configs": [
+    "gpt-oss-120b-pro",
+    "gpt-oss-120b-verified"
+  ],
+  "coding_agent_offsets": {
+    "gpt-oss-120b-pro": [
+      0,
+      99
+    ],
+    "gpt-oss-120b-verified": [
+      0,
+      99
+    ]
+  },
+  "TraceLab_release": "v0.0.2",
+  "TraceLab_SHA256": "a7bab286bc640844560850965ccf47975cf66407154132abaab90f27ec9be744",
+  "SlackKV_start_commit": "45868013e38d429f75fb6b542cb25afdf2719b86",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "model_snapshot_path": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "model_snapshot_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "model_config_sha256": "98d2ff8cc47488d08a2b0b3acf4eb99ef210779b42bd48605f6b8e36acdbf670",
+  "vLLM_version": "0.23.0",
+  "vLLM_source_path": "/media/a6000/D/ZhaoBinHe/slackkv-phase2c-fix-sourceprobe",
+  "vLLM_source_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "vLLM_source_modified_by_phase4c": false
+}

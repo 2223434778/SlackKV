@@ -1,0 +1,50 @@
+{
+  "candidate_population": {
+    "gpt-oss-120b-pro": {
+      "scanned": 100,
+      "ge5_turns": 100,
+      "eligible": 87,
+      "excluded": 13,
+      "exclusion_flags_nonexclusive": {
+        "invalid_token_accounting": 13,
+        "context_limit_violation": 11,
+        "osl_cap_violation": 12,
+        "prefix_feasibility_violation": 0,
+        "context_shrink": 0
+      }
+    },
+    "gpt-oss-120b-verified": {
+      "scanned": 100,
+      "ge5_turns": 100,
+      "eligible": 71,
+      "excluded": 29,
+      "exclusion_flags_nonexclusive": {
+        "invalid_token_accounting": 29,
+        "context_limit_violation": 27,
+        "osl_cap_violation": 22,
+        "prefix_feasibility_violation": 1,
+        "context_shrink": 1
+      }
+    }
+  },
+  "selected_sessions": 8,
+  "selected_pro": 4,
+  "selected_verified": 4,
+  "turns": 40,
+  "requests": 40,
+  "boundaries": 32,
+  "selected_isl": {
+    "min": 20336,
+    "median": 21662.0,
+    "max": 25527
+  },
+  "selected_osl": {
+    "min": 33,
+    "median": 69.0,
+    "max": 496
+  },
+  "alignment_loss_tokens": {
+    "min": 0,
+    "max": 0
+  }
+}

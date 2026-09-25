@@ -1,0 +1,29 @@
+{
+  "dataset": "uw-syfi/TraceLab",
+  "release": "v0.0.2",
+  "asset": "syfi_coding_trace.duckdb",
+  "sha256": "a7bab286bc640844560850965ccf47975cf66407154132abaab90f27ec9be744",
+  "tool_phase_definition": "per round_pk: max(result_at) - min(emitted_at) over complete timestamped tool calls",
+  "valid_tool_rounds_positive_duration": 563809,
+  "invalid_or_nonpositive_tool_rounds": 10217,
+  "retained_100_3000_ms": 246773,
+  "retained_fraction": 0.4376890046097171,
+  "full_valid_distribution_ms": {
+    "count": 563809,
+    "min": 1.0,
+    "p50": 366.0,
+    "p90": 14510.200000000012,
+    "p95": 30168.0,
+    "max": 440697891.0
+  },
+  "retained_distribution_ms": {
+    "count": 246773,
+    "min": 100.0,
+    "p50": 471.0,
+    "p90": 1818.0,
+    "p95": 2338.399999999994,
+    "max": 3000.0
+  },
+  "extracted_at_utc": "2026-09-25T13:18:13.622711+00:00",
+  "terminology": "TraceToolProxy / observed_tool_phase_ms; not resume slack or real deadline"
+}

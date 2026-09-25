@@ -79,3 +79,9 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - Evidence: pinned HF metadata confirms `turns: list<JSON>`. A bounded 100-row sample from each GPT-OSS config (5,550 turns total) exposed `isl`, `isl_new`, `osl` and text members, but no tool/request/timestamp/duration/latency fields. The full multi-GB data was not downloaded and the sample is not exhaustive. Pinned source independently shows `tool_exec_ms` is arrival-to-arrival, while poll-window E2E can be averaged across requests.
 - Alternative considered: treat this sample as proving field absence across all nested rows. Rejected because the scan is bounded.
 - Consequence: retain `RESULT_C_TIMING_NOT_RECONSTRUCTABLE`; do not report slack/replayability counts or timed candidates without per-request timing alignment.
+
+## 2026-09-25 — Phase 4C replay is hybrid, not request-timestamp-faithful
+
+- Decision: Future SlackKV serving experiments may use Phase 4C hybrid replay only as a hybrid workload: real token/KV structure + empirical tool-phase timing proxy. It must not be labeled request-timestamp-faithful real trace replay.
+- Reason: Phase 4C reconstructs released ISL/ISL_new/OSL structure and uses empirically observed TraceLab tool-phase durations as controlled inter-request pauses; public traces do not provide request-level real resume timestamps.
+- Consequence: `results/phase4c/hybrid_workload.csv` is a frozen hybrid workload interface, not a real-session timing trace. Phase 4C does not establish performance superiority.

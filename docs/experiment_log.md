@@ -432,3 +432,13 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - Privacy/setup: no row IDs, prompts, completions, or Parquet shards were persisted; no GPU or serving workload was run. The sample is not an exhaustive scan.
 - Result: `RESULT_C_TIMING_NOT_RECONSTRUCTABLE` remains; `tool_exec_ms` is inter-arrival time and scraper E2E is not request-aligned. Stage-C slack/replayability counts remain uncomputed. Recheck suite passed 14/14.
 - Results: `results/phase4b/`; commit/push recorded in Git history after this recheck.
+
+## 2026-09-25 — Phase 4C real-structure hybrid replay correctness
+
+- Objective: validate that real coding-agent ISL/ISL_new/OSL structure can be reconstructed as deterministic synthetic token sessions with exact local vLLM prefix-cache blocks and controlled TraceToolProxy pauses. This was a replay-fidelity experiment only, not a SlackKV performance comparison.
+- Sources: `netpreme/coding_agent_traces` revision `d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67`, bounded to offsets 0–99 for Pro and Verified; TraceLab v0.0.2 DuckDB SHA256 `a7bab286bc640844560850965ccf47975cf66407154132abaab90f27ec9be744`.
+- Coverage/selection: Pro 87/100 eligible and Verified 71/100 eligible; deterministic selection produced 4 sessions/config, 40 requests and 32 boundaries. Raw text and raw instance IDs were not persisted.
+- Runtime: vLLM 0.23.0, pinned source `0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665`, Qwen2.5-1.5B-Instruct local snapshot, max model length 32768, 4-GiB local prefix cache, actual cache block size 16; no external connector, promotion, lease, reservation, K2, pressure, or background request.
+- Validation: Stage A0 passed 768-token and 770→768 block-alignment calibration; Stage A1 passed 10/10 prompts/outputs and 8/8 boundaries; Stage B passed 40/40 prompt lengths, 40/40 OSL lengths, 32/32 cached blocks, 8/8 isolated priming turns, 0 external hits, and pause error P50/P95/max 5.10/7.36/7.96 ms. Final unit tests passed 25/25.
+- Result: `RESULT_A_HYBRID_REPLAY_CORRECT`. This establishes a correct hybrid replay harness only; it is not timestamp-faithful replay of a real Agent session and makes no performance-superiority claim. Phase 4D was not started.
+- Results: `results/phase4c/`.

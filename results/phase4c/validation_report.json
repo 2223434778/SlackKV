@@ -1,0 +1,76 @@
+{
+  "coding_agent_dataset_id": "netpreme/coding_agent_traces",
+  "coding_agent_revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
+  "TraceLab_release": "v0.0.2",
+  "TraceLab_SHA256": "a7bab286bc640844560850965ccf47975cf66407154132abaab90f27ec9be744",
+  "coding_agent_source_revision_valid": true,
+  "tracetool_proxy_sha256_valid": true,
+  "eligible_pro": 87,
+  "eligible_pro_population": 100,
+  "eligible_verified": 71,
+  "eligible_verified_population": 100,
+  "eligible_combined": 158,
+  "exclusion_flags_nonexclusive": {
+    "gpt-oss-120b-pro": {
+      "invalid_token_accounting": 13,
+      "context_limit_violation": 11,
+      "osl_cap_violation": 12,
+      "prefix_feasibility_violation": 0,
+      "context_shrink": 0
+    },
+    "gpt-oss-120b-verified": {
+      "invalid_token_accounting": 29,
+      "context_limit_violation": 27,
+      "osl_cap_violation": 22,
+      "prefix_feasibility_violation": 1,
+      "context_shrink": 1
+    }
+  },
+  "TraceToolProxy_valid_rounds": 563809,
+  "TraceToolProxy_retained_rounds": 246773,
+  "TraceToolProxy_retained_fraction": 0.4376890046097171,
+  "TraceToolProxy_full_quantiles_ms": {
+    "count": 563809,
+    "min": 1.0,
+    "p50": 366.0,
+    "p90": 14510.200000000012,
+    "p95": 30168.0,
+    "max": 440697891.0
+  },
+  "TraceToolProxy_retained_quantiles_ms": {
+    "count": 246773,
+    "min": 100.0,
+    "p50": 471.0,
+    "p90": 1818.0,
+    "p95": 2338.399999999994,
+    "max": 3000.0
+  },
+  "selection_counts": {
+    "gpt-oss-120b-pro": 4,
+    "gpt-oss-120b-verified": 4
+  },
+  "selected_sessions": 8,
+  "requests": 40,
+  "prompt_length_exact": "40/40",
+  "generation_length_exact": "40/40",
+  "prefix_block_exact": "32/32",
+  "priming_isolation_zero_hit": "8/8",
+  "external_cached_tokens_zero": "40/40",
+  "stage_a0_pass": true,
+  "stage_a1_pass": true,
+  "stage_b_pass": true,
+  "actual_block_size": 16,
+  "pause_abs_error_p95_ms": 7.359218349999901,
+  "pause_abs_error_max_ms": 7.957971000000043,
+  "valid_stage_server_crashes": 0,
+  "oom_count": 0,
+  "setup_failures_before_valid_A0": [
+    "initial vLLM argument --disable-log-requests unsupported; exited 2",
+    "next launch omitted environment bin from PATH; FlashInfer could not find ninja; exited 1"
+  ],
+  "nonfinal_debug_attempts": [
+    "Stage A1 attempt 1 passed token/cache checks but failed pause fidelity due metrics polling after the target wake; baseline capture moved before the wait and frozen A1 passed on a fresh server.",
+    "Stage B was repeated once so per-request external-hit tokens are populated from actual counter deltas rather than a connector-disabled assumption; final Stage B artifact is the fresh rerun."
+  ],
+  "result": "RESULT_A_HYBRID_REPLAY_CORRECT"
+}

@@ -1,0 +1,36 @@
+{
+  "result": "RESULT_A_HYBRID_REPLAY_CORRECT",
+  "prompt_exact": "40/40",
+  "generation_exact": "40/40",
+  "prefix_block_exact": "32/32",
+  "priming_isolation_zero_hit": "8/8",
+  "external_cached_tokens_zero": "40/40",
+  "block_size": 16,
+  "stage_a0": {
+    "stage": "A0",
+    "actual_block_size": 16,
+    "priming_1024_hit_tokens": 0.0,
+    "shared_768_hit_tokens": 768.0,
+    "shared_770_hit_tokens": 768.0,
+    "external_hit_tokens": 0.0,
+    "pass": true
+  },
+  "stage_a1": {
+    "pass": true,
+    "requests": 10,
+    "boundaries": 8
+  },
+  "stage_b": {
+    "pass": true,
+    "requests": 40,
+    "boundaries": 32
+  },
+  "pause_abs_error_ms": {
+    "p50": 5.102274500000021,
+    "p95": 7.359218349999901,
+    "max": 7.957971000000043
+  },
+  "request_e2e_semantics": "debug/sanity only; no performance comparison",
+  "prompt_sequence_identity": "not compared to public trace text; prompts are deterministic synthetic token IDs",
+  "source_cached_alignment": "only complete 16-token blocks are expected to hit; raw cached token count may be unaligned"
+}

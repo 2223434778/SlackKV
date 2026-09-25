@@ -1,0 +1,90 @@
+{
+  "selection_rule": "earliest valid 5-turn window; independent per-config SHA256 selection",
+  "population": {
+    "gpt-oss-120b-pro": {
+      "scanned": 100,
+      "ge5_turns": 100,
+      "eligible": 87,
+      "excluded": 13,
+      "exclusion_flags_nonexclusive": {
+        "invalid_token_accounting": 13,
+        "context_limit_violation": 11,
+        "osl_cap_violation": 12,
+        "prefix_feasibility_violation": 0,
+        "context_shrink": 0
+      }
+    },
+    "gpt-oss-120b-verified": {
+      "scanned": 100,
+      "ge5_turns": 100,
+      "eligible": 71,
+      "excluded": 29,
+      "exclusion_flags_nonexclusive": {
+        "invalid_token_accounting": 29,
+        "context_limit_violation": 27,
+        "osl_cap_violation": 22,
+        "prefix_feasibility_violation": 1,
+        "context_shrink": 1
+      }
+    }
+  },
+  "selected_sessions": [
+    {
+      "episode_id": "E00",
+      "config": "gpt-oss-120b-pro",
+      "session_hash": "93626d7ec8ab44187cfe613f33dcedc5db7c2b8626adfcda7e0df3283df25216",
+      "selection_hash": "009cffaa7778def8ad8ea76e379691dbe094bbf0a9f7ef8e83e5ece1accf73e1",
+      "window_start_position": 1
+    },
+    {
+      "episode_id": "E01",
+      "config": "gpt-oss-120b-pro",
+      "session_hash": "032c8edf61d4b436b00ddcc10df27b2237174bb3dd9c1b7e00a9b01bbe74425b",
+      "selection_hash": "01e1b1d3f34bf76d3862c4265f6b6a6ee7281aaaf6b105a4c69e38c466f38a3a",
+      "window_start_position": 1
+    },
+    {
+      "episode_id": "E02",
+      "config": "gpt-oss-120b-pro",
+      "session_hash": "afa095fb52915af3c3e4e141d4c610c47e3bcdc5463aff26473a7478bd7119fe",
+      "selection_hash": "026edd67fcc8d41867c49f1eed9810affbda5113e576022e496e8aaaf30ae64b",
+      "window_start_position": 1
+    },
+    {
+      "episode_id": "E03",
+      "config": "gpt-oss-120b-pro",
+      "session_hash": "cd75bfbd61808456c4553e8dd91c5b0f6b5f9469918c141d5e5f3330c2cd30c2",
+      "selection_hash": "06f0f2afac07a6868153442c83acbd49a07ae9ddfdc4c6c9fa1a246673e7320e",
+      "window_start_position": 1
+    },
+    {
+      "episode_id": "E04",
+      "config": "gpt-oss-120b-verified",
+      "session_hash": "3558adf5a33db8430bd4628f319618e75e6c75768fde8c1c1ff326f3c4070bbe",
+      "selection_hash": "0311cc625b2d7076898b1026cf7652088269ebd6f1824606c81aedf0064333c3",
+      "window_start_position": 1
+    },
+    {
+      "episode_id": "E05",
+      "config": "gpt-oss-120b-verified",
+      "session_hash": "e5b218a1a891cc6ceb56dcf6f7650ef8bd3f7ae65e724efc7bb8404ff0217da9",
+      "selection_hash": "0a8138c9ef15ef7e043712771b2060f11b03393d9b6ea9a14927e74fcca853ea",
+      "window_start_position": 1
+    },
+    {
+      "episode_id": "E06",
+      "config": "gpt-oss-120b-verified",
+      "session_hash": "ad467bffe15f957e08f9ec3a25c856b9c8cae90437241b3693666744752b3389",
+      "selection_hash": "0db7381bb820bba65711fd9790021ab1d25ab2e14f7b1116c3b2815c280e9cfb",
+      "window_start_position": 1
+    },
+    {
+      "episode_id": "E07",
+      "config": "gpt-oss-120b-verified",
+      "session_hash": "a5f91b0cdc513f80e7f5c4242c3219360c84d33c27bebe1ae71036d797b91a0b",
+      "selection_hash": "1caa550a9611f99ccf89136b61c10abf847a19903fedac978022304957ff3d06",
+      "window_start_position": 1
+    }
+  ],
+  "raw_instance_id_or_text_persisted": false
+}
