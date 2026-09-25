@@ -1,12 +1,26 @@
 {
   "upstream_commit": "83d8d1280b406b0484693017900763a0b0ad8d19",
   "dataset_revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
+  "hf_revision_api_verified": true,
   "gpt_oss_pro_sessions": 731,
   "gpt_oss_verified_sessions": 500,
   "total_turns": {
     "gpt-oss-120b-pro": 23964,
     "gpt-oss-120b-verified": 14302
   },
+  "sampled_sessions": 200,
+  "sampled_turns": 5550,
+  "sampled_turn_fields": [
+    "isl",
+    "isl_new",
+    "isl_new_text",
+    "isl_text",
+    "osl",
+    "osl_text"
+  ],
+  "sampled_tool_or_timing_fields": [],
+  "raw_text_persisted": false,
+  "full_dataset_scan": false,
   "total_interturn_pairs": null,
   "request_time_coverage": null,
   "e2e_coverage": null,
@@ -18,18 +32,16 @@
   "sessions_ge_5": null,
   "sessions_ge_10": null,
   "sessions_ge_20": null,
-  "token_field_coverage": "aggregate token statistics published; row-level nested schema not fetched",
+  "token_field_coverage": "live row fields inspected for 200 sessions / 5550 turns; no full text persisted",
   "tool_exec_semantics": "inter-request arrival interval (source implementation), not response-end slack",
   "timing_alignment_status": "FAIL: no verified request-level request_time + e2e_ms rows in public schema evidence",
   "timed_structural_replay": "NO",
   "result": "RESULT_C_TIMING_NOT_RECONSTRUCTABLE",
   "tests": {
-    "passed": 12,
-    "total": 12
+    "status": "see pytest output; test counts are not embedded by this postprocessor"
   },
   "limitations": [
-    "Hugging Face resolved revision was read from the current public repository page; the Hub API timed out from the execution host.",
-    "No Parquet shard or raw prompt was downloaded; nested viewer cell content is truncated, so full nested-field coverage remains unverified.",
+    "The live row scan is bounded, not exhaustive; full GPT-OSS Parquet was not downloaded.",
     "No timing slack, candidate sessions, or replayability counts are computed without request-level timing alignment."
   ]
 }

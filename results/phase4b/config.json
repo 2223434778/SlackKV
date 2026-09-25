@@ -6,8 +6,10 @@
   "dataset_id": "netpreme/coding_agent_traces",
   "dataset_revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
   "primary_subsets": ["gpt-oss-120b-pro", "gpt-oss-120b-verified"],
-  "raw_text_download": false,
+  "raw_text_persisted": false,
   "parquet_download": false,
+  "live_hf_metadata_api_verified": true,
+  "live_row_schema_sample": {"rows_per_gpt_oss_config": 100, "raw_text_persisted": false, "full_scan": false},
   "timing_slack_calculated": false,
   "classification": "RESULT_C_TIMING_NOT_RECONSTRUCTABLE"
 }

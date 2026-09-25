@@ -1,0 +1,237 @@
+{
+  "dataset": "netpreme/coding_agent_traces",
+  "revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
+  "revision_verified_against_hub_api": true,
+  "audited_at_utc": "2026-09-25T09:39:21.786763+00:00",
+  "hub_metadata": {
+    "last_modified": "2026-06-12T21:03:39.000Z",
+    "private": false,
+    "gated": false,
+    "subset_metadata": [
+      {
+        "config_name": "gpt-oss-120b-pro",
+        "features": [
+          {
+            "name": "instance_id",
+            "dtype": "string"
+          },
+          {
+            "name": "dataset",
+            "dtype": "string"
+          },
+          {
+            "name": "model",
+            "dtype": "string"
+          },
+          {
+            "name": "turns",
+            "list": "json"
+          }
+        ],
+        "splits": [
+          {
+            "name": "train",
+            "num_bytes": 4242713767,
+            "num_examples": 731
+          }
+        ],
+        "download_size": 4242758318,
+        "dataset_size": 4242713767
+      },
+      {
+        "config_name": "gpt-oss-120b-verified",
+        "features": [
+          {
+            "name": "instance_id",
+            "dtype": "string"
+          },
+          {
+            "name": "dataset",
+            "dtype": "string"
+          },
+          {
+            "name": "model",
+            "dtype": "string"
+          },
+          {
+            "name": "turns",
+            "list": "json"
+          }
+        ],
+        "splits": [
+          {
+            "name": "train",
+            "num_bytes": 3123360146,
+            "num_examples": 500
+          }
+        ],
+        "download_size": 3123392686,
+        "dataset_size": 3123360146
+      },
+      {
+        "config_name": "opus-pro",
+        "features": [
+          {
+            "name": "instance_id",
+            "dtype": "string"
+          },
+          {
+            "name": "dataset",
+            "dtype": "string"
+          },
+          {
+            "name": "model",
+            "dtype": "string"
+          },
+          {
+            "name": "turns",
+            "list": [
+              {
+                "name": "isl",
+                "dtype": "int64"
+              },
+              {
+                "name": "osl",
+                "dtype": "int64"
+              },
+              {
+                "name": "isl_new",
+                "dtype": "int64"
+              }
+            ]
+          }
+        ],
+        "splits": [
+          {
+            "name": "train",
+            "num_bytes": 1453783,
+            "num_examples": 731
+          }
+        ],
+        "download_size": 1390473,
+        "dataset_size": 1453783
+      }
+    ]
+  },
+  "method": "HF datasets-server rows API; fixed first 10 rows per GPT-OSS config",
+  "raw_prompt_or_completion_text_persisted": false,
+  "row_ids_persisted": false,
+  "full_parquet_downloaded": false,
+  "configs": [
+    {
+      "config": "gpt-oss-120b-pro",
+      "sample_rows_requested": 10,
+      "sample_rows_received": 10,
+      "sample_turns_received": 327,
+      "sessions_ge_3_turns_in_sample": 10,
+      "sessions_ge_5_turns_in_sample": 10,
+      "turn_fields": [
+        "isl",
+        "isl_new",
+        "isl_new_text",
+        "isl_text",
+        "osl",
+        "osl_text"
+      ],
+      "turn_field_python_types": {
+        "isl": [
+          "int"
+        ],
+        "isl_new": [
+          "int"
+        ],
+        "isl_new_text": [
+          "str"
+        ],
+        "isl_text": [
+          "str"
+        ],
+        "osl": [
+          "int"
+        ],
+        "osl_text": [
+          "str"
+        ]
+      },
+      "timing_or_tool_named_fields_in_sample": [],
+      "token_count_stats": {
+        "isl": {
+          "count": 317,
+          "min": 9530,
+          "median": 28846,
+          "max": 55232
+        },
+        "isl_new": {
+          "count": 327,
+          "min": 49,
+          "median": 315,
+          "max": 20760
+        },
+        "osl": {
+          "count": 327,
+          "min": 29,
+          "median": 121,
+          "max": 2930
+        }
+      }
+    },
+    {
+      "config": "gpt-oss-120b-verified",
+      "sample_rows_requested": 10,
+      "sample_rows_received": 10,
+      "sample_turns_received": 240,
+      "sessions_ge_3_turns_in_sample": 10,
+      "sessions_ge_5_turns_in_sample": 10,
+      "turn_fields": [
+        "isl",
+        "isl_new",
+        "isl_new_text",
+        "isl_text",
+        "osl",
+        "osl_text"
+      ],
+      "turn_field_python_types": {
+        "isl": [
+          "int"
+        ],
+        "isl_new": [
+          "int"
+        ],
+        "isl_new_text": [
+          "str"
+        ],
+        "isl_text": [
+          "str"
+        ],
+        "osl": [
+          "int"
+        ],
+        "osl_text": [
+          "str"
+        ]
+      },
+      "timing_or_tool_named_fields_in_sample": [],
+      "token_count_stats": {
+        "isl": {
+          "count": 230,
+          "min": 20467,
+          "median": 35404.5,
+          "max": 62779
+        },
+        "isl_new": {
+          "count": 240,
+          "min": 42,
+          "median": 326.0,
+          "max": 22236
+        },
+        "osl": {
+          "count": 240,
+          "min": 32,
+          "median": 89.0,
+          "max": 2590
+        }
+      }
+    }
+  ],
+  "interpretation_limit": "Bounded row sample confirms the observed token/text-only turn schema; it is not an exhaustive scan of all rows."
+}

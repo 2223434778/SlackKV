@@ -1,0 +1,40 @@
+{
+  "dataset": "netpreme/coding_agent_traces",
+  "revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
+  "source": "HF datasets-server rows API, direct read-only console scan on 2026-09-25",
+  "configs": {
+    "gpt-oss-120b-pro": {
+      "offset": 0,
+      "sessions_scanned": 100,
+      "turns_scanned": 2810,
+      "sessions_ge_3_turns": 100,
+      "sessions_ge_5_turns": 100,
+      "turn_fields": ["isl", "isl_new", "isl_new_text", "isl_text", "osl", "osl_text"],
+      "tool_or_timing_named_fields": [],
+      "token_count_stats": {
+        "isl": {"count": 2710, "min": 9530, "median": 31153, "max": 87495},
+        "isl_new": {"count": 2810, "min": 11, "median": 262, "max": 30004},
+        "osl": {"count": 2810, "min": 25, "median": 111, "max": 8576}
+      }
+    },
+    "gpt-oss-120b-verified": {
+      "offset": 0,
+      "sessions_scanned": 100,
+      "turns_scanned": 2740,
+      "sessions_ge_3_turns": 100,
+      "sessions_ge_5_turns": 100,
+      "turn_fields": ["isl", "isl_new", "isl_new_text", "isl_text", "osl", "osl_text"],
+      "tool_or_timing_named_fields": [],
+      "token_count_stats": {
+        "isl": {"count": 2640, "min": 542, "median": 38926, "max": 121859},
+        "isl_new": {"count": 2740, "min": 12, "median": 250, "max": 82985},
+        "osl": {"count": 2740, "min": 20, "median": 87, "max": 2820}
+      }
+    }
+  },
+  "privacy": {
+    "raw_prompt_or_completion_text_saved": false,
+    "row_identifiers_saved": false,
+    "full_dataset_scanned": false
+  }
+}

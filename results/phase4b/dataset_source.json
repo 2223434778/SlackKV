@@ -1,11 +1,16 @@
 {
   "dataset_id": "netpreme/coding_agent_traces",
   "resolved_revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
-  "revision_source": "current public HF dataset Files page commit link (main)",
+  "revision_source": "HF Hub dataset metadata API sha field, checked 2026-09-25 from A6000 login shell",
   "subset_names": ["gpt-oss-120b-pro", "gpt-oss-120b-verified", "opus-pro"],
   "row_counts": {"gpt-oss-120b-pro": 731, "gpt-oss-120b-verified": 500, "opus-pro": 731},
   "public_card_turn_counts": {"gpt-oss-120b-pro": 23964, "gpt-oss-120b-verified": 14302},
-  "hub_api_status": "timed out from execution host; revision verified via public dataset page commit link",
-  "data_downloaded_bytes": 0,
-  "raw_prompt_text_downloaded": false
+  "hub_api_status": "reachable from A6000 login shell with its configured HTTPS proxy; revision d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67 independently verified",
+  "hub_card_download_size_bytes": {"gpt-oss-120b-pro": 4242758318, "gpt-oss-120b-verified": 3123392686, "opus-pro": 1390473},
+  "live_rows_sample": {"gpt-oss-120b-pro": {"offset": 0, "rows": 100, "turns": 2810}, "gpt-oss-120b-verified": {"offset": 0, "rows": 100, "turns": 2740}},
+  "raw_rows_persisted": false,
+  "dataset_file_downloaded": false,
+  "rows_api_returned_text_fields": true,
+  "raw_prompt_text_persisted": false,
+  "rows_api_transfer_bytes": null
 }

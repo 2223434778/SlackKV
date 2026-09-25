@@ -2,12 +2,23 @@
   "dataset_id": "netpreme/coding_agent_traces",
   "revision": "d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67",
   "subsets": {
-    "gpt-oss-120b-pro": {"split": "train", "rows": 731, "viewer_top_level_fields": {"instance_id": "string", "dataset": "string", "model": "string", "turns": "list<struct>"}, "turn_fields_observed_in_viewer_example": ["isl_new", "osl", "isl_new_text"], "turn_schema_complete": false},
-    "gpt-oss-120b-verified": {"split": "train", "rows": 500, "viewer_top_level_fields": {"instance_id": "string", "dataset": "string", "model": "string", "turns": "list<struct>"}, "turn_schema_complete": false},
+    "gpt-oss-120b-pro": {"split": "train", "rows": 731, "viewer_top_level_fields": {"instance_id": "string", "dataset": "string", "model": "string", "turns": "list<JSON>"}, "turn_schema_complete": false},
+    "gpt-oss-120b-verified": {"split": "train", "rows": 500, "viewer_top_level_fields": {"instance_id": "string", "dataset": "string", "model": "string", "turns": "list<JSON>"}, "turn_schema_complete": false},
     "opus-pro": {"rows": 731, "timing_analysis_included": false, "reason": "outside primary GPT-OSS timing scope"}
   },
+  "hf_api_revision_verified_on": "2026-09-25",
+  "hub_declared_gpt_oss_turns_type": "list<JSON>",
+  "live_rows_sample": {
+    "selection": "first 100 rows per GPT-OSS config; offsets 0-99",
+    "sessions": 200,
+    "turns": 5550,
+    "turn_fields_observed": ["isl", "isl_new", "isl_new_text", "isl_text", "osl", "osl_text"],
+    "timing_or_tool_named_fields_observed": [],
+    "raw_text_or_row_ids_persisted": false,
+    "exhaustive": false
+  },
   "timing_fields_observed": [],
-  "timing_fields_not_verified": ["request_time", "e2e_ms", "tool_exec_ms", "n", "ts"],
+  "timing_fields_absent_from_live_sample": ["request_time", "e2e_ms", "tool_exec_ms", "n", "ts", "tool records", "tool result timestamps"],
   "token_fields_documented_by_dataset_card": ["isl", "isl_new", "osl"],
-  "source_note": "The viewer row is truncated because nested turns include text; no full nested Parquet schema was retrieved. Absence of timing fields is therefore an absence of verified public row-level timing evidence, not a claim that every hidden nested field was exhaustively enumerated."
+  "source_note": "HF Hub metadata and rows API were reachable from the A6000 login shell. The live row sample found only token-count and text fields, but the nested turns type is JSON and this was not an exhaustive scan of all rows. No Parquet or raw text was persisted."
 }

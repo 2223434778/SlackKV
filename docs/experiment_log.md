@@ -423,3 +423,12 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - Dataset limitation: public viewer row/session shape and aggregate token statistics were visible, but Hub API timed out and nested Parquet schema was not retrieved. No raw text or parquet downloaded; request/e2e coverage and slack distribution remain unmeasured.
 - Result: `RESULT_C_TIMING_NOT_RECONSTRUCTABLE` on verified public timing evidence. Focused tests passed 12/12. No serving, GPU, or predictor stage was run.
 - Results: `results/phase4b/`. Commit/push status recorded after repository sync.
+
+## 2026-09-25 — Phase 4B live HF metadata/row-schema recheck
+
+- Objective: repeat the previously blocked public HF schema check after identifying that the A6000 interactive shell, but not non-login remote commands, inherited its HTTPS proxy.
+- Command: `bash -lic 'cd /media/a6000/D/ZhaoBinHe/SlackKV && python experiments/phase4b/audit_hf_live.py'`; a separate bounded console query inspected the first 100 rows from each GPT-OSS config.
+- Findings: the Hub API verified revision `d56ae0d0bc80f3663a7a61a38c4ee60c26ce7b67`; the sampled 200 sessions / 5,550 turns exposed token-count and text fields only, with no tool or timing-named fields. The repeatable script uses 10 rows/config to limit text-bearing transfer volume.
+- Privacy/setup: no row IDs, prompts, completions, or Parquet shards were persisted; no GPU or serving workload was run. The sample is not an exhaustive scan.
+- Result: `RESULT_C_TIMING_NOT_RECONSTRUCTABLE` remains; `tool_exec_ms` is inter-arrival time and scraper E2E is not request-aligned. Stage-C slack/replayability counts remain uncomputed. Recheck suite passed 14/14.
+- Results: `results/phase4b/`; commit/push recorded in Git history after this recheck.

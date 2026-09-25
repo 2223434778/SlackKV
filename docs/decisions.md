@@ -72,3 +72,10 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - Evidence: the proxy calls `note_response_time()` when a new request arrives, immediately before forwarding; recorder stores that current timestamp and next call subtracts it. This makes the value an inter-request arrival interval. The metrics scraper separately emits E2E counter deltas averaged per completed request when multiple completions land in one polling tick, so exact request-time pairing is not guaranteed by row order.
 - Alternative considered: following the README field description and using `tool_exec_ms` as ground-truth tool gap. Rejected because pinned code contradicts that description.
 - Consequence: use neither `tool_exec_ms` nor poll-window E2E as an exact slack label without a verified request-ID alignment source. Phase 4B does not create timed replay jobs.
+
+## 2026-09-25 — Bounded live HF sample does not repair timing alignment
+
+- Decision: preserve the Phase 4B no-timed-replay conclusion after the HF endpoint became reachable; do not equate token/text turn records with tool completion timing.
+- Evidence: pinned HF metadata confirms `turns: list<JSON>`. A bounded 100-row sample from each GPT-OSS config (5,550 turns total) exposed `isl`, `isl_new`, `osl` and text members, but no tool/request/timestamp/duration/latency fields. The full multi-GB data was not downloaded and the sample is not exhaustive. Pinned source independently shows `tool_exec_ms` is arrival-to-arrival, while poll-window E2E can be averaged across requests.
+- Alternative considered: treat this sample as proving field absence across all nested rows. Rejected because the scan is bounded.
+- Consequence: retain `RESULT_C_TIMING_NOT_RECONSTRUCTABLE`; do not report slack/replayability counts or timed candidates without per-request timing alignment.

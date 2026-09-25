@@ -1,3 +1,3 @@
 subset,sessions,turns,request_time_coverage,e2e_coverage,valid_timing_boundaries,negative_lt_minus5_count,negative_lt_minus5_fraction,status,reason
-gpt-oss-120b-pro,731,23964,NA,NA,NA,NA,NA,NOT_COMPUTED,no verified row-level request_time/e2e_ms schema or request join
-gpt-oss-120b-verified,500,14302,NA,NA,NA,NA,NA,NOT_COMPUTED,no verified row-level request_time/e2e_ms schema or request join
+gpt-oss-120b-pro,731,23964,NA,NA,NA,NA,NA,NOT_COMPUTED,first 100 live rows expose token/text only; tool_exec_ms is inter-arrival and scraper e2e lacks exact request join
+gpt-oss-120b-verified,500,14302,NA,NA,NA,NA,NA,NOT_COMPUTED,first 100 live rows expose token/text only; tool_exec_ms is inter-arrival and scraper e2e lacks exact request join
