@@ -452,3 +452,13 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - NaiveJIT-Async-K2 did not complete its eight resumes in repeated fresh integrations (latest: 3 first tokens, 0 finishes after the 120-s client timeout, 53,935 connector-only steps). The strict 3/3 policy integration gate therefore failed, so Stage B was not started and no performance result is assigned.
 - Interpretation: this is an incomplete mechanism baseline, not a SlackKV lease failure or an invalid environment. Naive non-progress is retained as diagnostic evidence; it is not reported as a latency result.
 - Results: `results/phase4d_a/`; Phase 4D-A did not proceed to later boundaries or prediction work.
+
+
+## 2026-09-26 — Phase 4D-A-FIX runtime release and Naive liveness audit
+
+- Frozen start commit `86ac84a94b671514c78b69aeb3dd294e137a03a8`, Phase 4C workload SHA256 `9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105`, 4,681 GPU KV blocks, 3,510-block reservation budget, P_SAFE=102 ms, and K2=2 were preserved. No vLLM serving algorithm was changed.
+- Implemented explicit `episode_id -> lease_key` mapping and structured exact JSON lease parsing. Runtime logs verified E04/E00 physical releases before logical releases and later E06/E07 reservation promotion; 35/35 tests passed.
+- Three fresh Reservation-only diagnostic attempts reproduced incomplete progress: all 8 resume arrivals were observed, 3 reached first token, 0 emitted request-finished trace events; the retry with immediate native response persistence returned successful endpoint data for E04/E00, while E06/E07 did not return within the client’s 120-s read timeout. The server remained alive, no OOM/crash was observed, and connector-only scheduling continued. At abort, exact-key release had returned 2,548 logical blocks and later reservations had been admitted.
+- Completed T6 records were 98.50 ms and 107.24 ms; one exceeds the frozen 102-ms budget. The service envelope is therefore `P_SAFE_102_INTEGRATION_ENVELOPE_FAIL`; P_SAFE was not recalibrated. The overall Reservation integration acceptance gate did not pass.
+- By the frozen prerequisite, Naive L0/L1 and the original Phase 4D-A Stage B matrix were not started. The observed Reservation-path non-progress does not establish that unleased Naive capacity crossing is the cause. Final conservative taxonomy: `RESULT_D_RELEASE_FIX_FAILED` for the failed end-to-end acceptance gate, with the targeted identity mapping itself passing runtime event/order checks.
+- Artifacts: `results/phase4d_a_fix/`.

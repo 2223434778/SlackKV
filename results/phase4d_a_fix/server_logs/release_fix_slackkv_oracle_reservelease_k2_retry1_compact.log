@@ -1,0 +1,20 @@
+(APIServer pid=1173186) WARNING 09-26 14:47:34 [model.py:2083] Casting torch.bfloat16 to torch.float16.
+(APIServer pid=1173186) WARNING 09-26 14:47:34 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(APIServer pid=1173186) WARNING 09-26 14:47:34 [vllm.py:1097] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(EngineCore pid=1173318) INFO 09-26 14:47:47 [gpu_worker.py:401] Initial free memory 47.25 GiB, reserved 2.0 GiB memory for KV Cache as specified by kv_cache_memory_bytes config and skipped memory profiling. This does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes config when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+(EngineCore pid=1173318) INFO 09-26 14:47:47 [kv_cache_utils.py:1744] GPU KV cache size: 74,896 tokens
+(EngineCore pid=1173318) WARNING 09-26 14:47:47 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(EngineCore pid=1173318) WARNING 09-26 14:47:47 [base.py:382] Initializing OffloadingSpec. This API is experimental and subject to change in the future as we iterate the design.
+(EngineCore pid=1173318) WARNING 09-26 14:47:54 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(EngineCore pid=1173318) WARNING 09-26 14:47:54 [base.py:382] Initializing OffloadingSpec. This API is experimental and subject to change in the future as we iterate the design.
+(EngineCore pid=1173318) WARNING 09-26 14:47:54 [vllm.py:1055] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+(EngineCore pid=1173318) WARNING 09-26 14:47:54 [vllm.py:1097] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(APIServer pid=1173186) WARNING 09-26 14:47:54 [__init__.py:36] SECURITY WARNING: Development endpoints are enabled! This should NOT be used in production!
+(APIServer pid=1173186) WARNING 09-26 14:47:54 [model.py:1502] Default vLLM sampling parameters have been overridden by the model's `generation_config.json`: `{'repetition_penalty': 1.1, 'temperature': 0.7, 'top_k': 20, 'top_p': 0.8}`. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+(EngineCore pid=1173318) WARNING 09-26 14:47:55 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _compute_slot_mapping_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(APIServer pid=1173186) WARNING 09-26 14:48:08 [input_processor.py:282] Passing raw prompts to InputProcessor is deprecated and will be removed in v0.18. You should instead pass the outputs of Renderer.render_cmpl() or Renderer.render_chat().
+(APIServer pid=1173186) WARNING 09-26 14:50:08 [utils.py:607] [shutdown] Process manager: force killing remaining processes count=1
+(APIServer pid=1173186) ERROR 09-26 14:50:08 [server_utils.py:383] Exception caught. Request id: None
+(APIServer pid=1173186) ERROR:    Exception in ASGI application
+(APIServer pid=1173186) ERROR 09-26 14:50:08 [server_utils.py:383] Exception caught. Request id: None
+(APIServer pid=1173186) ERROR:    Exception in ASGI application

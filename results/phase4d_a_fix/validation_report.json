@@ -1,0 +1,17 @@
+{
+  "phase": "4D-A-FIX",
+  "start_commit": "86ac84a94b671514c78b69aeb3dd294e137a03a8",
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "gpu_blocks": 4681,
+  "reservation_budget_blocks": 3510,
+  "P_SAFE_ms": 102,
+  "unit_tests": "35/35 PASS",
+  "release_identity_mapping": "PASS",
+  "physical_before_logical_release": "PASS 2/2",
+  "capacity_recycled": "YES E06,E07 promoted after E04/E00 releases",
+  "reservation_integration": "FAIL: 3/8 first tokens, 0 finishes; 2 later native requests timed out at client 120 s",
+  "service_envelope": "P_SAFE_102_INTEGRATION_ENVELOPE_FAIL",
+  "naive_liveness": "NOT_RUN_PREREQUISITE_FAILED",
+  "final_result": "RESULT_D_RELEASE_FIX_FAILED",
+  "result_interpretation": "The exact-key release fix worked in runtime evidence, but the required end-to-end Reservation integration acceptance gate failed. This does not isolate Naive capacity crossing as a root cause."
+}

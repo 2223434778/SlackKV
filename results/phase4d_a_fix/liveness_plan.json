@@ -1,0 +1,22 @@
+{
+  "watchdog_seconds": 20,
+  "issue_spread_limit_ms": 20,
+  "selected_jobs_by_blocks": [
+    "E04",
+    "E05",
+    "E06",
+    "E00"
+  ],
+  "N1": 1271,
+  "N2": 2545,
+  "N3": 3821,
+  "N4": 5098,
+  "gpu_total_blocks": 4681,
+  "crossing_relation": "3821 < 4681 < 5098",
+  "L0": "NOT_RUN",
+  "L1": "NOT_RUN",
+  "L2": "NOT_RUN",
+  "L3": "NOT_RUN",
+  "status": "NOT_RUN_INTEGRATION_PREREQUISITE_FAILED",
+  "reason": "Reservation integration did not meet 8/8 completion/native-response gate; user protocol requires stopping before Naive root-cause expansion."
+}

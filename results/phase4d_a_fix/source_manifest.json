@@ -1,0 +1,11 @@
+{
+  "start_commit": "86ac84a94b671514c78b69aeb3dd294e137a03a8",
+  "phase4c_workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "phase4d_a_commit": "86ac84a94b671514c78b69aeb3dd294e137a03a8",
+  "vllm_source_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "vllm_source_changes": "none",
+  "policies_run": [
+    "SlackKV-Oracle-ReserveLease-K2"
+  ],
+  "Naive_liveness": "not run; gated by incomplete Reservation integration"
+}

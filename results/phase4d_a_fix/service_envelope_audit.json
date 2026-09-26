@@ -1,0 +1,18 @@
+{
+  "budget_ms": 102,
+  "issued_promotion_count": 4,
+  "endpoint_complete_count": 2,
+  "unmeasured_count": 2,
+  "measured_issue_to_T6_ms": [
+    98.49815801135264,
+    107.24013100843877
+  ],
+  "measured_overrun_count": 1,
+  "min_issue_to_T6_ms": 98.49815801135264,
+  "median_issue_to_T6_ms": 102.8691445098957,
+  "P95_issue_to_T6_ms": 106.80303235858446,
+  "max_issue_to_T6_ms": 107.24013100843877,
+  "max_minus_budget_ms": 5.240131008438766,
+  "status": "P_SAFE_102_INTEGRATION_ENVELOPE_FAIL",
+  "interpretation": "Measured E00 exceeded 102 ms; E06/E07 did not return by the 120 s client timeout. No recalibration performed."
+}

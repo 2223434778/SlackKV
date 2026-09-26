@@ -1,0 +1,83 @@
+[
+  {
+    "run_label": "release_fix_slackkv_oracle_reservelease_k2_0",
+    "resume_event_counts": {
+      "RESUME_ARRIVED": 8,
+      "RESUME_ADMITTED": 3,
+      "FIRST_MODEL_SCHEDULED": 3,
+      "FIRST_TOKEN": 3,
+      "WAITING_FOR_REMOTE_KVS": 1,
+      "REMOTE_KV_READY": 1
+    },
+    "lease_event_counts": {
+      "LEASE_ACQUIRED": 2,
+      "LEASE_HELD_AFTER_PREFETCH_FREE": 2,
+      "LEASE_RELEASE_READY": 2,
+      "LEASE_RELEASED": 2
+    },
+    "connector_only_step_count": 54109,
+    "native_http_status_counts": {
+      "200": 2,
+      "500": 1
+    },
+    "oom": false,
+    "engine_crash": false,
+    "completed_native_responses": 2,
+    "pending_native_responses": 2,
+    "outcome": "integration acceptance failed; no Naive L0/L1 launched"
+  },
+  {
+    "run_label": "release_fix_slackkv_oracle_reservelease_k2_retry1",
+    "resume_event_counts": {
+      "RESUME_ARRIVED": 8,
+      "RESUME_ADMITTED": 3,
+      "FIRST_MODEL_SCHEDULED": 3,
+      "FIRST_TOKEN": 3,
+      "WAITING_FOR_REMOTE_KVS": 1,
+      "REMOTE_KV_READY": 1
+    },
+    "lease_event_counts": {
+      "LEASE_ACQUIRED": 2,
+      "LEASE_HELD_AFTER_PREFETCH_FREE": 2,
+      "LEASE_RELEASE_READY": 2,
+      "LEASE_RELEASED": 2
+    },
+    "connector_only_step_count": 54392,
+    "native_http_status_counts": {
+      "200": 2,
+      "500": 1
+    },
+    "oom": false,
+    "engine_crash": false,
+    "completed_native_responses": 2,
+    "pending_native_responses": 2,
+    "outcome": "integration acceptance failed; no Naive L0/L1 launched"
+  },
+  {
+    "run_label": "release_fix_slackkv_oracle_reservelease_k2_retry2",
+    "resume_event_counts": {
+      "RESUME_ARRIVED": 8,
+      "RESUME_ADMITTED": 3,
+      "FIRST_MODEL_SCHEDULED": 3,
+      "FIRST_TOKEN": 3,
+      "WAITING_FOR_REMOTE_KVS": 1,
+      "REMOTE_KV_READY": 1
+    },
+    "lease_event_counts": {
+      "LEASE_ACQUIRED": 2,
+      "LEASE_HELD_AFTER_PREFETCH_FREE": 2,
+      "LEASE_RELEASE_READY": 2,
+      "LEASE_RELEASED": 2
+    },
+    "connector_only_step_count": 54252,
+    "native_http_status_counts": {
+      "200": 2,
+      "500": 1
+    },
+    "oom": false,
+    "engine_crash": false,
+    "completed_native_responses": 2,
+    "pending_native_responses": 2,
+    "outcome": "integration acceptance failed; no Naive L0/L1 launched"
+  }
+]

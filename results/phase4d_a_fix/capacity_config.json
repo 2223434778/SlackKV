@@ -1,0 +1,9 @@
+{
+  "actual_gpu_kv_blocks": 4681,
+  "reservation_fraction": 0.75,
+  "reservation_budget_blocks": 3510,
+  "reservation_budget_mib": 1535.625,
+  "max_job_blocks": 1444,
+  "minimum_job_admissible": true,
+  "frozen_no_512_fallback": true
+}

@@ -1,0 +1,65 @@
+{
+  "policy": "SlackKV-Oracle-ReserveLease-K2",
+  "attempt": "retry2",
+  "valid": false,
+  "integration_acceptance": "FAIL",
+  "failure_reason": "E06/E07 leased native promotion HTTP requests remained pending and hit the 120 s client read timeout; only 3/8 resumes reached FIRST_TOKEN and no REQUEST_FINISHED event was observed.",
+  "logical_release_fix": "PASS_AT_RUNTIME_EVENT_LEVEL",
+  "exact_episode_to_lease_mapping": {
+    "E04": "E04:turn:1",
+    "E00": "E00:turn:1"
+  },
+  "physical_release_count": 2,
+  "logical_release_count": 2,
+  "runtime_release_count": 2,
+  "unsafe_release_count": 0,
+  "physical_before_logical_valid": true,
+  "logical_reservation_active_at_abort_episodes": [
+    "E06",
+    "E07"
+  ],
+  "logical_reservation_active_at_abort_blocks": 2720,
+  "logical_reservation_leak_count": "NOT_EVALUABLE_RUN_ABORTED",
+  "physical_lease_leak_count": 0,
+  "reservation_peak_blocks": 2720,
+  "physical_lease_peak_blocks": 2548,
+  "reservation_overcommit_count": 0,
+  "lease_overcommit_count": 0,
+  "promotion_count": 4,
+  "promotion_episode_ids": [
+    "E04",
+    "E00",
+    "E06",
+    "E07"
+  ],
+  "promotion_completed_http_200_count": 2,
+  "promotion_pending_at_timeout_count": 2,
+  "later_job_promoted_after_release": true,
+  "later_job_episode_ids": [
+    "E06",
+    "E07"
+  ],
+  "native_response_correct_count": 2,
+  "native_response_unverified_count": 2,
+  "resume_arrived_count": 8,
+  "resume_admitted_count": 3,
+  "first_token_count": 3,
+  "request_finished_trace_count": 0,
+  "token_count_validation": "NOT_VALIDATED_INCOMPLETE",
+  "local_source_tokens": "NA",
+  "external_source_tokens": "NA",
+  "source_conservation": "NOT_VERIFIABLE_INCOMPLETE_RUN",
+  "K2_max_pre_first": 1,
+  "K2_valid": true,
+  "connector_only_step_count": 54252,
+  "server_alive_at_client_timeout": true,
+  "oom": false,
+  "server_crash": false,
+  "HTTP_status_counts": {
+    "200": 2,
+    "500": 1
+  },
+  "P_SAFE_MS": 102,
+  "t0_monotonic_s": 253638.236722584,
+  "native_service_audit_status": "P_SAFE_102_INTEGRATION_ENVELOPE_FAIL"
+}

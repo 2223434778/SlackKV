@@ -1,0 +1,10 @@
+{
+  "classification": "NOT_RUN",
+  "N1": "NOT_RUN",
+  "N2": "NOT_RUN",
+  "N3": "NOT_RUN",
+  "N4": "NOT_RUN",
+  "capacity_crossing_confirmed": false,
+  "root_cause": "NOT_ISOLATED",
+  "reason": "Integration prerequisite failed; no Naive promotion-only runs were launched."
+}

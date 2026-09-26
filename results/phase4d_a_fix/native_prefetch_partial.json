@@ -1,0 +1,75 @@
+{
+  "completed": {
+    "E00": {
+      "lease_key": "E00:turn:1",
+      "required_blocks": 1277,
+      "result": {
+        "client_e2e_ms": 140.4663609864656,
+        "completed_monotonic_s": 253638.394558301,
+        "connector_only_step_count": 16,
+        "connector_only_wall_ms": 61.34323900914751,
+        "cpu_to_gpu_transfer_ms": 24.391935348510742,
+        "elapsed_ms": 124.02615501196124,
+        "external_tokens_loaded": 20432,
+        "generated_token_count": 0,
+        "generated_tokens": 0,
+        "mixed_prefetch_model_step_count": 0,
+        "model_forward_count": 0,
+        "normal_requests_delayed": 1,
+        "phase3m_timestamps": {
+          "T0": 253638.269421994,
+          "T1": 253638.269438925,
+          "T2": 253638.300631315,
+          "T3": 253638.300631315,
+          "T5": 253638.358602397,
+          "T6": 253638.361332071,
+          "T7": 253638.393448149
+        },
+        "sent_monotonic_s": 253638.25409194,
+        "status": "ok",
+        "transfer_bytes": 585826304
+      },
+      "target_start_ms": 6.179323012474924
+    },
+    "E04": {
+      "lease_key": "E04:turn:1",
+      "required_blocks": 1271,
+      "result": {
+        "client_e2e_ms": 102.92711600777693,
+        "completed_monotonic_s": 253638.3441551,
+        "connector_only_step_count": 3,
+        "connector_only_wall_ms": 39.586727012647316,
+        "cpu_to_gpu_transfer_ms": 24.68307113647461,
+        "elapsed_ms": 77.26449600886554,
+        "external_tokens_loaded": 20336,
+        "generated_token_count": 0,
+        "generated_tokens": 0,
+        "mixed_prefetch_model_step_count": 0,
+        "model_forward_count": 0,
+        "normal_requests_delayed": 1,
+        "phase3m_timestamps": {
+          "T0": 253638.265277442,
+          "T1": 253638.265315963,
+          "T2": 253638.300631315,
+          "T3": 253638.300631315,
+          "T5": 253638.337788393,
+          "T6": 253638.339726142,
+          "T7": 253638.342541938
+        },
+        "sent_monotonic_s": 253638.241227984,
+        "status": "ok",
+        "transfer_bytes": 583073792
+      },
+      "target_start_ms": 3.5314699925947934
+    }
+  },
+  "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Read timed out. (read timeout=120.0)",
+  "error_type": "ReadTimeout",
+  "failed_episode": "E06",
+  "issued_promotions": [
+    "E00",
+    "E04",
+    "E06",
+    "E07"
+  ]
+}

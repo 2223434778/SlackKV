@@ -91,3 +91,10 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - Decision: for frozen Phase 4C boundary-0 jobs, derive reservation capacity from 75% of actual GPU KV blocks and freeze a single promotion service budget from nine real-size calibration measurements plus a 20% margin. Do not carry Phase 3's 512-block/40-ms constants into this larger-prefix workload.
 - Reason: each selected prefix requires 1,271–1,444 blocks, exceeding the former 512-block budget; runtime reported 4,681 blocks, yielding a mechanically derived 3,510-block budget. Calibration produced a frozen 102-ms budget.
 - Consequence: these are Phase 4D-A workload/runtime derivations, not tuned performance settings. The policy matrix did not start because NaiveJIT failed the required integration completion gate; no benefit claim follows.
+
+
+## 2026-09-26 — Phase 4D-A-FIX exact lease identity and capacity return
+
+- **Decision:** Keep logical reservation keys episode-scoped, but require an explicit episode-to-turn-qualified physical lease-key mapping and structured exact-key `LEASE_RELEASED` evidence before reclaiming logical blocks. No substring/prefix matching is permitted.
+- **Evidence:** Regression tests demonstrate that logical `E04` does not equal physical `E04:turn:1`; runtime traces then observed exact `LEASE_RELEASED` for E04/E00 before logical release, followed by E06/E07 reservation promotions after capacity recycling.
+- **Limitation:** The retry integration did not complete: E06/E07 native requests remained pending until the 120-s client read timeout, so the 8/8 acceptance gate failed. Naive L0/L1 were not run. The release mapping is runtime-validated, but the complete Reservation integration and Naive root cause remain unresolved. No vLLM source or serving algorithm was changed.
