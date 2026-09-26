@@ -1,5 +1,10 @@
 # Decisions
 
+## Phase 4D-B — Separate logical reservation from physical feasibility
+
+- **Decision:** Keep the 3,510-block logical future-reservation budget, but require each guarded promotion to pass an in-engine check against the block pool's exact allocatable free-block count before connector load/allocation. Lease handoff releases protection ownership; it does not mean GPU KV blocks have become free.
+- **Evidence:** On the frozen large-prefix workload, exact-free G1 admitted 1,276 blocks with 2,135 free and rejected 1,277 blocks with 859 free (2/2 each). The guarded 8-job integration completed in the smoke and all three fresh-server repetitions; E06/E07/E03 were rejected before connector work and used OnDemand fallback.
+
 Record material technical and experimental decisions, including context and rationale.
 
 ## 2026-09-14 — Use “peer GPU memory” in experimental documentation
@@ -98,3 +103,10 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - **Decision:** Keep logical reservation keys episode-scoped, but require an explicit episode-to-turn-qualified physical lease-key mapping and structured exact-key `LEASE_RELEASED` evidence before reclaiming logical blocks. No substring/prefix matching is permitted.
 - **Evidence:** Regression tests demonstrate that logical `E04` does not equal physical `E04:turn:1`; runtime traces then observed exact `LEASE_RELEASED` for E04/E00 before logical release, followed by E06/E07 reservation promotions after capacity recycling.
 - **Limitation:** The retry integration did not complete: E06/E07 native requests remained pending until the 120-s client read timeout, so the 8/8 acceptance gate failed. Naive L0/L1 were not run. The release mapping is runtime-validated, but the complete Reservation integration and Naive root cause remain unresolved. No vLLM source or serving algorithm was changed.
+
+## Phase 4D-B — Separate logical reservation from physical feasibility
+
+- **Decision:** Keep the 3,510-block logical future-reservation budget, but require each guarded promotion to pass an in-engine check against the block pool's exact allocatable free-block count before connector load/allocation. Lease handoff releases protection ownership; it does not mean GPU KV blocks have become free.
+- **Evidence:** On the frozen large-prefix workload, exact-free G1 admitted 1,276 blocks with 2,135 free and rejected 1,277 blocks with 859 free (2/2 each). The guarded 8-job integration then completed in the smoke and all three fresh-server repetitions; E06/E07/E03 were rejected before connector work and used OnDemand fallback.
+
+- **Scope:** This establishes guard correctness and restores liveness for the frozen integration. It does not show that capacity is the only possible cause of all NaiveJIT failures, nor make a performance or SOTA claim.

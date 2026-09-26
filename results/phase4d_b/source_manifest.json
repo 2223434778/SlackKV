@@ -1,0 +1,13 @@
+{
+  "baseline_snapshots": {
+    "api_router.py": "/tmp/phase4d_b_baseline/api_router.py",
+    "scheduler.py": "/tmp/phase4d_b_baseline/scheduler.py"
+  },
+  "delta_patch": "results/phase4d_b/vllm_phase4d_b_delta.patch",
+  "phase4c_workload_path": "results/phase4c/hybrid_workload.csv",
+  "phase4c_workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "slackkv_start_commit": "c7921d93f873ceb6ec7d6103574607bcd2d3acdf",
+  "vllm_pinned_baseline_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "vllm_source_path": "/media/a6000/D/ZhaoBinHe/slackkv-phase2c-fix-sourceprobe",
+  "vllm_working_tree_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665"
+}

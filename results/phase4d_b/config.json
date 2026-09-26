@@ -1,0 +1,21 @@
+{
+  "K2": 2,
+  "P_SAFE_ms": 102,
+  "cpu_external_kv_bytes": 8589934592,
+  "gpu_kv_bytes": 2147483648,
+  "original_phase4d_a_stage_b_run": false,
+  "performance_matrix_run": false,
+  "phase": "Phase 4D-B",
+  "reservation_budget_blocks": 3510,
+  "reservation_fraction": 0.75,
+  "resume_guard_ms": 110,
+  "stage_sequence": [
+    "G0",
+    "G1-A x2",
+    "G1-B x2",
+    "G2-S x1",
+    "G2-R x3"
+  ],
+  "total_gpu_kv_blocks": 4681,
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

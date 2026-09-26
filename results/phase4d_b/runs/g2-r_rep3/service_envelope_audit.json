@@ -1,0 +1,11 @@
+{
+  "P95_issue_to_T6_ms": 88.69881002174225,
+  "budget_ms": 102,
+  "max_issue_to_T6_ms": 89.2876319703646,
+  "max_minus_budget_ms": 0.0,
+  "median_issue_to_T6_ms": 83.39941248414107,
+  "min_issue_to_T6_ms": 77.51119299791753,
+  "overrun_count": 0,
+  "promotion_count": 2,
+  "status": "P_SAFE_102_INTEGRATION_ENVELOPE_PASS"
+}

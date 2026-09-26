@@ -1,0 +1,5 @@
+stage,side,repetition,episode_id,request_id,lease_key,required_blocks,total_blocks,free_blocks_before,used_blocks_before,running_unique_blocks,waiting_unique_blocks,lease_unique_blocks,num_running,num_waiting,decision,endpoint_status,response_ms,external_tokens_loaded,transfer_bytes,model_forward_count,generated_token_count,rejected_lease_acquires,active_lease_count,active_lease_unique_blocks,event,reason,timestamp_monotonic,run_name
+G1,safe,1,E06,slackkv-prefetch-a742ac6a4b0d4d34ba0b5e9d344247e1-a1569431,E06:turn:1,1276,4681,2135,2546,0,0,2545,0,1,ADMIT,ok,56.30297600873746,20416,585367552,0,0,1,,,,,,
+G1,safe,2,E06,slackkv-prefetch-4c2dcc5c7ff742d88d62ccc0c287b2ad-bd26c78e,E06:turn:1,1276,4681,2135,2546,0,0,2545,0,1,ADMIT,ok,58.66260500624776,20416,585367552,0,0,1,,,,,,
+G1,unsafe,1,E00,slackkv-prefetch-76620b31419b424284398f6ecd6bea7e-a37ba684,E00:turn:1,1277,4681,859,3822,0,0,3821,0,1,REJECT,capacity_rejected,21.293892001267523,0,0,0,0,0,,,,,,
+G1,unsafe,2,E00,slackkv-prefetch-d2f191ef13e1464780bd2c811b8e7d87-a554bd80,E00:turn:1,1277,4681,859,3822,0,0,3821,0,1,REJECT,capacity_rejected,22.864665981614962,0,0,0,0,0,,,,,,

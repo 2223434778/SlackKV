@@ -1,0 +1,278 @@
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -75,0 +76,5 @@
++def _is_slackkv_capacity_guarded(request: Request) -> bool:
++    params = request.kv_transfer_params
++    return bool(params and params.get("capacity_guard") is True)
++
++
+@@ -467,0 +473,170 @@
++    def _slackkv_capacity_required_blocks(self, request: Request) -> int:
++        params = request.kv_transfer_params or {}
++        required = params.get("required_blocks")
++        prompt_ids = request.prompt_token_ids
++        if (
++            not _is_slackkv_prefetch_only(request)
++            or isinstance(required, bool)
++            or not isinstance(required, int)
++            or required <= 0
++            or prompt_ids is None
++            or len(prompt_ids) % self.block_size != 0
++            or required != len(prompt_ids) // self.block_size
++        ):
++            raise ValueError("INVALID_CAPACITY_GUARD_REQUEST")
++        return required
++
++    def _slackkv_capacity_owned_block_ids(self, requests: Iterable[Request]) -> set[int]:
++        block_ids: set[int] = set()
++        for request in requests:
++            try:
++                groups = self.kv_cache_manager.get_blocks(request.request_id).blocks
++            except (KeyError, ValueError):
++                continue
++            block_ids.update(
++                block.block_id
++                for group in groups
++                for block in group
++                if not block.is_null
++            )
++        return block_ids
++
++    def _slackkv_capacity_trace(
++        self,
++        request: Request,
++        required_blocks: int | None,
++        free_blocks: int,
++        decision: str,
++        *,
++        reason: str | None = None,
++    ) -> None:
++        pool = self.kv_cache_manager.block_pool
++        total_blocks = pool.num_gpu_blocks
++        running_blocks = self._slackkv_capacity_owned_block_ids(self.running)
++        waiting_requests = {
++            item.request_id: item
++            for queue in (self.waiting, self.skipped_waiting)
++            for item in queue
++        }
++        waiting_blocks = self._slackkv_capacity_owned_block_ids(
++            waiting_requests.values()
++        )
++        lease_blocks = {
++            block.block_id
++            for blocks in self._slackkv_residency_leases.values()
++            for block in blocks
++            if not block.is_null
++        }
++        event = {
++            "event": "CAPACITY_GUARD",
++            "timestamp_monotonic": time.monotonic(),
++            "request_id": request.request_id,
++            "lease_key": _slackkv_residency_lease_key(request),
++            "required_blocks": required_blocks,
++            "total_blocks": total_blocks,
++            "free_blocks_before": free_blocks,
++            "used_blocks_before": total_blocks - free_blocks,
++            "running_unique_blocks": len(running_blocks),
++            "waiting_unique_blocks": len(waiting_blocks),
++            "lease_unique_blocks": len(lease_blocks),
++            "active_lease_count": len(self._slackkv_residency_leases),
++            "active_lease_unique_blocks": len(lease_blocks),
++            "decision": decision,
++            "reason": reason,
++            "num_running": len(self.running),
++            "num_waiting": len(self.waiting) + len(self.skipped_waiting),
++        }
++        logger.info("SLACKKV_CAPACITY_TRACE %s", json.dumps(event, sort_keys=True))
++
++    def _slackkv_finish_capacity_guard_request(
++        self,
++        request: Request,
++        request_queue: RequestQueue,
++        *,
++        status: str,
++        reason: str,
++        required_blocks: int | None,
++        free_blocks: int,
++    ) -> None:
++        request_id = request.request_id
++        request_queue.remove_request(request)
++        self._slackkv_connector_first.pop(request_id, None)
++        self._inflight_prefills.discard(request)
++        request.status = RequestStatus.FINISHED_STOPPED
++        connector_delay_free_blocks, connector_params = self._connector_finished(request)
++        if connector_delay_free_blocks:
++            raise AssertionError("capacity rejection unexpectedly started a connector store")
++        kv_params = dict(request.kv_transfer_params or {})
++        if connector_params:
++            kv_params.update(connector_params)
++        result = dict(kv_params.get("slackkv_prefetch") or {})
++        result.update(
++            {
++                "status": status,
++                "reason": reason,
++                "required_blocks": required_blocks,
++                "free_blocks": free_blocks,
++                "total_blocks": self.kv_cache_manager.block_pool.num_gpu_blocks,
++                "external_tokens_loaded": 0,
++                "transfer_bytes": 0,
++                "model_forward_count": 0,
++                "generated_token_count": 0,
++                "mixed_prefetch_model_step_count": 0,
++            }
++        )
++        kv_params["slackkv_prefetch"] = result
++        self.finished_req_ids.add(request_id)
++        if self.finished_req_ids_dict is not None:
++            self.finished_req_ids_dict[request.client_index].add(request_id)
++        self.encoder_cache_manager.free(request)
++        self._free_blocks(request)
++        self._slackkv_prefetch_finished[request_id] = (
++            request.client_index,
++            kv_params,
++            request.take_events(),
++            request.trace_headers,
++        )
++
++    def _slackkv_preflight_capacity_guards(self) -> None:
++        """Reject impossible guarded loads before connector-first work starts."""
++        seen: set[str] = set()
++        for request_queue in (self.waiting, self.skipped_waiting):
++            for request in list(request_queue):
++                if request.request_id in seen or not _is_slackkv_capacity_guarded(
++                    request
++                ):
++                    continue
++                if (
++                    request.status == RequestStatus.WAITING_FOR_REMOTE_KVS
++                    or request in self._inflight_prefills
++                ):
++                    continue
++                seen.add(request.request_id)
++                try:
++                    required = self._slackkv_capacity_required_blocks(request)
++                except ValueError as exc:
++                    free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                    self._slackkv_capacity_trace(
++                        request, None, free, "INVALID", reason=str(exc)
++                    )
++                    self._slackkv_finish_capacity_guard_request(
++                        request,
++                        request_queue,
++                        status="invalid_capacity_guard_request",
++                        reason=str(exc),
++                        required_blocks=None,
++                        free_blocks=free,
++                    )
++                    continue
++                free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                if free < required:
++                    self._slackkv_capacity_trace(request, required, free, "REJECT")
++                    self._slackkv_finish_capacity_guard_request(
++                        request,
++                        request_queue,
++                        status="capacity_rejected",
++                        reason="INSUFFICIENT_FREE_BLOCKS",
++                        required_blocks=required,
++                        free_blocks=free,
++                    )
++
+@@ -470,0 +646 @@
++        self._slackkv_preflight_capacity_guards()
+@@ -944,0 +1121,40 @@
++                if (
++                    _is_slackkv_capacity_guarded(request)
++                    and request.status != RequestStatus.WAITING_FOR_REMOTE_KVS
++                    and request not in self._inflight_prefills
++                ):
++                    try:
++                        required_capacity_blocks = self._slackkv_capacity_required_blocks(
++                            request
++                        )
++                    except ValueError as exc:
++                        free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                        self._slackkv_capacity_trace(
++                            request, None, free, "INVALID", reason=str(exc)
++                        )
++                        self._slackkv_finish_capacity_guard_request(
++                            request,
++                            request_queue,
++                            status="invalid_capacity_guard_request",
++                            reason=str(exc),
++                            required_blocks=None,
++                            free_blocks=free,
++                        )
++                        continue
++                    free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                    if free < required_capacity_blocks:
++                        self._slackkv_capacity_trace(
++                            request, required_capacity_blocks, free, "REJECT"
++                        )
++                        self._slackkv_finish_capacity_guard_request(
++                            request,
++                            request_queue,
++                            status="capacity_rejected",
++                            reason="INSUFFICIENT_FREE_BLOCKS",
++                            required_blocks=required_capacity_blocks,
++                            free_blocks=free,
++                        )
++                        continue
++                    self._slackkv_capacity_trace(
++                        request, required_capacity_blocks, free, "ADMIT"
++                    )
+@@ -1166,5 +1382,10 @@
+-            scheduler_output.slackkv_connector_only_step = True
+-            scheduler_output.slackkv_connector_only_req_ids = (
+-                slackkv_connector_req_ids
+-            )
+-            _validate_slackkv_connector_first_output(scheduler_output)
++            active_connector_req_ids = [
++                request_id
++                for request_id in slackkv_connector_req_ids
++                if request_id in self.requests
++                and request_id in self._slackkv_connector_first
++            ]
++            if active_connector_req_ids:
++                scheduler_output.slackkv_connector_only_step = True
++                scheduler_output.slackkv_connector_only_req_ids = active_connector_req_ids
++                _validate_slackkv_connector_first_output(scheduler_output)
+--- a/vllm/entrypoints/serve/dev/slackkv_prefetch/api_router.py
++++ b/vllm/entrypoints/serve/dev/slackkv_prefetch/api_router.py
+@@ -7 +7 @@
+-from fastapi import APIRouter, FastAPI, Request
++from fastapi import APIRouter, FastAPI, HTTPException, Request
+@@ -18,0 +19,18 @@
++    capacity_guard: bool = False
++    required_blocks: int | None = Field(default=None, ge=1, strict=True)
++
++def validate_capacity_guard_request(
++    prompt_token_ids: list[int],
++    capacity_guard: bool,
++    required_blocks: int | None,
++) -> None:
++    if capacity_guard and (
++        required_blocks is None
++        or len(prompt_token_ids) % 16 != 0
++        or required_blocks != len(prompt_token_ids) // 16
++    ):
++        raise HTTPException(status_code=422, detail="INVALID_CAPACITY_GUARD_REQUEST")
++
++def validate_prefetch_status(status: object, capacity_guard: bool) -> None:
++    if status != "ok" and not (capacity_guard and status == "capacity_rejected"):
++        raise RuntimeError(f"SlackKV prefetch failed: {status!r}")
+@@ -25,0 +44,5 @@
++    validate_capacity_guard_request(
++        request.prompt_token_ids,
++        request.capacity_guard,
++        request.required_blocks,
++    )
+@@ -35,0 +59,5 @@
++                **(
++                    {"capacity_guard": True, "required_blocks": request.required_blocks}
++                    if request.capacity_guard
++                    else {}
++                ),
+@@ -57,2 +85 @@
+-    if metadata.get("status") != "ok":
+-        raise RuntimeError(f"SlackKV prefetch failed: {metadata!r}")
++    validate_prefetch_status(metadata.get("status"), request.capacity_guard)

@@ -1,0 +1,68 @@
+{
+  "K2_max_pre_first": 1,
+  "K2_valid": true,
+  "P_SAFE_MS": 102,
+  "X_active_through_last_first_token": true,
+  "X_decode_duration_ms": 4496.732169,
+  "capacity": {
+    "max_simultaneous_frozen_jobs": 2,
+    "reservation_budget_MiB": 1535.625,
+    "reservation_budget_blocks": 3510,
+    "total_gpu_kv_blocks": 4681
+  },
+  "external_tokens": 106352,
+  "issue_to_T6_ms": [
+    71.52559899259359,
+    82.69099297467619,
+    62.476157036144286
+  ],
+  "later_job_episode_ids": [
+    "E06",
+    "E07",
+    "E03"
+  ],
+  "later_job_promoted_after_release": true,
+  "lease_leak_count": 0,
+  "lease_overcommit": false,
+  "lease_sequences_valid": false,
+  "local_tokens": 61664,
+  "logical_release_count": 2,
+  "logical_reservation_leak_count": 1,
+  "native_correct": false,
+  "physical_before_logical_valid": true,
+  "physical_lease_leak_count": 0,
+  "physical_lease_peak_blocks": 2548,
+  "physical_release_count": 3,
+  "policy": "SlackKV-Oracle-ReserveLease-K2",
+  "promotion_count": 5,
+  "promotion_episode_ids": [
+    "E00",
+    "E03",
+    "E04",
+    "E06",
+    "E07"
+  ],
+  "promotion_memory_time_MiB_s": 1240.2196208145615,
+  "repetition": 0,
+  "reservation_overcommit": false,
+  "reservation_peak_blocks": 2548,
+  "resume_complete": true,
+  "resume_completed_count": 8,
+  "resume_correct_count": 8,
+  "runtime_release_count": 2,
+  "service_envelope": {
+    "P95_issue_to_T6_ms": 81.57445357646793,
+    "budget_ms": 102,
+    "max_issue_to_T6_ms": 82.69099297467619,
+    "max_minus_budget_ms": 0.0,
+    "median_issue_to_T6_ms": 71.52559899259359,
+    "min_issue_to_T6_ms": 62.476157036144286,
+    "overrun_count": 0,
+    "promotion_count": 3,
+    "status": "P_SAFE_102_INTEGRATION_ENVELOPE_PASS"
+  },
+  "source_conservation": true,
+  "token_correct": true,
+  "unsafe_release_count": 0,
+  "valid": false
+}

@@ -1,0 +1,7 @@
+stage,repetition,run_name,valid,watchdog_expired,server_alive_before_shutdown,OOM,server_crash,resume_completed_count,token_correct_count,source_conservation,K2_max_pre_first,reservation_peak_blocks,physical_lease_peak_blocks,logical_leaks,lease_leaks,unsafe_release_count,capacity_attempt_count,capacity_admit_count,capacity_reject_count,capacity_invariant_valid,native_promotion_valid,post_first_release_valid,x_active_through_last_first_token,completed_within_30s,pending_guarded_prefetch,error,rejected_lifecycle_valid,rejected_request_no_wait,rejected_request_no_lease,rejected_request_no_connector_step
+G2-S,0,g2-s_rep0_attempt0_incomplete,False,False,False,False,False,8,8,True,1,2548,2548,1,0,0,5,3,2,True,True,False,True,True,0,,,,,
+G2-S,0,g2-s_rep0_attempt1_validation_incomplete,False,False,True,False,False,8,8,True,1,2548,2548,0,0,0,5,2,3,True,True,True,True,True,0,,False,True,True,True
+G2-S,0,g2-s_rep0,True,False,True,False,False,8,8,True,1,2548,2548,0,0,0,5,2,3,True,True,True,True,True,0,,True,True,True,True
+G2-R,1,g2-r_rep1,True,False,True,False,False,8,8,True,2,2548,2548,0,0,0,5,2,3,True,True,True,True,True,0,,True,True,True,True
+G2-R,2,g2-r_rep2,True,False,True,False,False,8,8,True,1,2548,2548,0,0,0,5,2,3,True,True,True,True,True,0,,True,True,True,True
+G2-R,3,g2-r_rep3,True,False,True,False,False,8,8,True,1,2548,2548,0,0,0,5,2,3,True,True,True,True,True,0,,True,True,True,True

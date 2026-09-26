@@ -462,3 +462,11 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - Completed T6 records were 98.50 ms and 107.24 ms; one exceeds the frozen 102-ms budget. The service envelope is therefore `P_SAFE_102_INTEGRATION_ENVELOPE_FAIL`; P_SAFE was not recalibrated. The overall Reservation integration acceptance gate did not pass.
 - By the frozen prerequisite, Naive L0/L1 and the original Phase 4D-A Stage B matrix were not started. The observed Reservation-path non-progress does not establish that unleased Naive capacity crossing is the cause. Final conservative taxonomy: `RESULT_D_RELEASE_FIX_FAILED` for the failed end-to-end acceptance gate, with the targeted identity mapping itself passing runtime event/order checks.
 - Artifacts: `results/phase4d_a_fix/`.
+
+## 2026-09-26 — Phase 4D-B runtime physical-headroom gate
+
+- Added a research-only `/slackkv/prefetch` capacity guard backed by `KVCacheManager.block_pool.get_num_free_blocks()`. It validates required blocks against 16-token prompt alignment and fast-rejects insufficient physical headroom before connector load/allocation.
+- G1 passed both sides twice: E06 admitted at 2,135 free / 1,276 required blocks; E00 rejected at 859 free / 1,277 required blocks, returning in 21.3–22.9 ms with zero transfer and no rejected-request lease.
+- G2 smoke and three fresh-server repetitions each completed 8/8 resumes. In each valid run E04/E00 were admitted, while E06/E07/E03 were rejected before connector work and used OnDemand fallback. No overcommit, lease/logical leak, crash, OOM, or 5-second prefetch non-progress was observed.
+- P_SAFE=102 ms remained frozen and was not exceeded by any of the eight successful promotions in the four valid runs. No performance matrix or superiority claim was run. Final classification: `RESULT_A_PHYSICAL_HEADROOM_RESTORES_LIVENESS`.
+- Prior incomplete Phase 4D-A/A-FIX artifacts and failed harness attempts remain preserved; results are in `results/phase4d_b/`.

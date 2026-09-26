@@ -1,0 +1,5 @@
+stage,side,repetition,episode_ids,leased_episode_ids,candidate_episode,total_required_blocks,gpu_total_blocks,materialization_valid,owner_promotions,owner_promotions_valid,required_blocks,free_blocks_before,decision,endpoint_status,response_ms,transfer_bytes,pass,candidate_lease_acquires,rejected_request_lease_acquires
+G1,safe,1,E04|E05|E06,E04|E05,E06,3821,4681,True,2,True,1276,2135,ADMIT,ok,56.30297600873746,585367552,True,1,0
+G1,safe,2,E04|E05|E06,E04|E05,E06,3821,4681,True,2,True,1276,2135,ADMIT,ok,58.66260500624776,585367552,True,1,0
+G1,unsafe,1,E04|E05|E06|E00,E04|E05|E06,E00,5098,4681,True,3,True,1277,859,REJECT,capacity_rejected,21.293892001267523,0,True,0,0
+G1,unsafe,2,E04|E05|E06|E00,E04|E05|E06,E00,5098,4681,True,3,True,1277,859,REJECT,capacity_rejected,22.864665981614962,0,True,0,0

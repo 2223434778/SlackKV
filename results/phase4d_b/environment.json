@@ -1,0 +1,29 @@
+{
+  "actual_block_size": 16,
+  "connector": "OffloadingConnector",
+  "cpu_kv_bytes": 8589934592,
+  "cuda_visible_devices": "0",
+  "gpu_driver": "NVIDIA RTX A6000, 550.54.14\nNVIDIA RTX A6000, 550.54.14",
+  "gpu_inventory_system": "NVIDIA RTX A6000\nNVIDIA RTX A6000",
+  "gpu_kv_bytes": 2147483648,
+  "gpu_visible_to_process": "1 NVIDIA RTX A6000",
+  "max_model_len": 32768,
+  "meminfo": {
+    "MemAvailable": "126020720 kB",
+    "MemTotal": "131757160 kB"
+  },
+  "model_snapshot": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "phase4d_b_capacity_api": "KVCacheManager.block_pool.get_num_free_blocks()",
+  "phase4d_b_cuda_visible_devices": "0",
+  "phase4d_b_runtime_block_size": 16,
+  "phase4d_b_total_gpu_kv_blocks": 4681,
+  "phase4d_b_vllm_source_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "prefix_caching": true,
+  "python": "3.11.16",
+  "topology": "\u001b[4mGPU0\tGPU1\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tSYS\t0-31\t0\t\tN/A\nGPU1\tSYS\t X \t0-31\t0\t\tN/A\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks",
+  "torch_cuda": "2.11.0+cu126 12.6",
+  "transformers": "5.17.0",
+  "vllm": "0.23.0+cu126",
+  "vllm_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "vllm_source": "/media/a6000/D/ZhaoBinHe/slackkv-phase2c-fix-sourceprobe"
+}

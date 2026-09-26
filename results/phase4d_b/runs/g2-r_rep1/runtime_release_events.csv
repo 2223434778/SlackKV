@@ -1,0 +1,3 @@
+episode_id,lease_key,required_blocks,first_token_ms,physical_release_ms,logical_release_ms,logical_minus_physical_ms,reserved_blocks_before,reserved_blocks_after,released_blocks,event
+E04,E04:turn:1,1271,249.94134000735357,164.32534501655027,250.1504960237071,85.825151,2548,1277,1271,RUNTIME_RELEASE_AFTER_PHYSICAL_LEASE
+E00,E00:turn:1,1277,445.1412850175984,195.95496903639287,447.0799140399322,251.124945,1277,0,1277,RUNTIME_RELEASE_AFTER_PHYSICAL_LEASE
