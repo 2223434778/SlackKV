@@ -1,0 +1,9 @@
+run_label,episode_id,expected_prefix_bytes,observed_offload_bytes,difference_bytes,prompt_tokens,generated_tokens,validation
+measured_rep2_pos4_OnDemand-K2,E00,585826304,585826304,0,20432,1,True
+measured_rep2_pos4_OnDemand-K2,E01,610140160,610140160,0,21280,1,True
+measured_rep2_pos4_OnDemand-K2,E02,606928896,606928896,0,21168,1,True
+measured_rep2_pos4_OnDemand-K2,E03,599130112,599130112,0,20896,1,True
+measured_rep2_pos4_OnDemand-K2,E04,583073792,583073792,0,20336,1,True
+measured_rep2_pos4_OnDemand-K2,E05,584450048,584450048,0,20384,1,True
+measured_rep2_pos4_OnDemand-K2,E06,585367552,585367552,0,20416,1,True
+measured_rep2_pos4_OnDemand-K2,E07,662437888,662437888,0,23104,1,True

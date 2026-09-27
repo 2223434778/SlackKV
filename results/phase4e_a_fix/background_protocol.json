@@ -1,0 +1,16 @@
+{
+  "X_only_TPOT_median_ms": 14.574275090019569,
+  "X_only_decode_median_ms": 7447.454571,
+  "X_only_valid_runs": 4,
+  "X_output_tokens": 512,
+  "X_prompt_tokens": 9500,
+  "minimum_smoke_tail_margin_ms": 4117.254214023006,
+  "protocol_pass": true,
+  "required_smoke_margin_ms": 1000.0,
+  "smoke_tail_margin_by_policy": {
+    "FullSlackKV-Oracle-K2": 4232.082448044487,
+    "GuardedJIT+Lease-Oracle-K2": 4242.031662959201,
+    "GuardedJIT-Oracle-K2": 4350.551481017725,
+    "OnDemand-K2": 4117.254214023006
+  }
+}

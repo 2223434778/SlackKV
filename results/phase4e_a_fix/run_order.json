@@ -1,0 +1,28 @@
+{
+  "repetitions": [
+    [
+      "OnDemand-K2",
+      "GuardedJIT-Oracle-K2",
+      "GuardedJIT+Lease-Oracle-K2",
+      "FullSlackKV-Oracle-K2"
+    ],
+    [
+      "GuardedJIT-Oracle-K2",
+      "GuardedJIT+Lease-Oracle-K2",
+      "FullSlackKV-Oracle-K2",
+      "OnDemand-K2"
+    ],
+    [
+      "GuardedJIT+Lease-Oracle-K2",
+      "FullSlackKV-Oracle-K2",
+      "OnDemand-K2",
+      "GuardedJIT-Oracle-K2"
+    ],
+    [
+      "FullSlackKV-Oracle-K2",
+      "OnDemand-K2",
+      "GuardedJIT-Oracle-K2",
+      "GuardedJIT+Lease-Oracle-K2"
+    ]
+  ]
+}

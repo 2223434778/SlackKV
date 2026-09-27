@@ -1,0 +1,5 @@
+policy,valid_repetitions,deadline_P95_median,total_H2D_median,X_slowdown_median,combined_tok_s_median,reason
+OnDemand-K2,4,NA,NA,NA,NA,incomplete_matrix_no_policy_aggregation
+GuardedJIT-Oracle-K2,4,NA,NA,NA,NA,incomplete_matrix_no_policy_aggregation
+GuardedJIT+Lease-Oracle-K2,3,NA,NA,NA,NA,incomplete_matrix_no_policy_aggregation
+FullSlackKV-Oracle-K2,4,NA,NA,NA,NA,incomplete_matrix_no_policy_aggregation
