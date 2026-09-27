@@ -110,3 +110,9 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - **Evidence:** On the frozen large-prefix workload, exact-free G1 admitted 1,276 blocks with 2,135 free and rejected 1,277 blocks with 859 free (2/2 each). The guarded 8-job integration then completed in the smoke and all three fresh-server repetitions; E06/E07/E03 were rejected before connector work and used OnDemand fallback.
 
 - **Scope:** This establishes guard correctness and restores liveness for the frozen integration. It does not show that capacity is the only possible cause of all NaiveJIT failures, nor make a performance or SOTA claim.
+
+## 2026-09-27 — Physical leases require a serving-progress path
+
+- **Decision:** Treat instantaneous exact-free-block promotion admission as insufficient by itself when successful promotions become non-evictable physical leases. Admission must preserve a future serving-progress path; Phase 4E-A-RCA confirms the need, but does not implement a new policy or fix.
+- **Evidence:** In the frozen large-prefix hybrid workload, sequentially leasing E00/E01/E02 left fewer than E04's 1,271 required blocks free. E04 was the earliest unleased resume; the pinned FCFS waiting path hit `allocate_slots() -> None` and `break`, preventing leased resumes behind it from obtaining real-request ownership and releasing their leases. U3 reproduced in 2/2 no-X and 3/3 X runs; removing one lease, leaving the same prefetched set evictable, or leasing E04 itself restored progress in the prescribed controls.
+- **Scope:** This is a controlled causal result for the pinned vLLM scheduler and Phase 4C first-boundary hybrid workload. It does not establish a universal vLLM deadlock or prove that a particular reservation policy is optimal.

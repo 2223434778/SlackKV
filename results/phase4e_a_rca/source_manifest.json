@@ -1,0 +1,12 @@
+{
+  "phase": "4E-A-RCA",
+  "start_commit": "e829bee1fb6d45dcdfb7bdce395c5a10154cc892",
+  "phase4c_workload": "results/phase4c/hybrid_workload.csv",
+  "phase4c_workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "frozen_jobs": "results/phase4d_a/boundary0_jobs.csv",
+  "vllm_source": "/media/a6000/D/ZhaoBinHe/slackkv-phase2c-fix-sourceprobe",
+  "pinned_upstream_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "pre_rca_vllm_diff_sha256": "e4f53d8f99230d71ba7798cc192a873d954777a20a6e0932c027b662188d3f1f",
+  "rca_trace_only_patch_sha256": "9fcd611f908b2f23a6fcd8dc670c182a292d9c4ffb33e75696e6cfc55b2a6467",
+  "no_scheduler_control_flow_change": true
+}

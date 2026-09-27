@@ -1,0 +1,15 @@
+{
+  "R1": "R1_EXPECTED_PATTERN",
+  "R2_S3": [
+    "PROGRESS",
+    "PROGRESS",
+    "PROGRESS"
+  ],
+  "R2_U3": [
+    "LEASE_HOL_NONPROGRESS",
+    "LEASE_HOL_NONPROGRESS",
+    "LEASE_HOL_NONPROGRESS"
+  ],
+  "R2_started": true,
+  "final_result": "RESULT_A_LEASE_HOL_CIRCULAR_WAIT_CONFIRMED"
+}

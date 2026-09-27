@@ -1,0 +1,10 @@
+{
+  "CUDA_VISIBLE_DEVICES": "0",
+  "GPU": "NVIDIA RTX A6000, 550.54.14",
+  "TP": 1,
+  "dtype": "float16",
+  "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "pinned_vLLM_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "python": "Python 3.11.16",
+  "vLLM_version": "0.23.0"
+}

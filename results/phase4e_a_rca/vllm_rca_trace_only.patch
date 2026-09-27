@@ -1,0 +1,111 @@
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -313,6 +313,8 @@
+         self._slackkv_ft_first_token_seen: set[str] = set()
+         self._slackkv_ft_blocked_steps: dict[str, int] = defaultdict(int)
+         self._slackkv_residency_leases: dict[str, list[Any]] = {}
++        self._slackkv_waiting_attempt_seen: set[str] = set()
++        self._slackkv_waiting_allocate_none_count: dict[str, int] = defaultdict(int)
+ 
+         # Encoder-related.
+         # Calculate encoder cache size if applicable
+@@ -1166,6 +1168,21 @@
+                     # avoid deadlock and predictable preemptions.
+                     reserved_blocks = self._inflight_prefill_reserved_blocks()
+ 
++                if (
++                    _is_slackkv_trace_resume(request)
++                    and request_id not in self._slackkv_waiting_attempt_seen
++                ):
++                    self._slackkv_waiting_attempt_seen.add(request_id)
++                    self._slackkv_waiting_trace(
++                        request,
++                        "WAITING_ATTEMPT",
++                        free_blocks=self.kv_cache_manager.block_pool.get_num_free_blocks(),
++                        num_new_local_computed_tokens=num_new_local_computed_tokens,
++                        num_external_computed_tokens=num_external_computed_tokens,
++                        num_computed_tokens=num_computed_tokens,
++                        num_new_tokens=num_new_tokens,
++                    )
++
+                 new_blocks = self.kv_cache_manager.allocate_slots(
+                     request,
+                     num_new_tokens,
+@@ -1181,6 +1198,23 @@
+ 
+                 if new_blocks is None:
+                     # The request cannot be scheduled.
++                    if _is_slackkv_trace_resume(request):
++                        self._slackkv_waiting_allocate_none_count[request_id] += 1
++                        blocked_count = self._slackkv_waiting_allocate_none_count[
++                            request_id
++                        ]
++                        if blocked_count & (blocked_count - 1) == 0:
++                            self._slackkv_waiting_trace(
++                                request,
++                                "WAITING_ALLOCATE_NONE",
++                                free_blocks=self.kv_cache_manager.block_pool.get_num_free_blocks(),
++                                num_new_local_computed_tokens=num_new_local_computed_tokens,
++                                num_external_computed_tokens=num_external_computed_tokens,
++                                num_computed_tokens=num_computed_tokens,
++                                num_new_tokens=num_new_tokens,
++                                blocked_count=blocked_count,
++                                will_break_waiting_loop=True,
++                            )
+ 
+                     # NOTE: we need to untouch the request from the encode cache
+                     # manager
+@@ -2303,6 +2337,53 @@
+         """Returns (num_running_reqs, num_waiting_reqs)."""
+         return len(self.running), len(self.waiting) + len(self.skipped_waiting)
+ 
++    def _slackkv_waiting_trace(
++        self,
++        request: Request,
++        event: str,
++        *,
++        free_blocks: int,
++        num_new_local_computed_tokens: int,
++        num_external_computed_tokens: int,
++        num_computed_tokens: int,
++        num_new_tokens: int,
++        blocked_count: int = 0,
++        will_break_waiting_loop: bool = False,
++    ) -> None:
++        lease_blocks = {
++            block.block_id
++            for blocks in self._slackkv_residency_leases.values()
++            for block in blocks
++            if not block.is_null
++        }
++        logger.info(
++            "SLACKKV_WAITING_TRACE %s",
++            json.dumps(
++                {
++                    "event": event,
++                    "timestamp_monotonic": time.monotonic(),
++                    "step_id": self._slackkv_scheduler_step_id,
++                    "request_id": request.request_id,
++                    "session": _slackkv_session(request),
++                    "free_blocks": free_blocks,
++                    "matching_lease": (
++                        _slackkv_session(request) in self._slackkv_residency_leases
++                    ),
++                    "active_lease_count": len(self._slackkv_residency_leases),
++                    "active_lease_unique_blocks": len(lease_blocks),
++                    "num_running": len(self.running),
++                    "num_waiting": len(self.waiting) + len(self.skipped_waiting),
++                    "num_new_local_computed_tokens": num_new_local_computed_tokens,
++                    "num_external_computed_tokens": num_external_computed_tokens,
++                    "num_computed_tokens": num_computed_tokens,
++                    "num_new_tokens": num_new_tokens,
++                    "blocked_count": blocked_count,
++                    "will_break_waiting_loop": will_break_waiting_loop,
++                },
++                separators=(",", ":"),
++            ),
++        )
++
+     def _slackkv_trace(self, request: Request, event: str) -> None:
+         if not _is_slackkv_trace_resume(request):
+             return

@@ -1,0 +1,85 @@
+{
+  "OOM_count": 0,
+  "R1": {
+    "H2_HEADROOM_LEASE2": [
+      "PROGRESS",
+      "PROGRESS"
+    ],
+    "N3_EVICTABLE_PREFETCH3": [
+      "PROGRESS",
+      "PROGRESS"
+    ],
+    "S3_HEAD_LEASED": [
+      "PROGRESS",
+      "PROGRESS"
+    ],
+    "U3_UNLEASED_HEAD_LEASE3": [
+      "LEASE_HOL_NONPROGRESS",
+      "LEASE_HOL_NONPROGRESS"
+    ]
+  },
+  "R1_gate": "R1_EXPECTED_PATTERN",
+  "R2": {
+    "S3_HEAD_LEASED": [
+      "PROGRESS",
+      "PROGRESS",
+      "PROGRESS"
+    ],
+    "U3_UNLEASED_HEAD_LEASE3": [
+      "LEASE_HOL_NONPROGRESS",
+      "LEASE_HOL_NONPROGRESS",
+      "LEASE_HOL_NONPROGRESS"
+    ]
+  },
+  "U3_direct_first_blocks": [
+    {
+      "active_lease_count": "3",
+      "active_lease_unique_blocks": "3930",
+      "free_blocks": "750",
+      "matching_lease": "False",
+      "repetition": "1",
+      "stage": "R1",
+      "will_break_waiting_loop": "True"
+    },
+    {
+      "active_lease_count": "3",
+      "active_lease_unique_blocks": "3930",
+      "free_blocks": "750",
+      "matching_lease": "False",
+      "repetition": "2",
+      "stage": "R1",
+      "will_break_waiting_loop": "True"
+    },
+    {
+      "active_lease_count": "3",
+      "active_lease_unique_blocks": "3930",
+      "free_blocks": "154",
+      "matching_lease": "False",
+      "repetition": "1",
+      "stage": "R2",
+      "will_break_waiting_loop": "True"
+    },
+    {
+      "active_lease_count": "3",
+      "active_lease_unique_blocks": "3930",
+      "free_blocks": "154",
+      "matching_lease": "False",
+      "repetition": "2",
+      "stage": "R2",
+      "will_break_waiting_loop": "True"
+    },
+    {
+      "active_lease_count": "3",
+      "active_lease_unique_blocks": "3930",
+      "free_blocks": "154",
+      "matching_lease": "False",
+      "repetition": "3",
+      "stage": "R2",
+      "will_break_waiting_loop": "True"
+    }
+  ],
+  "result": "RESULT_A_LEASE_HOL_CIRCULAR_WAIT_CONFIRMED",
+  "runs_completed": 14,
+  "server_error_count": 0,
+  "start_commit": "e829bee1fb6d45dcdfb7bdce395c5a10154cc892"
+}

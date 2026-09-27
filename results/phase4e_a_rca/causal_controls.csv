@@ -1,0 +1,5 @@
+condition,leased_set,leased_blocks,E04_leased,runs,E04_blocked,E04_admitted,all_requests_finish,supports_headroom_hypothesis,supports_lease_hypothesis,supports_head_identity_hypothesis
+U3_UNLEASED_HEAD_LEASE3,E00|E01|E02,3930,False,2,2,0,0,False,False,False
+H2_HEADROOM_LEASE2,E00|E01,2607,False,2,0,2,2,True,False,False
+N3_EVICTABLE_PREFETCH3,,0,False,2,0,2,2,False,True,False
+S3_HEAD_LEASED,E04|E00|E05,3822,True,2,0,2,2,False,False,True

@@ -1,0 +1,107 @@
+{
+  "CPU_external_KV_bytes": 8589934592,
+  "GPU_KV_blocks": 4681,
+  "GPU_KV_bytes": 2147483648,
+  "K": 2,
+  "R1_conditions": {
+    "H2_HEADROOM_LEASE2": [
+      [
+        "E00",
+        "E01"
+      ],
+      true
+    ],
+    "N3_EVICTABLE_PREFETCH3": [
+      [
+        "E00",
+        "E01",
+        "E02"
+      ],
+      false
+    ],
+    "S3_HEAD_LEASED": [
+      [
+        "E04",
+        "E00",
+        "E05"
+      ],
+      true
+    ],
+    "U3_UNLEASED_HEAD_LEASE3": [
+      [
+        "E00",
+        "E01",
+        "E02"
+      ],
+      true
+    ]
+  },
+  "R1_plan": [
+    [
+      "U3_UNLEASED_HEAD_LEASE3",
+      1
+    ],
+    [
+      "U3_UNLEASED_HEAD_LEASE3",
+      2
+    ],
+    [
+      "H2_HEADROOM_LEASE2",
+      1
+    ],
+    [
+      "H2_HEADROOM_LEASE2",
+      2
+    ],
+    [
+      "N3_EVICTABLE_PREFETCH3",
+      1
+    ],
+    [
+      "N3_EVICTABLE_PREFETCH3",
+      2
+    ],
+    [
+      "S3_HEAD_LEASED",
+      1
+    ],
+    [
+      "S3_HEAD_LEASED",
+      2
+    ]
+  ],
+  "R2_plan": [
+    [
+      "U3_UNLEASED_HEAD_LEASE3",
+      1
+    ],
+    [
+      "U3_UNLEASED_HEAD_LEASE3",
+      2
+    ],
+    [
+      "U3_UNLEASED_HEAD_LEASE3",
+      3
+    ],
+    [
+      "S3_HEAD_LEASED",
+      1
+    ],
+    [
+      "S3_HEAD_LEASED",
+      2
+    ],
+    [
+      "S3_HEAD_LEASED",
+      3
+    ]
+  ],
+  "U3_checkpoints_s": [
+    5,
+    12.0
+  ],
+  "phase": "4E-A-RCA",
+  "progress_watchdog_s": 20.0,
+  "start_commit": "e829bee1fb6d45dcdfb7bdce395c5a10154cc892",
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}
