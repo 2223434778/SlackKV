@@ -1,0 +1,7 @@
+{
+  "capacity_exceeded": true,
+  "gpu_capacity_blocks": 4681,
+  "pressure_full_blocks": 593,
+  "pressure_requests": 9,
+  "unrelated_full_blocks": 5337
+}

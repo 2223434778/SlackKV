@@ -1,0 +1,13 @@
+{
+  "completed_gates": [
+    "P0_physical",
+    "P0_progress",
+    "P0_candidate",
+    "P1_baseline",
+    "P1_PSA_1",
+    "P1_PSA_2",
+    "P2_baseline_attempt"
+  ],
+  "error": "P2 invalid:{'stage': 'P2', 'repetition': 1, 'policy': 'PSA1', 'resume_arrived': 8, 'resume_admitted': 9, 'first_tokens': 8, 'finished': 8, 'promotion_attempts': 3, 'promotion_admits': 2, 'capacity_rejects': 0, 'progress_rejects': 1, 'lease_acquired': 2, 'lease_released': 2, 'HOL_allocate_none_count': 0, 'E04_first_failure_free_blocks': 'NA', 'local_source_tokens': 41712, 'external_source_tokens': 126304, 'source_conservation': True, 'K2_max_pre_first': 2, 'server_alive': True, 'OOM': False, 'server_error': False, 'PSA_invariant_violations': 0, 'classification': 'INVALID'}",
+  "error_type": "RuntimeError"
+}

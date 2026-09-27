@@ -1,0 +1,239 @@
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -78,6 +78,25 @@
+     return bool(params and params.get("capacity_guard") is True)
+ 
+ 
++def _slackkv_psa_decision(
++    free_blocks: int,
++    required_blocks: int,
++    protected_progress_blocks: int,
++    existing_protected_lease_blocks: int,
++    candidate_has_matching_lease: bool,
++) -> tuple[str, int, int]:
++    hypothetical = max(
++        existing_protected_lease_blocks,
++        required_blocks if candidate_has_matching_lease else 0,
++    )
++    reserve = max(0, protected_progress_blocks - hypothetical)
++    if free_blocks < required_blocks:
++        return "CAPACITY_REJECT", hypothetical, reserve
++    if free_blocks - required_blocks < reserve:
++        return "PROGRESS_REJECT", hypothetical, reserve
++    return "ADMIT", hypothetical, reserve
++
++
+ def _is_slackkv_trace_resume(request: Request) -> bool:
+     params = request.kv_transfer_params
+     return bool(params and params.get("slackkv_trace_resume") is True)
+@@ -503,6 +522,44 @@
+             )
+         return block_ids
+ 
++    def _slackkv_guard_decision(
++        self, request: Request, required_blocks: int, free_blocks: int
++    ) -> tuple[str, dict[str, Any]]:
++        params = request.kv_transfer_params or {}
++        if params.get("progress_guard") is not True:
++            return ("REJECT" if free_blocks < required_blocks else "ADMIT"), {}
++        protected_key = params.get("protected_lease_key")
++        progress_blocks = params.get("protected_progress_blocks")
++        candidate_key = _slackkv_residency_lease_key(request)
++        if (
++            not isinstance(protected_key, str)
++            or not protected_key
++            or isinstance(progress_blocks, bool)
++            or not isinstance(progress_blocks, int)
++            or progress_blocks <= 0
++            or candidate_key is None
++        ):
++            raise ValueError("INVALID_PROGRESS_GUARD_REQUEST")
++        existing = len({
++            block.block_id
++            for block in self._slackkv_residency_leases.get(protected_key, [])
++            if not block.is_null
++        })
++        decision, hypothetical, reserve = _slackkv_psa_decision(
++            free_blocks, required_blocks, progress_blocks, existing,
++            candidate_key == protected_key,
++        )
++        return decision, {
++            "progress_guard": True,
++            "protected_lease_key": protected_key,
++            "protected_progress_blocks": progress_blocks,
++            "protected_existing_lease_blocks": existing,
++            "protected_hypothetical_lease_blocks": hypothetical,
++            "progress_reserve_blocks": reserve,
++            "candidate_required_blocks": required_blocks,
++            "free_blocks_after_candidate": free_blocks - required_blocks,
++        }
++
+     def _slackkv_capacity_trace(
+         self,
+         request: Request,
+@@ -511,6 +568,7 @@
+         decision: str,
+         *,
+         reason: str | None = None,
++        progress_info: dict[str, Any] | None = None,
+     ) -> None:
+         pool = self.kv_cache_manager.block_pool
+         total_blocks = pool.num_gpu_blocks
+@@ -548,6 +606,7 @@
+             "num_running": len(self.running),
+             "num_waiting": len(self.waiting) + len(self.skipped_waiting),
+         }
++        event.update(progress_info or {"progress_guard": False})
+         logger.info("SLACKKV_CAPACITY_TRACE %s", json.dumps(event, sort_keys=True))
+ 
+     def _slackkv_finish_capacity_guard_request(
+@@ -616,6 +675,10 @@
+                 seen.add(request.request_id)
+                 try:
+                     required = self._slackkv_capacity_required_blocks(request)
++                    free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                    decision, progress_info = self._slackkv_guard_decision(
++                        request, required, free
++                    )
+                 except ValueError as exc:
+                     free = self.kv_cache_manager.block_pool.get_num_free_blocks()
+                     self._slackkv_capacity_trace(
+@@ -630,14 +693,19 @@
+                         free_blocks=free,
+                     )
+                     continue
+-                free = self.kv_cache_manager.block_pool.get_num_free_blocks()
+-                if free < required:
+-                    self._slackkv_capacity_trace(request, required, free, "REJECT")
++                if decision != "ADMIT":
++                    self._slackkv_capacity_trace(
++                        request, required, free, decision,
++                        progress_info=progress_info,
++                    )
+                     self._slackkv_finish_capacity_guard_request(
+                         request,
+                         request_queue,
+-                        status="capacity_rejected",
+-                        reason="INSUFFICIENT_FREE_BLOCKS",
++                        status=("progress_rejected" if decision == "PROGRESS_REJECT"
++                                else "capacity_rejected"),
++                        reason=("INSUFFICIENT_PROGRESS_HEADROOM"
++                                if decision == "PROGRESS_REJECT"
++                                else "INSUFFICIENT_FREE_BLOCKS"),
+                         required_blocks=required,
+                         free_blocks=free,
+                     )
+@@ -1129,6 +1197,10 @@
+                         required_capacity_blocks = self._slackkv_capacity_required_blocks(
+                             request
+                         )
++                        free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                        capacity_decision, progress_info = self._slackkv_guard_decision(
++                            request, required_capacity_blocks, free
++                        )
+                     except ValueError as exc:
+                         free = self.kv_cache_manager.block_pool.get_num_free_blocks()
+                         self._slackkv_capacity_trace(
+@@ -1143,22 +1215,27 @@
+                             free_blocks=free,
+                         )
+                         continue
+-                    free = self.kv_cache_manager.block_pool.get_num_free_blocks()
+-                    if free < required_capacity_blocks:
++                    if capacity_decision != "ADMIT":
+                         self._slackkv_capacity_trace(
+-                            request, required_capacity_blocks, free, "REJECT"
++                            request, required_capacity_blocks, free,
++                            capacity_decision, progress_info=progress_info,
+                         )
+                         self._slackkv_finish_capacity_guard_request(
+                             request,
+                             request_queue,
+-                            status="capacity_rejected",
+-                            reason="INSUFFICIENT_FREE_BLOCKS",
++                            status=("progress_rejected"
++                                    if capacity_decision == "PROGRESS_REJECT"
++                                    else "capacity_rejected"),
++                            reason=("INSUFFICIENT_PROGRESS_HEADROOM"
++                                    if capacity_decision == "PROGRESS_REJECT"
++                                    else "INSUFFICIENT_FREE_BLOCKS"),
+                             required_blocks=required_capacity_blocks,
+                             free_blocks=free,
+                         )
+                         continue
+                     self._slackkv_capacity_trace(
+-                        request, required_capacity_blocks, free, "ADMIT"
++                        request, required_capacity_blocks, free, "ADMIT",
++                        progress_info=progress_info,
+                     )
+                 reserved_blocks = 0
+                 if load_kv_async:
+--- a/vllm/entrypoints/serve/dev/slackkv_prefetch/api_router.py
++++ b/vllm/entrypoints/serve/dev/slackkv_prefetch/api_router.py
+@@ -18,6 +18,9 @@
+     lease_key: str | None = None
+     capacity_guard: bool = False
+     required_blocks: int | None = Field(default=None, ge=1, strict=True)
++    progress_guard: bool = False
++    protected_lease_key: str | None = None
++    protected_progress_blocks: int | None = Field(default=None, ge=1, strict=True)
+ 
+ def validate_capacity_guard_request(
+     prompt_token_ids: list[int],
+@@ -31,8 +34,13 @@
+     ):
+         raise HTTPException(status_code=422, detail="INVALID_CAPACITY_GUARD_REQUEST")
+ 
+-def validate_prefetch_status(status: object, capacity_guard: bool) -> None:
+-    if status != "ok" and not (capacity_guard and status == "capacity_rejected"):
++def validate_prefetch_status(
++    status: object, capacity_guard: bool, progress_guard: bool = False
++) -> None:
++    if status != "ok" and not (
++        (capacity_guard and status == "capacity_rejected")
++        or (progress_guard and status == "progress_rejected")
++    ):
+         raise RuntimeError(f"SlackKV prefetch failed: {status!r}")
+ 
+ 
+@@ -46,6 +54,13 @@
+         request.capacity_guard,
+         request.required_blocks,
+     )
++    if request.progress_guard and (
++        not request.capacity_guard
++        or not request.lease_key
++        or not request.protected_lease_key
++        or request.protected_progress_blocks is None
++    ):
++        raise HTTPException(status_code=422, detail="INVALID_PROGRESS_GUARD_REQUEST")
+     request_id = f"slackkv-prefetch-{uuid.uuid4().hex}"
+     t0 = time.monotonic()
+     params = SamplingParams(
+@@ -61,6 +76,15 @@
+                     if request.capacity_guard
+                     else {}
+                 ),
++                **(
++                    {
++                        "progress_guard": True,
++                        "protected_lease_key": request.protected_lease_key,
++                        "protected_progress_blocks": request.protected_progress_blocks,
++                    }
++                    if request.progress_guard
++                    else {}
++                ),
+             }
+         },
+     )
+@@ -82,7 +106,9 @@
+     metadata = (final_output.kv_transfer_params or {}).get(
+         "slackkv_prefetch", {}
+     )
+-    validate_prefetch_status(metadata.get("status"), request.capacity_guard)
++    validate_prefetch_status(
++        metadata.get("status"), request.capacity_guard, request.progress_guard
++    )
+     return {
+         **metadata,
+         "phase3m_timestamps": {**(metadata.get("phase3m_timestamps") or {}), "T0": t0, "T1": t1, "T7": t7},

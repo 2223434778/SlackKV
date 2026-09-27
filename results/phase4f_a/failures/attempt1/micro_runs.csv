@@ -1,0 +1,4 @@
+stage,repetition,policy,attempted,statuses,expected,PSA_invariant_violations,valid
+P0,1,physical_reject,E00|E01|E02|E04,ok|ok|ok|capacity_rejected,ok|ok|ok|capacity_rejected,0,True
+P0,1,progress_reject,E00|E01|E02,ok|ok|progress_rejected,ok|ok|progress_rejected,0,True
+P0,1,candidate_aware,E04,ok,ok,0,True

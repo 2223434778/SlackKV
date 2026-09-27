@@ -1,0 +1,20 @@
+{
+  "python": "3.11.16",
+  "vllm": "0.23.0",
+  "vllm_upstream_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "vllm_pre_phase4f_working_diff_sha256": "f952fd38961d2573937062b4e56b695bf0470933d4bae4331f658cf5acde3b65",
+  "vllm_phase4f_working_diff_sha256": "e33055ec22f1d89c67342e71470134fdef3fda9dbbb5b7ac1e056e71676aab14",
+  "torch": "2.11.0+cu126",
+  "cuda": "12.6",
+  "nvidia_driver": "550.54.14",
+  "gpu": "NVIDIA RTX A6000 GPU0",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "dtype": "float16",
+  "tensor_parallel_size": 1,
+  "max_model_len": 32768,
+  "gpu_kv_bytes": 2147483648,
+  "cpu_external_kv_bytes": 8589934592,
+  "gpu_kv_blocks": 4681,
+  "kv_block_size_tokens": 16,
+  "first_token_gate_limit": 2
+}

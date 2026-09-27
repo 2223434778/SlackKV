@@ -1,0 +1,11 @@
+{
+  "completed_gates": [
+    "P0_physical",
+    "P0_progress",
+    "P0_candidate",
+    "P1_baseline",
+    "P1_PSA_1",
+    "P1_PSA_2",
+    "P2_baseline_attempt"
+  ]
+}

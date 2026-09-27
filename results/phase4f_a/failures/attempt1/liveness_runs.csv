@@ -1,0 +1,6 @@
+stage,repetition,policy,resume_arrived,resume_admitted,first_tokens,finished,promotion_attempts,promotion_admits,capacity_rejects,progress_rejects,lease_acquired,lease_released,HOL_allocate_none_count,E04_first_failure_free_blocks,local_source_tokens,external_source_tokens,source_conservation,K2_max_pre_first,server_alive,OOM,server_error,PSA_invariant_violations,classification
+P1,0,PSA_OFF,8,0,0,0,3,3,0,0,3,0,13,750,NA,NA,NA,0,True,False,False,0,LEASE_HOL_NONPROGRESS
+P1,1,PSA1,8,8,8,8,3,2,0,1,2,2,0,NA,41712,126304,True,2,True,False,False,0,PROGRESS
+P1,2,PSA1,8,8,8,8,3,2,0,1,2,2,0,NA,41712,126304,True,2,True,False,False,0,PROGRESS
+P2,0,PSA_OFF,8,0,0,0,3,3,0,0,3,0,12,154,NA,NA,NA,0,True,False,False,0,LEASE_HOL_NONPROGRESS
+P2,1,PSA1,8,9,8,8,3,2,0,1,2,2,0,NA,41712,126304,True,2,True,False,False,0,INVALID

@@ -1,0 +1,15 @@
+stage,repetition,policy,candidate_episode,candidate_lease_key,protected_episode,protected_lease_key,protected_deadline_ms,protected_progress_blocks,existing_protected_lease_blocks,hypothetical_protected_lease_blocks,progress_reserve_blocks,free_blocks_before,candidate_required_blocks,free_blocks_after_candidate,decision
+P0,1,physical_reject,E04,E04:turn:1,E04,E04:turn:1,120.0,1278,0,1271,7,750,1271,-521,CAPACITY_REJECT
+P0,1,progress_reject,E00,E00:turn:1,E04,E04:turn:1,120.0,1278,0,0,1278,4680,1277,3403,ADMIT
+P0,1,progress_reject,E01,E01:turn:1,E04,E04:turn:1,120.0,1278,0,0,1278,3403,1330,2073,ADMIT
+P0,1,progress_reject,E02,E02:turn:1,E04,E04:turn:1,120.0,1278,0,0,1278,2073,1323,750,PROGRESS_REJECT
+P0,1,candidate_aware,E04,E04:turn:1,E04,E04:turn:1,120.0,1278,0,1271,7,4680,1271,3409,ADMIT
+P1,1,PSA1,E00,E00:turn:1,E04,E04:turn:1,120.0,1278,0,0,1278,4680,1277,3403,ADMIT
+P1,1,PSA1,E01,E01:turn:1,E04,E04:turn:1,120.0,1278,0,0,1278,3403,1330,2073,ADMIT
+P1,1,PSA1,E02,E02:turn:1,E04,E04:turn:1,120.0,1278,0,0,1278,2073,1323,750,PROGRESS_REJECT
+P1,2,PSA1,E00,E00:turn:1,E04,E04:turn:1,120.0,1278,0,0,1278,4680,1277,3403,ADMIT
+P1,2,PSA1,E01,E01:turn:1,E04,E04:turn:1,120.0,1278,0,0,1278,3403,1330,2073,ADMIT
+P1,2,PSA1,E02,E02:turn:1,E04,E04:turn:1,120.0,1278,0,0,1278,2073,1323,750,PROGRESS_REJECT
+P2,1,PSA1,E00,E00:turn:1,E04,E04:turn:1,120.0,1278,0,0,1278,4086,1277,2809,ADMIT
+P2,1,PSA1,E01,E01:turn:1,E04,E04:turn:1,120.0,1278,0,0,1278,2808,1330,1478,ADMIT
+P2,1,PSA1,E02,E02:turn:1,E04,E04:turn:1,120.0,1278,0,0,1278,1478,1323,155,PROGRESS_REJECT

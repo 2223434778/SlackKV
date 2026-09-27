@@ -1,0 +1,28 @@
+{
+  "completed_gates": [
+    "P0_physical",
+    "P0_progress",
+    "P0_candidate",
+    "P1_baseline",
+    "P1_PSA_1",
+    "P1_PSA_2",
+    "P2_baseline_attempt",
+    "P2_PSA_1",
+    "P2_PSA_2",
+    "P2_PSA_3",
+    "P3_1",
+    "P3_2",
+    "P4_1",
+    "P4_2",
+    "P4_3",
+    "P4_4",
+    "P4_5",
+    "P4_6",
+    "P4_7",
+    "P4_8",
+    "P5_1",
+    "P5_2",
+    "P5_3",
+    "P5_4"
+  ]
+}
