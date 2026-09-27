@@ -1,0 +1,9 @@
+{
+  "actual_start_commit": "012dd5f20efabe2d5132540153be7f6991b81145",
+  "phase4f_a_patch_sha256": "1fb4088fc0b8997243efc71309c7dd5e2846d2427ada4942f05a18272c46f625",
+  "start_commit": "012dd5f20efabe2d5132540153be7f6991b81145",
+  "vllm_diff_sha256": "e33055ec22f1d89c67342e71470134fdef3fda9dbbb5b7ac1e056e71676aab14",
+  "vllm_status_short": " M vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py\n M vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py\n M vllm/distributed/kv_transfer/kv_connector/v1/offloading/worker.py\n M vllm/entrypoints/serve/__init__.py\n M vllm/v1/core/sched/output.py\n M vllm/v1/core/sched/scheduler.py\n M vllm/v1/engine/core.py\n M vllm/v1/worker/gpu_model_runner.py\n M vllm/v1/worker/kv_connector_model_runner_mixin.py\n?? tests/v1/kv_connector/unit/test_slackkv_connector_first.py\n?? tests/v1/kv_connector/unit/test_slackkv_first_token_gate_capacity.py\n?? tests/v1/kv_connector/unit/test_slackkv_native_prefetch.py\n?? vllm/entrypoints/serve/dev/slackkv_prefetch/\n",
+  "vllm_upstream_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

@@ -1,0 +1,4 @@
+comparison,metric,paired_median,bootstrap_95_low,bootstrap_95_high,resamples,seed,interpretation
+D_vs_A,P95_relative_delta,-0.011812064520920595,-0.040553524764187054,0.019397517293054056,10000,20260927,descriptive uncertainty interval; not a significance test
+D_vs_C,P95_relative_delta,-0.010598883947577964,-0.03668475150671524,0.004382735641825786,10000,20260927,descriptive uncertainty interval; not a significance test
+D_vs_A,X_slowdown_delta,0.024824412544002472,-0.009570767687421045,0.04229998305801019,10000,20260927,descriptive uncertainty interval; not a significance test

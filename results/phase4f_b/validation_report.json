@@ -1,0 +1,32 @@
+{
+  "Agent_completions": 256,
+  "H1": false,
+  "H2": true,
+  "H3": true,
+  "OOM_count": 0,
+  "PSA_invariant_violations": 0,
+  "Stage_A_valid": 4,
+  "Stage_B_valid": 32,
+  "X_baseline_decode_ms": 7496.1058864999995,
+  "X_drift_percent": 2.387587825408777,
+  "X_first4_median_ms": 7451.1115615,
+  "X_last4_median_ms": 7629.013394,
+  "X_only_valid": 8,
+  "crash_count": 0,
+  "environment_drift_warning": false,
+  "final_result": "RESULT_B_VALID_MATRIX_MIXED_TRADEOFF",
+  "lease_leaks": 0,
+  "logical_leaks": 0,
+  "output_identity_mismatch_by_policy": {
+    "FullSlackKV+PSA1-K2": 8,
+    "GuardedJIT+Lease+PSA1-K2": 8,
+    "GuardedJIT-K2": 8,
+    "OnDemand-K2": 8
+  },
+  "phase": "4F-B",
+  "source_conservation_pass": 32,
+  "start_commit": "012dd5f20efabe2d5132540153be7f6991b81145",
+  "token_correct": 256,
+  "unsafe_releases": 0,
+  "workload_sha": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

@@ -1,0 +1,14 @@
+{
+  "K": 2,
+  "P_SAFE_ms": 102.0,
+  "X_output_tokens": 512,
+  "X_prompt_tokens": 9500,
+  "cpu_external_bytes": 8589934592,
+  "gpu_kv_bytes": 2147483648,
+  "phase": "4F-B",
+  "reservation_budget_blocks": 3510,
+  "resume_guard_ms": 110.0,
+  "warmup_output_tokens": 16,
+  "warmup_prompt_tokens": 20480,
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

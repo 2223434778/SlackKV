@@ -1,0 +1,38 @@
+[
+  {
+    "K2_enabled": true,
+    "capacity_guard_enabled": false,
+    "jit_enabled": false,
+    "logical_reservation_enabled": false,
+    "name": "OnDemand-K2",
+    "physical_lease_enabled": false,
+    "psa_enabled": false
+  },
+  {
+    "K2_enabled": true,
+    "capacity_guard_enabled": true,
+    "jit_enabled": true,
+    "logical_reservation_enabled": false,
+    "name": "GuardedJIT-K2",
+    "physical_lease_enabled": false,
+    "psa_enabled": false
+  },
+  {
+    "K2_enabled": true,
+    "capacity_guard_enabled": true,
+    "jit_enabled": true,
+    "logical_reservation_enabled": false,
+    "name": "GuardedJIT+Lease+PSA1-K2",
+    "physical_lease_enabled": true,
+    "psa_enabled": true
+  },
+  {
+    "K2_enabled": true,
+    "capacity_guard_enabled": true,
+    "jit_enabled": true,
+    "logical_reservation_enabled": true,
+    "name": "FullSlackKV+PSA1-K2",
+    "physical_lease_enabled": true,
+    "psa_enabled": true
+  }
+]
