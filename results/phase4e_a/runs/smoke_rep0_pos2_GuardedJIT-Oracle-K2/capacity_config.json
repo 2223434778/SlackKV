@@ -1,0 +1,7 @@
+{
+  "budget_fraction": 0.75,
+  "max_simultaneous_frozen_jobs": 2,
+  "reservation_budget_MiB": 1535.625,
+  "reservation_budget_blocks": 3510,
+  "total_gpu_kv_blocks": 4681
+}

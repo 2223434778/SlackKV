@@ -1,0 +1,30 @@
+{
+  "H1": "NOT_EVALUATED",
+  "H2": "NOT_EVALUATED",
+  "H3": "NOT_EVALUATED",
+  "X_finished_ms": 4521.290305,
+  "X_only_median_TPOT_ms": 14.249070552941177,
+  "X_only_median_decode_ms": 3633.512991,
+  "X_only_valid": 4,
+  "agent_first_after_X_ms": 143.4392150382355,
+  "failing_policy": "GuardedJIT+Lease-Oracle-K2",
+  "failing_repetition": 1,
+  "failing_run_K2_max_pre_first": 2,
+  "failing_run_lease_leaks": 0,
+  "failing_run_logical_leaks": 0,
+  "failing_run_order_position": 3,
+  "failing_run_source_conservation": true,
+  "last_agent_FIRST_TOKEN_ms": 4664.729520038236,
+  "measured_resumes_observed": 24,
+  "measured_token_count_correct": 24,
+  "output_identity_mismatch_counts": {
+    "E04": 7
+  },
+  "phase": "4E-A",
+  "reason": "RUN_INVALID_BACKGROUND",
+  "result": "EXPERIMENT_INVALID_MATRIX",
+  "stage_a_valid": 4,
+  "stage_b_expected": 16,
+  "stage_b_runs_started": 3,
+  "stage_b_runs_valid": 2
+}

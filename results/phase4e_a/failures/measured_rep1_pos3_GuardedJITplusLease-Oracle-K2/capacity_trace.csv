@@ -1,0 +1,9 @@
+stage,repetition,policy,active_lease_count,active_lease_unique_blocks,decision,event,free_blocks_before,lease_key,lease_unique_blocks,num_running,num_waiting,reason,request_id,required_blocks,running_unique_blocks,timestamp_monotonic,total_blocks,used_blocks_before,waiting_unique_blocks
+measured,1,GuardedJIT+Lease-Oracle-K2,0,0,ADMIT,CAPACITY_GUARD,4085,E04:turn:1,0,1,5,,slackkv-prefetch-badb8bd554bb4a2e94c25060bd843069-abab7493,1271,595,283773.319702361,4681,596,0
+measured,1,GuardedJIT+Lease-Oracle-K2,0,0,ADMIT,CAPACITY_GUARD,2814,E02:turn:1,0,1,4,,slackkv-prefetch-fa9ba8c2e0054ef398c32620af0de08e-9176613e,1323,595,283773.326615141,4681,1867,0
+measured,1,GuardedJIT+Lease-Oracle-K2,0,0,ADMIT,CAPACITY_GUARD,1491,E05:turn:1,0,1,3,,slackkv-prefetch-c50351c4f299439aaa76de0fd162c422-a2eca5fe,1274,595,283773.329406046,4681,3190,0
+measured,1,GuardedJIT+Lease-Oracle-K2,0,0,REJECT,CAPACITY_GUARD,217,E00:turn:1,0,1,2,,slackkv-prefetch-f6bc2d26908c444aac9b20c1432806a7-93b224c6,1277,595,283773.331783622,4681,4464,0
+measured,1,GuardedJIT+Lease-Oracle-K2,0,0,REJECT,CAPACITY_GUARD,217,E01:turn:1,0,1,1,,slackkv-prefetch-547066e01d554a6abe292de4a4e8f1db-b58a7c4c,1330,595,283773.333073762,4681,4464,0
+measured,1,GuardedJIT+Lease-Oracle-K2,2,2597,REJECT,CAPACITY_GUARD,208,E06:turn:1,2597,2,5,,slackkv-prefetch-542960ffa5ae4bbea9457a8bf67d00c2-88dd6994,1276,1875,283773.85291592,4681,4473,0
+measured,1,GuardedJIT+Lease-Oracle-K2,2,2597,REJECT,CAPACITY_GUARD,204,E07:turn:1,2597,2,6,,slackkv-prefetch-bd4347505c0e4c63904e57789e48a7f2-b505fbfd,1444,1879,283774.354834973,4681,4477,0
+measured,1,GuardedJIT+Lease-Oracle-K2,0,0,REJECT,CAPACITY_GUARD,28,E03:turn:1,0,4,5,,slackkv-prefetch-b0d3073fe34e4390bea3e3a4585d4225-9c9a2838,1306,4652,283775.329927264,4681,4653,0

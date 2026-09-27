@@ -1,0 +1,3 @@
+stage,repetition,policy,point,gpu_temperature_C,gpu_power_W,gpu_sm_clock_MHz,gpu_memory_clock_MHz,gpu_memory_used_MiB,MemAvailable_kB,timestamp_monotonic_s
+measured,1,GuardedJIT+Lease-Oracle-K2,before,78,287.91,1860,7600,6224,114581648,283772.801990363
+measured,1,GuardedJIT+Lease-Oracle-K2,after,78,223.70,1875,7600,6226,114527456,283778.622961001

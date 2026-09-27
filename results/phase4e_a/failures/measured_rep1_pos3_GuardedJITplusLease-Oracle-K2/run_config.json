@@ -1,0 +1,8 @@
+{
+  "K": 2,
+  "P_SAFE_ms": 102,
+  "background_output_tokens": 256,
+  "policy": "GuardedJIT+Lease-Oracle-K2",
+  "repetition": 1,
+  "run_order_position": 3
+}
