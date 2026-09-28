@@ -1,0 +1,6 @@
+{
+  "start_commit": "f4b19bd0ee0b7f3d4fe4b4732b8e8bcc4b2499f4",
+  "vllm_upstream_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "vllm_working_diff_sha256": "f0f8e327cc7ff4eb1797852a24e56e0e7f4a77b62e0f9439e88405fd5b470ae4",
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

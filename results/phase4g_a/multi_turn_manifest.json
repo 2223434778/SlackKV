@@ -1,0 +1,31 @@
+{
+  "sessions": 8,
+  "turns": 40,
+  "boundaries": 32,
+  "reusable_tokens": 705728,
+  "reusable_blocks": 44108,
+  "one_full_crossing_sum_MiB": 19297.25,
+  "wave_tokens": [
+    168016,
+    172736,
+    179632,
+    185344
+  ],
+  "wave_blocks": [
+    10501,
+    10796,
+    11227,
+    11584
+  ],
+  "pause_min_ms": 103.0,
+  "pause_median_ms": 473.0,
+  "pause_P95_ms": 2374.0,
+  "pause_max_ms": 2764.0,
+  "pause_bin_counts": [
+    8,
+    8,
+    5,
+    11
+  ],
+  "source_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

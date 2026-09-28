@@ -1,0 +1,11 @@
+{
+  "GPU": "GPU0",
+  "GPU_KV_blocks": 4681,
+  "TP": 1,
+  "block_size": 16,
+  "dtype": "float16",
+  "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "nvidia_smi": "NVIDIA RTX A6000, 550.54.14",
+  "python": "Python 3.11.16",
+  "vllm": "0.23.0"
+}

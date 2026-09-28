@@ -1,0 +1,17 @@
+{
+  "CPU_external_KV_bytes": 8589934592,
+  "GPU_KV_bytes": 2147483648,
+  "K": 2,
+  "P_SAFE_ms": 102,
+  "X_output_tokens": 2048,
+  "X_prompt_tokens": 9500,
+  "phase": "4G-A",
+  "policies": [
+    "OnDemand-K2",
+    "FullSlackKV+PSA1-K2"
+  ],
+  "pre_materialized_boundary_count": 0,
+  "reservation_budget_blocks": 3510,
+  "resume_guard_ms": 110,
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

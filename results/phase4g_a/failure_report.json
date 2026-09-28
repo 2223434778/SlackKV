@@ -1,0 +1,9 @@
+{
+  "X_only_completed": 4,
+  "error": "EXPERIMENT_INVALID_MATRIX:measured_rep2_d",
+  "error_type": "RuntimeError",
+  "measured_completed": 2,
+  "partial_matrix_not_aggregated": true,
+  "phase": "4G-A",
+  "result": "EXPERIMENT_INVALID_MATRIX"
+}

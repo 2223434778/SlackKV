@@ -1,0 +1,42 @@
+{
+  "block_size": 16,
+  "probes": [
+    {
+      "episode_id": "E00",
+      "prompt_tokens": 20423,
+      "generated_tokens": 90,
+      "next_required_tokens": 20432
+    },
+    {
+      "episode_id": "E01",
+      "prompt_tokens": 21283,
+      "generated_tokens": 58,
+      "next_required_tokens": 21280
+    }
+  ],
+  "events": [
+    {
+      "event": "SOURCE_NOT_READY",
+      "timestamp_monotonic": 412836.471329363,
+      "boundary_id": "E00:b0",
+      "request_id": "cmpl-8145ff952c336ef0-0-a05d7df8",
+      "session": "E00:turn:0",
+      "required_tokens": 20432,
+      "required_blocks": 1277,
+      "available_hash_blocks": 1277,
+      "ready_prefix_blocks": 1276
+    },
+    {
+      "event": "SOURCE_READY",
+      "timestamp_monotonic": 412838.380542172,
+      "boundary_id": "E01:b0",
+      "request_id": "cmpl-8d613e35b09a553f-0-ae6bdb24",
+      "session": "E01:turn:0",
+      "required_tokens": 21280,
+      "required_blocks": 1330,
+      "available_hash_blocks": 1330,
+      "ready_prefix_blocks": 1330
+    }
+  ],
+  "pre_materialized_boundary_count": 0
+}
