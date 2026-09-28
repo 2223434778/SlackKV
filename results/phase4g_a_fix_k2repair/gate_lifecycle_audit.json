@@ -1,0 +1,194 @@
+{
+  "all_run_gates_valid": true,
+  "lifecycle_violation_count": 0,
+  "measured_runs": 16,
+  "pass": true,
+  "post_first_readmission_count": 4,
+  "post_first_readmissions_reacquired_gate": 0,
+  "runs": [
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "OnDemand-K2",
+      "post_first_readmissions": [],
+      "repetition": 1,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "FullSlackKV+PSA1-K2",
+      "post_first_readmissions": [],
+      "repetition": 1,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "OnDemand-K2",
+      "post_first_readmissions": [],
+      "repetition": 2,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "FullSlackKV+PSA1-K2",
+      "post_first_readmissions": [],
+      "repetition": 2,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "OnDemand-K2",
+      "post_first_readmissions": [
+        {
+          "output_tokens": 22,
+          "owns_gate": false,
+          "session": "E07:turn:1"
+        }
+      ],
+      "repetition": 3,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "FullSlackKV+PSA1-K2",
+      "post_first_readmissions": [],
+      "repetition": 3,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 1,
+      "policy": "OnDemand-K2",
+      "post_first_readmissions": [],
+      "repetition": 4,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "FullSlackKV+PSA1-K2",
+      "post_first_readmissions": [],
+      "repetition": 4,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "OnDemand-K2",
+      "post_first_readmissions": [],
+      "repetition": 5,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "FullSlackKV+PSA1-K2",
+      "post_first_readmissions": [
+        {
+          "output_tokens": 14,
+          "owns_gate": false,
+          "session": "E04:turn:1"
+        }
+      ],
+      "repetition": 5,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "OnDemand-K2",
+      "post_first_readmissions": [],
+      "repetition": 6,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "FullSlackKV+PSA1-K2",
+      "post_first_readmissions": [],
+      "repetition": 6,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "OnDemand-K2",
+      "post_first_readmissions": [
+        {
+          "output_tokens": 41,
+          "owns_gate": false,
+          "session": "E05:turn:1"
+        }
+      ],
+      "repetition": 7,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "FullSlackKV+PSA1-K2",
+      "post_first_readmissions": [],
+      "repetition": 7,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "OnDemand-K2",
+      "post_first_readmissions": [],
+      "repetition": 8,
+      "turns_complete": 40,
+      "valid": true
+    },
+    {
+      "boundaries": 32,
+      "lifecycle_violations": [],
+      "max_pre_first": 2,
+      "policy": "FullSlackKV+PSA1-K2",
+      "post_first_readmissions": [
+        {
+          "output_tokens": 1,
+          "owns_gate": false,
+          "session": "E03:turn:1"
+        }
+      ],
+      "repetition": 8,
+      "turns_complete": 40,
+      "valid": true
+    }
+  ]
+}

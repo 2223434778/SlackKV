@@ -1,0 +1,9 @@
+stage,policy,chunk_id,median_prompt_local_hit_tokens,observations
+measured,FullSlackKV+PSA1-K2,0,0.0,8
+measured,FullSlackKV+PSA1-K2,1,0.0,8
+measured,FullSlackKV+PSA1-K2,2,0.0,8
+measured,FullSlackKV+PSA1-K2,3,0.0,8
+measured,OnDemand-K2,0,0.0,8
+measured,OnDemand-K2,1,0.0,8
+measured,OnDemand-K2,2,0.0,8
+measured,OnDemand-K2,3,0.0,8

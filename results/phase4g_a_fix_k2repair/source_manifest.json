@@ -1,0 +1,8 @@
+{
+  "algorithm_fingerprint_unchanged": true,
+  "prior_phase_algorithm_fingerprint_sha256": "4ec03c5f7bcb331485becea471d6d46b28b2b9ec3f8b0a2997f62e7e8bf15618",
+  "start_commit": "84c75c880fddf5e98cefb70d0b99da43cfe9cb5b",
+  "vllm_upstream_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "vllm_working_diff_sha256": "4ec03c5f7bcb331485becea471d6d46b28b2b9ec3f8b0a2997f62e7e8bf15618",
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

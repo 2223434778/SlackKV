@@ -1,0 +1,13 @@
+{
+  "background_post_first_tokens": 8188,
+  "calibration_required_margin_ms": 30000.0,
+  "chunk_output_tokens": 2048,
+  "chunks": 4,
+  "coverage_endpoint": "last_agent_request_finished",
+  "frozen_before_calibration": true,
+  "max_inter_chunk_idle_gap_ms": 50.0,
+  "prompt_tokens": 9500,
+  "protocol": "BGv2_fixed_work_chunked",
+  "same_prompt_each_chunk": true,
+  "total_output_tokens": 8192
+}

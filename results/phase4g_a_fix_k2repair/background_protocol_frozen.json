@@ -1,0 +1,14 @@
+{
+  "BG_CAL_tail_finish_ms": [
+    91755.297877,
+    91081.519793,
+    93420.241315,
+    93453.947086
+  ],
+  "BG_CAL_valid": 4,
+  "frozen_for_matrix": true,
+  "max_inter_chunk_idle_gap_ms": 33.124419,
+  "minimum_BG_CAL_tail_finish_ms": 91081.519793,
+  "protocol": "BGv2_fixed_work_chunked",
+  "required_tail_finish_ms": 30000.0
+}

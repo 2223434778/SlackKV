@@ -1,0 +1,106 @@
+{
+  "BG_CAL_min_tail_finish_ms": 91081.519793,
+  "BG_CAL_required_tail_ms": 30000.0,
+  "BG_CAL_tail_finish_ms": [
+    91755.297877,
+    91081.519793,
+    93420.241315,
+    93453.947086
+  ],
+  "BG_CAL_valid": 4,
+  "BG_chunks_complete": 64,
+  "BG_coverage_valid": 16,
+  "BG_max_inter_chunk_idle_gap_ms": 39.379406,
+  "BG_only_baseline_wall_median_ms": 118407.76920350001,
+  "BG_only_drift_percent": 0.21197813216853323,
+  "BG_only_post_median_ms": 118658.767781,
+  "BG_only_pre_median_ms": 118407.76920350001,
+  "BG_only_valid": 8,
+  "BG_output_tokens_per_run": 8192,
+  "BG_protocol": "BGv2_fixed_work_chunked",
+  "BG_total_tokens_complete": 131072,
+  "H1": false,
+  "H2": true,
+  "H3": true,
+  "K2_lifecycle_audit": {
+    "all_run_gates_valid": true,
+    "lifecycle_violation_count": 0,
+    "measured_runs": 16,
+    "pass": true,
+    "post_first_readmission_count": 4,
+    "post_first_readmissions_reacquired_gate": 0
+  },
+  "K2_valid": 16,
+  "OOM": 0,
+  "Stage_L_A_valid": true,
+  "Stage_L_D_valid": true,
+  "algorithm_fingerprint_unchanged": true,
+  "bootstrap_intervals": [
+    {
+      "bootstrap_95_high": 9.557336948916785,
+      "bootstrap_95_low": -15.09218285116991,
+      "comparison": "D_vs_A",
+      "interpretation": "descriptive, not a significance test",
+      "metric": "deadline_P95_ms_relative_percent",
+      "paired_median": 1.382155825933118,
+      "resamples": 10000,
+      "seed": 20260928
+    },
+    {
+      "bootstrap_95_high": 2.0990673953668715,
+      "bootstrap_95_low": -3.60602659750463,
+      "comparison": "D_vs_A",
+      "interpretation": "descriptive, not a significance test",
+      "metric": "cumulative_TTFT_median_ms_relative_percent",
+      "paired_median": -1.7106578685697538,
+      "resamples": 10000,
+      "seed": 20260928
+    },
+    {
+      "bootstrap_95_high": 4.506093389509447,
+      "bootstrap_95_low": -0.2948190368817105,
+      "comparison": "D_vs_A",
+      "interpretation": "descriptive, not a significance test",
+      "metric": "session_e2e_median_ms_relative_percent",
+      "paired_median": 1.2899253679386713,
+      "resamples": 10000,
+      "seed": 20260928
+    },
+    {
+      "bootstrap_95_high": 0.015862313449821253,
+      "bootstrap_95_low": -0.013069827093358244,
+      "comparison": "D_vs_A",
+      "interpretation": "descriptive, not a significance test",
+      "metric": "X_slowdown_delta",
+      "paired_median": -0.0007438692629080368,
+      "resamples": 10000,
+      "seed": 20260928
+    }
+  ],
+  "boundaries_complete": 512,
+  "capacity_invariant_failures": 0,
+  "environment_drift_warning": false,
+  "final_result": "RESULT_C_MULTITURN_NO_MATERIAL_LATENCY_VALUE",
+  "lease_leaks": 0,
+  "logical_leaks": 0,
+  "measured_expected": 16,
+  "measured_valid": 16,
+  "output_identity_match": {
+    "FullSlackKV+PSA1-K2": 221,
+    "OnDemand-K2": 224
+  },
+  "paired_boundary_P95_percent_median": 1.382155825933118,
+  "paired_boundary_P95_percent_range": [
+    -19.308930701496386,
+    10.313531201844262
+  ],
+  "paired_cumulative_TTFT_percent_median": -1.7106578685697538,
+  "paired_session_E2E_percent_median": 1.2899253679386713,
+  "pause_valid": 16,
+  "phase": "4G-A-FIX",
+  "requests_complete": 640,
+  "result_caveat": "Descriptive n=8 paired runs; no significance test. BG-only source-hit counters are serialized per chunk; measured chunk hits subtract concurrent resumed Agent source-trace tokens.",
+  "server_crashes": 0,
+  "start_commit": "84c75c880fddf5e98cefb70d0b99da43cfe9cb5b",
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

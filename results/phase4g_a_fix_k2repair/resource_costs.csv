@@ -1,0 +1,17 @@
+repetition,policy,lease_memory_time_MiB_s,peak_leased_blocks,peak_lease_count,reservation_block_time_block_s,peak_reserved_blocks,capacity_rejects,PSA_rejects,reservation_skips
+1,OnDemand-K2,0.0,0,0,0.0,0,0,0,0
+1,FullSlackKV+PSA1-K2,0.0,0,0,2066.1075091420003,1456,9,1,0
+2,FullSlackKV+PSA1-K2,0.0,0,0,1679.3641688819998,2577,7,3,0
+2,OnDemand-K2,0.0,0,0,0.0,0,0,0,0
+3,OnDemand-K2,0.0,0,0,0.0,0,0,0,0
+3,FullSlackKV+PSA1-K2,0.0,0,0,2209.93919651,1456,5,5,0
+4,FullSlackKV+PSA1-K2,0.0,0,0,1651.2328155960001,1456,7,3,0
+4,OnDemand-K2,0.0,0,0,0.0,0,0,0,0
+5,OnDemand-K2,0.0,0,0,0.0,0,0,0,0
+5,FullSlackKV+PSA1-K2,0.0,0,0,2081.4146270749998,1456,9,1,0
+6,FullSlackKV+PSA1-K2,0.0,0,0,2451.6943279849997,2545,7,3,0
+6,OnDemand-K2,0.0,0,0,0.0,0,0,0,0
+7,OnDemand-K2,0.0,0,0,0.0,0,0,0,0
+7,FullSlackKV+PSA1-K2,0.0,0,0,1836.581084689,1456,10,0,0
+8,FullSlackKV+PSA1-K2,1684.975093911482,1274,1,5806.832650702,2577,8,1,0
+8,OnDemand-K2,0.0,0,0,0.0,0,0,0,0

@@ -1,0 +1,5 @@
+comparison,metric,paired_median,bootstrap_95_low,bootstrap_95_high,resamples,seed,interpretation
+D_vs_A,deadline_P95_ms_relative_percent,1.382155825933118,-15.09218285116991,9.557336948916785,10000,20260928,"descriptive, not a significance test"
+D_vs_A,cumulative_TTFT_median_ms_relative_percent,-1.7106578685697538,-3.60602659750463,2.0990673953668715,10000,20260928,"descriptive, not a significance test"
+D_vs_A,session_e2e_median_ms_relative_percent,1.2899253679386713,-0.2948190368817105,4.506093389509447,10000,20260928,"descriptive, not a significance test"
+D_vs_A,X_slowdown_delta,-0.0007438692629080368,-0.013069827093358244,0.015862313449821253,10000,20260928,"descriptive, not a significance test"
