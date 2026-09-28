@@ -1,0 +1,9 @@
+{
+  "phase": "4G-A-FIX",
+  "stage": "measured",
+  "error_type": "RUN_INVALID_NONPROGRESS",
+  "error": "Repetition 8 FullSlackKV+PSA1-K2: live server made no request progress before the 30-second watchdog; 17 resumes arrived, 9 reached first token/finish, and 2,572,201 K2 gate-block events accumulated. Matrix stopped; partial aggregation forbidden.",
+  "result": "EXPERIMENT_INVALID_MATRIX",
+  "partial_matrix_not_aggregated": true,
+  "diagnostics": "failures/measured_rep8_d/failure_diagnostics.json"
+}

@@ -1,0 +1,11 @@
+{
+  "phase": "4G-A-FIX",
+  "runs": [
+    {
+      "policy": "OnDemand-K2",
+      "repetition": 1,
+      "status": "started"
+    }
+  ],
+  "stage": "BG-CAL"
+}

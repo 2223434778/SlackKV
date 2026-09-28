@@ -1,0 +1,304 @@
+{
+  "OOM_observed": false,
+  "classification": "RUN_INVALID_NONPROGRESS",
+  "gate_owner_details": [
+    {
+      "events": {
+        "FIRST_MODEL_SCHEDULED": 1,
+        "FIRST_TOKEN": 1,
+        "REMOTE_KV_READY": 2,
+        "REQUEST_FINISHED": 1,
+        "RESUME_ADMITTED": 2,
+        "RESUME_ARRIVED": 1,
+        "WAITING_FOR_REMOTE_KVS": 2
+      },
+      "request_id": "cmpl-98cda0bfb4b410cf-0-9aaa93ba",
+      "session": "E03:turn:1"
+    },
+    {
+      "events": {
+        "FIRST_MODEL_SCHEDULED": 1,
+        "FIRST_TOKEN": 1,
+        "GATE_BLOCKED": 5,
+        "REMOTE_KV_READY": 2,
+        "REQUEST_FINISHED": 1,
+        "RESUME_ADMITTED": 2,
+        "RESUME_ARRIVED": 1,
+        "WAITING_FOR_REMOTE_KVS": 2
+      },
+      "request_id": "cmpl-a9bb530b7932b193-0-9bd34f69",
+      "session": "E06:turn:1"
+    }
+  ],
+  "interpretation": "Server remained alive while repeated K2 GATE_BLOCKED events accumulated. At capture, only 9 distinct requests had FIRST_TOKEN and REQUEST_FINISHED events despite 17 RESUME_ARRIVED events; subsequent waiting requests were not progressing. This run is invalid and the measured matrix is stopped; no partial performance aggregation is allowed.",
+  "last_gate_blocked": {
+    "event": "GATE_BLOCKED",
+    "gate_limit": 2,
+    "gate_marked": true,
+    "gate_owner_request_id": null,
+    "gate_owner_request_ids": [
+      "cmpl-98cda0bfb4b410cf-0-9aaa93ba",
+      "cmpl-a9bb530b7932b193-0-9bd34f69"
+    ],
+    "num_computed_tokens": 0,
+    "num_output_tokens": 0,
+    "num_running": 0,
+    "num_scheduled_requests": 0,
+    "num_skipped_waiting": 0,
+    "num_slackkv_pre_first_token": 2,
+    "num_waiting": 0,
+    "request_id": "cmpl-8d10f806baf9c7da-0-86b71c98",
+    "request_status": "WAITING",
+    "session": "E05:turn:2",
+    "step_id": 322139,
+    "timestamp_monotonic": 438971.551462209,
+    "total_num_scheduled_tokens": 0
+  },
+  "last_progress_events": {
+    "FIRST_TOKEN": {
+      "event": "FIRST_TOKEN",
+      "gate_limit": 2,
+      "gate_marked": true,
+      "gate_owner_request_id": null,
+      "gate_owner_request_ids": [
+        "cmpl-88063344083784e9-0-ac63f65a",
+        "cmpl-98cda0bfb4b410cf-0-9aaa93ba"
+      ],
+      "num_computed_tokens": 20662,
+      "num_output_tokens": 1,
+      "num_running": 3,
+      "num_scheduled_requests": 0,
+      "num_skipped_waiting": 5,
+      "num_slackkv_pre_first_token": 2,
+      "num_waiting": 5,
+      "request_id": "cmpl-88063344083784e9-0-ac63f65a",
+      "request_status": "RUNNING",
+      "session": "E05:turn:1",
+      "step_id": 571,
+      "timestamp_monotonic": 438280.086581941,
+      "total_num_scheduled_tokens": 0
+    },
+    "REMOTE_KV_READY": {
+      "event": "REMOTE_KV_READY",
+      "gate_limit": 2,
+      "gate_marked": true,
+      "gate_owner_request_id": null,
+      "gate_owner_request_ids": [
+        "cmpl-88063344083784e9-0-ac63f65a",
+        "cmpl-98cda0bfb4b410cf-0-9aaa93ba"
+      ],
+      "num_computed_tokens": 21120,
+      "num_output_tokens": 6,
+      "num_running": 3,
+      "num_scheduled_requests": 0,
+      "num_skipped_waiting": 5,
+      "num_slackkv_pre_first_token": 2,
+      "num_waiting": 5,
+      "request_id": "cmpl-a9bb530b7932b193-0-9bd34f69",
+      "request_status": "WAITING_FOR_REMOTE_KVS",
+      "session": "E06:turn:1",
+      "step_id": 571,
+      "timestamp_monotonic": 438280.071292044,
+      "total_num_scheduled_tokens": 0
+    },
+    "REQUEST_FINISHED": {
+      "event": "REQUEST_FINISHED",
+      "gate_limit": 2,
+      "gate_marked": true,
+      "gate_owner_request_id": null,
+      "gate_owner_request_ids": [
+        "cmpl-98cda0bfb4b410cf-0-9aaa93ba",
+        "cmpl-a9bb530b7932b193-0-9bd34f69"
+      ],
+      "num_computed_tokens": 20808,
+      "num_output_tokens": 148,
+      "num_running": 2,
+      "num_scheduled_requests": 0,
+      "num_skipped_waiting": 7,
+      "num_slackkv_pre_first_token": 2,
+      "num_waiting": 7,
+      "request_id": "cmpl-88063344083784e9-0-ac63f65a",
+      "request_status": "FINISHED_LENGTH_CAPPED",
+      "session": "E05:turn:1",
+      "step_id": 718,
+      "timestamp_monotonic": 438282.451746354,
+      "total_num_scheduled_tokens": 0
+    },
+    "RESUME_ADMITTED": {
+      "event": "RESUME_ADMITTED",
+      "gate_limit": 2,
+      "gate_marked": true,
+      "gate_owner_request_id": null,
+      "gate_owner_request_ids": [
+        "cmpl-98cda0bfb4b410cf-0-9aaa93ba",
+        "cmpl-a9bb530b7932b193-0-9bd34f69"
+      ],
+      "num_computed_tokens": 21120,
+      "num_output_tokens": 6,
+      "num_running": 4,
+      "num_scheduled_requests": 0,
+      "num_skipped_waiting": 4,
+      "num_slackkv_pre_first_token": 2,
+      "num_waiting": 4,
+      "request_id": "cmpl-a9bb530b7932b193-0-9bd34f69",
+      "request_status": "RUNNING",
+      "session": "E06:turn:1",
+      "step_id": 572,
+      "timestamp_monotonic": 438280.086828546,
+      "total_num_scheduled_tokens": 0
+    },
+    "WAITING_FOR_REMOTE_KVS": {
+      "event": "WAITING_FOR_REMOTE_KVS",
+      "gate_limit": 2,
+      "gate_marked": true,
+      "gate_owner_request_id": "cmpl-98cda0bfb4b410cf-0-9aaa93ba",
+      "gate_owner_request_ids": [
+        "cmpl-98cda0bfb4b410cf-0-9aaa93ba"
+      ],
+      "num_computed_tokens": 0,
+      "num_output_tokens": 6,
+      "num_running": 2,
+      "num_scheduled_requests": 0,
+      "num_skipped_waiting": 1,
+      "num_slackkv_pre_first_token": 1,
+      "num_waiting": 4,
+      "request_id": "cmpl-a9bb530b7932b193-0-9bd34f69",
+      "request_status": "WAITING_FOR_REMOTE_KVS",
+      "session": "E06:turn:1",
+      "step_id": 568,
+      "timestamp_monotonic": 438279.986590642,
+      "total_num_scheduled_tokens": 0
+    }
+  },
+  "phase": "4G-A-FIX",
+  "policy": "FullSlackKV+PSA1-K2",
+  "raw_log_bytes": 1588499455,
+  "repetition": 8,
+  "resume_trace_event_counts": {
+    "FIRST_MODEL_SCHEDULED": 9,
+    "FIRST_TOKEN": 9,
+    "GATE_BLOCKED": 2572201,
+    "REMOTE_KV_READY": 9,
+    "REQUEST_FINISHED": 9,
+    "RESUME_ADMITTED": 11,
+    "RESUME_ARRIVED": 17,
+    "WAITING_FOR_REMOTE_KVS": 9
+  },
+  "server_alive_at_capture": true,
+  "sessions": {
+    "E00:turn:1": {
+      "FIRST_MODEL_SCHEDULED": 1,
+      "FIRST_TOKEN": 1,
+      "REMOTE_KV_READY": 1,
+      "REQUEST_FINISHED": 1,
+      "RESUME_ADMITTED": 1,
+      "RESUME_ARRIVED": 1,
+      "WAITING_FOR_REMOTE_KVS": 1
+    },
+    "E00:turn:2": {
+      "GATE_BLOCKED": 321570,
+      "RESUME_ARRIVED": 1
+    },
+    "E01:turn:1": {
+      "FIRST_MODEL_SCHEDULED": 1,
+      "FIRST_TOKEN": 1,
+      "REQUEST_FINISHED": 1,
+      "RESUME_ADMITTED": 1,
+      "RESUME_ARRIVED": 1
+    },
+    "E01:turn:2": {
+      "FIRST_MODEL_SCHEDULED": 1,
+      "FIRST_TOKEN": 1,
+      "GATE_BLOCKED": 4,
+      "REMOTE_KV_READY": 1,
+      "REQUEST_FINISHED": 1,
+      "RESUME_ADMITTED": 1,
+      "RESUME_ARRIVED": 1,
+      "WAITING_FOR_REMOTE_KVS": 1
+    },
+    "E01:turn:3": {
+      "GATE_BLOCKED": 321487,
+      "RESUME_ARRIVED": 1
+    },
+    "E02:turn:1": {
+      "FIRST_MODEL_SCHEDULED": 1,
+      "FIRST_TOKEN": 1,
+      "REMOTE_KV_READY": 1,
+      "REQUEST_FINISHED": 1,
+      "RESUME_ADMITTED": 1,
+      "RESUME_ARRIVED": 1,
+      "WAITING_FOR_REMOTE_KVS": 1
+    },
+    "E02:turn:2": {
+      "GATE_BLOCKED": 321570,
+      "RESUME_ARRIVED": 1
+    },
+    "E03:turn:1": {
+      "FIRST_MODEL_SCHEDULED": 1,
+      "FIRST_TOKEN": 1,
+      "REMOTE_KV_READY": 2,
+      "REQUEST_FINISHED": 1,
+      "RESUME_ADMITTED": 2,
+      "RESUME_ARRIVED": 1,
+      "WAITING_FOR_REMOTE_KVS": 2
+    },
+    "E03:turn:2": {
+      "GATE_BLOCKED": 321572,
+      "RESUME_ARRIVED": 1
+    },
+    "E04:turn:1": {
+      "FIRST_MODEL_SCHEDULED": 1,
+      "FIRST_TOKEN": 1,
+      "REQUEST_FINISHED": 1,
+      "RESUME_ADMITTED": 1,
+      "RESUME_ARRIVED": 1
+    },
+    "E04:turn:2": {
+      "GATE_BLOCKED": 321570,
+      "RESUME_ARRIVED": 1
+    },
+    "E05:turn:1": {
+      "FIRST_MODEL_SCHEDULED": 1,
+      "FIRST_TOKEN": 1,
+      "GATE_BLOCKED": 6,
+      "REMOTE_KV_READY": 1,
+      "REQUEST_FINISHED": 1,
+      "RESUME_ADMITTED": 1,
+      "RESUME_ARRIVED": 1,
+      "WAITING_FOR_REMOTE_KVS": 1
+    },
+    "E05:turn:2": {
+      "GATE_BLOCKED": 321366,
+      "RESUME_ARRIVED": 1
+    },
+    "E06:turn:1": {
+      "FIRST_MODEL_SCHEDULED": 1,
+      "FIRST_TOKEN": 1,
+      "GATE_BLOCKED": 5,
+      "REMOTE_KV_READY": 2,
+      "REQUEST_FINISHED": 1,
+      "RESUME_ADMITTED": 2,
+      "RESUME_ARRIVED": 1,
+      "WAITING_FOR_REMOTE_KVS": 2
+    },
+    "E06:turn:2": {
+      "GATE_BLOCKED": 321487,
+      "RESUME_ARRIVED": 1
+    },
+    "E07:turn:1": {
+      "FIRST_MODEL_SCHEDULED": 1,
+      "FIRST_TOKEN": 1,
+      "REMOTE_KV_READY": 1,
+      "REQUEST_FINISHED": 1,
+      "RESUME_ADMITTED": 1,
+      "RESUME_ARRIVED": 1,
+      "WAITING_FOR_REMOTE_KVS": 1
+    },
+    "E07:turn:2": {
+      "GATE_BLOCKED": 321564,
+      "RESUME_ARRIVED": 1
+    }
+  },
+  "source_log_path": "/tmp/slackkv-phase4g-a-fix-server-logs/server_logs/measured_rep8_d.log",
+  "stage": "measured"
+}

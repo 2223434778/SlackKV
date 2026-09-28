@@ -1,0 +1,8 @@
+{
+  "error": "maximum recursion depth exceeded",
+  "error_type": "RecursionError",
+  "partial_matrix_not_aggregated": true,
+  "phase": "4G-A-FIX",
+  "result": "EXPERIMENT_INVALID_MATRIX",
+  "stage": "BG-CAL"
+}

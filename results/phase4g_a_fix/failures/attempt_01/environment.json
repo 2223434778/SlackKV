@@ -1,0 +1,19 @@
+{
+  "CPU_external_KV_bytes": 8589934592,
+  "GPU_KV_bytes": 2147483648,
+  "block_size": 16,
+  "cuda_visible_devices": "0",
+  "dtype": "float16",
+  "gpu_and_driver": "NVIDIA RTX A6000, 550.54.14",
+  "max_model_len": 32768,
+  "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "python": "Python 3.11.16",
+  "pytorch": [
+    "2.11.0+cu126",
+    "12.6"
+  ],
+  "tensor_parallel": 1,
+  "vllm": "0.23.0",
+  "vllm_upstream_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "vllm_working_diff_sha256": "f0f8e327cc7ff4eb1797852a24e56e0e7f4a77b62e0f9439e88405fd5b470ae4"
+}

@@ -1,0 +1,51 @@
+{
+  "phase": "4G-A-FIX",
+  "start_commit": "1d9fa6ade07698071a7b74cae7241781b943e10b",
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "vllm_source_diff_sha256": "f0f8e327cc7ff4eb1797852a24e56e0e7f4a77b62e0f9439e88405fd5b470ae4",
+  "vllm_source_modified": false,
+  "background_protocol": {
+    "prompt_tokens": 9500,
+    "chunks": 4,
+    "tokens_per_chunk": 2048,
+    "total_generated_tokens": 8192,
+    "max_inter_chunk_idle_gap_ms": 50,
+    "calibration_runs_valid": 4,
+    "pre_matrix_background_only_runs_valid": 4,
+    "post_matrix_background_only_runs_valid": 0
+  },
+  "lifecycle_smoke": {
+    "valid_runs": 4,
+    "turns_completed": "160/160",
+    "boundaries_completed": "128/128"
+  },
+  "measured_matrix": {
+    "expected_runs": 16,
+    "valid_runs_before_stop": 14,
+    "failed_run": {
+      "repetition": 8,
+      "position": 2,
+      "policy": "FullSlackKV+PSA1-K2",
+      "classification": "RUN_INVALID_NONPROGRESS",
+      "resume_arrived": 17,
+      "resume_admitted": 11,
+      "first_token": 9,
+      "request_finished": 9,
+      "gate_blocked_events": 2572201,
+      "server_alive": true,
+      "oom": false,
+      "server_error": false,
+      "watchdog_seconds": 30
+    },
+    "unrun_after_stop": [
+      "repetition 8 position 1 OnDemand-K2",
+      "post-matrix background-only controls 4/4"
+    ],
+    "partial_matrix_aggregated": false,
+    "performance_medians_valid": false
+  },
+  "diagnosis": "At the last captured gate event, running/waiting/scheduled counts were all zero while K2 still reported two pre-first owners (E03:turn:1 and E06:turn:1), both with FIRST_TOKEN and REQUEST_FINISHED events. This supports a stuck/stale K2 admission lifecycle state; the precise clearing transition is not established by the compact trace.",
+  "final_result": "EXPERIMENT_INVALID_MATRIX",
+  "stopped_stage": "measured",
+  "failure_reason": "RUN_INVALID_NONPROGRESS: repetition 8 FullSlackKV+PSA1-K2 remained live but stopped admitting/progressing requests; the measured matrix was halted without partial aggregation."
+}

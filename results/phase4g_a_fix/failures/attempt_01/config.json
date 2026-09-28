@@ -1,0 +1,20 @@
+{
+  "BG_chunk_output_tokens": 2048,
+  "BG_chunks": 4,
+  "BG_prompt_tokens": 9500,
+  "BG_total_output_tokens": 8192,
+  "K": 2,
+  "P_SAFE_ms": 102,
+  "calibration_required_tail_ms": 30000.0,
+  "max_inter_chunk_idle_gap_ms": 50.0,
+  "measured_repetitions": 8,
+  "measured_runs": 16,
+  "phase": "4G-A-FIX",
+  "policies": [
+    "OnDemand-K2",
+    "FullSlackKV+PSA1-K2"
+  ],
+  "reservation_budget_blocks": 3510,
+  "resume_guard_ms": 110,
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}
