@@ -1,0 +1,19 @@
+{
+  "python": "3.11.16",
+  "torch_distribution": "2.11.0+cu126",
+  "vllm_distribution": "0.23.0+cu126",
+  "transformers": "5.17.0",
+  "CUDA_build": "12.6",
+  "GPU": "NVIDIA RTX A6000",
+  "driver": "550.54.14",
+  "installed_GPU_count": 2,
+  "used_GPU": 0,
+  "topology_GPU0_GPU1": "SYS",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "model_snapshot": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "vllm_upstream_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "vllm_source": "/media/a6000/D/ZhaoBinHe/slackkv-phase2c-fix-sourceprobe",
+  "source_fingerprints": "manifest.json",
+  "runtime_parameters": "config.json",
+  "startup_warning": "Existing nvidia_cutlass_dsl .pth ModuleNotFoundError; Python/tests/GPU execution continued successfully."
+}

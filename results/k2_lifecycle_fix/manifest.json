@@ -1,0 +1,15 @@
+{
+  "start_commit": "992561a661effdb96cd4c5d8e5357002885ae26f",
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "baseline_vllm_diff_sha256": "f0f8e327cc7ff4eb1797852a24e56e0e7f4a77b62e0f9439e88405fd5b470ae4",
+  "fixed_vllm_diff_sha256": "4ec03c5f7bcb331485becea471d6d46b28b2b9ec3f8b0a2997f62e7e8bf15618",
+  "baseline_scheduler_sha256": "fb7c773504db7816242d73755be1247b31d5d401774a3e446a6aa2790e945639",
+  "fixed_scheduler_sha256": "247463533701e9ab5c545637c5f6e3063fd68ffafabc2630914e15b88ec02680",
+  "validation_order": [
+    "D",
+    "A",
+    "D",
+    "D"
+  ],
+  "purpose": "correctness/liveness validation; not a performance matrix"
+}

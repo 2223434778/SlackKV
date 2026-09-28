@@ -1,0 +1,46 @@
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -154,7 +154,8 @@
+     request_limit = _slackkv_first_token_gate_limit(request)
+     if configured_limit is not None and configured_limit != request_limit:
+         raise AssertionError("mixed SlackKV first-token gate limits")
+-    return len(owners) < request_limit, request_limit
++    # Re-admission before the first token reuses the request's existing slot.
++    return len(owners) < request_limit or request.request_id in owners, request_limit
+ 
+ 
+ def _slackkv_connector_first_request_ids(
+@@ -1009,7 +1010,10 @@
+                         request_queue.pop_request()
+                         continue
+ 
+-                if _is_slackkv_first_token_gate(request):
++                if (
++                    _is_slackkv_first_token_gate(request)
++                    and request.num_output_tokens == 0
++                ):
+                     has_capacity, gate_limit = _slackkv_first_token_gate_can_admit(
+                         self._slackkv_ft_gate_owners,
+                         self._slackkv_ft_gate_limit,
+@@ -1384,7 +1388,10 @@
+                 num_scheduled_tokens[request_id] = num_new_tokens
+                 token_budget -= num_new_tokens
+                 request.status = RequestStatus.RUNNING
+-                if _is_slackkv_first_token_gate(request):
++                if (
++                    _is_slackkv_first_token_gate(request)
++                    and request.num_output_tokens == 0
++                ):
+                     has_capacity, gate_limit = _slackkv_first_token_gate_can_admit(
+                         self._slackkv_ft_gate_owners,
+                         self._slackkv_ft_gate_limit,
+@@ -2693,6 +2700,9 @@
+     ) -> dict[str, Any] | None:
+         assert request.is_finished()
+ 
++        # Gate lifetime ends with the request, even when KV freeing is delayed.
++        self._slackkv_ft_gate_owners.discard(request.request_id)
++        self._slackkv_ft_first_token_seen.discard(request.request_id)
+         self._inflight_prefills.discard(request)
+         connector_delay_free_blocks, kv_xfer_params = self._connector_finished(request)
+         self.encoder_cache_manager.free(request)

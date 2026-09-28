@@ -1,0 +1,21 @@
+{
+  "purpose": "K2 lifecycle correctness and liveness validation, not performance comparison",
+  "policies_in_order": ["D", "A", "D", "D"],
+  "fresh_server_each_run": true,
+  "turns_per_run": 40,
+  "causal_boundaries_per_run": 32,
+  "background_chunks": 4,
+  "background_output_tokens_per_chunk": 2048,
+  "K": 2,
+  "P_SAFE_ms": 102,
+  "resume_guard_ms": 110,
+  "reservation_budget_blocks": 3510,
+  "GPU_KV_bytes": 2147483648,
+  "CPU_external_KV_bytes": 8589934592,
+  "GPU_blocks": 4681,
+  "block_size": 16,
+  "max_model_len": 32768,
+  "dtype": "float16",
+  "tensor_parallel": 1,
+  "CUDA_VISIBLE_DEVICES": "0"
+}

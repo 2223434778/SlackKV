@@ -1,0 +1,10 @@
+{
+  "baseline": {
+    "returncode": 1,
+    "summary": "7 failed, 1 passed in 0.24s"
+  },
+  "fixed": {
+    "returncode": 0,
+    "summary": "8 passed in 0.20s"
+  }
+}

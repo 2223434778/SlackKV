@@ -1,0 +1,101 @@
+{
+  "completed": [
+    {
+      "policy": "FullSlackKV+PSA1-K2",
+      "valid": true,
+      "turns_complete": 40,
+      "boundaries": 32,
+      "max_pre_first": 2,
+      "logical_leaks": 0,
+      "lease_leaks": 0,
+      "capacity_valid": true,
+      "OOM": false,
+      "server_alive": true,
+      "BG_total_generated_tokens": 8192,
+      "BG_tail_request_finish_ms": 94509.534448,
+      "post_first_readmissions": [
+        {
+          "session": "E04:turn:1",
+          "output_tokens": 4,
+          "owns_gate": false
+        },
+        {
+          "session": "E05:turn:1",
+          "output_tokens": 4,
+          "owns_gate": false
+        }
+      ],
+      "gate_lifecycle_violations": [],
+      "repetition": 1
+    },
+    {
+      "policy": "OnDemand-K2",
+      "valid": true,
+      "turns_complete": 40,
+      "boundaries": 32,
+      "max_pre_first": 2,
+      "logical_leaks": 0,
+      "lease_leaks": 0,
+      "capacity_valid": true,
+      "OOM": false,
+      "server_alive": true,
+      "BG_total_generated_tokens": 8192,
+      "BG_tail_request_finish_ms": 90847.403554,
+      "post_first_readmissions": [
+        {
+          "session": "E00:turn:1",
+          "output_tokens": 8,
+          "owns_gate": false
+        },
+        {
+          "session": "E04:turn:1",
+          "output_tokens": 1,
+          "owns_gate": false
+        }
+      ],
+      "gate_lifecycle_violations": [],
+      "repetition": 2
+    },
+    {
+      "policy": "FullSlackKV+PSA1-K2",
+      "valid": true,
+      "turns_complete": 40,
+      "boundaries": 32,
+      "max_pre_first": 2,
+      "logical_leaks": 0,
+      "lease_leaks": 0,
+      "capacity_valid": true,
+      "OOM": false,
+      "server_alive": true,
+      "BG_total_generated_tokens": 8192,
+      "BG_tail_request_finish_ms": 94399.188633,
+      "post_first_readmissions": [],
+      "gate_lifecycle_violations": [],
+      "repetition": 3
+    },
+    {
+      "policy": "FullSlackKV+PSA1-K2",
+      "valid": true,
+      "turns_complete": 40,
+      "boundaries": 32,
+      "max_pre_first": 2,
+      "logical_leaks": 0,
+      "lease_leaks": 0,
+      "capacity_valid": true,
+      "OOM": false,
+      "server_alive": true,
+      "BG_total_generated_tokens": 8192,
+      "BG_tail_request_finish_ms": 94533.323377,
+      "post_first_readmissions": [
+        {
+          "session": "E04:turn:1",
+          "output_tokens": 12,
+          "owns_gate": false
+        }
+      ],
+      "gate_lifecycle_violations": [],
+      "repetition": 4
+    }
+  ],
+  "active": null
+}

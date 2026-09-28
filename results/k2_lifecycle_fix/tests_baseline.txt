@@ -1,0 +1,137 @@
+FFFFFF.F                                                                 [100%]
+=================================== FAILURES ===================================
+_______________ test_post_first_preemption_does_not_reacquire[6] _______________
+
+production = ({'Request': <class 'test_k2_lifecycle_fix.Request'>, 'Any': <class 'object'>, '__builtins__': {'__name__': 'builtins'...object at 0x7f8e5b1cb010>, <ast.If object at 0x7f8e5b0de230>, <function production.<locals>.execute at 0x7f8e5b53dbc0>)
+outputs = 6
+
+    @pytest.mark.parametrize("outputs", [6, 17])
+    def test_post_first_preemption_does_not_reacquire(production, outputs):
+        ns, acquire, waiting, first, execute = production
+        s, r = state(), Request()
+        execute(acquire, s, r)
+        assert s._slackkv_ft_gate_owners == {"A"}
+        r._output_token_ids.append(7)
+        execute(first, s, r, num_output_tokens_before=0, new_token_ids=[7])
+        assert not s._slackkv_ft_gate_owners
+        r._output_token_ids = [7] * outputs
+        execute(acquire, s, r)
+>       assert not s._slackkv_ft_gate_owners
+E       AssertionError: assert not {'A'}
+E        +  where {'A'} = namespace(_slackkv_ft_gate_owners={'A'}, _slackkv_ft_gate_limit=2, _slackkv_ft_first_token_seen={'A'}, _slackkv_trace=... finished_req_ids=set(), finished_req_ids_dict=None, _free_blocks=<function state.<locals>.<lambda> at 0x7f8e5b53e160>)._slackkv_ft_gate_owners
+
+tests/test_k2_lifecycle_fix.py:81: AssertionError
+______________ test_post_first_preemption_does_not_reacquire[17] _______________
+
+production = ({'Request': <class 'test_k2_lifecycle_fix.Request'>, 'Any': <class 'object'>, '__builtins__': {'__name__': 'builtins'...object at 0x7f8e5b390580>, <ast.If object at 0x7f8e5b1235b0>, <function production.<locals>.execute at 0x7f8e5b53d620>)
+outputs = 17
+
+    @pytest.mark.parametrize("outputs", [6, 17])
+    def test_post_first_preemption_does_not_reacquire(production, outputs):
+        ns, acquire, waiting, first, execute = production
+        s, r = state(), Request()
+        execute(acquire, s, r)
+        assert s._slackkv_ft_gate_owners == {"A"}
+        r._output_token_ids.append(7)
+        execute(first, s, r, num_output_tokens_before=0, new_token_ids=[7])
+        assert not s._slackkv_ft_gate_owners
+        r._output_token_ids = [7] * outputs
+        execute(acquire, s, r)
+>       assert not s._slackkv_ft_gate_owners
+E       AssertionError: assert not {'A'}
+E        +  where {'A'} = namespace(_slackkv_ft_gate_owners={'A'}, _slackkv_ft_gate_limit=2, _slackkv_ft_first_token_seen={'A'}, _slackkv_trace=... finished_req_ids=set(), finished_req_ids_dict=None, _free_blocks=<function state.<locals>.<lambda> at 0x7f8e5b53d760>)._slackkv_ft_gate_owners
+
+tests/test_k2_lifecycle_fix.py:81: AssertionError
+__________________ test_post_first_request_bypasses_full_gate __________________
+
+production = ({'Request': <class 'test_k2_lifecycle_fix.Request'>, 'Any': <class 'object'>, '__builtins__': {'__name__': 'builtins'...object at 0x7f8e5b1c93f0>, <ast.If object at 0x7f8e5b10e950>, <function production.<locals>.execute at 0x7f8e5b59bd80>)
+
+    def test_post_first_request_bypasses_full_gate(production):
+        ns, _, waiting, _, _ = production
+        s, r = state(), Request(outputs=6)
+        s._slackkv_ft_gate_owners.update({"B", "C"})
+>       assert not eval(compile(ast.Expression(waiting.test), str(SOURCE), "eval"), dict(ns, self=s, request=r))
+E       assert not True
+E        +  where True = eval(<code object <module> at 0x7f8e5b0b8100, file "/tmp/slackkv-k2-lifecycle-baseline.py", line 1>, {'Request': <class 'test_k2_lifecycle_fix.Request'>, 'Any': <class 'object'>, '__builtins__': {'__name__': 'builtins',... <class '_frozen_importlib.BuiltinImporter'>, ...}, 'annotations': _Feature((3, 7, 0, 'beta', 1), None, 16777216), ...})
+E        +    where <code object <module> at 0x7f8e5b0b8100, file "/tmp/slackkv-k2-lifecycle-baseline.py", line 1> = compile(<ast.Expression object at 0x7f8e5b10c280>, '/tmp/slackkv-k2-lifecycle-baseline.py', 'eval')
+E        +      where <ast.Expression object at 0x7f8e5b10c280> = <class 'ast.Expression'>(<ast.Call object at 0x7f8e5b1c9630>)
+E        +        where <class 'ast.Expression'> = ast.Expression
+E        +        and   <ast.Call object at 0x7f8e5b1c9630> = <ast.If object at 0x7f8e5b1c93f0>.test
+E        +      and   '/tmp/slackkv-k2-lifecycle-baseline.py' = str(PosixPath('/tmp/slackkv-k2-lifecycle-baseline.py'))
+E        +    and   {'Request': <class 'test_k2_lifecycle_fix.Request'>, 'Any': <class 'object'>, '__builtins__': {'__name__': 'builtins',... <class '_frozen_importlib.BuiltinImporter'>, ...}, 'annotations': _Feature((3, 7, 0, 'beta', 1), None, 16777216), ...} = dict({'Request': <class 'test_k2_lifecycle_fix.Request'>, 'Any': <class 'object'>, '__builtins__': {'__name__': 'builtins',... <class '_frozen_importlib.BuiltinImporter'>, ...}, 'annotations': _Feature((3, 7, 0, 'beta', 1), None, 16777216), ...}, self=namespace(_slackkv_ft_gate_owners={'C', 'B'}, _slackkv_ft_gate_limit=2, _slackkv_ft_first_token_seen=set(), _slackkv_t... finished_req_ids=set(), finished_req_ids_dict=None, _free_blocks=<function state.<locals>.<lambda> at 0x7f8e5b1d4180>), request=<test_k2_lifecycle_fix.Request object at 0x7f8e5b0cc9d0>)
+
+tests/test_k2_lifecycle_fix.py:90: AssertionError
+_______________ test_pre_first_owner_can_reenter_when_gate_full ________________
+
+production = ({'Request': <class 'test_k2_lifecycle_fix.Request'>, 'Any': <class 'object'>, '__builtins__': {'__name__': 'builtins'...object at 0x7f8e5b2a8d30>, <ast.If object at 0x7f8e5b0e0df0>, <function production.<locals>.execute at 0x7f8e5b1d4540>)
+
+    def test_pre_first_owner_can_reenter_when_gate_full(production):
+        ns, acquire, _, _, execute = production
+        s, r = state(), Request()
+        s._slackkv_ft_gate_owners.update({"A", "B"})
+>       assert ns["_slackkv_first_token_gate_can_admit"](s._slackkv_ft_gate_owners, 2, r)[0]
+E       assert False
+
+tests/test_k2_lifecycle_fix.py:97: AssertionError
+_____ test_terminal_cleanup_is_idempotent_even_with_delayed_kv_free[False] _____
+
+production = ({'Request': <class 'test_k2_lifecycle_fix.Request'>, 'Any': <class 'object'>, '__builtins__': {'__name__': 'builtins'...object at 0x7f8e5b2a9480>, <ast.If object at 0x7f8e5b0c71c0>, <function production.<locals>.execute at 0x7f8e5bf9af20>)
+delayed = False
+
+    @pytest.mark.parametrize("delayed", [False, True])
+    def test_terminal_cleanup_is_idempotent_even_with_delayed_kv_free(production, delayed):
+        ns, *_ = production
+        s, r = state(), Request(outputs=42)
+        s._slackkv_ft_gate_owners.add(r.request_id)
+        s._slackkv_ft_first_token_seen.add(r.request_id)
+        ns["_free_request"](s, r, delay_free_blocks=delayed)
+        ns["_free_request"](s, r, delay_free_blocks=delayed)
+>       assert not s._slackkv_ft_gate_owners
+E       AssertionError: assert not {'A'}
+E        +  where {'A'} = namespace(_slackkv_ft_gate_owners={'A'}, _slackkv_ft_gate_limit=2, _slackkv_ft_first_token_seen={'A'}, _slackkv_trace=... finished_req_ids={'A'}, finished_req_ids_dict=None, _free_blocks=<function state.<locals>.<lambda> at 0x7f8e5b59bb00>)._slackkv_ft_gate_owners
+
+tests/test_k2_lifecycle_fix.py:111: AssertionError
+_____ test_terminal_cleanup_is_idempotent_even_with_delayed_kv_free[True] ______
+
+production = ({'Request': <class 'test_k2_lifecycle_fix.Request'>, 'Any': <class 'object'>, '__builtins__': {'__name__': 'builtins'...object at 0x7f8e5b232ad0>, <ast.If object at 0x7f8e5b261b40>, <function production.<locals>.execute at 0x7f8e5b53dee0>)
+delayed = True
+
+    @pytest.mark.parametrize("delayed", [False, True])
+    def test_terminal_cleanup_is_idempotent_even_with_delayed_kv_free(production, delayed):
+        ns, *_ = production
+        s, r = state(), Request(outputs=42)
+        s._slackkv_ft_gate_owners.add(r.request_id)
+        s._slackkv_ft_first_token_seen.add(r.request_id)
+        ns["_free_request"](s, r, delay_free_blocks=delayed)
+        ns["_free_request"](s, r, delay_free_blocks=delayed)
+>       assert not s._slackkv_ft_gate_owners
+E       AssertionError: assert not {'A'}
+E        +  where {'A'} = namespace(_slackkv_ft_gate_owners={'A'}, _slackkv_ft_gate_limit=2, _slackkv_ft_first_token_seen={'A'}, _slackkv_trace=... finished_req_ids={'A'}, finished_req_ids_dict=None, _free_blocks=<function state.<locals>.<lambda> at 0x7f8e5b53c860>)._slackkv_ft_gate_owners
+
+tests/test_k2_lifecycle_fix.py:111: AssertionError
+________ test_two_post_first_readmissions_leave_capacity_for_next_turn _________
+
+production = ({'Request': <class 'test_k2_lifecycle_fix.Request'>, 'Any': <class 'object'>, '__builtins__': {'__name__': 'builtins'...object at 0x7f8e5b58f910>, <ast.If object at 0x7f8e5b13cfa0>, <function production.<locals>.execute at 0x7f8e5b53e160>)
+
+    def test_two_post_first_readmissions_leave_capacity_for_next_turn(production):
+        ns, acquire, _, _, execute = production
+        s = state()
+        for episode, outputs in [("E03:turn:1", 17), ("E06:turn:1", 6)]:
+            r = Request(episode, outputs)
+            s._slackkv_ft_first_token_seen.add(episode)
+            execute(acquire, s, r)
+            ns["_free_request"](s, r)
+>       assert not s._slackkv_ft_gate_owners
+E       AssertionError: assert not {'E03:turn:1', 'E06:turn:1'}
+E        +  where {'E03:turn:1', 'E06:turn:1'} = namespace(_slackkv_ft_gate_owners={'E03:turn:1', 'E06:turn:1'}, _slackkv_ft_gate_limit=2, _slackkv_ft_first_token_seen...:turn:1', 'E06:turn:1'}, finished_req_ids_dict=None, _free_blocks=<function state.<locals>.<lambda> at 0x7f8e5b1d4360>)._slackkv_ft_gate_owners
+
+tests/test_k2_lifecycle_fix.py:133: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_k2_lifecycle_fix.py::test_post_first_preemption_does_not_reacquire[6]
+FAILED tests/test_k2_lifecycle_fix.py::test_post_first_preemption_does_not_reacquire[17]
+FAILED tests/test_k2_lifecycle_fix.py::test_post_first_request_bypasses_full_gate
+FAILED tests/test_k2_lifecycle_fix.py::test_pre_first_owner_can_reenter_when_gate_full
+FAILED tests/test_k2_lifecycle_fix.py::test_terminal_cleanup_is_idempotent_even_with_delayed_kv_free[False]
+FAILED tests/test_k2_lifecycle_fix.py::test_terminal_cleanup_is_idempotent_even_with_delayed_kv_free[True]
+FAILED tests/test_k2_lifecycle_fix.py::test_two_post_first_readmissions_leave_capacity_for_next_turn
+7 failed, 1 passed in 0.24s
