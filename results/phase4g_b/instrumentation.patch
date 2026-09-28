@@ -1,0 +1,301 @@
+--- a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py
++++ b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py
+@@ -35,8 +35,11 @@
+     ReqContext,
+     RequestOffloadingContext,
+     get_offload_block_hash,
++    get_offload_group_idx,
+     make_offload_key,
+ )
++from vllm.v1.core.kv_cache_utils import make_block_hash_with_group_id
++from vllm.v1.kv_offload.cpu.manager import CPUOffloadingManager
+ from vllm.v1.outputs import KVConnectorOutput
+ from vllm.v1.request import Request
+ 
+@@ -315,6 +318,148 @@
+         # be freed before a request finishes).
+         self._block_id_to_pending_jobs: dict[int, set[int]] = {}
+         self._slackkv_source_ready_emitted: set[str] = set()
++        self._slackkv_probe_gpu_pool = None
++        self._slackkv_probe_boundaries: dict[str, dict[str, Any]] = {}
++        self._slackkv_probe_interval_ns = 20_000_000
++        self._slackkv_probe_next_ns = 0
++        self._slackkv_probe_sample_id = 0
++        self._slackkv_probe_error_emitted = False
++
++    def bind_gpu_block_pool(self, gpu_block_pool: Any) -> None:
++        self._slackkv_probe_gpu_pool = gpu_block_pool
++
++    def slackkv_probe_delay_s(self, now_ns: int | None = None) -> float | None:
++        if not any(row.get("resume_issue_ns") is None for row in self._slackkv_probe_boundaries.values()):
++            return None
++        now = time.monotonic_ns() if now_ns is None else now_ns
++        return max(0.001, (self._slackkv_probe_next_ns - now) / 1e9)
++
++    def slackkv_probe_due(self, now_ns: int | None = None) -> bool:
++        if not any(row.get("resume_issue_ns") is None for row in self._slackkv_probe_boundaries.values()):
++            return False
++        now = time.monotonic_ns() if now_ns is None else now_ns
++        return now >= self._slackkv_probe_next_ns
++
++    def slackkv_probe_source_readiness(self, snapshot: dict[str, Any]) -> None:
++        now_ns = int(snapshot["probe_start_ns"])
++        if now_ns < self._slackkv_probe_next_ns:
++            return
++        if not any(row.get("resume_issue_ns") is None for row in self._slackkv_probe_boundaries.values()):
++            return
++        self._slackkv_probe_next_ns = now_ns + self._slackkv_probe_interval_ns
++        pool = self._slackkv_probe_gpu_pool
++        if pool is None or not isinstance(self.manager, CPUOffloadingManager):
++            if not self._slackkv_probe_error_emitted:
++                logger.error("SLACKKV_READY_PROBE %s", json.dumps({
++                    "event": "PROBE_ERROR", "timestamp_monotonic_ns": now_ns,
++                    "reason": "EXACT_READ_ONLY_SOURCE_API_UNAVAILABLE",
++                    "manager_type": type(self.manager).__name__,
++                    "gpu_block_pool_bound": pool is not None,
++                }, separators=(",", ":")))
++                self._slackkv_probe_error_emitted = True
++            return
++        if self.manager.counts is not None or not hasattr(self.manager._policy, "get"):
++            if not self._slackkv_probe_error_emitted:
++                logger.error("SLACKKV_READY_PROBE %s", json.dumps({
++                    "event": "PROBE_ERROR", "timestamp_monotonic_ns": now_ns,
++                    "reason": "SOURCE_PROBE_NOT_READ_ONLY_FOR_CONFIGURED_MANAGER",
++                }, separators=(",", ":")))
++                self._slackkv_probe_error_emitted = True
++            return
++
++        probe_id = self._slackkv_probe_sample_id
++        self._slackkv_probe_sample_id += 1
++        probe_cpu_start_ns = time.thread_time_ns()
++        cpu_policy = self.manager._policy
++        block_map = pool.cached_block_hash_to_block
++        total_blocks = int(pool.num_gpu_blocks)
++        free_blocks = int(pool.get_num_free_blocks())
++        leases = snapshot["leases"]
++        lease_block_ids = sorted({
++            int(block_id)
++            for block_ids in leases.values()
++            for block_id in block_ids
++        })
++        sample_rows: list[dict[str, Any]] = []
++        pending_frontier = [
++            (key, row) for key, row in self._slackkv_probe_boundaries.items()
++            if row.get("resume_request_id") is None
++            or row.get("resume_request_id") not in set(snapshot["first_token_request_ids"])
++        ]
++        protected_id, protected_state = (
++            min(pending_frontier, key=lambda item: (int(item[1]["estimated_deadline_ns"]), item[0]))
++            if pending_frontier else (None, None)
++        )
++        for boundary_id, boundary in list(self._slackkv_probe_boundaries.items()):
++            if boundary.get("resume_issue_ns") is not None:
++                continue
++            keys = boundary["keys"]
++            local_ids: list[int] = []
++            local_keys: set[Any] = set()
++            external_ready = 0
++            external_ready_needed = 0
++            for key in keys:
++                group_id = get_offload_group_idx(key)
++                block_hash = get_offload_block_hash(key)
++                cached = block_map.get_one_block(make_block_hash_with_group_id(block_hash, group_id))
++                if cached is not None and not cached.is_null:
++                    local_ids.append(int(cached.block_id))
++                    local_keys.add(key)
++                status = cpu_policy.get(key)
++                if status is not None and status.is_ready:
++                    external_ready += 1
++                    if key not in local_keys:
++                        external_ready_needed += 1
++            required = int(boundary["required_blocks"])
++            local_unique = len(set(local_ids))
++            covered = min(required, local_unique + external_ready_needed)
++            missing = max(0, required - covered)
++            external_needed = max(0, required - local_unique)
++            sample_rows.append({
++                "event": "SAMPLE", "sample_id": probe_id,
++                "timestamp_monotonic_ns": now_ns,
++                "boundary_id": boundary_id, "session": boundary["session"],
++                "request_id": boundary["request_id"],
++                "required_blocks": required,
++                "required_tokens": boundary["required_tokens"],
++                "local_cached_blocks": local_unique,
++                "external_ready_blocks": external_ready,
++                "external_ready_needed_blocks": min(external_ready_needed, external_needed),
++                "covered_blocks": covered, "missing_blocks": missing,
++                "source_fully_ready": covered == required,
++                "free_blocks": free_blocks, "total_blocks": total_blocks,
++                "used_blocks": total_blocks - free_blocks,
++                "num_running": snapshot["num_running"],
++                "num_waiting": snapshot["num_waiting"],
++                "running_unique_blocks": snapshot["running_unique_blocks"],
++                "waiting_unique_blocks": snapshot["waiting_unique_blocks"],
++                "active_lease_count": len(leases),
++                "active_lease_unique_blocks": len(lease_block_ids),
++                "lease_key": boundary["lease_key"],
++                "protected_frontier": protected_id,
++                "protected_progress_blocks": (
++                    int(protected_state["protected_progress_blocks"])
++                    if protected_state is not None else 0
++                ),
++                "protected_lease_blocks": (
++                    len(set(leases.get(protected_state["lease_key"], [])))
++                    if protected_state is not None else 0
++                ),
++                "estimated_deadline_ns": boundary["estimated_deadline_ns"],
++                "resume_issue_ns": boundary.get("resume_issue_ns"),
++            })
++        for row in sample_rows:
++            logger.info("SLACKKV_READY_PROBE %s", json.dumps(row, separators=(",", ":")))
++        probe_wall_duration_ns = max(0, time.monotonic_ns() - now_ns)
++        probe_cpu_duration_ns = max(0, time.thread_time_ns() - probe_cpu_start_ns)
++        logger.info("SLACKKV_READY_PROBE %s", json.dumps({
++            "event": "PROBE_COST", "sample_id": probe_id,
++            "timestamp_monotonic_ns": now_ns,
++            "probe_duration_ns": probe_cpu_duration_ns,
++            "probe_wall_duration_ns": probe_wall_duration_ns,
++            "probe_boundary_count": len(sample_rows),
++            "probe_interval_ns": self._slackkv_probe_interval_ns,
++        }, separators=(",", ":")))
+ 
+     def _slackkv_trace_source_readiness(self, req_status: RequestOffloadState) -> None:
+         """Observe a traced next-turn prefix without changing offload policy."""
+@@ -333,6 +478,25 @@
+             return
+         required_blocks = required // block_size
+         available_keys = group.offload_keys[:required_blocks]
++        if (
++            type(params.get("slackkv_trace_next_isl")) is int
++            and type(params.get("slackkv_trace_next_pause_ms")) in (int, float)
++        ):
++            registered_ns = time.monotonic_ns()
++            self._slackkv_probe_boundaries[boundary_id] = {
++                "request_id": req_status.req.request_id,
++                "session": params.get("slackkv_session"),
++                "keys": tuple(available_keys),
++                "required_tokens": required,
++                "required_blocks": required_blocks,
++                "available_key_blocks": len(available_keys),
++                "pause_ms": float(params["slackkv_trace_next_pause_ms"]),
++                "lease_key": params.get("slackkv_trace_next_lease_key"),
++                "estimated_deadline_ns": registered_ns + round(float(params["slackkv_trace_next_pause_ms"]) * 1e6),
++                "protected_progress_blocks": (int(params["slackkv_trace_next_isl"]) + 1 + 15) // 16,
++                "resume_issue_ns": None,
++            }
++            self._slackkv_probe_next_ns = min(self._slackkv_probe_next_ns or registered_ns, registered_ns)
+         ready_blocks = 0
+         for key in available_keys:
+             if self.manager.lookup(key, req_status.req_context) is not True:
+@@ -581,6 +745,14 @@
+             offloading_context=offloading_context,
+         )
+         self._req_status[request.request_id] = req_status
++        params = request.kv_transfer_params or {}
++        boundary_id = params.get("slackkv_trace_boundary_id")
++        issue_ns = params.get("slackkv_trace_resume_issue_ns")
++        if isinstance(boundary_id, str) and type(issue_ns) is int:
++            boundary = self._slackkv_probe_boundaries.get(boundary_id)
++            if boundary is not None:
++                boundary["resume_issue_ns"] = issue_ns
++                boundary["resume_request_id"] = request.request_id
+ 
+     def get_num_new_matched_tokens(
+         self, request: Request, num_computed_tokens: int
+--- a/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py
++++ b/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py
+@@ -70,6 +70,19 @@
+             self.connector_worker.shutdown()
+         if self.connector_scheduler is not None:
+             self.connector_scheduler.shutdown()
++
++    def bind_gpu_block_pool(self, gpu_block_pool: Any) -> None:
++        if self.connector_scheduler is not None:
++            self.connector_scheduler.bind_gpu_block_pool(gpu_block_pool)
++
++    def slackkv_probe_delay_s(self, now_ns: int | None = None) -> float | None:
++        if self.connector_scheduler is None:
++            return None
++        return self.connector_scheduler.slackkv_probe_delay_s(now_ns)
++
++    def slackkv_probe_source_readiness(self, snapshot: dict[str, Any]) -> None:
++        if self.connector_scheduler is not None:
++            self.connector_scheduler.slackkv_probe_source_readiness(snapshot)
+ 
+     def register_kv_caches(self, kv_caches: dict[str, torch.Tensor]):
+         assert self.connector_worker is not None
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -523,6 +523,39 @@
+             )
+         return block_ids
+ 
++    def slackkv_ready_probe_delay_s(self) -> float | None:
++        if self.connector is None:
++            return None
++        probe_delay = getattr(self.connector, "slackkv_probe_delay_s", None)
++        return probe_delay(time.monotonic_ns()) if probe_delay is not None else None
++
++    def slackkv_probe_source_readiness(self) -> None:
++        if self.connector is None:
++            return
++        probe = getattr(self.connector, "slackkv_probe_source_readiness", None)
++        if probe is None:
++            return
++        is_due = getattr(self.connector, "slackkv_probe_due", None)
++        if is_due is not None and not is_due(time.monotonic_ns()):
++            return
++        probe_start_ns = time.monotonic_ns()
++        waiting_requests = [item for queue in (self.waiting, self.skipped_waiting) for item in queue]
++        lease_snapshot = {
++            key: sorted({int(block.block_id) for block in blocks if not block.is_null})
++            for key, blocks in self._slackkv_residency_leases.items()
++        }
++        probe({
++            "probe_start_ns": probe_start_ns,
++            "num_running": len(self.running),
++            "num_waiting": len(waiting_requests),
++            "running_unique_blocks": len(self._slackkv_capacity_owned_block_ids(self.running)),
++            "waiting_unique_blocks": len(self._slackkv_capacity_owned_block_ids(waiting_requests)),
++            "leases": lease_snapshot,
++            "running_request_ids": [request.request_id for request in self.running],
++            "waiting_request_ids": [request.request_id for request in waiting_requests],
++            "first_token_request_ids": sorted(self._slackkv_ft_first_token_seen),
++        })
++
+     def _slackkv_guard_decision(
+         self, request: Request, required_blocks: int, free_blocks: int
+     ) -> tuple[str, dict[str, Any]]:
+@@ -712,6 +745,7 @@
+                     )
+ 
+     def schedule(self) -> SchedulerOutput:
++        self.slackkv_probe_source_readiness()
+         self.current_step += 1
+         self._slackkv_scheduler_step_id += 1
+         self._slackkv_preflight_capacity_guards()
+--- a/vllm/v1/engine/core.py
++++ b/vllm/v1/engine/core.py
+@@ -1278,10 +1278,21 @@
+                     logger.debug("EngineCore waiting for work.")
+                     waited = True
+             block = self.process_input_queue_block
++            probe_delay_fn = getattr(self.scheduler, "slackkv_ready_probe_delay_s", None)
++            probe_delay = probe_delay_fn() if probe_delay_fn is not None else None
+             try:
+-                req = self.input_queue.get(block=block)
++                if block and probe_delay is not None:
++                    req = self.input_queue.get(block=True, timeout=probe_delay)
++                else:
++                    req = self.input_queue.get(block=block)
+                 self._handle_client_request(*req)
+             except queue.Empty:
++                if probe_delay is not None:
++                    probe_fn = getattr(self.scheduler, "slackkv_probe_source_readiness", None)
++                    if probe_fn is not None:
++                        probe_fn()
++                    if block:
++                        continue
+                 break
+             if not block:
+                 break

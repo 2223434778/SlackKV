@@ -1,0 +1,83 @@
+{
+  "background_output_tokens": 8192,
+  "block_size_tokens": 16,
+  "classification": "INCOMPLETE_INVALID_RUN",
+  "cpu_external_kv_bytes": 8589934592,
+  "expected_measured_runs": 12,
+  "frozen_run_order": [
+    {
+      "background": false,
+      "condition": "M0",
+      "policy": "A"
+    },
+    {
+      "background": false,
+      "condition": "M1",
+      "policy": "D"
+    },
+    {
+      "background": false,
+      "condition": "M1",
+      "policy": "D"
+    },
+    {
+      "background": false,
+      "condition": "M0",
+      "policy": "A"
+    },
+    {
+      "background": true,
+      "condition": "M2",
+      "policy": "A"
+    },
+    {
+      "background": true,
+      "condition": "M3",
+      "policy": "D"
+    },
+    {
+      "background": true,
+      "condition": "M3",
+      "policy": "D"
+    },
+    {
+      "background": true,
+      "condition": "M2",
+      "policy": "A"
+    },
+    {
+      "background": true,
+      "condition": "M2",
+      "policy": "A"
+    },
+    {
+      "background": true,
+      "condition": "M3",
+      "policy": "D"
+    },
+    {
+      "background": true,
+      "condition": "M3",
+      "policy": "D"
+    },
+    {
+      "background": true,
+      "condition": "M2",
+      "policy": "A"
+    }
+  ],
+  "gpu_blocks": 4681,
+  "gpu_kv_bytes": 2147483648,
+  "instrumentation_patch_sha256": "7dcdc63aaee34689bec4f8d7e0f09ff0f2b7f34397d4f3fd205799e9f01be3b8",
+  "p_safe_ms": 102.0,
+  "phase": "4G-B",
+  "policies": {
+    "M0": "OnDemand-K2 / no background",
+    "M1": "FullSlackKV-PSA1-K2 / no background",
+    "M2": "OnDemand-K2 / BGv2",
+    "M3": "FullSlackKV-PSA1-K2 / BGv2"
+  },
+  "probe_interval_ms": 20.0,
+  "reservation_budget_blocks": 3510,
+  "resume_guard_ms": 110.0
+}

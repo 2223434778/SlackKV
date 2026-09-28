@@ -1,0 +1,27 @@
+{
+  "model_max_position_embeddings": 32768,
+  "model_snapshot_path": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "new_trace_only_instrumentation_patch_sha256": "7dcdc63aaee34689bec4f8d7e0f09ff0f2b7f34397d4f3fd205799e9f01be3b8",
+  "no_scheduler_algorithm_changes": true,
+  "phase": "Phase 4G-B",
+  "phase4c_workload_path": "results/phase4c/hybrid_workload.csv",
+  "phase4c_workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "start_commit": "3c887a710cca06142a00c4ca35ca152e7b590bc0",
+  "vllm_diff_files": [
+    "vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py",
+    "vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py",
+    "vllm/distributed/kv_transfer/kv_connector/v1/offloading/worker.py",
+    "vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py",
+    "vllm/entrypoints/serve/__init__.py",
+    "vllm/v1/core/sched/output.py",
+    "vllm/v1/core/sched/scheduler.py",
+    "vllm/v1/engine/core.py",
+    "vllm/v1/worker/gpu_model_runner.py",
+    "vllm/v1/worker/kv_connector_model_runner_mixin.py"
+  ],
+  "vllm_preinstrumentation_diff_sha256": "4ec03c5f7bcb331485becea471d6d46b28b2b9ec3f8b0a2997f62e7e8bf15618",
+  "vllm_source_path": "/media/a6000/D/ZhaoBinHe/slackkv-phase2c-fix-sourceprobe",
+  "vllm_upstream_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "vllm_version": "0.23.0",
+  "vllm_working_diff_sha256_before_run": "b3b408ad82e26543d2f60760972ffc2ef0a13eba07370696a6c2fcb8931dc250"
+}

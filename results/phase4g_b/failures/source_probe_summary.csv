@@ -1,0 +1,7 @@
+boundary_id,sample_count,first_timestamp_monotonic_ns,last_timestamp_monotonic_ns,first_source_fully_ready,first_local_cached_blocks,first_external_ready_needed_blocks,first_free_blocks,required_blocks,last_source_fully_ready,last_local_cached_blocks,last_external_ready_needed_blocks,last_free_blocks
+E01:b0,4,463814155665085,463814421976657,True,1330,0,2076,1330,True,1330,0,1563
+E03:b0,38,463812970380390,463815024629994,True,1306,0,2066,1306,True,229,1077,1563
+E04:b0,1,464709359561058,464709359561058,False,0,0,744,1271,False,0,0,744
+E05:b0,1,464709359561058,464709359561058,False,0,0,744,1274,False,0,0,744
+E06:b0,4,464709273257338,464709359561058,False,511,0,2075,1276,False,511,0,744
+E07:b0,1,464709359561058,464709359561058,False,0,0,744,1444,False,0,0,744

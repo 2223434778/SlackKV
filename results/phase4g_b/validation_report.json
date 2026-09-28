@@ -1,0 +1,38 @@
+{
+  "failed_run": {
+    "condition": "M1",
+    "driver_future_timeout_s": 300,
+    "error": "TimeoutError()",
+    "policy": "D",
+    "run_id": "measured_rep2_M1",
+    "shutdown_engine_dead_error": true
+  },
+  "failed_run_trace_counts": {
+    "capacity_decisions": {
+      "ADMIT": 253043,
+      "PROGRESS_REJECT": 1
+    },
+    "capacity_guard": 253044,
+    "connector_only_steps": 253045,
+    "offload_events": {
+      "SOURCE_NOT_READY": 4,
+      "SOURCE_READY": 2
+    },
+    "resume_events": {
+      "RESUME_ARRIVED": 2
+    }
+  },
+  "final_result": "INCOMPLETE_INVALID_RUN",
+  "full_matrix_aggregated": false,
+  "instrumentation_patch_sha256": "7dcdc63aaee34689bec4f8d7e0f09ff0f2b7f34397d4f3fd205799e9f01be3b8",
+  "instrumentation_smoke": {
+    "probe_cpu_duty_fraction": 0.03619659621395638,
+    "run_id": "smoke_rep2_M2",
+    "valid": true
+  },
+  "measured_expected": 12,
+  "phase": "4G-B",
+  "start_commit": "3c887a710cca06142a00c4ca35ca152e7b590bc0",
+  "valid_completed_runs": 1,
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

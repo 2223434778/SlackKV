@@ -1,0 +1,29 @@
+{
+  "probe_cost_summary": {
+    "boundary_sample_count": 0,
+    "max_probe_sample_gap_ms": 0.0,
+    "observation_span_ms": 0.0,
+    "probe_cpu_duty_fraction": null,
+    "probe_duration_P50_ms": null,
+    "probe_duration_P95_ms": null,
+    "probe_duration_max_ms": 0.0,
+    "probe_wall_duration_P50_ms": null,
+    "probe_wall_duration_P95_ms": null,
+    "probe_wall_duration_max_ms": 0.0,
+    "sample_count": 0,
+    "total_probe_duration_ms": 0.0
+  },
+  "probe_error_count": 0,
+  "run_id": "smoke_rep0_M2",
+  "run_json": "results/phase4g_b/runs/smoke_rep0_a/run.json",
+  "source_probe_events": 0,
+  "validation_report": {
+    "instrumentation_smoke_valid": false,
+    "phase": "4G-B",
+    "probe_cpu_duty_fraction": null,
+    "required_probe_cpu_duty_fraction_lt": 0.05,
+    "result": "EXPERIMENT_INVALID_INSTRUMENTATION_SMOKE",
+    "start_commit": "3c887a710cca06142a00c4ca35ca152e7b590bc0",
+    "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+  }
+}

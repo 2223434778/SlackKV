@@ -1,0 +1,20 @@
+{
+  "block_size_tokens_expected": 16,
+  "cpu_external_kv_bytes": 8589934592,
+  "cuda_visible_devices": "0",
+  "dtype": "float16",
+  "gpu_kv_bytes": 2147483648,
+  "max_position_embeddings": 32768,
+  "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "nvidia_smi": "NVIDIA RTX A6000, 550.54.14, 49140 MiB, 19 MiB, 52, 23.55 W, 210 MHz, 405 MHz\nNVIDIA RTX A6000, 550.54.14, 49140 MiB, 19 MiB, 43, 22.87 W, 210 MHz, 405 MHz",
+  "nvidia_smi_topology": "\t\u001b[4mGPU0\tGPU1\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tSYS\t0-31\t0\t\tN/A\nGPU1\tSYS\t X \t0-31\t0\t\tN/A\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n",
+  "prefix_caching": true,
+  "python": "Python 3.11.16",
+  "tensor_parallel_size": 1,
+  "torch": [
+    "2.11.0+cu126",
+    "12.6"
+  ],
+  "vllm": "0.23.0",
+  "vllm_source_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665"
+}
