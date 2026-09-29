@@ -1,0 +1,7 @@
+initial_deficit_bin,boundary_count,eventual_full_ready,full_ready_by_safe_start
+0,40,40,40
+1,52,52,52
+2-4,28,28,28
+5-16,8,8,8
+17-64,0,0,0
+>64,0,0,0

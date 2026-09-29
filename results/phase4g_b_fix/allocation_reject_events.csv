@@ -1,0 +1,2 @@
+run_id,boundary_id,lease_key,request_id,free_blocks,inflight_reserved_blocks,schedulable_blocks,local_tokens,external_tokens,required_blocks,status,reason,client_response_ms,transfer_bytes,lease_acquired,turns_complete,boundaries_complete
+measured_rep3_M1,E01:b0,E01:turn:1,slackkv-prefetch-69edf0ea80be46ca93ff09fe4fb2ed3e-91ecf7c7,1743,891,852,21264,16,1330,capacity_rejected,INSUFFICIENT_SCHEDULABLE_BLOCKS,149.753384,0,False,40,32

@@ -1,0 +1,20 @@
+{
+  "BGv2_max_inter_chunk_idle_gap_ms": 34.56895,
+  "BGv2_min_tail_last_first_token_ms": 94079.941986,
+  "BGv2_valid_runs": 8,
+  "M2_max_boundary_probe_gap_ms": 171.636739,
+  "M2_physical_fit_without_20ms_PSA_safe_window": 128,
+  "M2_source_in_time": 128,
+  "M2_source_in_time_and_physical_fit": 128,
+  "allocation_reject_branch_events": 1,
+  "caveat": "Sampled counterfactual windows are not a continuous-time proof; gaps may hide shorter opportunities.",
+  "classification": "RESULT_D_PSA_HEADROOM_BLOCKER",
+  "dynamic_boundaries_complete": 384,
+  "measured_runs_valid": 12,
+  "promotion_response_statuses": {
+    "capacity_rejected": 48,
+    "ok": 2,
+    "progress_rejected": 10
+  },
+  "turns_complete": 480
+}

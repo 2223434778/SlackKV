@@ -1,0 +1,5 @@
+condition,policy,background,runs,valid_runs,promotion_attempts,initial_not_ready,full_ready_by_safe_start,actionable_ge_20ms,source_in_time,missed_source_rechecks,capacity_rejects,progress_rejects,reservation_skips,mean_free_blocks,mean_external_ready_needed_blocks,mean_progress_reserve_blocks
+M0,A,False,2,2,0,44,64,0,64,44,0,0,0,603.4331254331254,1095.6437976437976,1331.6867636867637
+M1,D,False,2,2,20,44,64,0,64,44,16,4,0,600.1657342657343,1084.7083916083916,1302.1552447552447
+M2,A,True,4,4,0,88,128,0,128,88,0,0,0,1073.7714489142043,743.001423994304,1321.2431470274119
+M3,D,True,4,4,40,88,128,0,128,88,32,6,0,1066.4323335771762,731.8782004389174,1289.8163862472568

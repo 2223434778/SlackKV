@@ -1,0 +1,88 @@
+{
+  "accumulated_vllm_patch_sha256": "7b3bef4954018e5dffd85545d1e6702143e5e285c28caf52a1f2ba6b4e262637",
+  "background_output_tokens": 8192,
+  "block_size_tokens": 16,
+  "classification": "RESULT_D_PSA_HEADROOM_BLOCKER",
+  "cpu_external_kv_bytes": 8589934592,
+  "frozen_phase4g_b_order_unchanged": true,
+  "frozen_run_order": [
+    {
+      "background": false,
+      "condition": "M0",
+      "policy": "A"
+    },
+    {
+      "background": false,
+      "condition": "M1",
+      "policy": "D"
+    },
+    {
+      "background": false,
+      "condition": "M1",
+      "policy": "D"
+    },
+    {
+      "background": false,
+      "condition": "M0",
+      "policy": "A"
+    },
+    {
+      "background": true,
+      "condition": "M2",
+      "policy": "A"
+    },
+    {
+      "background": true,
+      "condition": "M3",
+      "policy": "D"
+    },
+    {
+      "background": true,
+      "condition": "M3",
+      "policy": "D"
+    },
+    {
+      "background": true,
+      "condition": "M2",
+      "policy": "A"
+    },
+    {
+      "background": true,
+      "condition": "M2",
+      "policy": "A"
+    },
+    {
+      "background": true,
+      "condition": "M3",
+      "policy": "D"
+    },
+    {
+      "background": true,
+      "condition": "M3",
+      "policy": "D"
+    },
+    {
+      "background": true,
+      "condition": "M2",
+      "policy": "A"
+    }
+  ],
+  "frozen_workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "gpu_blocks": 4681,
+  "gpu_kv_bytes": 2147483648,
+  "matrix_measured_runs": 12,
+  "p_safe_ms": 102.0,
+  "phase": "4G-B-FIX",
+  "phase4g_b_fix_incremental_patch_sha256": "90bb26e0e0ef883362dc59da69498788e5d979c9741e3b30337edd78e86af0d0",
+  "policies": {
+    "M0": "OnDemand-K2 / no background",
+    "M1": "FullSlackKV-PSA1-K2 / no background",
+    "M2": "OnDemand-K2 / BGv2",
+    "M3": "FullSlackKV-PSA1-K2 / BGv2"
+  },
+  "probe_interval_ms": 20.0,
+  "repair_scope": "guarded native prefetch allocation failure only",
+  "reservation_budget_blocks": 3510,
+  "resume_guard_ms": 110.0,
+  "vllm_working_diff_sha256": "65a78bb3d925e7539f8133574c465e75847c1b54fbac299f5e4bcc4f5b9446e3"
+}

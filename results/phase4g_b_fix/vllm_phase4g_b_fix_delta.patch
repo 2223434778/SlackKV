@@ -1,0 +1,74 @@
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -78,6 +78,10 @@
+     return bool(params and params.get("capacity_guard") is True)
+ 
+ 
++def _slackkv_reject_blocked_native_prefetch(request: Request) -> bool:
++    return _is_slackkv_prefetch_only(request) and _is_slackkv_capacity_guarded(request)
++
++
+ def _slackkv_psa_decision(
+     free_blocks: int,
+     required_blocks: int,
+@@ -1313,6 +1317,32 @@
+ 
+                 if new_blocks is None:
+                     # The request cannot be scheduled.
++                    if _slackkv_reject_blocked_native_prefetch(request):
++                        # A connector-first prefetch cannot wait for ordinary
++                        # prefills to release their reserved blocks: this pass
++                        # deliberately pauses those prefills. Fall back to the
++                        # real resume before any connector load or lease begins.
++                        free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                        logger.info("SLACKKV_PREFETCH_ALLOC_TRACE %s", json.dumps({
++                            "event": "ALLOCATION_REJECT",
++                            "timestamp_monotonic": time.monotonic(),
++                            "request_id": request_id,
++                            "free_blocks": free,
++                            "inflight_reserved_blocks": reserved_blocks,
++                            "schedulable_blocks": free - reserved_blocks,
++                            "local_tokens": num_new_local_computed_tokens,
++                            "external_tokens": num_external_computed_tokens,
++                            "new_tokens": num_new_tokens,
++                            "load_kv_async": load_kv_async,
++                        }, separators=(",", ":")))
++                        self._slackkv_finish_capacity_guard_request(
++                            request, request_queue,
++                            status="capacity_rejected",
++                            reason="INSUFFICIENT_SCHEDULABLE_BLOCKS",
++                            required_blocks=self._slackkv_capacity_required_blocks(request),
++                            free_blocks=free,
++                        )
++                        continue
+                     if _is_slackkv_trace_resume(request):
+                         self._slackkv_waiting_allocate_none_count[request_id] += 1
+                         blocked_count = self._slackkv_waiting_allocate_none_count[
+--- a/tests/v1/kv_connector/unit/test_slackkv_connector_first.py
++++ b/tests/v1/kv_connector/unit/test_slackkv_connector_first.py
+@@ -10,6 +10,7 @@
+ from vllm.v1.core.sched.scheduler import (
+     _SlackKVConnectorFirstState,
+     _slackkv_connector_first_request_ids,
++    _slackkv_reject_blocked_native_prefetch,
+     _validate_slackkv_connector_first_output,
+ )
+ 
+@@ -54,6 +55,17 @@
+     assert _slackkv_connector_first_request_ids(queue) == []
+ 
+ 
++def test_only_guarded_native_prefetch_uses_allocation_failure_fallback():
++    guarded = SimpleNamespace(kv_transfer_params={
++        "slackkv_prefetch_only": True, "capacity_guard": True,
++    })
++    historical = SimpleNamespace(kv_transfer_params={"slackkv_prefetch_only": True})
++    normal = SimpleNamespace(kv_transfer_params={"capacity_guard": True})
++    assert _slackkv_reject_blocked_native_prefetch(guarded)
++    assert not _slackkv_reject_blocked_native_prefetch(historical)
++    assert not _slackkv_reject_blocked_native_prefetch(normal)
++
++
+ def test_special_request_model_tokens_violate_invariant():
+     output = SchedulerOutput.make_empty()
+     output.slackkv_connector_only_step = True

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd /media/a6000/D/ZhaoBinHe/SlackKV
+/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python -m pytest -q tests/test_phase4g_b.py tests/test_phase4g_b_fix.py
+/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python -m experiments.phase4g_b_fix.run --run
+/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python -m experiments.phase4g_b_fix.audit

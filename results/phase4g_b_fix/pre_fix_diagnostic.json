@@ -1,0 +1,32 @@
+{
+  "first": {
+    "blocked_count": 1,
+    "event": "ALLOCATE_NONE",
+    "external_tokens": 16,
+    "free_blocks": 1564,
+    "full_sequence_must_fit": true,
+    "load_kv_async": true,
+    "local_tokens": 21264,
+    "new_tokens": 0,
+    "request_id": "slackkv-prefetch-2137f1d88ec641a3bbc1d8316e6f4788-8f44345a",
+    "reserved_blocks": 759,
+    "timestamp_monotonic": 497261.020526031
+  },
+  "hypothesis": "connector-first freezes normal in-flight prefills while a guarded native prefetch repeatedly fails allocation",
+  "last": {
+    "blocked_count": 16384,
+    "event": "ALLOCATE_NONE",
+    "external_tokens": 16,
+    "free_blocks": 1564,
+    "full_sequence_must_fit": true,
+    "load_kv_async": true,
+    "local_tokens": 21264,
+    "new_tokens": 0,
+    "request_id": "slackkv-prefetch-2137f1d88ec641a3bbc1d8316e6f4788-8f44345a",
+    "reserved_blocks": 759,
+    "timestamp_monotonic": 497319.336533386
+  },
+  "rate_limited_events": 15,
+  "schedulable_blocks_at_first": 805,
+  "source_log": "/tmp/slackkv-phase4g-b-fix-diagnostic/server_logs/measured_rep101_d.log"
+}
