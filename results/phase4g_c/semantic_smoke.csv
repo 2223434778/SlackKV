@@ -1,0 +1,3 @@
+condition,valid,turns_complete,boundaries,full_prefix_source_hit_exact,source_hit_shortfall_tokens,prompt_only_explained_shortfall_tokens,unexplained_source_shortfall_tokens,K2_max_pre_first,source_probe_cpu_duty,diagnostic_cpu_duty,recheck_events,recheck_behavior_updates,BG_tokens,BG_tail_finish_ms
+C0,True,40,32,False,768,768,0,1,0.04130665912294508,0.04352499235324964,22,0,,89734.518415
+C1,True,40,32,False,768,768,0,2,0.042401681444812725,0.04981535484766022,22,22,,92926.930113

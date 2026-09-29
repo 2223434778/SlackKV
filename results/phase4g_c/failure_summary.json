@@ -1,0 +1,35 @@
+{
+  "phase": "4G-C",
+  "classification": "EXPERIMENT_INVALID_MATRIX",
+  "start_commit": "c1761e980b16eec5d5381e8cf0a6edd4d245bf09",
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "planned_measured_runs": 8,
+  "valid_measured_runs": 6,
+  "attempted_measured_runs": 7,
+  "failed_run": "measured_rep4_c1",
+  "unattempted_run": "measured_rep4_c0",
+  "pause_fidelity": {
+    "p95_abs_limit_ms": 10.0,
+    "max_abs_limit_ms": 30.0,
+    "observed_p95_abs_ms": 12.211563,
+    "observed_max_abs_ms": 18.885849,
+    "violating_boundaries": [
+      {"boundary_id": "E01:b1", "proxy_pause_ms": 260.0, "pause_error_ms": 18.885849},
+      {"boundary_id": "E04:b2", "proxy_pause_ms": 439.0, "pause_error_ms": 12.211563},
+      {"boundary_id": "E04:b1", "proxy_pause_ms": 297.0, "pause_error_ms": 11.469409}
+    ]
+  },
+  "failed_run_correctness": {
+    "turns_complete": 40,
+    "boundaries_complete": 32,
+    "max_pre_first": 2,
+    "background_tokens": 8192,
+    "background_tail_margin_ms": 97588.073937,
+    "server_alive": true,
+    "OOM": false,
+    "crash": false,
+    "lease_leaks": 0,
+    "logical_leaks": 0
+  },
+  "causal_or_performance_aggregation": false
+}
