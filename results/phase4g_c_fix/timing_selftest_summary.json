@@ -1,0 +1,9 @@
+{
+  "backend": "CLOCK_NANOSLEEP_ABS",
+  "pass": true,
+  "sleeps": 100,
+  "spacing_ms": 20,
+  "wake_overshoot_abs_P50_ms": 0.111035,
+  "wake_overshoot_abs_P95_ms": 0.21354,
+  "wake_overshoot_abs_max_ms": 0.219442
+}

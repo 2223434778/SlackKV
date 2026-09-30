@@ -1,0 +1,83 @@
+{
+  "K2": 2,
+  "P_SAFE_ms": 102,
+  "background": "BGv2: 4 x 2048 output tokens, 9500-token prompt",
+  "boundaries_per_run": 32,
+  "conditions": [
+    "C0",
+    "C1"
+  ],
+  "measured_run_order": [
+    [
+      1,
+      "C0"
+    ],
+    [
+      1,
+      "C1"
+    ],
+    [
+      2,
+      "C1"
+    ],
+    [
+      2,
+      "C0"
+    ],
+    [
+      3,
+      "C0"
+    ],
+    [
+      3,
+      "C1"
+    ],
+    [
+      4,
+      "C1"
+    ],
+    [
+      4,
+      "C0"
+    ]
+  ],
+  "offload_prompt_only": "pinned default true; not overridden",
+  "pause_backend": "CLOCK_NANOSLEEP_ABS",
+  "pause_max_gate_ms": 30,
+  "pause_p95_gate_ms": 10,
+  "phase": "4G-C-FIX",
+  "python_busy_spin": false,
+  "python_switch_interval_s": 0.0005,
+  "reservation_budget_blocks": 3510,
+  "resume_guard_ms": 110,
+  "source_recheck_interval_ms": 20,
+  "stage_t_aggregate_p99_abs_pause_gate_ms": 10,
+  "stage_t_order": [
+    [
+      1,
+      "C0"
+    ],
+    [
+      2,
+      "C1"
+    ],
+    [
+      3,
+      "C1"
+    ],
+    [
+      4,
+      "C0"
+    ],
+    [
+      5,
+      "C0"
+    ],
+    [
+      6,
+      "C1"
+    ]
+  ],
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "workload_turns": 40
+}

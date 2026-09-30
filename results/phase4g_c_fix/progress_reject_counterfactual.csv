@@ -1,0 +1,5 @@
+condition,repetition,run_id,actual_candidate,protected,actual_H,self_H,protected_exact_ready,self_logical_fit,self_PSA_fit,self_legacy_physical_fit,self_exact_allocator_fit,timing_permits,would_recover
+C0,1,measured_rep1_c0,E04:b1,E02:b1,1333,5,False,True,False,False,,True,False
+C0,2,measured_rep2_c0,E04:b0,E01:b0,1337,7,True,True,False,False,True,True,False
+C0,2,measured_rep2_c0,E02:b3,E01:b3,1583,127,True,True,False,False,False,True,False
+C0,4,measured_rep4_c0,E04:b1,E06:b0,1321,45,False,True,False,True,,True,False

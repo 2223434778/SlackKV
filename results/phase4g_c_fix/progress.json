@@ -1,0 +1,46 @@
+{
+  "completed": [
+    {
+      "condition": "C0",
+      "repetition": 1,
+      "valid": true
+    },
+    {
+      "condition": "C1",
+      "repetition": 1,
+      "valid": true
+    },
+    {
+      "condition": "C1",
+      "repetition": 2,
+      "valid": true
+    },
+    {
+      "condition": "C0",
+      "repetition": 2,
+      "valid": true
+    },
+    {
+      "condition": "C0",
+      "repetition": 3,
+      "valid": true
+    },
+    {
+      "condition": "C1",
+      "repetition": 3,
+      "valid": true
+    },
+    {
+      "condition": "C1",
+      "repetition": 4,
+      "valid": true
+    },
+    {
+      "condition": "C0",
+      "repetition": 4,
+      "valid": true
+    }
+  ],
+  "completed_measured_runs": 8,
+  "expected_measured_runs": 8
+}

@@ -1,0 +1,11 @@
+{
+  "backend": "CLOCK_NANOSLEEP_ABS",
+  "frozen": true,
+  "pause_max_gate_ms": 30,
+  "pause_p95_gate_ms": 10,
+  "python_busy_spin": false,
+  "python_switch_interval_s": 0.0005,
+  "stage_t_aggregate_abs_pause_error_P99_ms": 4.122891,
+  "stage_t_boundaries": 192,
+  "stage_t_runs": 6
+}
