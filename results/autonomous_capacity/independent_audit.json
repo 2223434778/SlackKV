@@ -1,0 +1,283 @@
+{
+  "archive_verified_files": 87,
+  "runs": [
+    {
+      "name": "capacity-2",
+      "p95_independent_ms": 5199.923853,
+      "session_median_independent_ms": 23525.758630999997,
+      "H2D_bytes_actual": 20216741888.0,
+      "D2H_bytes_actual": 5423824896.0,
+      "source_restore_bytes": 20216741888,
+      "H2D_counter_status": "VERIFIED against source",
+      "H2D_actual_minus_source_bytes": 0.0,
+      "preemptions_actual": 2.0,
+      "credit_successes": 0,
+      "final_epoch_programs": null,
+      "epoch_admissions": 0,
+      "epoch_blocked_requests": [],
+      "compiled_execution_log_present": true
+    },
+    {
+      "name": "capacity-4-retry",
+      "p95_independent_ms": 1163.512875,
+      "session_median_independent_ms": 18780.224653999998,
+      "H2D_bytes_actual": 10407247872.0,
+      "D2H_bytes_actual": 5423824896.0,
+      "source_restore_bytes": 10407247872,
+      "H2D_counter_status": "VERIFIED against source",
+      "H2D_actual_minus_source_bytes": 0.0,
+      "preemptions_actual": 0.0,
+      "credit_successes": 0,
+      "final_epoch_programs": null,
+      "epoch_admissions": 0,
+      "epoch_blocked_requests": [],
+      "compiled_execution_log_present": true
+    },
+    {
+      "name": "capacity-8",
+      "p95_independent_ms": 445.324538,
+      "session_median_independent_ms": 18837.0845345,
+      "H2D_bytes_actual": null,
+      "D2H_bytes_actual": 5423824896.0,
+      "source_restore_bytes": 0,
+      "H2D_counter_status": "UNKNOWN: missing series",
+      "H2D_actual_minus_source_bytes": null,
+      "preemptions_actual": 0.0,
+      "credit_successes": 0,
+      "final_epoch_programs": null,
+      "epoch_admissions": 0,
+      "epoch_blocked_requests": [],
+      "compiled_execution_log_present": true
+    },
+    {
+      "name": "credit-candidate-2",
+      "p95_independent_ms": 3642.521896,
+      "session_median_independent_ms": 24244.979219499997,
+      "H2D_bytes_actual": 20137836544.0,
+      "D2H_bytes_actual": 5423824896.0,
+      "source_restore_bytes": 20137377792,
+      "H2D_counter_status": "MISMATCH: retain actual counter; source-only accounting insufficient",
+      "H2D_actual_minus_source_bytes": 458752.0,
+      "preemptions_actual": 1.0,
+      "credit_successes": 4,
+      "final_epoch_programs": null,
+      "epoch_admissions": 0,
+      "epoch_blocked_requests": [],
+      "compiled_execution_log_present": true
+    },
+    {
+      "name": "credit-control-2",
+      "p95_independent_ms": 6061.254056,
+      "session_median_independent_ms": 22855.417059500003,
+      "H2D_bytes_actual": 20432355328.0,
+      "D2H_bytes_actual": 5423824896.0,
+      "source_restore_bytes": 20432355328,
+      "H2D_counter_status": "VERIFIED against source",
+      "H2D_actual_minus_source_bytes": 0.0,
+      "preemptions_actual": 1.0,
+      "credit_successes": 0,
+      "final_epoch_programs": null,
+      "epoch_admissions": 0,
+      "epoch_blocked_requests": [],
+      "compiled_execution_log_present": true
+    },
+    {
+      "name": "epoch-candidate-2",
+      "p95_independent_ms": 9889.704504,
+      "session_median_independent_ms": 25356.68818,
+      "H2D_bytes_actual": 12161056768.0,
+      "D2H_bytes_actual": 5423824896.0,
+      "source_restore_bytes": 12161056768,
+      "H2D_counter_status": "VERIFIED against source",
+      "H2D_actual_minus_source_bytes": 0.0,
+      "preemptions_actual": 0.0,
+      "credit_successes": 0,
+      "final_epoch_programs": 0,
+      "epoch_admissions": 27,
+      "epoch_blocked_requests": [
+        {
+          "session": "E07:turn:0",
+          "sample_count": 10,
+          "blocked_sample_span_ms": 9310.410026926547,
+          "arrival_to_first_allocator_ms": null,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E02:turn:2",
+          "sample_count": 10,
+          "blocked_sample_span_ms": 7350.4340490326285,
+          "arrival_to_first_allocator_ms": 9720.852996921167,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E03:turn:1",
+          "sample_count": 10,
+          "blocked_sample_span_ms": 5912.977042142302,
+          "arrival_to_first_allocator_ms": 6079.673559172079,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E06:turn:0",
+          "sample_count": 9,
+          "blocked_sample_span_ms": 5709.954679943621,
+          "arrival_to_first_allocator_ms": null,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E00:turn:2",
+          "sample_count": 10,
+          "blocked_sample_span_ms": 4883.4973650518805,
+          "arrival_to_first_allocator_ms": 5283.7813349906355,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E01:turn:4",
+          "sample_count": 10,
+          "blocked_sample_span_ms": 4815.098874969408,
+          "arrival_to_first_allocator_ms": 5366.09912593849,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E02:turn:4",
+          "sample_count": 10,
+          "blocked_sample_span_ms": 4753.386846045032,
+          "arrival_to_first_allocator_ms": 5237.23977804184,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E05:turn:2",
+          "sample_count": 9,
+          "blocked_sample_span_ms": 3674.5807349216193,
+          "arrival_to_first_allocator_ms": 5303.120624041185,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E00:turn:1",
+          "sample_count": 9,
+          "blocked_sample_span_ms": 3522.5736398715526,
+          "arrival_to_first_allocator_ms": 2.0323130302131176,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E04:turn:4",
+          "sample_count": 9,
+          "blocked_sample_span_ms": 2482.9787518829107,
+          "arrival_to_first_allocator_ms": 4674.6767540462315,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E07:turn:1",
+          "sample_count": 9,
+          "blocked_sample_span_ms": 2465.479457983747,
+          "arrival_to_first_allocator_ms": 3750.124796992168,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E03:turn:3",
+          "sample_count": 9,
+          "blocked_sample_span_ms": 2423.641180852428,
+          "arrival_to_first_allocator_ms": 4445.976783987135,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E05:turn:3",
+          "sample_count": 9,
+          "blocked_sample_span_ms": 2387.4543639831245,
+          "arrival_to_first_allocator_ms": 3298.137916950509,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E06:turn:2",
+          "sample_count": 9,
+          "blocked_sample_span_ms": 2333.2425160333514,
+          "arrival_to_first_allocator_ms": 4654.847860103473,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E07:turn:3",
+          "sample_count": 9,
+          "blocked_sample_span_ms": 2327.9929598793387,
+          "arrival_to_first_allocator_ms": 2679.1579031851143,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E06:turn:4",
+          "sample_count": 9,
+          "blocked_sample_span_ms": 2269.407676998526,
+          "arrival_to_first_allocator_ms": 2607.4142667930573,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E04:turn:0",
+          "sample_count": 8,
+          "blocked_sample_span_ms": 1340.912606101483,
+          "arrival_to_first_allocator_ms": null,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E03:turn:0",
+          "sample_count": 8,
+          "blocked_sample_span_ms": 1340.9114158712327,
+          "arrival_to_first_allocator_ms": null,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E05:turn:0",
+          "sample_count": 8,
+          "blocked_sample_span_ms": 1340.906074969098,
+          "arrival_to_first_allocator_ms": null,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E01:turn:2",
+          "sample_count": 8,
+          "blocked_sample_span_ms": 1211.3827387802303,
+          "arrival_to_first_allocator_ms": 4713.168819900602,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E00:turn:3",
+          "sample_count": 8,
+          "blocked_sample_span_ms": 1074.1900491993874,
+          "arrival_to_first_allocator_ms": 1668.467486044392,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E05:turn:4",
+          "sample_count": 7,
+          "blocked_sample_span_ms": 470.60425812378526,
+          "arrival_to_first_allocator_ms": 576.8969529308379,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        },
+        {
+          "session": "E04:turn:2",
+          "sample_count": 5,
+          "blocked_sample_span_ms": 125.92515582218766,
+          "arrival_to_first_allocator_ms": 145.08015499450266,
+          "continuous_block_duration": "UNKNOWN from powers-of-two samples"
+        }
+      ],
+      "compiled_execution_log_present": true
+    },
+    {
+      "name": "epoch-control-2",
+      "p95_independent_ms": 4782.341734,
+      "session_median_independent_ms": 22170.1595,
+      "H2D_bytes_actual": 19806158848.0,
+      "D2H_bytes_actual": 5423824896.0,
+      "source_restore_bytes": 19806158848,
+      "H2D_counter_status": "VERIFIED against source",
+      "H2D_actual_minus_source_bytes": 0.0,
+      "preemptions_actual": 0.0,
+      "credit_successes": 0,
+      "final_epoch_programs": null,
+      "epoch_admissions": 0,
+      "epoch_blocked_requests": [],
+      "compiled_execution_log_present": true
+    }
+  ],
+  "caveats": [
+    "final counters are not critical-path DMA durations",
+    "epoch skipped allocator checks are unobserved, not capacity-fit evidence"
+  ]
+}

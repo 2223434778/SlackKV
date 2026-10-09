@@ -1,0 +1,4 @@
+# Preserve original server files; commit their lossless exported gzip copies.
+*/inputs.jsonl
+*/output_tokens.jsonl
+*/runs/*/run.json

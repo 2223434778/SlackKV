@@ -1,0 +1,30 @@
+{
+  "waves": [
+    {
+      "turn": 0,
+      "agent_plus_background_declared_blocks": 11258,
+      "GiB": 4.8099365234375
+    },
+    {
+      "turn": 1,
+      "agent_plus_background_declared_blocks": 11554,
+      "GiB": 4.9364013671875
+    },
+    {
+      "turn": 2,
+      "agent_plus_background_declared_blocks": 11984,
+      "GiB": 5.1201171875
+    },
+    {
+      "turn": 3,
+      "agent_plus_background_declared_blocks": 12344,
+      "GiB": 5.27392578125
+    },
+    {
+      "turn": 4,
+      "agent_plus_background_declared_blocks": 12618,
+      "GiB": 5.3909912109375
+    }
+  ],
+  "caveat": "all eight corresponding calls simultaneously resident; sizing model, not observed trajectory or algorithm future knowledge"
+}

@@ -22,9 +22,20 @@ def main() -> None:
     parser.add_argument("--oracle", action="store_true")
     parser.add_argument("--batch-invariant", action="store_true")
     parser.add_argument("--policy", choices=("A", "D"), default="A")
+    parser.add_argument("--round-directory", default="autonomous_admission",
+                        choices=("autonomous_admission", "autonomous_capacity"))
+    parser.add_argument("--kv-gib", type=int, choices=(2, 4, 8), default=2)
+    parser.add_argument("--replay-inputs", type=Path)
+    parser.add_argument("--continuation-credit", action="store_true")
+    parser.add_argument("--runtime-source", type=Path)
+    parser.add_argument("--working-set-epochs", action="store_true")
     args = parser.parse_args()
     if args.gate < 1 or Path(args.name).name != args.name:
         parser.error("positive gate and plain run name required")
+    if args.continuation_credit and (args.policy != "A" or args.backfill):
+        parser.error("continuation credit requires OnDemand without capacity backfill")
+    if args.working_set_epochs and (args.policy != "A" or args.backfill or args.continuation_credit):
+        parser.error("working-set epochs require plain OnDemand")
     from experiments.phase4d_a import runtime
     from experiments.phase4g_a import run_phase4g_a as legacy
     from experiments.phase4g_a_fix import run_phase4g_a_fix as harness
@@ -33,15 +44,17 @@ def main() -> None:
 
     root = Path(__file__).resolve().parents[2]
     previous = [json.loads(p.read_text()) for p in
-                (root / "results/autonomous_admission").glob("*/execution.json")]
+                (root / "results" / args.round_directory).glob("*/execution.json")]
     if any(item["status"] == "RUNNING" for item in previous):
         raise RuntimeError("another owned experiment is still marked RUNNING")
     spent = sum(item.get("gpu_hours_conservative", 0) for item in previous)
     if spent + 0.5 > 4:
         raise RuntimeError("remaining round budget cannot cover a 30-minute run")
-    out = root / "results/autonomous_admission" / args.name
+    out = root / "results" / args.round_directory / args.name
     out.mkdir(parents=True, exist_ok=False)
     runtime.SRC = Path("/media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source")
+    if args.runtime_source:
+        runtime.SRC = args.runtime_source
     if hashlib.sha256(SOURCE.read_bytes()).hexdigest() != SOURCE_SHA:
         raise RuntimeError("frozen workload fingerprint mismatch")
     harness.OUT = out
@@ -50,6 +63,8 @@ def main() -> None:
     legacy.wait_until = phase4g_c_fix_wait_until
     os.environ["SLACKKV_CAPACITY_BACKFILL_LIMIT"] = str(args.backfill)
     os.environ["VLLM_BATCH_INVARIANT"] = "1" if args.batch_invariant else "0"
+    os.environ["SLACKKV_CONTINUATION_CREDIT"] = "1" if args.continuation_credit else "0"
+    os.environ["SLACKKV_WORKING_SET_EPOCHS"] = "1" if args.working_set_epochs else "0"
     original_command = runtime.server_command
 
     def server_command(connector, gpu_bytes):
@@ -63,11 +78,21 @@ def main() -> None:
     owned_server = []
 
     def start_server(*positional, **kwargs):
+        kwargs["gpu_bytes"] = args.kv_gib * 2**30
         proc, log = original_start(*positional, **kwargs)
         owned_server.append(proc)
         return proc, log
 
     runtime.start_server = start_server
+    if args.round_directory == "autonomous_capacity":
+        from experiments.autonomous_capacity.capacity import validate_pool
+
+        def validate_runtime(log, block_size):
+            actual = gpu_capacity_blocks(log, block_size)
+            return validate_pool(args.kv_gib * 2**30, block_size, actual)
+
+        from experiments.phase4d_a.experiment import gpu_capacity_blocks
+        legacy.validate_runtime = validate_runtime
     original_stop = runtime.stop_server
 
     def stop_server(proc, log, run_directory, label):
@@ -85,6 +110,26 @@ def main() -> None:
     runtime.stop_server = stop_server
     original_send = runtime.send
     output_lock = threading.Lock()
+    replay = {}
+    if args.replay_inputs:
+        import gzip
+        raw = args.replay_inputs.read_bytes()
+        if args.replay_inputs.suffix == ".gz":
+            raw = gzip.decompress(raw)
+        replay = {row["session"]: row for row in
+                  (json.loads(line) for line in raw.decode().splitlines())}
+        if set(replay) != {f"E{i:02}:turn:{j}" for i in range(8) for j in range(5)}:
+            raise ValueError("replay requires exactly all forty agent inputs")
+        episode_ids = {row["session_hash"]: row["episode_id"] for row in legacy.load_source()}
+
+        def next_prompt(previous, target, shared, **kwargs):
+            session = f'{episode_ids[kwargs["session_hash"]]}:turn:{kwargs["turn_index"]}'
+            prompt = replay[session]["prompt"]
+            if len(prompt) != target:
+                raise ValueError("replay input length mismatch")
+            return prompt
+
+        legacy.make_next_prompt = next_prompt
 
     def send(*positional, **kwargs):
         params = dict(kwargs.get("params") or {})
@@ -92,28 +137,43 @@ def main() -> None:
             params.update(slackkv_allocator_trace=True,
                           slackkv_allocator_trace_interval_ms=100)
         kwargs["params"] = params
-        response = original_send(*positional, **kwargs)
         session = params.get("slackkv_session")
+        if session and session.startswith("E"):
+            params["slackkv_epoch_program"] = session.rsplit(":turn:", 1)[0]
+            params["slackkv_epoch_continues"] = "slackkv_trace_next_boundary" in params
+        if session in replay:
+            if positional[0] != replay[session]["prompt"]:
+                raise ValueError("constructed and transmitted replay prompts differ")
+        response = original_send(*positional, **kwargs)
         record = {"session": session, "tokens": response["tokens"]}
         if session in {"E02:turn:2", "E04:turn:1"}:
             record["prompt"] = positional[0]
         with output_lock:
             with (out / "output_tokens.jsonl").open("a") as stream:
                 stream.write(json.dumps(record, separators=(",", ":")) + "\n")
+            if session and session.startswith("E"):
+                with (out / "inputs.jsonl").open("a") as stream:
+                    stream.write(json.dumps({"session": session, "prompt": positional[0]},
+                                            separators=(",", ":")) + "\n")
         return response
 
     runtime.send = send
     metadata = {
         "name": args.name, "gate": args.gate, "allocator_trace": args.trace,
         "backfill_limit": args.backfill,
+        "continuation_credit": args.continuation_credit,
+        "working_set_epochs": args.working_set_epochs,
         "execution_mode": args.execution,
         "cold_oracle": args.oracle,
         "batch_invariant": args.batch_invariant,
         "policy": args.policy,
         "trace_interval_ms": 100, "gpu_count": 1, "max_seconds": 1800,
         "source_sha": SOURCE_SHA, "source_directory": str(runtime.SRC),
-        "kv_bytes": 2147483648, "bg_tokens": 8192,
-        "server_command": runtime.server_command(True, 2147483648),
+        "kv_bytes": args.kv_gib * 2**30, "bg_tokens": 8192,
+        "server_command": runtime.server_command(True, args.kv_gib * 2**30),
+        "round_directory": args.round_directory,
+        "replay_inputs": str(args.replay_inputs) if args.replay_inputs else None,
+        "replay_sha256": hashlib.sha256(args.replay_inputs.read_bytes()).hexdigest() if args.replay_inputs else None,
         "round_gpu_hours_before_run": spent,
         "runner_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "started_unix": time.time(), "status": "RUNNING",

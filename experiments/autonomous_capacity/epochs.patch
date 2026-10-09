@@ -1,0 +1,65 @@
+*** Begin Patch
+*** Update File: /media/a6000/D/ZhaoBinHe/slackkv-autonomous-round2-source/vllm/v1/core/sched/scheduler.py
+@@
+ from experiments.autonomous_capacity.continuation import ContinuationCredit
++from experiments.autonomous_capacity.epochs import WorkingSetEpochs
+@@
+         self._slackkv_continuation_credit = ContinuationCredit(
+             os.environ.get("SLACKKV_CONTINUATION_CREDIT", "0") == "1")
++        self._slackkv_working_set_epochs = WorkingSetEpochs(
++            os.environ.get("SLACKKV_WORKING_SET_EPOCHS", "0") == "1")
++        self._slackkv_epoch_blocked_steps: dict[str, int] = defaultdict(int)
+@@
+                 request_id = request.request_id
+ 
++                if (self._slackkv_working_set_epochs.enabled
++                        and not self._slackkv_residency_leases):
++                    background_blocks = sum(
++                        WorkingSetEpochs.blocks(item, self.max_model_len)
++                        for item in self.requests.values()
++                        if WorkingSetEpochs.program(item) is None and not item.is_finished())
++                    if not self._slackkv_working_set_epochs.allowed(
++                            request, now=time.monotonic(),
++                            pool_blocks=self.kv_cache_manager.block_pool.num_gpu_blocks,
++                            background_blocks=background_blocks,
++                            max_model_len=self.max_model_len):
++                        request_queue.pop_request()
++                        step_skipped_waiting.prepend_request(request)
++                        self._slackkv_epoch_blocked_steps[request_id] += 1
++                        count = self._slackkv_epoch_blocked_steps[request_id]
++                        if count & (count - 1) == 0:
++                            logger.info("SLACKKV_EPOCH_BLOCKED %s", json.dumps({
++                                "timestamp_monotonic": time.monotonic(),
++                                "request_id": request_id, "session": _slackkv_session(request),
++                                "blocked_count": count,
++                            }, separators=(",", ":")))
++                        continue
++
+                 if (
+                     slackkv_connector_first
+@@
+                 backfilled_heads = self._slackkv_capacity_backfill.admitted(request_id)
++                if self._slackkv_working_set_epochs.admitted(request, max_model_len=self.max_model_len):
++                    logger.info("SLACKKV_EPOCH_ADMITTED %s", json.dumps({
++                        "timestamp_monotonic": time.monotonic(),
++                        "request_id": request_id, "session": _slackkv_session(request),
++                        "programs": list(self._slackkv_working_set_epochs.entries),
++                        "charged_blocks": sum(entry.blocks for entry in
++                                              self._slackkv_working_set_epochs.entries.values()),
++                    }, separators=(",", ":")))
+@@
+         assert request.is_finished()
+ 
++        epochs = getattr(self, "_slackkv_working_set_epochs", None)
++        if epochs is not None and epochs.enabled:
++            epochs.finished(request, now=time.monotonic(),
++                            cancelled=request.status.name == "FINISHED_ABORTED")
++            self._slackkv_epoch_blocked_steps.pop(request.request_id, None)
++            logger.info("SLACKKV_EPOCH_FINISHED %s", json.dumps({
++                "timestamp_monotonic": time.monotonic(),
++                "request_id": request.request_id, "session": _slackkv_session(request),
++                "active_programs": len(epochs.entries),
++            }, separators=(",", ":")))
++
+         # Gate lifetime ends with the request, even when KV freeing is delayed.
+*** End Patch

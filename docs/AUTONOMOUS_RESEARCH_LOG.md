@@ -1,5 +1,24 @@
 # 自主研究日志
 
+## 2026-10-09：第二轮，容量干预与需求连续性 PoC
+
+- 起点：本机、服务器均为 e239088b3891396cde654669d74020e8fce82ecd，origin/main 无新增提交；本机干净，服务器历史未跟踪原始数据保留。GPU0/1 空闲。第二轮单独连续预算，不重置任何本轮失败成本。
+- 先验问题：2 GiB 的真实容量失败是否能够通过资源干预改变秒级关键路径，而不只是减少几十毫秒 H2D。冻结 Compiled OnDemand、K2、Qwen FP16、CPU 8 GiB、40/32、BGv2；2/4/8 GiB 仅用于容量诊断，资源增加绝不包装为新算法收益。
+- 实现：独立 round runner，保存全部实际输入，后续固定输入资源回放，维持 finish-relative 工具 pause；明确输出反馈/语义质量与资源性能不同。原运行时保持，候选使用另一个副本。
+- 失败：4 GiB 首次在 workload 前被历史固定 4681-block 验证器拒绝；保存 failure.txt、原始日志及 60.07 秒成本。第二轮按 pinned layout 的 28672 bytes/token×16 验证实际预算，保留不匹配拒绝；未修改历史验证器或放宽其他门槛。
+- 容量初测：2 GiB P95 5199.92 ms，31/32 续接有真实容量失败；4 GiB P95 1163.51 ms、9/32，Agent H2D 19280.19→9925.13 MiB，BG wall +0.79%。单次资源干预支持容量影响关键路径，不能等同全部等待因果分解或稳定加速。
+- 候选：one-turn continuation credit，只给真实到达 WAITING 续接有界机会，每个较早冷队头至多一次成功分配，失败不回填、不 pin、不持 Lease；默认关闭，cancel 清理计数，保留 OnDemand/K2/allocator 语义。先测试 2 GiB matched control/candidate，P95 >=10%、session median 不恶化、BG wall/TPOT 与 H2D 不恶化 >5% 才扩展；否则停止，不改 credit 数调参。协议在 results/autonomous_capacity/protocol.md。
+- 新颖性边界：Continuum 已有 TTL-aware priority/program FCFS，MORI 已有相对 idleness 分层准入，Autellix 已有 program attained-service。一般连续性/优先级不是创新；本 PoC 只测试无需 speculative pin 的有界需求重排是否值得进一步研究，不声称可发表创新。
+- 检查：31 项分析/状态/复盘测试通过；新增预算布局、重复 allocation、跨 tick credit、取消、lease/default、remote/in-flight/preemption 排除测试。有限状态测试不等于整个引擎活性证明。后续实机结果将追加。
+
+### 第二轮：容量转折与 credit 淘汰后的下一候选
+
+- 8 GiB 同输入 OnDemand：32/32 无观测容量失败、Agent H2D 0，P95 445.32 ms；session median 18.84 秒，与 4 GiB 的 18.78 秒接近；BG wall 67.85 秒。容量解除不能消除全部计算/调度时间，也没有显著增加本固定 BG 尾部主导窗口的混合吞吐。实际 owned KV memory-time 尚 UNKNOWN。
+- 新源码、精确输入 matched credit screen：control P95 6061.25 ms → candidate 3642.52 ms（-39.90%），但 resume median +20.64%、session median +6.08%，BG wall -0.16%、H2D -1.44%；四次 credit 分配。冻结 session 门槛失败，停止该候选，不反序扩展、不调 credit。不能把 P95 排名改善等同所有会话整体改善。
+- 不因一次失败结束研究。第二候选为 two-call soft working-set epochs：真实到达请求的 prompt+declared max output 估计与实际 pool 大小结合，保留最多两个调用、最长一秒 idle 的逻辑工作集；不持物理 KV、不预取、不新增 allocator reservation，后台不受 cohort gate。已入组需求/空 cohort 保持原始 allocator 进度路径。所有初始请求已发送，队列等待完整进入 E2E。未来上下文增长的估计不等于真实可分配容量；实际 allocator 仍是唯一物理判定。
+- 冻结顺序：2 GiB control/candidate；仍需 P95 >=10%、session median 不恶化、后台与 H2D 不恶化 >5%、完整生命周期通过，才反序和 4 GiB。失败即停止该 lifetime/call-count 方案，不挑调参最优。顺序 programs 是已声明适用域，并行 DAG 尚未证明。
+- 38 项本地分析/状态/复盘测试通过；两个 runtime patch 阶段各 15 项 native/connector-first/gate-capacity 回归通过（CUDA_VISIBLE_DEVICES=''，CPU tests，0 GPU 推理消耗）。缺失续接 expiry、cancel、terminal、异步重复 allocation、已知 output 上限与增长进度已有状态测试；仍需真实系统验证。
+
 ## 2026-10-09：需求准入诊断
 
 - 问题：历史 2 GiB KV 配置下 P95 Resume TTFT 约 6.4 秒，直接异步 KV 恢复仅约 60–84 ms。剩余时间的可优化部分尚未识别。
@@ -56,3 +75,11 @@
 - 决策：本轮达到“当前方向收益不足，需要战略调整”的阶段停止条件。停止扩大有限回填和当前 JIT/Frontier 矩阵；保留已有底层 native/offload/保护机制，采用 compiled OnDemand 作为下一轮强执行基线，正确性另设 invariant oracle。下一项算法研究应围绕实际 demand 的 KV 驻留时间、decode 增长与并发能力，先建立可优化排队成本的因果分解，再设计机制；不把编译开关视为创新。
 - 仍 UNKNOWN：真实生产负载泛化、非 invariant 任务质量、完整 GPU KV memory-time、计算与可避免队列延迟的完整因果拆分、普遍公平性/活性，以及成功 Native Promotion 在 CUDA Graph 下的安全性（本轮成功数 0）。不再为凑齐既定 Phase 消耗剩余预算。
 - 归档：长 run/oracle JSON 和原日志无损 gzip，服务器与本机原文件保留；85 个逻辑原始文件 SHA256 校验通过。离线读取兼容 gzip 并避免双计数；最终 22 tests passed。原始 patch 的 diff 空白与 Prometheus 原生 HELP 空白保留，限这些证据文件不做 whitespace lint，未修改科学数据。
+
+### 第二轮结束：两个候选均未满足整体门槛
+
+- Soft epochs matched screen：P95 4782.34→9889.70 ms（+106.80%），session median +14.37%，BG wall -0.08%，actual H2D -38.60%；27 epoch，最终 0，preemption 0。容量失败 28/32→2/32 不能视为压力消失，gate 在 allocator 前隐藏等待；E02:turn:2 到首次 allocator 已 9720.85 ms。停止，不调 lifetime/call-count。
+- 两候选严格 40 输入匹配，输出 hash 非全等，本轮没有新 invariant oracle；内容/质量等价 UNKNOWN。不能借 Round1 两个输入校验证明新机制。
+- 独立 audit 验证 87 个导出原始 hash 和全部 P95/session 算术。Credit candidate actual H2D 比 source 多 458752 bytes，原因 UNKNOWN，迁移门槛用 actual counter，source estimate 保留；8 GiB counter 缺失 UNKNOWN、source restore 0 单列。D2H 各 run 5172.5625 MiB。阈值及两个淘汰决定不变。
+- 7 valid + 1 setup failure，0.2332685893 GPU·小时，最长 130.45 秒；GPU1 未用，两卡最后 19 MiB/0%，无 compute process。40 项本地测试通过、两阶段各 15 项 CPU-only runtime 单测通过。完整历史 GPU Lease/HOL 矩阵和 owned KV memory-time 未验证。
+- 按 B 的有界负结论结束，两个 PoC 默认关闭，保留 OnDemand/安全机制；不推论全部调度算法无效。目标保持，后续面向明确 SLO 的有效并发/显存成本，先补真实稳态会话、更大模型及 owned-block/关键路径证据。报告：docs/AUTONOMOUS_RESEARCH_REPORT_ROUND2_20261009.md。

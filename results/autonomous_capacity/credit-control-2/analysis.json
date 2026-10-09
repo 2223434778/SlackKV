@@ -1,0 +1,690 @@
+{
+  "valid": true,
+  "resume_count": 32,
+  "resume_p95_ms": 6061.254056,
+  "resume_median_ms": 1829.4750279999998,
+  "session_e2e_median_ms": 22855.417059500003,
+  "session_e2e_ms": {
+    "E01": 20559.999011,
+    "E02": 21720.259995,
+    "E00": 26405.478522,
+    "E03": 21174.598419,
+    "E04": 22510.858789,
+    "E06": 23199.97533,
+    "E07": 24758.928967,
+    "E05": 25835.700055
+  },
+  "BG_wall_ms": 67864.348756,
+  "BG_TPOT_ms": 8.264418571934538,
+  "BG_tail_finish_ms": 41439.83941,
+  "resumes_with_observed_capacity_failure": 29,
+  "resumes_without_allocator_observation": 0,
+  "allocator_sample_count": 1376,
+  "requests": [
+    {
+      "session": "E01:turn:0",
+      "turn_index": 0,
+      "ttft_ms": 2225.702937,
+      "pre_admission_ms": null,
+      "pre_admission_allocator_samples": 0,
+      "pre_admission_failed_samples": 0,
+      "failed_gates": [],
+      "max_observed_deficit_blocks": null,
+      "max_observed_inflight_reserved_blocks": null,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": null,
+      "last_failure_ns": null,
+      "observation_status": "UNKNOWN"
+    },
+    {
+      "session": "E02:turn:0",
+      "turn_index": 0,
+      "ttft_ms": 3322.23326,
+      "pre_admission_ms": null,
+      "pre_admission_allocator_samples": 0,
+      "pre_admission_failed_samples": 0,
+      "failed_gates": [],
+      "max_observed_deficit_blocks": null,
+      "max_observed_inflight_reserved_blocks": null,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": null,
+      "last_failure_ns": null,
+      "observation_status": "UNKNOWN"
+    },
+    {
+      "session": "E00:turn:0",
+      "turn_index": 0,
+      "ttft_ms": 1068.783003,
+      "pre_admission_ms": null,
+      "pre_admission_allocator_samples": 0,
+      "pre_admission_failed_samples": 0,
+      "failed_gates": [],
+      "max_observed_deficit_blocks": null,
+      "max_observed_inflight_reserved_blocks": null,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": null,
+      "last_failure_ns": null,
+      "observation_status": "UNKNOWN"
+    },
+    {
+      "session": "E03:turn:0",
+      "turn_index": 0,
+      "ttft_ms": 4912.925686,
+      "pre_admission_ms": null,
+      "pre_admission_allocator_samples": 0,
+      "pre_admission_failed_samples": 0,
+      "failed_gates": [],
+      "max_observed_deficit_blocks": null,
+      "max_observed_inflight_reserved_blocks": null,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": null,
+      "last_failure_ns": null,
+      "observation_status": "UNKNOWN"
+    },
+    {
+      "session": "E04:turn:0",
+      "turn_index": 0,
+      "ttft_ms": 5944.796531,
+      "pre_admission_ms": null,
+      "pre_admission_allocator_samples": 0,
+      "pre_admission_failed_samples": 0,
+      "failed_gates": [],
+      "max_observed_deficit_blocks": null,
+      "max_observed_inflight_reserved_blocks": null,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": null,
+      "last_failure_ns": null,
+      "observation_status": "UNKNOWN"
+    },
+    {
+      "session": "E06:turn:0",
+      "turn_index": 0,
+      "ttft_ms": 7014.712694,
+      "pre_admission_ms": null,
+      "pre_admission_allocator_samples": 0,
+      "pre_admission_failed_samples": 0,
+      "failed_gates": [],
+      "max_observed_deficit_blocks": null,
+      "max_observed_inflight_reserved_blocks": null,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": null,
+      "last_failure_ns": null,
+      "observation_status": "UNKNOWN"
+    },
+    {
+      "session": "E07:turn:0",
+      "turn_index": 0,
+      "ttft_ms": 8472.5613,
+      "pre_admission_ms": null,
+      "pre_admission_allocator_samples": 0,
+      "pre_admission_failed_samples": 0,
+      "failed_gates": [],
+      "max_observed_deficit_blocks": null,
+      "max_observed_inflight_reserved_blocks": null,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": null,
+      "last_failure_ns": null,
+      "observation_status": "UNKNOWN"
+    },
+    {
+      "session": "E01:turn:1",
+      "turn_index": 1,
+      "ttft_ms": 6208.709521,
+      "pre_admission_ms": 6131.303539,
+      "pre_admission_allocator_samples": 4,
+      "pre_admission_failed_samples": 0,
+      "failed_gates": [],
+      "max_observed_deficit_blocks": null,
+      "max_observed_inflight_reserved_blocks": null,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": null,
+      "last_failure_ns": null,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E05:turn:0",
+      "turn_index": 0,
+      "ttft_ms": 9979.962855,
+      "pre_admission_ms": null,
+      "pre_admission_allocator_samples": 0,
+      "pre_admission_failed_samples": 0,
+      "failed_gates": [],
+      "max_observed_deficit_blocks": null,
+      "max_observed_inflight_reserved_blocks": null,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": null,
+      "last_failure_ns": null,
+      "observation_status": "UNKNOWN"
+    },
+    {
+      "session": "E02:turn:1",
+      "turn_index": 1,
+      "ttft_ms": 6061.254056,
+      "pre_admission_ms": 5913.708999,
+      "pre_admission_allocator_samples": 5,
+      "pre_admission_failed_samples": 3,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 1307,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1395998343038058,
+      "last_failure_ns": 1395998616638722,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E00:turn:1",
+      "turn_index": 1,
+      "ttft_ms": 4784.006091,
+      "pre_admission_ms": 4511.2504,
+      "pre_admission_allocator_samples": 7,
+      "pre_admission_failed_samples": 5,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 1309,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1395998672778969,
+      "last_failure_ns": 1395999080131597,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E06:turn:1",
+      "turn_index": 1,
+      "ttft_ms": 1536.397918,
+      "pre_admission_ms": 1377.473444,
+      "pre_admission_allocator_samples": 4,
+      "pre_admission_failed_samples": 2,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 1321,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1395999461510803,
+      "last_failure_ns": 1395999604417645,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E04:turn:1",
+      "turn_index": 1,
+      "ttft_ms": 1928.099554,
+      "pre_admission_ms": 1822.973062,
+      "pre_admission_allocator_samples": 4,
+      "pre_admission_failed_samples": 2,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 1248,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1395999119942382,
+      "last_failure_ns": 1395999329701091,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E03:turn:1",
+      "turn_index": 1,
+      "ttft_ms": 1825.674356,
+      "pre_admission_ms": 1640.912673,
+      "pre_admission_allocator_samples": 3,
+      "pre_admission_failed_samples": 1,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 1322,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 1,
+      "first_failure_ns": 1395999430075203,
+      "last_failure_ns": 1395999430075203,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E01:turn:2",
+      "turn_index": 2,
+      "ttft_ms": 1098.772913,
+      "pre_admission_ms": 1005.225964,
+      "pre_admission_allocator_samples": 9,
+      "pre_admission_failed_samples": 7,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 1324,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1395999670644884,
+      "last_failure_ns": 1396000296236350,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E07:turn:1",
+      "turn_index": 1,
+      "ttft_ms": 1509.492491,
+      "pre_admission_ms": 1431.187945,
+      "pre_admission_allocator_samples": 8,
+      "pre_admission_failed_samples": 6,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 1389,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396000643934476,
+      "last_failure_ns": 1396001179350065,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E05:turn:1",
+      "turn_index": 1,
+      "ttft_ms": 1152.537705,
+      "pre_admission_ms": 1058.525105,
+      "pre_admission_allocator_samples": 5,
+      "pre_admission_failed_samples": 3,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 1219,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396000393938951,
+      "last_failure_ns": 1396000594719546,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E02:turn:2",
+      "turn_index": 2,
+      "ttft_ms": 1141.910418,
+      "pre_admission_ms": 1034.611698,
+      "pre_admission_allocator_samples": 8,
+      "pre_admission_failed_samples": 6,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 30,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396001257727313,
+      "last_failure_ns": 1396001765237457,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E04:turn:2",
+      "turn_index": 2,
+      "ttft_ms": 1715.543099,
+      "pre_admission_ms": 1639.728351,
+      "pre_admission_allocator_samples": 8,
+      "pre_admission_failed_samples": 5,
+      "failed_gates": [
+        "FULL_SEQUENCE",
+        "STEP"
+      ],
+      "max_observed_deficit_blocks": 130,
+      "max_observed_inflight_reserved_blocks": 241,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396002077939518,
+      "last_failure_ns": 1396002537410124,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E03:turn:2",
+      "turn_index": 2,
+      "ttft_ms": 2546.823103,
+      "pre_admission_ms": 2471.691423,
+      "pre_admission_allocator_samples": 11,
+      "pre_admission_failed_samples": 9,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 175,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396002557841066,
+      "last_failure_ns": 1396003364098484,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E00:turn:2",
+      "turn_index": 2,
+      "ttft_ms": 2523.300698,
+      "pre_admission_ms": 2307.030614,
+      "pre_admission_allocator_samples": 6,
+      "pre_admission_failed_samples": 4,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 444,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396003401287389,
+      "last_failure_ns": 1396003708011427,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E06:turn:2",
+      "turn_index": 2,
+      "ttft_ms": 1721.194693,
+      "pre_admission_ms": 1332.038546,
+      "pre_admission_allocator_samples": 5,
+      "pre_admission_failed_samples": 3,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 141,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396001777389686,
+      "last_failure_ns": 1396001982660883,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E01:turn:3",
+      "turn_index": 3,
+      "ttft_ms": 3338.014823,
+      "pre_admission_ms": 3141.077952,
+      "pre_admission_allocator_samples": 13,
+      "pre_admission_failed_samples": 11,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 557,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396003755165931,
+      "last_failure_ns": 1396004915037625,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E07:turn:2",
+      "turn_index": 2,
+      "ttft_ms": 3700.419767,
+      "pre_admission_ms": 3614.101975,
+      "pre_admission_allocator_samples": 7,
+      "pre_admission_failed_samples": 5,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 471,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396004953493994,
+      "last_failure_ns": 1396005465882280,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E05:turn:2",
+      "turn_index": 2,
+      "ttft_ms": 3315.837985,
+      "pre_admission_ms": 3239.342017,
+      "pre_admission_allocator_samples": 7,
+      "pre_admission_failed_samples": 5,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 86,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396005634310862,
+      "last_failure_ns": 1396006040301833,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E02:turn:3",
+      "turn_index": 3,
+      "ttft_ms": 3029.877707,
+      "pre_admission_ms": 2952.179277,
+      "pre_admission_allocator_samples": 4,
+      "pre_admission_failed_samples": 2,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 234,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396005512587123,
+      "last_failure_ns": 1396005613240272,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E04:turn:3",
+      "turn_index": 3,
+      "ttft_ms": 2450.682875,
+      "pre_admission_ms": 2202.979931,
+      "pre_admission_allocator_samples": 2,
+      "pre_admission_failed_samples": 0,
+      "failed_gates": [],
+      "max_observed_deficit_blocks": null,
+      "max_observed_inflight_reserved_blocks": null,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": null,
+      "last_failure_ns": null,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E03:turn:3",
+      "turn_index": 3,
+      "ttft_ms": 2899.599076,
+      "pre_admission_ms": 2820.466967,
+      "pre_admission_allocator_samples": 11,
+      "pre_admission_failed_samples": 9,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 1331,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396006088758542,
+      "last_failure_ns": 1396006916111850,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E06:turn:3",
+      "turn_index": 3,
+      "ttft_ms": 1535.36161,
+      "pre_admission_ms": 1432.736747,
+      "pre_admission_allocator_samples": 4,
+      "pre_admission_failed_samples": 2,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 268,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396006944873917,
+      "last_failure_ns": 1396007045274310,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E00:turn:3",
+      "turn_index": 3,
+      "ttft_ms": 1582.236787,
+      "pre_admission_ms": 1496.382397,
+      "pre_admission_allocator_samples": 11,
+      "pre_admission_failed_samples": 9,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 508,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396007058240891,
+      "last_failure_ns": 1396007885042833,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E01:turn:4",
+      "turn_index": 4,
+      "ttft_ms": 2020.358586,
+      "pre_admission_ms": 1795.548232,
+      "pre_admission_allocator_samples": 7,
+      "pre_admission_failed_samples": 5,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 724,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396007897290724,
+      "last_failure_ns": 1396008319598656,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E03:turn:4",
+      "turn_index": 4,
+      "ttft_ms": 709.269446,
+      "pre_admission_ms": 627.273901,
+      "pre_admission_allocator_samples": 5,
+      "pre_admission_failed_samples": 3,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 512,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396008332189247,
+      "last_failure_ns": 1396008662756509,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E07:turn:3",
+      "turn_index": 3,
+      "ttft_ms": 1352.666563,
+      "pre_admission_ms": 1195.406823,
+      "pre_admission_allocator_samples": 9,
+      "pre_admission_failed_samples": 7,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 201,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396009034611668,
+      "last_failure_ns": 1396009645084345,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E02:turn:4",
+      "turn_index": 4,
+      "ttft_ms": 990.766514,
+      "pre_admission_ms": 913.952897,
+      "pre_admission_allocator_samples": 6,
+      "pre_admission_failed_samples": 4,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 302,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396008700905770,
+      "last_failure_ns": 1396009014391792,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E04:turn:4",
+      "turn_index": 4,
+      "ttft_ms": 1502.41644,
+      "pre_admission_ms": 1391.308817,
+      "pre_admission_allocator_samples": 7,
+      "pre_admission_failed_samples": 5,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 176,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396009707281585,
+      "last_failure_ns": 1396010117266374,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E06:turn:4",
+      "turn_index": 4,
+      "ttft_ms": 2364.115175,
+      "pre_admission_ms": 2270.945567,
+      "pre_admission_allocator_samples": 11,
+      "pre_admission_failed_samples": 9,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 526,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396010224499982,
+      "last_failure_ns": 1396011049180687,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E05:turn:3",
+      "turn_index": 3,
+      "ttft_ms": 2667.556875,
+      "pre_admission_ms": 2401.203067,
+      "pre_admission_allocator_samples": 10,
+      "pre_admission_failed_samples": 8,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 647,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396011086760393,
+      "last_failure_ns": 1396011819904345,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E07:turn:4",
+      "turn_index": 4,
+      "ttft_ms": 1833.2757,
+      "pre_admission_ms": 1714.768448,
+      "pre_admission_allocator_samples": 12,
+      "pre_admission_failed_samples": 10,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 568,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396011831910009,
+      "last_failure_ns": 1396012869273401,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E05:turn:4",
+      "turn_index": 4,
+      "ttft_ms": 165.658586,
+      "pre_admission_ms": 38.235873,
+      "pre_admission_allocator_samples": 2,
+      "pre_admission_failed_samples": 0,
+      "failed_gates": [],
+      "max_observed_deficit_blocks": null,
+      "max_observed_inflight_reserved_blocks": null,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": null,
+      "last_failure_ns": null,
+      "observation_status": "OBSERVED"
+    },
+    {
+      "session": "E00:turn:4",
+      "turn_index": 4,
+      "ttft_ms": 1523.456989,
+      "pre_admission_ms": 1453.101867,
+      "pre_admission_allocator_samples": 3,
+      "pre_admission_failed_samples": 1,
+      "failed_gates": [
+        "FULL_SEQUENCE"
+      ],
+      "max_observed_deficit_blocks": 255,
+      "max_observed_inflight_reserved_blocks": 0,
+      "max_observed_preemptions": 0,
+      "first_failure_ns": 1396010163482833,
+      "last_failure_ns": 1396010163482833,
+      "observation_status": "OBSERVED"
+    }
+  ],
+  "agent_external_H2D_MiB": 19485.8125,
+  "external_restore_source_events": 33,
+  "mixed_generated_tokens_per_second": 173.77312559795783,
+  "GPU_KV_memory_time": "UNKNOWN in uninstrumented screen",
+  "D2H_bytes": "UNKNOWN; source readiness is not transfer accounting",
+  "interpretation": "Samples are actual checks; no duration attribution or causality from absent checks."
+}

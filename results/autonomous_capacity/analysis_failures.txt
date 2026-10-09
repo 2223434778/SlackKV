@@ -1,0 +1,14 @@
+All original GPU execution failures remain in their own run directories.
+Offline audit development diagnostics:
+1. Recomputing round_summary.json changed its derived-file archive SHA256. The
+   original exported summary was recovered byte-for-byte from the transfer tar as
+   exported_round_summary.json; the audit verifies that frozen copy and all raw
+   files. Neither raw evidence nor its expected SHA256 was changed.
+2. Requiring an H2D counter equal to a source-token estimate failed. The 8-GiB
+   snapshot has no H2D series; credit-candidate-2 actually transfers one block
+   more than its source estimate. Audit now reports missing as UNKNOWN and the
+   discrepancy as MISMATCH rather than silently zero-filling or forcing agreement.
+   Actual counters are primary for paired migration gates. Root cause of the
+   one-block mismatch remains UNKNOWN.
+3. An inline PowerShell/Python command had a quoting SyntaxError; it was replaced
+   by a literal here-string. No GPU work was involved in these offline diagnostics.

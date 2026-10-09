@@ -1,0 +1,30 @@
+*** Begin Patch
+*** Update File: /media/a6000/D/ZhaoBinHe/slackkv-autonomous-round2-source/vllm/v1/core/sched/scheduler.py
+@@
+ from experiments.autonomous_admission.backfill import BoundedBackfill
++from experiments.autonomous_capacity.continuation import ContinuationCredit
+@@
+         self._slackkv_capacity_backfill = BoundedBackfill(
+             int(os.environ.get("SLACKKV_CAPACITY_BACKFILL_LIMIT", "0")))
++        self._slackkv_continuation_credit = ContinuationCredit(
++            os.environ.get("SLACKKV_CONTINUATION_CREDIT", "0") == "1")
+@@
+                 backfilled_heads = self._slackkv_capacity_backfill.admitted(request_id)
++                continuation_head = self._slackkv_continuation_credit.admitted(request_id)
++                if continuation_head is not None:
++                    logger.info("SLACKKV_CONTINUATION_CREDIT %s", json.dumps({
++                        "timestamp_monotonic": time.monotonic(),
++                        "request_id": request_id, "session": _slackkv_session(request),
++                        "cold_head": continuation_head,
++                    }, separators=(",", ":")))
+@@
+     def _select_waiting_queue_for_scheduling(self) -> RequestQueue | None:
++        if self.policy == SchedulingPolicy.FCFS and self._slackkv_continuation_credit.enabled:
++            self._slackkv_continuation_credit.select(
++                self.waiting,
++                active_waiting_ids={request.request_id for queue in
++                                    (self.waiting, self.skipped_waiting) for request in queue},
++                protected=bool(self._slackkv_residency_leases),
++            )
+         if self.policy == SchedulingPolicy.FCFS:
+*** End Patch

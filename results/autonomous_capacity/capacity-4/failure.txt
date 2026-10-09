@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/experiments/autonomous_admission/run.py", line 174, in main
+    result = legacy.run_lifecycle(args.policy, "measured", 1)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/experiments/phase4g_a/run_phase4g_a.py", line 77, in run_lifecycle
+    validate_runtime(log, block_size)
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/experiments/phase4d_b/experiment.py", line 82, in validate_runtime
+    raise RuntimeError("EXPERIMENT_INVALID_ENVIRONMENT:GPU KV blocks")
+RuntimeError: EXPERIMENT_INVALID_ENVIRONMENT:GPU KV blocks

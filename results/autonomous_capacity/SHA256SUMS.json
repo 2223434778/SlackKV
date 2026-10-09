@@ -1,0 +1,437 @@
+[
+  {
+    "path": "capacity-2/analysis.json",
+    "bytes": 21822,
+    "sha256": "cc568e5f7b9646b2004b03c09f26a2e3679aa9db4ca1074dc61929e4d0d91b06"
+  },
+  {
+    "path": "capacity-2/background_chunks.csv",
+    "bytes": 1293,
+    "sha256": "4364ff3394ddd06be9272cdfeedbe6250289d14b5e70c916b65c4c5cf1e69288"
+  },
+  {
+    "path": "capacity-2/execution.json",
+    "bytes": 1747,
+    "sha256": "be122f212621d62161301a2f8efdcd616f09ab4d9729cb5e1cc626faa7902c24"
+  },
+  {
+    "path": "capacity-2/inputs.jsonl",
+    "bytes": 5604228,
+    "sha256": "9beafb95c7dad0c502028e40b1b4a7875a5d52eed63f00fccd112231677d3ca7"
+  },
+  {
+    "path": "capacity-2/metrics_after_timed_workload.prom",
+    "bytes": 99444,
+    "sha256": "d96a70c5c3ac3582af9b994773b8425da0dd429a55217cceb1096955636c1a2b"
+  },
+  {
+    "path": "capacity-2/output_tokens.jsonl",
+    "bytes": 299389,
+    "sha256": "963d9ceb302ffabee84b1eae638b1e03e6ea4370fd948cd2893ef9b996f5f65e"
+  },
+  {
+    "path": "capacity-2/runs/measured_rep1_a/run.json",
+    "bytes": 202645,
+    "sha256": "680b0a904b7b35bf3904d6b0fc59b13cb0817ecd6bd15479055d767af9eb6eb5"
+  },
+  {
+    "path": "capacity-2/runs/measured_rep1_a/server_logs/measured_rep1_a.log",
+    "bytes": 3921842,
+    "sha256": "17a7a8112e028ec344b4ee874efdf1b5a61f630f119701619668fb177b7a0ec9"
+  },
+  {
+    "path": "capacity-2/runs/measured_rep1_a/server_logs/measured_rep1_a_compact.log",
+    "bytes": 2287,
+    "sha256": "020fa8ead97013bbed700260a1bb3314085954c77a6415bbbd4e4fe753bdac5a"
+  },
+  {
+    "path": "capacity-2/server_logs/measured_rep1_a_compact.log",
+    "bytes": 32981,
+    "sha256": "ef8e8c0928f086202c0ea45e6e098abd03ceb8f2cc1ab07b4780c9bfa6ecc085"
+  },
+  {
+    "path": "capacity-2.launch.log",
+    "bytes": 1169,
+    "sha256": "48941c2e9d806e43ea75b55e2c6068351dce26fcce49adacc5d8538f719bc4d7"
+  },
+  {
+    "path": "capacity-4/execution.json",
+    "bytes": 1878,
+    "sha256": "511ad3ca7ef732f5682dcf46c66670617e2a4693e9178e7d8ffd44e1b01a263c"
+  },
+  {
+    "path": "capacity-4/failure.txt",
+    "bytes": 644,
+    "sha256": "925a679cef76a43242181b30018a7b7006b111e53b07bfe8aeca467830dbb963"
+  },
+  {
+    "path": "capacity-4/runs/measured_rep1_a/server_logs/measured_rep1_a.log",
+    "bytes": 24355,
+    "sha256": "e61d013819b52bea3ab91a44a01b669a5ca7cf740b083faf229e8560fbfd4fc0"
+  },
+  {
+    "path": "capacity-4/runs/measured_rep1_a/server_logs/measured_rep1_a_compact.log",
+    "bytes": 2059,
+    "sha256": "5e0a284d2e4d1b5f2c48cba0cbafe8cdeccdfd83d1a6fa76df1b353ae0e6e37d"
+  },
+  {
+    "path": "capacity-4/server_logs/measured_rep1_a_compact.log",
+    "bytes": 631,
+    "sha256": "148c0eb03be033364921c64cfaa9bea6dc5b10f9bce9cbffb9bcea7f4a8b97eb"
+  },
+  {
+    "path": "capacity-4-retry/analysis.json",
+    "bytes": 20578,
+    "sha256": "f89fe13ee0d164dbfa06c7bbea68bab9c128ef78290768c312bc77187548abd0"
+  },
+  {
+    "path": "capacity-4-retry/background_chunks.csv",
+    "bytes": 1296,
+    "sha256": "7cc0a003684b525a6caefc138049fa183df14be116c92cc715f30b81abdec387"
+  },
+  {
+    "path": "capacity-4-retry/execution.json",
+    "bytes": 1885,
+    "sha256": "3ab94c316c5a68c3199dcb4d12aae14614b61b51019f1e2c612cf74f9ebd8957"
+  },
+  {
+    "path": "capacity-4-retry/inputs.jsonl",
+    "bytes": 5604228,
+    "sha256": "9987d8687e3596f4a462014e6dad91fa326287e1f7eb8b1d7a7e590c476ea9f1"
+  },
+  {
+    "path": "capacity-4-retry/metrics_after_timed_workload.prom",
+    "bytes": 99467,
+    "sha256": "7eaef31ff5ae36c48be4c3786125385864737c77909cb8b4872e3ec3d4a73b8e"
+  },
+  {
+    "path": "capacity-4-retry/output_tokens.jsonl",
+    "bytes": 299386,
+    "sha256": "a280a61eff3d5fdf4f0a8204c27bdd95164b9de443ff9b81269dda53fcb5573a"
+  },
+  {
+    "path": "capacity-4-retry/runs/measured_rep1_a/run.json",
+    "bytes": 187533,
+    "sha256": "ea1f2c572383db06f681e2b19e0e8548b4eccfec16a0f0ea9015361948efddd7"
+  },
+  {
+    "path": "capacity-4-retry/runs/measured_rep1_a/server_logs/measured_rep1_a.log",
+    "bytes": 3882560,
+    "sha256": "54e939e9e99041c9e3b2681fb4e6873b96de50ecbd92f212ffd12524dadb1388"
+  },
+  {
+    "path": "capacity-4-retry/runs/measured_rep1_a/server_logs/measured_rep1_a_compact.log",
+    "bytes": 2288,
+    "sha256": "c77dc837f9d13ccb4e2a3e99a29575b63960608bed302237b141a4e26831d196"
+  },
+  {
+    "path": "capacity-4-retry/server_logs/measured_rep1_a_compact.log",
+    "bytes": 33476,
+    "sha256": "c5d2487028fd59f99f4fe11bb47aad44765728d9a061a064ec6eeb5be3a13541"
+  },
+  {
+    "path": "capacity-4-retry.launch.log",
+    "bytes": 1169,
+    "sha256": "b65a69d1264e4c3d50bfc769e8d1b5aa60f59b811ff5703076a9b9fc890bce76"
+  },
+  {
+    "path": "capacity-4.launch.log",
+    "bytes": 1224,
+    "sha256": "29af31a5a7392ceba2165acca49d087e2396e9aa553edf3455db39a2fe1a6fce"
+  },
+  {
+    "path": "capacity-8/analysis.json",
+    "bytes": 20071,
+    "sha256": "f27028f92f0a7517d2a7ab82a39b352eb767a6be48de92532437d2b3f5fbe876"
+  },
+  {
+    "path": "capacity-8/background_chunks.csv",
+    "bytes": 1295,
+    "sha256": "bebb7493e7771dfeb29106ea46e291f54f30d16ead00a10f2389af549c4d7955"
+  },
+  {
+    "path": "capacity-8/execution.json",
+    "bytes": 1911,
+    "sha256": "92fabe9d76f5bd1b28eba8a944703dce5acaf922d37d2c34985a33e408b9b4ec"
+  },
+  {
+    "path": "capacity-8/inputs.jsonl",
+    "bytes": 5604228,
+    "sha256": "4c2bd4815666a95fa1e576244dba84458b5dfb43ec2bc4187d7deb9e8d1d4fab"
+  },
+  {
+    "path": "capacity-8/metrics_after_timed_workload.prom",
+    "bytes": 95506,
+    "sha256": "0d76e174be819c53042bade351701fdbf158dc17cc08fb8b3af0d9c1913e6cd2"
+  },
+  {
+    "path": "capacity-8/output_tokens.jsonl",
+    "bytes": 299390,
+    "sha256": "074a9299867b529732e1574e8d9f925808c2f6f529601a873de7e604a0f1234c"
+  },
+  {
+    "path": "capacity-8/runs/measured_rep1_a/run.json",
+    "bytes": 158822,
+    "sha256": "3e717d778bcf59093a47888bdb9d4acda7466dd906f774258c7446f85c8660c7"
+  },
+  {
+    "path": "capacity-8/runs/measured_rep1_a/server_logs/measured_rep1_a.log",
+    "bytes": 3846424,
+    "sha256": "a3c4a652e4eb522b5c37a85335952dadbbe94fcda4fac3f0464a2b433fc1e436"
+  },
+  {
+    "path": "capacity-8/runs/measured_rep1_a/server_logs/measured_rep1_a_compact.log",
+    "bytes": 2288,
+    "sha256": "0f323ab4adc336dc853bd300784ac2adb2a849e90a2743a9b4e683d6bb44d2a4"
+  },
+  {
+    "path": "capacity-8/server_logs/measured_rep1_a_compact.log",
+    "bytes": 33496,
+    "sha256": "fd9b95ddda68eb32d261ae828708cca469a468789e41d6d311889892c8aa2e7a"
+  },
+  {
+    "path": "capacity-8.launch.log",
+    "bytes": 1169,
+    "sha256": "914c9664746cb8c1fc97024e40bb35951e84a437fd0057c42298a6dd20b4dabb"
+  },
+  {
+    "path": "credit-candidate-2/analysis.json",
+    "bytes": 21808,
+    "sha256": "ad5a23869798974422b3345a00abb387a4052cac8309f379426282ce77d83e5b"
+  },
+  {
+    "path": "credit-candidate-2/background_chunks.csv",
+    "bytes": 1296,
+    "sha256": "07e2b908e7118f97ac58fcdd82704f9ece6effd99528a5d2c921572af14f09eb"
+  },
+  {
+    "path": "credit-candidate-2/execution.json",
+    "bytes": 1916,
+    "sha256": "91f6682639c5d6ec67a5b0c0f2e5be08b26fbecb94fbe76c230b8bffe577e0b1"
+  },
+  {
+    "path": "credit-candidate-2/inputs.jsonl",
+    "bytes": 5604228,
+    "sha256": "fc83847350a6e77a5084e334f344b8399a18305be3b5d2bac6e2133248b3ec08"
+  },
+  {
+    "path": "credit-candidate-2/metrics_after_timed_workload.prom",
+    "bytes": 99454,
+    "sha256": "44176a94c7e0d035be840c2af59248aa144b5b82d56e0a38206671429f8d5497"
+  },
+  {
+    "path": "credit-candidate-2/output_tokens.jsonl",
+    "bytes": 299367,
+    "sha256": "d03c94181b48a889450cbe65828983bdbf1314865a6062b4f3f7c1b6c0b19068"
+  },
+  {
+    "path": "credit-candidate-2/runs/measured_rep1_a/run.json",
+    "bytes": 199524,
+    "sha256": "afcf3cd2f0dadaeab18a3f48e7e3173d7940eb2483029ce4e7cfff9aa4c4ab82"
+  },
+  {
+    "path": "credit-candidate-2/runs/measured_rep1_a/server_logs/measured_rep1_a.log",
+    "bytes": 3924007,
+    "sha256": "eb15adfe3252b4c415cc1d7dfd402309b7039633f84b3b9422abd383e894ab75"
+  },
+  {
+    "path": "credit-candidate-2/runs/measured_rep1_a/server_logs/measured_rep1_a_compact.log",
+    "bytes": 2287,
+    "sha256": "b2187ca2004153062bb2e4d890a59512bb9364afb61ddeda7a84cdf37460860b"
+  },
+  {
+    "path": "credit-candidate-2/server_logs/measured_rep1_a_compact.log",
+    "bytes": 33492,
+    "sha256": "1872a54dd805169d923b46783721ee2b6c71ab0a06a734331f78151c04cecd60"
+  },
+  {
+    "path": "credit-candidate-2.launch.log",
+    "bytes": 1169,
+    "sha256": "b969752cab5e335a86d66afdf0655f95a1a9ecb43a7d2b61ca81f32778794fe5"
+  },
+  {
+    "path": "credit-control-2/analysis.json",
+    "bytes": 21727,
+    "sha256": "b90e07da7a2f71669d6e2ad4494913483b1c26fe8078d7c3642809fb0a4be3ce"
+  },
+  {
+    "path": "credit-control-2/background_chunks.csv",
+    "bytes": 1294,
+    "sha256": "f3118c7cf940bc6c0fabc051e994b20c37200ad309f450d9f8af7cc042bd4580"
+  },
+  {
+    "path": "credit-control-2/execution.json",
+    "bytes": 1913,
+    "sha256": "07ef540f9677fe247d5d7f45fc43491d4d2ae3b04d35660fd6fdc9a377446a0d"
+  },
+  {
+    "path": "credit-control-2/inputs.jsonl",
+    "bytes": 5604228,
+    "sha256": "1f9d0a26942e3103fc9894030d7581d08cb44d54cbd71d03fbe5331bb90034ac"
+  },
+  {
+    "path": "credit-control-2/metrics_after_timed_workload.prom",
+    "bytes": 99452,
+    "sha256": "a032bcd017dab27f60600c362f08bec0a34143c5884e35643d4b2fec9fc604fb"
+  },
+  {
+    "path": "credit-control-2/output_tokens.jsonl",
+    "bytes": 299385,
+    "sha256": "213dec67b82a16ff6e49bea7b72614765232c845aea72d030ef12c8e4a2913cb"
+  },
+  {
+    "path": "credit-control-2/runs/measured_rep1_a/run.json",
+    "bytes": 201603,
+    "sha256": "5a1777b57a59f09c33cf465e5d455294c5594cabe8e6cdad72f4d99956f54c2f"
+  },
+  {
+    "path": "credit-control-2/runs/measured_rep1_a/server_logs/measured_rep1_a.log",
+    "bytes": 3913705,
+    "sha256": "861ed36b52d1b46b9c6f041a3966888e5570d1b1c0f31485958c3c06b48b0c7d"
+  },
+  {
+    "path": "credit-control-2/runs/measured_rep1_a/server_logs/measured_rep1_a_compact.log",
+    "bytes": 2287,
+    "sha256": "668c01af1a673cba459737846244b60fdc927f763a4e85624b7cc879e34110b0"
+  },
+  {
+    "path": "credit-control-2/server_logs/measured_rep1_a_compact.log",
+    "bytes": 32981,
+    "sha256": "6bf1853a754919a1674218bed2afd899bff491e96f5fbee6b551ccdcbee54f98"
+  },
+  {
+    "path": "credit-control-2.launch.log",
+    "bytes": 1169,
+    "sha256": "4f1c28bdccdcbfbf40061fa573bf67d488ea328e2b52de2987f6b76e85291dcf"
+  },
+  {
+    "path": "epoch-candidate-2/analysis.json",
+    "bytes": 20236,
+    "sha256": "2b72af1b7e1cefd4be0425ba8e71b4f974898c5c161f1da998f76a4496aca929"
+  },
+  {
+    "path": "epoch-candidate-2/background_chunks.csv",
+    "bytes": 1300,
+    "sha256": "5803fb340324ceaf7652c58a6bcab1f442e9406f55e28757050fae217eb1f302"
+  },
+  {
+    "path": "epoch-candidate-2/execution.json",
+    "bytes": 1946,
+    "sha256": "08f4c174e4e825025b30cbd05e9da82aa442d58e4ddfc5320155020a65ff6e76"
+  },
+  {
+    "path": "epoch-candidate-2/inputs.jsonl",
+    "bytes": 5604228,
+    "sha256": "88322a572664e823aeebd94130fe28c63d702d7936135eab11f5abd7e502d32b"
+  },
+  {
+    "path": "epoch-candidate-2/metrics_after_timed_workload.prom",
+    "bytes": 99479,
+    "sha256": "84e9b7d25de015f65c5f56b03965bd760a715e3a6e08a9d778d4435bd1e62a4f"
+  },
+  {
+    "path": "epoch-candidate-2/output_tokens.jsonl",
+    "bytes": 299391,
+    "sha256": "910a479509a1d76b703b9b8ad8f624b00b4eaed38017d603c87f5998eddfd260"
+  },
+  {
+    "path": "epoch-candidate-2/runs/measured_rep1_a/run.json",
+    "bytes": 185585,
+    "sha256": "eca6c62e42f3b5e86e13fdb594bdcc82ff0c6deb1045a26354aaa376c140fa27"
+  },
+  {
+    "path": "epoch-candidate-2/runs/measured_rep1_a/server_logs/measured_rep1_a.log",
+    "bytes": 3695730,
+    "sha256": "c646bf21ef1906d2d3be9f3db56ae4e3ca8b84dc6de190f812bd9933cb61322e"
+  },
+  {
+    "path": "epoch-candidate-2/runs/measured_rep1_a/server_logs/measured_rep1_a_compact.log",
+    "bytes": 2287,
+    "sha256": "058e351bf9a64ef2c70012e1f585662fcf35e9903f60b47bdc1e04a3c1bf6c07"
+  },
+  {
+    "path": "epoch-candidate-2/server_logs/measured_rep1_a_compact.log",
+    "bytes": 32896,
+    "sha256": "b84586c00e9ce6dab00230d9b87f3ce4620a97db702832c1246cecda5cd82f41"
+  },
+  {
+    "path": "epoch-candidate-2.launch.log",
+    "bytes": 1168,
+    "sha256": "68e8f2554d8dd5e128d03d48bdd6139532e32acfd5f2ffc3f03ca2f2f0afee4b"
+  },
+  {
+    "path": "epoch-control-2/analysis.json",
+    "bytes": 21676,
+    "sha256": "96731de0cbcd3af0d649143ea23aef612c1fac8daab768dcb0aa0bca950ce330"
+  },
+  {
+    "path": "epoch-control-2/background_chunks.csv",
+    "bytes": 1296,
+    "sha256": "2d7eb7731e31d8b2b41a9112957c2727504bf348b0a24caad82c6219821778a7"
+  },
+  {
+    "path": "epoch-control-2/execution.json",
+    "bytes": 1944,
+    "sha256": "17987a1e04dbfdbde7b8811479b1e82fb2b36828d30b8efc793d204be2b5865b"
+  },
+  {
+    "path": "epoch-control-2/inputs.jsonl",
+    "bytes": 5604228,
+    "sha256": "236eb9a231e073ea8f350e3914d6dd95f63c5da0253b2f55bb77340d13fd7c71"
+  },
+  {
+    "path": "epoch-control-2/metrics_after_timed_workload.prom",
+    "bytes": 99457,
+    "sha256": "54d3ecd4c4b1f12b465459afbf55e6795ecec94f2571fc19729166f9a9a47c07"
+  },
+  {
+    "path": "epoch-control-2/output_tokens.jsonl",
+    "bytes": 299372,
+    "sha256": "ee8379c1250844db51799b6226a27f16e78abb1d7af1fcdac6fd7b4014425a92"
+  },
+  {
+    "path": "epoch-control-2/runs/measured_rep1_a/run.json",
+    "bytes": 199527,
+    "sha256": "11948cadb3dfd4b4df8ef870e28b451f0593b3507a1e8a8cbb42d9e72706583f"
+  },
+  {
+    "path": "epoch-control-2/runs/measured_rep1_a/server_logs/measured_rep1_a.log",
+    "bytes": 3902048,
+    "sha256": "0fdab05eeb548551c02a9e5b11fc78cb6b8b840f6e4fb80bddd1a95b8edbe9cc"
+  },
+  {
+    "path": "epoch-control-2/runs/measured_rep1_a/server_logs/measured_rep1_a_compact.log",
+    "bytes": 2287,
+    "sha256": "4a5ed9c43a8faa5b6eb2f010be7d230831d179e2458d191a3a1143d50b2d0dc3"
+  },
+  {
+    "path": "epoch-control-2/server_logs/measured_rep1_a_compact.log",
+    "bytes": 32985,
+    "sha256": "888977636d5137cb98dd59e0fa91b58289e68da72d2df80bb20ec993ffa5f402"
+  },
+  {
+    "path": "epoch-control-2.launch.log",
+    "bytes": 1169,
+    "sha256": "189e7911934608198b9792090e086b95deaffce22e166cd708d553cab475c2d4"
+  },
+  {
+    "path": "protocol.md",
+    "bytes": 4939,
+    "sha256": "57272eaa82080c19d1b4aa27b91338a10ed3a3571a708e72da400b37af2708a1"
+  },
+  {
+    "path": "round_summary.json",
+    "bytes": 327779,
+    "sha256": "9e9fc78351be1fea99e868a4fb819ab95d3013a8091c5e5b646222be4ab3f528"
+  },
+  {
+    "path": "runtime-validation/epochs-tests.txt",
+    "bytes": 976,
+    "sha256": "b855534f8d96f2f625fdac275a6a0286fe868510be11bcff7694c7dbb30ab28f"
+  },
+  {
+    "path": "runtime-validation/tests.txt",
+    "bytes": 976,
+    "sha256": "a6f4bf44c81738442e46731450faf31f25d9ad0815f62ef9a09ece973698612d"
+  }
+]
