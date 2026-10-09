@@ -8,12 +8,17 @@ from pathlib import Path
 from experiments.autonomous_admission.analyze import analyze
 
 
-def compare(baseline: dict, candidate: dict) -> dict:
+def compare(baseline: dict, candidate: dict, purpose: str = "backfill") -> dict:
     a, b = analyze(baseline, []), analyze(candidate, [])
     def hashes(run):
         return {(t["episode_id"], t["turn_index"]): (t["prompt_sha256"], t["output_sha256"])
                 for t in run["turn_rows"]}
     matching = hashes(baseline) == hashes(candidate)
+    a_hashes, b_hashes = hashes(baseline), hashes(candidate)
+    prompt_matching = (a_hashes.keys() == b_hashes.keys() and
+                       all(a_hashes[key][0] == b_hashes[key][0] for key in a_hashes))
+    output_matching = (a_hashes.keys() == b_hashes.keys() and
+                       all(a_hashes[key][1] == b_hashes[key][1] for key in a_hashes))
     metrics = ("resume_p95_ms", "resume_median_ms", "session_e2e_median_ms",
                "BG_wall_ms", "BG_TPOT_ms", "agent_external_H2D_MiB",
                "mixed_generated_tokens_per_second")
@@ -24,9 +29,12 @@ def compare(baseline: dict, candidate: dict) -> dict:
                    and deltas["BG_wall_ms"] <= 3)
     return {"baseline": a, "candidate": b, "percent_change": deltas,
             "prompt_and_output_hashes_match": matching, "pass_screen": pass_screen,
+            "prompt_hashes_match": prompt_matching, "output_hashes_match": output_matching,
             "session_percent_change": {key: 100 * (b["session_e2e_ms"][key] / value - 1)
                                        for key, value in a["session_e2e_ms"].items()},
-            "conclusion": "reverse-order replication warranted" if pass_screen else "stop bounded backfill direction"}
+            "purpose": purpose,
+            "conclusion": ("execution baseline probe; validate identity and replicate" if purpose == "execution" else
+                           "reverse-order replication warranted" if pass_screen else "stop bounded backfill direction")}
 
 
 def main() -> None:
@@ -34,10 +42,11 @@ def main() -> None:
     parser.add_argument("baseline", type=Path)
     parser.add_argument("candidate", type=Path)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--purpose", choices=("backfill", "execution"), default="backfill")
     args = parser.parse_args()
     def load(directory):
         return json.loads((directory / "runs/measured_rep1_a/run.json").read_text())
-    result = compare(load(args.baseline), load(args.candidate))
+    result = compare(load(args.baseline), load(args.candidate), args.purpose)
     args.output.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({key: result[key] for key in ("percent_change", "prompt_and_output_hashes_match", "pass_screen", "conclusion")}, indent=2))
 
