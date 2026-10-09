@@ -1,0 +1,45 @@
+*** Begin Patch
+*** Update File: /media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source/vllm/v1/core/sched/scheduler.py
+@@
+ import json
++import os
+ import time
++from experiments.autonomous_admission.backfill import BoundedBackfill
+@@
+         self._inflight_prefills: set[Request] = set()
++        self._slackkv_capacity_backfill = BoundedBackfill(
++            int(os.environ.get("SLACKKV_CAPACITY_BACKFILL_LIMIT", "0")))
+@@
+     def schedule(self) -> SchedulerOutput:
++        self._slackkv_capacity_backfill.begin_step(set(self.requests))
+@@
+                 request_queue = self._select_waiting_queue_for_scheduling()
++                if self._slackkv_capacity_backfill.stop_this_step:
++                    break
+                 assert request_queue is not None
+@@
+                     if request.has_encoder_inputs:
+                         self.encoder_cache_manager.free(request)
++                    if (self._slackkv_capacity_backfill.can_skip(request_id)
++                            and not _is_slackkv_prefetch_only(request)
++                            and not self._slackkv_residency_leases):
++                        self._slackkv_capacity_backfill.blocked(request_id)
++                        request_queue.pop_request()
++                        step_skipped_waiting.prepend_request(request)
++                        continue
+                     break
+ 
+                 if _is_slackkv_trace_resume(request) and request.num_computed_tokens == 0:
+@@
+-                lease_key = _slackkv_session(request)
++                backfilled_heads = self._slackkv_capacity_backfill.admitted(request_id)
++                if backfilled_heads:
++                    logger.info("SLACKKV_CAPACITY_BACKFILL %s", json.dumps({
++                        "timestamp_monotonic": time.monotonic(),
++                        "request_id": request_id,
++                        "session": _slackkv_session(request),
++                        "bypassed_request_ids": backfilled_heads,
++                        "counts": dict(self._slackkv_capacity_backfill.counts),
++                    }, separators=(",", ":")))
++                lease_key = _slackkv_session(request)
+*** End Patch

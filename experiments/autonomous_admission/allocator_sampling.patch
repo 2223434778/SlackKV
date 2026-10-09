@@ -1,0 +1,22 @@
+*** Begin Patch
+*** Update File: /media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source/vllm/v1/core/kv_cache_manager.py
+@@
+     rca = params.get("slackkv_rca") or {}
++    now_ns = time.monotonic_ns()
++    interval_ms = params.get("slackkv_allocator_trace_interval_ms", 0)
++    if interval_ms:
++        samples = params.setdefault("_slackkv_allocator_samples", {})
++        previous = samples.get(gate)
++        if (previous is not None and previous[0] == allocator_fit
++                and now_ns - previous[1] < interval_ms * 1_000_000):
++            return
++        samples[gate] = (allocator_fit, now_ns)
+     cpu_started_ns = time.thread_time_ns()
+@@
+-        "timestamp_monotonic_ns": time.monotonic_ns(),
++        "timestamp_monotonic_ns": now_ns,
+@@
+         "allocator_fit": allocator_fit,
++        "num_output_tokens": request.num_output_tokens,
++        "num_preemptions": request.num_preemptions,
+*** End Patch
