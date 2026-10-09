@@ -2,11 +2,14 @@
 from __future__ import annotations
 
 import argparse
+import gzip
 import json
 import math
 import statistics
 from collections import defaultdict
 from pathlib import Path
+
+from experiments.autonomous_admission.artifacts import read_json, run_paths
 
 
 def nearest_rank(values: list[float], quantile: float) -> float:
@@ -85,17 +88,24 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("directory", type=Path)
     args = parser.parse_args()
-    run = args.directory / "runs/measured_rep1_a"
-    result = json.loads((run / "run.json").read_text())
+    paths = run_paths(args.directory)
+    if len(paths) != 1:
+        raise ValueError("expected exactly one run")
+    run = paths[0].parent
+    result = read_json(paths[0])
     allocator = []
-    for log in run.rglob("*.log"):
+    logs = list(run.rglob("*.log"))
+    logs.extend(p for p in run.rglob("*.log.gz") if not Path(str(p)[:-3]).exists())
+    for log in logs:
         if "compact" in log.name:
             continue
-        for line in log.read_text(errors="replace").splitlines():
+        raw = (gzip.decompress(log.read_bytes()).decode(errors="replace") if log.suffix == ".gz"
+               else log.read_text(errors="replace"))
+        for line in raw.splitlines():
             if "SLACKKV_ALLOCATOR_TRUTH " in line:
                 allocator.append(json.loads(line.split("SLACKKV_ALLOCATOR_TRUTH ", 1)[1]))
     summary = analyze(result, allocator)
-    (args.directory / "analysis.json").write_text(json.dumps(summary, indent=2) + "\n")
+    (args.directory / "analysis.json").write_text(json.dumps(summary, indent=2) + "\n", newline="\n")
     print(json.dumps({k: v for k, v in summary.items() if k != "requests"}, indent=2))
 
 

@@ -1,0 +1,2322 @@
+diff --git a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py
+index c5a251a..d8f9218 100644
+--- a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py
++++ b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py
+@@ -22,6 +22,7 @@ class TransferJob:
+ 
+     req_id: ReqId
+     transfer_spec: TransferSpec
++    slackkv_prefetch_only: bool = False
+ 
+ 
+ @dataclass
+@@ -43,10 +44,25 @@ class OffloadingWorkerMetadata(KVConnectorWorkerMetadata):
+     """
+ 
+     completed_jobs: dict[int, int] = field(default_factory=dict)
+-
+-    def mark_completed(self, job_id: int) -> None:
++    # Research-only SlackKV transfer observations keyed by job id.
++    # Value is (max worker transfer seconds, total worker bytes).
++    slackkv_completed_job_stats: dict[int, tuple[float, int]] = field(
++        default_factory=dict
++    )
++
++    def mark_completed(
++        self,
++        job_id: int,
++        transfer_time: float | None = None,
++        transfer_size: int | None = None,
++    ) -> None:
+         """Record a transfer job completion from this worker."""
+         self.completed_jobs[job_id] = 1
++        if transfer_time is not None and transfer_size is not None:
++            self.slackkv_completed_job_stats[job_id] = (
++                float(transfer_time),
++                int(transfer_size),
++            )
+ 
+     def aggregate(
+         self, other: "KVConnectorWorkerMetadata"
+@@ -56,5 +72,17 @@ class OffloadingWorkerMetadata(KVConnectorWorkerMetadata):
+         merged = dict(self.completed_jobs)
+         for job_id, v in other.completed_jobs.items():
+             merged[job_id] = merged.get(job_id, 0) + v
+-
+-        return OffloadingWorkerMetadata(completed_jobs=merged)
++        merged_stats = dict(self.slackkv_completed_job_stats)
++        for job_id, (transfer_time, transfer_size) in (
++            other.slackkv_completed_job_stats.items()
++        ):
++            old_time, old_size = merged_stats.get(job_id, (0.0, 0))
++            merged_stats[job_id] = (
++                max(old_time, transfer_time),
++                old_size + transfer_size,
++            )
++
++        return OffloadingWorkerMetadata(
++            completed_jobs=merged,
++            slackkv_completed_job_stats=merged_stats,
++        )
+diff --git a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py
+index 6ee827f..daffd8f 100644
+--- a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py
++++ b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py
+@@ -3,6 +3,8 @@
+ from collections.abc import Iterable, Sequence
+ from dataclasses import dataclass, field
+ from itertools import islice
++import json
++import time
+ from typing import Any, NamedTuple
+ 
+ from vllm.distributed.kv_events import BlockRemoved, BlockStored, KVCacheEvent
+@@ -33,14 +35,34 @@ from vllm.v1.kv_offload.base import (
+     ReqContext,
+     RequestOffloadingContext,
+     get_offload_block_hash,
++    get_offload_group_idx,
+     make_offload_key,
+ )
++from vllm.v1.core.kv_cache_utils import make_block_hash_with_group_id
++from vllm.v1.kv_offload.cpu.manager import CPUOffloadingManager
+ from vllm.v1.outputs import KVConnectorOutput
+ from vllm.v1.request import Request
+ 
+ logger = init_logger(__name__)
+ 
+ 
++def _count_contiguous_ready_prefix(
++    local_ready: Sequence[bool], external_ready: Sequence[bool]
++) -> tuple[int, int]:
++    """Return contiguous ready blocks and external-only blocks in that prefix."""
++    if len(local_ready) != len(external_ready):
++        raise ValueError("local and external readiness vectors must have equal length")
++    covered = 0
++    external_needed = 0
++    for is_local, is_external_ready in zip(local_ready, external_ready):
++        if not (is_local or is_external_ready):
++            break
++        covered += 1
++        if is_external_ready and not is_local:
++            external_needed += 1
++    return covered, external_needed
++
++
+ @dataclass(slots=True)
+ class TransferJobStatus:
+     """Tracks scheduler-side state for a single transfer job."""
+@@ -58,6 +80,8 @@ class TransferJobStatus:
+     # Store src block IDs that may be freed before the request finishes.
+     # Registered in _block_id_to_pending_jobs at store creation time.
+     sliding_window_block_ids: list[int] | None = None
++    slackkv_transfer_time_s: float = 0.0
++    slackkv_transfer_bytes: int = 0
+ 
+ 
+ class GroupOffloadConfig(NamedTuple):
+@@ -186,6 +210,9 @@ class RequestOffloadState:
+     # In-flight job IDs. Per the connector's invariant, at any given time
+     # this contains either a single load job, or one or more store jobs.
+     transfer_jobs: set[int] = field(default_factory=set)
++    slackkv_external_tokens_loaded: int = 0
++    slackkv_cpu_to_gpu_transfer_s: float = 0.0
++    slackkv_transfer_bytes: int = 0
+ 
+     def __post_init__(self) -> None:
+         self.group_states = tuple(
+@@ -307,6 +334,276 @@ class OffloadingConnectorScheduler:
+         # protected by their ref_cnt) and for sliding window blocks (which can
+         # be freed before a request finishes).
+         self._block_id_to_pending_jobs: dict[int, set[int]] = {}
++        self._slackkv_source_ready_emitted: set[str] = set()
++        self._slackkv_probe_gpu_pool = None
++        self._slackkv_probe_boundaries: dict[str, dict[str, Any]] = {}
++        self._slackkv_probe_interval_ns = 20_000_000
++        self._slackkv_probe_next_ns = 0
++        self._slackkv_probe_sample_id = 0
++        self._slackkv_probe_error_emitted = False
++
++    def bind_gpu_block_pool(self, gpu_block_pool: Any) -> None:
++        self._slackkv_probe_gpu_pool = gpu_block_pool
++
++    def slackkv_probe_delay_s(self, now_ns: int | None = None) -> float | None:
++        if not any(row.get("resume_issue_ns") is None for row in self._slackkv_probe_boundaries.values()):
++            return None
++        now = time.monotonic_ns() if now_ns is None else now_ns
++        return max(0.001, (self._slackkv_probe_next_ns - now) / 1e9)
++
++    def slackkv_probe_due(self, now_ns: int | None = None) -> bool:
++        if not any(row.get("resume_issue_ns") is None for row in self._slackkv_probe_boundaries.values()):
++            return False
++        now = time.monotonic_ns() if now_ns is None else now_ns
++        return now >= self._slackkv_probe_next_ns
++
++    def slackkv_exact_source_state(self, boundary_id: str) -> dict[str, Any]:
++        """Read one registered boundary directly from the exact CPU/GPU indexes."""
++        started_ns = time.thread_time_ns()
++        boundary = self._slackkv_probe_boundaries.get(boundary_id)
++        pool = self._slackkv_probe_gpu_pool
++        if (boundary is None or pool is None or not isinstance(self.manager, CPUOffloadingManager)
++                or self.manager.counts is not None or not hasattr(self.manager._policy, "get")):
++            return {"available": False, "boundary_id": boundary_id,
++                    "reason": "EXACT_READ_ONLY_SOURCE_API_UNAVAILABLE"}
++        local_ids: set[int] = set()
++        local_ref_counts: dict[int, int] = {}
++        local_prefix: list[Any] = []
++        local_prefix_by_group: dict[int, list[Any]] = {}
++        local_flags: list[bool] = []
++        external_flags: list[bool] = []
++        external_ready = 0
++        prefix_open = True
++        block_map = pool.cached_block_hash_to_block
++        for key in boundary["keys"]:
++            group_id = get_offload_group_idx(key)
++            block_hash = get_offload_block_hash(key)
++            cached = block_map.get_one_block(make_block_hash_with_group_id(block_hash, group_id))
++            is_local = cached is not None and not cached.is_null
++            if is_local:
++                local_ids.add(int(cached.block_id))
++                local_ref_counts[int(cached.block_id)] = int(cached.ref_cnt)
++                if prefix_open:
++                    local_prefix.append(cached)
++                    local_prefix_by_group.setdefault(group_id, []).append(cached)
++            else:
++                prefix_open = False
++            status = self.manager._policy.get(key)
++            is_external_ready = status is not None and status.is_ready
++            local_flags.append(is_local)
++            external_flags.append(is_external_ready)
++            if is_external_ready:
++                external_ready += 1
++        required = int(boundary["required_blocks"])
++        covered, external_ready_needed = _count_contiguous_ready_prefix(
++            local_flags, external_flags
++        )
++        covered = min(required, covered)
++        return {
++            "available": True, "boundary_id": boundary_id,
++            "timestamp_monotonic_ns": time.monotonic_ns(),
++            "required_blocks": required,
++            "local_cached_blocks": len(local_ids),
++            "local_prefix_blocks": len(local_prefix),
++            "external_ready_blocks": external_ready,
++            "external_ready_needed_blocks": min(external_ready_needed, max(0, required - len(local_ids))),
++            "covered_blocks": covered, "source_fully_ready": covered >= required,
++            "local_block_ids": sorted(local_ids),
++            "local_block_ref_counts": local_ref_counts,
++            "local_prefix_block_ids": [int(block.block_id) for block in local_prefix],
++            "local_prefix_blocks_by_group": {
++                str(group_id): [int(block.block_id) for block in blocks]
++                for group_id, blocks in local_prefix_by_group.items()
++            },
++            "read_cpu_ns": max(0, time.thread_time_ns() - started_ns),
++            "_local_prefix_block_objects": local_prefix,
++            "_local_prefix_blocks_by_group": local_prefix_by_group,
++        }
++
++    def slackkv_probe_source_readiness(self, snapshot: dict[str, Any]) -> None:
++        now_ns = int(snapshot["probe_start_ns"])
++        if now_ns < self._slackkv_probe_next_ns:
++            return
++        if not any(row.get("resume_issue_ns") is None for row in self._slackkv_probe_boundaries.values()):
++            return
++        self._slackkv_probe_next_ns = now_ns + self._slackkv_probe_interval_ns
++        pool = self._slackkv_probe_gpu_pool
++        if pool is None or not isinstance(self.manager, CPUOffloadingManager):
++            if not self._slackkv_probe_error_emitted:
++                logger.error("SLACKKV_READY_PROBE %s", json.dumps({
++                    "event": "PROBE_ERROR", "timestamp_monotonic_ns": now_ns,
++                    "reason": "EXACT_READ_ONLY_SOURCE_API_UNAVAILABLE",
++                    "manager_type": type(self.manager).__name__,
++                    "gpu_block_pool_bound": pool is not None,
++                }, separators=(",", ":")))
++                self._slackkv_probe_error_emitted = True
++            return
++        if self.manager.counts is not None or not hasattr(self.manager._policy, "get"):
++            if not self._slackkv_probe_error_emitted:
++                logger.error("SLACKKV_READY_PROBE %s", json.dumps({
++                    "event": "PROBE_ERROR", "timestamp_monotonic_ns": now_ns,
++                    "reason": "SOURCE_PROBE_NOT_READ_ONLY_FOR_CONFIGURED_MANAGER",
++                }, separators=(",", ":")))
++                self._slackkv_probe_error_emitted = True
++            return
++
++        probe_id = self._slackkv_probe_sample_id
++        self._slackkv_probe_sample_id += 1
++        probe_cpu_start_ns = time.thread_time_ns()
++        cpu_policy = self.manager._policy
++        block_map = pool.cached_block_hash_to_block
++        total_blocks = int(pool.num_gpu_blocks)
++        free_blocks = int(pool.get_num_free_blocks())
++        leases = snapshot["leases"]
++        lease_block_ids = sorted({
++            int(block_id)
++            for block_ids in leases.values()
++            for block_id in block_ids
++        })
++        sample_rows: list[dict[str, Any]] = []
++        pending_frontier = [
++            (key, row) for key, row in self._slackkv_probe_boundaries.items()
++            if row.get("resume_request_id") is None
++            or row.get("resume_request_id") not in set(snapshot["first_token_request_ids"])
++        ]
++        protected_id, protected_state = (
++            min(pending_frontier, key=lambda item: (int(item[1]["estimated_deadline_ns"]), item[0]))
++            if pending_frontier else (None, None)
++        )
++        for boundary_id, boundary in list(self._slackkv_probe_boundaries.items()):
++            if boundary.get("resume_issue_ns") is not None:
++                continue
++            keys = boundary["keys"]
++            local_ids: list[int] = []
++            local_flags: list[bool] = []
++            external_flags: list[bool] = []
++            external_ready = 0
++            for key in keys:
++                group_id = get_offload_group_idx(key)
++                block_hash = get_offload_block_hash(key)
++                cached = block_map.get_one_block(make_block_hash_with_group_id(block_hash, group_id))
++                if cached is not None and not cached.is_null:
++                    local_ids.append(int(cached.block_id))
++                    local_flags.append(True)
++                else:
++                    local_flags.append(False)
++                status = cpu_policy.get(key)
++                is_external_ready = status is not None and status.is_ready
++                external_flags.append(is_external_ready)
++                if is_external_ready:
++                    external_ready += 1
++            required = int(boundary["required_blocks"])
++            local_unique = len(set(local_ids))
++            covered, external_ready_needed = _count_contiguous_ready_prefix(
++                local_flags, external_flags
++            )
++            covered = min(required, covered)
++            missing = max(0, required - covered)
++            external_needed = max(0, required - local_unique)
++            sample_rows.append({
++                "event": "SAMPLE", "sample_id": probe_id,
++                "timestamp_monotonic_ns": now_ns,
++                "boundary_id": boundary_id, "session": boundary["session"],
++                "request_id": boundary["request_id"],
++                "required_blocks": required,
++                "required_tokens": boundary["required_tokens"],
++                "local_cached_blocks": local_unique,
++                "external_ready_blocks": external_ready,
++                "external_ready_needed_blocks": min(external_ready_needed, external_needed),
++                "covered_blocks": covered, "missing_blocks": missing,
++                "source_fully_ready": covered == required,
++                "free_blocks": free_blocks, "total_blocks": total_blocks,
++                "used_blocks": total_blocks - free_blocks,
++                "num_running": snapshot["num_running"],
++                "num_waiting": snapshot["num_waiting"],
++                "running_unique_blocks": snapshot["running_unique_blocks"],
++                "waiting_unique_blocks": snapshot["waiting_unique_blocks"],
++                "active_lease_count": len(leases),
++                "active_lease_unique_blocks": len(lease_block_ids),
++                "lease_key": boundary["lease_key"],
++                "protected_frontier": protected_id,
++                "protected_progress_blocks": (
++                    int(protected_state["protected_progress_blocks"])
++                    if protected_state is not None else 0
++                ),
++                "protected_lease_blocks": (
++                    len(set(leases.get(protected_state["lease_key"], [])))
++                    if protected_state is not None else 0
++                ),
++                "estimated_deadline_ns": boundary["estimated_deadline_ns"],
++                "resume_issue_ns": boundary.get("resume_issue_ns"),
++            })
++        for row in sample_rows:
++            logger.info("SLACKKV_READY_PROBE %s", json.dumps(row, separators=(",", ":")))
++        probe_wall_duration_ns = max(0, time.monotonic_ns() - now_ns)
++        probe_cpu_duration_ns = max(0, time.thread_time_ns() - probe_cpu_start_ns)
++        logger.info("SLACKKV_READY_PROBE %s", json.dumps({
++            "event": "PROBE_COST", "sample_id": probe_id,
++            "timestamp_monotonic_ns": now_ns,
++            "probe_duration_ns": probe_cpu_duration_ns,
++            "probe_wall_duration_ns": probe_wall_duration_ns,
++            "probe_boundary_count": len(sample_rows),
++            "probe_interval_ns": self._slackkv_probe_interval_ns,
++        }, separators=(",", ":")))
++
++    def _slackkv_trace_source_readiness(self, req_status: RequestOffloadState) -> None:
++        """Observe a traced next-turn prefix without changing offload policy."""
++        params = req_status.req.kv_transfer_params or {}
++        boundary_id = params.get("slackkv_trace_next_boundary")
++        required = params.get("slackkv_trace_source_required_tokens")
++        if not isinstance(boundary_id, str) or type(required) is not int:
++            return
++        if boundary_id in self._slackkv_source_ready_emitted:
++            return
++        if required <= 0 or required % 16 or len(req_status.group_states) != 1:
++            return
++        group = req_status.group_states[0]
++        block_size = self.config.kv_group_configs[0].offloaded_block_size
++        if block_size != 16:
++            return
++        required_blocks = required // block_size
++        available_keys = group.offload_keys[:required_blocks]
++        if (
++            type(params.get("slackkv_trace_next_isl")) is int
++            and type(params.get("slackkv_trace_next_pause_ms")) in (int, float)
++        ):
++            registered_ns = time.monotonic_ns()
++            self._slackkv_probe_boundaries[boundary_id] = {
++                "request_id": req_status.req.request_id,
++                "session": params.get("slackkv_session"),
++                "keys": tuple(available_keys),
++                "required_tokens": required,
++                "required_blocks": required_blocks,
++                "available_key_blocks": len(available_keys),
++                "pause_ms": float(params["slackkv_trace_next_pause_ms"]),
++                "lease_key": params.get("slackkv_trace_next_lease_key"),
++                "estimated_deadline_ns": registered_ns + round(float(params["slackkv_trace_next_pause_ms"]) * 1e6),
++                "protected_progress_blocks": (int(params["slackkv_trace_next_isl"]) + 1 + 15) // 16,
++                "resume_issue_ns": None,
++            }
++            self._slackkv_probe_next_ns = min(self._slackkv_probe_next_ns or registered_ns, registered_ns)
++        ready_blocks = 0
++        for key in available_keys:
++            if self.manager.lookup(key, req_status.req_context) is not True:
++                break
++            ready_blocks += 1
++        ready = len(available_keys) == required_blocks and ready_blocks == required_blocks
++        logger.info(
++            "SLACKKV_OFFLOAD_TRACE %s",
++            json.dumps({
++                "event": "SOURCE_READY" if ready else "SOURCE_NOT_READY",
++                "timestamp_monotonic": time.monotonic(),
++                "boundary_id": boundary_id,
++                "request_id": req_status.req.request_id,
++                "session": params.get("slackkv_session"),
++                "required_tokens": required,
++                "required_blocks": required_blocks,
++                "available_hash_blocks": len(available_keys),
++                "ready_prefix_blocks": ready_blocks,
++            }, separators=(",", ":")),
++        )
++        if ready:
++            self._slackkv_source_ready_emitted.add(boundary_id)
+ 
+     def _generate_job_id(self) -> int:
+         job_id = self._job_counter
+@@ -533,6 +830,14 @@ class OffloadingConnectorScheduler:
+             offloading_context=offloading_context,
+         )
+         self._req_status[request.request_id] = req_status
++        params = request.kv_transfer_params or {}
++        boundary_id = params.get("slackkv_trace_boundary_id")
++        issue_ns = params.get("slackkv_trace_resume_issue_ns")
++        if isinstance(boundary_id, str) and type(issue_ns) is int:
++            boundary = self._slackkv_probe_boundaries.get(boundary_id)
++            if boundary is not None:
++                boundary["resume_issue_ns"] = issue_ns
++                boundary["resume_request_id"] = request.request_id
+ 
+     def get_num_new_matched_tokens(
+         self, request: Request, num_computed_tokens: int
+@@ -577,6 +882,7 @@ class OffloadingConnectorScheduler:
+             return
+ 
+         req_status = self._req_status[request.request_id]
++        req_status.slackkv_external_tokens_loaded = num_external_tokens
+ 
+         num_locally_computed_tokens = req_status.num_locally_computed_tokens
+         num_cached_tokens = num_locally_computed_tokens + num_external_tokens
+@@ -653,6 +959,10 @@ class OffloadingConnectorScheduler:
+         self._current_batch_load_jobs[load_job_id] = TransferJob(
+             req_id=request.request_id,
+             transfer_spec=(src_spec, dst_spec),
++            slackkv_prefetch_only=bool(
++                request.kv_transfer_params
++                and request.kv_transfer_params.get("slackkv_prefetch_only") is True
++            ),
+         )
+         # a load can only be issued when no other jobs are pending.
+         assert not req_status.transfer_jobs
+@@ -962,6 +1272,12 @@ class OffloadingConnectorScheduler:
+                 )
+                 continue
+             job_status = self._jobs[job_id]
++            if stats := meta.slackkv_completed_job_stats.get(job_id):
++                transfer_time, transfer_bytes = stats
++                job_status.slackkv_transfer_time_s = max(
++                    job_status.slackkv_transfer_time_s, transfer_time
++                )
++                job_status.slackkv_transfer_bytes += transfer_bytes
+             job_status.pending_count -= count
+             if job_status.pending_count > 0:
+                 continue
+@@ -970,8 +1286,17 @@ class OffloadingConnectorScheduler:
+             req_status = self._req_status[job_status.req_id]
+             if job_status.is_store:
+                 self.manager.complete_store(job_status.keys, req_status.req_context)
++                if req_status.req.is_finished():
++                    self._slackkv_trace_source_readiness(req_status)
+             else:
+                 self.manager.complete_load(job_status.keys, req_status.req_context)
++                if (req_status.req.kv_transfer_params or {}).get("slackkv_prefetch_only") is True:
++                    phase3m = (req_status.req.kv_transfer_params or {}).setdefault("slackkv_phase3m", {})
++                    phase3m.setdefault("T5", time.monotonic())
++                req_status.slackkv_cpu_to_gpu_transfer_s = (
++                    job_status.slackkv_transfer_time_s
++                )
++                req_status.slackkv_transfer_bytes = job_status.slackkv_transfer_bytes
+                 if self._blocks_being_loaded:
+                     self._blocks_being_loaded.difference_update(job_status.keys)
+             if self._block_id_to_pending_jobs:
+@@ -1012,19 +1337,44 @@ class OffloadingConnectorScheduler:
+             req_status.req_context if req_status else _create_req_context(request)
+         )
+         self.manager.on_request_finished(req_context)
++        if req_status is not None:
++            self._slackkv_trace_source_readiness(req_status)
++
++        is_slackkv_prefetch = bool(
++            request.kv_transfer_params
++            and request.kv_transfer_params.get("slackkv_prefetch_only") is True
++        )
++        slackkv_result = None
++        if is_slackkv_prefetch:
++            if req_status is None:
++                raise RuntimeError("SlackKV prefetch request lost connector state")
++            slackkv_result = {
++                "slackkv_prefetch": {
++                    "status": "ok",
++                    "external_tokens_loaded": (
++                        req_status.slackkv_external_tokens_loaded
++                    ),
++                    "transfer_bytes": req_status.slackkv_transfer_bytes,
++                    "cpu_to_gpu_transfer_ms": (
++                        req_status.slackkv_cpu_to_gpu_transfer_s * 1000.0
++                    ),
++                    "model_forward_count": 0,
++                    "generated_token_count": 0,
++                }
++            }
+ 
+         if req_status is None:
+             return False, None
+         if not req_status.transfer_jobs:
+             del self._req_status[request.request_id]
+-            return False, None
++            return False, slackkv_result
+         # Pending stores will outlive the request's block ownership.
+         # Register them so future block reuse triggers a flush.
+         for job_id in req_status.transfer_jobs:
+             job_status = self._jobs[job_id]
+             for bid in job_status.non_sliding_window_block_ids or ():
+                 self._block_id_to_pending_jobs.setdefault(bid, set()).add(job_id)
+-        return False, None
++        return False, slackkv_result
+ 
+     def take_events(self) -> Iterable[KVCacheEvent]:
+         """Take the KV cache events from the connector.
+diff --git a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/worker.py b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/worker.py
+index 8957ce3..af1c437 100644
+--- a/vllm/distributed/kv_transfer/kv_connector/v1/offloading/worker.py
++++ b/vllm/distributed/kv_transfer/kv_connector/v1/offloading/worker.py
+@@ -282,7 +282,11 @@ class OffloadingConnectorWorker:
+                     transfer_type=transfer_result.transfer_type,
+                 )
+ 
+-            self._connector_worker_meta.mark_completed(job_id)
++            self._connector_worker_meta.mark_completed(
++                job_id,
++                transfer_result.transfer_time,
++                transfer_result.transfer_size,
++            )
+             req_id = self._load_jobs.pop(job_id, None)
+             if req_id is not None:
+                 finished_recving.add(req_id)
+diff --git a/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py b/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py
+index 20888c7..7807466 100644
+--- a/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py
++++ b/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py
+@@ -71,6 +71,25 @@ class OffloadingConnector(KVConnectorBase_V1, SupportsHMA):
+         if self.connector_scheduler is not None:
+             self.connector_scheduler.shutdown()
+ 
++    def bind_gpu_block_pool(self, gpu_block_pool: Any) -> None:
++        if self.connector_scheduler is not None:
++            self.connector_scheduler.bind_gpu_block_pool(gpu_block_pool)
++
++    def slackkv_probe_delay_s(self, now_ns: int | None = None) -> float | None:
++        if self.connector_scheduler is None:
++            return None
++        return self.connector_scheduler.slackkv_probe_delay_s(now_ns)
++
++    def slackkv_probe_source_readiness(self, snapshot: dict[str, Any]) -> None:
++        if self.connector_scheduler is not None:
++            self.connector_scheduler.slackkv_probe_source_readiness(snapshot)
++
++    def slackkv_exact_source_state(self, boundary_id: str) -> dict[str, Any]:
++        if self.connector_scheduler is None:
++            return {"available": False, "boundary_id": boundary_id,
++                    "reason": "SCHEDULER_CONNECTOR_UNAVAILABLE"}
++        return self.connector_scheduler.slackkv_exact_source_state(boundary_id)
++
+     def register_kv_caches(self, kv_caches: dict[str, torch.Tensor]):
+         assert self.connector_worker is not None
+         self.connector_worker.register_kv_caches(kv_caches)
+diff --git a/vllm/entrypoints/serve/__init__.py b/vllm/entrypoints/serve/__init__.py
+index 57491d4..de5d8d0 100644
+--- a/vllm/entrypoints/serve/__init__.py
++++ b/vllm/entrypoints/serve/__init__.py
+@@ -59,3 +59,9 @@ def register_vllm_dev_api_routers(app: FastAPI):
+     from .dev.sleep.api_router import attach_router as attach_sleep_router
+ 
+     attach_sleep_router(app)
++
++    from .dev.slackkv_prefetch.api_router import (
++        attach_router as attach_slackkv_prefetch_router,
++    )
++
++    attach_slackkv_prefetch_router(app)
+diff --git a/vllm/v1/core/kv_cache_manager.py b/vllm/v1/core/kv_cache_manager.py
+index 9f0bfc5..39c7cc6 100644
+--- a/vllm/v1/core/kv_cache_manager.py
++++ b/vllm/v1/core/kv_cache_manager.py
+@@ -2,6 +2,8 @@
+ # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
+ 
+ import itertools
++import json
++import time
+ from collections.abc import Sequence
+ from dataclasses import dataclass
+ from typing import Literal, overload
+@@ -20,6 +22,63 @@ from vllm.v1.metrics.stats import PrefixCacheStats
+ from vllm.v1.request import Request
+ 
+ logger = init_logger(__name__)
++_SLACKKV_ALLOCATOR_TRACE_SEEN: set[tuple[str, str]] = set()
++
++
++def _slackkv_allocator_truth(
++    request: Request,
++    *,
++    gate: str,
++    pool_free_blocks: int,
++    inflight_reserved_blocks: int,
++    allocator_required_blocks: int,
++    allocator_available_blocks: int,
++    allocator_fit: bool,
++    num_new_tokens: int,
++    num_new_computed_tokens: int,
++    num_external_computed_tokens: int,
++    total_computed_tokens: int,
++    num_lookahead_tokens: int,
++    full_sequence_must_fit: bool,
++) -> None:
++    params = request.kv_transfer_params or {}
++    if params.get("slackkv_allocator_trace") is not True and not isinstance(params.get("slackkv_rca"), dict):
++        return
++    if params.get("slackkv_allocator_trace_once") is True:
++        trace_key = (request.request_id, gate)
++        if trace_key in _SLACKKV_ALLOCATOR_TRACE_SEEN:
++            return
++        _SLACKKV_ALLOCATOR_TRACE_SEEN.add(trace_key)
++    rca = params.get("slackkv_rca") or {}
++    cpu_started_ns = time.thread_time_ns()
++    event = {
++        "event": "ALLOCATOR_PREFLIGHT",
++        "timestamp_monotonic_ns": time.monotonic_ns(),
++        "request_id": request.request_id,
++        "session": params.get("slackkv_session"),
++        "gate": gate,
++        "selection_id": rca.get("selection_id"),
++        "boundary_id": params.get("slackkv_trace_boundary_id") or rca.get("candidate_id"),
++        "candidate_id": rca.get("candidate_id"),
++        "protected_id": rca.get("protected_id"),
++        "candidate_matches_protected": rca.get("candidate_matches_protected"),
++        "PSA_reserve_blocks": rca.get("psa1_reserve_blocks"),
++        "pool_free_blocks": pool_free_blocks,
++        "inflight_reserved_blocks": inflight_reserved_blocks,
++        "allocator_available_blocks": allocator_available_blocks,
++        "num_blocks_to_allocate": allocator_required_blocks,
++        "watermark_blocks": 0,
++        "allocator_required_blocks": allocator_required_blocks,
++        "full_sequence_must_fit": full_sequence_must_fit,
++        "num_new_tokens": num_new_tokens,
++        "num_new_computed_tokens": num_new_computed_tokens,
++        "num_external_computed_tokens": num_external_computed_tokens,
++        "num_computed_tokens": total_computed_tokens,
++        "num_lookahead_tokens": num_lookahead_tokens,
++        "allocator_fit": allocator_fit,
++    }
++    event["instrumentation_cpu_ns"] = max(0, time.thread_time_ns() - cpu_started_ns)
++    logger.info("SLACKKV_ALLOCATOR_TRUTH %s", json.dumps(event, separators=(",", ":")))
+ 
+ 
+ @dataclass
+@@ -364,7 +423,23 @@ class KVCacheManager:
+                 num_tokens_main_model=full_num_tokens,
+                 apply_admission_cap=True,
+             )
+-            if num_blocks_to_allocate > self.block_pool.get_num_free_blocks():
++            pool_free_blocks = self.block_pool.get_num_free_blocks()
++            _slackkv_allocator_truth(
++                request,
++                gate="FULL_SEQUENCE",
++                pool_free_blocks=pool_free_blocks,
++                inflight_reserved_blocks=0,
++                allocator_required_blocks=num_blocks_to_allocate,
++                allocator_available_blocks=pool_free_blocks,
++                allocator_fit=num_blocks_to_allocate <= pool_free_blocks,
++                num_new_tokens=num_new_tokens,
++                num_new_computed_tokens=num_new_computed_tokens,
++                num_external_computed_tokens=num_external_computed_tokens,
++                total_computed_tokens=total_computed_tokens,
++                num_lookahead_tokens=num_lookahead_tokens,
++                full_sequence_must_fit=True,
++            )
++            if num_blocks_to_allocate > pool_free_blocks:
+                 return None
+ 
+         num_tokens_main_model = total_computed_tokens + num_new_tokens
+@@ -392,7 +467,23 @@ class KVCacheManager:
+             num_tokens_main_model=num_tokens_main_model,
+         )
+ 
+-        available_blocks = self.block_pool.get_num_free_blocks() - reserved_blocks
++        pool_free_blocks = self.block_pool.get_num_free_blocks()
++        available_blocks = pool_free_blocks - reserved_blocks
++        _slackkv_allocator_truth(
++            request,
++            gate="STEP",
++            pool_free_blocks=pool_free_blocks,
++            inflight_reserved_blocks=reserved_blocks,
++            allocator_required_blocks=num_blocks_to_allocate,
++            allocator_available_blocks=available_blocks,
++            allocator_fit=num_blocks_to_allocate <= available_blocks,
++            num_new_tokens=num_new_tokens,
++            num_new_computed_tokens=num_new_computed_tokens,
++            num_external_computed_tokens=num_external_computed_tokens,
++            total_computed_tokens=total_computed_tokens,
++            num_lookahead_tokens=num_lookahead_tokens,
++            full_sequence_must_fit=full_sequence_must_fit,
++        )
+         if num_blocks_to_allocate > available_blocks:
+             # Cannot allocate new blocks
+             return None
+diff --git a/vllm/v1/core/sched/output.py b/vllm/v1/core/sched/output.py
+index b2e9dd8..a9e198a 100644
+--- a/vllm/v1/core/sched/output.py
++++ b/vllm/v1/core/sched/output.py
+@@ -235,6 +235,19 @@ class SchedulerOutput:
+     # EC Cache Connector metadata
+     ec_connector_metadata: ECConnectorMetadata | None = None
+ 
++    # Research-only IDs whose connector load must take the no-forward path.
++    slackkv_prefetch_req_ids: list[str] | None = None
++
++    # Research-only completed requests to emit after their blocks are cached.
++    slackkv_prefetch_finished_req_ids: list[str] | None = None
++
++    # Research-only connector-first microstep. Such an output must contain no
++    # scheduled model tokens; it exists only to start/poll native KV loads.
++    slackkv_connector_only_step: bool = False
++
++    # Special request IDs kept active by the connector-first microstep.
++    slackkv_connector_only_req_ids: list[str] | None = None
++
+     # Block IDs freshly allocated from the pool during this scheduling step.
+     # The worker zeros the corresponding GPU memory before the blocks are used,
+     # preventing stale NaN/data from corrupting attention or SSM computation.
+diff --git a/vllm/v1/core/sched/scheduler.py b/vllm/v1/core/sched/scheduler.py
+index 889232c..a1fcbf9 100644
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -1,10 +1,11 @@
+ # SPDX-License-Identifier: Apache-2.0
+ # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
+ import itertools
++import json
+ import time
+ from collections import defaultdict, deque
+ from collections.abc import Iterable
+-from dataclasses import replace
++from dataclasses import dataclass, field, replace
+ from typing import Any
+ 
+ from vllm.compilation.cuda_graph import CUDAGraphStat
+@@ -49,7 +50,12 @@ from vllm.v1.core.sched.request_queue import (
+     create_request_queue,
+ )
+ from vllm.v1.core.sched.utils import check_stop, remove_all
+-from vllm.v1.engine import EngineCoreEventType, EngineCoreOutput, EngineCoreOutputs
++from vllm.v1.engine import (
++    EngineCoreEventType,
++    EngineCoreOutput,
++    EngineCoreOutputs,
++    FinishReason,
++)
+ from vllm.v1.kv_cache_interface import KVCacheConfig
+ from vllm.v1.metrics.perf import ModelMetrics, PerfStats
+ from vllm.v1.metrics.stats import PrefixCacheStats, SchedulerStats
+@@ -62,6 +68,178 @@ from vllm.v1.utils import record_function_or_nullcontext
+ logger = init_logger(__name__)
+ 
+ 
++def _slackkv_capacity_finished_params(
++    request_params: dict[str, Any] | None,
++    connector_params: dict[str, Any] | None,
++    *,
++    status: str,
++    reason: str,
++    required_blocks: int | None,
++    free_blocks: int,
++    total_blocks: int,
++) -> dict[str, Any]:
++    """Merge research completion metadata without losing snapshot-only payloads."""
++    kv_params = dict(request_params or {})
++    connector_updates = dict(connector_params or {})
++    if status == "snapshot":
++        connector_updates.pop("slackkv_prefetch", None)
++    kv_params.update(connector_updates)
++    result = dict(kv_params.get("slackkv_prefetch") or {})
++    result.update(
++        {
++            "status": status,
++            "reason": reason,
++            "required_blocks": required_blocks,
++            "free_blocks": free_blocks,
++            "total_blocks": total_blocks,
++            "external_tokens_loaded": 0,
++            "transfer_bytes": 0,
++            "model_forward_count": 0,
++            "generated_token_count": 0,
++            "mixed_prefetch_model_step_count": 0,
++        }
++    )
++    kv_params["slackkv_prefetch"] = result
++    return kv_params
++
++
++def _is_slackkv_prefetch_only(request: Request) -> bool:
++    params = request.kv_transfer_params
++    return bool(params and params.get("slackkv_prefetch_only") is True)
++
++
++def _is_slackkv_capacity_guarded(request: Request) -> bool:
++    params = request.kv_transfer_params
++    return bool(params and params.get("capacity_guard") is True)
++
++
++def _slackkv_reject_blocked_native_prefetch(request: Request) -> bool:
++    return _is_slackkv_prefetch_only(request) and _is_slackkv_capacity_guarded(request)
++
++
++def _slackkv_psa_decision(
++    free_blocks: int,
++    required_blocks: int,
++    protected_progress_blocks: int,
++    existing_protected_lease_blocks: int,
++    candidate_has_matching_lease: bool,
++) -> tuple[str, int, int]:
++    hypothetical = max(
++        existing_protected_lease_blocks,
++        required_blocks if candidate_has_matching_lease else 0,
++    )
++    reserve = max(0, protected_progress_blocks - hypothetical)
++    if free_blocks < required_blocks:
++        return "CAPACITY_REJECT", hypothetical, reserve
++    if free_blocks - required_blocks < reserve:
++        return "PROGRESS_REJECT", hypothetical, reserve
++    return "ADMIT", hypothetical, reserve
++
++
++def _is_slackkv_trace_resume(request: Request) -> bool:
++    params = request.kv_transfer_params
++    return bool(params and params.get("slackkv_trace_resume") is True)
++
++
++def _slackkv_residency_lease_key(request: Request) -> str | None:
++    params = request.kv_transfer_params or {}
++    lease_key = params.get("slackkv_residency_lease_key")
++    if lease_key is None:
++        return None
++    if not isinstance(lease_key, str) or not lease_key:
++        raise AssertionError("invalid SlackKV residency lease key")
++    return lease_key
++
++
++def _slackkv_session(request: Request) -> str | None:
++    params = request.kv_transfer_params or {}
++    session = params.get("slackkv_session")
++    return session if isinstance(session, str) and session else None
++
++
++def _unique_slackkv_blocks(groups: tuple[list[Any], ...]) -> list[Any]:
++    blocks: dict[int, Any] = {}
++    for group in groups:
++        for block in group:
++            if not block.is_null:
++                blocks.setdefault(block.block_id, block)
++    return list(blocks.values())
++
++
++def _is_slackkv_first_token_gate(request: Request) -> bool:
++    params = request.kv_transfer_params
++    return bool(
++        params
++        and params.get("slackkv_trace_resume") is True
++        and params.get("slackkv_first_token_gate") is True
++    )
++
++
++def _slackkv_first_token_gate_limit(request: Request) -> int:
++    """Return the research gate capacity carried by a marked request."""
++    params = request.kv_transfer_params or {}
++    limit = params.get("slackkv_first_token_gate_limit", 1)
++    if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
++        raise AssertionError("invalid SlackKV first-token gate limit")
++    return limit
++
++
++def _slackkv_first_token_gate_can_admit(
++    owners: set[str],
++    configured_limit: int | None,
++    request: Request,
++) -> tuple[bool, int]:
++    """Validate the run-wide limit and decide capacity using scheduler state."""
++    request_limit = _slackkv_first_token_gate_limit(request)
++    if configured_limit is not None and configured_limit != request_limit:
++        raise AssertionError("mixed SlackKV first-token gate limits")
++    # Re-admission before the first token reuses the request's existing slot.
++    return len(owners) < request_limit or request.request_id in owners, request_limit
++
++
++def _slackkv_connector_first_request_ids(
++    *queues: RequestQueue,
++) -> list[str]:
++    """Return active research prefetch requests in scheduler order."""
++    return [
++        request.request_id
++        for queue in queues
++        for request in queue
++        if _is_slackkv_prefetch_only(request) and not request.is_finished()
++    ]
++
++
++@dataclass
++class _SlackKVConnectorFirstState:
++    started_s: float
++    step_count: int = 0
++    delayed_normal_req_ids: set[str] = field(default_factory=set)
++
++    def record_step(self, delayed_normal_req_ids: Iterable[str]) -> None:
++        self.step_count += 1
++        self.delayed_normal_req_ids.update(delayed_normal_req_ids)
++
++
++def _validate_slackkv_connector_first_output(
++    scheduler_output: SchedulerOutput,
++) -> None:
++    """Enforce the research connector-only scheduling invariant."""
++    if not scheduler_output.slackkv_connector_only_step:
++        return
++    if (
++        scheduler_output.total_num_scheduled_tokens
++        or scheduler_output.num_scheduled_tokens
++    ):
++        raise RuntimeError(
++            "SlackKV connector-first output contained model tokens"
++        )
++    special_ids = set(scheduler_output.slackkv_connector_only_req_ids or ())
++    if special_ids.intersection(scheduler_output.num_scheduled_tokens):
++        raise RuntimeError(
++            "SlackKV prefetch-only request received scheduled model tokens"
++        )
++
++
+ class Scheduler(SchedulerInterface):
+     def __init__(
+         self,
+@@ -180,6 +358,22 @@ class Scheduler(SchedulerInterface):
+         # KV Connector: requests in process of async KV loading or recving
+         self.finished_recving_kv_req_ids: set[str] = set()
+         self.failed_recving_kv_req_ids: set[str] = set()
++        self._slackkv_prefetch_finished: dict[
++            str, tuple[int, dict[str, Any] | None, list[Any], Any]
++        ] = {}
++        self._slackkv_prefetch_finished_emitted: set[str] = set()
++        self._slackkv_connector_first: dict[
++            str, _SlackKVConnectorFirstState
++        ] = {}
++        self._slackkv_scheduler_step_id = 0
++        self._slackkv_ft_gate_owners: set[str] = set()
++        self._slackkv_ft_gate_limit: int | None = None
++        self._slackkv_ft_first_model_seen: set[str] = set()
++        self._slackkv_ft_first_token_seen: set[str] = set()
++        self._slackkv_ft_blocked_steps: dict[str, int] = defaultdict(int)
++        self._slackkv_residency_leases: dict[str, list[Any]] = {}
++        self._slackkv_waiting_attempt_seen: set[str] = set()
++        self._slackkv_waiting_allocate_none_count: dict[str, int] = defaultdict(int)
+ 
+         # Encoder-related.
+         # Calculate encoder cache size if applicable
+@@ -337,8 +531,480 @@ class Scheduler(SchedulerInterface):
+                 pass
+         return num_new_tokens
+ 
++    def _slackkv_capacity_required_blocks(self, request: Request) -> int:
++        params = request.kv_transfer_params or {}
++        required = params.get("required_blocks")
++        prompt_ids = request.prompt_token_ids
++        if (
++            not _is_slackkv_prefetch_only(request)
++            or isinstance(required, bool)
++            or not isinstance(required, int)
++            or required <= 0
++            or prompt_ids is None
++            or len(prompt_ids) % self.block_size != 0
++            or required != len(prompt_ids) // self.block_size
++        ):
++            raise ValueError("INVALID_CAPACITY_GUARD_REQUEST")
++        return required
++
++    def _slackkv_capacity_owned_block_ids(self, requests: Iterable[Request]) -> set[int]:
++        block_ids: set[int] = set()
++        for request in requests:
++            try:
++                groups = self.kv_cache_manager.get_blocks(request.request_id).blocks
++            except (KeyError, ValueError):
++                continue
++            block_ids.update(
++                block.block_id
++                for group in groups
++                for block in group
++                if not block.is_null
++            )
++        return block_ids
++
++    def slackkv_ready_probe_delay_s(self) -> float | None:
++        if self.connector is None:
++            return None
++        probe_delay = getattr(self.connector, "slackkv_probe_delay_s", None)
++        return probe_delay(time.monotonic_ns()) if probe_delay is not None else None
++
++    def slackkv_probe_source_readiness(self) -> None:
++        if self.connector is None:
++            return
++        probe = getattr(self.connector, "slackkv_probe_source_readiness", None)
++        if probe is None:
++            return
++        is_due = getattr(self.connector, "slackkv_probe_due", None)
++        if is_due is not None and not is_due(time.monotonic_ns()):
++            return
++        probe_start_ns = time.monotonic_ns()
++        waiting_requests = [item for queue in (self.waiting, self.skipped_waiting) for item in queue]
++        lease_snapshot = {
++            key: sorted({int(block.block_id) for block in blocks if not block.is_null})
++            for key, blocks in self._slackkv_residency_leases.items()
++        }
++        probe({
++            "probe_start_ns": probe_start_ns,
++            "num_running": len(self.running),
++            "num_waiting": len(waiting_requests),
++            "running_unique_blocks": len(self._slackkv_capacity_owned_block_ids(self.running)),
++            "waiting_unique_blocks": len(self._slackkv_capacity_owned_block_ids(waiting_requests)),
++            "leases": lease_snapshot,
++            "running_request_ids": [request.request_id for request in self.running],
++            "waiting_request_ids": [request.request_id for request in waiting_requests],
++            "first_token_request_ids": sorted(self._slackkv_ft_first_token_seen),
++        })
++
++    def _slackkv_guard_decision(
++        self, request: Request, required_blocks: int, free_blocks: int
++    ) -> tuple[str, dict[str, Any]]:
++        params = request.kv_transfer_params or {}
++        if params.get("progress_guard") is not True:
++            return ("REJECT" if free_blocks < required_blocks else "ADMIT"), {}
++        protected_key = params.get("protected_lease_key")
++        progress_blocks = params.get("protected_progress_blocks")
++        candidate_key = _slackkv_residency_lease_key(request)
++        if (
++            not isinstance(protected_key, str)
++            or not protected_key
++            or isinstance(progress_blocks, bool)
++            or not isinstance(progress_blocks, int)
++            or progress_blocks <= 0
++            or candidate_key is None
++        ):
++            raise ValueError("INVALID_PROGRESS_GUARD_REQUEST")
++        existing = len({
++            block.block_id
++            for block in self._slackkv_residency_leases.get(protected_key, [])
++            if not block.is_null
++        })
++        decision, hypothetical, reserve = _slackkv_psa_decision(
++            free_blocks, required_blocks, progress_blocks, existing,
++            candidate_key == protected_key,
++        )
++        return decision, {
++            "progress_guard": True,
++            "protected_lease_key": protected_key,
++            "protected_progress_blocks": progress_blocks,
++            "protected_existing_lease_blocks": existing,
++            "protected_hypothetical_lease_blocks": hypothetical,
++            "progress_reserve_blocks": reserve,
++            "candidate_required_blocks": required_blocks,
++            "free_blocks_after_candidate": free_blocks - required_blocks,
++        }
++
++    def _slackkv_rca_source_state(self, boundary_id: str | None) -> dict[str, Any]:
++        if not boundary_id or self.connector is None:
++            return {"available": False, "reason": "NO_BOUNDARY_OR_CONNECTOR"}
++        probe = getattr(self.connector, "slackkv_exact_source_state", None)
++        return probe(boundary_id) if probe is not None else {
++            "available": False, "boundary_id": boundary_id,
++            "reason": "EXACT_READ_ONLY_SOURCE_API_UNAVAILABLE",
++        }
++
++    def _slackkv_rca_allocator_preflight(
++        self, source_state: dict[str, Any], rca: dict[str, Any], *,
++        prompt_tokens: int, full_sequence_tokens: int, source_tokens: int,
++    ) -> dict[str, Any]:
++        if not source_state.get("available") or not source_state.get("source_fully_ready"):
++            return {"available": False, "reason": "SOURCE_NOT_FULL_READY"}
++        cpu_started_ns = time.thread_time_ns()
++        block_size = self.kv_cache_manager.coordinator.scheduler_block_size
++        managers = self.kv_cache_manager.coordinator.single_type_managers
++        groups: list[list[Any]] = [[] for _ in managers]
++        for group_id, blocks in source_state.get("_local_prefix_blocks_by_group", {}).items():
++            index = int(group_id)
++            if index >= len(groups):
++                return {"available": False, "reason": "SOURCE_GROUP_INDEX_OUT_OF_RANGE"}
++            groups[index].extend(blocks)
++        local_tokens = sum(len(blocks) for blocks in groups) * block_size
++        external_tokens = max(0, source_tokens - local_tokens)
++        total_computed_tokens = local_tokens + external_tokens
++        computed_tokens = min(total_computed_tokens, self.max_model_len)
++        num_new_tokens = max(0, prompt_tokens - total_computed_tokens)
++        num_tokens_main_model = min(
++            computed_tokens + num_new_tokens, self.max_model_len
++        )
++        shadow_request_id = f"slackkv-shadow-{rca.get('selection_id', 'unknown')}"
++        coordinator = self.kv_cache_manager.coordinator
++        step_required = coordinator.get_num_blocks_to_allocate(
++            request_id=shadow_request_id,
++            num_tokens=num_tokens_main_model,
++            new_computed_blocks=tuple(groups),
++            num_encoder_tokens=0,
++            total_computed_tokens=total_computed_tokens,
++            num_tokens_main_model=num_tokens_main_model,
++        )
++        pool_free = int(self.kv_cache_manager.block_pool.get_num_free_blocks())
++        inflight_reserved = int(self._inflight_prefill_reserved_blocks())
++        step_available = pool_free - inflight_reserved
++        full_sequence_tokens = min(full_sequence_tokens, self.max_model_len)
++        full_required = coordinator.get_num_blocks_to_allocate(
++            request_id=shadow_request_id + "-full",
++            num_tokens=full_sequence_tokens,
++            new_computed_blocks=tuple(groups),
++            num_encoder_tokens=0,
++            total_computed_tokens=computed_tokens,
++            num_tokens_main_model=full_sequence_tokens,
++            apply_admission_cap=True,
++        )
++        full_fit = full_required <= pool_free
++        full_gate_required = self.scheduler_reserve_full_isl
++        return {
++            "available": True,
++            "allocator_required_blocks": int(step_required),
++            "allocator_available_blocks": step_available,
++            "pool_free_blocks": pool_free,
++            "inflight_reserved_blocks": inflight_reserved,
++            "allocator_fit": int(step_required) <= step_available and (full_fit if full_gate_required else True),
++            "full_sequence_required_blocks": int(full_required),
++            "full_sequence_available_blocks": pool_free,
++            "full_sequence_fit": full_fit,
++            "full_sequence_must_fit": full_gate_required,
++            "step_num_new_tokens": int(num_new_tokens),
++            "step_num_new_computed_tokens": int(local_tokens),
++            "step_num_external_computed_tokens": int(external_tokens),
++            "step_num_computed_tokens": int(total_computed_tokens),
++            "step_num_lookahead_tokens": 0,
++            "step_num_tokens": int(num_tokens_main_model),
++            "full_sequence_num_tokens": int(full_sequence_tokens),
++            "watermark_blocks": 0,
++            "num_new_tokens": int(num_new_tokens),
++            "num_new_local_computed_tokens": local_tokens,
++            "num_external_computed_tokens": external_tokens,
++            "num_computed_tokens": total_computed_tokens,
++            "num_lookahead_tokens": 0,
++            "progress_tokens": prompt_tokens,
++            "local_cached_blocks": int(source_state.get("local_cached_blocks", 0)),
++            "local_prefix_blocks": sum(len(blocks) for blocks in groups),
++            "external_ready_blocks": int(source_state.get("external_ready_blocks", 0)),
++            "external_ready_needed_blocks": int(source_state.get("external_ready_needed_blocks", 0)),
++            "preflight_cpu_ns": max(0, time.thread_time_ns() - cpu_started_ns),
++        }
++
++    def _slackkv_capacity_trace(
++        self,
++        request: Request,
++        required_blocks: int | None,
++        free_blocks: int,
++        decision: str,
++        *,
++        reason: str | None = None,
++        progress_info: dict[str, Any] | None = None,
++        trace_event: str = "CAPACITY_GUARD",
++    ) -> dict[str, Any]:
++        trace_cpu_started_ns = time.thread_time_ns()
++        pool = self.kv_cache_manager.block_pool
++        total_blocks = pool.num_gpu_blocks
++        running_blocks = self._slackkv_capacity_owned_block_ids(self.running)
++        waiting_requests = {
++            item.request_id: item
++            for queue in (self.waiting, self.skipped_waiting)
++            for item in queue
++        }
++        waiting_blocks = self._slackkv_capacity_owned_block_ids(
++            waiting_requests.values()
++        )
++        lease_blocks = {
++            block.block_id
++            for blocks in self._slackkv_residency_leases.values()
++            for block in blocks
++            if not block.is_null
++        }
++        event = {
++            "event": trace_event,
++            "timestamp_monotonic": time.monotonic(),
++            "request_id": request.request_id,
++            "lease_key": _slackkv_residency_lease_key(request),
++            "required_blocks": required_blocks,
++            "total_blocks": total_blocks,
++            "free_blocks_before": free_blocks,
++            "used_blocks_before": total_blocks - free_blocks,
++            "running_unique_blocks": len(running_blocks),
++            "waiting_unique_blocks": len(waiting_blocks),
++            "lease_unique_blocks": len(lease_blocks),
++            "active_lease_count": len(self._slackkv_residency_leases),
++            "active_lease_unique_blocks": len(lease_blocks),
++            "decision": decision,
++            "reason": reason,
++            "num_running": len(self.running),
++            "num_waiting": len(self.waiting) + len(self.skipped_waiting),
++        }
++        event.update(progress_info or {"progress_guard": False})
++        rca = (request.kv_transfer_params or {}).get("slackkv_rca")
++        if isinstance(rca, dict):
++            candidate_id = str(rca.get("candidate_id", ""))
++            protected_id = str(rca.get("protected_id", ""))
++            candidate_state = self._slackkv_rca_source_state(candidate_id)
++            protected_state = self._slackkv_rca_source_state(protected_id)
++            candidate_shadow = self._slackkv_rca_allocator_preflight(
++                candidate_state, rca,
++                prompt_tokens=int(rca.get("candidate_prefetch_tokens", 0)),
++                full_sequence_tokens=int(rca.get("candidate_prefetch_tokens", 0)),
++                source_tokens=int(rca.get("candidate_source_tokens", 0)),
++            ) if candidate_state.get("source_fully_ready") else {
++                "available": False, "reason": "CANDIDATE_SOURCE_NOT_FULL_READY"
++            }
++            protected_shadow = self._slackkv_rca_allocator_preflight(
++                protected_state, rca,
++                prompt_tokens=int(rca.get("protected_isl", 0)),
++                full_sequence_tokens=int(rca.get("protected_full_sequence_tokens", 0)),
++                source_tokens=int(rca.get("protected_source_tokens", 0)),
++            ) if protected_state.get("source_fully_ready") else {
++                "available": False, "reason": "PROTECTED_SOURCE_NOT_FULL_READY"
++            }
++            protected_local_ids = set(int(x) for x in protected_state.get("local_block_ids", []))
++            protected_refcounts = {
++                int(key): int(value)
++                for key, value in protected_state.get("local_block_ref_counts", {}).items()
++            }
++            running_ids = self._slackkv_capacity_owned_block_ids(self.running)
++            waiting_ids = self._slackkv_capacity_owned_block_ids(
++                item for queue in (self.waiting, self.skipped_waiting) for item in queue
++            )
++            leased_ids = {
++                int(block.block_id)
++                for blocks in self._slackkv_residency_leases.values()
++                for block in blocks if not block.is_null
++            }
++            protected_owned = protected_local_ids & (running_ids | waiting_ids)
++            protected_running = protected_local_ids & running_ids
++            protected_waiting = protected_local_ids & waiting_ids
++            protected_leased = protected_local_ids & leased_ids
++            protected_evictable = {
++                block_id for block_id, ref_count in protected_refcounts.items()
++                if ref_count == 0 and block_id not in protected_leased
++            }
++            protected_other_refcounted = {
++                block_id for block_id, ref_count in protected_refcounts.items()
++                if ref_count > 0 and block_id not in protected_owned and block_id not in protected_leased
++            }
++            event.update({
++                "selection_id": rca.get("selection_id"),
++                "selection_timestamp_ns": rca.get("selection_timestamp_ns"),
++                "selection_snapshot_timestamp_ns": rca.get(
++                    "selection_snapshot_timestamp_ns"
++                ),
++                "selection_snapshot_to_attempt_ms": (
++                    (int(event.get("timestamp_monotonic", time.monotonic()) * 1e9)
++                     - int(rca.get("selection_snapshot_timestamp_ns", 0))) / 1e6
++                    if int(rca.get("selection_snapshot_timestamp_ns", 0)) > 0 else None
++                ),
++                "candidate_id": candidate_id,
++                "protected_id": protected_id,
++                "candidate_matches_protected": candidate_id == protected_id,
++                "selection_to_scheduler_ms": (
++                    (int(event.get("timestamp_monotonic", time.monotonic()) * 1e9)
++                     - int(rca.get("selection_timestamp_ns", 0))) / 1e6
++                    if int(rca.get("selection_timestamp_ns", 0)) > 0 else None
++                ),
++                "logical_reserved_blocks_at_selection": rca.get(
++                    "ledger_reserved_blocks_at_selection"
++                ),
++                "logical_reserved_blocks_at_attempt": rca.get(
++                    "ledger_reserved_blocks_at_attempt"
++                ),
++                "candidate_controller_visible_ready": rca.get("candidate_controller_visible_ready"),
++                "protected_controller_visible_ready": rca.get("protected_controller_visible_ready"),
++                "candidate_source_exact": {k: v for k, v in candidate_state.items() if not k.startswith("_")},
++                "protected_source_exact": {k: v for k, v in protected_state.items() if not k.startswith("_")},
++                "candidate_allocator_preflight": candidate_shadow,
++                "protected_self_allocator_preflight": protected_shadow,
++                "protected_local_ownership": {
++                    "owned_by_running_or_waiting": len(protected_owned),
++                    "owned_by_running_request": len(protected_running),
++                    "owned_by_waiting_request": len(protected_waiting),
++                    "leased": len(protected_leased),
++                    "current_protected_lease_blocks": len({
++                        int(block.block_id)
++                        for block in self._slackkv_residency_leases.get(
++                            str(rca.get("protected_lease_key", "")), []
++                        )
++                        if not block.is_null and int(block.block_id) in protected_local_ids
++                    }),
++                    "cached_but_free_evictable": len(protected_evictable),
++                    "other_refcounted": len(protected_other_refcounted),
++                    "local_block_ids": sorted(protected_local_ids),
++                },
++                "source_probe_cpu_ns": int(candidate_state.get("read_cpu_ns", 0))
++                    + int(protected_state.get("read_cpu_ns", 0)),
++                "allocator_shadow_cpu_ns": int(candidate_shadow.get("preflight_cpu_ns", 0))
++                    + int(protected_shadow.get("preflight_cpu_ns", 0)),
++                "protected_progress_blocks": rca.get("protected_progress_blocks"),
++                "protected_full_blocks": rca.get("protected_full_blocks"),
++                "psa1_reserve_blocks": rca.get("psa1_reserve_blocks"),
++            })
++        event["capacity_trace_cpu_ns"] = max(0, time.thread_time_ns() - trace_cpu_started_ns)
++        marker = ("SLACKKV_SELECTION_SNAPSHOT" if trace_event == "SELECTION_SNAPSHOT"
++                  else "SLACKKV_CAPACITY_TRACE")
++        logger.info("%s %s", marker, json.dumps(event, sort_keys=True))
++        return event
++
++    def _slackkv_preflight_rca_snapshots(self) -> None:
++        """Answer explicitly requested read-only selection snapshots before allocation."""
++        seen: set[str] = set()
++        for request_queue in (self.waiting, self.skipped_waiting):
++            for request in list(request_queue):
++                params = request.kv_transfer_params or {}
++                if (request.request_id in seen
++                        or params.get("slackkv_rca_snapshot_only") is not True):
++                    continue
++                seen.add(request.request_id)
++                free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                snapshot = self._slackkv_capacity_trace(
++                    request, None, free, "SNAPSHOT_ONLY",
++                    reason="CONTROLLER_SELECTION", trace_event="SELECTION_SNAPSHOT",
++                )
++                params["slackkv_prefetch"] = {
++                    "status": "snapshot",
++                    "snapshot": snapshot,
++                }
++                self._slackkv_finish_capacity_guard_request(
++                    request,
++                    request_queue,
++                    status="snapshot",
++                    reason="READ_ONLY_SELECTION_SNAPSHOT",
++                    required_blocks=None,
++                    free_blocks=free,
++                )
++
++    def _slackkv_finish_capacity_guard_request(
++        self,
++        request: Request,
++        request_queue: RequestQueue,
++        *,
++        status: str,
++        reason: str,
++        required_blocks: int | None,
++        free_blocks: int,
++    ) -> None:
++        request_id = request.request_id
++        request_queue.remove_request(request)
++        self._slackkv_connector_first.pop(request_id, None)
++        self._inflight_prefills.discard(request)
++        request.status = RequestStatus.FINISHED_STOPPED
++        connector_delay_free_blocks, connector_params = self._connector_finished(request)
++        if connector_delay_free_blocks:
++            raise AssertionError("capacity rejection unexpectedly started a connector store")
++        kv_params = _slackkv_capacity_finished_params(
++            request.kv_transfer_params,
++            connector_params,
++            status=status,
++            reason=reason,
++            required_blocks=required_blocks,
++            free_blocks=free_blocks,
++            total_blocks=self.kv_cache_manager.block_pool.num_gpu_blocks,
++        )
++        self.finished_req_ids.add(request_id)
++        if self.finished_req_ids_dict is not None:
++            self.finished_req_ids_dict[request.client_index].add(request_id)
++        self.encoder_cache_manager.free(request)
++        self._free_blocks(request)
++        self._slackkv_prefetch_finished[request_id] = (
++            request.client_index,
++            kv_params,
++            request.take_events(),
++            request.trace_headers,
++        )
++
++    def _slackkv_preflight_capacity_guards(self) -> None:
++        """Reject impossible guarded loads before connector-first work starts."""
++        seen: set[str] = set()
++        for request_queue in (self.waiting, self.skipped_waiting):
++            for request in list(request_queue):
++                if request.request_id in seen or not _is_slackkv_capacity_guarded(
++                    request
++                ):
++                    continue
++                if (
++                    request.status == RequestStatus.WAITING_FOR_REMOTE_KVS
++                    or request in self._inflight_prefills
++                ):
++                    continue
++                seen.add(request.request_id)
++                try:
++                    required = self._slackkv_capacity_required_blocks(request)
++                    free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                    decision, progress_info = self._slackkv_guard_decision(
++                        request, required, free
++                    )
++                except ValueError as exc:
++                    free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                    self._slackkv_capacity_trace(
++                        request, None, free, "INVALID", reason=str(exc)
++                    )
++                    self._slackkv_finish_capacity_guard_request(
++                        request,
++                        request_queue,
++                        status="invalid_capacity_guard_request",
++                        reason=str(exc),
++                        required_blocks=None,
++                        free_blocks=free,
++                    )
++                    continue
++                if decision != "ADMIT":
++                    self._slackkv_capacity_trace(
++                        request, required, free, decision,
++                        progress_info=progress_info,
++                    )
++                    self._slackkv_finish_capacity_guard_request(
++                        request,
++                        request_queue,
++                        status=("progress_rejected" if decision == "PROGRESS_REJECT"
++                                else "capacity_rejected"),
++                        reason=("INSUFFICIENT_PROGRESS_HEADROOM"
++                                if decision == "PROGRESS_REJECT"
++                                else "INSUFFICIENT_FREE_BLOCKS"),
++                        required_blocks=required,
++                        free_blocks=free,
++                    )
++
+     def schedule(self) -> SchedulerOutput:
++        self.slackkv_probe_source_readiness()
+         self.current_step += 1
++        self._slackkv_scheduler_step_id += 1
++        self._slackkv_preflight_rca_snapshots()
++        self._slackkv_preflight_capacity_guards()
+         # NOTE(woosuk) on the scheduling algorithm:
+         # There's no "decoding phase" nor "prefill phase" in the scheduler.
+         # Each request just has the num_computed_tokens and
+@@ -371,11 +1037,46 @@ class Scheduler(SchedulerInterface):
+         # For logging.
+         scheduled_timestamp = time.monotonic()
+ 
++        # Research-only connector-first pass. A queued or in-flight native
++        # prefetch gets an entire engine step for starting/polling its
++        # connector load. Ordinary model work is deferred until a later step.
++        # A model step that was already submitted cannot be preempted.
++        slackkv_connector_req_ids = _slackkv_connector_first_request_ids(
++            self.waiting, self.skipped_waiting
++        )
++        slackkv_connector_first = bool(slackkv_connector_req_ids)
++        if slackkv_connector_first:
++            connector_start = time.monotonic()
++            for request_id in slackkv_connector_req_ids:
++                request = self.requests.get(request_id)
++                if request is not None:
++                    phase3m = (request.kv_transfer_params or {}).setdefault("slackkv_phase3m", {})
++                    phase3m.setdefault("T2", connector_start)
++                    phase3m.setdefault("T3", connector_start)
++            delayed_normal_req_ids = {
++                request.request_id
++                for request in itertools.chain(
++                    self.running, self.waiting, self.skipped_waiting
++                )
++                if not _is_slackkv_prefetch_only(request)
++                and not request.is_finished()
++            }
++            for request_id in slackkv_connector_req_ids:
++                state = self._slackkv_connector_first.setdefault(
++                    request_id,
++                    _SlackKVConnectorFirstState(started_s=scheduled_timestamp),
++                )
++                state.record_step(delayed_normal_req_ids)
++
+         self.kv_cache_manager.new_step_starts()
+ 
+         # First, schedule the RUNNING requests.
+         req_index = 0
+-        while req_index < len(self.running) and token_budget > 0:
++        while (
++            req_index < len(self.running)
++            and token_budget > 0
++            and not slackkv_connector_first
++        ):
+             request = self.running[req_index]
+ 
+             if (
+@@ -564,7 +1265,10 @@ class Scheduler(SchedulerInterface):
+             step_skipped_waiting = create_request_queue(self.policy)
+ 
+             while (self.waiting or self.skipped_waiting) and token_budget > 0:
+-                if len(self.running) == self.max_num_running_reqs:
++                if (
++                    len(self.running) == self.max_num_running_reqs
++                    and not slackkv_connector_first
++                ):
+                     break
+ 
+                 request_queue = self._select_waiting_queue_for_scheduling()
+@@ -573,19 +1277,47 @@ class Scheduler(SchedulerInterface):
+                 request = request_queue.peek_request()
+                 request_id = request.request_id
+ 
+-                # try to promote blocked statuses while traversing skipped queue.
+-                if self._is_blocked_waiting_status(
+-                    request.status
+-                ) and not self._try_promote_blocked_waiting_request(request):
+-                    if request.status == RequestStatus.WAITING_FOR_REMOTE_KVS:
+-                        logger.debug(
+-                            "%s is still in WAITING_FOR_REMOTE_KVS state.",
+-                            request_id,
+-                        )
++                if (
++                    slackkv_connector_first
++                    and not _is_slackkv_prefetch_only(request)
++                ):
+                     request_queue.pop_request()
+                     step_skipped_waiting.prepend_request(request)
+                     continue
+ 
++                # try to promote blocked statuses while traversing skipped queue.
++                if self._is_blocked_waiting_status(request.status):
++                    if not self._try_promote_blocked_waiting_request(request):
++                        if request.status == RequestStatus.WAITING_FOR_REMOTE_KVS:
++                            logger.debug(
++                                "%s is still in WAITING_FOR_REMOTE_KVS state.",
++                                request_id,
++                            )
++                        request_queue.pop_request()
++                        step_skipped_waiting.prepend_request(request)
++                        continue
++                    if request.is_finished():
++                        request_queue.pop_request()
++                        continue
++
++                if (
++                    _is_slackkv_first_token_gate(request)
++                    and request.num_output_tokens == 0
++                ):
++                    has_capacity, gate_limit = _slackkv_first_token_gate_can_admit(
++                        self._slackkv_ft_gate_owners,
++                        self._slackkv_ft_gate_limit,
++                        request,
++                    )
++                    if self._slackkv_ft_gate_limit is None:
++                        self._slackkv_ft_gate_limit = gate_limit
++                    if not has_capacity:
++                        request_queue.pop_request()
++                        step_skipped_waiting.prepend_request(request)
++                        self._slackkv_ft_blocked_steps[request.request_id] += 1
++                        self._slackkv_trace(request, "GATE_BLOCKED")
++                        continue
++
+                 # Check that adding the request still respects the max_loras
+                 # constraint.
+                 if (
+@@ -750,6 +1482,55 @@ class Scheduler(SchedulerInterface):
+                         for i in encoder_inputs_to_schedule
+                     )
+ 
++                if (
++                    _is_slackkv_capacity_guarded(request)
++                    and request.status != RequestStatus.WAITING_FOR_REMOTE_KVS
++                    and request not in self._inflight_prefills
++                ):
++                    try:
++                        required_capacity_blocks = self._slackkv_capacity_required_blocks(
++                            request
++                        )
++                        free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                        capacity_decision, progress_info = self._slackkv_guard_decision(
++                            request, required_capacity_blocks, free
++                        )
++                    except ValueError as exc:
++                        free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                        self._slackkv_capacity_trace(
++                            request, None, free, "INVALID", reason=str(exc)
++                        )
++                        self._slackkv_finish_capacity_guard_request(
++                            request,
++                            request_queue,
++                            status="invalid_capacity_guard_request",
++                            reason=str(exc),
++                            required_blocks=None,
++                            free_blocks=free,
++                        )
++                        continue
++                    if capacity_decision != "ADMIT":
++                        self._slackkv_capacity_trace(
++                            request, required_capacity_blocks, free,
++                            capacity_decision, progress_info=progress_info,
++                        )
++                        self._slackkv_finish_capacity_guard_request(
++                            request,
++                            request_queue,
++                            status=("progress_rejected"
++                                    if capacity_decision == "PROGRESS_REJECT"
++                                    else "capacity_rejected"),
++                            reason=("INSUFFICIENT_PROGRESS_HEADROOM"
++                                    if capacity_decision == "PROGRESS_REJECT"
++                                    else "INSUFFICIENT_FREE_BLOCKS"),
++                            required_blocks=required_capacity_blocks,
++                            free_blocks=free,
++                        )
++                        continue
++                    self._slackkv_capacity_trace(
++                        request, required_capacity_blocks, free, "ADMIT",
++                        progress_info=progress_info,
++                    )
+                 reserved_blocks = 0
+                 if load_kv_async:
+                     # An async load holds its blocks for the whole transfer with
+@@ -758,6 +1539,21 @@ class Scheduler(SchedulerInterface):
+                     # avoid deadlock and predictable preemptions.
+                     reserved_blocks = self._inflight_prefill_reserved_blocks()
+ 
++                if (
++                    _is_slackkv_trace_resume(request)
++                    and request_id not in self._slackkv_waiting_attempt_seen
++                ):
++                    self._slackkv_waiting_attempt_seen.add(request_id)
++                    self._slackkv_waiting_trace(
++                        request,
++                        "WAITING_ATTEMPT",
++                        free_blocks=self.kv_cache_manager.block_pool.get_num_free_blocks(),
++                        num_new_local_computed_tokens=num_new_local_computed_tokens,
++                        num_external_computed_tokens=num_external_computed_tokens,
++                        num_computed_tokens=num_computed_tokens,
++                        num_new_tokens=num_new_tokens,
++                    )
++
+                 new_blocks = self.kv_cache_manager.allocate_slots(
+                     request,
+                     num_new_tokens,
+@@ -773,6 +1569,49 @@ class Scheduler(SchedulerInterface):
+ 
+                 if new_blocks is None:
+                     # The request cannot be scheduled.
++                    if _slackkv_reject_blocked_native_prefetch(request):
++                        # A connector-first prefetch cannot wait for ordinary
++                        # prefills to release their reserved blocks: this pass
++                        # deliberately pauses those prefills. Fall back to the
++                        # real resume before any connector load or lease begins.
++                        free = self.kv_cache_manager.block_pool.get_num_free_blocks()
++                        logger.info("SLACKKV_PREFETCH_ALLOC_TRACE %s", json.dumps({
++                            "event": "ALLOCATION_REJECT",
++                            "timestamp_monotonic": time.monotonic(),
++                            "request_id": request_id,
++                            "free_blocks": free,
++                            "inflight_reserved_blocks": reserved_blocks,
++                            "schedulable_blocks": free - reserved_blocks,
++                            "local_tokens": num_new_local_computed_tokens,
++                            "external_tokens": num_external_computed_tokens,
++                            "new_tokens": num_new_tokens,
++                            "load_kv_async": load_kv_async,
++                        }, separators=(",", ":")))
++                        self._slackkv_finish_capacity_guard_request(
++                            request, request_queue,
++                            status="capacity_rejected",
++                            reason="INSUFFICIENT_SCHEDULABLE_BLOCKS",
++                            required_blocks=self._slackkv_capacity_required_blocks(request),
++                            free_blocks=free,
++                        )
++                        continue
++                    if _is_slackkv_trace_resume(request):
++                        self._slackkv_waiting_allocate_none_count[request_id] += 1
++                        blocked_count = self._slackkv_waiting_allocate_none_count[
++                            request_id
++                        ]
++                        if blocked_count & (blocked_count - 1) == 0:
++                            self._slackkv_waiting_trace(
++                                request,
++                                "WAITING_ALLOCATE_NONE",
++                                free_blocks=self.kv_cache_manager.block_pool.get_num_free_blocks(),
++                                num_new_local_computed_tokens=num_new_local_computed_tokens,
++                                num_external_computed_tokens=num_external_computed_tokens,
++                                num_computed_tokens=num_computed_tokens,
++                                num_new_tokens=num_new_tokens,
++                                blocked_count=blocked_count,
++                                will_break_waiting_loop=True,
++                            )
+ 
+                     # NOTE: we need to untouch the request from the encode cache
+                     # manager
+@@ -780,6 +1619,26 @@ class Scheduler(SchedulerInterface):
+                         self.encoder_cache_manager.free(request)
+                     break
+ 
++                if _is_slackkv_trace_resume(request) and request.num_computed_tokens == 0:
++                    logger.info(
++                        "SLACKKV_SOURCE_TRACE %s",
++                        json.dumps({
++                            "timestamp_monotonic": time.monotonic(),
++                            "request_id": request.request_id,
++                            "session": _slackkv_session(request),
++                            "local_cached_tokens": num_new_local_computed_tokens,
++                            "external_cached_tokens": num_external_computed_tokens,
++                        }, separators=(",", ":")),
++                    )
++
++                lease_key = _slackkv_session(request)
++                if lease_key in self._slackkv_residency_leases:
++                    if load_kv_async or num_new_local_computed_tokens <= 0:
++                        raise AssertionError(
++                            "SlackKV leased resume did not acquire local prefix blocks"
++                        )
++                    self._slackkv_release_residency_lease(request, lease_key)
++
+                 # KVTransfer: the connector uses this info to determine
+                 # if a load is needed. Note that
+                 # This information is used to determine if a load is
+@@ -805,6 +1664,8 @@ class Scheduler(SchedulerInterface):
+                     # If loading async, allocate memory and put request
+                     # into the WAITING_FOR_REMOTE_KV state.
+                     request.status = RequestStatus.WAITING_FOR_REMOTE_KVS
++                    if _is_slackkv_trace_resume(request):
++                        self._slackkv_trace(request, "WAITING_FOR_REMOTE_KVS")
+                     step_skipped_waiting.prepend_request(request)
+                     # Set num_computed_tokens even though KVs are not yet loaded.
+                     # request.num_computed_tokens will not be used anywhere until
+@@ -843,6 +1704,23 @@ class Scheduler(SchedulerInterface):
+                 num_scheduled_tokens[request_id] = num_new_tokens
+                 token_budget -= num_new_tokens
+                 request.status = RequestStatus.RUNNING
++                if (
++                    _is_slackkv_first_token_gate(request)
++                    and request.num_output_tokens == 0
++                ):
++                    has_capacity, gate_limit = _slackkv_first_token_gate_can_admit(
++                        self._slackkv_ft_gate_owners,
++                        self._slackkv_ft_gate_limit,
++                        request,
++                    )
++                    if not has_capacity:
++                        raise AssertionError("SlackKV gate admitted without capacity")
++                    self._slackkv_ft_gate_owners.add(request.request_id)
++                    if len(self._slackkv_ft_gate_owners) > gate_limit:
++                        raise AssertionError("SlackKV first-token gate capacity exceeded")
++                    self._slackkv_trace(request, "RESUME_ADMITTED")
++                elif _is_slackkv_trace_resume(request):
++                    self._slackkv_trace(request, "RESUME_ADMITTED")
+                 request.num_computed_tokens = num_computed_tokens
+                 # Only track requests that will still be prefilling after this chunk.
+                 if num_computed_tokens + num_new_tokens < request.num_tokens:
+@@ -946,6 +1824,17 @@ class Scheduler(SchedulerInterface):
+             free_encoder_mm_hashes=self.encoder_cache_manager.get_freed_mm_hashes(),
+             new_block_ids_to_zero=new_block_ids_to_zero,
+         )
++        if slackkv_connector_first:
++            active_connector_req_ids = [
++                request_id
++                for request_id in slackkv_connector_req_ids
++                if request_id in self.requests
++                and request_id in self._slackkv_connector_first
++            ]
++            if active_connector_req_ids:
++                scheduler_output.slackkv_connector_only_step = True
++                scheduler_output.slackkv_connector_only_req_ids = active_connector_req_ids
++                _validate_slackkv_connector_first_output(scheduler_output)
+ 
+         # NOTE(Kuntai): this function is designed for multiple purposes:
+         # 1. Plan the KV cache store
+@@ -954,6 +1843,28 @@ class Scheduler(SchedulerInterface):
+         if self.connector is not None:
+             meta = self._build_kv_connector_meta(self.connector, scheduler_output)
+             scheduler_output.kv_connector_metadata = meta
++            load_jobs = getattr(meta, "load_jobs", {})
++            slackkv_req_ids = [
++                job.req_id
++                for job in load_jobs.values()
++                if (req := self.requests.get(job.req_id)) is not None
++                and _is_slackkv_prefetch_only(req)
++            ]
++            if slackkv_req_ids:
++                scheduler_output.slackkv_prefetch_req_ids = slackkv_req_ids
++                if scheduler_output.total_num_scheduled_tokens != 0:
++                    raise RuntimeError(
++                        "SlackKV native prefetch load shared a model-token step"
++                    )
++
++        pending_finished = [
++            req_id
++            for req_id in self._slackkv_prefetch_finished
++            if req_id not in self._slackkv_prefetch_finished_emitted
++        ]
++        if pending_finished:
++            scheduler_output.slackkv_prefetch_finished_req_ids = pending_finished
++            self._slackkv_prefetch_finished_emitted.update(pending_finished)
+ 
+         # Build the connector meta for ECConnector
+         if self.ec_connector is not None:
+@@ -964,6 +1875,16 @@ class Scheduler(SchedulerInterface):
+ 
+         with record_function_or_nullcontext("schedule: update_after_schedule"):
+             self._update_after_schedule(scheduler_output)
++        for req_id, num_tokens in num_scheduled_tokens.items():
++            request = self.requests.get(req_id)
++            if (
++                request is not None
++                and _is_slackkv_trace_resume(request)
++                and num_tokens > 0
++                and req_id not in self._slackkv_ft_first_model_seen
++            ):
++                self._slackkv_ft_first_model_seen.add(req_id)
++                self._slackkv_trace(request, "FIRST_MODEL_SCHEDULED")
+         return scheduler_output
+ 
+     def _build_kv_connector_meta(
+@@ -1345,6 +2266,21 @@ class Scheduler(SchedulerInterface):
+             perf_stats = self.perf_metrics.get_step_perf_stats_per_gpu(scheduler_output)
+ 
+         outputs: dict[int, list[EngineCoreOutput]] = defaultdict(list)
++        for req_id in scheduler_output.slackkv_prefetch_finished_req_ids or ():
++            client_index, kv_params, events, trace_headers = (
++                self._slackkv_prefetch_finished.pop(req_id)
++            )
++            self._slackkv_prefetch_finished_emitted.discard(req_id)
++            outputs[client_index].append(
++                EngineCoreOutput(
++                    request_id=req_id,
++                    new_token_ids=[],
++                    finish_reason=FinishReason.STOP,
++                    events=events,
++                    kv_transfer_params=kv_params,
++                    trace_headers=trace_headers,
++                )
++            )
+         spec_decoding_stats: SpecDecodingStats | None = None
+         kv_connector_stats: KVConnectorStats | None = (
+             kv_connector_output.kv_connector_stats if kv_connector_output else None
+@@ -1454,6 +2390,19 @@ class Scheduler(SchedulerInterface):
+                 new_token_ids, stopped = self._update_request_with_output(
+                     request, new_token_ids
+                 )
++                if (
++                    _is_slackkv_trace_resume(request)
++                    and num_output_tokens_before == 0
++                    and new_token_ids
++                ):
++                    self._slackkv_trace(request, "FIRST_TOKEN")
++                    if _is_slackkv_first_token_gate(request):
++                        if req_id not in self._slackkv_ft_gate_owners:
++                            raise AssertionError(
++                                "first token produced without gate ownership"
++                            )
++                        self._slackkv_ft_first_token_seen.add(req_id)
++                        self._slackkv_ft_gate_owners.remove(req_id)
+             elif request.pooling_params and pooler_output is not None:
+                 # Pooling stops as soon as there is output.
+                 request.status = RequestStatus.FINISHED_STOPPED
+@@ -1567,6 +2516,8 @@ class Scheduler(SchedulerInterface):
+                         num_nans_in_logits=request.num_nans_in_logits,
+                     )
+                 )
++            if stopped and _is_slackkv_trace_resume(request):
++                self._slackkv_trace(request, "REQUEST_FINISHED")
+             else:
+                 # Invariant: EngineCore returns no partial prefill outputs.
+                 assert not prompt_logprobs_tensors
+@@ -1798,6 +2749,176 @@ class Scheduler(SchedulerInterface):
+         """Returns (num_running_reqs, num_waiting_reqs)."""
+         return len(self.running), len(self.waiting) + len(self.skipped_waiting)
+ 
++    def _slackkv_waiting_trace(
++        self,
++        request: Request,
++        event: str,
++        *,
++        free_blocks: int,
++        num_new_local_computed_tokens: int,
++        num_external_computed_tokens: int,
++        num_computed_tokens: int,
++        num_new_tokens: int,
++        blocked_count: int = 0,
++        will_break_waiting_loop: bool = False,
++    ) -> None:
++        lease_blocks = {
++            block.block_id
++            for blocks in self._slackkv_residency_leases.values()
++            for block in blocks
++            if not block.is_null
++        }
++        logger.info(
++            "SLACKKV_WAITING_TRACE %s",
++            json.dumps(
++                {
++                    "event": event,
++                    "timestamp_monotonic": time.monotonic(),
++                    "step_id": self._slackkv_scheduler_step_id,
++                    "request_id": request.request_id,
++                    "session": _slackkv_session(request),
++                    "free_blocks": free_blocks,
++                    "matching_lease": (
++                        _slackkv_session(request) in self._slackkv_residency_leases
++                    ),
++                    "active_lease_count": len(self._slackkv_residency_leases),
++                    "active_lease_unique_blocks": len(lease_blocks),
++                    "num_running": len(self.running),
++                    "num_waiting": len(self.waiting) + len(self.skipped_waiting),
++                    "num_new_local_computed_tokens": num_new_local_computed_tokens,
++                    "num_external_computed_tokens": num_external_computed_tokens,
++                    "num_computed_tokens": num_computed_tokens,
++                    "num_new_tokens": num_new_tokens,
++                    "blocked_count": blocked_count,
++                    "will_break_waiting_loop": will_break_waiting_loop,
++                },
++                separators=(",", ":"),
++            ),
++        )
++
++    def _slackkv_trace(self, request: Request, event: str) -> None:
++        if not _is_slackkv_trace_resume(request):
++            return
++        params = request.kv_transfer_params or {}
++        waiting = len(self.waiting) + len(self.skipped_waiting)
++        logger.info(
++            "SLACKKV_RESUME_TRACE %s",
++            json.dumps(
++                {
++                    "timestamp_monotonic": time.monotonic(),
++                    "step_id": self._slackkv_scheduler_step_id,
++                    "request_id": request.request_id,
++                    "session": params.get("slackkv_session", "NA"),
++                    "gate_marked": bool(params.get("slackkv_first_token_gate")),
++                    "event": event,
++                    "request_status": request.status.name,
++                    "num_running": len(self.running),
++                    "num_waiting": waiting,
++                    "num_skipped_waiting": len(self.skipped_waiting),
++                    "gate_limit": self._slackkv_ft_gate_limit,
++                    "gate_owner_request_id": (
++                        next(iter(self._slackkv_ft_gate_owners))
++                        if len(self._slackkv_ft_gate_owners) == 1
++                        else None
++                    ),
++                    "gate_owner_request_ids": sorted(self._slackkv_ft_gate_owners),
++                    "num_slackkv_pre_first_token": len(
++                        self._slackkv_ft_gate_owners
++                    ),
++                    "num_scheduled_requests": 0,
++                    "total_num_scheduled_tokens": 0,
++                    "num_computed_tokens": request.num_computed_tokens,
++                    "num_output_tokens": len(request._output_token_ids),
++                },
++                separators=(",", ":"),
++            ),
++        )
++
++    def _slackkv_trace_residency_lease(
++        self,
++        event: str,
++        lease_key: str,
++        request_id: str,
++        blocks: list[Any],
++        *,
++        reason: str,
++        operation_cpu_us: float = 0.0,
++    ) -> None:
++        ref_cnts = [block.ref_cnt for block in blocks]
++        logger.info(
++            "SLACKKV_LEASE_TRACE %s",
++            json.dumps(
++                {
++                    "event": event,
++                    "lease_key": lease_key,
++                    "request_id": request_id,
++                    "timestamp_monotonic": time.monotonic(),
++                    "num_blocks": len(blocks),
++                    "min_ref_cnt": min(ref_cnts),
++                    "max_ref_cnt": max(ref_cnts),
++                    "reason": reason,
++                    "operation_cpu_us": operation_cpu_us,
++                    "active_lease_count": len(self._slackkv_residency_leases),
++                },
++                separators=(",", ":"),
++            ),
++        )
++
++    def _slackkv_acquire_residency_lease(
++        self, request: Request, lease_key: str
++    ) -> None:
++        if lease_key in self._slackkv_residency_leases:
++            raise AssertionError(f"duplicate SlackKV residency lease: {lease_key}")
++        blocks = _unique_slackkv_blocks(
++            self.kv_cache_manager.coordinator.get_blocks(request.request_id)
++        )
++        if not blocks:
++            raise AssertionError("cannot acquire an empty SlackKV residency lease")
++        started_ns = time.perf_counter_ns()
++        self.kv_cache_manager.block_pool.touch(blocks)
++        self._slackkv_residency_leases[lease_key] = blocks
++        operation_cpu_us = (time.perf_counter_ns() - started_ns) / 1000.0
++        self._slackkv_trace_residency_lease(
++            "LEASE_ACQUIRED",
++            lease_key,
++            request.request_id,
++            blocks,
++            reason="PREFETCH_LOAD_COMPLETE",
++            operation_cpu_us=operation_cpu_us,
++        )
++
++    def _slackkv_release_residency_lease(
++        self, request: Request, lease_key: str
++    ) -> None:
++        blocks = self._slackkv_residency_leases.get(lease_key)
++        if blocks is None:
++            raise AssertionError(f"release of unknown SlackKV residency lease: {lease_key}")
++        if not blocks:
++            raise AssertionError("cannot release an empty SlackKV residency lease")
++        if min(block.ref_cnt for block in blocks) < 2:
++            raise AssertionError("SlackKV lease release before real request ownership")
++        self._slackkv_trace_residency_lease(
++            "LEASE_RELEASE_READY",
++            lease_key,
++            request.request_id,
++            blocks,
++            reason="RESUME_ALLOCATED",
++        )
++        started_ns = time.perf_counter_ns()
++        self.kv_cache_manager.block_pool.free_blocks(blocks)
++        del self._slackkv_residency_leases[lease_key]
++        operation_cpu_us = (time.perf_counter_ns() - started_ns) / 1000.0
++        if min(block.ref_cnt for block in blocks) < 1:
++            raise AssertionError("SlackKV lease handoff lost real request ownership")
++        self._slackkv_trace_residency_lease(
++            "LEASE_RELEASED",
++            lease_key,
++            request.request_id,
++            blocks,
++            reason="RESUME_ALLOCATED",
++            operation_cpu_us=operation_cpu_us,
++        )
++
+     def add_request(self, request: Request) -> None:
+         existing = self.requests.get(request.request_id)
+         if existing is not None:
+@@ -1817,6 +2938,8 @@ class Scheduler(SchedulerInterface):
+                 request.streaming_queue = deque()
+             self._enqueue_waiting_request(request)
+             self.requests[request.request_id] = request
++            if _is_slackkv_trace_resume(request):
++                self._slackkv_trace(request, "RESUME_ARRIVED")
+             if self.connector is not None:
+                 self.connector.on_new_request(request)
+             if self.log_stats:
+@@ -1872,6 +2995,9 @@ class Scheduler(SchedulerInterface):
+ 
+         # Second pass: set status and free requests
+         for request in valid_requests:
++            if request.request_id in self._slackkv_ft_gate_owners:
++                self._slackkv_trace(request, "GATE_OWNER_ABORTED")
++                self._slackkv_ft_gate_owners.discard(request.request_id)
+             delay_free_blocks = False
+             if request.status == RequestStatus.WAITING_FOR_REMOTE_KVS:
+                 delay_free_blocks = (
+@@ -1890,6 +3016,9 @@ class Scheduler(SchedulerInterface):
+     ) -> dict[str, Any] | None:
+         assert request.is_finished()
+ 
++        # Gate lifetime ends with the request, even when KV freeing is delayed.
++        self._slackkv_ft_gate_owners.discard(request.request_id)
++        self._slackkv_ft_first_token_seen.discard(request.request_id)
+         self._inflight_prefills.discard(request)
+         connector_delay_free_blocks, kv_xfer_params = self._connector_finished(request)
+         self.encoder_cache_manager.free(request)
+@@ -2180,10 +3309,15 @@ class Scheduler(SchedulerInterface):
+ 
+             # on a full prompt hit, we need to re-compute the last token
+             # in order to be able to sample the next token
+-            if request.num_computed_tokens == request.num_tokens:
++            if (
++                request.num_computed_tokens == request.num_tokens
++                and not _is_slackkv_prefetch_only(request)
++            ):
+                 request.num_computed_tokens = request.num_tokens - 1
+ 
+         self.finished_recving_kv_req_ids.remove(request.request_id)
++        if _is_slackkv_trace_resume(request):
++            self._slackkv_trace(request, "REMOTE_KV_READY")
+ 
+     def _try_promote_blocked_waiting_request(self, request: Request) -> bool:
+         """
+@@ -2196,6 +3330,57 @@ class Scheduler(SchedulerInterface):
+             if request.request_id not in self.finished_recving_kv_req_ids:
+                 return False
+             self._update_waiting_for_remote_kv(request)
++            if _is_slackkv_prefetch_only(request):
++                phase3m = (request.kv_transfer_params or {}).setdefault("slackkv_phase3m", {})
++                phase3m.setdefault("T6", time.monotonic())
++                lease_key = _slackkv_residency_lease_key(request)
++                if lease_key is not None:
++                    self._slackkv_acquire_residency_lease(request, lease_key)
++                request.status = RequestStatus.FINISHED_STOPPED
++                kv_params = self._free_request(request)
++                if lease_key is not None:
++                    self._slackkv_trace_residency_lease(
++                        "LEASE_HELD_AFTER_PREFETCH_FREE",
++                        lease_key,
++                        request.request_id,
++                        self._slackkv_residency_leases[lease_key],
++                        reason="PREFETCH_REQUEST_FREED",
++                    )
++                state = self._slackkv_connector_first.pop(
++                    request.request_id, None
++                )
++                if state is None:
++                    raise RuntimeError(
++                        "SlackKV prefetch completed without connector-first state"
++                    )
++                assert kv_params is not None
++                result = kv_params.setdefault("slackkv_prefetch", {})
++                result.update(
++                    {
++                        "connector_only_step_count": state.step_count,
++                        "connector_only_wall_ms": (
++                            (time.monotonic() - state.started_s) * 1000.0
++                        ),
++                        "mixed_prefetch_model_step_count": 0,
++                        "normal_requests_delayed": len(
++                            state.delayed_normal_req_ids
++                        ),
++                        "phase3m_timestamps": phase3m,
++                    }
++                )
++                self._slackkv_prefetch_finished[request.request_id] = (
++                    request.client_index,
++                    kv_params,
++                    request.take_events(),
++                    request.trace_headers,
++                )
++                logger.info(
++                    "SLACKKV_NATIVE_PREFETCH_COMPLETE request_id=%s "
++                    "external_tokens=%d model_forward_count=0 generated_tokens=0",
++                    request.request_id,
++                    request.num_computed_tokens,
++                )
++                return True
+             if request.num_preemptions:
+                 request.status = RequestStatus.PREEMPTED
+             else:
+diff --git a/vllm/v1/engine/core.py b/vllm/v1/engine/core.py
+index 08c814a..011fa84 100644
+--- a/vllm/v1/engine/core.py
++++ b/vllm/v1/engine/core.py
+@@ -155,6 +155,7 @@ class EngineCore:
+             block_size=scheduler_block_size,
+             hash_block_size=hash_block_size,
+         )
++        self._slackkv_step_start_times: dict[int, float] = {}
+         self.use_spec_decode = vllm_config.speculative_config is not None
+         if self.scheduler.connector is not None:  # type: ignore
+             self.model_executor.init_kv_output_aggregator(self.scheduler.connector)  # type: ignore
+@@ -451,6 +452,7 @@ class EngineCore:
+         # or finished and not yet removed from the batch.
+         if not self.scheduler.has_requests():
+             return {}, False
++        step_start = time.monotonic()
+         scheduler_output = self.scheduler.schedule()
+         future = self.model_executor.execute_model(scheduler_output, non_block=True)
+         grammar_output = self.scheduler.get_grammar_bitmask(scheduler_output)
+@@ -468,6 +470,20 @@ class EngineCore:
+         engine_core_outputs = self.scheduler.update_from_output(
+             scheduler_output, model_output
+         )
++        step_end = time.monotonic()
++        if scheduler_output.total_num_scheduled_tokens > 0 and not scheduler_output.slackkv_connector_only_step:
++            logger.info(
++                "SLACKKV_NORMAL_STEP %s",
++                {
++                    "step_id": getattr(self.scheduler, "_slackkv_scheduler_step_id", -1),
++                    "step_start_monotonic": step_start,
++                    "step_end_monotonic": step_end,
++                    "step_wall_ms": (step_end - step_start) * 1000.0,
++                    "num_running_requests": len(self.scheduler.running),
++                    "num_scheduled_requests": len(scheduler_output.num_scheduled_tokens),
++                    "total_num_scheduled_tokens": scheduler_output.total_num_scheduled_tokens,
++                },
++            )
+ 
+         return engine_core_outputs, scheduler_output.total_num_scheduled_tokens > 0
+ 
+@@ -509,6 +525,7 @@ class EngineCore:
+         model_executed = False
+         deferred_scheduler_output = None
+         if self.scheduler.has_requests():
++            step_start = time.monotonic()
+             scheduler_output = self.scheduler.schedule()
+             with self.log_error_detail(scheduler_output):
+                 exec_future = self.model_executor.execute_model(
+@@ -536,6 +553,7 @@ class EngineCore:
+                     deferred_scheduler_output = scheduler_output
+ 
+             if not deferred_scheduler_output:
++                self._slackkv_step_start_times[id(scheduler_output)] = step_start
+                 # Add this step's future to the queue.
+                 batch_queue.appendleft((future, scheduler_output, exec_future))
+                 if len(batch_queue) < self.batch_queue_size and (
+@@ -570,6 +588,21 @@ class EngineCore:
+         engine_core_outputs = self.scheduler.update_from_output(
+             scheduler_output, model_output
+         )
++        step_end = time.monotonic()
++        step_start = self._slackkv_step_start_times.pop(id(scheduler_output), step_end)
++        if scheduler_output.total_num_scheduled_tokens > 0 and not scheduler_output.slackkv_connector_only_step:
++            logger.info(
++                "SLACKKV_NORMAL_STEP %s",
++                {
++                    "step_id": getattr(self.scheduler, "_slackkv_scheduler_step_id", -1),
++                    "step_start_monotonic": step_start,
++                    "step_end_monotonic": step_end,
++                    "step_wall_ms": (step_end - step_start) * 1000.0,
++                    "num_running_requests": len(self.scheduler.running),
++                    "num_scheduled_requests": len(scheduler_output.num_scheduled_tokens),
++                    "total_num_scheduled_tokens": scheduler_output.total_num_scheduled_tokens,
++                },
++            )
+ 
+         # NOTE(nick): We can either handle the deferred tasks here or save
+         # in a field and do it immediately once step_with_batch_queue is
+@@ -1245,10 +1278,21 @@ class EngineCoreProc(EngineCore):
+                     logger.debug("EngineCore waiting for work.")
+                     waited = True
+             block = self.process_input_queue_block
++            probe_delay_fn = getattr(self.scheduler, "slackkv_ready_probe_delay_s", None)
++            probe_delay = probe_delay_fn() if probe_delay_fn is not None else None
+             try:
+-                req = self.input_queue.get(block=block)
++                if block and probe_delay is not None:
++                    req = self.input_queue.get(block=True, timeout=probe_delay)
++                else:
++                    req = self.input_queue.get(block=block)
+                 self._handle_client_request(*req)
+             except queue.Empty:
++                if probe_delay is not None:
++                    probe_fn = getattr(self.scheduler, "slackkv_probe_source_readiness", None)
++                    if probe_fn is not None:
++                        probe_fn()
++                    if block:
++                        continue
+                 break
+             if not block:
+                 break
+diff --git a/vllm/v1/worker/gpu_model_runner.py b/vllm/v1/worker/gpu_model_runner.py
+index 801a857..767c426 100644
+--- a/vllm/v1/worker/gpu_model_runner.py
++++ b/vllm/v1/worker/gpu_model_runner.py
+@@ -3425,6 +3425,20 @@ class GPUModelRunner(
+         ECConnectorOutput | None,
+     ]:
+         num_scheduled_tokens = scheduler_output.total_num_scheduled_tokens
++        if scheduler_output.slackkv_prefetch_req_ids:
++            special_req_ids = set(scheduler_output.slackkv_prefetch_req_ids)
++            incorrectly_scheduled = special_req_ids.intersection(
++                scheduler_output.num_scheduled_tokens
++            )
++            if incorrectly_scheduled:
++                raise RuntimeError(
++                    "SlackKV prefetch-only requests attempted to schedule model "
++                    f"tokens: {sorted(incorrectly_scheduled)}"
++                )
++            if num_scheduled_tokens:
++                raise RuntimeError(
++                    "SlackKV native prefetch load shared a model-token step"
++                )
+         is_first_rank = get_pp_group().is_first_rank
+         is_encoder_decoder = self.model_config.is_encoder_decoder
+ 
+@@ -4039,6 +4053,15 @@ class GPUModelRunner(
+             get_kv_transfer_group().handle_preemptions(kv_connector_metadata)
+ 
+         num_scheduled_tokens = scheduler_output.total_num_scheduled_tokens
++        if scheduler_output.slackkv_connector_only_step:
++            if num_scheduled_tokens or scheduler_output.num_scheduled_tokens:
++                raise RuntimeError(
++                    "SlackKV connector-first microstep contained model tokens"
++                )
++            logger.info(
++                "SLACKKV_CONNECTOR_ONLY_STEP request_ids=%s normal_tokens=0",
++                scheduler_output.slackkv_connector_only_req_ids,
++            )
+         with (
+             record_function_or_nullcontext("gpu_model_runner: preprocess"),
+             self.synchronize_input_prep(),
+diff --git a/vllm/v1/worker/kv_connector_model_runner_mixin.py b/vllm/v1/worker/kv_connector_model_runner_mixin.py
+index 797e59c..4a1eb79 100644
+--- a/vllm/v1/worker/kv_connector_model_runner_mixin.py
++++ b/vllm/v1/worker/kv_connector_model_runner_mixin.py
+@@ -36,6 +36,31 @@ class KVConnectorModelRunnerMixin:
+     def kv_connector_no_forward(
+         scheduler_output: "SchedulerOutput", vllm_config: VllmConfig
+     ) -> ModelRunnerOutput:
++        if scheduler_output.slackkv_connector_only_step:
++            if (
++                scheduler_output.total_num_scheduled_tokens
++                or scheduler_output.num_scheduled_tokens
++            ):
++                raise RuntimeError(
++                    "SlackKV connector-only path received model tokens"
++                )
++            logger.info(
++                "SLACKKV_CONNECTOR_ONLY_NO_FORWARD request_ids=%s",
++                scheduler_output.slackkv_connector_only_req_ids,
++            )
++        metadata = scheduler_output.kv_connector_metadata
++        load_jobs = getattr(metadata, "load_jobs", {})
++        slackkv_req_ids = [
++            job.req_id
++            for job in load_jobs.values()
++            if getattr(job, "slackkv_prefetch_only", False)
++        ]
++        if slackkv_req_ids:
++            logger.info(
++                "SLACKKV_NATIVE_PREFETCH_NO_FORWARD request_ids=%s "
++                "model_forward_count=0",
++                slackkv_req_ids,
++            )
+         # KV send/recv even if no work to do.
+         with (
+             set_forward_context(None, vllm_config),

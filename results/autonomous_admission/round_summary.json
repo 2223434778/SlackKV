@@ -1,0 +1,437 @@
+{
+  "runs": [
+    {
+      "name": "default-execution",
+      "execution": {
+        "name": "default-execution",
+        "gate": 2,
+        "allocator_trace": false,
+        "backfill_limit": 0,
+        "execution_mode": "default",
+        "trace_interval_ms": 100,
+        "gpu_count": 1,
+        "max_seconds": 1800,
+        "source_sha": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+        "source_directory": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source",
+        "kv_bytes": 2147483648,
+        "bg_tokens": 8192,
+        "server_command": [
+          "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/vllm",
+          "serve",
+          "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+          "--dtype",
+          "float16",
+          "--tensor-parallel-size",
+          "1",
+          "--enable-prefix-caching",
+          "--kv-cache-memory-bytes",
+          "2147483648",
+          "--max-model-len",
+          "32768",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "8000",
+          "--kv-transfer-config",
+          "{\"kv_connector\":\"OffloadingConnector\",\"kv_role\":\"kv_both\",\"kv_connector_extra_config\":{\"block_size\":16,\"cpu_bytes_to_use\":8589934592}}"
+        ],
+        "started_unix": 1791538356.112536,
+        "status": "VALID",
+        "purpose": "pre-registered matched screen",
+        "allocator_sha256": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a",
+        "scheduler_sha256": "22d8c72a317dec18af2d0af193a7f8b9a06b3b3b9771e97fb75a8c5eeb2f1360",
+        "finished_unix": 1791538488.0502396,
+        "wall_seconds": 131.937019407982,
+        "gpu_hours_conservative": 0.03664917205777278
+      },
+      "observed_opportunity": {
+        "status": "OBSERVED",
+        "remote_wait_median_ms": 47.15633450541645,
+        "remote_wait_p95_ms": 195.5831260420382,
+        "fixed_path_remote_deletion_p95_improvement_percent": 0.8696169631589143,
+        "caveat": "fixed observed timeline subtraction; NOT a rescheduled causal upper bound"
+      }
+    },
+    {
+      "name": "default-repeat",
+      "execution": {
+        "name": "default-repeat",
+        "gate": 2,
+        "allocator_trace": false,
+        "backfill_limit": 0,
+        "execution_mode": "default",
+        "cold_oracle": true,
+        "trace_interval_ms": 100,
+        "gpu_count": 1,
+        "max_seconds": 1800,
+        "source_sha": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+        "source_directory": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source",
+        "kv_bytes": 2147483648,
+        "bg_tokens": 8192,
+        "server_command": [
+          "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/vllm",
+          "serve",
+          "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+          "--dtype",
+          "float16",
+          "--tensor-parallel-size",
+          "1",
+          "--enable-prefix-caching",
+          "--kv-cache-memory-bytes",
+          "2147483648",
+          "--max-model-len",
+          "32768",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "8000",
+          "--kv-transfer-config",
+          "{\"kv_connector\":\"OffloadingConnector\",\"kv_role\":\"kv_both\",\"kv_connector_extra_config\":{\"block_size\":16,\"cpu_bytes_to_use\":8589934592}}"
+        ],
+        "round_gpu_hours_before_run": 0.17830371832390987,
+        "runner_sha256": "0dcc8f4a82e952a31f020a8ffe0608abc7b3e8f3c92a93187321278acd9154e7",
+        "started_unix": 1791538695.9525583,
+        "status": "VALID",
+        "purpose": "pre-registered matched screen",
+        "allocator_sha256": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a",
+        "scheduler_sha256": "22d8c72a317dec18af2d0af193a7f8b9a06b3b3b9771e97fb75a8c5eeb2f1360",
+        "finished_unix": 1791538812.7917619,
+        "wall_seconds": 116.83851530193351,
+        "gpu_hours_conservative": 0.032455143139425977
+      },
+      "observed_opportunity": {
+        "status": "OBSERVED",
+        "remote_wait_median_ms": 48.89558465220034,
+        "remote_wait_p95_ms": 94.63498089462519,
+        "fixed_path_remote_deletion_p95_improvement_percent": 1.0509380854196284,
+        "caveat": "fixed observed timeline subtraction; NOT a rescheduled causal upper bound"
+      }
+    },
+    {
+      "name": "diagnostic-k2",
+      "execution": {
+        "name": "diagnostic-k2",
+        "gate": 2,
+        "allocator_trace": true,
+        "trace_interval_ms": 100,
+        "gpu_count": 1,
+        "max_seconds": 1800,
+        "source_sha": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+        "source_directory": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source",
+        "kv_bytes": 2147483648,
+        "bg_tokens": 8192,
+        "started_unix": 1791537141.4757254,
+        "status": "VALID",
+        "purpose": "diagnosis; no performance claim from instrumented run",
+        "allocator_sha256": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a",
+        "finished_unix": 1791537310.999469,
+        "wall_seconds": 169.52342618303373,
+        "gpu_hours_conservative": 0.04708984060639826
+      },
+      "observed_opportunity": {
+        "status": "OBSERVED",
+        "remote_wait_median_ms": 60.65803300589323,
+        "remote_wait_p95_ms": 91.84667305089533,
+        "fixed_path_remote_deletion_p95_improvement_percent": 0.914761918437749,
+        "caveat": "fixed observed timeline subtraction; NOT a rescheduled causal upper bound"
+      }
+    },
+    {
+      "name": "eager-repeat",
+      "execution": {
+        "name": "eager-repeat",
+        "gate": 2,
+        "allocator_trace": false,
+        "backfill_limit": 0,
+        "execution_mode": "eager",
+        "cold_oracle": true,
+        "trace_interval_ms": 100,
+        "gpu_count": 1,
+        "max_seconds": 1800,
+        "source_sha": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+        "source_directory": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source",
+        "kv_bytes": 2147483648,
+        "bg_tokens": 8192,
+        "server_command": [
+          "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/vllm",
+          "serve",
+          "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+          "--dtype",
+          "float16",
+          "--tensor-parallel-size",
+          "1",
+          "--enable-prefix-caching",
+          "--kv-cache-memory-bytes",
+          "2147483648",
+          "--max-model-len",
+          "32768",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "8000",
+          "--enforce-eager",
+          "--kv-transfer-config",
+          "{\"kv_connector\":\"OffloadingConnector\",\"kv_role\":\"kv_both\",\"kv_connector_extra_config\":{\"block_size\":16,\"cpu_bytes_to_use\":8589934592}}"
+        ],
+        "round_gpu_hours_before_run": 0.21075886146333586,
+        "runner_sha256": "f8b2afa4104ebc5701b7a7d644fb1ab9147e329adafde0915dbdd29bda831344",
+        "started_unix": 1791539030.0200315,
+        "status": "VALID",
+        "purpose": "pre-registered matched screen",
+        "allocator_sha256": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a",
+        "scheduler_sha256": "22d8c72a317dec18af2d0af193a7f8b9a06b3b3b9771e97fb75a8c5eeb2f1360",
+        "finished_unix": 1791539215.2978306,
+        "wall_seconds": 185.2771517180372,
+        "gpu_hours_conservative": 0.05146587547723255
+      },
+      "observed_opportunity": {
+        "status": "OBSERVED",
+        "remote_wait_median_ms": 61.45647005178034,
+        "remote_wait_p95_ms": 92.88477501831949,
+        "fixed_path_remote_deletion_p95_improvement_percent": 1.249355632337272,
+        "caveat": "fixed observed timeline subtraction; NOT a rescheduled causal upper bound"
+      }
+    },
+    {
+      "name": "full-default",
+      "execution": {
+        "name": "full-default",
+        "gate": 2,
+        "allocator_trace": false,
+        "backfill_limit": 0,
+        "execution_mode": "default",
+        "cold_oracle": false,
+        "batch_invariant": false,
+        "policy": "D",
+        "trace_interval_ms": 100,
+        "gpu_count": 1,
+        "max_seconds": 1800,
+        "source_sha": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+        "source_directory": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source",
+        "kv_bytes": 2147483648,
+        "bg_tokens": 8192,
+        "server_command": [
+          "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/vllm",
+          "serve",
+          "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+          "--dtype",
+          "float16",
+          "--tensor-parallel-size",
+          "1",
+          "--enable-prefix-caching",
+          "--kv-cache-memory-bytes",
+          "2147483648",
+          "--max-model-len",
+          "32768",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "8000",
+          "--kv-transfer-config",
+          "{\"kv_connector\":\"OffloadingConnector\",\"kv_role\":\"kv_both\",\"kv_connector_extra_config\":{\"block_size\":16,\"cpu_bytes_to_use\":8589934592}}"
+        ],
+        "round_gpu_hours_before_run": 0.3703759938994578,
+        "runner_sha256": "54306759fda89bdb3a9d1d72826db5e8c36ea96ac962ba913fb8e3646a621820",
+        "started_unix": 1791539782.849538,
+        "status": "VALID",
+        "purpose": "pre-registered matched screen",
+        "allocator_sha256": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a",
+        "scheduler_sha256": "22d8c72a317dec18af2d0af193a7f8b9a06b3b3b9771e97fb75a8c5eeb2f1360",
+        "finished_unix": 1791539890.674832,
+        "wall_seconds": 107.82458953000605,
+        "gpu_hours_conservative": 0.029951274869446126
+      },
+      "observed_opportunity": {
+        "status": "OBSERVED",
+        "remote_wait_median_ms": 51.40633450355381,
+        "remote_wait_p95_ms": 73.91936215572059,
+        "fixed_path_remote_deletion_p95_improvement_percent": 0.7705990148910739,
+        "caveat": "fixed observed timeline subtraction; NOT a rescheduled causal upper bound"
+      }
+    },
+    {
+      "name": "invariant-validation",
+      "execution": {
+        "name": "invariant-validation",
+        "gate": 2,
+        "allocator_trace": false,
+        "backfill_limit": 0,
+        "execution_mode": "default",
+        "cold_oracle": true,
+        "batch_invariant": true,
+        "trace_interval_ms": 100,
+        "gpu_count": 1,
+        "max_seconds": 1800,
+        "source_sha": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+        "source_directory": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source",
+        "kv_bytes": 2147483648,
+        "bg_tokens": 8192,
+        "server_command": [
+          "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/vllm",
+          "serve",
+          "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+          "--dtype",
+          "float16",
+          "--tensor-parallel-size",
+          "1",
+          "--enable-prefix-caching",
+          "--kv-cache-memory-bytes",
+          "2147483648",
+          "--max-model-len",
+          "32768",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "8000",
+          "--kv-transfer-config",
+          "{\"kv_connector\":\"OffloadingConnector\",\"kv_role\":\"kv_both\",\"kv_connector_extra_config\":{\"block_size\":16,\"cpu_bytes_to_use\":8589934592}}"
+        ],
+        "round_gpu_hours_before_run": 0.26222473694056836,
+        "runner_sha256": "67941261bad4b268b7633b33aa0197730a1842266d723a9761a00f60b43e0819",
+        "started_unix": 1791539311.7893693,
+        "status": "VALID",
+        "purpose": "pre-registered matched screen",
+        "allocator_sha256": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a",
+        "scheduler_sha256": "22d8c72a317dec18af2d0af193a7f8b9a06b3b3b9771e97fb75a8c5eeb2f1360",
+        "finished_unix": 1791539701.1343255,
+        "wall_seconds": 389.3445250520017,
+        "gpu_hours_conservative": 0.10815125695888936
+      },
+      "observed_opportunity": {
+        "status": "OBSERVED",
+        "remote_wait_median_ms": 118.38188150431961,
+        "remote_wait_p95_ms": 134.1384439729154,
+        "fixed_path_remote_deletion_p95_improvement_percent": 0.8507297437195477,
+        "caveat": "fixed observed timeline subtraction; NOT a rescheduled causal upper bound"
+      }
+    },
+    {
+      "name": "screen-backfill",
+      "execution": {
+        "name": "screen-backfill",
+        "gate": 2,
+        "allocator_trace": false,
+        "backfill_limit": 2,
+        "trace_interval_ms": 100,
+        "gpu_count": 1,
+        "max_seconds": 1800,
+        "source_sha": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+        "source_directory": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source",
+        "kv_bytes": 2147483648,
+        "bg_tokens": 8192,
+        "started_unix": 1791537887.7203827,
+        "status": "VALID",
+        "purpose": "pre-registered matched screen",
+        "allocator_sha256": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a",
+        "scheduler_sha256": "22d8c72a317dec18af2d0af193a7f8b9a06b3b3b9771e97fb75a8c5eeb2f1360",
+        "finished_unix": 1791538059.837441,
+        "wall_seconds": 172.11616447102278,
+        "gpu_hours_conservative": 0.04781004568639522
+      },
+      "observed_opportunity": {
+        "status": "OBSERVED",
+        "remote_wait_median_ms": 64.15855349041522,
+        "remote_wait_p95_ms": 88.99716916494071,
+        "fixed_path_remote_deletion_p95_improvement_percent": 0.8920226408563128,
+        "caveat": "fixed observed timeline subtraction; NOT a rescheduled causal upper bound"
+      }
+    },
+    {
+      "name": "screen-ondemand",
+      "execution": {
+        "name": "screen-ondemand",
+        "gate": 2,
+        "allocator_trace": false,
+        "backfill_limit": 0,
+        "trace_interval_ms": 100,
+        "gpu_count": 1,
+        "max_seconds": 1800,
+        "source_sha": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+        "source_directory": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source",
+        "kv_bytes": 2147483648,
+        "bg_tokens": 8192,
+        "started_unix": 1791537647.0493338,
+        "status": "VALID",
+        "purpose": "diagnosis; no performance claim from instrumented run",
+        "allocator_sha256": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a",
+        "scheduler_sha256": "22d8c72a317dec18af2d0af193a7f8b9a06b3b3b9771e97fb75a8c5eeb2f1360",
+        "finished_unix": 1791537815.3667529,
+        "wall_seconds": 168.31677590403706,
+        "gpu_hours_conservative": 0.046754659973343625
+      },
+      "observed_opportunity": {
+        "status": "OBSERVED",
+        "remote_wait_median_ms": 59.42806345410645,
+        "remote_wait_p95_ms": 91.16905904375017,
+        "fixed_path_remote_deletion_p95_improvement_percent": 1.0956264936431488,
+        "caveat": "fixed observed timeline subtraction; NOT a rescheduled causal upper bound"
+      }
+    }
+  ],
+  "gpu_hours_conservative": 0.4003272687689039,
+  "execution_input_matched_pair_count": 1,
+  "execution_excluded_input_drift_pair_count": 1,
+  "execution_input_matched_descriptive": {
+    "resume_p95_ms": {
+      "median_percent_change": -15.809905917934042,
+      "individual_percent_changes": [
+        -15.809905917934042
+      ]
+    },
+    "resume_median_ms": {
+      "median_percent_change": -49.173373998420146,
+      "individual_percent_changes": [
+        -49.173373998420146
+      ]
+    },
+    "session_e2e_median_ms": {
+      "median_percent_change": -29.937898120002004,
+      "individual_percent_changes": [
+        -29.937898120002004
+      ]
+    },
+    "BG_wall_ms": {
+      "median_percent_change": -48.91838686382495,
+      "individual_percent_changes": [
+        -48.91838686382495
+      ]
+    },
+    "BG_TPOT_ms": {
+      "median_percent_change": -48.976342717034214,
+      "individual_percent_changes": [
+        -48.976342717034214
+      ]
+    },
+    "agent_external_H2D_MiB": {
+      "median_percent_change": -0.04762660739799918,
+      "individual_percent_changes": [
+        -0.04762660739799918
+      ]
+    },
+    "mixed_generated_tokens_per_second": {
+      "median_percent_change": 95.76515669819727,
+      "individual_percent_changes": [
+        95.76515669819727
+      ]
+    }
+  },
+  "execution_structure_only_observations": [
+    {
+      "resume_p95_ms": -17.141787824372734,
+      "resume_median_ms": -46.90900397042169,
+      "session_e2e_median_ms": -32.72524599297667,
+      "BG_wall_ms": -49.0013852844049,
+      "BG_TPOT_ms": -49.05857249376378,
+      "agent_external_H2D_MiB": 0.0,
+      "mixed_generated_tokens_per_second": 96.08375748571174
+    }
+  ],
+  "not_claimed": [
+    "statistical significance",
+    "production generalization",
+    "novel algorithm",
+    "quality equivalence in non-invariant mode",
+    "complete GPU KV memory-time",
+    "repeated acceleration with exactly identical inputs"
+  ]
+}

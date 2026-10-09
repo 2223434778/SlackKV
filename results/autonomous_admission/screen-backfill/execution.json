@@ -1,0 +1,21 @@
+{
+  "name": "screen-backfill",
+  "gate": 2,
+  "allocator_trace": false,
+  "backfill_limit": 2,
+  "trace_interval_ms": 100,
+  "gpu_count": 1,
+  "max_seconds": 1800,
+  "source_sha": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "source_directory": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source",
+  "kv_bytes": 2147483648,
+  "bg_tokens": 8192,
+  "started_unix": 1791537887.7203827,
+  "status": "VALID",
+  "purpose": "pre-registered matched screen",
+  "allocator_sha256": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a",
+  "scheduler_sha256": "22d8c72a317dec18af2d0af193a7f8b9a06b3b3b9771e97fb75a8c5eeb2f1360",
+  "finished_unix": 1791538059.837441,
+  "wall_seconds": 172.11616447102278,
+  "gpu_hours_conservative": 0.04781004568639522
+}

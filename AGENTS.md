@@ -1,5 +1,24 @@
 # SlackKV Project Rules
 
+## Current authority override — 2026-10-09
+
+The user explicitly authorized autonomous algorithm research, architecture changes,
+implementation, experiment design, and iterative GPU validation. This supersedes
+the historical restrictions below requiring externally assigned hypotheses,
+preserving JIT/PSA/Frontier as a fixed research direction, or stopping after each
+phase. The final objective remains safe, repeatable end-to-end improvements for
+representative multi-turn agent workloads; routine runtime optimization alone is
+not a novel research contribution.
+
+Each experiment is limited to 30 minutes and each autonomous exploration round to
+4 GPU-hours, counting GPUs actually used. Seek user approval before exceeding
+these budgets, deleting historical evidence irreversibly, disrupting other
+services/environment, undertaking a costly formal matrix, or changing the final
+objective. Preserve matched baselines, failures and UNKNOWN, maintain
+`docs/AUTONOMOUS_RESEARCH_LOG.md`, and commit/push meaningful work. All remaining
+safety, evidence-quality, reproducibility and ownership/liveness requirements
+below still apply. Keep historical rules below as provenance.
+
 ## 1. Project role
 
 This repository is a research project named **SlackKV**.

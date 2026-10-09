@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from experiments.autonomous_admission.analyze import analyze
+from experiments.autonomous_admission.artifacts import read_json, run_paths
 
 
 def compare(baseline: dict, candidate: dict, purpose: str = "backfill") -> dict:
@@ -33,7 +34,8 @@ def compare(baseline: dict, candidate: dict, purpose: str = "backfill") -> dict:
             "session_percent_change": {key: 100 * (b["session_e2e_ms"][key] / value - 1)
                                        for key, value in a["session_e2e_ms"].items()},
             "purpose": purpose,
-            "conclusion": ("execution baseline probe; validate identity and replicate" if purpose == "execution" else
+            "conclusion": ("full architecture screen; no statistical or quality-equivalence claim" if purpose == "full" else
+                           "execution baseline probe; validate identity and replicate" if purpose == "execution" else
                            "reverse-order replication warranted" if pass_screen else "stop bounded backfill direction")}
 
 
@@ -42,12 +44,15 @@ def main() -> None:
     parser.add_argument("baseline", type=Path)
     parser.add_argument("candidate", type=Path)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--purpose", choices=("backfill", "execution"), default="backfill")
+    parser.add_argument("--purpose", choices=("backfill", "execution", "full"), default="backfill")
     args = parser.parse_args()
     def load(directory):
-        return json.loads((directory / "runs/measured_rep1_a/run.json").read_text())
+        paths = run_paths(directory)
+        if len(paths) != 1:
+            raise ValueError("expected exactly one run")
+        return read_json(paths[0])
     result = compare(load(args.baseline), load(args.candidate), args.purpose)
-    args.output.write_text(json.dumps(result, indent=2) + "\n")
+    args.output.write_text(json.dumps(result, indent=2) + "\n", newline="\n")
     print(json.dumps({key: result[key] for key in ("percent_change", "prompt_and_output_hashes_match", "pass_screen", "conclusion")}, indent=2))
 
 

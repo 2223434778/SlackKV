@@ -20,6 +20,8 @@ def main() -> None:
     parser.add_argument("--backfill", type=int, choices=(0, 2), default=0)
     parser.add_argument("--execution", choices=("eager", "default"), default="eager")
     parser.add_argument("--oracle", action="store_true")
+    parser.add_argument("--batch-invariant", action="store_true")
+    parser.add_argument("--policy", choices=("A", "D"), default="A")
     args = parser.parse_args()
     if args.gate < 1 or Path(args.name).name != args.name:
         parser.error("positive gate and plain run name required")
@@ -47,6 +49,7 @@ def main() -> None:
     legacy.K = args.gate
     legacy.wait_until = phase4g_c_fix_wait_until
     os.environ["SLACKKV_CAPACITY_BACKFILL_LIMIT"] = str(args.backfill)
+    os.environ["VLLM_BATCH_INVARIANT"] = "1" if args.batch_invariant else "0"
     original_command = runtime.server_command
 
     def server_command(connector, gpu_bytes):
@@ -72,7 +75,9 @@ def main() -> None:
             saved = run_directory / "run.json"
             if args.oracle and saved.exists() and json.loads(saved.read_text())["valid"]:
                 from experiments.autonomous_admission.oracle import run_oracle
-                run_oracle(runtime, out)
+                run_oracle(runtime, out, log)
+            elif saved.exists() and json.loads(saved.read_text())["valid"]:
+                (out / "metrics_after_timed_workload.prom").write_text(runtime.metric_text())
         finally:
             code = original_stop(proc, log, run_directory, label)
         return code
@@ -103,6 +108,8 @@ def main() -> None:
         "backfill_limit": args.backfill,
         "execution_mode": args.execution,
         "cold_oracle": args.oracle,
+        "batch_invariant": args.batch_invariant,
+        "policy": args.policy,
         "trace_interval_ms": 100, "gpu_count": 1, "max_seconds": 1800,
         "source_sha": SOURCE_SHA, "source_directory": str(runtime.SRC),
         "kv_bytes": 2147483648, "bg_tokens": 8192,
@@ -129,8 +136,8 @@ def main() -> None:
     signal.signal(signal.SIGALRM, timeout)
     signal.alarm(1710)
     try:
-        result = legacy.run_lifecycle("A", "measured", 1)
-        harness._decorate_agent_run(result, "measured_rep1_a")
+        result = legacy.run_lifecycle(args.policy, "measured", 1)
+        harness._decorate_agent_run(result, f"measured_rep1_{args.policy.lower()}")
         metadata["status"] = "VALID" if result["valid"] else "INVALID"
     except BaseException:
         metadata["status"] = "FAILED"

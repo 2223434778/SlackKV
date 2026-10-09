@@ -1,5 +1,33 @@
 from experiments.autonomous_admission.analyze import analyze, nearest_rank
 from experiments.autonomous_admission.backfill import BoundedBackfill
+from experiments.autonomous_admission.oracle import cold_sources
+from experiments.autonomous_admission.artifacts import read_json, run_paths
+
+
+def test_archived_json_matches_original_and_is_not_counted_twice(tmp_path):
+    import gzip
+    path = tmp_path / "runs/a/run.json"
+    path.parent.mkdir(parents=True)
+    raw = b'{"valid":true}\n'
+    path.with_suffix(".json.gz").write_bytes(gzip.compress(raw))
+    assert read_json(path) == {"valid": True}
+    assert run_paths(tmp_path) == [path]
+    path.write_bytes(raw)
+    assert run_paths(tmp_path) == [path]
+
+
+def test_missing_trace_is_unknown_and_other_sessions_do_not_verify_cold():
+    text = 'SLACKKV_SOURCE_TRACE {"session":"other","local_cached_tokens":0,"external_cached_tokens":0}'
+    assert cold_sources(text, "wanted") == (False, [])
+
+
+def test_actual_local_or_external_hit_disqualifies_cold():
+    import json
+    for local, external in ((0, 0), (1, 0), (0, 16)):
+        event = {"session": "wanted", "local_cached_tokens": local, "external_cached_tokens": external}
+        verified, source = cold_sources("SLACKKV_SOURCE_TRACE " + json.dumps(event), "wanted")
+        assert verified == (local == external == 0)
+        assert source == [event]
 
 
 def test_capacity_head_stops_after_two_successful_bypasses():

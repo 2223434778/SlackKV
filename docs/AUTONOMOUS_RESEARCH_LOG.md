@@ -35,3 +35,24 @@
 - 下一步预注册：再运行 default→eager 的反序配对，各一轮，使用同一新版 runner；不调模型/负载/KV/gate。保存逐 token 输出和两个历史不稳定请求的输入。性能只作两对描述性结果，不宣称统计显著、生产泛化或新颖算法。
 - 在反序两轮计时负载结束后，用当前 OpenAI completion 协议已确认支持的唯一 `cache_salt` 对两个相同输入各执行两次冷 Prefill，`max_offload_tokens=0`，保存 token、logprobs 和 usage。不把这些复核请求计入性能指标，但 GPU 预算包含它们。先确认 cached_tokens=0，再评估是否一致；不同不能直接推断 KV 损坏。
 - 新版 runner 会累计读取本轮成本，在剩余预算不足 0.5 GPU·小时或仍有 RUNNING 记录时拒绝启动；watchdog 为清理留 90 秒，只终止自己启动的 server。
+- 正确性复核进展：default-repeat 的两个输入分别在 token 7 和 41 与冷 Prefill 分歧；各自两个冷重复完全一致。completion usage 未提供 cached_tokens，不能用缺失字段当 0。后续 oracle 增加 SOURCE_TRACE，直接确认 local/external matched_tokens 都为 0，并添加每输入 3 个并发冷请求；不同模式的数字不拼接成性能样本。
+- 核查当前 vLLM 源码：`batch_invariant.py` 有 SM80 的 Triton matmul overrides，文档支持 compute capability >=8.0；`envs.py` 的 >=9.0 注释与实际实现不一致，不能仅据注释拒绝 A6000。若默认路径仍出现不一致，将尝试已存在的 `VLLM_BATCH_INVARIANT=1`，仅用于正确性对照，绝不与非 invariant 性能混比。
+- eager-repeat 冷对照：10/10 SOURCE_TRACE 确认 local/external hit 均为 0。E02:turn:2 的三个并发冷请求出现两种不同输出，E04:turn:1 的串行/并发冷请求输出不同。**不复用 KV 也能复现输出差异**，支持批处理/数值路径影响，否定“hash 不同就必然 KV 损坏”的判据；仍不能排除另外存在 KV 错误。
+- 决策：增加一轮 `--name invariant-validation --execution default --batch-invariant --oracle`，相同 40/32 负载和 10 个冷复核。预注册成功标准为所有冷请求被真实 source trace 确认为冷，两个敏感输入的续接/串行/并发输出全部逐 token 一致；否则保留失败和 UNKNOWN，不对非 invariant 吞吐做错误归因。
+- 反序性能对照完成：P95 -15.81%，session median -29.94%，后台 wall -48.92%，混合输出吞吐 +95.77%；两对的八个 session 全部 E2E 改善。两对 P95 改善为 15.81–17.14%，不是统计显著性结论。编译基线上的固定路径完全删除远程等待仅改善 P95 0.870% 和 1.051%；这仍不是重排调度后的因果上界。
+
+## 2026-10-09：强基线上的原架构兼容性筛选（预注册）
+
+- 问题：仅改变执行栈已有更大机会，原 JIT/PSA1 在强基线上是否仍有明显价值？
+- 方法：一轮 `--name full-default --execution default --policy D`，backfill 0、batch-invariant 0、K2、2 GiB、同一 BGv2。沿用当前完整 SlackKV 控制器/PSA1，不修改门槛；对照两个已完成的同配置 compiled OnDemand。仅筛选兼容性与收益空间，不宣称单轮稳定性或非 invariant 输出等价。若无明确改善，不投入 FullSlackKV 正式矩阵。
+- 预算：独立上限 30 分钟，运行完保存所有拒绝、promotions、lease、安全/活性记录及末尾迁移计数快照；不比较 eager Full 与 compiled OnDemand。
+- 结果：40/32 与后台任务完成，无 OOM、lease/logical 泄漏；10 Promotion attempts 全部拒绝（9 capacity、1 progress），没有有效 Promotion。Full P95 6099.82 ms，相对输入完全相同的 compiled OnDemand-repeat 5254.99 ms 恶化 16.08%；session median +0.40%，后台 wall +0.55%。这是一轮筛选，不能声称稳定的负百分比，但没有值得扩展正式矩阵的正证据。
+
+## 2026-10-09：独立审计修正与本轮决策
+
+- 修正：首轮 default-execution 的 E07:turn:3/4 输入因前轮输出数值差异而漂移。此前“两对复验”只在 ISL/OSL/共享前缀长度结构上成立，不能当作两个精确输入匹配的对照。保留原始结果，将首轮标记为 structure-only，排除精确输入匹配汇总。反序 eager-repeat/default-repeat 全部 40 prompt hash 相同；主性能观察为 P95 -15.81%、session median -29.94%、BG wall -48.92%。Full-default 也与该 matched default-repeat 全部输入相同；与 default-execution 的对照同样只作结构匹配观察，不用于主结论。不能宣称两次精确输入复现或统计显著。
+- 正确性控制完成：batch-invariant 的 40/32 生命周期有效，10/10 冷对照均实际 local/external hit 0，全部与相应续接逐 token 相同；两个敏感输入在串行和并发下均一致。这支持本次被测恢复路径的正确性，不证明所有模型、边界、Lease 或 Native Promotion 都无误。invariant 模式明显变慢，只用于 debug，不混入性能对照。
+- 全部 8 次完整运行有效，另有一次模型加载前 import failure；累计保守成本 0.40033 GPU·小时（含启动、编译、oracle 和退出），最大单次 389.35 秒，未使用 GPU1。
+- 决策：本轮达到“当前方向收益不足，需要战略调整”的阶段停止条件。停止扩大有限回填和当前 JIT/Frontier 矩阵；保留已有底层 native/offload/保护机制，采用 compiled OnDemand 作为下一轮强执行基线，正确性另设 invariant oracle。下一项算法研究应围绕实际 demand 的 KV 驻留时间、decode 增长与并发能力，先建立可优化排队成本的因果分解，再设计机制；不把编译开关视为创新。
+- 仍 UNKNOWN：真实生产负载泛化、非 invariant 任务质量、完整 GPU KV memory-time、计算与可避免队列延迟的完整因果拆分、普遍公平性/活性，以及成功 Native Promotion 在 CUDA Graph 下的安全性（本轮成功数 0）。不再为凑齐既定 Phase 消耗剩余预算。
+- 归档：长 run/oracle JSON 和原日志无损 gzip，服务器与本机原文件保留；85 个逻辑原始文件 SHA256 校验通过。离线读取兼容 gzip 并避免双计数；最终 22 tests passed。原始 patch 的 diff 空白与 Prometheus 原生 HELP 空白保留，限这些证据文件不做 whitespace lint，未修改科学数据。

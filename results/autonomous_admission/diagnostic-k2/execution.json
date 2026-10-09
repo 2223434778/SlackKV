@@ -1,0 +1,19 @@
+{
+  "name": "diagnostic-k2",
+  "gate": 2,
+  "allocator_trace": true,
+  "trace_interval_ms": 100,
+  "gpu_count": 1,
+  "max_seconds": 1800,
+  "source_sha": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "source_directory": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-20261009-source",
+  "kv_bytes": 2147483648,
+  "bg_tokens": 8192,
+  "started_unix": 1791537141.4757254,
+  "status": "VALID",
+  "purpose": "diagnosis; no performance claim from instrumented run",
+  "allocator_sha256": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a",
+  "finished_unix": 1791537310.999469,
+  "wall_seconds": 169.52342618303373,
+  "gpu_hours_conservative": 0.04708984060639826
+}
