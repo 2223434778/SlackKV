@@ -97,3 +97,11 @@
 - 独立 audit 验证 87 个导出原始 hash 和全部 P95/session 算术。Credit candidate actual H2D 比 source 多 458752 bytes，原因 UNKNOWN，迁移门槛用 actual counter，source estimate 保留；8 GiB counter 缺失 UNKNOWN、source restore 0 单列。D2H 各 run 5172.5625 MiB。阈值及两个淘汰决定不变。
 - 7 valid + 1 setup failure，0.2332685893 GPU·小时，最长 130.45 秒；GPU1 未用，两卡最后 19 MiB/0%，无 compute process。40 项本地测试通过、两阶段各 15 项 CPU-only runtime 单测通过。完整历史 GPU Lease/HOL 矩阵和 owned KV memory-time 未验证。
 - 按 B 的有界负结论结束，两个 PoC 默认关闭，保留 OnDemand/安全机制；不推论全部调度算法无效。目标保持，后续面向明确 SLO 的有效并发/显存成本，先补真实稳态会话、更大模型及 owned-block/关键路径证据。报告：docs/AUTONOMOUS_RESEARCH_REPORT_ROUND2_20261009.md。
+
+## 2026-10-09：外部研究审查与下一轮交接（无 GPU 执行）
+
+- 审查快照 61139e310a5976cf4311e8bbc4badf82f56439af；用户要求审查 Codex 实验并提供解决思路。完整读取三份指定报告，补读 Round1、实现及公共作者材料。
+- 独立复算 fork-decode-control-4 原始 requests/日志/episodes/counters：48 child +3 BG calls，H2D 2016 MiB，workflow median 4134.640602 ms，TTFT P95 480.419642 ms；两份 runtime 源码 SHA256 与报告匹配。不是全归档/完整 GPU 复验。
+- 新诊断：该 run 首轮 client→engine 和 engine FIRST_TOKEN→client 的逐请求中位数为 90.79/115.24 ms，原因尚未归因；48 calls 只有3对 own remote-wait，lookup None 的 follower deferral 缺少专用计量。不能相加 followers 等待或中位数组件当 E2E 收益。
+- 建议先补旧负载 K2/gate-off 同资源对照、分层计时及真实 residency，再选择一个适用已有方法作为机制对照；不直接实施 range-ready。所有候选收益与新颖性仍待证实，执行 Codex 可据证据调整。
+- 交接：docs/RESEARCH_REVIEW_AND_NEXT_ROUND_20261009.md；复算 scripts/review_round3_evidence.py；结果 results/research_review_20261009/spotcheck.json。标准库 CPU 复算断言通过，未修改 serving、未运行 GPU、未消费服务器预算。

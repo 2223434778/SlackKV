@@ -619,3 +619,13 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - Screening/model: unique fork<1GiB; root-only full attention streaming180.39GB/256steps gives6.86sec conditional DMA cost using old Phase0 reference. Peer-in transfer time advantage~0.333%, not overall gain. Larger7B config feasible on paper but not cached;20sHFprobe timeout, no download/environment changes.
 - Validation:52localtests,15CPU-only runtime tests after correcting PYTHONPATH (first collection errors preserved);101original hashes, identical51actual inputs across five completeforkruns, source/transfer and critical-branch arithmetic verified. Raw server data intact. Seven execution ledger entries,0.20048675264813934GPUh,max260.33sec,GPU0only,final GPUs19MiB/0%,no compute apps.
 - Stop B within scope; no accepted new algorithm. Report docs/AUTONOMOUS_RESEARCH_ROUND3.md; protocol, commands, full gzip raw inputs/outputs/server logs, source snapshots, oracle and audit in results/autonomous_fork/.
+
+## 2026-10-09 — External review of autonomous rounds 1–3 (CPU evidence audit)
+
+- Reviewed commit: 61139e310a5976cf4311e8bbc4badf82f56439af. No new serving implementation or GPU experiment.
+- Objective: independently inspect the reported stopping decisions and identify the next measurable opportunity before proposing another algorithm.
+- Actual command: `python review/scripts/review_round3_evidence.py --output review/results/research_review_20261009/spotcheck.json` in the review workspace. Repository reproduction: `python scripts/review_round3_evidence.py --output /tmp/slackkv_round3_spotcheck.json`.
+- Scope: representative fork-decode-control-4 raw requests, full saved log, episodes and counters, plus two saved runtime source fingerprints; not the complete 101-file audit.
+- Checks passed: 48 child/3 background calls and required output counts; three workflow durations match; actual/source H2D both 2113929216 bytes; workflow median 4134.640602 ms; child TTFT P95 480.419642 ms; runtime fingerprints and per-call timestamp decomposition agree.
+- Findings: first-turn client-to-engine / engine-first-to-client medians 90.79 / 115.24 ms need attribution. Three own remote-wait pairs do not instrument follower lookup deferral. Existing singleflight negative conclusion remains supported.
+- Artifacts: docs/RESEARCH_REVIEW_AND_NEXT_ROUND_20261009.md and results/research_review_20261009/spotcheck.json. No performance improvement, full runtime correctness, or new algorithm claimed. GPU cost zero for this review; next-round execution remains the remote Codex's task. Commit identity is available in Git history for this entry.

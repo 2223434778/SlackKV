@@ -1,0 +1,537 @@
+{
+  "reviewed_commit": "61139e310a5976cf4311e8bbc4badf82f56439af",
+  "scope": "One representative run and two saved runtime sources; not a full 101-file audit or GPU rerun.",
+  "uncompressed_input_sha256": {
+    "requests": "88ccc4a93f406aa2bd11a906c333c6a323e15d20eabce904da86d3c0327f5b13",
+    "episodes": "9ffb155fea589e4de54e0b26fea303e6ae21d69d819da9c6aa3d9045b9b3c3a0",
+    "log": "a2e96087345c24a03ba786913577d4535c686106ac777633928365326a0ec300",
+    "metrics": "0f15f9869f72fb0883ed2031990e89adadc185ea3ffb390f422e1121fb1edd83",
+    "native_scheduler": "bc883cf47d882d4406d7708a8d3520abe2752f545985705126f41fca66558bf0",
+    "runtime_scheduler": "5c0ef2cd7cc65a452d86c4751e43971efebf5d97066cb5f8d8126f3f5a8e43c8"
+  },
+  "run": "fork-decode-control-4",
+  "branch_calls": 48,
+  "background_calls": 3,
+  "actual_h2d_bytes": 2113929216.0,
+  "source_restore_bytes": 2113929216,
+  "workflow_median_ms": 4134.640602,
+  "branch_ttft_p95_ms": 480.419642,
+  "remote_wait_event_count": 3,
+  "component_medians_by_turn_ms": {
+    "0": {
+      "client_to_engine_ms": 90.78816894907504,
+      "pre_admit_ms": 67.99655104987323,
+      "admit_to_engine_first_ms": 183.1254664575681,
+      "engine_first_to_client_ms": 115.24346843361855
+    },
+    "1": {
+      "client_to_engine_ms": 45.3312931349501,
+      "pre_admit_ms": 7.739480468444526,
+      "admit_to_engine_first_ms": 126.8514139810577,
+      "engine_first_to_client_ms": 71.91537949256599
+    }
+  },
+  "episodes": [
+    {
+      "episode": 0,
+      "workflow_ms": 4105.350553,
+      "external_root_loads": 1,
+      "local_root_hits": 7
+    },
+    {
+      "episode": 1,
+      "workflow_ms": 4134.640602,
+      "external_root_loads": 1,
+      "local_root_hits": 7
+    },
+    {
+      "episode": 2,
+      "workflow_ms": 4162.707304,
+      "external_root_loads": 1,
+      "local_root_hits": 7
+    }
+  ],
+  "per_request_decomposition": [
+    {
+      "session": "F0:0:0",
+      "components_ms": {
+        "client_to_engine_ms": 104.18490297161043,
+        "pre_admit_ms": 69.56784799695015,
+        "admit_to_engine_first_ms": 183.89774695970118,
+        "engine_first_to_client_ms": 122.7691441308707
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:7:0",
+      "components_ms": {
+        "client_to_engine_ms": 90.69952997379005,
+        "pre_admit_ms": 68.15919419750571,
+        "admit_to_engine_first_ms": 185.32214197330177,
+        "engine_first_to_client_ms": 114.57718699239194
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:4:0",
+      "components_ms": {
+        "client_to_engine_ms": 98.98343007080257,
+        "pre_admit_ms": 62.389072962105274,
+        "admit_to_engine_first_ms": 191.21291697956622,
+        "engine_first_to_client_ms": 103.88917219825089
+      },
+      "own_remote_wait_event": true
+    },
+    {
+      "session": "F0:6:0",
+      "components_ms": {
+        "client_to_engine_ms": 78.68733396753669,
+        "pre_admit_ms": 72.49079993925989,
+        "admit_to_engine_first_ms": 191.43089302815497,
+        "engine_first_to_client_ms": 135.50669187679887
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:3:0",
+      "components_ms": {
+        "client_to_engine_ms": 86.22736111283302,
+        "pre_admit_ms": 65.21151191554964,
+        "admit_to_engine_first_ms": 188.23665310628712,
+        "engine_first_to_client_ms": 111.54746194370091
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:1:0",
+      "components_ms": {
+        "client_to_engine_ms": 108.98197302594781,
+        "pre_admit_ms": 66.66962685994804,
+        "admit_to_engine_first_ms": 186.796867987141,
+        "engine_first_to_client_ms": 126.80823006667197
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:2:0",
+      "components_ms": {
+        "client_to_engine_ms": 82.85370515659451,
+        "pre_admit_ms": 70.99930290132761,
+        "admit_to_engine_first_ms": 182.46563198044896,
+        "engine_first_to_client_ms": 119.74598001688719
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:5:0",
+      "components_ms": {
+        "client_to_engine_ms": 95.04785691387951,
+        "pre_admit_ms": 63.75742610543966,
+        "admit_to_engine_first_ms": 189.72767004743218,
+        "engine_first_to_client_ms": 108.68434188887477
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:7:1",
+      "components_ms": {
+        "client_to_engine_ms": 38.38301100768149,
+        "pre_admit_ms": 16.51498698629439,
+        "admit_to_engine_first_ms": 120.16625981777906,
+        "engine_first_to_client_ms": 82.58063509128988
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:6:1",
+      "components_ms": {
+        "client_to_engine_ms": 29.309446923434734,
+        "pre_admit_ms": 33.47121807746589,
+        "admit_to_engine_first_ms": 103.15342689864337,
+        "engine_first_to_client_ms": 88.99272489361465
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:0:1",
+      "components_ms": {
+        "client_to_engine_ms": 43.18009107373655,
+        "pre_admit_ms": 5.819242913275957,
+        "admit_to_engine_first_ms": 130.97771792672575,
+        "engine_first_to_client_ms": 75.01452718861401
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:2:1",
+      "components_ms": {
+        "client_to_engine_ms": 76.35616883635521,
+        "pre_admit_ms": 4.745478974655271,
+        "admit_to_engine_first_ms": 140.13211498968303,
+        "engine_first_to_client_ms": 66.578813130036
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:1:1",
+      "components_ms": {
+        "client_to_engine_ms": 80.25899180211127,
+        "pre_admit_ms": 2.7086040936410427,
+        "admit_to_engine_first_ms": 142.14030909352005,
+        "engine_first_to_client_ms": 57.110216934233904
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:5:1",
+      "components_ms": {
+        "client_to_engine_ms": 71.18136691860855,
+        "pre_admit_ms": 6.690420210361481,
+        "admit_to_engine_first_ms": 138.8383638113737,
+        "engine_first_to_client_ms": 60.92614703811705
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:3:1",
+      "components_ms": {
+        "client_to_engine_ms": 24.616319919005036,
+        "pre_admit_ms": 24.91193008609116,
+        "admit_to_engine_first_ms": 111.73985595814884,
+        "engine_first_to_client_ms": 85.17144597135484
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F0:4:1",
+      "components_ms": {
+        "client_to_engine_ms": 33.39171502739191,
+        "pre_admit_ms": 13.69283813983202,
+        "admit_to_engine_first_ms": 123.05240100249648,
+        "engine_first_to_client_ms": 79.9528518691659
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:2:0",
+      "components_ms": {
+        "client_to_engine_ms": 90.87680792436004,
+        "pre_admit_ms": 66.40561413951218,
+        "admit_to_engine_first_ms": 180.99008197896183,
+        "engine_first_to_client_ms": 118.60206397250295
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:1:0",
+      "components_ms": {
+        "client_to_engine_ms": 103.1371511053294,
+        "pre_admit_ms": 64.82975510880351,
+        "admit_to_engine_first_ms": 182.60246282443404,
+        "engine_first_to_client_ms": 113.2274060510099
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:3:0",
+      "components_ms": {
+        "client_to_engine_ms": 107.93182090856135,
+        "pre_admit_ms": 70.81083115190268,
+        "admit_to_engine_first_ms": 176.43824988044798,
+        "engine_first_to_client_ms": 128.30796604976058
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:5:0",
+      "components_ms": {
+        "client_to_engine_ms": 99.36257405206561,
+        "pre_admit_ms": 67.83390790224075,
+        "admit_to_engine_first_ms": 179.49406593106687,
+        "engine_first_to_client_ms": 122.16896400786936
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:7:0",
+      "components_ms": {
+        "client_to_engine_ms": 87.52069412730634,
+        "pre_admit_ms": 73.75989388674498,
+        "admit_to_engine_first_ms": 184.44285914301872,
+        "engine_first_to_client_ms": 126.46165885962546
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:0:0",
+      "components_ms": {
+        "client_to_engine_ms": 79.3985000345856,
+        "pre_admit_ms": 69.30070417001843,
+        "admit_to_engine_first_ms": 177.9760478530079,
+        "engine_first_to_client_ms": 109.47717912495136
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:4:0",
+      "components_ms": {
+        "client_to_engine_ms": 94.72248796373606,
+        "pre_admit_ms": 63.44033102504909,
+        "admit_to_engine_first_ms": 184.08567900769413,
+        "engine_first_to_client_ms": 106.10902402549982
+      },
+      "own_remote_wait_event": true
+    },
+    {
+      "session": "F1:6:0",
+      "components_ms": {
+        "client_to_engine_ms": 83.65878206677735,
+        "pre_admit_ms": 72.30498897843063,
+        "admit_to_engine_first_ms": 174.92872197180986,
+        "engine_first_to_client_ms": 124.28416102193296
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:3:1",
+      "components_ms": {
+        "client_to_engine_ms": 33.037250861525536,
+        "pre_admit_ms": 27.404576074332,
+        "admit_to_engine_first_ms": 91.22126689180732,
+        "engine_first_to_client_ms": 74.7510630171746
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:1:1",
+      "components_ms": {
+        "client_to_engine_ms": 39.60469597950578,
+        "pre_admit_ms": 13.474591076374054,
+        "admit_to_engine_first_ms": 105.22964410483837,
+        "engine_first_to_client_ms": 71.05529797263443
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:7:1",
+      "components_ms": {
+        "client_to_engine_ms": 82.54466718062758,
+        "pre_admit_ms": 2.8505788650363684,
+        "admit_to_engine_first_ms": 138.29418597742915,
+        "engine_first_to_client_ms": 62.95059504918754
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:5:1",
+      "components_ms": {
+        "client_to_engine_ms": 25.529576931148767,
+        "pre_admit_ms": 42.15413611382246,
+        "admit_to_engine_first_ms": 76.43809588626027,
+        "engine_first_to_client_ms": 77.42773718200624
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:2:1",
+      "components_ms": {
+        "client_to_engine_ms": 44.93899317458272,
+        "pre_admit_ms": 5.725348833948374,
+        "admit_to_engine_first_ms": 113.03877807222307,
+        "engine_first_to_client_ms": 68.39540507644415
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:6:1",
+      "components_ms": {
+        "client_to_engine_ms": 61.31822499446571,
+        "pre_admit_ms": 8.680450031533837,
+        "admit_to_engine_first_ms": 132.41088390350342,
+        "engine_first_to_client_ms": 72.77546101249754
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:4:1",
+      "components_ms": {
+        "client_to_engine_ms": 67.06245406530797,
+        "pre_admit_ms": 6.784220924600959,
+        "admit_to_engine_first_ms": 134.39949601888657,
+        "engine_first_to_client_ms": 67.31616100296378
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F1:0:1",
+      "components_ms": {
+        "client_to_engine_ms": 74.6345198713243,
+        "pre_admit_ms": 4.811689956113696,
+        "admit_to_engine_first_ms": 136.3464961759746,
+        "engine_first_to_client_ms": 69.06693498604
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:4:0",
+      "components_ms": {
+        "client_to_engine_ms": 84.31003685109317,
+        "pre_admit_ms": 68.22945503517985,
+        "admit_to_engine_first_ms": 179.0612570475787,
+        "engine_first_to_client_ms": 107.19482903368771
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:5:0",
+      "components_ms": {
+        "client_to_engine_ms": 73.99417483247817,
+        "pre_admit_ms": 63.75654600560665,
+        "admit_to_engine_first_ms": 183.64847009070218,
+        "engine_first_to_client_ms": 119.94840600527823
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:6:0",
+      "components_ms": {
+        "client_to_engine_ms": 91.88035200349987,
+        "pre_admit_ms": 65.2459729462862,
+        "admit_to_engine_first_ms": 182.11661209352314,
+        "engine_first_to_client_ms": 104.07441202551126
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:2:0",
+      "components_ms": {
+        "client_to_engine_ms": 71.7244939878583,
+        "pre_admit_ms": 71.20192795991898,
+        "admit_to_engine_first_ms": 176.00258206948638,
+        "engine_first_to_client_ms": 113.37002087384462
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:3:0",
+      "components_ms": {
+        "client_to_engine_ms": 99.7273561079055,
+        "pre_admit_ms": 62.26790999062359,
+        "admit_to_engine_first_ms": 185.16271701082587,
+        "engine_first_to_client_ms": 100.24872189387679
+      },
+      "own_remote_wait_event": true
+    },
+    {
+      "session": "F2:7:0",
+      "components_ms": {
+        "client_to_engine_ms": 88.382164016366,
+        "pre_admit_ms": 66.7473990470171,
+        "admit_to_engine_first_ms": 180.57613400742412,
+        "engine_first_to_client_ms": 110.61371606774628
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:0:0",
+      "components_ms": {
+        "client_to_engine_ms": 96.41938400454819,
+        "pre_admit_ms": 69.72485198639333,
+        "admit_to_engine_first_ms": 177.52764909528196,
+        "engine_first_to_client_ms": 115.90974987484515
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:1:0",
+      "components_ms": {
+        "client_to_engine_ms": 80.57887991890311,
+        "pre_admit_ms": 72.60514213703573,
+        "admit_to_engine_first_ms": 185.7080738991499,
+        "engine_first_to_client_ms": 121.89631699584424
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:2:1",
+      "components_ms": {
+        "client_to_engine_ms": 21.319963969290257,
+        "pre_admit_ms": 15.22087398916483,
+        "admit_to_engine_first_ms": 99.39955407753587,
+        "engine_first_to_client_ms": 72.96651089563966
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:5:1",
+      "components_ms": {
+        "client_to_engine_ms": 40.196910966187716,
+        "pre_admit_ms": 10.086274007335305,
+        "admit_to_engine_first_ms": 104.69378880225122,
+        "engine_first_to_client_ms": 68.1860230397433
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:4:1",
+      "components_ms": {
+        "client_to_engine_ms": 45.72359309531748,
+        "pre_admit_ms": 5.784651031717658,
+        "admit_to_engine_first_ms": 109.03509380295873,
+        "engine_first_to_client_ms": 64.22279914841056
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:6:1",
+      "components_ms": {
+        "client_to_engine_ms": 29.96704215183854,
+        "pre_admit_ms": 13.353395974263549,
+        "admit_to_engine_first_ms": 101.33997490629554,
+        "engine_first_to_client_ms": 77.71695917472243
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:7:1",
+      "components_ms": {
+        "client_to_engine_ms": 68.3882690500468,
+        "pre_admit_ms": 4.815399879589677,
+        "admit_to_engine_first_ms": 134.58452909253538,
+        "engine_first_to_client_ms": 70.33128896728158
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:3:1",
+      "components_ms": {
+        "client_to_engine_ms": 75.04955609329045,
+        "pre_admit_ms": 2.8551698196679354,
+        "admit_to_engine_first_ms": 136.52608916163445,
+        "engine_first_to_client_ms": 67.46162986382842
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:0:1",
+      "components_ms": {
+        "client_to_engine_ms": 60.45541190542281,
+        "pre_admit_ms": 6.798510905355215,
+        "admit_to_engine_first_ms": 132.62358913198113,
+        "engine_first_to_client_ms": 72.87428807467222
+      },
+      "own_remote_wait_event": false
+    },
+    {
+      "session": "F2:1:1",
+      "components_ms": {
+        "client_to_engine_ms": 49.13349007256329,
+        "pre_admit_ms": 8.702610852196813,
+        "admit_to_engine_first_ms": 130.65042695961893,
+        "engine_first_to_client_ms": 79.51042498461902
+      },
+      "own_remote_wait_event": false
+    }
+  ],
+  "qualification": "Same-host monotonic clocks assumed by the saved runner. Components are observed intervals, not pure DMA/kernel/network times. Component medians are not additive. Lookup deferral duration is uninstrumented; follower wait cannot be assigned wholly to DMA. No causal speedup inferred."
+}
