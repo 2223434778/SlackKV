@@ -1,0 +1,215 @@
+{
+  "baseline_commit": "e2e904c2ebe344f1d4dd8cd347fb6fabd246a6f8",
+  "scope": "Offline fixed-observed-path deletion; NOT a rescheduled-system causal bound",
+  "input_sha256": {
+    "results/phase4g_a_fix_k2repair/boundary_metrics.csv": "6adc849eb734f74cb81d4546df2256b470f8b767136b1b3553ceaad3ee2bbcb9",
+    "results/phase4g_a_fix_k2repair/resume_trace.csv": "5809fb2dc88133d71351935f7cf89b20f928fcbb685a71aa2a2a4bbadf006f34",
+    "results/phase4g_a_fix_k2repair/session_metrics.csv": "6f10c61f99e6235dbd26eddf6d6eede93eace177d647eb50ab5bdd96dfb4cf3d",
+    "results/phase4g_a_fix_k2repair/run_metrics.csv": "6eccf22e1c7425ae8305102ba7e0032bfb10b3de6818bb3e0e6630c9b6ef5d52",
+    "results/phase4g_a_fix_k2repair/prefetch_metrics.csv": "a57af6b4211f3c7ac7a2ba6de493c1fd9da7efb5f0c037eaed705735b161ec59",
+    "results/phase4f_b/paired_deltas.csv": "17954579c072281bfcf7972917f325c4c174659b0cf00a0b2028279b4d6f9736",
+    "results/phase4g_d/allocator_truth.csv": "0641d774df1a527468602f122d309c5e6a0e450884bb7543ef62b415b402b985",
+    "results/phase4g_d/frontier_recoverability.csv": "7df8c501dfc0685a8e2d582e669204a644a9bfc11d8e946ecf8ad40df78300b3",
+    "results/phase4g_c_fix/allocator_guard_comparison.csv": "e5cc52586e98b8727b88cab490731e8aa6160c98b310cdbbf66c01ed41333ee6",
+    "results/phase2c_fix/resume_metrics.csv": "09f16ce5d29c6dc841bd75f9568a54598995c8fa2208b630bd1374365c8bffc8",
+    "results/phase2d/metrics.csv": "0d751295583a751612c68332447cf513b77ac282226a8b750a57b63d0c85e2d0",
+    "results/phase4e_a_rca/liveness_runs.csv": "be714891d86b1dd64048032b36d565e708f95ebc81abfc48eca6cd07f27ccb66",
+    "results/phase4g_d/controller_selection.csv": "7df4e1343fc742a57c329cbf5c4285b29cd7262876aa0c0f160eb57a59c5b3eb",
+    "results/phase4g_d/frontier_shadow.csv": "c70d55ec43a8a267d9662090a373ccfb6773820bcefa34d53ca3b56eac4f37f4"
+  },
+  "boundary_count": 512,
+  "policies": {
+    "FullSlackKV+PSA1-K2": {
+      "boundaries": {
+        "median": 32.0,
+        "min": 32,
+        "max": 32
+      },
+      "remote_unknown": {
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "deadline_P95_ms": {
+        "median": 6413.481886003865,
+        "min": 5680.194024986122,
+        "max": 6927.84867703449
+      },
+      "remote_P50_ms": {
+        "median": 58.48869201145135,
+        "min": 57.97287749010138,
+        "max": 59.81811898527667
+      },
+      "remote_P95_ms": {
+        "median": 106.59181998926215,
+        "min": 82.73761795135215,
+        "max": 223.42452802695334
+      },
+      "tail_nonremote_pre_admit_ms": {
+        "median": 6175.317914487096,
+        "min": 5503.507596964482,
+        "max": 6612.0128010516055
+      },
+      "tail_remote_ms": {
+        "median": 59.124728984897956,
+        "min": 55.057423014659435,
+        "max": 229.28140999283642
+      },
+      "tail_post_admit_ms": {
+        "median": 62.765677517745644,
+        "min": 31.30759298801422,
+        "max": 216.77823702339083
+      },
+      "fixed_path_remote_deletion_P95_improvement_percent": {
+        "median": 0.993737084756859,
+        "min": 0.8054774370198001,
+        "max": 3.4636807471953577
+      },
+      "fixed_path_remote_plus_all_post_deletion_P95_improvement_percent": {
+        "median": 2.722517331582692,
+        "min": 1.6413980154697558,
+        "max": 3.9366345164390193
+      },
+      "erase_all_pre_admit_diagnostic_P95_improvement_percent": {
+        "median": 95.45383896190185,
+        "min": 94.19367863826217,
+        "max": 96.19750157151461
+      },
+      "session_fixed_path_E2E_deletion_percent_median": 0.7561482627885008
+    },
+    "OnDemand-K2": {
+      "boundaries": {
+        "median": 32.0,
+        "min": 32,
+        "max": 32
+      },
+      "remote_unknown": {
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "deadline_P95_ms": {
+        "median": 6434.52943052398,
+        "min": 5802.139754989184,
+        "max": 7085.639883996919
+      },
+      "remote_P50_ms": {
+        "median": 58.86603174440097,
+        "min": 57.69716246868484,
+        "max": 63.00361600005999
+      },
+      "remote_P95_ms": {
+        "median": 83.95571552682668,
+        "min": 72.87872803863138,
+        "max": 179.4310940313153
+      },
+      "tail_nonremote_pre_admit_ms": {
+        "median": 6316.893274983158,
+        "min": 5551.537616061978,
+        "max": 6907.873605028726
+      },
+      "tail_remote_ms": {
+        "median": 57.83436246565543,
+        "min": 54.909627011511475,
+        "max": 64.62178303627297
+      },
+      "tail_post_admit_ms": {
+        "median": 31.59023550688289,
+        "min": 31.12580702872947,
+        "max": 148.12463097041473
+      },
+      "fixed_path_remote_deletion_P95_improvement_percent": {
+        "median": 0.9047094837932064,
+        "min": 0.7749423892614996,
+        "max": 1.09695024007055
+      },
+      "fixed_path_remote_plus_all_post_deletion_P95_improvement_percent": {
+        "median": 1.3930216506850313,
+        "min": 1.2158870248115494,
+        "max": 2.97611690221951
+      },
+      "erase_all_pre_admit_diagnostic_P95_improvement_percent": {
+        "median": 95.83504943248006,
+        "min": 94.87466259769178,
+        "max": 95.92191008511864
+      },
+      "session_fixed_path_E2E_deletion_percent_median": 0.7379692233847144
+    }
+  },
+  "promotion_status_counts": {
+    "capacity_rejected": 62,
+    "progress_rejected": 17,
+    "ok": 1
+  },
+  "phase4f_paired_P95_percent": {
+    "B_vs_A": 1.3026451910687742,
+    "C_vs_A": -0.057493835565053386,
+    "C_vs_B": -1.3431621287526285,
+    "D_vs_A": -1.1812064520920595,
+    "D_vs_C": -1.0598883947577964
+  },
+  "phase4g_d_eligible_allocator": {
+    "False": 35,
+    "True": 11
+  },
+  "phase4g_d_frontier": {
+    "selections": 126,
+    "F0_blocked_including_unknown": 8,
+    "exact_F0_blocked": 7,
+    "shadow_recoverable": 4
+  },
+  "phase4g_c_corrected_allocator": {
+    "source_artifact": "results/phase4g_c_fix/allocator_guard_comparison.csv",
+    "total_guard_observations": 123,
+    "exact_known": 54,
+    "exact_missing": 69,
+    "known_agreement": 54,
+    "known_mismatch": 0,
+    "known_false_admit": 0,
+    "known_false_reject": 0,
+    "unknown_excluded_from_mismatch_denominator": true,
+    "previous_result_reassessment": "RESULT_D_GUARD_ALLOCATOR_MISMATCH is not supported after missing-value correction"
+  },
+  "phase4g_paired_P95_change_percent": 1.382155825933118,
+  "phase2c_resume_TTFT_median_ms": {
+    "KEEP": 148.5130786895752,
+    "OFFLOAD": 94.82169151306152
+  },
+  "phase2d_effective_resume_median_ms": {
+    "OnDemand": 98.80595398135483,
+    "JIT-100": 56.297380942851305,
+    "JIT-250": 42.590499157086015,
+    "JIT-500": 42.19736508093774
+  },
+  "phase4e_liveness_counts": {
+    "LEASE_HOL_NONPROGRESS": 5,
+    "PROGRESS": 9
+  },
+  "phase4g_d_snapshot_timing_ms": {
+    "selection_to_scheduler_ms": {
+      "known": 126,
+      "median": 17.671185,
+      "P95": 89.225933,
+      "max": 128.347319
+    },
+    "snapshot_roundtrip_ms": {
+      "known": 126,
+      "median": 65.78251399999999,
+      "P95": 292.835994,
+      "max": 410.75343
+    },
+    "source_sample_age_ms": {
+      "known": 126,
+      "median": 3674.1905735,
+      "P95": 5812.4762,
+      "max": 6941.653648
+    }
+  },
+  "phase4g_d_frontier_unknown_lease_counts": {
+    "F0": 0,
+    "F1": 0,
+    "F2": 0,
+    "F3": 0,
+    "F4": 0
+  }
+}
