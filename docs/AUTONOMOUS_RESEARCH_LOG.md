@@ -1,5 +1,19 @@
 # 自主研究日志
 
+## 2026-10-09：第三轮，共享恢复机会证伪与研究问题重新定位
+
+- 起点7519bda64de6f2c48051b17f60f8e21c83be564e，origin/main无增量；本机main干净，服务器历史未跟踪数据保留。单独Round3预算；从Round2 runtime复制隔离源，未删除旧实现。
+- 假设：动态fork共享CPU ancestor在途重复物化可能把0.739GiB唯一首轮工作集放大到5.332GiB，改变真实准入/关键路径。容量模型只是反事实，必须先测重复，再决定是否开发coalescing；ordinary singleflight不主张创新。冻结protocol、工作量、screen门槛。
+- 实测：synthetic fork3episodes×8branches×2turns，root24576、first24832、second25024tokens，固定128outputs/call及BG3×1024outputs。cold/decode、4/8GiB、K2/K8四个默认compiled controls共12episodes全部1次ancestor external restore+7local hits；实际H2D各2016MiB、D2H2310MiB、preemptions0，五个完整run全部51输入严格匹配。
+- 机制：原生OffloadingConnector已有_blocks_being_loaded，APC在途keylookup延期、load完成释放key后复用GPU cache。初始cold-prefill遮蔽重复的解释不完整，decode control与源码审查纠正。停止ordinary coalescing开发，未写候选serving状态机。只新增默认关闭allocation trace，owned memory-time保持UNKNOWN。
+- 代表性decode4GiB workflow median4134.64ms，TTFTP95480.42ms，BGmedian8568.08ms，remote-ready wait median56.58ms。关键分支两段首token后service共2831.38ms，占68.48%；不能拆分计算/调度或认为全不可优化。cold wait222.54ms不是纯DMA；更大模型完成通知延迟仍待测。
+- 成本否定：完整active root每attention step streaming，即使8分支共享一次fetch，256steps需180.39GB，历史26.28GB/s参考下6.86sec，工作集能驻留，当前regime不开发。peer输入方向历史传输优势约0.333%，不支持把nearline带宽当大收益；容量价值不由此否定。
+- 文献：审查InferCept/FastServe/KVFlow/Continuum/MORI/Autellix及EfficientAgent、RR-Evict、CacheScout、MSA/AsymCache；HiCache作者v0.5.9已共享节点物化与事件/引用保护。KVSET仅摘要明确标注。普通TTL/host写过滤/公平尾驱逐/去重与已有机制重叠，不制造无价值PoC。
+- 内容验证：独立batch-invariant fork+16输入cold Prefill，raw hits0且16/16逐128tokens匹配；计时不混入默认模式。旧40input/32resume/BG8192 Compiled OnDemand回归valid，P954853.24ms，28/32真实容量失败；不能把run间差异算算法收益。未做完整GPU cancel/Lease/HOL矩阵。
+- 失败：上传父目录、首run helper参数、retry派生source_delta错误零值、live-ledger分析、首次CPUtests缺repo PYTHONPATH全部记录；首run54.31sec计入，缺输出UNKNOWN。原raw不改写。导出101hash通过，Python版本sum/CSV换行差异分开记录。
+- 检查/成本：52localtests、15runtimeCPUtests通过；7GPUexecutions累计0.20048675264813934GPUh，最长260.33sec，GPU0only，最后两卡空闲；CPU测试不分配GPU。7B资源模型可行但HF20sec探测超时、未下载/改环境。
+- 决策：本轮停止B，未产生已验证新算法、无强基线算法加速。下一问题是长上下文多分支Agent的host-miss/recompute与恢复依赖critical path；range ready发布仅未验证候选，先查真实trace/较大模型与已有强方法的差异。最终Agent/KV目标不变。报告docs/AUTONOMOUS_RESEARCH_ROUND3.md；数据results/autonomous_fork/。
+
 ## 2026-10-09：第二轮，容量干预与需求连续性 PoC
 
 - 起点：本机、服务器均为 e239088b3891396cde654669d74020e8fce82ecd，origin/main 无新增提交；本机干净，服务器历史未跟踪原始数据保留。GPU0/1 空闲。第二轮单独连续预算，不重置任何本轮失败成本。

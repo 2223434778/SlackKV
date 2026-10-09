@@ -1,0 +1,158 @@
+[
+  {
+    "episode": 0,
+    "reset": {
+      "status": 200,
+      "body": ""
+    },
+    "children": [
+      {
+        "index": 0,
+        "issue_ns": 1402299737310569,
+        "done_ns": 1402303789960890
+      },
+      {
+        "index": 1,
+        "issue_ns": 1402299761237964,
+        "done_ns": 1402303763130339
+      },
+      {
+        "index": 2,
+        "issue_ns": 1402299732216861,
+        "done_ns": 1402303784676067
+      },
+      {
+        "index": 3,
+        "issue_ns": 1402299756101377,
+        "done_ns": 1402303793770311
+      },
+      {
+        "index": 4,
+        "issue_ns": 1402299765690628,
+        "done_ns": 1402303779783848
+      },
+      {
+        "index": 5,
+        "issue_ns": 1402299746596482,
+        "done_ns": 1402303758111875
+      },
+      {
+        "index": 6,
+        "issue_ns": 1402299751714930,
+        "done_ns": 1402303782227392
+      },
+      {
+        "index": 7,
+        "issue_ns": 1402299742403668,
+        "done_ns": 1402303786276554
+      }
+    ],
+    "workflow_ms": 4061.55345,
+    "bg_ms": 8480.536071,
+    "source_accounting": "Use raw SLACKKV_SOURCE_TRACE and actual migration counters; missing series are UNKNOWN"
+  },
+  {
+    "episode": 1,
+    "reset": {
+      "status": 200,
+      "body": ""
+    },
+    "children": [
+      {
+        "index": 0,
+        "issue_ns": 1402310090499662,
+        "done_ns": 1402314161080443
+      },
+      {
+        "index": 1,
+        "issue_ns": 1402310086903090,
+        "done_ns": 1402314168592088
+      },
+      {
+        "index": 2,
+        "issue_ns": 1402310102448473,
+        "done_ns": 1402314176921803
+      },
+      {
+        "index": 3,
+        "issue_ns": 1402310106147241,
+        "done_ns": 1402314180373312
+      },
+      {
+        "index": 4,
+        "issue_ns": 1402310098007723,
+        "done_ns": 1402314155095240
+      },
+      {
+        "index": 5,
+        "issue_ns": 1402310110171326,
+        "done_ns": 1402314172580307
+      },
+      {
+        "index": 6,
+        "issue_ns": 1402310094186900,
+        "done_ns": 1402314151178939
+      },
+      {
+        "index": 7,
+        "issue_ns": 1402310083211752,
+        "done_ns": 1402314165531624
+      }
+    ],
+    "workflow_ms": 4097.16156,
+    "bg_ms": 8541.766254,
+    "source_accounting": "Use raw SLACKKV_SOURCE_TRACE and actual migration counters; missing series are UNKNOWN"
+  },
+  {
+    "episode": 2,
+    "reset": {
+      "status": 200,
+      "body": ""
+    },
+    "children": [
+      {
+        "index": 0,
+        "issue_ns": 1402320531522882,
+        "done_ns": 1402324567249431
+      },
+      {
+        "index": 1,
+        "issue_ns": 1402320520172834,
+        "done_ns": 1402324588338244
+      },
+      {
+        "index": 2,
+        "issue_ns": 1402320543322241,
+        "done_ns": 1402324575420190
+      },
+      {
+        "index": 3,
+        "issue_ns": 1402320546966066,
+        "done_ns": 1402324579943043
+      },
+      {
+        "index": 4,
+        "issue_ns": 1402320535210404,
+        "done_ns": 1402324577683366
+      },
+      {
+        "index": 5,
+        "issue_ns": 1402320527745872,
+        "done_ns": 1402324549764396
+      },
+      {
+        "index": 6,
+        "issue_ns": 1402320524048490,
+        "done_ns": 1402324584465777
+      },
+      {
+        "index": 7,
+        "issue_ns": 1402320539502084,
+        "done_ns": 1402324563026967
+      }
+    ],
+    "workflow_ms": 4068.16541,
+    "bg_ms": 8546.172692,
+    "source_accounting": "Use raw SLACKKV_SOURCE_TRACE and actual migration counters; missing series are UNKNOWN"
+  }
+]

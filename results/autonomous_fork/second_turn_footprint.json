@@ -1,0 +1,8 @@
+{
+  "bytes_per_token": 28672,
+  "shared_blocks": 1536,
+  "unique_bytes": 837222400,
+  "duplicate_upper_bytes": 5769723904,
+  "avoided_copy_upper_bytes": 4932501504,
+  "qualification": "capacity model, not actual residency or measured speedup"
+}

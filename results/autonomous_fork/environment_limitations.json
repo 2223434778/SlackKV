@@ -1,0 +1,11 @@
+{
+  "checked_model": "Qwen/Qwen2.5-7B-Instruct",
+  "expected_fp16_weight_gib_approx": 14,
+  "kv_bytes_per_token": 57344,
+  "single_a6000_feasible_estimate": true,
+  "server_huggingface_api_probe": "URLError: urlopen error timed out (20-second limit)",
+  "download_attempted": false,
+  "cached_model": "Qwen2.5-1.5B-Instruct",
+  "gpu_hours_used_for_probe": 0,
+  "limitation": "larger-model validation unavailable in current cache; no environment/proxy/dependency changes made"
+}

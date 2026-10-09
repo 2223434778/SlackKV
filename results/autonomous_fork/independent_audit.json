@@ -1,0 +1,11 @@
+{
+  "original_hashes_verified": 101,
+  "finalized_executions": 7,
+  "complete_fork_runs": 5,
+  "identical_actual_fork_inputs": true,
+  "gpu_hours": 0.20048675264813937,
+  "max_single_seconds": 260.3274494949728,
+  "exact_verified_cold_oracle_16": true,
+  "missing_or_failed_data_excluded_from_performance": true,
+  "note": "raw server outputs stay byte-exact; local total-cost float differs below 1e-15; Phase0 raw CSV newline conversion changes byte SHA but not numerical bandwidth"
+}

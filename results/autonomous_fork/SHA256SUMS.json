@@ -1,0 +1,507 @@
+[
+  {
+    "path": "analysis.json",
+    "bytes": 717025,
+    "sha256": "62ab2258c60d743f858215f7e666cfc5f1d41f465d7c9fe9462202a870b74caf"
+  },
+  {
+    "path": "analysis_failures.txt",
+    "bytes": 1271,
+    "sha256": "e013bb6ea8f98cc63d38751c49d31052f8c0fdba2e7bdf3a0492e2e092f143c0"
+  },
+  {
+    "path": "cost_model.json",
+    "bytes": 1543,
+    "sha256": "21688ed3453caf87de887ea722bce2a44f484159ac0e6d5c3830e2e17fac37ad"
+  },
+  {
+    "path": "environment.json",
+    "bytes": 1388,
+    "sha256": "01a3da662d2c2ef4e305ee78a8e2c558eec09a5d7e966ba52dec68ae41528569"
+  },
+  {
+    "path": "environment_limitations.json",
+    "bytes": 478,
+    "sha256": "d0ef3856890fdff3ccf73b3776d8aac326ff2afb9ad189dbbb8c878e3df3804a"
+  },
+  {
+    "path": "final_gpu_processes.csv",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "final_gpu_state.csv",
+    "bytes": 88,
+    "sha256": "a5d676c2a8f03cb71a6844c30d4e30264f339b8dc253a86911d0628fa99a938c"
+  },
+  {
+    "path": "fork-control-4/episode-0-after.prom",
+    "bytes": 100666,
+    "sha256": "c13500c25081e69dba4bad4369f278c66b0de43c212f72d94ae81aa2020ffdfd"
+  },
+  {
+    "path": "fork-control-4/episode-0-before.prom",
+    "bytes": 96429,
+    "sha256": "c2320aab6a2b0f7854cbead389d33e9ac7682e8ef793762ec4ff4b3d759b3ed5"
+  },
+  {
+    "path": "fork-control-4/execution.json",
+    "bytes": 1442,
+    "sha256": "ae88c5a0fac1d6705f8e8db3f260d06ed384ba754f6d0e9911103e3605e514f6"
+  },
+  {
+    "path": "fork-control-4/failure.txt",
+    "bytes": 577,
+    "sha256": "898eb9763f683c062f4253be784c04cdc802009c9c7c6c73b48b1a895d81af73"
+  },
+  {
+    "path": "fork-control-4/inputs.jsonl",
+    "bytes": 2556577,
+    "sha256": "1824c8731255b5c6548a3b8acb8c0036a9e3569ac9e0e990296499417d458e20"
+  },
+  {
+    "path": "fork-control-4/server_logs/fork-control-4.log",
+    "bytes": 423038,
+    "sha256": "e212f5002f7e9582e5d7ea5fbad84418b0bb526cea8d10e75f41e63c977b0435"
+  },
+  {
+    "path": "fork-control-4/server_logs/fork-control-4_compact.log",
+    "bytes": 2299,
+    "sha256": "986a97ec643450f7cb0b1bd3f09a3916d9bd1e8ce401b93b1d001ad980199dea"
+  },
+  {
+    "path": "fork-control-4-retry/episode-0-after.prom",
+    "bytes": 100669,
+    "sha256": "ffbe387663dd063e63eecd55ef3ec16aa223124992a9d4f23a3cb530b6ac2c32"
+  },
+  {
+    "path": "fork-control-4-retry/episode-0-before.prom",
+    "bytes": 96426,
+    "sha256": "25adf22cd9673a25b35a72d185ec524695158b083e3c8743b40bdfc33d68a714"
+  },
+  {
+    "path": "fork-control-4-retry/episode-1-after.prom",
+    "bytes": 100683,
+    "sha256": "8bb876f3d082eb85b1dee22d0ffd4e5a537e1020deee13ed216324bca58cc02c"
+  },
+  {
+    "path": "fork-control-4-retry/episode-1-before.prom",
+    "bytes": 100672,
+    "sha256": "63d8653fc83928f04d958db2303168e7360fb74e472722590fcb1662382d232d"
+  },
+  {
+    "path": "fork-control-4-retry/episode-2-after.prom",
+    "bytes": 100707,
+    "sha256": "7f2e3e96f7d60a705304205e878c2241b17fff26fb649af1d546c1b91f3c8b84"
+  },
+  {
+    "path": "fork-control-4-retry/episode-2-before.prom",
+    "bytes": 100684,
+    "sha256": "e44da01e46d090478abc4079c3013af9f74f37749f9ffc871632097ae86c422c"
+  },
+  {
+    "path": "fork-control-4-retry/episodes.json",
+    "bytes": 3383,
+    "sha256": "66c8ceb18e29ab424a49cf3664bfa37b5d6db2b709025fb15a223f18f1acf17b"
+  },
+  {
+    "path": "fork-control-4-retry/execution.json",
+    "bytes": 1536,
+    "sha256": "87c6f01e65b34b5c373026a8bbbff5a124fce571c6eff4401cd397aab27598b8"
+  },
+  {
+    "path": "fork-control-4-retry/inputs.jsonl",
+    "bytes": 7667453,
+    "sha256": "0427319cc5e6589343bea5bd860328ce282781b347b538e65ac060da938bc456"
+  },
+  {
+    "path": "fork-control-4-retry/metrics_after.prom",
+    "bytes": 100706,
+    "sha256": "2f482869551e3f757d5ef0cb796110b60959838c8270ae4427710c598f096100"
+  },
+  {
+    "path": "fork-control-4-retry/requests.json",
+    "bytes": 108913,
+    "sha256": "1469473cf5611e0542678f50e80180fd34def4bcce034c9511c78a248c7d40ba"
+  },
+  {
+    "path": "fork-control-4-retry/server_logs/fork-control-4-retry.log",
+    "bytes": 1215241,
+    "sha256": "beacccc28b98b78baceceee54529a7a2e9883ff80becf4fb34efa390c9e12c77"
+  },
+  {
+    "path": "fork-control-4-retry/server_logs/fork-control-4-retry_compact.log",
+    "bytes": 2299,
+    "sha256": "4bf011fb0acccfe96e6a9e2e67cf11c2f184b16165023dc1313b95c508d506f0"
+  },
+  {
+    "path": "fork-control-4-retry.launch.log",
+    "bytes": 362,
+    "sha256": "d4af2fa72285a664facff14ef3fd7570966802dbd554383a1421c7129363355f"
+  },
+  {
+    "path": "fork-control-4.launch.log",
+    "bytes": 1155,
+    "sha256": "14bb8aed3275e9c3e1c56a8756da87670cc8d0664d518894fede7f11033bce1a"
+  },
+  {
+    "path": "fork-decode-control-4/episode-0-after.prom",
+    "bytes": 100682,
+    "sha256": "55ae0adcfc22fd4d68f9f667e1530e575db248fa81fd330955a72c7e9881696e"
+  },
+  {
+    "path": "fork-decode-control-4/episode-0-before.prom",
+    "bytes": 96433,
+    "sha256": "65deae07ac9e6f687680803ee88df12128ccd2b6b3f3078f094aa31e0c75b5df"
+  },
+  {
+    "path": "fork-decode-control-4/episode-1-after.prom",
+    "bytes": 100688,
+    "sha256": "da6fc40c7c20c441a279f449be78239bb9b218661bbe9a23f436820f301f2580"
+  },
+  {
+    "path": "fork-decode-control-4/episode-1-before.prom",
+    "bytes": 100682,
+    "sha256": "f3d57c4bd271d4e347c7f2c17a578a71afb6f7446dacc03b58464e41e470207f"
+  },
+  {
+    "path": "fork-decode-control-4/episode-2-after.prom",
+    "bytes": 100725,
+    "sha256": "5736119eb8404a85db089f72f0d6380cce5d91ca85c852cbd29e75d50e48c064"
+  },
+  {
+    "path": "fork-decode-control-4/episode-2-before.prom",
+    "bytes": 100705,
+    "sha256": "be2afa05de917261c5563c5c2af62b803d916d6b371c16d273b956cd7cde2a5d"
+  },
+  {
+    "path": "fork-decode-control-4/episodes.json",
+    "bytes": 3384,
+    "sha256": "9ffb155fea589e4de54e0b26fea303e6ae21d69d819da9c6aa3d9045b9b3c3a0"
+  },
+  {
+    "path": "fork-decode-control-4/execution.json",
+    "bytes": 1570,
+    "sha256": "243158b12b64e05ca0ce9da89dac7002fc2b25aad3dac445fc507d13b4e153ab"
+  },
+  {
+    "path": "fork-decode-control-4/inputs.jsonl",
+    "bytes": 7667453,
+    "sha256": "53df8375840c87b0afdb8d0205115bebb019f26ba25181d9a26a51e095ecc9eb"
+  },
+  {
+    "path": "fork-decode-control-4/metrics_after.prom",
+    "bytes": 100712,
+    "sha256": "0f15f9869f72fb0883ed2031990e89adadc185ea3ffb390f422e1121fb1edd83"
+  },
+  {
+    "path": "fork-decode-control-4/requests.json",
+    "bytes": 108909,
+    "sha256": "88ccc4a93f406aa2bd11a906c333c6a323e15d20eabce904da86d3c0327f5b13"
+  },
+  {
+    "path": "fork-decode-control-4/server_logs/fork-decode-control-4.log",
+    "bytes": 1221680,
+    "sha256": "a2e96087345c24a03ba786913577d4535c686106ac777633928365326a0ec300"
+  },
+  {
+    "path": "fork-decode-control-4/server_logs/fork-decode-control-4_compact.log",
+    "bytes": 2299,
+    "sha256": "fb3dfacecb9c10d942a7fa4c0026f2b0271bea197053e2130fb4fe89fe730138"
+  },
+  {
+    "path": "fork-decode-control-4.launch.log",
+    "bytes": 362,
+    "sha256": "d4af2fa72285a664facff14ef3fd7570966802dbd554383a1421c7129363355f"
+  },
+  {
+    "path": "fork-decode-control-8/episode-0-after.prom",
+    "bytes": 100684,
+    "sha256": "b6807696c1a871621f11109671add849bbb4f1051181860008c7c4b55130cb9c"
+  },
+  {
+    "path": "fork-decode-control-8/episode-0-before.prom",
+    "bytes": 96449,
+    "sha256": "42dee058129bee48312220302e6581454eec386ead61366662fd1e62813958f7"
+  },
+  {
+    "path": "fork-decode-control-8/episode-1-after.prom",
+    "bytes": 100701,
+    "sha256": "ecde1315b0ad2d8d5af0da8bb0304922131027f6d98c21f254508bf9245af016"
+  },
+  {
+    "path": "fork-decode-control-8/episode-1-before.prom",
+    "bytes": 100688,
+    "sha256": "635acdc391e19df9ffcf19cb8dd82953dbb0451dea910a4743b5ad8873a1b6f8"
+  },
+  {
+    "path": "fork-decode-control-8/episode-2-after.prom",
+    "bytes": 100717,
+    "sha256": "3e322d8e41a35a6077c9c6a1cf89070b34cf7b7236a477a510bd4cc9a5e2061a"
+  },
+  {
+    "path": "fork-decode-control-8/episode-2-before.prom",
+    "bytes": 100692,
+    "sha256": "0cdb06765d5da45f74fdf791aa14464aaf5b14f478f63d299ec5af28b15e27f8"
+  },
+  {
+    "path": "fork-decode-control-8/episodes.json",
+    "bytes": 3513,
+    "sha256": "418ae00469179c83637e41e05bce06b3821591c748e65270bb3ff94cdbc14ee5"
+  },
+  {
+    "path": "fork-decode-control-8/execution.json",
+    "bytes": 1568,
+    "sha256": "ceb58b8fe8af8f0c97d7e9d46038d308994b9869033618e9691fdbefe19fa661"
+  },
+  {
+    "path": "fork-decode-control-8/inputs.jsonl",
+    "bytes": 7667453,
+    "sha256": "25bea1a997249655759b5d8df0f977bed459987fa603c55b15de3177abed1531"
+  },
+  {
+    "path": "fork-decode-control-8/metrics_after.prom",
+    "bytes": 100730,
+    "sha256": "d784bce02e612a83a32d009552cb136e312b0a80798d914070625503bf0b72a2"
+  },
+  {
+    "path": "fork-decode-control-8/requests.json",
+    "bytes": 108919,
+    "sha256": "fe07ae6f24abcb6396359c08f4c101c90acf5a49de64bdbbb7a9f931b0e36c0c"
+  },
+  {
+    "path": "fork-decode-control-8/server_logs/fork-decode-control-8.log",
+    "bytes": 1222733,
+    "sha256": "9742fe9f47e773dddf2c2a8bef0e7baee2f9663674b0c304580ca7c0ece9e8be"
+  },
+  {
+    "path": "fork-decode-control-8/server_logs/fork-decode-control-8_compact.log",
+    "bytes": 2299,
+    "sha256": "9484d3bedb2b4bc8e509bff8d8bc304b76ade810d08a3a57f5f8da9e7bc390eb"
+  },
+  {
+    "path": "fork-decode-control-8.launch.log",
+    "bytes": 362,
+    "sha256": "d4af2fa72285a664facff14ef3fd7570966802dbd554383a1421c7129363355f"
+  },
+  {
+    "path": "fork-decode-k2-4/episode-0-after.prom",
+    "bytes": 100681,
+    "sha256": "b3d772195c6b23de24ea026d4963d52454dd36035417625c98fff8c8a3c93ebd"
+  },
+  {
+    "path": "fork-decode-k2-4/episode-0-before.prom",
+    "bytes": 96435,
+    "sha256": "ef32cfe2af4a3571cff9c4c14571a8bc51e74838a0c621db921f186230da6d6b"
+  },
+  {
+    "path": "fork-decode-k2-4/episode-1-after.prom",
+    "bytes": 100690,
+    "sha256": "1cbb497968f9ae6fb769bb6425623bcd31032999bc06fe620903c6bb3a17895f"
+  },
+  {
+    "path": "fork-decode-k2-4/episode-1-before.prom",
+    "bytes": 100686,
+    "sha256": "51019f88c9aa5a229687c3c0fbf86972bc79f1e943168138a707354843f34828"
+  },
+  {
+    "path": "fork-decode-k2-4/episode-2-after.prom",
+    "bytes": 100712,
+    "sha256": "77afa1bb4543b09f148146e9ce4a77e017938fe3adb3df5f99e45fefd75858c7"
+  },
+  {
+    "path": "fork-decode-k2-4/episode-2-before.prom",
+    "bytes": 100693,
+    "sha256": "efd69ad60328cc364b400618a8a7dd28b7321b83ee79c6a1bb8d525b8e3d9477"
+  },
+  {
+    "path": "fork-decode-k2-4/episodes.json",
+    "bytes": 3515,
+    "sha256": "676d17b6bb43f5df0793b419cd40da4ed99f42703e7588b8209a982ca1dcdd89"
+  },
+  {
+    "path": "fork-decode-k2-4/execution.json",
+    "bytes": 1561,
+    "sha256": "8413b8fad6097ef64d43440c3fd4a5294c573fd4e5a221c8e5e2c263c0064852"
+  },
+  {
+    "path": "fork-decode-k2-4/inputs.jsonl",
+    "bytes": 7667453,
+    "sha256": "2c22d411fe83c507a04161eab0d085c0e3a2dc5ecc0bda89531b2b8ee7500ac8"
+  },
+  {
+    "path": "fork-decode-k2-4/metrics_after.prom",
+    "bytes": 100713,
+    "sha256": "895f5111f808fa7267e834ee7018a17dcc53901c9b9629d423106f9ebe4003a2"
+  },
+  {
+    "path": "fork-decode-k2-4/requests.json",
+    "bytes": 108915,
+    "sha256": "5009dd0213dcdb9bed1433f41082c732f2bb0bdb52a406eacb1897c629343a98"
+  },
+  {
+    "path": "fork-decode-k2-4/server_logs/fork-decode-k2-4.log",
+    "bytes": 1281918,
+    "sha256": "c445df6755eab2613a4eacef4ffd15d7229f8947d124eb2c8bda5fc9307485e0"
+  },
+  {
+    "path": "fork-decode-k2-4/server_logs/fork-decode-k2-4_compact.log",
+    "bytes": 2299,
+    "sha256": "cf8bf36664387c0c15a775ed1ae799b7e06cc1107c53769d73789fcc11d39c00"
+  },
+  {
+    "path": "fork-decode-k2-4.launch.log",
+    "bytes": 362,
+    "sha256": "d4af2fa72285a664facff14ef3fd7570966802dbd554383a1421c7129363355f"
+  },
+  {
+    "path": "fork-oracle-4/cold_oracle.json",
+    "bytes": 48301,
+    "sha256": "2b740f2178a1cfb5fa835664d95e736b2bb6ff6d1f15afbb78b12033b00f5de7"
+  },
+  {
+    "path": "fork-oracle-4/episode-0-after.prom",
+    "bytes": 100663,
+    "sha256": "67634a0b001ffb6ecae9eb84229d3a73be425c51b70e8b1c6e6b7bf2dae2e9d0"
+  },
+  {
+    "path": "fork-oracle-4/episode-0-before.prom",
+    "bytes": 96430,
+    "sha256": "ea72bf3660a256e5e9d79e074eb097c6f9de5a2739e8fbbc8662c746c1107440"
+  },
+  {
+    "path": "fork-oracle-4/episode-1-after.prom",
+    "bytes": 100681,
+    "sha256": "2f09d77fd25fd815e70a90c9da09cfb93a88eb9bb33a03ecb90872dd357c9016"
+  },
+  {
+    "path": "fork-oracle-4/episode-1-before.prom",
+    "bytes": 100679,
+    "sha256": "f91388aaa6f0719029cd1bac70a0b14b37207b43111321433a1689353ae42044"
+  },
+  {
+    "path": "fork-oracle-4/episode-2-after.prom",
+    "bytes": 100691,
+    "sha256": "3bf5525ea1ee1f25ff0d24996cdb7820277fbc9ed83dbaf945815e37b72e03e4"
+  },
+  {
+    "path": "fork-oracle-4/episode-2-before.prom",
+    "bytes": 100674,
+    "sha256": "2059fbbe93c94f0dad081529eae0929c171eac7ff85ddd64094f3c019650a26d"
+  },
+  {
+    "path": "fork-oracle-4/episodes.json",
+    "bytes": 3522,
+    "sha256": "6bec8a68e5d5102a1d20dd7deabbba47b796b5e2a90688837dac38123ee04a79"
+  },
+  {
+    "path": "fork-oracle-4/execution.json",
+    "bytes": 1602,
+    "sha256": "c52eeac30a14bcb7444ed0404253a1c75ef1c252f42b14cadb43d6c8fb0d74b1"
+  },
+  {
+    "path": "fork-oracle-4/inputs.jsonl",
+    "bytes": 7667453,
+    "sha256": "d698dd98f85fe4de2eea95deebc05fff0ec6dc24b04533281192ac66798683ea"
+  },
+  {
+    "path": "fork-oracle-4/metrics_after.prom",
+    "bytes": 100691,
+    "sha256": "6e7b774d0c1ba9d701c3ee949bc4032da2dfaa1831e704459947739f6a296d85"
+  },
+  {
+    "path": "fork-oracle-4/requests.json",
+    "bytes": 108906,
+    "sha256": "4dc80ba56f0bdbc0edb35e15c0c960f4c0e925f0f3494c4e24614b76adcaf565"
+  },
+  {
+    "path": "fork-oracle-4/server_logs/fork-oracle-4.log",
+    "bytes": 1967954,
+    "sha256": "aa361429c87a1741da72f631b605c6a5be940275f803c3ec0ed7af2da0cd78fc"
+  },
+  {
+    "path": "fork-oracle-4/server_logs/fork-oracle-4_compact.log",
+    "bytes": 2525,
+    "sha256": "df6fed1ec9fc8e96acac01f16f343fdb245d1fc369f31bad38337fcc04c6b141"
+  },
+  {
+    "path": "fork-oracle-4.launch.log",
+    "bytes": 362,
+    "sha256": "d4af2fa72285a664facff14ef3fd7570966802dbd554383a1421c7129363355f"
+  },
+  {
+    "path": "legacy-regression-2/background_chunks.csv",
+    "bytes": 1293,
+    "sha256": "9b2c23767179d3e5929f49ba37fbaa84c6c30750bf310f47bd12008ae1174982"
+  },
+  {
+    "path": "legacy-regression-2/execution.json",
+    "bytes": 1983,
+    "sha256": "0368d5bd460a9847450a936b7e4ca475749205b3fdd30bce02f62341fb92331d"
+  },
+  {
+    "path": "legacy-regression-2/inputs.jsonl",
+    "bytes": 5604228,
+    "sha256": "42a17e47b1021e18c9a25c721fc263d00d3408eb9dcf49e958d5e52ecd233467"
+  },
+  {
+    "path": "legacy-regression-2/metrics_after_timed_workload.prom",
+    "bytes": 99448,
+    "sha256": "831362a936d4ef26c61dd58e6f3e4073017f605c22546807fd5905073ebecff6"
+  },
+  {
+    "path": "legacy-regression-2/output_tokens.jsonl",
+    "bytes": 299385,
+    "sha256": "4515fe0081704dd279569e7636eddcff16d743d9981c1af59955cb170dd0e044"
+  },
+  {
+    "path": "legacy-regression-2/runs/measured_rep1_a/run.json",
+    "bytes": 199566,
+    "sha256": "97bb95354402654569bfea98a3675fbf671e72ee9f4ae5a3f0cf4562d59bbe84"
+  },
+  {
+    "path": "legacy-regression-2/runs/measured_rep1_a/server_logs/measured_rep1_a.log",
+    "bytes": 3921844,
+    "sha256": "b60df606acd27a9cd97abb62d61b1251b7c483f194f4184e67d868fadae0554b"
+  },
+  {
+    "path": "legacy-regression-2/runs/measured_rep1_a/server_logs/measured_rep1_a_compact.log",
+    "bytes": 2298,
+    "sha256": "c90526c8f71f787155ddbb91cbde636c307f482010e1815e55e1d24a33a405b0"
+  },
+  {
+    "path": "legacy-regression-2/server_logs/measured_rep1_a_compact.log",
+    "bytes": 33582,
+    "sha256": "ace8b384c9e8babcc65bbb93877698871904f388c487a5cd57a2ca0abc387a2f"
+  },
+  {
+    "path": "legacy-regression-2.launch.log",
+    "bytes": 1165,
+    "sha256": "68677bc89edd15e3ba1ffa6abfbcbf0ddc8cbea100863ad0feff41e4669ea93a"
+  },
+  {
+    "path": "native_inflight_audit.json",
+    "bytes": 7118,
+    "sha256": "529da29f903250f62f6720bd5531ba3bcba5486ed66a24e6c8f86beed5287876"
+  },
+  {
+    "path": "native_offloading_scheduler.py.gz",
+    "bytes": 13717,
+    "sha256": "811ff4c8cf5b53e4ec2815303e13719148f05f05a498c7393ecc5cbbd407b4e9"
+  },
+  {
+    "path": "runtime_regression.txt",
+    "bytes": 3734,
+    "sha256": "eb918b367b9a888b3c29ef82dbb81d21a7c1b8bb3a2629fb81e04530b1a2fcda"
+  },
+  {
+    "path": "runtime_regression_retry.txt",
+    "bytes": 976,
+    "sha256": "24e3e99fd124c33acda615207ad2ab4c6f5fe06eaab6680bfe0b0b0b6879dc52"
+  },
+  {
+    "path": "runtime_scheduler_final.py.gz",
+    "bytes": 35287,
+    "sha256": "e1c4ce5dcfc55b783782df3814abdbcb03ea78fb66537137b283a214bdadadc5"
+  }
+]

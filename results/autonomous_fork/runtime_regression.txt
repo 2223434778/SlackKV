@@ -1,0 +1,54 @@
+Error processing line 1 of /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/lib/python3.11/site-packages/nvidia_cutlass_dsl_packages.pth:
+
+  Traceback (most recent call last):
+    File "<frozen site>", line 195, in addpackage
+    File "<string>", line 1, in <module>
+  ModuleNotFoundError: No module named 'nvidia_cutlass_dsl'
+
+Remainder of file ignored
+
+==================================== ERRORS ====================================
+_ ERROR collecting tests/v1/kv_connector/unit/test_slackkv_native_prefetch.py __
+ImportError while importing test module '/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round3-source/tests/v1/kv_connector/unit/test_slackkv_native_prefetch.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.conda-envs/slackkv-phase2c-fix/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../slackkv-autonomous-20261009-source/tests/v1/kv_connector/unit/test_slackkv_native_prefetch.py:14: in <module>
+    from vllm.v1.core.sched.scheduler import _is_slackkv_prefetch_only
+vllm/v1/core/sched/scheduler.py:7: in <module>
+    from experiments.autonomous_admission.backfill import BoundedBackfill
+E   ModuleNotFoundError: No module named 'experiments'
+------------------------------- Captured stderr --------------------------------
+W1009 22:27:19.908000 1037712 site-packages/torch/utils/cpp_extension.py:140] No CUDA runtime is found, using CUDA_HOME='/usr/local/cuda'
+_ ERROR collecting tests/v1/kv_connector/unit/test_slackkv_connector_first.py __
+ImportError while importing test module '/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round3-source/tests/v1/kv_connector/unit/test_slackkv_connector_first.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.conda-envs/slackkv-phase2c-fix/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../slackkv-autonomous-20261009-source/tests/v1/kv_connector/unit/test_slackkv_connector_first.py:10: in <module>
+    from vllm.v1.core.sched.scheduler import (
+vllm/v1/core/sched/scheduler.py:7: in <module>
+    from experiments.autonomous_admission.backfill import BoundedBackfill
+E   ModuleNotFoundError: No module named 'experiments'
+_ ERROR collecting tests/v1/kv_connector/unit/test_slackkv_first_token_gate_capacity.py _
+ImportError while importing test module '/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round3-source/tests/v1/kv_connector/unit/test_slackkv_first_token_gate_capacity.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../.conda-envs/slackkv-phase2c-fix/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../slackkv-autonomous-20261009-source/tests/v1/kv_connector/unit/test_slackkv_first_token_gate_capacity.py:6: in <module>
+    from vllm.v1.core.sched.scheduler import (
+vllm/v1/core/sched/scheduler.py:7: in <module>
+    from experiments.autonomous_admission.backfill import BoundedBackfill
+E   ModuleNotFoundError: No module named 'experiments'
+=========================== short test summary info ============================
+ERROR tests/v1/kv_connector/unit/test_slackkv_native_prefetch.py
+ERROR tests/v1/kv_connector/unit/test_slackkv_connector_first.py
+ERROR tests/v1/kv_connector/unit/test_slackkv_first_token_gate_capacity.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 3 errors during collection !!!!!!!!!!!!!!!!!!!!
+3 errors in 0.45s

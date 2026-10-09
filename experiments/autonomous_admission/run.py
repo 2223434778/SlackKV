@@ -23,7 +23,7 @@ def main() -> None:
     parser.add_argument("--batch-invariant", action="store_true")
     parser.add_argument("--policy", choices=("A", "D"), default="A")
     parser.add_argument("--round-directory", default="autonomous_admission",
-                        choices=("autonomous_admission", "autonomous_capacity"))
+                        choices=("autonomous_admission", "autonomous_capacity", "autonomous_fork"))
     parser.add_argument("--kv-gib", type=int, choices=(2, 4, 8), default=2)
     parser.add_argument("--replay-inputs", type=Path)
     parser.add_argument("--continuation-credit", action="store_true")
@@ -84,7 +84,7 @@ def main() -> None:
         return proc, log
 
     runtime.start_server = start_server
-    if args.round_directory == "autonomous_capacity":
+    if args.round_directory != "autonomous_admission":
         from experiments.autonomous_capacity.capacity import validate_pool
 
         def validate_runtime(log, block_size):
@@ -172,6 +172,7 @@ def main() -> None:
         "kv_bytes": args.kv_gib * 2**30, "bg_tokens": 8192,
         "server_command": runtime.server_command(True, args.kv_gib * 2**30),
         "round_directory": args.round_directory,
+        "run_kind": "historical_regression" if args.round_directory == "autonomous_fork" else "historical_workload",
         "replay_inputs": str(args.replay_inputs) if args.replay_inputs else None,
         "replay_sha256": hashlib.sha256(args.replay_inputs.read_bytes()).hexdigest() if args.replay_inputs else None,
         "round_gpu_hours_before_run": spent,

@@ -1,0 +1,21 @@
+*** Begin Patch
+*** Update File: /media/a6000/D/ZhaoBinHe/slackkv-autonomous-round3-source/vllm/v1/core/sched/scheduler.py
+@@
+                 request = request_queue.pop_request()
+                 if load_kv_async:
++                    if os.environ.get("SLACKKV_FORK_TRACE") == "1":
++                        owned = {}
++                        for rid in self.requests:
++                            groups = self.kv_cache_manager.get_blocks(rid).blocks
++                            ids = [b.block_id for group in groups for b in group if b.block_id]
++                            if ids:
++                                owned[rid] = ids
++                        logger.info("SLACKKV_FORK_ALLOC %s", json.dumps({
++                            "t": time.monotonic(), "request_id": request_id,
++                            "session": _slackkv_session(request),
++                            "local_tokens": num_new_local_computed_tokens,
++                            "external_tokens": num_external_computed_tokens,
++                            "owned": owned,
++                        }, separators=(",", ":")))
+                     # If loading async, allocate memory and put request
+*** End Patch

@@ -1,0 +1,40 @@
+{
+  "python": "3.11.16",
+  "torch": "2.11.0+cu126",
+  "cuda": "12.6",
+  "runtime_source": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round3-source",
+  "baseline_commit": "7519bda64de6f2c48051b17f60f8e21c83be564e",
+  "remote_branch": "research/capacity-round2-20261009",
+  "model_config": {
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "attention_dropout": 0.0,
+    "bos_token_id": 151643,
+    "eos_token_id": 151645,
+    "hidden_act": "silu",
+    "hidden_size": 1536,
+    "initializer_range": 0.02,
+    "intermediate_size": 8960,
+    "max_position_embeddings": 32768,
+    "max_window_layers": 21,
+    "model_type": "qwen2",
+    "num_attention_heads": 12,
+    "num_hidden_layers": 28,
+    "num_key_value_heads": 2,
+    "rms_norm_eps": 1e-06,
+    "rope_theta": 1000000.0,
+    "sliding_window": 32768,
+    "tie_word_embeddings": true,
+    "torch_dtype": "bfloat16",
+    "transformers_version": "4.43.1",
+    "use_cache": true,
+    "use_sliding_window": false,
+    "vocab_size": 151936
+  },
+  "runtime_files": {
+    "vllm/v1/core/sched/scheduler.py": "5c0ef2cd7cc65a452d86c4751e43971efebf5d97066cb5f8d8126f3f5a8e43c8",
+    "vllm/v1/core/kv_cache_manager.py": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a",
+    "vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py": "bc883cf47d882d4406d7708a8d3520abe2752f545985705126f41fca66558bf0"
+  }
+}

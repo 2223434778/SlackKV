@@ -1,0 +1,7 @@
+Preserved setup/analysis failures (not research-negative runs):
+1. Initial upload failed because remote parent directories were absent. No server launched, no GPU allocation. Created parents and inspected every subsequent upload result.
+2. fork-control-4 failed after episode zero: source_delta() missing source argument. Its 54.314817119 seconds are in execution.json; requests.json was not written, outputs remain UNKNOWN.
+3. fork-control-4-retry derived source_delta zeros used invalid local/external labels. Preserve episodes.json, mark those fields INVALID; independently verify raw SLACKKV_SOURCE_TRACE against actual H2D. Final runner removes the field.
+4. Analysis attempted while fork-oracle-4 was RUNNING: missing finalized gpu_hours_conservative. No result emitted. Final analyzer explicitly refuses a live ledger.
+5. First CPU runtime test collection lacked the repository in PYTHONPATH. runtime_regression.txt retains three import errors; runtime_regression_retry.txt adds both runtime and repository paths and passes all 15 tests. CUDA_VISIBLE_DEVICES was empty.
+6. Some initial remote searches used rg (not installed); local glob searches used unsupported Windows wildcard paths. Retried with inventoried paths / remote grep. No experimental data changed.

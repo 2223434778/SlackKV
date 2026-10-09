@@ -1,0 +1,38 @@
+{
+  "phase0_reference_sha256": "c63db8b0fc28de207d81a94e301b1c0e5fd8adc5fc37383c53b8844a3a8e5ba3",
+  "reference_note": "historical Phase 0 CUDA12.1 measurement, not fresh Torch2.11 timing or universal bandwidth limit",
+  "pinned_cpu_GBps": 26.279615999999997,
+  "peer_gpu1_to_gpu0_GBps": 26.367456,
+  "transfer_only_peer_improvement_percent": 0.3331379409526769,
+  "qwen1_5b_fork": {
+    "bytes_per_token": 28672,
+    "shared_blocks": 1536,
+    "unique_bytes": 793182208,
+    "duplicate_upper_bytes": 5725683712,
+    "avoided_copy_upper_bytes": 4932501504,
+    "qualification": "capacity model, not actual residency or measured speedup"
+  },
+  "qwen1_5b_second_turn_fork": {
+    "bytes_per_token": 28672,
+    "shared_blocks": 1536,
+    "unique_bytes": 837222400,
+    "duplicate_upper_bytes": 5769723904,
+    "avoided_copy_upper_bytes": 4932501504,
+    "qualification": "capacity model, not actual residency or measured speedup"
+  },
+  "qwen7b_config_source": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/raw/main/config.json",
+  "qwen7b_fork_estimate": {
+    "bytes_per_token": 57344,
+    "shared_blocks": 1536,
+    "unique_bytes": 1586364416,
+    "duplicate_upper_bytes": 11451367424,
+    "avoided_copy_upper_bytes": 9865003008,
+    "qualification": "capacity model, not actual residency or measured speedup"
+  },
+  "qwen1_5b_active_root_streaming": {
+    "root_only_bytes": 180388626432,
+    "dma_seconds_at_reference_bandwidth": 6.864203283335648,
+    "qualification": "conditional optimistic model: one shared fetch per attention iteration; no private KV, staging, compute or interference; historical bandwidth is a reference, not a universal hardware bound"
+  },
+  "scope": "synthetic exact full-attention fork; shared root fetched once per attention iteration, not per branch; no claim about CPU attention or compression"
+}
