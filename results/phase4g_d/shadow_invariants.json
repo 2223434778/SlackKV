@@ -1,0 +1,7 @@
+{
+  "actual_frontier_policy_changes": 0,
+  "actual_psa_changes": 0,
+  "actual_retries": 0,
+  "retry_and_frontier_analysis": "shadow only",
+  "source_recheck_mode": "C1 exact full-ready only"
+}

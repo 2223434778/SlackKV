@@ -1,0 +1,7 @@
+{
+  "backend": "CLOCK_NANOSLEEP_ABS",
+  "pause_max_gate_ms": 30,
+  "pause_p95_gate_ms": 10,
+  "python_busy_spin": false,
+  "python_switch_interval_s": 0.0005
+}

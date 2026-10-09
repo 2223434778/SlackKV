@@ -1,0 +1,23 @@
+{
+  "C1_semantics": "source recheck consumed only when exact full-ready",
+  "boundaries": 32,
+  "episodes": 8,
+  "model_snapshot_path": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "offload_prompt_only": true,
+  "offload_prompt_only_configured": false,
+  "offload_prompt_only_default_source": "/media/a6000/D/ZhaoBinHe/slackkv-phase2c-fix-sourceprobe/vllm/v1/kv_offload/base.py",
+  "phase4c_workload": "/media/a6000/D/ZhaoBinHe/SlackKV/results/phase4c/hybrid_workload.csv",
+  "phase4c_workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105",
+  "previous_allocator_csv_sha256": "de03e10970ca47b530d207f8558d2acf1c35890a9e47bf901f164977754caf5a",
+  "shadow_method": "read-only snapshot_only API",
+  "slackkv_start_commit": "7bada3599076fa4fbf8e0d73120c37dbe6285ca0",
+  "start_commit": "7bada3599076fa4fbf8e0d73120c37dbe6285ca0",
+  "turns": 40,
+  "vllm_algorithm_changes": false,
+  "vllm_diff_sha256": "bfd789e6849715196435f18a57ed9bbefae7b4b9d3a78d69115614f27d1542e8",
+  "vllm_pre_phase4g_c_diff_sha256": "65a78bb3d925e7539f8133574c465e75847c1b54fbac299f5e4bcc4f5b9446e3",
+  "vllm_research_endpoint_sha256": "b9357bbdbe431f6541e90dad5188f86fe28399fd619aaea55a6ef81bbc612271",
+  "vllm_upstream_commit": "0fc695fc6d1d82e9a5ac6835ac8e4e1c83703665",
+  "vllm_version": "0.23.0",
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

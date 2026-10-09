@@ -1,0 +1,4 @@
+stage,condition,runs,boundaries,sleep_overshoot_P50_ms,sleep_overshoot_P95_ms,sleep_overshoot_P99_ms,sleep_overshoot_max_ms,sleep_overshoot_abs_P95_ms,dispatch_delay_P50_ms,dispatch_delay_P95_ms,dispatch_delay_P99_ms,dispatch_delay_max_ms,pause_error_P50_ms,pause_error_P95_ms,pause_error_P99_ms,pause_error_max_ms,pause_error_abs_P95_ms,pause_error_abs_P99_ms,pause_error_abs_max_ms,runs_passing_old_gate
+measured,C0,0,0,,,,,,,,,,,,,,,,,0
+measured,C1,4,128,0.089337,0.190376,0.650043,0.691389,0.190376,0.132751,0.189175,0.889917,0.949617,0.226136,0.757534,1.076455,1.08374,0.757534,1.076455,1.08374,4
+measured,ALL,4,128,0.089337,0.190376,0.650043,0.691389,0.190376,0.132751,0.189175,0.889917,0.949617,0.226136,0.757534,1.076455,1.08374,0.757534,1.076455,1.08374,4

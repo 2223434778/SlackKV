@@ -1,0 +1,415 @@
+{
+  "F1_recoverable_selections": 4,
+  "F2_recoverable_selections": 4,
+  "F3_recoverable_selections": 4,
+  "F4_recoverable_selections": 0,
+  "PSA1_reserve_P95_blocks": 1568.0,
+  "PSA1_reserve_max_blocks": 1584.0,
+  "PSA1_reserve_median_blocks": 1348.0,
+  "actual_minus_self_H_median_blocks": 1329.0,
+  "allocator_eligible_selections": 46,
+  "allocator_exact_coverage_fraction": 1.0,
+  "allocator_exact_fit_count_known": 11,
+  "allocator_exact_fit_fraction_known": 0.2391304347826087,
+  "allocator_exact_known": 46,
+  "allocator_exact_reject_count_known": 35,
+  "allocator_exact_reject_fraction_known": 0.7608695652173914,
+  "allocator_exact_unknown": 0,
+  "allocator_known_agreement_count": 44,
+  "allocator_known_false_admit_count": 2,
+  "allocator_known_false_reject_count": 0,
+  "candidate_matches_protected_count": 5,
+  "candidate_matches_protected_fraction": 0.03968253968253968,
+  "duration_weighted_poison_fraction": 0.8061364156752863,
+  "duration_weighted_poison_union_fraction": 0.8061364156752863,
+  "f3_candidate_self_psa_blocked_exact_fit_selections": 3,
+  "final_result": "RESULT_B_PROTECTED_FRONTIER_POISONING_DOMINANT",
+  "frontier_blocked_exact_fit_selections": 7,
+  "frontier_recoverable_exact_fit_selections": 4,
+  "median_failure_to_retry_window_ms": null,
+  "poison_duration_P95_ms": 6849.08935,
+  "poison_duration_median_ms": 4403.812685000001,
+  "poison_episode_count": 128,
+  "poison_type_counts": {
+    "Capacity-bound": 1,
+    "Frontier-only": 4,
+    "Mixed/unknown": 123,
+    "PSA-intrinsic": 0,
+    "Retryable head": 0
+  },
+  "protected_need_summary": {
+    "all": {
+      "allocator_exact_known_count": 61,
+      "allocator_exact_unknown_count": 65,
+      "need_allocator_now": {
+        "count": 61,
+        "max": 1583.0,
+        "median": 1292.0,
+        "p90": 1368.0,
+        "p95": 1554.0
+      },
+      "need_gap_psa1_minus_allocator": {
+        "count": 61,
+        "max": 1573.0,
+        "median": 0.0,
+        "p90": 1430.0,
+        "p95": 1444.0
+      },
+      "need_psa1_all": {
+        "count": 126,
+        "max": 1584.0,
+        "median": 1348.0,
+        "p90": 1563.0,
+        "p95": 1568.0
+      },
+      "need_psa1_exact_known": {
+        "count": 61,
+        "max": 1584.0,
+        "median": 1340.0,
+        "p90": 1554.0,
+        "p95": 1563.0
+      },
+      "need_ratio_psa1_over_max_1_allocator": {
+        "count": 61,
+        "max": 265.6,
+        "median": 1.0,
+        "p90": 191.0,
+        "p95": 241.66666666666666
+      },
+      "ownership": {
+        "evictable_cached_blocks": {
+          "count": 126,
+          "max": 1139.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0
+        },
+        "leased_blocks": {
+          "count": 126,
+          "max": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0
+        },
+        "local_cached_blocks": {
+          "count": 126,
+          "max": 1573.0,
+          "median": 0.0,
+          "p90": 1323.0,
+          "p95": 1430.0
+        },
+        "owned_blocks": {
+          "count": 126,
+          "max": 1573.0,
+          "median": 0.0,
+          "p90": 1323.0,
+          "p95": 1430.0
+        }
+      },
+      "selection_count": 126
+    },
+    "candidate_differs_from_protected": {
+      "allocator_exact_known_count": 58,
+      "allocator_exact_unknown_count": 63,
+      "need_allocator_now": {
+        "count": 58,
+        "max": 1583.0,
+        "median": 1288.0,
+        "p90": 1554.0,
+        "p95": 1554.0
+      },
+      "need_gap_psa1_minus_allocator": {
+        "count": 58,
+        "max": 1573.0,
+        "median": 0.5,
+        "p90": 1430.0,
+        "p95": 1554.0
+      },
+      "need_psa1_all": {
+        "count": 121,
+        "max": 1584.0,
+        "median": 1359.0,
+        "p90": 1563.0,
+        "p95": 1568.0
+      },
+      "need_psa1_exact_known": {
+        "count": 58,
+        "max": 1584.0,
+        "median": 1354.5,
+        "p90": 1554.0,
+        "p95": 1563.0
+      },
+      "need_ratio_psa1_over_max_1_allocator": {
+        "count": 58,
+        "max": 265.6,
+        "median": 1.0003681885125184,
+        "p90": 191.42857142857142,
+        "p95": 265.6
+      },
+      "ownership": {
+        "evictable_cached_blocks": {
+          "count": 121,
+          "max": 592.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0
+        },
+        "leased_blocks": {
+          "count": 121,
+          "max": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0
+        },
+        "local_cached_blocks": {
+          "count": 121,
+          "max": 1573.0,
+          "median": 0.0,
+          "p90": 1323.0,
+          "p95": 1430.0
+        },
+        "owned_blocks": {
+          "count": 121,
+          "max": 1573.0,
+          "median": 0.0,
+          "p90": 1323.0,
+          "p95": 1430.0
+        }
+      },
+      "selection_count": 121
+    },
+    "candidate_matches_protected": {
+      "allocator_exact_known_count": 3,
+      "allocator_exact_unknown_count": 2,
+      "need_allocator_now": {
+        "count": 3,
+        "max": 1292.0,
+        "median": 1292.0,
+        "p90": 1292.0,
+        "p95": 1292.0
+      },
+      "need_gap_psa1_minus_allocator": {
+        "count": 3,
+        "max": -1274.0,
+        "median": -1274.0,
+        "p90": -1274.0,
+        "p95": -1274.0
+      },
+      "need_psa1_all": {
+        "count": 5,
+        "max": 38.0,
+        "median": 18.0,
+        "p90": 38.0,
+        "p95": 38.0
+      },
+      "need_psa1_exact_known": {
+        "count": 3,
+        "max": 18.0,
+        "median": 18.0,
+        "p90": 18.0,
+        "p95": 18.0
+      },
+      "need_ratio_psa1_over_max_1_allocator": {
+        "count": 3,
+        "max": 0.01393188854489164,
+        "median": 0.01393188854489164,
+        "p90": 0.01393188854489164,
+        "p95": 0.01393188854489164
+      },
+      "ownership": {
+        "evictable_cached_blocks": {
+          "count": 5,
+          "max": 1139.0,
+          "median": 1133.0,
+          "p90": 1139.0,
+          "p95": 1139.0
+        },
+        "leased_blocks": {
+          "count": 5,
+          "max": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0
+        },
+        "local_cached_blocks": {
+          "count": 5,
+          "max": 1139.0,
+          "median": 1133.0,
+          "p90": 1139.0,
+          "p95": 1139.0
+        },
+        "owned_blocks": {
+          "count": 5,
+          "max": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0
+        }
+      },
+      "selection_count": 5
+    },
+    "interpretation_guardrails": {
+      "allocator_need_is_instantaneous_not_future_liveness_proof": true,
+      "missing_allocator_values_excluded_not_zero_filled": true,
+      "ownership_not_inferred_when_missing": true
+    },
+    "local_cached_blocks_positive": {
+      "allocator_exact_known_count": 31,
+      "allocator_exact_unknown_count": 2,
+      "need_allocator_now": {
+        "count": 31,
+        "max": 1292.0,
+        "median": 50.0,
+        "p90": 1292.0,
+        "p95": 1292.0
+      },
+      "need_gap_psa1_minus_allocator": {
+        "count": 31,
+        "max": 1573.0,
+        "median": 1307.0,
+        "p90": 1444.0,
+        "p95": 1554.0
+      },
+      "need_psa1_all": {
+        "count": 33,
+        "max": 1584.0,
+        "median": 1340.0,
+        "p90": 1554.0,
+        "p95": 1563.0
+      },
+      "need_psa1_exact_known": {
+        "count": 31,
+        "max": 1584.0,
+        "median": 1340.0,
+        "p90": 1554.0,
+        "p95": 1563.0
+      },
+      "need_ratio_psa1_over_max_1_allocator": {
+        "count": 31,
+        "max": 265.6,
+        "median": 26.7,
+        "p90": 241.66666666666666,
+        "p95": 265.6
+      },
+      "ownership": {
+        "evictable_cached_blocks": {
+          "count": 33,
+          "max": 1139.0,
+          "median": 0.0,
+          "p90": 976.0,
+          "p95": 1138.0
+        },
+        "leased_blocks": {
+          "count": 33,
+          "max": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0
+        },
+        "local_cached_blocks": {
+          "count": 33,
+          "max": 1573.0,
+          "median": 1306.0,
+          "p90": 1444.0,
+          "p95": 1554.0
+        },
+        "owned_blocks": {
+          "count": 33,
+          "max": 1573.0,
+          "median": 1306.0,
+          "p90": 1444.0,
+          "p95": 1554.0
+        }
+      },
+      "selection_count": 33
+    },
+    "no_local_cached_blocks": {
+      "allocator_exact_known_count": 30,
+      "allocator_exact_unknown_count": 63,
+      "need_allocator_now": {
+        "count": 30,
+        "max": 1583.0,
+        "median": 1343.5,
+        "p90": 1554.0,
+        "p95": 1554.0
+      },
+      "need_gap_psa1_minus_allocator": {
+        "count": 30,
+        "max": 1.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 1.0
+      },
+      "need_psa1_all": {
+        "count": 93,
+        "max": 1584.0,
+        "median": 1350.0,
+        "p90": 1563.0,
+        "p95": 1568.0
+      },
+      "need_psa1_exact_known": {
+        "count": 30,
+        "max": 1583.0,
+        "median": 1343.5,
+        "p90": 1554.0,
+        "p95": 1554.0
+      },
+      "need_ratio_psa1_over_max_1_allocator": {
+        "count": 30,
+        "max": 1.0007363770250368,
+        "median": 1.0,
+        "p90": 1.0,
+        "p95": 1.0007363770250368
+      },
+      "ownership": {
+        "evictable_cached_blocks": {
+          "count": 93,
+          "max": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0
+        },
+        "leased_blocks": {
+          "count": 93,
+          "max": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0
+        },
+        "local_cached_blocks": {
+          "count": 93,
+          "max": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0
+        },
+        "owned_blocks": {
+          "count": 93,
+          "max": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "p95": 0.0
+        }
+      },
+      "selection_count": 93
+    }
+  },
+  "protected_self_H_median_blocks": 10.0,
+  "retry_actionable_sample_count": 0,
+  "retry_exact_allocator_fit_fraction": 0.0,
+  "retry_exact_allocator_fit_samples": 0,
+  "retry_exact_allocator_reject_samples": 1,
+  "retry_observation_windows_ge_20ms": 5,
+  "retry_observation_windows_sampled": 5,
+  "retry_recoverable_episode_count": 0,
+  "retry_recoverable_fraction": 0.0,
+  "retry_shadow_sample_count": 5,
+  "selections_total": 126,
+  "stale_protected_visibility_count": 0,
+  "terminal_decision_after_resume_started_count": 120,
+  "terminal_decision_before_resume_started_count": 8,
+  "terminal_head_fraction": 0.9603174603174603,
+  "terminal_head_selections": 121,
+  "terminalized_but_later_feasible_count": 0,
+  "wrong_candidate_due_to_stale_source_count": 0
+}

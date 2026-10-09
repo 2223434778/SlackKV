@@ -1,0 +1,20 @@
+{
+  "BGv2": "4 x 2048",
+  "CPU_KV_bytes": 8589934592,
+  "GPU_blocks": 4681,
+  "K2": 2,
+  "P_SAFE_ms": 102,
+  "boundaries_per_run": 32,
+  "condition": "C1-shadow",
+  "fresh_runs": 4,
+  "minimum_retry_window_ms": 20,
+  "phase": "4G-D",
+  "policy_change": false,
+  "probe_interval_ms": 20,
+  "reservation_budget_blocks": 3510,
+  "resume_guard_ms": 110,
+  "sessions": 8,
+  "timing_backend": "CLOCK_NANOSLEEP_ABS",
+  "turns_per_run": 40,
+  "workload_sha256": "9b381336a70e73b0efbddbb79d2c88608c19663247e819c1e7a364efd2971105"
+}

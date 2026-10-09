@@ -1,0 +1,28 @@
+{
+  "CPU_KV_bytes": 8589934592,
+  "CUDA_VISIBLE_DEVICES": null,
+  "GPU_KV_bytes": 2147483648,
+  "GPU_blocks": 4681,
+  "K2": 2,
+  "P_SAFE_ms": 102,
+  "background": "BGv2 4x2048",
+  "block_size": 16,
+  "block_size_tokens": 16,
+  "expected_gpu_kv_blocks": 4681,
+  "meminfo": [
+    "MemTotal:       131757160 kB",
+    "MemFree:        103688120 kB",
+    "MemAvailable:   124327464 kB",
+    "Buffers:         3615276 kB",
+    "Cached:         17237504 kB",
+    "SwapCached:            0 kB",
+    "Active:         15701552 kB",
+    "Inactive:        9971408 kB"
+  ],
+  "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "nvidia_smi": "NVIDIA RTX A6000, 550.54.14, 43, 24.09 W, 210 MHz, 405 MHz, 19 MiB\nNVIDIA RTX A6000, 550.54.14, 36, 21.52 W, 0 MHz, 405 MHz, 19 MiB",
+  "nvidia_smi_topology": "\t\u001b[4mGPU0\tGPU1\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tSYS\t0-31\t0\t\tN/A\nGPU1\tSYS\t X \t0-31\t0\t\tN/A\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n",
+  "python": "3.11.16 (main, Aug 27 2026, 14:44:21) [GCC 14.3.0]",
+  "reservation_budget_blocks": 3510,
+  "resume_guard_ms": 110
+}

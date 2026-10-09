@@ -1,0 +1,13 @@
+{
+  "coverage_fraction": 1.0,
+  "eligible_selections": 46,
+  "exact_capacity_fit_count": 11,
+  "exact_capacity_fit_fraction_known": 0.2391304347826087,
+  "exact_capacity_reject_count": 35,
+  "exact_capacity_reject_fraction_known": 0.7608695652173914,
+  "exact_known": 46,
+  "exact_unknown": 0,
+  "known_false_admit": 2,
+  "known_false_reject": 0,
+  "known_legacy_allocator_agreement": 44
+}

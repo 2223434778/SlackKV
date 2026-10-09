@@ -1,0 +1,5 @@
+timestamp_ns,event,protected_id,candidate_id,H_current,pool_free_blocks,allocator_available_blocks,retry_actionable,run_id,elapsed_ms
+1365954765883152,DECISION,E03:b3,,,,,,measured_rep2_c1,0.0
+1365954765883152,PROMOTION_CAPACITY_REJECTED,E03:b3,,,,,,measured_rep2_c1,0.0
+1365961838839723,PROTECTED_STATE_CHANGE,E03:b3,,,,,,measured_rep2_c1,7072.956571
+1365962721698034,FIRST_TOKEN,E03:b3,,,,,,measured_rep2_c1,7955.814882

@@ -1,0 +1,2 @@
+eligible_selections,exact_known,exact_unknown,coverage_fraction,exact_capacity_fit_count,exact_capacity_reject_count,exact_capacity_fit_fraction_known,exact_capacity_reject_fraction_known,known_legacy_allocator_agreement,known_false_admit,known_false_reject
+46,46,0,1.0,11,35,0.2391304347826087,0.7608695652173914,44,2,0

@@ -1,0 +1,357 @@
+{
+  "all": {
+    "allocator_exact_known_count": 61,
+    "allocator_exact_unknown_count": 65,
+    "need_allocator_now": {
+      "count": 61,
+      "max": 1583.0,
+      "median": 1292.0,
+      "p90": 1368.0,
+      "p95": 1554.0
+    },
+    "need_gap_psa1_minus_allocator": {
+      "count": 61,
+      "max": 1573.0,
+      "median": 0.0,
+      "p90": 1430.0,
+      "p95": 1444.0
+    },
+    "need_psa1_all": {
+      "count": 126,
+      "max": 1584.0,
+      "median": 1348.0,
+      "p90": 1563.0,
+      "p95": 1568.0
+    },
+    "need_psa1_exact_known": {
+      "count": 61,
+      "max": 1584.0,
+      "median": 1340.0,
+      "p90": 1554.0,
+      "p95": 1563.0
+    },
+    "need_ratio_psa1_over_max_1_allocator": {
+      "count": 61,
+      "max": 265.6,
+      "median": 1.0,
+      "p90": 191.0,
+      "p95": 241.66666666666666
+    },
+    "ownership": {
+      "evictable_cached_blocks": {
+        "count": 126,
+        "max": 1139.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0
+      },
+      "leased_blocks": {
+        "count": 126,
+        "max": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0
+      },
+      "local_cached_blocks": {
+        "count": 126,
+        "max": 1573.0,
+        "median": 0.0,
+        "p90": 1323.0,
+        "p95": 1430.0
+      },
+      "owned_blocks": {
+        "count": 126,
+        "max": 1573.0,
+        "median": 0.0,
+        "p90": 1323.0,
+        "p95": 1430.0
+      }
+    },
+    "selection_count": 126
+  },
+  "candidate_differs_from_protected": {
+    "allocator_exact_known_count": 58,
+    "allocator_exact_unknown_count": 63,
+    "need_allocator_now": {
+      "count": 58,
+      "max": 1583.0,
+      "median": 1288.0,
+      "p90": 1554.0,
+      "p95": 1554.0
+    },
+    "need_gap_psa1_minus_allocator": {
+      "count": 58,
+      "max": 1573.0,
+      "median": 0.5,
+      "p90": 1430.0,
+      "p95": 1554.0
+    },
+    "need_psa1_all": {
+      "count": 121,
+      "max": 1584.0,
+      "median": 1359.0,
+      "p90": 1563.0,
+      "p95": 1568.0
+    },
+    "need_psa1_exact_known": {
+      "count": 58,
+      "max": 1584.0,
+      "median": 1354.5,
+      "p90": 1554.0,
+      "p95": 1563.0
+    },
+    "need_ratio_psa1_over_max_1_allocator": {
+      "count": 58,
+      "max": 265.6,
+      "median": 1.0003681885125184,
+      "p90": 191.42857142857142,
+      "p95": 265.6
+    },
+    "ownership": {
+      "evictable_cached_blocks": {
+        "count": 121,
+        "max": 592.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0
+      },
+      "leased_blocks": {
+        "count": 121,
+        "max": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0
+      },
+      "local_cached_blocks": {
+        "count": 121,
+        "max": 1573.0,
+        "median": 0.0,
+        "p90": 1323.0,
+        "p95": 1430.0
+      },
+      "owned_blocks": {
+        "count": 121,
+        "max": 1573.0,
+        "median": 0.0,
+        "p90": 1323.0,
+        "p95": 1430.0
+      }
+    },
+    "selection_count": 121
+  },
+  "candidate_matches_protected": {
+    "allocator_exact_known_count": 3,
+    "allocator_exact_unknown_count": 2,
+    "need_allocator_now": {
+      "count": 3,
+      "max": 1292.0,
+      "median": 1292.0,
+      "p90": 1292.0,
+      "p95": 1292.0
+    },
+    "need_gap_psa1_minus_allocator": {
+      "count": 3,
+      "max": -1274.0,
+      "median": -1274.0,
+      "p90": -1274.0,
+      "p95": -1274.0
+    },
+    "need_psa1_all": {
+      "count": 5,
+      "max": 38.0,
+      "median": 18.0,
+      "p90": 38.0,
+      "p95": 38.0
+    },
+    "need_psa1_exact_known": {
+      "count": 3,
+      "max": 18.0,
+      "median": 18.0,
+      "p90": 18.0,
+      "p95": 18.0
+    },
+    "need_ratio_psa1_over_max_1_allocator": {
+      "count": 3,
+      "max": 0.01393188854489164,
+      "median": 0.01393188854489164,
+      "p90": 0.01393188854489164,
+      "p95": 0.01393188854489164
+    },
+    "ownership": {
+      "evictable_cached_blocks": {
+        "count": 5,
+        "max": 1139.0,
+        "median": 1133.0,
+        "p90": 1139.0,
+        "p95": 1139.0
+      },
+      "leased_blocks": {
+        "count": 5,
+        "max": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0
+      },
+      "local_cached_blocks": {
+        "count": 5,
+        "max": 1139.0,
+        "median": 1133.0,
+        "p90": 1139.0,
+        "p95": 1139.0
+      },
+      "owned_blocks": {
+        "count": 5,
+        "max": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0
+      }
+    },
+    "selection_count": 5
+  },
+  "interpretation_guardrails": {
+    "allocator_need_is_instantaneous_not_future_liveness_proof": true,
+    "missing_allocator_values_excluded_not_zero_filled": true,
+    "ownership_not_inferred_when_missing": true
+  },
+  "local_cached_blocks_positive": {
+    "allocator_exact_known_count": 31,
+    "allocator_exact_unknown_count": 2,
+    "need_allocator_now": {
+      "count": 31,
+      "max": 1292.0,
+      "median": 50.0,
+      "p90": 1292.0,
+      "p95": 1292.0
+    },
+    "need_gap_psa1_minus_allocator": {
+      "count": 31,
+      "max": 1573.0,
+      "median": 1307.0,
+      "p90": 1444.0,
+      "p95": 1554.0
+    },
+    "need_psa1_all": {
+      "count": 33,
+      "max": 1584.0,
+      "median": 1340.0,
+      "p90": 1554.0,
+      "p95": 1563.0
+    },
+    "need_psa1_exact_known": {
+      "count": 31,
+      "max": 1584.0,
+      "median": 1340.0,
+      "p90": 1554.0,
+      "p95": 1563.0
+    },
+    "need_ratio_psa1_over_max_1_allocator": {
+      "count": 31,
+      "max": 265.6,
+      "median": 26.7,
+      "p90": 241.66666666666666,
+      "p95": 265.6
+    },
+    "ownership": {
+      "evictable_cached_blocks": {
+        "count": 33,
+        "max": 1139.0,
+        "median": 0.0,
+        "p90": 976.0,
+        "p95": 1138.0
+      },
+      "leased_blocks": {
+        "count": 33,
+        "max": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0
+      },
+      "local_cached_blocks": {
+        "count": 33,
+        "max": 1573.0,
+        "median": 1306.0,
+        "p90": 1444.0,
+        "p95": 1554.0
+      },
+      "owned_blocks": {
+        "count": 33,
+        "max": 1573.0,
+        "median": 1306.0,
+        "p90": 1444.0,
+        "p95": 1554.0
+      }
+    },
+    "selection_count": 33
+  },
+  "no_local_cached_blocks": {
+    "allocator_exact_known_count": 30,
+    "allocator_exact_unknown_count": 63,
+    "need_allocator_now": {
+      "count": 30,
+      "max": 1583.0,
+      "median": 1343.5,
+      "p90": 1554.0,
+      "p95": 1554.0
+    },
+    "need_gap_psa1_minus_allocator": {
+      "count": 30,
+      "max": 1.0,
+      "median": 0.0,
+      "p90": 0.0,
+      "p95": 1.0
+    },
+    "need_psa1_all": {
+      "count": 93,
+      "max": 1584.0,
+      "median": 1350.0,
+      "p90": 1563.0,
+      "p95": 1568.0
+    },
+    "need_psa1_exact_known": {
+      "count": 30,
+      "max": 1583.0,
+      "median": 1343.5,
+      "p90": 1554.0,
+      "p95": 1554.0
+    },
+    "need_ratio_psa1_over_max_1_allocator": {
+      "count": 30,
+      "max": 1.0007363770250368,
+      "median": 1.0,
+      "p90": 1.0,
+      "p95": 1.0007363770250368
+    },
+    "ownership": {
+      "evictable_cached_blocks": {
+        "count": 93,
+        "max": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0
+      },
+      "leased_blocks": {
+        "count": 93,
+        "max": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0
+      },
+      "local_cached_blocks": {
+        "count": 93,
+        "max": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0
+      },
+      "owned_blocks": {
+        "count": 93,
+        "max": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0
+      }
+    },
+    "selection_count": 93
+  }
+}

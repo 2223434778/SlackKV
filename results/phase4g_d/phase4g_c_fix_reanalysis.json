@@ -1,0 +1,12 @@
+{
+  "exact_known": 54,
+  "exact_missing": 69,
+  "known_agreement": 54,
+  "known_false_admit": 0,
+  "known_false_reject": 0,
+  "known_mismatch": 0,
+  "previous_result_reassessment": "RESULT_D_GUARD_ALLOCATOR_MISMATCH is not supported after missing-value correction",
+  "source_artifact": "/media/a6000/D/ZhaoBinHe/SlackKV/results/phase4g_c_fix/allocator_guard_comparison.csv",
+  "total_guard_observations": 123,
+  "unknown_excluded_from_mismatch_denominator": true
+}
