@@ -1,0 +1,16 @@
+{
+  "dataset": "semianalysisai/cc-traces-weka-062126",
+  "revision": "23f152f6f0f9399a85901b89a6458def0ef16729",
+  "url": "https://huggingface.co/datasets/semianalysisai/cc-traces-weka-062126/resolve/23f152f6f0f9399a85901b89a6458def0ef16729/traces.jsonl",
+  "selection": "first16completefilelines;64MiBcap;nooutcomefilter",
+  "rows": 15,
+  "bytes": 46447908,
+  "sha256": "d078503145b09533298928438fe186bbbc40c726901f920872510df04cd47994",
+  "http_status": 206,
+  "review_git": "1c9c7da",
+  "gpu_hours": 0,
+  "acquisition_failure": "Ubuntu public metadata URL timed out after25s; local HTTPS succeeded",
+  "sampling_bias": "producer-filtered firstfileprefix; not random",
+  "raw_source_committed": false,
+  "python": "3.13.5"
+}

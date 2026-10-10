@@ -129,3 +129,10 @@
 - 原始pin日志32 acquire/32 release/最终0；28 HOL fallback、4 TTL expiry、0 REAL_REQUEST_ALLOCATED交接；持有时间中位274.26ms。不能等同零local cache hit，也不能用单次三元组宣称稳定20.09%因果退化。
 - 阅读ownership/retention源码和诊断汇总；没有重新验证271文件或完整175快照原始审计。固定快照中idle可驱逐块已计入available；继续只调JIT/idle保留缺少正证据。
 - 建议暂停旧负载局部策略循环，下一交付先是有来源数据支持的研究机会决策，最多一个具体可证伪缺口，不预设共享超图调度。原AGENTS预算/目标保留，具体见docs/RESEARCH_REVIEW_ROUND4_20261010.md。CPU复算完成，GPU0小时；未修改serving或启动新实验。
+## 2026-10-10：交接后的研究机会判断（CPU，无新GPU轮次）
+
+- main快进到1c9c7da，读取RESEARCH_REVIEW_ROUND4_20261010.md；接受暂停旧JIT/gate/pin/普通回填变体，独立筛选而非预设第五套算法。
+- 公共SemiAnalysis Weka v7固定23f152f6f0f9399a85901b89a6458def0ef16729；预定前16完整行/64MiB上限，取得15条46,447,908bytes。Ubuntu公共API超时，改本机只读HTTPS成功；不是GPU失败。未获取完整1.85GB、未付费生成或提交大原始trace。
+- CPU2661请求/47子group/892子请求，代理input median118208/P95624320，output median460/P955053；同模型完成输入历史prefix覆盖97.83%，其他显式容器3.46%。不同trace/model隔离，无序hash不冒充prefix；93.05%超过旧32K，不能直接复用旧模型设置或假定代理长度是真tokens。
+- 4单元测试通过，独立CSV算术和92固定抽样直接LCP对照通过。真实host miss/重算、工具-only时长、owned-memory-time、准确DAG与A6000部署成本UNKNOWN；不把结构复用当cache hit或速度收益。
+- 最近MORI、EfficientAgent、RR-Evict、Continuum及现成AIPerf loader覆盖了多种直观候选。唯一保留成本识别问题：自然预算下可复用prefix是否被host决策丢失；实际Z与区别未识别，不写新runtime、不启动GPU。建议暂停/归档原JIT论文主张，保留项目目标与工程。报告docs/RESEARCH_OPPORTUNITY_DECISION.md；结果results/opportunity_decision_20261010/，GPU成本0。

@@ -1,0 +1,560 @@
+{
+  "csv_rows": 2661,
+  "coverage_and_quantile_checks": "PASS",
+  "direct_lcp_checks": 92,
+  "selection": "every37th request and final request in each of15traces",
+  "checks": [
+    {
+      "trace_index": 0,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 0,
+      "request_index": 37,
+      "direct_lcp_tokens": 182208,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 0,
+      "request_index": 74,
+      "direct_lcp_tokens": 52864,
+      "cross_container_tokens": 34368
+    },
+    {
+      "trace_index": 0,
+      "request_index": 111,
+      "direct_lcp_tokens": 219264,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 0,
+      "request_index": 148,
+      "direct_lcp_tokens": 307648,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 0,
+      "request_index": 185,
+      "direct_lcp_tokens": 373120,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 0,
+      "request_index": 197,
+      "direct_lcp_tokens": 393088,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 1,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 1,
+      "request_index": 32,
+      "direct_lcp_tokens": 120128,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 2,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 2,
+      "request_index": 34,
+      "direct_lcp_tokens": 168384,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 3,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 3,
+      "request_index": 37,
+      "direct_lcp_tokens": 133248,
+      "cross_container_tokens": 25024
+    },
+    {
+      "trace_index": 3,
+      "request_index": 74,
+      "direct_lcp_tokens": 325120,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 3,
+      "request_index": 111,
+      "direct_lcp_tokens": 411904,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 3,
+      "request_index": 148,
+      "direct_lcp_tokens": 506880,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 3,
+      "request_index": 185,
+      "direct_lcp_tokens": 579840,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 3,
+      "request_index": 222,
+      "direct_lcp_tokens": 129728,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 3,
+      "request_index": 232,
+      "direct_lcp_tokens": 680064,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 4,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 4,
+      "request_index": 37,
+      "direct_lcp_tokens": 57216,
+      "cross_container_tokens": 16576
+    },
+    {
+      "trace_index": 4,
+      "request_index": 74,
+      "direct_lcp_tokens": 18496,
+      "cross_container_tokens": 16576
+    },
+    {
+      "trace_index": 4,
+      "request_index": 111,
+      "direct_lcp_tokens": 16640,
+      "cross_container_tokens": 16640
+    },
+    {
+      "trace_index": 4,
+      "request_index": 148,
+      "direct_lcp_tokens": 72448,
+      "cross_container_tokens": 16576
+    },
+    {
+      "trace_index": 4,
+      "request_index": 185,
+      "direct_lcp_tokens": 170688,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 4,
+      "request_index": 222,
+      "direct_lcp_tokens": 248704,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 4,
+      "request_index": 259,
+      "direct_lcp_tokens": 295168,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 4,
+      "request_index": 296,
+      "direct_lcp_tokens": 22400,
+      "cross_container_tokens": 14848
+    },
+    {
+      "trace_index": 4,
+      "request_index": 333,
+      "direct_lcp_tokens": 398528,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 4,
+      "request_index": 370,
+      "direct_lcp_tokens": 21248,
+      "cross_container_tokens": 14144
+    },
+    {
+      "trace_index": 4,
+      "request_index": 407,
+      "direct_lcp_tokens": 75584,
+      "cross_container_tokens": 14144
+    },
+    {
+      "trace_index": 4,
+      "request_index": 444,
+      "direct_lcp_tokens": 487808,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 4,
+      "request_index": 465,
+      "direct_lcp_tokens": 517888,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 5,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 5,
+      "request_index": 37,
+      "direct_lcp_tokens": 135488,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 5,
+      "request_index": 74,
+      "direct_lcp_tokens": 32320,
+      "cross_container_tokens": 29824
+    },
+    {
+      "trace_index": 5,
+      "request_index": 106,
+      "direct_lcp_tokens": 314240,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 37,
+      "direct_lcp_tokens": 127040,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 74,
+      "direct_lcp_tokens": 196288,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 111,
+      "direct_lcp_tokens": 274304,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 148,
+      "direct_lcp_tokens": 362688,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 185,
+      "direct_lcp_tokens": 445184,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 222,
+      "direct_lcp_tokens": 502144,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 259,
+      "direct_lcp_tokens": 583680,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 296,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 333,
+      "direct_lcp_tokens": 730944,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 370,
+      "direct_lcp_tokens": 79936,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 407,
+      "direct_lcp_tokens": 105024,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 444,
+      "direct_lcp_tokens": 131840,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 481,
+      "direct_lcp_tokens": 153664,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 518,
+      "direct_lcp_tokens": 36608,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 555,
+      "direct_lcp_tokens": 110336,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 592,
+      "direct_lcp_tokens": 128640,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 629,
+      "direct_lcp_tokens": 100800,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 6,
+      "request_index": 666,
+      "direct_lcp_tokens": 45952,
+      "cross_container_tokens": 17664
+    },
+    {
+      "trace_index": 6,
+      "request_index": 703,
+      "direct_lcp_tokens": 56768,
+      "cross_container_tokens": 26816
+    },
+    {
+      "trace_index": 6,
+      "request_index": 740,
+      "direct_lcp_tokens": 79616,
+      "cross_container_tokens": 26816
+    },
+    {
+      "trace_index": 6,
+      "request_index": 777,
+      "direct_lcp_tokens": 143936,
+      "cross_container_tokens": 1664
+    },
+    {
+      "trace_index": 6,
+      "request_index": 794,
+      "direct_lcp_tokens": 56256,
+      "cross_container_tokens": 1664
+    },
+    {
+      "trace_index": 7,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 7,
+      "request_index": 24,
+      "direct_lcp_tokens": 75264,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 8,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 8,
+      "request_index": 35,
+      "direct_lcp_tokens": 178048,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 9,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 9,
+      "request_index": 37,
+      "direct_lcp_tokens": 105088,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 9,
+      "request_index": 51,
+      "direct_lcp_tokens": 120704,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 10,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 10,
+      "request_index": 37,
+      "direct_lcp_tokens": 53952,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 10,
+      "request_index": 72,
+      "direct_lcp_tokens": 113088,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 11,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 11,
+      "request_index": 37,
+      "direct_lcp_tokens": 44224,
+      "cross_container_tokens": 25600
+    },
+    {
+      "trace_index": 11,
+      "request_index": 74,
+      "direct_lcp_tokens": 91200,
+      "cross_container_tokens": 25600
+    },
+    {
+      "trace_index": 11,
+      "request_index": 111,
+      "direct_lcp_tokens": 89024,
+      "cross_container_tokens": 25600
+    },
+    {
+      "trace_index": 11,
+      "request_index": 148,
+      "direct_lcp_tokens": 152704,
+      "cross_container_tokens": 1344
+    },
+    {
+      "trace_index": 11,
+      "request_index": 185,
+      "direct_lcp_tokens": 284160,
+      "cross_container_tokens": 1344
+    },
+    {
+      "trace_index": 11,
+      "request_index": 222,
+      "direct_lcp_tokens": 380800,
+      "cross_container_tokens": 1344
+    },
+    {
+      "trace_index": 11,
+      "request_index": 259,
+      "direct_lcp_tokens": 476864,
+      "cross_container_tokens": 1344
+    },
+    {
+      "trace_index": 11,
+      "request_index": 296,
+      "direct_lcp_tokens": 569984,
+      "cross_container_tokens": 1344
+    },
+    {
+      "trace_index": 11,
+      "request_index": 333,
+      "direct_lcp_tokens": 661248,
+      "cross_container_tokens": 1344
+    },
+    {
+      "trace_index": 11,
+      "request_index": 351,
+      "direct_lcp_tokens": 704640,
+      "cross_container_tokens": 1344
+    },
+    {
+      "trace_index": 12,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 12,
+      "request_index": 34,
+      "direct_lcp_tokens": 110720,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 13,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 13,
+      "request_index": 37,
+      "direct_lcp_tokens": 72960,
+      "cross_container_tokens": 30080
+    },
+    {
+      "trace_index": 13,
+      "request_index": 74,
+      "direct_lcp_tokens": 92416,
+      "cross_container_tokens": 30080
+    },
+    {
+      "trace_index": 13,
+      "request_index": 111,
+      "direct_lcp_tokens": 108608,
+      "cross_container_tokens": 30080
+    },
+    {
+      "trace_index": 13,
+      "request_index": 118,
+      "direct_lcp_tokens": 61248,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 14,
+      "request_index": 0,
+      "direct_lcp_tokens": 0,
+      "cross_container_tokens": 0
+    },
+    {
+      "trace_index": 14,
+      "request_index": 37,
+      "direct_lcp_tokens": 55744,
+      "cross_container_tokens": 25024
+    },
+    {
+      "trace_index": 14,
+      "request_index": 74,
+      "direct_lcp_tokens": 145088,
+      "cross_container_tokens": 25024
+    },
+    {
+      "trace_index": 14,
+      "request_index": 101,
+      "direct_lcp_tokens": 219904,
+      "cross_container_tokens": 0
+    }
+  ]
+}

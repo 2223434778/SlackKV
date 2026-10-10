@@ -1,0 +1,407 @@
+{
+  "source_prefix_sha256": "d078503145b09533298928438fe186bbbc40c726901f920872510df04cd47994",
+  "traces": [
+    {
+      "trace_index": 0,
+      "trace_sha256": "2796d844a755ade66d4bcfc0c7475a553955e6d903f21dab068db14a99350570",
+      "request_count": 198,
+      "subagent_groups": 4,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-4-8"
+      ],
+      "span_s": 201712.521,
+      "group_duration_ms": {
+        "n": 4,
+        "min": 106525,
+        "median": 113475.5,
+        "p95": 202756,
+        "max": 202756
+      },
+      "nested_requests": 67,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-opus-4-8": 6329,
+        "claude-haiku-4-5-20251001": 5164
+      }
+    },
+    {
+      "trace_index": 1,
+      "trace_sha256": "700a7a117ff716ecf8a485faa94f1487db6c3ae2297a0daa902ef038a7ea2eec",
+      "request_count": 33,
+      "subagent_groups": 0,
+      "models": [
+        "claude-opus-4-8"
+      ],
+      "span_s": 5341.393,
+      "group_duration_ms": null,
+      "nested_requests": 0,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-opus-4-8": 1888
+      }
+    },
+    {
+      "trace_index": 2,
+      "trace_sha256": "64fc874fc712a92042fc4a53039478b3cb2f1a3f45dd057720472367445864cf",
+      "request_count": 35,
+      "subagent_groups": 3,
+      "models": [
+        "claude-fable-5",
+        "claude-haiku-4-5-20251001"
+      ],
+      "span_s": 2526.584,
+      "group_duration_ms": {
+        "n": 3,
+        "min": 40699,
+        "median": 48905,
+        "p95": 49592,
+        "max": 49592
+      },
+      "nested_requests": 6,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-fable-5": 2670,
+        "claude-haiku-4-5-20251001": 1915
+      }
+    },
+    {
+      "trace_index": 3,
+      "trace_sha256": "a844d16cf53224c41a6955ab0fa5bc8219e46928e261d3f2d85f12a5e894a19d",
+      "request_count": 233,
+      "subagent_groups": 3,
+      "models": [
+        "claude-opus-4-7",
+        "claude-opus-4-8"
+      ],
+      "span_s": 17780.138,
+      "group_duration_ms": {
+        "n": 3,
+        "min": 110410,
+        "median": 201487,
+        "p95": 328884,
+        "max": 328884
+      },
+      "nested_requests": 34,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-opus-4-8": 12800,
+        "claude-opus-4-7": 5482
+      }
+    },
+    {
+      "trace_index": 4,
+      "trace_sha256": "b44c5c3244abf983fccfb67eea94cc8ba4601bbb9202dda8934b6514e611e328",
+      "request_count": 466,
+      "subagent_groups": 7,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-4-8"
+      ],
+      "span_s": 219158.876,
+      "group_duration_ms": {
+        "n": 7,
+        "min": 121026,
+        "median": 192298,
+        "p95": 294569,
+        "max": 294569
+      },
+      "nested_requests": 211,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-opus-4-8": 43128,
+        "claude-haiku-4-5-20251001": 6636
+      }
+    },
+    {
+      "trace_index": 5,
+      "trace_sha256": "d008d806b50eee7b10de1f449c761e0aa540bcfc0db9ad61c703a92514584559",
+      "request_count": 107,
+      "subagent_groups": 7,
+      "models": [
+        "claude-fable-5",
+        "claude-opus-4-6"
+      ],
+      "span_s": 3477.674,
+      "group_duration_ms": {
+        "n": 7,
+        "min": 83904,
+        "median": 130691,
+        "p95": 498033,
+        "max": 498033
+      },
+      "nested_requests": 66,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-fable-5": 4953,
+        "claude-opus-4-6": 5211
+      }
+    },
+    {
+      "trace_index": 6,
+      "trace_sha256": "930013c717dcd8830df4ba7dba089202b6574bc079ff775298bef886d9559573",
+      "request_count": 795,
+      "subagent_groups": 7,
+      "models": [
+        "claude-fable-5",
+        "claude-haiku-4-5-20251001",
+        "claude-opus-4-6",
+        "claude-opus-4-8"
+      ],
+      "span_s": 145467.519,
+      "group_duration_ms": {
+        "n": 7,
+        "min": 14939,
+        "median": 124789,
+        "p95": 620683,
+        "max": 620683
+      },
+      "nested_requests": 131,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-fable-5": 2593,
+        "claude-opus-4-8": 22720,
+        "claude-opus-4-6": 17823,
+        "claude-haiku-4-5-20251001": 790
+      }
+    },
+    {
+      "trace_index": 7,
+      "trace_sha256": "b4179a59247e0b775002469db97c38b1a9717b8d16ac15aad33f63dd48dd5982",
+      "request_count": 25,
+      "subagent_groups": 1,
+      "models": [
+        "claude-opus-4-8"
+      ],
+      "span_s": 4927.36,
+      "group_duration_ms": {
+        "n": 1,
+        "min": 222963,
+        "median": 222963,
+        "p95": 222963,
+        "max": 222963
+      },
+      "nested_requests": 18,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-opus-4-8": 2944
+      }
+    },
+    {
+      "trace_index": 8,
+      "trace_sha256": "3511eadd902b6276242fe40a24cfe8ccab228a0fa1a9e092a92d5b92307948f1",
+      "request_count": 36,
+      "subagent_groups": 0,
+      "models": [
+        "claude-opus-4-8"
+      ],
+      "span_s": 73581.57400000001,
+      "group_duration_ms": null,
+      "nested_requests": 0,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-opus-4-8": 3357
+      }
+    },
+    {
+      "trace_index": 9,
+      "trace_sha256": "540f241775a2c0beb3e974ccf9d4d66396a6e26758103930d188a2739474e7ed",
+      "request_count": 52,
+      "subagent_groups": 0,
+      "models": [
+        "claude-opus-4-8"
+      ],
+      "span_s": 101484.398,
+      "group_duration_ms": null,
+      "nested_requests": 0,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-opus-4-8": 1977
+      }
+    },
+    {
+      "trace_index": 10,
+      "trace_sha256": "21c033b71f7ebf0fb2f1125534f38c3ae745e1d7661948cdf77d8a4888380519",
+      "request_count": 73,
+      "subagent_groups": 1,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-4-8"
+      ],
+      "span_s": 3727.835,
+      "group_duration_ms": {
+        "n": 1,
+        "min": 140888,
+        "median": 140888,
+        "p95": 140888,
+        "max": 140888
+      },
+      "nested_requests": 35,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-opus-4-8": 1821,
+        "claude-haiku-4-5-20251001": 1194
+      }
+    },
+    {
+      "trace_index": 11,
+      "trace_sha256": "17356e805310f6c841020f9aa44c099fa828c2d6fb1399cbda8b672c3ebf34ec",
+      "request_count": 352,
+      "subagent_groups": 8,
+      "models": [
+        "claude-opus-4-8"
+      ],
+      "span_s": 83598.965,
+      "group_duration_ms": {
+        "n": 8,
+        "min": 14520,
+        "median": 98447.5,
+        "p95": 211252,
+        "max": 211252
+      },
+      "nested_requests": 132,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-opus-4-8": 19822
+      }
+    },
+    {
+      "trace_index": 12,
+      "trace_sha256": "16aeec04efe4f1eaa46ac5f865edcf86c26ae6d50eaee413bed65a0958513ce0",
+      "request_count": 35,
+      "subagent_groups": 0,
+      "models": [
+        "claude-fable-5",
+        "claude-haiku-4-5-20251001"
+      ],
+      "span_s": 19774.395999999997,
+      "group_duration_ms": null,
+      "nested_requests": 0,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-fable-5": 1751,
+        "claude-haiku-4-5-20251001": 6
+      }
+    },
+    {
+      "trace_index": 13,
+      "trace_sha256": "eed20024b53e83e82fdbe6c11bbc411658340d6836b81039d3edfaac9996cf29",
+      "request_count": 119,
+      "subagent_groups": 3,
+      "models": [
+        "claude-fable-5",
+        "claude-sonnet-4-6"
+      ],
+      "span_s": 489.998,
+      "group_duration_ms": {
+        "n": 3,
+        "min": 132333,
+        "median": 265392,
+        "p95": 361880,
+        "max": 361880
+      },
+      "nested_requests": 110,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-fable-5": 1136,
+        "claude-sonnet-4-6": 3938
+      }
+    },
+    {
+      "trace_index": 14,
+      "trace_sha256": "71211c07964b256525e0723c0d9b0203d28a116aeb81f6aed7de37c17a305dce",
+      "request_count": 102,
+      "subagent_groups": 3,
+      "models": [
+        "claude-opus-4-7",
+        "claude-opus-4-8"
+      ],
+      "span_s": 8469.624,
+      "group_duration_ms": {
+        "n": 3,
+        "min": 244801,
+        "median": 288332,
+        "p95": 295944,
+        "max": 295944
+      },
+      "nested_requests": 82,
+      "all_history_unique_input_blocks_by_model": {
+        "claude-opus-4-8": 3480,
+        "claude-opus-4-7": 7677
+      }
+    }
+  ],
+  "requests": 2661,
+  "models": {
+    "claude-opus-4-8": 1440,
+    "claude-haiku-4-5-20251001": 341,
+    "claude-fable-5": 167,
+    "claude-opus-4-7": 116,
+    "claude-opus-4-6": 487,
+    "claude-sonnet-4-6": 110
+  },
+  "subagent_groups": 47,
+  "nested_requests": 892,
+  "per_trace_model_unique_input_tokens": {
+    "n": 27,
+    "min": 384,
+    "median": 222720,
+    "p95": 1454080,
+    "max": 2760192
+  },
+  "distributions": {
+    "proxy_input_tokens": {
+      "n": 2661,
+      "min": 384,
+      "median": 118208,
+      "p95": 624320,
+      "max": 769344
+    },
+    "output_tokens": {
+      "n": 2661,
+      "min": 0,
+      "median": 460,
+      "p95": 5053,
+      "max": 26571
+    },
+    "api_time_s": {
+      "n": 2661,
+      "min": 0.963,
+      "median": 6.321,
+      "p95": 50.02,
+      "max": 267.833
+    },
+    "ttft_s": {
+      "n": 1750,
+      "min": 0.812,
+      "median": 2.4025,
+      "p95": 8.672,
+      "max": 79.493
+    },
+    "reported_think_time_s": {
+      "n": 2646,
+      "min": 0.0,
+      "median": 2.2564999999995052,
+      "p95": 185.70999999999185,
+      "max": 116739.268
+    },
+    "container_input_delta": {
+      "n": 2596,
+      "min": -537600,
+      "median": 1664.0,
+      "p95": 13248,
+      "max": 539200
+    },
+    "container_previous_end_gap_s": {
+      "n": 2596,
+      "min": -45.148999999999035,
+      "median": 2.6379999999984243,
+      "p95": 194.25899999999933,
+      "max": 116739.268
+    }
+  },
+  "structural_input_token_fractions": {
+    "completed_history_lcp_tokens": 0.9782550402128201,
+    "issued_history_lcp_tokens": 0.9783828885661642,
+    "other_container_completed_lcp_tokens": 0.03464016286897646
+  },
+  "over32768_requests": 2476,
+  "over131072_requests": 1232,
+  "negative_container_end_gaps": 53,
+  "nonadjacent_better_than_container_predecessor": 53,
+  "caveats": [
+    "first file prefix, producer-filtered; not random population estimate",
+    "input lengths are proxy hash blocks, not real target-model tokenization",
+    "completed input-only history assumes infinite cache; no actual hit/miss observation",
+    "API time is recorded endpoint wall time, not new hardware compute cost",
+    "explicit containers are not proven agent chains; no inferred true dependency DAG",
+    "other-container reuse does not prove fork or simultaneous sharing",
+    "tool-only latency, host misses, owned memory-time, cross-session identity UNKNOWN"
+  ]
+}
