@@ -143,3 +143,6 @@
 - 预算连续性补充：本次新增0.1388070682GPUh，保守合并Round3/4共0.8855139290GPUh<4；budget.json按目录列小计，未来runner合并检查，不用新结果目录重置授权。
 
 - 2026-10-10 外部审查18ad6b7：独立核对四run原始计时、输出量、记录输入哈希、source/transfer计数及oracle2，确认受控partial checkpoint正结果。新增GPU消耗0。接受继续该方向；先补NoHost与StaticFairPrefix，再决定adaptive复杂度，并验证自然回收/真实host预算。具体交接：docs/RESEARCH_REVIEW_HOST_PREFIX_20261010.md；复算results/research_review_host_prefix_20261010/spotcheck.json。
+# 2026-10-10 — 执行侧接受 host-prefix 独立审查
+
+同步main至`b363f16`，阅读`docs/RESEARCH_REVIEW_HOST_PREFIX_20261010.md`及spotcheck；对照checkpoint、成本评分源码与既有协议。接受先NoHost、后StaticFairPrefix及生命周期、再自然压力的顺序，暂不增加adaptive frontier复杂度。澄清cost-tail是累计而非边际评分，其失败不否定整个成本敏感类别；修正主报告H2D为原来的8.014倍（增加701.4%）。本次仅审查与文档修订，没有新GPU实验或性能结论，累计预算不变。未修改原始结果。
