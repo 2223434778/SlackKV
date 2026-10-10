@@ -1,0 +1,21 @@
+{
+  "accounting": "conservative continuity since explicit Round3 authorization; new directories do not reset quota",
+  "families": {
+    "autonomous_fork": {
+      "runs": 7,
+      "gpu_hours": 0.20048675264813937
+    },
+    "autonomous_round4": {
+      "runs": 19,
+      "gpu_hours": 0.5462201082031889
+    },
+    "host_prefix_cost_20261010": {
+      "runs": 8,
+      "gpu_hours": 0.13880706816885827
+    }
+  },
+  "authorization_gpu_hours": 4,
+  "total_gpu_hours": 0.8855139290201866,
+  "remaining_gpu_hours": 3.1144860709798134,
+  "current_execution_fields": "original gpu_hours_before/total_gpu_hours report this8run subtotal; historical scope here retained separately; current runner enforces combined scope"
+}

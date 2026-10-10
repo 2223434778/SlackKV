@@ -211,3 +211,7 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - Structural completed-history prefix coverage97.83% suggests reuse importance, not measured cache loss or avoidable time. Proxy context lengths, model changes and interleaved explicit containers prevent claiming faithful legacy32K replay, real deployment capacity or exactDAG. Actual host loss/recompute cost remainsUNKNOWN.
 - Decision: recommend pausing/archiving the original JIT paper claim, preserve code/data/final goal. Do not implement generic TTL/priority/write admission or shared-block accounting as new research. MORI/EfficientAgent/RR-Evict and existing AIPerf reconstruction must inform any stronger future baseline.
 - At most retain one cost-identification question about loss of historically reusable prefix under natural host budgets. Advance only after measurable critical-path cost and a distinct uncovered decision; current evidence satisfies neither. Reportdocs/RESEARCH_OPPORTUNITY_DECISION.md; compactCPU evidence results/opportunity_decision_20261010/.
+- 2026-10-10：用户放宽创新门槛，组件重叠不再作为否决PoC的充分理由；结果仍须有整体差异与实测/消融证据。旧JIT负结论保留，新增重点从promotion时机转向host写入放大与可持续部分前缀。
+- CPU cost-tail全部门槛失败，不做权重调参；连续前缀参考给出写入线索后真实GPU验证。固定physical-cap checkpoint复用原生max_offload_tokens，不改KV内容/ownership，也不称其为独立论文算法。
+- 两对受控筛选通过资源/退化门槛，但host256MiB、forcedcold、单路径适用范围严格；不代替natural workload或SOTA对照。明确H2D增加8.01倍、总bytes下降67.54%的tradeoff。
+- 固定cap不是pool公平性策略；双会话反例已测。保留机制、再组合capacity-conditioned admission/公平尾部与adaptive frontiers，先验证自然聚合压力而不是直接正式矩阵。新报告docs/AUTONOMOUS_RESEARCH_HOST_PREFIX_20261010.md。

@@ -1,0 +1,24 @@
+{
+  "torch": "2.11.0+cu126",
+  "vllm": "0.23.0+cu126",
+  "transformers": "5.17.0",
+  "numpy": "2.3.5",
+  "pytest": "9.1.1",
+  "python": "3.11.16",
+  "driver": "550.54.14",
+  "cuda": "12.6",
+  "server_git": "d403714ea3ed91e585a2b9f80beb363023272de8",
+  "local_base": "685ac5ca728d063c6b99ad406862a65ec613130f",
+  "gpu": "RTX A6000 GPU0 only",
+  "gpu_pool_tokens": 1355712,
+  "cpu_host_bytes": 268435456,
+  "model_snapshot": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "model": "Qwen2.5-1.5B-Instruct",
+  "performance_batch_invariant": 0,
+  "correctness_batch_invariant": 1,
+  "warning": "nvidia_cutlass_dsl .pth import warning retained; no environment changes",
+  "final_gpu_memory_used_mib": [
+    19,
+    19
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "runs": {
+    "full1": {
+      "run": "full1",
+      "source_accounting": "PASS",
+      "actual_external_tokens": 5840.0,
+      "actual_local_tokens": 0.0,
+      "computed_tokens": 216304.0,
+      "h2d_bytes": 167444480.0,
+      "d2h_bytes": 4792582144.0,
+      "agent_computed_input_tokens": 167152.0,
+      "unavoidable_first_and_growth_tokens": 28992,
+      "repeated_history_prefill_tokens": 138160.0,
+      "warmup_tokens_published_after_before": 0.0,
+      "actual_gpu_pool_tokens": 1355712,
+      "final_running": 0.0,
+      "final_waiting": 0.0,
+      "resume_p95_ms": 1727.726653,
+      "resume_median_ms": 1714.367981,
+      "background_median_ms": 3488.6410525,
+      "background_overlap": "PASS",
+      "paired_inputs": {
+        "0:agent": "300c0f936e3ab9d4cf36b7eebe5a5470cc0f139838ff43f3d2efe9fba0c0ea00",
+        "1:agent": "a4114aec13a24b5365843a65ca4b920ca1e8dadb26824adb2e1b82edaed7ef32",
+        "2:agent": "bd8254483046448633198617d8c710216de259df2ca73df1bc1e2b42037cd58d",
+        "3:agent": "2ed5c498733e4c55d2285c0be9deefb099921bb83664f395162e37e1b5ecf003",
+        "4:agent": "5b8f42508329ed9553be29aa9ae6d3cb3aa450b15ba1a40df4528f39b275adc5",
+        "5:agent": "f2aeb9c52a3f59c2bd21ea4fac72210d7dfe90cca413d3ca6225b7e3b92ecab6",
+        "0:bg": "18ba9b072f59fa8531ad600bb93fa9401f62d87a7b2be4bf75b38e87d284bcb8",
+        "1:bg": "fce7bfe130ce89b1a675dd0b47e352a9e4eea2598df60fea252d96bddc44cea8",
+        "2:bg": "d2c547ed5e905f3d9e1d3886545f2abc7dfbe23b5413d73641afc26c59dad13c",
+        "3:bg": "dfd2284659ff6f6e2da560c33b5b3358c4d2d4ccb0847416b6e0cf8b9a1386b6",
+        "4:bg": "8f2ad8b932762e63848ea560951d06f4a52b38c86e755b3856428819eadabe73",
+        "5:bg": "f269d1c7f078c91b4a354e147c23685cecc03f941d550cd57415da8c1c3236a7"
+      }
+    },
+    "frontier1": {
+      "run": "frontier1",
+      "source_accounting": "PASS",
+      "actual_external_tokens": 46800.0,
+      "actual_local_tokens": 0.0,
+      "computed_tokens": 175344.0,
+      "h2d_bytes": 1341849600.0,
+      "d2h_bytes": 268369920.0,
+      "agent_computed_input_tokens": 126192.0,
+      "unavoidable_first_and_growth_tokens": 28992,
+      "repeated_history_prefill_tokens": 97200.0,
+      "warmup_tokens_published_after_before": 0.0,
+      "actual_gpu_pool_tokens": 1355712,
+      "final_running": 0.0,
+      "final_waiting": 0.0,
+      "resume_p95_ms": 1419.119771,
+      "resume_median_ms": 1400.786963,
+      "background_median_ms": 3206.7510465,
+      "background_overlap": "PASS",
+      "paired_inputs": {
+        "0:agent": "300c0f936e3ab9d4cf36b7eebe5a5470cc0f139838ff43f3d2efe9fba0c0ea00",
+        "1:agent": "a4114aec13a24b5365843a65ca4b920ca1e8dadb26824adb2e1b82edaed7ef32",
+        "2:agent": "bd8254483046448633198617d8c710216de259df2ca73df1bc1e2b42037cd58d",
+        "3:agent": "2ed5c498733e4c55d2285c0be9deefb099921bb83664f395162e37e1b5ecf003",
+        "4:agent": "5b8f42508329ed9553be29aa9ae6d3cb3aa450b15ba1a40df4528f39b275adc5",
+        "5:agent": "f2aeb9c52a3f59c2bd21ea4fac72210d7dfe90cca413d3ca6225b7e3b92ecab6",
+        "0:bg": "18ba9b072f59fa8531ad600bb93fa9401f62d87a7b2be4bf75b38e87d284bcb8",
+        "1:bg": "fce7bfe130ce89b1a675dd0b47e352a9e4eea2598df60fea252d96bddc44cea8",
+        "2:bg": "d2c547ed5e905f3d9e1d3886545f2abc7dfbe23b5413d73641afc26c59dad13c",
+        "3:bg": "dfd2284659ff6f6e2da560c33b5b3358c4d2d4ccb0847416b6e0cf8b9a1386b6",
+        "4:bg": "8f2ad8b932762e63848ea560951d06f4a52b38c86e755b3856428819eadabe73",
+        "5:bg": "f269d1c7f078c91b4a354e147c23685cecc03f941d550cd57415da8c1c3236a7"
+      }
+    },
+    "full2": {
+      "run": "full2",
+      "source_accounting": "PASS",
+      "actual_external_tokens": 5840.0,
+      "actual_local_tokens": 0.0,
+      "computed_tokens": 216304.0,
+      "h2d_bytes": 167444480.0,
+      "d2h_bytes": 4792582144.0,
+      "agent_computed_input_tokens": 167152.0,
+      "unavoidable_first_and_growth_tokens": 28992,
+      "repeated_history_prefill_tokens": 138160.0,
+      "warmup_tokens_published_after_before": 0.0,
+      "actual_gpu_pool_tokens": 1355712,
+      "final_running": 0.0,
+      "final_waiting": 0.0,
+      "resume_p95_ms": 1765.778615,
+      "resume_median_ms": 1739.824287,
+      "background_median_ms": 3521.799495,
+      "background_overlap": "PASS",
+      "paired_inputs": {
+        "0:agent": "300c0f936e3ab9d4cf36b7eebe5a5470cc0f139838ff43f3d2efe9fba0c0ea00",
+        "1:agent": "a4114aec13a24b5365843a65ca4b920ca1e8dadb26824adb2e1b82edaed7ef32",
+        "2:agent": "bd8254483046448633198617d8c710216de259df2ca73df1bc1e2b42037cd58d",
+        "3:agent": "2ed5c498733e4c55d2285c0be9deefb099921bb83664f395162e37e1b5ecf003",
+        "4:agent": "5b8f42508329ed9553be29aa9ae6d3cb3aa450b15ba1a40df4528f39b275adc5",
+        "5:agent": "f2aeb9c52a3f59c2bd21ea4fac72210d7dfe90cca413d3ca6225b7e3b92ecab6",
+        "0:bg": "18ba9b072f59fa8531ad600bb93fa9401f62d87a7b2be4bf75b38e87d284bcb8",
+        "1:bg": "fce7bfe130ce89b1a675dd0b47e352a9e4eea2598df60fea252d96bddc44cea8",
+        "2:bg": "d2c547ed5e905f3d9e1d3886545f2abc7dfbe23b5413d73641afc26c59dad13c",
+        "3:bg": "dfd2284659ff6f6e2da560c33b5b3358c4d2d4ccb0847416b6e0cf8b9a1386b6",
+        "4:bg": "8f2ad8b932762e63848ea560951d06f4a52b38c86e755b3856428819eadabe73",
+        "5:bg": "f269d1c7f078c91b4a354e147c23685cecc03f941d550cd57415da8c1c3236a7"
+      }
+    },
+    "frontier2": {
+      "run": "frontier2",
+      "source_accounting": "PASS",
+      "actual_external_tokens": 46800.0,
+      "actual_local_tokens": 0.0,
+      "computed_tokens": 175344.0,
+      "h2d_bytes": 1341849600.0,
+      "d2h_bytes": 268369920.0,
+      "agent_computed_input_tokens": 126192.0,
+      "unavoidable_first_and_growth_tokens": 28992,
+      "repeated_history_prefill_tokens": 97200.0,
+      "warmup_tokens_published_after_before": 0.0,
+      "actual_gpu_pool_tokens": 1355712,
+      "final_running": 0.0,
+      "final_waiting": 0.0,
+      "resume_p95_ms": 1414.786456,
+      "resume_median_ms": 1402.755919,
+      "background_median_ms": 3199.394015,
+      "background_overlap": "PASS",
+      "paired_inputs": {
+        "0:agent": "300c0f936e3ab9d4cf36b7eebe5a5470cc0f139838ff43f3d2efe9fba0c0ea00",
+        "1:agent": "a4114aec13a24b5365843a65ca4b920ca1e8dadb26824adb2e1b82edaed7ef32",
+        "2:agent": "bd8254483046448633198617d8c710216de259df2ca73df1bc1e2b42037cd58d",
+        "3:agent": "2ed5c498733e4c55d2285c0be9deefb099921bb83664f395162e37e1b5ecf003",
+        "4:agent": "5b8f42508329ed9553be29aa9ae6d3cb3aa450b15ba1a40df4528f39b275adc5",
+        "5:agent": "f2aeb9c52a3f59c2bd21ea4fac72210d7dfe90cca413d3ca6225b7e3b92ecab6",
+        "0:bg": "18ba9b072f59fa8531ad600bb93fa9401f62d87a7b2be4bf75b38e87d284bcb8",
+        "1:bg": "fce7bfe130ce89b1a675dd0b47e352a9e4eea2598df60fea252d96bddc44cea8",
+        "2:bg": "d2c547ed5e905f3d9e1d3886545f2abc7dfbe23b5413d73641afc26c59dad13c",
+        "3:bg": "dfd2284659ff6f6e2da560c33b5b3358c4d2d4ccb0847416b6e0cf8b9a1386b6",
+        "4:bg": "8f2ad8b932762e63848ea560951d06f4a52b38c86e755b3856428819eadabe73",
+        "5:bg": "f269d1c7f078c91b4a354e147c23685cecc03f941d550cd57415da8c1c3236a7"
+      }
+    }
+  },
+  "pairs": [
+    {
+      "pair": "1",
+      "changes_percent": {
+        "d2h_bytes": -94.400306308031,
+        "resume_p95_ms": -17.86202009815264,
+        "resume_median_ms": -18.291348268012253,
+        "background_median_ms": -8.080223839537592,
+        "total_transfer_bytes": -67.53607103218646
+      },
+      "mechanism_gate_passed": true
+    },
+    {
+      "pair": "2",
+      "changes_percent": {
+        "d2h_bytes": -94.400306308031,
+        "resume_p95_ms": -19.877472522227812,
+        "resume_median_ms": -19.373701730604708,
+        "background_median_ms": -9.154566591815595,
+        "total_transfer_bytes": -67.53607103218646
+      },
+      "mechanism_gate_passed": true
+    }
+  ],
+  "calibration": {
+    "measured_calls": 36,
+    "matched_full_prompt_groups": 9,
+    "actual_gpu_hit_tokens": 379248.0,
+    "expected_gpu_hit_tokens": 379248,
+    "cumulative_hit_accounting": "PASS",
+    "rows": [
+      {
+        "length": 8192,
+        "prefix": 0,
+        "n": 3,
+        "median_ttft_ms": 317.100887
+      },
+      {
+        "length": 8192,
+        "prefix": 4096,
+        "n": 3,
+        "median_ttft_ms": 184.568213
+      },
+      {
+        "length": 8192,
+        "prefix": 7168,
+        "n": 3,
+        "median_ttft_ms": 70.90844
+      },
+      {
+        "length": 8192,
+        "prefix": 8192,
+        "n": 3,
+        "median_ttft_ms": 34.516723
+      },
+      {
+        "length": 16384,
+        "prefix": 0,
+        "n": 3,
+        "median_ttft_ms": 757.017513
+      },
+      {
+        "length": 16384,
+        "prefix": 8192,
+        "n": 3,
+        "median_ttft_ms": 461.364102
+      },
+      {
+        "length": 16384,
+        "prefix": 14336,
+        "n": 3,
+        "median_ttft_ms": 154.507741
+      },
+      {
+        "length": 16384,
+        "prefix": 16384,
+        "n": 3,
+        "median_ttft_ms": 53.352311
+      },
+      {
+        "length": 28672,
+        "prefix": 0,
+        "n": 3,
+        "median_ttft_ms": 1696.233099
+      },
+      {
+        "length": 28672,
+        "prefix": 14336,
+        "n": 3,
+        "median_ttft_ms": 1083.359957
+      },
+      {
+        "length": 28672,
+        "prefix": 25088,
+        "n": 3,
+        "median_ttft_ms": 357.898191
+      },
+      {
+        "length": 28672,
+        "prefix": 28672,
+        "n": 3,
+        "median_ttft_ms": 86.369754
+      }
+    ],
+    "qualification": "isolated serial cost diagnostic, no candidate speedup"
+  },
+  "oracle": {
+    "tokens": 16,
+    "token_match": "PASS",
+    "restore_external_tokens": 9360.0,
+    "independent_cold_external_tokens": 0.0,
+    "local_tokens": 0,
+    "qualification": "one invariant input; timing excluded; not general KV quality proof"
+  },
+  "gpu_hours": 0.13880706816885827,
+  "scope": "synthetic single-path host-overflow forced-GPU-cold mechanism screen",
+  "production_speedup": "UNKNOWN",
+  "multi_session_fairness": "UNKNOWN",
+  "gpu_owned_memory_time": "UNKNOWN"
+}

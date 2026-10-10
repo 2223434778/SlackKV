@@ -1,0 +1,85 @@
+{
+  "rows": [
+    {
+      "capacity_proxy_tokens": 16384,
+      "uncached_vs_lru": 0.996529228121384,
+      "p95_vs_lru": 0.9967495019398134,
+      "uncached_vs_rr": 1.0058670875319522,
+      "p95_vs_rr": 1.0,
+      "writes_vs_lru": 0.0012715640958223958,
+      "nonregressing_namespaces": 27,
+      "namespaces": 27,
+      "passed": false
+    },
+    {
+      "capacity_proxy_tokens": 65536,
+      "uncached_vs_lru": 1.0484462647222224,
+      "p95_vs_lru": 0.9960104867206201,
+      "uncached_vs_rr": 1.0579083682383208,
+      "p95_vs_rr": 0.9995424388011896,
+      "writes_vs_lru": 0.006723855408885118,
+      "nonregressing_namespaces": 19,
+      "namespaces": 27,
+      "passed": false
+    },
+    {
+      "capacity_proxy_tokens": 131072,
+      "uncached_vs_lru": 1.1060277460202144,
+      "p95_vs_lru": 0.995483288166215,
+      "uncached_vs_rr": 1.1201775539960495,
+      "p95_vs_rr": 0.9985760517799352,
+      "writes_vs_lru": 0.015636440618613152,
+      "nonregressing_namespaces": 20,
+      "namespaces": 27,
+      "passed": false
+    },
+    {
+      "capacity_proxy_tokens": 262144,
+      "uncached_vs_lru": 1.219191840008943,
+      "p95_vs_lru": 0.9920097272885183,
+      "uncached_vs_rr": 1.2222725396902034,
+      "p95_vs_rr": 0.9930446878803686,
+      "writes_vs_lru": 0.04061510188032295,
+      "nonregressing_namespaces": 21,
+      "namespaces": 27,
+      "passed": false
+    },
+    {
+      "capacity_proxy_tokens": 524288,
+      "uncached_vs_lru": 1.9646058046480377,
+      "p95_vs_lru": 1.3366946778711484,
+      "uncached_vs_rr": 1.9594718506319155,
+      "p95_vs_rr": 1.3603192702394526,
+      "writes_vs_lru": 0.2288843523312949,
+      "nonregressing_namespaces": 23,
+      "namespaces": 27,
+      "passed": false
+    },
+    {
+      "capacity_proxy_tokens": 1048576,
+      "uncached_vs_lru": 2.148445187225269,
+      "p95_vs_lru": 3.0833333333333335,
+      "uncached_vs_rr": 2.1522016939917776,
+      "p95_vs_rr": 3.0833333333333335,
+      "writes_vs_lru": 0.8925886517770132,
+      "nonregressing_namespaces": 24,
+      "namespaces": 27,
+      "passed": false
+    },
+    {
+      "capacity_proxy_tokens": 2097152,
+      "uncached_vs_lru": 1.0395010613480171,
+      "p95_vs_lru": 1.0900473933649288,
+      "uncached_vs_rr": 1.0382300309093866,
+      "p95_vs_rr": 1.0900473933649288,
+      "writes_vs_lru": 0.9955973679342512,
+      "nonregressing_namespaces": 26,
+      "namespaces": 27,
+      "passed": false
+    }
+  ],
+  "matched_requests": 2661,
+  "per_request_arithmetic": "PASS",
+  "verdict": "REJECT_COST_TAIL",
+  "qualification": "fixed-event host-only model, not actual misses, SLO or E2E"
+}

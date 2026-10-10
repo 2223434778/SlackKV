@@ -1,0 +1,15 @@
+{
+  "files_sha256": {
+    ".gitattributes": "308a40fa1d89ae5ea4390b4c9b46a0108b09f171f07898f25d451fa0c69c4e9f",
+    "failed_attempt1/failure.json": "7fc9c9cf33df90407a205324f1f620e3085de7d7cec1823f592e6f8d7acf9abe",
+    "failed_attempt1/model.py": "da367e2e978bbe53fe7058825ecf10cbec350def1838e999f351cfbf8f733c7c",
+    "failed_attempt1/run.py": "355681e7874a6fb42cd25621efeddac99133907396ee446926d3a17e6b9b8733",
+    "native_audit.json": "372355c50fab72f9a22ae5398061f2b05bf6a84922247bca12c076421f003b7b",
+    "native_audit_retry.json": "372355c50fab72f9a22ae5398061f2b05bf6a84922247bca12c076421f003b7b",
+    "retry/assessment.json": "c15b834e4713f7a0a7772111487e35eb9d9ac40a8aa9f0c7ca0d5d0be5517921",
+    "retry/namespace_metrics.csv": "85356b9c6cdd177098f4bd5514af91ae149bb56cd8a61c17fe773fecbaac12b0",
+    "retry/requests.csv.gz": "14a154c0ae87e10b22e1b6da76f548c75086bcbff948116f809dfb45199ed7e2",
+    "retry/summary.json": "367feacfcf56f4f70b87f48a2936ddd48574c9128955265b1bc7e0fd88a59ec2",
+    "summary.md": "4de4ce8041b0edc849b3a12ee9d1d86e14f565d51c03ab2a115137fcee840624"
+  }
+}

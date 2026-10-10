@@ -1,0 +1,11 @@
+{
+  "cpu_bytes": 268435456,
+  "bytes_per_token": 28672,
+  "prefix_cap_tokens": 9360,
+  "iterations": 6,
+  "explicit_gpu_resets": 6,
+  "background_output_tokens": 1536,
+  "agent_output_tokens": 96,
+  "workload": "synthetic host-overflow forced-GPU-cold diagnostic",
+  "qualification": "single growing path; not representative production or algorithm fairness proof"
+}

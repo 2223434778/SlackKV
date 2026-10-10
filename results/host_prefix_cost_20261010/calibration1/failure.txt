@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/experiments/host_prefix/calibrate.py", line 79, in main
+    raise RuntimeError(f'GPU reset failed: {r.status} {body}')
+RuntimeError: GPU reset failed: 200 

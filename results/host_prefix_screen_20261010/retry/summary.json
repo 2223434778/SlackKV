@@ -1,0 +1,259 @@
+{
+  "source_sha256": "d078503145b09533298928438fe186bbbc40c726901f920872510df04cd47994",
+  "pooled": [
+    {
+      "capacity_proxy_tokens": 16384,
+      "policy": "block_lru",
+      "uncached_proxy_tokens": 524166976,
+      "uncached_p95": 610368,
+      "uncached_p99": 703552,
+      "attention_work_proxy": 215910739406848,
+      "writes_proxy_tokens": 524557120
+    },
+    {
+      "capacity_proxy_tokens": 16384,
+      "policy": "prefix_lru",
+      "uncached_proxy_tokens": 519251008,
+      "uncached_p95": 608384,
+      "uncached_p99": 701568,
+      "attention_work_proxy": 215760051802112,
+      "writes_proxy_tokens": 2532288
+    },
+    {
+      "capacity_proxy_tokens": 16384,
+      "policy": "rr_tail",
+      "uncached_proxy_tokens": 519300928,
+      "uncached_p95": 608384,
+      "uncached_p99": 701568,
+      "attention_work_proxy": 215761598017536,
+      "writes_proxy_tokens": 2498752
+    },
+    {
+      "capacity_proxy_tokens": 16384,
+      "policy": "cost_tail",
+      "uncached_proxy_tokens": 522347712,
+      "uncached_p95": 608384,
+      "uncached_p99": 701568,
+      "attention_work_proxy": 215817357897728,
+      "writes_proxy_tokens": 667008
+    },
+    {
+      "capacity_proxy_tokens": 65536,
+      "policy": "block_lru",
+      "uncached_proxy_tokens": 417366336,
+      "uncached_p95": 561472,
+      "uncached_p99": 662080,
+      "attention_work_proxy": 207885999501312,
+      "writes_proxy_tokens": 424042432
+    },
+    {
+      "capacity_proxy_tokens": 65536,
+      "policy": "prefix_lru",
+      "uncached_proxy_tokens": 413227200,
+      "uncached_p95": 559488,
+      "uncached_p99": 661696,
+      "attention_work_proxy": 207390165733376,
+      "writes_proxy_tokens": 17805504
+    },
+    {
+      "capacity_proxy_tokens": 65536,
+      "policy": "rr_tail",
+      "uncached_proxy_tokens": 413633344,
+      "uncached_p95": 559488,
+      "uncached_p99": 661696,
+      "attention_work_proxy": 207425290653696,
+      "writes_proxy_tokens": 17474816
+    },
+    {
+      "capacity_proxy_tokens": 65536,
+      "policy": "cost_tail",
+      "uncached_proxy_tokens": 437586176,
+      "uncached_p95": 559232,
+      "uncached_p99": 652416,
+      "attention_work_proxy": 209331894878208,
+      "writes_proxy_tokens": 2851200
+    },
+    {
+      "capacity_proxy_tokens": 131072,
+      "policy": "block_lru",
+      "uncached_proxy_tokens": 316788928,
+      "uncached_p95": 495936,
+      "uncached_p99": 605824,
+      "attention_work_proxy": 189455259693056,
+      "writes_proxy_tokens": 321660928
+    },
+    {
+      "capacity_proxy_tokens": 131072,
+      "policy": "prefix_lru",
+      "uncached_proxy_tokens": 312236736,
+      "uncached_p95": 493952,
+      "uncached_p99": 603840,
+      "attention_work_proxy": 188558899941376,
+      "writes_proxy_tokens": 17491968
+    },
+    {
+      "capacity_proxy_tokens": 131072,
+      "policy": "rr_tail",
+      "uncached_proxy_tokens": 312787328,
+      "uncached_p95": 494400,
+      "uncached_p99": 604800,
+      "attention_work_proxy": 188629040259072,
+      "writes_proxy_tokens": 17620224
+    },
+    {
+      "capacity_proxy_tokens": 131072,
+      "policy": "cost_tail",
+      "uncached_proxy_tokens": 350377344,
+      "uncached_p95": 493696,
+      "uncached_p99": 591296,
+      "attention_work_proxy": 193641287557120,
+      "writes_proxy_tokens": 5029632
+    },
+    {
+      "capacity_proxy_tokens": 262144,
+      "policy": "block_lru",
+      "uncached_proxy_tokens": 182061376,
+      "uncached_p95": 368448,
+      "uncached_p99": 474752,
+      "attention_work_proxy": 140245123510272,
+      "writes_proxy_tokens": 182620544
+    },
+    {
+      "capacity_proxy_tokens": 262144,
+      "policy": "prefix_lru",
+      "uncached_proxy_tokens": 180013504,
+      "uncached_p95": 366464,
+      "uncached_p99": 472768,
+      "attention_work_proxy": 139342491635712,
+      "writes_proxy_tokens": 12546880
+    },
+    {
+      "capacity_proxy_tokens": 262144,
+      "policy": "rr_tail",
+      "uncached_proxy_tokens": 181602496,
+      "uncached_p95": 368064,
+      "uncached_p99": 475264,
+      "attention_work_proxy": 139742949183488,
+      "writes_proxy_tokens": 13274496
+    },
+    {
+      "capacity_proxy_tokens": 262144,
+      "policy": "cost_tail",
+      "uncached_proxy_tokens": 221967744,
+      "uncached_p95": 365504,
+      "uncached_p99": 464192,
+      "attention_work_proxy": 148192367058944,
+      "writes_proxy_tokens": 7417152
+    },
+    {
+      "capacity_proxy_tokens": 524288,
+      "policy": "block_lru",
+      "uncached_proxy_tokens": 42673664,
+      "uncached_p95": 114240,
+      "uncached_p99": 222784,
+      "attention_work_proxy": 38733341081600,
+      "writes_proxy_tokens": 42604992
+    },
+    {
+      "capacity_proxy_tokens": 524288,
+      "policy": "prefix_lru",
+      "uncached_proxy_tokens": 42162688,
+      "uncached_p95": 112256,
+      "uncached_p99": 220800,
+      "attention_work_proxy": 38198620659712,
+      "writes_proxy_tokens": 14197504
+    },
+    {
+      "capacity_proxy_tokens": 524288,
+      "policy": "rr_tail",
+      "uncached_proxy_tokens": 42785472,
+      "uncached_p95": 112256,
+      "uncached_p99": 224320,
+      "attention_work_proxy": 38638786523136,
+      "writes_proxy_tokens": 14364416
+    },
+    {
+      "capacity_proxy_tokens": 524288,
+      "policy": "cost_tail",
+      "uncached_proxy_tokens": 83836928,
+      "uncached_p95": 152704,
+      "uncached_p99": 363776,
+      "attention_work_proxy": 59370189725696,
+      "writes_proxy_tokens": 9751616
+    },
+    {
+      "capacity_proxy_tokens": 1048576,
+      "policy": "block_lru",
+      "uncached_proxy_tokens": 12943552,
+      "uncached_p95": 13824,
+      "uncached_p99": 47168,
+      "attention_work_proxy": 5171674017792,
+      "writes_proxy_tokens": 12871936
+    },
+    {
+      "capacity_proxy_tokens": 1048576,
+      "policy": "prefix_lru",
+      "uncached_proxy_tokens": 12943552,
+      "uncached_p95": 13824,
+      "uncached_p99": 47168,
+      "attention_work_proxy": 5171674017792,
+      "writes_proxy_tokens": 12871936
+    },
+    {
+      "capacity_proxy_tokens": 1048576,
+      "policy": "rr_tail",
+      "uncached_proxy_tokens": 12920960,
+      "uncached_p95": 13824,
+      "uncached_p99": 47168,
+      "attention_work_proxy": 5117850509312,
+      "writes_proxy_tokens": 12347520
+    },
+    {
+      "capacity_proxy_tokens": 1048576,
+      "policy": "cost_tail",
+      "uncached_proxy_tokens": 27808512,
+      "uncached_p95": 42624,
+      "uncached_p99": 159104,
+      "attention_work_proxy": 20605782892544,
+      "writes_proxy_tokens": 11489344
+    },
+    {
+      "capacity_proxy_tokens": 2097152,
+      "policy": "block_lru",
+      "uncached_proxy_tokens": 12180736,
+      "uncached_p95": 13504,
+      "uncached_p99": 44480,
+      "attention_work_proxy": 4377055215616,
+      "writes_proxy_tokens": 12109120
+    },
+    {
+      "capacity_proxy_tokens": 2097152,
+      "policy": "prefix_lru",
+      "uncached_proxy_tokens": 12180736,
+      "uncached_p95": 13504,
+      "uncached_p99": 44480,
+      "attention_work_proxy": 4377055215616,
+      "writes_proxy_tokens": 12109120
+    },
+    {
+      "capacity_proxy_tokens": 2097152,
+      "policy": "rr_tail",
+      "uncached_proxy_tokens": 12195648,
+      "uncached_p95": 13504,
+      "uncached_p99": 44480,
+      "attention_work_proxy": 4379516923904,
+      "writes_proxy_tokens": 12123200
+    },
+    {
+      "capacity_proxy_tokens": 2097152,
+      "policy": "cost_tail",
+      "uncached_proxy_tokens": 12661888,
+      "uncached_p95": 14720,
+      "uncached_p99": 49536,
+      "attention_work_proxy": 4825079595008,
+      "writes_proxy_tokens": 12055808
+    }
+  ],
+  "gpu_hours": 0,
+  "qualification": "host-only structural counterfactual, not latency or actual misses"
+}

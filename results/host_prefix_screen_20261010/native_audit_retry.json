@@ -1,0 +1,9 @@
+{
+  "differential_requests": 320,
+  "exact_order_and_hits": "PASS",
+  "native_refcount_and_cancel": "PASS",
+  "gpu_hours": 0,
+  "manager_path": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source/vllm/v1/kv_offload/cpu/manager.py",
+  "manager_sha256": "fd89bb49d46a01fdf6acfdf6c3c1867e5cb3116a0b24bc47859cc83de34841bd",
+  "qualification": "metadata only, no tensor allocation, not scheduler validation"
+}

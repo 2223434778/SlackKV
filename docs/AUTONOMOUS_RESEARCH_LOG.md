@@ -136,3 +136,8 @@
 - CPU2661请求/47子group/892子请求，代理input median118208/P95624320，output median460/P955053；同模型完成输入历史prefix覆盖97.83%，其他显式容器3.46%。不同trace/model隔离，无序hash不冒充prefix；93.05%超过旧32K，不能直接复用旧模型设置或假定代理长度是真tokens。
 - 4单元测试通过，独立CSV算术和92固定抽样直接LCP对照通过。真实host miss/重算、工具-only时长、owned-memory-time、准确DAG与A6000部署成本UNKNOWN；不把结构复用当cache hit或速度收益。
 - 最近MORI、EfficientAgent、RR-Evict、Continuum及现成AIPerf loader覆盖了多种直观候选。唯一保留成本识别问题：自然预算下可复用prefix是否被host决策丢失；实际Z与区别未识别，不写新runtime、不启动GPU。建议暂停/归档原JIT论文主张，保留项目目标与工程。报告docs/RESEARCH_OPPORTUNITY_DECISION.md；结果results/opportunity_decision_20261010/，GPU成本0。
+- 2026-10-10后续自主探索：按用户放宽后的创新标准，允许组合已有准入/尾部驱逐方法。新增host_prefix CPU7容量×4策略；cost-tail全部失败，不能只用长度平方代替复用判断。连续prefix参考未缓存量只改善约1%，写入模型大幅下降，转向真实host写入放大验证。
+- 真实compiled1.5B/natural85%GPU、host256MiB/forcedGPU-cold单路径PoC：full1/frontier1、frontier2/full2两对，P95-17.86/-19.88%，BGmedian-8.08/-9.15%，D2H-94.40%、总迁移-67.54%，H2D增加8.01倍。实际source/inputs/outputs/容量核算通过；不宣称生产/整体Session/SOTA/统计显著。
+- 19项测试、native320请求差分/引用取消检查、oracle2单输入16token独立cold比对通过。oracle1salt字段位置错误INVALID、calibration1接口体误判FAILED、CPU中断/分析动态counter错误均保留。全部8GPUrun含失败启动清理0.1388070682GPUh，GPU1未用，最终两卡空闲。
+- 决定：保留可持续partial checkpoint +写入准入+公平尾部回收组合，停止直接cost-tail；固定单路径cap有双会话逐出反例，不能部署。下一步自然聚合压力/多会话adaptive额度与强已有准入对照。详见docs/AUTONOMOUS_RESEARCH_HOST_PREFIX_20261010.md、results/host_prefix_screen_20261010/与results/host_prefix_cost_20261010/。
+- 预算连续性补充：本次新增0.1388070682GPUh，保守合并Round3/4共0.8855139290GPUh<4；budget.json按目录列小计，未来runner合并检查，不用新结果目录重置授权。
