@@ -658,3 +658,5 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - host_prefix_cost：calibration1FAILED(reset接口空体)、calibration2COMPLETE(36calls/379248GPUhit核算)；full1/frontier1、frontier2/full2四run严格匹配12inputs，compiled相同pool1,355,712tokens；P95-17.86/-19.88%，BG-8.08/-9.15%，D2H-94.40%、总迁移-67.54%，H2D8.01倍。
 - oracle1执行完成但INVALID(salt字段放错，冷参考GPUhit28720)；oracle2修复后9360external恢复与0命中冷prefill16tokens一致。指标标签初始缺失导致首次分析失败，明确freshzero-transfer起点后结束计数/token来源严格重算；失败全部保留。
 - GPUledger8run总0.13880706816885827GPUh，含启动/编译/验证/清理，GPU1未用；单run最大90.52秒。CPU/合成pressurediagnostic不冒充生产trace，整体SessionE2E/fairness/SOTA优势UNKNOWN。原始数据、复现命令、源版本见results/host_prefix_cost_20261010/与三份HOST_PREFIX_*_PROTOCOL.md。
+
+- 2026-10-10 review_host_prefix（只读CPU审查，无新GPU实验）：读取18ad6b7四run requests/backgrounds gzip和before/after.prom，独立以Python复算时间戳、12个记录输入哈希配对、输出数量、token source守恒与H2D=external×28672；读取oracle2原始输出/三快照。续接P95改善17.86/19.88%、后台中位改善8.08/9.15%与报告一致。未重新计算inputs.json.gz哈希、未全量审查服务器日志。结果results/research_review_host_prefix_20261010/spotcheck.json，交接docs/RESEARCH_REVIEW_HOST_PREFIX_20261010.md；现有experiments.host_prefix.analyze_gpu可重算完整归档。

@@ -215,3 +215,5 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - CPU cost-tail全部门槛失败，不做权重调参；连续前缀参考给出写入线索后真实GPU验证。固定physical-cap checkpoint复用原生max_offload_tokens，不改KV内容/ownership，也不称其为独立论文算法。
 - 两对受控筛选通过资源/退化门槛，但host256MiB、forcedcold、单路径适用范围严格；不代替natural workload或SOTA对照。明确H2D增加8.01倍、总bytes下降67.54%的tradeoff。
 - 固定cap不是pool公平性策略；双会话反例已测。保留机制、再组合capacity-conditioned admission/公平尾部与adaptive frontiers，先验证自然聚合压力而不是直接正式矩阵。新报告docs/AUTONOMOUS_RESEARCH_HOST_PREFIX_20261010.md。
+
+- 2026-10-10 host-prefix审查：按用户放宽创新标准保留真实机制收益，不因复用组件否决。推进顺序改为NoHost、静态公平额度与自然回收证据在先，动态frontier在后；若简单方案足够，接受工程价值。当前cost-tail使用累计损失而非单块边际损失，其失败不否定所有cost-aware方法。不把人为256MiB/forced-cold结果推广成生产E2E优势。详见docs/RESEARCH_REVIEW_HOST_PREFIX_20261010.md。

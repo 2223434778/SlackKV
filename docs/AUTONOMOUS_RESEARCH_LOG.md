@@ -141,3 +141,5 @@
 - 19项测试、native320请求差分/引用取消检查、oracle2单输入16token独立cold比对通过。oracle1salt字段位置错误INVALID、calibration1接口体误判FAILED、CPU中断/分析动态counter错误均保留。全部8GPUrun含失败启动清理0.1388070682GPUh，GPU1未用，最终两卡空闲。
 - 决定：保留可持续partial checkpoint +写入准入+公平尾部回收组合，停止直接cost-tail；固定单路径cap有双会话逐出反例，不能部署。下一步自然聚合压力/多会话adaptive额度与强已有准入对照。详见docs/AUTONOMOUS_RESEARCH_HOST_PREFIX_20261010.md、results/host_prefix_screen_20261010/与results/host_prefix_cost_20261010/。
 - 预算连续性补充：本次新增0.1388070682GPUh，保守合并Round3/4共0.8855139290GPUh<4；budget.json按目录列小计，未来runner合并检查，不用新结果目录重置授权。
+
+- 2026-10-10 外部审查18ad6b7：独立核对四run原始计时、输出量、记录输入哈希、source/transfer计数及oracle2，确认受控partial checkpoint正结果。新增GPU消耗0。接受继续该方向；先补NoHost与StaticFairPrefix，再决定adaptive复杂度，并验证自然回收/真实host预算。具体交接：docs/RESEARCH_REVIEW_HOST_PREFIX_20261010.md；复算results/research_review_host_prefix_20261010/spotcheck.json。
