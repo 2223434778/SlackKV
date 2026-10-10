@@ -1,0 +1,24 @@
+{
+  "program_order": true,
+  "physical_pin": false,
+  "ttl_seconds": 1.0,
+  "age_guard_seconds": 1.0,
+  "gate_enabled": false,
+  "label": "mechanism-matched control; not full Continuum reproduction",
+  "args": [
+    "/media/a6000/D/ZhaoBinHe/SlackKV/experiments/autonomous_round4/control_run.py",
+    "--name",
+    "control-order",
+    "--kv-gib",
+    "2",
+    "--replay-inputs",
+    "results/autonomous_capacity/capacity-2/inputs.jsonl.gz",
+    "--round-directory",
+    "autonomous_round4",
+    "--execution",
+    "default",
+    "--runtime-source",
+    "/media/a6000/D/ZhaoBinHe/slackkv-round4-control-source",
+    "--gate-off"
+  ]
+}

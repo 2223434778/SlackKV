@@ -1,0 +1,74 @@
+[
+  {
+    "name": "gate-2-p1-k2",
+    "budget": 2,
+    "pair": 1,
+    "method": "k2"
+  },
+  {
+    "name": "gate-2-p1-off",
+    "budget": 2,
+    "pair": 1,
+    "method": "off"
+  },
+  {
+    "name": "gate-2-p2-off",
+    "budget": 2,
+    "pair": 2,
+    "method": "off"
+  },
+  {
+    "name": "gate-2-p2-k2",
+    "budget": 2,
+    "pair": 2,
+    "method": "k2"
+  },
+  {
+    "name": "gate-2-p3-k2",
+    "budget": 2,
+    "pair": 3,
+    "method": "k2"
+  },
+  {
+    "name": "gate-2-p3-off",
+    "budget": 2,
+    "pair": 3,
+    "method": "off"
+  },
+  {
+    "name": "gate-4-p1-off",
+    "budget": 4,
+    "pair": 1,
+    "method": "off"
+  },
+  {
+    "name": "gate-4-p1-k2",
+    "budget": 4,
+    "pair": 1,
+    "method": "k2"
+  },
+  {
+    "name": "gate-4-p2-k2",
+    "budget": 4,
+    "pair": 2,
+    "method": "k2"
+  },
+  {
+    "name": "gate-4-p2-off",
+    "budget": 4,
+    "pair": 2,
+    "method": "off"
+  },
+  {
+    "name": "gate-4-p3-off",
+    "budget": 4,
+    "pair": 3,
+    "method": "off"
+  },
+  {
+    "name": "gate-4-p3-k2",
+    "budget": 4,
+    "pair": 3,
+    "method": "k2"
+  }
+]

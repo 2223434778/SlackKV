@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/experiments/autonomous_admission/run.py", line 221, in main
+    result = legacy.run_lifecycle(args.policy, "measured", 1)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/experiments/phase4g_a/run_phase4g_a.py", line 169, in run_lifecycle
+    future.result(timeout=300)
+  File "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/lib/python3.11/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/experiments/phase4g_a/run_phase4g_a.py", line 151, in worker
+    response = runtime.send(prompt, int(row["source_osl"]), stream=True,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/experiments/autonomous_admission/run.py", line 159, in send
+    response = original_send(*positional, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/experiments/phase4d_a/runtime.py", line 112, in send
+    if first is None: raise RuntimeError("response had no generated token")
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: response had no generated token

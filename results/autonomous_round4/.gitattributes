@@ -1,0 +1,4 @@
+* -text
+*.prom -whitespace
+*.patch -whitespace
+*.csv -whitespace

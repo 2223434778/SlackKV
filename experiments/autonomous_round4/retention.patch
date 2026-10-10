@@ -1,0 +1,55 @@
+*** Begin Patch
+*** Update File: vllm/v1/core/sched/scheduler.py
+@@
+     def slackkv_ready_probe_delay_s(self) -> float | None:
++        from experiments.autonomous_round4.retention import control
++        ctl = control(self)
++        retention_delay = ctl.delay(time.monotonic())
++        if retention_delay is not None:
++            return min(.01, retention_delay)
+@@
+     def slackkv_probe_source_readiness(self) -> None:
++        from experiments.autonomous_round4.retention import control
++        control(self).expire(time.monotonic())
+@@
+     def schedule(self) -> SchedulerOutput:
++        from experiments.autonomous_round4.retention import control
++        retention = control(self)
++        retention.expire(time.monotonic())
++        retention.reorder(self.waiting, time.monotonic())
++        retention.reorder(self.skipped_waiting, time.monotonic())
+@@
+                     # The request cannot be scheduled.
+                     # Preempt the lowest-priority request.
++                    if retention.reclaim("DECODE_GROWTH_PRESSURE"):
++                        continue
+@@
+                 if new_blocks is None:
+                     # The request cannot be scheduled.
++                    if (retention.program(request) is None and
++                            retention.reclaim("BACKGROUND_DEMAND_PRESSURE")):
++                        continue
+@@
+                 if _is_slackkv_trace_resume(request) and request.num_computed_tokens == 0:
++                    retention.admitted(request)
+@@
+     def add_request(self, request: Request) -> None:
++        from experiments.autonomous_round4.retention import control
++        control(self).arrived(request, time.monotonic())
+@@
+     def _free_request(
+         self, request: Request, delay_free_blocks: bool = False
+     ) -> dict[str, Any] | None:
+         assert request.is_finished()
++        if request.status.name not in {"FINISHED_STOPPED", "FINISHED_LENGTH_CAPPED"}:
++            from experiments.autonomous_round4.retention import control
++            control(self).cancelled(request)
+@@
+     def _free_blocks(self, request: Request):
+         assert request.is_finished()
++        from experiments.autonomous_round4.retention import control
++        control(self).finished(request,
++            [b for group in self.kv_cache_manager.get_blocks(request.request_id).blocks for b in group],
++            time.monotonic())
+         self.kv_cache_manager.free(request)
+*** End Patch

@@ -1,0 +1,9 @@
+{
+  "export_hashes": 271,
+  "source_snapshot_hashes": 55,
+  "local_screen_recomputation": "all baseline/control effects exactly match archived summaries",
+  "local_tests": "44 passed",
+  "native_cpu_tests": "15 passed",
+  "post_export_issue": "Windows independent audit converted only derived JSON newlines; restored exact export bytes and repeated all271 hash checks",
+  "raw_data_modified": false
+}

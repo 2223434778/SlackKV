@@ -1,0 +1,5006 @@
+{
+  "valid": true,
+  "metrics": {
+    "valid": true,
+    "resume_count": 32,
+    "resume_p95_ms": 5607.502834,
+    "resume_median_ms": 2252.321081,
+    "session_e2e_median_ms": 24684.7857975,
+    "session_e2e_ms": {
+      "E01": 20233.601417,
+      "E02": 22208.82832,
+      "E00": 26413.156723,
+      "E03": 20996.323768,
+      "E04": 24087.016398,
+      "E05": 25764.679735,
+      "E06": 25282.555197,
+      "E07": 26228.823425
+    },
+    "BG_wall_ms": 68087.001283,
+    "BG_TPOT_ms": 8.292725949560332,
+    "BG_tail_finish_ms": 41634.056032,
+    "resumes_with_observed_capacity_failure": 30,
+    "resumes_without_allocator_observation": 0,
+    "allocator_sample_count": 1394,
+    "requests": [
+      {
+        "session": "E01:turn:0",
+        "turn_index": 0,
+        "ttft_ms": 1210.381178,
+        "pre_admission_ms": null,
+        "pre_admission_allocator_samples": 0,
+        "pre_admission_failed_samples": 0,
+        "failed_gates": [],
+        "max_observed_deficit_blocks": null,
+        "max_observed_inflight_reserved_blocks": null,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": null,
+        "last_failure_ns": null,
+        "observation_status": "UNKNOWN"
+      },
+      {
+        "session": "E02:turn:0",
+        "turn_index": 0,
+        "ttft_ms": 3436.267175,
+        "pre_admission_ms": null,
+        "pre_admission_allocator_samples": 0,
+        "pre_admission_failed_samples": 0,
+        "failed_gates": [],
+        "max_observed_deficit_blocks": null,
+        "max_observed_inflight_reserved_blocks": null,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": null,
+        "last_failure_ns": null,
+        "observation_status": "UNKNOWN"
+      },
+      {
+        "session": "E00:turn:0",
+        "turn_index": 0,
+        "ttft_ms": 2350.018267,
+        "pre_admission_ms": null,
+        "pre_admission_allocator_samples": 0,
+        "pre_admission_failed_samples": 0,
+        "failed_gates": [],
+        "max_observed_deficit_blocks": null,
+        "max_observed_inflight_reserved_blocks": null,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": null,
+        "last_failure_ns": null,
+        "observation_status": "UNKNOWN"
+      },
+      {
+        "session": "E03:turn:0",
+        "turn_index": 0,
+        "ttft_ms": 4944.186126,
+        "pre_admission_ms": null,
+        "pre_admission_allocator_samples": 0,
+        "pre_admission_failed_samples": 0,
+        "failed_gates": [],
+        "max_observed_deficit_blocks": null,
+        "max_observed_inflight_reserved_blocks": null,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": null,
+        "last_failure_ns": null,
+        "observation_status": "UNKNOWN"
+      },
+      {
+        "session": "E04:turn:0",
+        "turn_index": 0,
+        "ttft_ms": 6042.896648,
+        "pre_admission_ms": null,
+        "pre_admission_allocator_samples": 0,
+        "pre_admission_failed_samples": 0,
+        "failed_gates": [],
+        "max_observed_deficit_blocks": null,
+        "max_observed_inflight_reserved_blocks": null,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": null,
+        "last_failure_ns": null,
+        "observation_status": "UNKNOWN"
+      },
+      {
+        "session": "E05:turn:0",
+        "turn_index": 0,
+        "ttft_ms": 7321.336315,
+        "pre_admission_ms": null,
+        "pre_admission_allocator_samples": 0,
+        "pre_admission_failed_samples": 0,
+        "failed_gates": [],
+        "max_observed_deficit_blocks": null,
+        "max_observed_inflight_reserved_blocks": null,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": null,
+        "last_failure_ns": null,
+        "observation_status": "UNKNOWN"
+      },
+      {
+        "session": "E06:turn:0",
+        "turn_index": 0,
+        "ttft_ms": 8412.281305,
+        "pre_admission_ms": null,
+        "pre_admission_allocator_samples": 0,
+        "pre_admission_failed_samples": 0,
+        "failed_gates": [],
+        "max_observed_deficit_blocks": null,
+        "max_observed_inflight_reserved_blocks": null,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": null,
+        "last_failure_ns": null,
+        "observation_status": "UNKNOWN"
+      },
+      {
+        "session": "E01:turn:1",
+        "turn_index": 1,
+        "ttft_ms": 6315.764782,
+        "pre_admission_ms": 6235.203764,
+        "pre_admission_allocator_samples": 4,
+        "pre_admission_failed_samples": 0,
+        "failed_gates": [],
+        "max_observed_deficit_blocks": null,
+        "max_observed_inflight_reserved_blocks": null,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": null,
+        "last_failure_ns": null,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E07:turn:0",
+        "turn_index": 0,
+        "ttft_ms": 10128.301798,
+        "pre_admission_ms": null,
+        "pre_admission_allocator_samples": 0,
+        "pre_admission_failed_samples": 0,
+        "failed_gates": [],
+        "max_observed_deficit_blocks": null,
+        "max_observed_inflight_reserved_blocks": null,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": null,
+        "last_failure_ns": null,
+        "observation_status": "UNKNOWN"
+      },
+      {
+        "session": "E02:turn:1",
+        "turn_index": 1,
+        "ttft_ms": 5607.502834,
+        "pre_admission_ms": 5511.501937,
+        "pre_admission_allocator_samples": 8,
+        "pre_admission_failed_samples": 6,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 1318,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444458576769066,
+        "last_failure_ns": 1444459135648183,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E03:turn:1",
+        "turn_index": 1,
+        "ttft_ms": 2688.573784,
+        "pre_admission_ms": 2566.57726,
+        "pre_admission_allocator_samples": 7,
+        "pre_admission_failed_samples": 3,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 52,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444459568985602,
+        "last_failure_ns": 1444459778717555,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E00:turn:1",
+        "turn_index": 1,
+        "ttft_ms": 4673.321349,
+        "pre_admission_ms": 4352.360339,
+        "pre_admission_allocator_samples": 4,
+        "pre_admission_failed_samples": 2,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 137,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 1,
+        "first_failure_ns": 1444459234978826,
+        "last_failure_ns": 1444459338743854,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E04:turn:1",
+        "turn_index": 1,
+        "ttft_ms": 2785.445521,
+        "pre_admission_ms": 2681.696134,
+        "pre_admission_allocator_samples": 5,
+        "pre_admission_failed_samples": 3,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 1119,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444459356477583,
+        "last_failure_ns": 1444460155227162,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E01:turn:2",
+        "turn_index": 2,
+        "ttft_ms": 1383.384175,
+        "pre_admission_ms": 1251.004989,
+        "pre_admission_allocator_samples": 7,
+        "pre_admission_failed_samples": 5,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 1293,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444460240137553,
+        "last_failure_ns": 1444460658879893,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E05:turn:1",
+        "turn_index": 1,
+        "ttft_ms": 2393.036899,
+        "pre_admission_ms": 2294.580846,
+        "pre_admission_allocator_samples": 2,
+        "pre_admission_failed_samples": 0,
+        "failed_gates": [],
+        "max_observed_deficit_blocks": null,
+        "max_observed_inflight_reserved_blocks": null,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": null,
+        "last_failure_ns": null,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E06:turn:1",
+        "turn_index": 1,
+        "ttft_ms": 1799.045858,
+        "pre_admission_ms": 1673.313383,
+        "pre_admission_allocator_samples": 8,
+        "pre_admission_failed_samples": 6,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 1194,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444460767913295,
+        "last_failure_ns": 1444461270480588,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E03:turn:2",
+        "turn_index": 2,
+        "ttft_ms": 1465.481676,
+        "pre_admission_ms": 1369.034393,
+        "pre_admission_allocator_samples": 6,
+        "pre_admission_failed_samples": 4,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 1280,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444461295776980,
+        "last_failure_ns": 1444461630822062,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E02:turn:2",
+        "turn_index": 2,
+        "ttft_ms": 871.02653,
+        "pre_admission_ms": 780.902098,
+        "pre_admission_allocator_samples": 3,
+        "pre_admission_failed_samples": 1,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 85,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444462033500212,
+        "last_failure_ns": 1444462033500212,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E07:turn:1",
+        "turn_index": 1,
+        "ttft_ms": 1637.847576,
+        "pre_admission_ms": 1537.997085,
+        "pre_admission_allocator_samples": 5,
+        "pre_admission_failed_samples": 3,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 1382,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444461702287103,
+        "last_failure_ns": 1444461923434814,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E04:turn:2",
+        "turn_index": 2,
+        "ttft_ms": 1105.686611,
+        "pre_admission_ms": 1033.95196,
+        "pre_admission_allocator_samples": 7,
+        "pre_admission_failed_samples": 5,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 22,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444462104664813,
+        "last_failure_ns": 1444462520876114,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E00:turn:2",
+        "turn_index": 2,
+        "ttft_ms": 964.83743,
+        "pre_admission_ms": 747.913796,
+        "pre_admission_allocator_samples": 3,
+        "pre_admission_failed_samples": 1,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 233,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444462578521854,
+        "last_failure_ns": 1444462578521854,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E01:turn:3",
+        "turn_index": 3,
+        "ttft_ms": 1545.35257,
+        "pre_admission_ms": 1352.815208,
+        "pre_admission_allocator_samples": 11,
+        "pre_admission_failed_samples": 9,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 261,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444462615788924,
+        "last_failure_ns": 1444463557755956,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E03:turn:3",
+        "turn_index": 3,
+        "ttft_ms": 2168.854228,
+        "pre_admission_ms": 2093.254423,
+        "pre_admission_allocator_samples": 7,
+        "pre_admission_failed_samples": 5,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 350,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444463961515064,
+        "last_failure_ns": 1444464533898210,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E05:turn:2",
+        "turn_index": 2,
+        "ttft_ms": 2854.900478,
+        "pre_admission_ms": 2655.65421,
+        "pre_admission_allocator_samples": 11,
+        "pre_admission_failed_samples": 9,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 213,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444464557721731,
+        "last_failure_ns": 1444465377590705,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E06:turn:2",
+        "turn_index": 2,
+        "ttft_ms": 1978.75302,
+        "pre_admission_ms": 1612.544153,
+        "pre_admission_allocator_samples": 5,
+        "pre_admission_failed_samples": 3,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 536,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444463607316924,
+        "last_failure_ns": 1444463911590313,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E02:turn:3",
+        "turn_index": 3,
+        "ttft_ms": 3316.290124,
+        "pre_admission_ms": 3156.181741,
+        "pre_admission_allocator_samples": 7,
+        "pre_admission_failed_samples": 5,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 188,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444465443881967,
+        "last_failure_ns": 1444465857295691,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E07:turn:2",
+        "turn_index": 2,
+        "ttft_ms": 4462.889969,
+        "pre_admission_ms": 4323.033344,
+        "pre_admission_allocator_samples": 14,
+        "pre_admission_failed_samples": 12,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 370,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444465949182054,
+        "last_failure_ns": 1444467077491202,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E04:turn:3",
+        "turn_index": 3,
+        "ttft_ms": 3251.724001,
+        "pre_admission_ms": 3008.088697,
+        "pre_admission_allocator_samples": 3,
+        "pre_admission_failed_samples": 1,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 108,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444467092950921,
+        "last_failure_ns": 1444467092950921,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E00:turn:3",
+        "turn_index": 3,
+        "ttft_ms": 2388.033728,
+        "pre_admission_ms": 2288.936623,
+        "pre_admission_allocator_samples": 8,
+        "pre_admission_failed_samples": 6,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 350,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444467115025641,
+        "last_failure_ns": 1444467682085601,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E01:turn:4",
+        "turn_index": 4,
+        "ttft_ms": 2805.257414,
+        "pre_admission_ms": 2589.064006,
+        "pre_admission_allocator_samples": 6,
+        "pre_admission_failed_samples": 4,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 469,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444467714454119,
+        "last_failure_ns": 1444468024979036,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E03:turn:4",
+        "turn_index": 4,
+        "ttft_ms": 2960.483816,
+        "pre_admission_ms": 2881.024225,
+        "pre_admission_allocator_samples": 6,
+        "pre_admission_failed_samples": 4,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 512,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444468049172309,
+        "last_failure_ns": 1444468478455446,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E06:turn:3",
+        "turn_index": 3,
+        "ttft_ms": 1663.87952,
+        "pre_admission_ms": 1536.899973,
+        "pre_admission_allocator_samples": 5,
+        "pre_admission_failed_samples": 3,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 535,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444468503040133,
+        "last_failure_ns": 1444468715653526,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E02:turn:4",
+        "turn_index": 4,
+        "ttft_ms": 1352.738082,
+        "pre_admission_ms": 1272.184983,
+        "pre_admission_allocator_samples": 10,
+        "pre_admission_failed_samples": 8,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 314,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444468756165168,
+        "last_failure_ns": 1444469486504980,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E05:turn:3",
+        "turn_index": 3,
+        "ttft_ms": 2335.787934,
+        "pre_admission_ms": 2066.306579,
+        "pre_admission_allocator_samples": 9,
+        "pre_admission_failed_samples": 7,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 390,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444470021889995,
+        "last_failure_ns": 1444470641221407,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E04:turn:4",
+        "turn_index": 4,
+        "ttft_ms": 2146.583047,
+        "pre_admission_ms": 2070.012587,
+        "pre_admission_allocator_samples": 12,
+        "pre_admission_failed_samples": 10,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 401,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444470751823003,
+        "last_failure_ns": 1444471795563341,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E07:turn:3",
+        "turn_index": 3,
+        "ttft_ms": 2738.160549,
+        "pre_admission_ms": 2659.052993,
+        "pre_admission_allocator_samples": 11,
+        "pre_admission_failed_samples": 9,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 421,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444471820035394,
+        "last_failure_ns": 1444472638614672,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E06:turn:4",
+        "turn_index": 4,
+        "ttft_ms": 2779.828313,
+        "pre_admission_ms": 2695.105759,
+        "pre_admission_allocator_samples": 7,
+        "pre_admission_failed_samples": 5,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 671,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444472713480882,
+        "last_failure_ns": 1444473132343264,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E05:turn:4",
+        "turn_index": 4,
+        "ttft_ms": 1111.906873,
+        "pre_admission_ms": 994.805971,
+        "pre_admission_allocator_samples": 10,
+        "pre_admission_failed_samples": 8,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 715,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444473191505697,
+        "last_failure_ns": 1444473931186584,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E00:turn:4",
+        "turn_index": 4,
+        "ttft_ms": 1526.616384,
+        "pre_admission_ms": 1443.581898,
+        "pre_admission_allocator_samples": 7,
+        "pre_admission_failed_samples": 5,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 507,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444469562033693,
+        "last_failure_ns": 1444469972173262,
+        "observation_status": "OBSERVED"
+      },
+      {
+        "session": "E07:turn:4",
+        "turn_index": 4,
+        "ttft_ms": 306.35976,
+        "pre_admission_ms": 189.428414,
+        "pre_admission_allocator_samples": 4,
+        "pre_admission_failed_samples": 2,
+        "failed_gates": [
+          "FULL_SEQUENCE"
+        ],
+        "max_observed_deficit_blocks": 625,
+        "max_observed_inflight_reserved_blocks": 0,
+        "max_observed_preemptions": 0,
+        "first_failure_ns": 1444474250266998,
+        "last_failure_ns": 1444474351403053,
+        "observation_status": "OBSERVED"
+      }
+    ],
+    "agent_external_H2D_MiB": 19300.3125,
+    "external_restore_source_events": 33,
+    "mixed_generated_tokens_per_second": 173.20486697575387,
+    "GPU_KV_memory_time": "UNKNOWN in uninstrumented screen",
+    "D2H_bytes": "UNKNOWN; source readiness is not transfer accounting",
+    "interpretation": "Samples are actual checks; no duration attribution or causality from absent checks."
+  },
+  "stages": [
+    {
+      "session": "E01:turn:1",
+      "ttft_ms": 6315.764782,
+      "client_to_engine_ms": 21.548001,
+      "engine_arrival_to_admission_ms": 6235.203763935715,
+      "admission_to_engine_first_ms": 32.40251005627215,
+      "engine_to_client_first_ms": 26.610507
+    },
+    {
+      "session": "E02:turn:1",
+      "ttft_ms": 5607.502834,
+      "client_to_engine_ms": 39.926622,
+      "engine_arrival_to_admission_ms": 5511.501937173307,
+      "admission_to_engine_first_ms": 29.33701197616756,
+      "engine_to_client_first_ms": 26.737263
+    },
+    {
+      "session": "E03:turn:1",
+      "ttft_ms": 2688.573784,
+      "client_to_engine_ms": 19.927785,
+      "engine_arrival_to_admission_ms": 2566.577259916812,
+      "admission_to_engine_first_ms": 74.61756188422441,
+      "engine_to_client_first_ms": 27.451177
+    },
+    {
+      "session": "E00:turn:1",
+      "ttft_ms": 4673.321349,
+      "client_to_engine_ms": 85.277003,
+      "engine_arrival_to_admission_ms": 4352.360338903964,
+      "admission_to_engine_first_ms": 208.5741620976478,
+      "engine_to_client_first_ms": 27.109845
+    },
+    {
+      "session": "E04:turn:1",
+      "ttft_ms": 2785.445521,
+      "client_to_engine_ms": 46.004394,
+      "engine_arrival_to_admission_ms": 2681.696133920923,
+      "admission_to_engine_first_ms": 29.568311059847474,
+      "engine_to_client_first_ms": 28.176682
+    },
+    {
+      "session": "E01:turn:2",
+      "ttft_ms": 1383.384175,
+      "client_to_engine_ms": 73.157511,
+      "engine_arrival_to_admission_ms": 1251.0049890261143,
+      "admission_to_engine_first_ms": 31.003101030364633,
+      "engine_to_client_first_ms": 28.218574
+    },
+    {
+      "session": "E05:turn:1",
+      "ttft_ms": 2393.036899,
+      "client_to_engine_ms": 28.443412,
+      "engine_arrival_to_admission_ms": 2294.5808458607644,
+      "admission_to_engine_first_ms": 48.62476512789726,
+      "engine_to_client_first_ms": 21.387876
+    },
+    {
+      "session": "E06:turn:1",
+      "ttft_ms": 1799.045858,
+      "client_to_engine_ms": 19.802701,
+      "engine_arrival_to_admission_ms": 1673.31338301301,
+      "admission_to_engine_first_ms": 79.06224695034325,
+      "engine_to_client_first_ms": 26.867527
+    },
+    {
+      "session": "E03:turn:2",
+      "ttft_ms": 1465.481676,
+      "client_to_engine_ms": 40.929707,
+      "engine_arrival_to_admission_ms": 1369.0343929920346,
+      "admission_to_engine_first_ms": 29.20756908133626,
+      "engine_to_client_first_ms": 26.310007
+    },
+    {
+      "session": "E02:turn:2",
+      "ttft_ms": 871.02653,
+      "client_to_engine_ms": 40.421899,
+      "engine_arrival_to_admission_ms": 780.9020979329944,
+      "admission_to_engine_first_ms": 29.764197999611497,
+      "engine_to_client_first_ms": 19.938335
+    },
+    {
+      "session": "E07:turn:1",
+      "ttft_ms": 1637.847576,
+      "client_to_engine_ms": 24.10639,
+      "engine_arrival_to_admission_ms": 1537.9970849025995,
+      "admission_to_engine_first_ms": 47.501045977696776,
+      "engine_to_client_first_ms": 28.243055
+    },
+    {
+      "session": "E04:turn:2",
+      "ttft_ms": 1105.686611,
+      "client_to_engine_ms": 22.217464,
+      "engine_arrival_to_admission_ms": 1033.9519600383937,
+      "admission_to_engine_first_ms": 26.19905397295952,
+      "engine_to_client_first_ms": 23.318133
+    },
+    {
+      "session": "E00:turn:2",
+      "ttft_ms": 964.83743,
+      "client_to_engine_ms": 28.792764,
+      "engine_arrival_to_admission_ms": 747.9137959890068,
+      "admission_to_engine_first_ms": 162.0663208886981,
+      "engine_to_client_first_ms": 26.064549
+    },
+    {
+      "session": "E01:turn:3",
+      "ttft_ms": 1545.35257,
+      "client_to_engine_ms": 20.434932,
+      "engine_arrival_to_admission_ms": 1352.8152080252767,
+      "admission_to_engine_first_ms": 145.35409701056778,
+      "engine_to_client_first_ms": 26.748333
+    },
+    {
+      "session": "E03:turn:3",
+      "ttft_ms": 2168.854228,
+      "client_to_engine_ms": 17.847122,
+      "engine_arrival_to_admission_ms": 2093.254423001781,
+      "admission_to_engine_first_ms": 30.94544797204435,
+      "engine_to_client_first_ms": 26.807235
+    },
+    {
+      "session": "E05:turn:2",
+      "ttft_ms": 2854.900478,
+      "client_to_engine_ms": 140.875992,
+      "engine_arrival_to_admission_ms": 2655.6542101316154,
+      "admission_to_engine_first_ms": 34.166761906817555,
+      "engine_to_client_first_ms": 24.203514
+    },
+    {
+      "session": "E06:turn:2",
+      "ttft_ms": 1978.75302,
+      "client_to_engine_ms": 23.737777,
+      "engine_arrival_to_admission_ms": 1612.544153118506,
+      "admission_to_engine_first_ms": 314.5135559607297,
+      "engine_to_client_first_ms": 27.957534
+    },
+    {
+      "session": "E02:turn:3",
+      "ttft_ms": 3316.290124,
+      "client_to_engine_ms": 102.95793,
+      "engine_arrival_to_admission_ms": 3156.1817410402,
+      "admission_to_engine_first_ms": 31.132505973801017,
+      "engine_to_client_first_ms": 26.017947
+    },
+    {
+      "session": "E07:turn:2",
+      "ttft_ms": 4462.889969,
+      "client_to_engine_ms": 82.858399,
+      "engine_arrival_to_admission_ms": 4323.033344000578,
+      "admission_to_engine_first_ms": 33.26161904260516,
+      "engine_to_client_first_ms": 23.736607
+    },
+    {
+      "session": "E04:turn:3",
+      "ttft_ms": 3251.724001,
+      "client_to_engine_ms": 120.277374,
+      "engine_arrival_to_admission_ms": 3008.088696980849,
+      "admission_to_engine_first_ms": 98.16070180386305,
+      "engine_to_client_first_ms": 25.197228
+    },
+    {
+      "session": "E00:turn:3",
+      "ttft_ms": 2388.033728,
+      "client_to_engine_ms": 37.983234,
+      "engine_arrival_to_admission_ms": 2288.9366229064763,
+      "admission_to_engine_first_ms": 31.498108059167862,
+      "engine_to_client_first_ms": 29.615763
+    },
+    {
+      "session": "E01:turn:4",
+      "ttft_ms": 2805.257414,
+      "client_to_engine_ms": 19.51015,
+      "engine_arrival_to_admission_ms": 2589.0640059951693,
+      "admission_to_engine_first_ms": 169.5316811092198,
+      "engine_to_client_first_ms": 27.151577
+    },
+    {
+      "session": "E03:turn:4",
+      "ttft_ms": 2960.483816,
+      "client_to_engine_ms": 20.817146,
+      "engine_arrival_to_admission_ms": 2881.024224916473,
+      "admission_to_engine_first_ms": 33.598121954128146,
+      "engine_to_client_first_ms": 25.044323
+    },
+    {
+      "session": "E06:turn:3",
+      "ttft_ms": 1663.87952,
+      "client_to_engine_ms": 45.874859,
+      "engine_arrival_to_admission_ms": 1536.8999729398638,
+      "admission_to_engine_first_ms": 53.461703937500715,
+      "engine_to_client_first_ms": 27.642984
+    },
+    {
+      "session": "E02:turn:4",
+      "ttft_ms": 1352.738082,
+      "client_to_engine_ms": 21.892823,
+      "engine_arrival_to_admission_ms": 1272.1849831286818,
+      "admission_to_engine_first_ms": 33.33749296143651,
+      "engine_to_client_first_ms": 25.322783
+    },
+    {
+      "session": "E05:turn:3",
+      "ttft_ms": 2335.787934,
+      "client_to_engine_ms": 24.628708,
+      "engine_arrival_to_admission_ms": 2066.306578926742,
+      "admission_to_engine_first_ms": 218.46044715493917,
+      "engine_to_client_first_ms": 26.3922
+    },
+    {
+      "session": "E04:turn:4",
+      "ttft_ms": 2146.583047,
+      "client_to_engine_ms": 19.79069,
+      "engine_arrival_to_admission_ms": 2070.012587122619,
+      "admission_to_engine_first_ms": 34.22771277837455,
+      "engine_to_client_first_ms": 22.552057
+    },
+    {
+      "session": "E07:turn:3",
+      "ttft_ms": 2738.160549,
+      "client_to_engine_ms": 19.758798,
+      "engine_arrival_to_admission_ms": 2659.0529929380864,
+      "admission_to_engine_first_ms": 30.467072036117315,
+      "engine_to_client_first_ms": 28.881686
+    },
+    {
+      "session": "E06:turn:4",
+      "ttft_ms": 2779.828313,
+      "client_to_engine_ms": 23.914904,
+      "engine_arrival_to_admission_ms": 2695.10575896129,
+      "admission_to_engine_first_ms": 33.359352964907885,
+      "engine_to_client_first_ms": 27.448297
+    },
+    {
+      "session": "E05:turn:4",
+      "ttft_ms": 1111.906873,
+      "client_to_engine_ms": 21.098516,
+      "engine_arrival_to_admission_ms": 994.8059709277004,
+      "admission_to_engine_first_ms": 68.35589208640158,
+      "engine_to_client_first_ms": 27.646494
+    },
+    {
+      "session": "E00:turn:4",
+      "ttft_ms": 1526.616384,
+      "client_to_engine_ms": 19.605224,
+      "engine_arrival_to_admission_ms": 1443.5818979982287,
+      "admission_to_engine_first_ms": 35.13490501791239,
+      "engine_to_client_first_ms": 28.294357
+    },
+    {
+      "session": "E07:turn:4",
+      "ttft_ms": 306.35976,
+      "client_to_engine_ms": 24.144561,
+      "engine_arrival_to_admission_ms": 189.42841398529708,
+      "admission_to_engine_first_ms": 63.79321380518377,
+      "engine_to_client_first_ms": 28.993571
+    }
+  ],
+  "stage_medians_ms": {
+    "ttft_ms": 2252.321081,
+    "client_to_engine_ms": 24.1254755,
+    "engine_arrival_to_admission_ms": 2081.6335050622,
+    "admission_to_engine_first_ms": 34.197237342596054,
+    "engine_to_client_first_ms": 26.777783999999997
+  },
+  "resources_event_count": 265,
+  "allocation_failure_snapshots": 175,
+  "completion_witness_counts": {
+    "1": 173,
+    "2": 2
+  },
+  "witnesses": [
+    {
+      "target_session": "E03:turn:0",
+      "timestamp_monotonic_ns": 1444451692955485,
+      "required": 1307,
+      "available": 150,
+      "deficit": 1157,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4530,
+      "inflight_unique_blocks": 1323,
+      "active_or_inflight_union": 4530,
+      "busy_unique_blocks": 4530,
+      "idle_evictable_blocks": 150,
+      "completion_witness": [
+        "cmpl-9712961418be53a5-0-beaa1679"
+      ],
+      "witness_sessions": [
+        "E02:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        52
+      ],
+      "last_check_age_us": 69.002
+    },
+    {
+      "target_session": "E03:turn:0",
+      "timestamp_monotonic_ns": 1444451837885449,
+      "required": 1307,
+      "available": 149,
+      "deficit": 1158,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4531,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4531,
+      "busy_unique_blocks": 4531,
+      "idle_evictable_blocks": 149,
+      "completion_witness": [
+        "cmpl-9712961418be53a5-0-beaa1679"
+      ],
+      "witness_sessions": [
+        "E02:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        52
+      ],
+      "last_check_age_us": 66.452
+    },
+    {
+      "target_session": "E03:turn:0",
+      "timestamp_monotonic_ns": 1444451957710077,
+      "required": 1307,
+      "available": 149,
+      "deficit": 1158,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4531,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4531,
+      "busy_unique_blocks": 4531,
+      "idle_evictable_blocks": 149,
+      "completion_witness": [
+        "cmpl-9712961418be53a5-0-beaa1679"
+      ],
+      "witness_sessions": [
+        "E02:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        51
+      ],
+      "last_check_age_us": 66.662
+    },
+    {
+      "target_session": "E03:turn:0",
+      "timestamp_monotonic_ns": 1444452066197240,
+      "required": 1307,
+      "available": 147,
+      "deficit": 1160,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4533,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4533,
+      "busy_unique_blocks": 4533,
+      "idle_evictable_blocks": 147,
+      "completion_witness": [
+        "cmpl-9712961418be53a5-0-beaa1679"
+      ],
+      "witness_sessions": [
+        "E02:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        39
+      ],
+      "last_check_age_us": 71.673
+    },
+    {
+      "target_session": "E03:turn:0",
+      "timestamp_monotonic_ns": 1444452166363053,
+      "required": 1307,
+      "available": 144,
+      "deficit": 1163,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4536,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4536,
+      "busy_unique_blocks": 4536,
+      "idle_evictable_blocks": 144,
+      "completion_witness": [
+        "cmpl-9712961418be53a5-0-beaa1679"
+      ],
+      "witness_sessions": [
+        "E02:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        28
+      ],
+      "last_check_age_us": 60.623
+    },
+    {
+      "target_session": "E03:turn:0",
+      "timestamp_monotonic_ns": 1444452275452347,
+      "required": 1307,
+      "available": 140,
+      "deficit": 1167,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4540,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4540,
+      "busy_unique_blocks": 4540,
+      "idle_evictable_blocks": 140,
+      "completion_witness": [
+        "cmpl-9712961418be53a5-0-beaa1679"
+      ],
+      "witness_sessions": [
+        "E02:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        16
+      ],
+      "last_check_age_us": 61.122
+    },
+    {
+      "target_session": "E04:turn:0",
+      "timestamp_monotonic_ns": 1444453287701333,
+      "required": 1271,
+      "available": 165,
+      "deficit": 1106,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4515,
+      "inflight_unique_blocks": 1307,
+      "active_or_inflight_union": 4515,
+      "busy_unique_blocks": 4515,
+      "idle_evictable_blocks": 165,
+      "completion_witness": [
+        "cmpl-8ec3d6a93a02d97f-0-8bc54d7c"
+      ],
+      "witness_sessions": [
+        "E03:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        36
+      ],
+      "last_check_age_us": 66.102
+    },
+    {
+      "target_session": "E04:turn:0",
+      "timestamp_monotonic_ns": 1444453433405024,
+      "required": 1271,
+      "available": 165,
+      "deficit": 1106,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4515,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4515,
+      "busy_unique_blocks": 4515,
+      "idle_evictable_blocks": 165,
+      "completion_witness": [
+        "cmpl-8ec3d6a93a02d97f-0-8bc54d7c"
+      ],
+      "witness_sessions": [
+        "E03:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        36
+      ],
+      "last_check_age_us": 62.172
+    },
+    {
+      "target_session": "E05:turn:0",
+      "timestamp_monotonic_ns": 1444454355223107,
+      "required": 1275,
+      "available": 219,
+      "deficit": 1056,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4461,
+      "inflight_unique_blocks": 1271,
+      "active_or_inflight_union": 4461,
+      "busy_unique_blocks": 4461,
+      "idle_evictable_blocks": 219,
+      "completion_witness": [
+        "cmpl-8ec3d6a93a02d97f-0-8bc54d7c"
+      ],
+      "witness_sessions": [
+        "E03:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        24
+      ],
+      "last_check_age_us": 142.825
+    },
+    {
+      "target_session": "E05:turn:0",
+      "timestamp_monotonic_ns": 1444454499657553,
+      "required": 1275,
+      "available": 218,
+      "deficit": 1057,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4462,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4462,
+      "busy_unique_blocks": 4462,
+      "idle_evictable_blocks": 218,
+      "completion_witness": [
+        "cmpl-8ec3d6a93a02d97f-0-8bc54d7c"
+      ],
+      "witness_sessions": [
+        "E03:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        23
+      ],
+      "last_check_age_us": 61.812
+    },
+    {
+      "target_session": "E05:turn:0",
+      "timestamp_monotonic_ns": 1444454644248246,
+      "required": 1275,
+      "available": 217,
+      "deficit": 1058,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4463,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4463,
+      "busy_unique_blocks": 4463,
+      "idle_evictable_blocks": 217,
+      "completion_witness": [
+        "cmpl-8ec3d6a93a02d97f-0-8bc54d7c"
+      ],
+      "witness_sessions": [
+        "E03:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        22
+      ],
+      "last_check_age_us": 63.603
+    },
+    {
+      "target_session": "E05:turn:0",
+      "timestamp_monotonic_ns": 1444454751470614,
+      "required": 1275,
+      "available": 216,
+      "deficit": 1059,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4464,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4464,
+      "busy_unique_blocks": 4464,
+      "idle_evictable_blocks": 216,
+      "completion_witness": [
+        "cmpl-8ec3d6a93a02d97f-0-8bc54d7c"
+      ],
+      "witness_sessions": [
+        "E03:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        10
+      ],
+      "last_check_age_us": 60.442
+    },
+    {
+      "target_session": "E07:turn:0",
+      "timestamp_monotonic_ns": 1444456766246197,
+      "required": 1443,
+      "available": 251,
+      "deficit": 1192,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4429,
+      "inflight_unique_blocks": 1276,
+      "active_or_inflight_union": 4429,
+      "busy_unique_blocks": 4429,
+      "idle_evictable_blocks": 251,
+      "completion_witness": [
+        "cmpl-9ae5cf541a0e9a44-0-a70a5f1c"
+      ],
+      "witness_sessions": [
+        "E06:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        75
+      ],
+      "last_check_age_us": 74.583
+    },
+    {
+      "target_session": "E07:turn:0",
+      "timestamp_monotonic_ns": 1444456906539579,
+      "required": 1443,
+      "available": 251,
+      "deficit": 1192,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4429,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4429,
+      "busy_unique_blocks": 4429,
+      "idle_evictable_blocks": 251,
+      "completion_witness": [
+        "cmpl-9ae5cf541a0e9a44-0-a70a5f1c"
+      ],
+      "witness_sessions": [
+        "E06:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        75
+      ],
+      "last_check_age_us": 63.683
+    },
+    {
+      "target_session": "E07:turn:0",
+      "timestamp_monotonic_ns": 1444457055037157,
+      "required": 1443,
+      "available": 251,
+      "deficit": 1192,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4429,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4429,
+      "busy_unique_blocks": 4429,
+      "idle_evictable_blocks": 251,
+      "completion_witness": [
+        "cmpl-9ae5cf541a0e9a44-0-a70a5f1c"
+      ],
+      "witness_sessions": [
+        "E06:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        74
+      ],
+      "last_check_age_us": 72.113
+    },
+    {
+      "target_session": "E07:turn:0",
+      "timestamp_monotonic_ns": 1444457160811465,
+      "required": 1443,
+      "available": 248,
+      "deficit": 1195,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4432,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4432,
+      "busy_unique_blocks": 4432,
+      "idle_evictable_blocks": 248,
+      "completion_witness": [
+        "cmpl-9ae5cf541a0e9a44-0-a70a5f1c"
+      ],
+      "witness_sessions": [
+        "E06:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        62
+      ],
+      "last_check_age_us": 61.153
+    },
+    {
+      "target_session": "E07:turn:0",
+      "timestamp_monotonic_ns": 1444457269492064,
+      "required": 1443,
+      "available": 246,
+      "deficit": 1197,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4434,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4434,
+      "busy_unique_blocks": 4434,
+      "idle_evictable_blocks": 246,
+      "completion_witness": [
+        "cmpl-9ae5cf541a0e9a44-0-a70a5f1c"
+      ],
+      "witness_sessions": [
+        "E06:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        50
+      ],
+      "last_check_age_us": 58.482
+    },
+    {
+      "target_session": "E07:turn:0",
+      "timestamp_monotonic_ns": 1444457376915750,
+      "required": 1443,
+      "available": 242,
+      "deficit": 1201,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4438,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4438,
+      "busy_unique_blocks": 4438,
+      "idle_evictable_blocks": 242,
+      "completion_witness": [
+        "cmpl-9ae5cf541a0e9a44-0-a70a5f1c"
+      ],
+      "witness_sessions": [
+        "E06:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        38
+      ],
+      "last_check_age_us": 60.223
+    },
+    {
+      "target_session": "E02:turn:1",
+      "timestamp_monotonic_ns": 1444458576828738,
+      "required": 1328,
+      "available": 21,
+      "deficit": 1307,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3329,
+      "inflight_unique_blocks": 2773,
+      "active_or_inflight_union": 4659,
+      "busy_unique_blocks": 4659,
+      "idle_evictable_blocks": 21,
+      "completion_witness": [
+        "cmpl-954c8aad37c9545e-0-82a50d24"
+      ],
+      "witness_sessions": [
+        "E07:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        60
+      ],
+      "last_check_age_us": 60.742
+    },
+    {
+      "target_session": "E02:turn:1",
+      "timestamp_monotonic_ns": 1444458727481761,
+      "required": 1328,
+      "available": 21,
+      "deficit": 1307,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3329,
+      "inflight_unique_blocks": 1330,
+      "active_or_inflight_union": 4659,
+      "busy_unique_blocks": 4659,
+      "idle_evictable_blocks": 21,
+      "completion_witness": [
+        "cmpl-954c8aad37c9545e-0-82a50d24"
+      ],
+      "witness_sessions": [
+        "E07:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        60
+      ],
+      "last_check_age_us": 66.502
+    },
+    {
+      "target_session": "E02:turn:1",
+      "timestamp_monotonic_ns": 1444458828747862,
+      "required": 1328,
+      "available": 13,
+      "deficit": 1315,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4667,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4667,
+      "busy_unique_blocks": 4667,
+      "idle_evictable_blocks": 13,
+      "completion_witness": [
+        "cmpl-954c8aad37c9545e-0-82a50d24"
+      ],
+      "witness_sessions": [
+        "E07:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        56
+      ],
+      "last_check_age_us": 62.962
+    },
+    {
+      "target_session": "E02:turn:1",
+      "timestamp_monotonic_ns": 1444458930991857,
+      "required": 1328,
+      "available": 10,
+      "deficit": 1318,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4670,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4670,
+      "busy_unique_blocks": 4670,
+      "idle_evictable_blocks": 10,
+      "completion_witness": [
+        "cmpl-954c8aad37c9545e-0-82a50d24"
+      ],
+      "witness_sessions": [
+        "E07:turn:0"
+      ],
+      "witness_remaining_outputs": [
+        45
+      ],
+      "last_check_age_us": 61.202
+    },
+    {
+      "target_session": "E02:turn:1",
+      "timestamp_monotonic_ns": 1444459034585949,
+      "required": 1328,
+      "available": 1287,
+      "deficit": 41,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3393,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3393,
+      "busy_unique_blocks": 3393,
+      "idle_evictable_blocks": 1286,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1812
+      ],
+      "last_check_age_us": 62.232
+    },
+    {
+      "target_session": "E02:turn:1",
+      "timestamp_monotonic_ns": 1444459135710225,
+      "required": 1328,
+      "available": 1285,
+      "deficit": 43,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3395,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3395,
+      "busy_unique_blocks": 3395,
+      "idle_evictable_blocks": 1284,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1800
+      ],
+      "last_check_age_us": 62.792
+    },
+    {
+      "target_session": "E00:turn:1",
+      "timestamp_monotonic_ns": 1444459235036208,
+      "required": 1431,
+      "available": 1302,
+      "deficit": 129,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2056,
+      "inflight_unique_blocks": 1322,
+      "active_or_inflight_union": 3378,
+      "busy_unique_blocks": 3378,
+      "idle_evictable_blocks": 1302,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1789
+      ],
+      "last_check_age_us": 58.512
+    },
+    {
+      "target_session": "E00:turn:1",
+      "timestamp_monotonic_ns": 1444459338815287,
+      "required": 1431,
+      "available": 1294,
+      "deficit": 137,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3386,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3386,
+      "busy_unique_blocks": 3386,
+      "idle_evictable_blocks": 1294,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1780
+      ],
+      "last_check_age_us": 72.453
+    },
+    {
+      "target_session": "E04:turn:1",
+      "timestamp_monotonic_ns": 1444459356533354,
+      "required": 1278,
+      "available": 159,
+      "deficit": 1119,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 1939,
+      "inflight_unique_blocks": 2582,
+      "active_or_inflight_union": 4521,
+      "busy_unique_blocks": 4521,
+      "idle_evictable_blocks": 159,
+      "completion_witness": [
+        "cmpl-992c502956c70953-0-949a4979"
+      ],
+      "witness_sessions": [
+        "E02:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        48
+      ],
+      "last_check_age_us": 56.792
+    },
+    {
+      "target_session": "E03:turn:1",
+      "timestamp_monotonic_ns": 1444459569045944,
+      "required": 52,
+      "available": 4,
+      "deficit": 48,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3370,
+      "inflight_unique_blocks": 1306,
+      "active_or_inflight_union": 4676,
+      "busy_unique_blocks": 4676,
+      "idle_evictable_blocks": 4,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1775
+      ],
+      "last_check_age_us": 61.772
+    },
+    {
+      "target_session": "E03:turn:1",
+      "timestamp_monotonic_ns": 1444459672198291,
+      "required": 52,
+      "available": 2,
+      "deficit": 50,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3372,
+      "inflight_unique_blocks": 1306,
+      "active_or_inflight_union": 4678,
+      "busy_unique_blocks": 4678,
+      "idle_evictable_blocks": 2,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1769
+      ],
+      "last_check_age_us": 94.244
+    },
+    {
+      "target_session": "E03:turn:1",
+      "timestamp_monotonic_ns": 1444459778784747,
+      "required": 52,
+      "available": 0,
+      "deficit": 52,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3374,
+      "inflight_unique_blocks": 1306,
+      "active_or_inflight_union": 4680,
+      "busy_unique_blocks": 4680,
+      "idle_evictable_blocks": 0,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1756
+      ],
+      "last_check_age_us": 68.012
+    },
+    {
+      "target_session": "E00:turn:1",
+      "timestamp_monotonic_ns": 1444459796986152,
+      "required": 1432,
+      "available": 1379,
+      "deficit": 53,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3301,
+      "inflight_unique_blocks": 1358,
+      "active_or_inflight_union": 3301,
+      "busy_unique_blocks": 3301,
+      "idle_evictable_blocks": 1379,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1754
+      ],
+      "last_check_age_us": 69.203
+    },
+    {
+      "target_session": "E00:turn:1",
+      "timestamp_monotonic_ns": 1444459897849429,
+      "required": 1432,
+      "available": 1378,
+      "deficit": 54,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3302,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3302,
+      "busy_unique_blocks": 3302,
+      "idle_evictable_blocks": 1378,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1749
+      ],
+      "last_check_age_us": 72.983
+    },
+    {
+      "target_session": "E00:turn:1",
+      "timestamp_monotonic_ns": 1444459999675189,
+      "required": 1432,
+      "available": 1375,
+      "deficit": 57,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3305,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3305,
+      "busy_unique_blocks": 3305,
+      "idle_evictable_blocks": 1375,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1737
+      ],
+      "last_check_age_us": 66.193
+    },
+    {
+      "target_session": "E04:turn:1",
+      "timestamp_monotonic_ns": 1444460055262917,
+      "required": 1278,
+      "available": 1276,
+      "deficit": 2,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 1974,
+      "inflight_unique_blocks": 1430,
+      "active_or_inflight_union": 3404,
+      "busy_unique_blocks": 3404,
+      "idle_evictable_blocks": 1276,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1731
+      ],
+      "last_check_age_us": 63.432
+    },
+    {
+      "target_session": "E04:turn:1",
+      "timestamp_monotonic_ns": 1444460155290395,
+      "required": 1278,
+      "available": 1271,
+      "deficit": 7,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3409,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3409,
+      "busy_unique_blocks": 3409,
+      "idle_evictable_blocks": 1271,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1720
+      ],
+      "last_check_age_us": 64.083
+    },
+    {
+      "target_session": "E01:turn:2",
+      "timestamp_monotonic_ns": 1444460240195405,
+      "required": 1346,
+      "available": 87,
+      "deficit": 1259,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2048,
+      "inflight_unique_blocks": 2545,
+      "active_or_inflight_union": 4593,
+      "busy_unique_blocks": 4593,
+      "idle_evictable_blocks": 87,
+      "completion_witness": [
+        "cmpl-b07cd516caceddaf-0-b6331ab5"
+      ],
+      "witness_sessions": [
+        "E00:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        47
+      ],
+      "last_check_age_us": 59.012
+    },
+    {
+      "target_session": "E01:turn:2",
+      "timestamp_monotonic_ns": 1444460343312431,
+      "required": 1346,
+      "available": 61,
+      "deficit": 1285,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4619,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4619,
+      "busy_unique_blocks": 4619,
+      "idle_evictable_blocks": 61,
+      "completion_witness": [
+        "cmpl-ae9f5c6e7942db70-0-b1f0fcfc"
+      ],
+      "witness_sessions": [
+        "E05:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        148
+      ],
+      "last_check_age_us": 69.963
+    },
+    {
+      "target_session": "E01:turn:2",
+      "timestamp_monotonic_ns": 1444460448716475,
+      "required": 1346,
+      "available": 60,
+      "deficit": 1286,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4620,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4620,
+      "busy_unique_blocks": 4620,
+      "idle_evictable_blocks": 60,
+      "completion_witness": [
+        "cmpl-ae9f5c6e7942db70-0-b1f0fcfc"
+      ],
+      "witness_sessions": [
+        "E05:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        140
+      ],
+      "last_check_age_us": 132.754
+    },
+    {
+      "target_session": "E01:turn:2",
+      "timestamp_monotonic_ns": 1444460552183653,
+      "required": 1346,
+      "available": 56,
+      "deficit": 1290,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4624,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4624,
+      "busy_unique_blocks": 4624,
+      "idle_evictable_blocks": 56,
+      "completion_witness": [
+        "cmpl-ae9f5c6e7942db70-0-b1f0fcfc"
+      ],
+      "witness_sessions": [
+        "E05:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        129
+      ],
+      "last_check_age_us": 66.462
+    },
+    {
+      "target_session": "E01:turn:2",
+      "timestamp_monotonic_ns": 1444460658941435,
+      "required": 1346,
+      "available": 53,
+      "deficit": 1293,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4627,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4627,
+      "busy_unique_blocks": 4627,
+      "idle_evictable_blocks": 53,
+      "completion_witness": [
+        "cmpl-ae9f5c6e7942db70-0-b1f0fcfc"
+      ],
+      "witness_sessions": [
+        "E05:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        117
+      ],
+      "last_check_age_us": 62.372
+    },
+    {
+      "target_session": "E06:turn:1",
+      "timestamp_monotonic_ns": 1444460767973697,
+      "required": 1321,
+      "available": 152,
+      "deficit": 1169,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3192,
+      "inflight_unique_blocks": 1336,
+      "active_or_inflight_union": 4528,
+      "busy_unique_blocks": 4528,
+      "idle_evictable_blocks": 152,
+      "completion_witness": [
+        "cmpl-ae9f5c6e7942db70-0-b1f0fcfc"
+      ],
+      "witness_sessions": [
+        "E05:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        106
+      ],
+      "last_check_age_us": 61.412
+    },
+    {
+      "target_session": "E06:turn:1",
+      "timestamp_monotonic_ns": 1444460869155195,
+      "required": 1321,
+      "available": 139,
+      "deficit": 1182,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4541,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4541,
+      "busy_unique_blocks": 4541,
+      "idle_evictable_blocks": 139,
+      "completion_witness": [
+        "cmpl-ae9f5c6e7942db70-0-b1f0fcfc"
+      ],
+      "witness_sessions": [
+        "E05:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        98
+      ],
+      "last_check_age_us": 66.962
+    },
+    {
+      "target_session": "E06:turn:1",
+      "timestamp_monotonic_ns": 1444460969599897,
+      "required": 1321,
+      "available": 136,
+      "deficit": 1185,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4544,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4544,
+      "busy_unique_blocks": 4544,
+      "idle_evictable_blocks": 136,
+      "completion_witness": [
+        "cmpl-ae9f5c6e7942db70-0-b1f0fcfc"
+      ],
+      "witness_sessions": [
+        "E05:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        87
+      ],
+      "last_check_age_us": 132.495
+    },
+    {
+      "target_session": "E06:turn:1",
+      "timestamp_monotonic_ns": 1444461069632425,
+      "required": 1321,
+      "available": 134,
+      "deficit": 1187,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4546,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4546,
+      "busy_unique_blocks": 4546,
+      "idle_evictable_blocks": 134,
+      "completion_witness": [
+        "cmpl-ae9f5c6e7942db70-0-b1f0fcfc"
+      ],
+      "witness_sessions": [
+        "E05:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        76
+      ],
+      "last_check_age_us": 62.332
+    },
+    {
+      "target_session": "E06:turn:1",
+      "timestamp_monotonic_ns": 1444461169963893,
+      "required": 1321,
+      "available": 131,
+      "deficit": 1190,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4549,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4549,
+      "busy_unique_blocks": 4549,
+      "idle_evictable_blocks": 131,
+      "completion_witness": [
+        "cmpl-ae9f5c6e7942db70-0-b1f0fcfc"
+      ],
+      "witness_sessions": [
+        "E05:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        65
+      ],
+      "last_check_age_us": 68.132
+    },
+    {
+      "target_session": "E06:turn:1",
+      "timestamp_monotonic_ns": 1444461270542200,
+      "required": 1321,
+      "available": 127,
+      "deficit": 1194,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4553,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4553,
+      "busy_unique_blocks": 4553,
+      "idle_evictable_blocks": 127,
+      "completion_witness": [
+        "cmpl-ae9f5c6e7942db70-0-b1f0fcfc"
+      ],
+      "witness_sessions": [
+        "E05:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        54
+      ],
+      "last_check_age_us": 62.462
+    },
+    {
+      "target_session": "E03:turn:2",
+      "timestamp_monotonic_ns": 1444461295840932,
+      "required": 1363,
+      "available": 136,
+      "deficit": 1227,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3269,
+      "inflight_unique_blocks": 1275,
+      "active_or_inflight_union": 4544,
+      "busy_unique_blocks": 4544,
+      "idle_evictable_blocks": 136,
+      "completion_witness": [
+        "cmpl-ae9f5c6e7942db70-0-b1f0fcfc"
+      ],
+      "witness_sessions": [
+        "E05:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        52
+      ],
+      "last_check_age_us": 65.122
+    },
+    {
+      "target_session": "E03:turn:2",
+      "timestamp_monotonic_ns": 1444461424838100,
+      "required": 1363,
+      "available": 88,
+      "deficit": 1275,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4592,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4592,
+      "busy_unique_blocks": 4592,
+      "idle_evictable_blocks": 88,
+      "completion_witness": [
+        "cmpl-a68bdab4af971d09-0-baaf2ec4"
+      ],
+      "witness_sessions": [
+        "E06:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        62
+      ],
+      "last_check_age_us": 64.652
+    },
+    {
+      "target_session": "E03:turn:2",
+      "timestamp_monotonic_ns": 1444461527571302,
+      "required": 1363,
+      "available": 86,
+      "deficit": 1277,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4594,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4594,
+      "busy_unique_blocks": 4594,
+      "idle_evictable_blocks": 86,
+      "completion_witness": [
+        "cmpl-a68bdab4af971d09-0-baaf2ec4"
+      ],
+      "witness_sessions": [
+        "E06:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        51
+      ],
+      "last_check_age_us": 71.213
+    },
+    {
+      "target_session": "E03:turn:2",
+      "timestamp_monotonic_ns": 1444461630981007,
+      "required": 1363,
+      "available": 83,
+      "deficit": 1280,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4597,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4597,
+      "busy_unique_blocks": 4597,
+      "idle_evictable_blocks": 83,
+      "completion_witness": [
+        "cmpl-a68bdab4af971d09-0-baaf2ec4"
+      ],
+      "witness_sessions": [
+        "E06:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        40
+      ],
+      "last_check_age_us": 160.185
+    },
+    {
+      "target_session": "E07:turn:1",
+      "timestamp_monotonic_ns": 1444461702343885,
+      "required": 1450,
+      "available": 75,
+      "deficit": 1375,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3247,
+      "inflight_unique_blocks": 1358,
+      "active_or_inflight_union": 4605,
+      "busy_unique_blocks": 4605,
+      "idle_evictable_blocks": 75,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed",
+        "cmpl-a68bdab4af971d09-0-baaf2ec4"
+      ],
+      "witness_sessions": [
+        null,
+        "E06:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        1575,
+        33
+      ],
+      "last_check_age_us": 57.772
+    },
+    {
+      "target_session": "E07:turn:1",
+      "timestamp_monotonic_ns": 1444461810370402,
+      "required": 1450,
+      "available": 68,
+      "deficit": 1382,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 4612,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 4612,
+      "busy_unique_blocks": 4612,
+      "idle_evictable_blocks": 68,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed",
+        "cmpl-a68bdab4af971d09-0-baaf2ec4"
+      ],
+      "witness_sessions": [
+        null,
+        "E06:turn:1"
+      ],
+      "witness_remaining_outputs": [
+        1566,
+        24
+      ],
+      "last_check_age_us": 72.603
+    },
+    {
+      "target_session": "E07:turn:1",
+      "timestamp_monotonic_ns": 1444461923547768,
+      "required": 1450,
+      "available": 1366,
+      "deficit": 84,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3314,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3314,
+      "busy_unique_blocks": 3314,
+      "idle_evictable_blocks": 1365,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1554
+      ],
+      "last_check_age_us": 114.084
+    },
+    {
+      "target_session": "E02:turn:2",
+      "timestamp_monotonic_ns": 1444462033558884,
+      "required": 1333,
+      "available": 1248,
+      "deficit": 85,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 1990,
+      "inflight_unique_blocks": 1442,
+      "active_or_inflight_union": 3432,
+      "busy_unique_blocks": 3432,
+      "idle_evictable_blocks": 1248,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1542
+      ],
+      "last_check_age_us": 59.702
+    },
+    {
+      "target_session": "E04:turn:2",
+      "timestamp_monotonic_ns": 1444462104721575,
+      "required": 1284,
+      "available": 1277,
+      "deficit": 7,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2076,
+      "inflight_unique_blocks": 1327,
+      "active_or_inflight_union": 3403,
+      "busy_unique_blocks": 3403,
+      "idle_evictable_blocks": 1277,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1537
+      ],
+      "last_check_age_us": 57.732
+    },
+    {
+      "target_session": "E04:turn:2",
+      "timestamp_monotonic_ns": 1444462208949449,
+      "required": 1284,
+      "available": 1269,
+      "deficit": 15,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3411,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3411,
+      "busy_unique_blocks": 3411,
+      "idle_evictable_blocks": 1269,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1529
+      ],
+      "last_check_age_us": 65.002
+    },
+    {
+      "target_session": "E04:turn:2",
+      "timestamp_monotonic_ns": 1444462311671660,
+      "required": 1284,
+      "available": 1268,
+      "deficit": 16,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3412,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3412,
+      "busy_unique_blocks": 3412,
+      "idle_evictable_blocks": 1268,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1517
+      ],
+      "last_check_age_us": 150.025
+    },
+    {
+      "target_session": "E04:turn:2",
+      "timestamp_monotonic_ns": 1444462419786340,
+      "required": 1284,
+      "available": 1265,
+      "deficit": 19,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3415,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3415,
+      "busy_unique_blocks": 3415,
+      "idle_evictable_blocks": 1265,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1504
+      ],
+      "last_check_age_us": 72.623
+    },
+    {
+      "target_session": "E04:turn:2",
+      "timestamp_monotonic_ns": 1444462520946737,
+      "required": 1284,
+      "available": 1262,
+      "deficit": 22,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3418,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3418,
+      "busy_unique_blocks": 3418,
+      "idle_evictable_blocks": 1262,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1492
+      ],
+      "last_check_age_us": 71.313
+    },
+    {
+      "target_session": "E00:turn:2",
+      "timestamp_monotonic_ns": 1444462578582677,
+      "required": 1554,
+      "available": 1321,
+      "deficit": 233,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2082,
+      "inflight_unique_blocks": 1277,
+      "active_or_inflight_union": 3359,
+      "busy_unique_blocks": 3359,
+      "idle_evictable_blocks": 1321,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1486
+      ],
+      "last_check_age_us": 61.813
+    },
+    {
+      "target_session": "E01:turn:3",
+      "timestamp_monotonic_ns": 1444462615845686,
+      "required": 1457,
+      "available": 1343,
+      "deficit": 114,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 630,
+      "inflight_unique_blocks": 2707,
+      "active_or_inflight_union": 3337,
+      "busy_unique_blocks": 3337,
+      "idle_evictable_blocks": 1343,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1484
+      ],
+      "last_check_age_us": 57.952
+    },
+    {
+      "target_session": "E01:turn:3",
+      "timestamp_monotonic_ns": 1444462843263395,
+      "required": 1457,
+      "available": 1212,
+      "deficit": 245,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3468,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3468,
+      "busy_unique_blocks": 3468,
+      "idle_evictable_blocks": 1212,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1478
+      ],
+      "last_check_age_us": 70.493
+    },
+    {
+      "target_session": "E01:turn:3",
+      "timestamp_monotonic_ns": 1444462946837956,
+      "required": 1457,
+      "available": 1210,
+      "deficit": 247,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3470,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3470,
+      "busy_unique_blocks": 3470,
+      "idle_evictable_blocks": 1210,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1466
+      ],
+      "last_check_age_us": 62.372
+    },
+    {
+      "target_session": "E01:turn:3",
+      "timestamp_monotonic_ns": 1444463048807441,
+      "required": 1457,
+      "available": 1208,
+      "deficit": 249,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3472,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3472,
+      "busy_unique_blocks": 3472,
+      "idle_evictable_blocks": 1208,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1454
+      ],
+      "last_check_age_us": 70.242
+    },
+    {
+      "target_session": "E01:turn:3",
+      "timestamp_monotonic_ns": 1444463150664172,
+      "required": 1457,
+      "available": 1205,
+      "deficit": 252,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3475,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3475,
+      "busy_unique_blocks": 3475,
+      "idle_evictable_blocks": 1205,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1442
+      ],
+      "last_check_age_us": 62.532
+    },
+    {
+      "target_session": "E01:turn:3",
+      "timestamp_monotonic_ns": 1444463252428241,
+      "required": 1457,
+      "available": 1203,
+      "deficit": 254,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3477,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3477,
+      "busy_unique_blocks": 3477,
+      "idle_evictable_blocks": 1203,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1430
+      ],
+      "last_check_age_us": 64.352
+    },
+    {
+      "target_session": "E01:turn:3",
+      "timestamp_monotonic_ns": 1444463354170248,
+      "required": 1457,
+      "available": 1201,
+      "deficit": 256,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3479,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3479,
+      "busy_unique_blocks": 3479,
+      "idle_evictable_blocks": 1201,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1418
+      ],
+      "last_check_age_us": 67.612
+    },
+    {
+      "target_session": "E01:turn:3",
+      "timestamp_monotonic_ns": 1444463455974458,
+      "required": 1457,
+      "available": 1199,
+      "deficit": 258,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3481,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3481,
+      "busy_unique_blocks": 3481,
+      "idle_evictable_blocks": 1199,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1406
+      ],
+      "last_check_age_us": 61.453
+    },
+    {
+      "target_session": "E01:turn:3",
+      "timestamp_monotonic_ns": 1444463557815998,
+      "required": 1457,
+      "available": 1196,
+      "deficit": 261,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3484,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3484,
+      "busy_unique_blocks": 3484,
+      "idle_evictable_blocks": 1196,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1394
+      ],
+      "last_check_age_us": 61.032
+    },
+    {
+      "target_session": "E06:turn:2",
+      "timestamp_monotonic_ns": 1444463607375096,
+      "required": 1561,
+      "available": 1141,
+      "deficit": 420,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2194,
+      "inflight_unique_blocks": 1345,
+      "active_or_inflight_union": 3539,
+      "busy_unique_blocks": 3539,
+      "idle_evictable_blocks": 1141,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1389
+      ],
+      "last_check_age_us": 59.162
+    },
+    {
+      "target_session": "E06:turn:2",
+      "timestamp_monotonic_ns": 1444463806291681,
+      "required": 1561,
+      "available": 1027,
+      "deficit": 534,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3653,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3653,
+      "busy_unique_blocks": 3653,
+      "idle_evictable_blocks": 1027,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1383
+      ],
+      "last_check_age_us": 62.992
+    },
+    {
+      "target_session": "E06:turn:2",
+      "timestamp_monotonic_ns": 1444463911658295,
+      "required": 1561,
+      "available": 1025,
+      "deficit": 536,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3655,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3655,
+      "busy_unique_blocks": 3655,
+      "idle_evictable_blocks": 1025,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1371
+      ],
+      "last_check_age_us": 69.092
+    },
+    {
+      "target_session": "E03:turn:3",
+      "timestamp_monotonic_ns": 1444463961572556,
+      "required": 1368,
+      "available": 1265,
+      "deficit": 103,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2095,
+      "inflight_unique_blocks": 1320,
+      "active_or_inflight_union": 3415,
+      "busy_unique_blocks": 3415,
+      "idle_evictable_blocks": 1265,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1366
+      ],
+      "last_check_age_us": 58.472
+    },
+    {
+      "target_session": "E03:turn:3",
+      "timestamp_monotonic_ns": 1444464168316044,
+      "required": 1368,
+      "available": 1024,
+      "deficit": 344,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3656,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3656,
+      "busy_unique_blocks": 3656,
+      "idle_evictable_blocks": 1024,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1360
+      ],
+      "last_check_age_us": 67.082
+    },
+    {
+      "target_session": "E03:turn:3",
+      "timestamp_monotonic_ns": 1444464325468223,
+      "required": 1368,
+      "available": 1024,
+      "deficit": 344,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3656,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3656,
+      "busy_unique_blocks": 3656,
+      "idle_evictable_blocks": 1024,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1359
+      ],
+      "last_check_age_us": 65.892
+    },
+    {
+      "target_session": "E03:turn:3",
+      "timestamp_monotonic_ns": 1444464430384511,
+      "required": 1368,
+      "available": 1021,
+      "deficit": 347,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3659,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3659,
+      "busy_unique_blocks": 3659,
+      "idle_evictable_blocks": 1021,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1347
+      ],
+      "last_check_age_us": 61.992
+    },
+    {
+      "target_session": "E03:turn:3",
+      "timestamp_monotonic_ns": 1444464533958832,
+      "required": 1368,
+      "available": 1018,
+      "deficit": 350,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3662,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3662,
+      "busy_unique_blocks": 3662,
+      "idle_evictable_blocks": 1018,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1335
+      ],
+      "last_check_age_us": 61.462
+    },
+    {
+      "target_session": "E05:turn:2",
+      "timestamp_monotonic_ns": 1444464557858055,
+      "required": 1305,
+      "available": 1116,
+      "deficit": 189,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2202,
+      "inflight_unique_blocks": 1362,
+      "active_or_inflight_union": 3564,
+      "busy_unique_blocks": 3564,
+      "idle_evictable_blocks": 1116,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1333
+      ],
+      "last_check_age_us": 137.514
+    },
+    {
+      "target_session": "E05:turn:2",
+      "timestamp_monotonic_ns": 1444464663005231,
+      "required": 1305,
+      "available": 1109,
+      "deficit": 196,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3571,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3571,
+      "busy_unique_blocks": 3571,
+      "idle_evictable_blocks": 1109,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1324
+      ],
+      "last_check_age_us": 64.052
+    },
+    {
+      "target_session": "E05:turn:2",
+      "timestamp_monotonic_ns": 1444464765067510,
+      "required": 1305,
+      "available": 1107,
+      "deficit": 198,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3573,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3573,
+      "busy_unique_blocks": 3573,
+      "idle_evictable_blocks": 1107,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1312
+      ],
+      "last_check_age_us": 64.593
+    },
+    {
+      "target_session": "E05:turn:2",
+      "timestamp_monotonic_ns": 1444464867112248,
+      "required": 1305,
+      "available": 1104,
+      "deficit": 201,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3576,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3576,
+      "busy_unique_blocks": 3576,
+      "idle_evictable_blocks": 1104,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1300
+      ],
+      "last_check_age_us": 64.233
+    },
+    {
+      "target_session": "E05:turn:2",
+      "timestamp_monotonic_ns": 1444464969180716,
+      "required": 1305,
+      "available": 1101,
+      "deficit": 204,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3579,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3579,
+      "busy_unique_blocks": 3579,
+      "idle_evictable_blocks": 1101,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1288
+      ],
+      "last_check_age_us": 63.532
+    },
+    {
+      "target_session": "E05:turn:2",
+      "timestamp_monotonic_ns": 1444465071294556,
+      "required": 1305,
+      "available": 1100,
+      "deficit": 205,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3580,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3580,
+      "busy_unique_blocks": 3580,
+      "idle_evictable_blocks": 1100,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1276
+      ],
+      "last_check_age_us": 64.032
+    },
+    {
+      "target_session": "E05:turn:2",
+      "timestamp_monotonic_ns": 1444465173315183,
+      "required": 1305,
+      "available": 1098,
+      "deficit": 207,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3582,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3582,
+      "busy_unique_blocks": 3582,
+      "idle_evictable_blocks": 1098,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1264
+      ],
+      "last_check_age_us": 63.302
+    },
+    {
+      "target_session": "E05:turn:2",
+      "timestamp_monotonic_ns": 1444465275473705,
+      "required": 1305,
+      "available": 1095,
+      "deficit": 210,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3585,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3585,
+      "busy_unique_blocks": 3585,
+      "idle_evictable_blocks": 1095,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1252
+      ],
+      "last_check_age_us": 64.562
+    },
+    {
+      "target_session": "E05:turn:2",
+      "timestamp_monotonic_ns": 1444465377653258,
+      "required": 1305,
+      "available": 1092,
+      "deficit": 213,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3588,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3588,
+      "busy_unique_blocks": 3588,
+      "idle_evictable_blocks": 1092,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1240
+      ],
+      "last_check_age_us": 63.373
+    },
+    {
+      "target_session": "E02:turn:3",
+      "timestamp_monotonic_ns": 1444465443938869,
+      "required": 1340,
+      "available": 1175,
+      "deficit": 165,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2214,
+      "inflight_unique_blocks": 1291,
+      "active_or_inflight_union": 3505,
+      "busy_unique_blocks": 3505,
+      "idle_evictable_blocks": 1175,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1233
+      ],
+      "last_check_age_us": 58.022
+    },
+    {
+      "target_session": "E02:turn:3",
+      "timestamp_monotonic_ns": 1444465549893143,
+      "required": 1340,
+      "available": 1159,
+      "deficit": 181,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3521,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3521,
+      "busy_unique_blocks": 3521,
+      "idle_evictable_blocks": 1159,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1225
+      ],
+      "last_check_age_us": 64.533
+    },
+    {
+      "target_session": "E02:turn:3",
+      "timestamp_monotonic_ns": 1444465652420917,
+      "required": 1340,
+      "available": 1158,
+      "deficit": 182,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3522,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3522,
+      "busy_unique_blocks": 3522,
+      "idle_evictable_blocks": 1158,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1213
+      ],
+      "last_check_age_us": 73.732
+    },
+    {
+      "target_session": "E02:turn:3",
+      "timestamp_monotonic_ns": 1444465755520462,
+      "required": 1340,
+      "available": 1155,
+      "deficit": 185,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3525,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3525,
+      "busy_unique_blocks": 3525,
+      "idle_evictable_blocks": 1155,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1201
+      ],
+      "last_check_age_us": 62.572
+    },
+    {
+      "target_session": "E02:turn:3",
+      "timestamp_monotonic_ns": 1444465857358423,
+      "required": 1340,
+      "available": 1152,
+      "deficit": 188,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3528,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3528,
+      "busy_unique_blocks": 3528,
+      "idle_evictable_blocks": 1152,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1189
+      ],
+      "last_check_age_us": 63.512
+    },
+    {
+      "target_session": "E07:turn:2",
+      "timestamp_monotonic_ns": 1444465949314529,
+      "required": 1466,
+      "available": 1127,
+      "deficit": 339,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2221,
+      "inflight_unique_blocks": 1332,
+      "active_or_inflight_union": 3553,
+      "busy_unique_blocks": 3553,
+      "idle_evictable_blocks": 1127,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1179
+      ],
+      "last_check_age_us": 133.565
+    },
+    {
+      "target_session": "E07:turn:2",
+      "timestamp_monotonic_ns": 1444466055763600,
+      "required": 1466,
+      "available": 1118,
+      "deficit": 348,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3562,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3562,
+      "busy_unique_blocks": 3562,
+      "idle_evictable_blocks": 1118,
+      "completion_witness": [
+        "cmpl-835a3f5d1d2b45c1-0-8d7b9491"
+      ],
+      "witness_sessions": [
+        "E02:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        122
+      ],
+      "last_check_age_us": 72.312
+    },
+    {
+      "target_session": "E07:turn:2",
+      "timestamp_monotonic_ns": 1444466157991604,
+      "required": 1466,
+      "available": 1115,
+      "deficit": 351,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3565,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3565,
+      "busy_unique_blocks": 3565,
+      "idle_evictable_blocks": 1115,
+      "completion_witness": [
+        "cmpl-835a3f5d1d2b45c1-0-8d7b9491"
+      ],
+      "witness_sessions": [
+        "E02:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        110
+      ],
+      "last_check_age_us": 72.842
+    },
+    {
+      "target_session": "E07:turn:2",
+      "timestamp_monotonic_ns": 1444466260241339,
+      "required": 1466,
+      "available": 1114,
+      "deficit": 352,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3566,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3566,
+      "busy_unique_blocks": 3566,
+      "idle_evictable_blocks": 1114,
+      "completion_witness": [
+        "cmpl-835a3f5d1d2b45c1-0-8d7b9491"
+      ],
+      "witness_sessions": [
+        "E02:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        98
+      ],
+      "last_check_age_us": 75.423
+    },
+    {
+      "target_session": "E07:turn:2",
+      "timestamp_monotonic_ns": 1444466362376540,
+      "required": 1466,
+      "available": 1112,
+      "deficit": 354,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3568,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3568,
+      "busy_unique_blocks": 3568,
+      "idle_evictable_blocks": 1112,
+      "completion_witness": [
+        "cmpl-835a3f5d1d2b45c1-0-8d7b9491"
+      ],
+      "witness_sessions": [
+        "E02:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        86
+      ],
+      "last_check_age_us": 72.723
+    },
+    {
+      "target_session": "E07:turn:2",
+      "timestamp_monotonic_ns": 1444466464483720,
+      "required": 1466,
+      "available": 1109,
+      "deficit": 357,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3571,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3571,
+      "busy_unique_blocks": 3571,
+      "idle_evictable_blocks": 1109,
+      "completion_witness": [
+        "cmpl-835a3f5d1d2b45c1-0-8d7b9491"
+      ],
+      "witness_sessions": [
+        "E02:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        74
+      ],
+      "last_check_age_us": 74.313
+    },
+    {
+      "target_session": "E07:turn:2",
+      "timestamp_monotonic_ns": 1444466566621721,
+      "required": 1466,
+      "available": 1106,
+      "deficit": 360,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3574,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3574,
+      "busy_unique_blocks": 3574,
+      "idle_evictable_blocks": 1106,
+      "completion_witness": [
+        "cmpl-835a3f5d1d2b45c1-0-8d7b9491"
+      ],
+      "witness_sessions": [
+        "E02:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        62
+      ],
+      "last_check_age_us": 141.225
+    },
+    {
+      "target_session": "E07:turn:2",
+      "timestamp_monotonic_ns": 1444466668652568,
+      "required": 1466,
+      "available": 1105,
+      "deficit": 361,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3575,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3575,
+      "busy_unique_blocks": 3575,
+      "idle_evictable_blocks": 1105,
+      "completion_witness": [
+        "cmpl-835a3f5d1d2b45c1-0-8d7b9491"
+      ],
+      "witness_sessions": [
+        "E02:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        50
+      ],
+      "last_check_age_us": 73.973
+    },
+    {
+      "target_session": "E07:turn:2",
+      "timestamp_monotonic_ns": 1444466771178123,
+      "required": 1466,
+      "available": 1103,
+      "deficit": 363,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3577,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3577,
+      "busy_unique_blocks": 3577,
+      "idle_evictable_blocks": 1103,
+      "completion_witness": [
+        "cmpl-835a3f5d1d2b45c1-0-8d7b9491"
+      ],
+      "witness_sessions": [
+        "E02:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        38
+      ],
+      "last_check_age_us": 81.313
+    },
+    {
+      "target_session": "E07:turn:2",
+      "timestamp_monotonic_ns": 1444466872846767,
+      "required": 1466,
+      "available": 1100,
+      "deficit": 366,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3580,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3580,
+      "busy_unique_blocks": 3580,
+      "idle_evictable_blocks": 1100,
+      "completion_witness": [
+        "cmpl-835a3f5d1d2b45c1-0-8d7b9491"
+      ],
+      "witness_sessions": [
+        "E02:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        26
+      ],
+      "last_check_age_us": 73.952
+    },
+    {
+      "target_session": "E07:turn:2",
+      "timestamp_monotonic_ns": 1444466975346791,
+      "required": 1466,
+      "available": 1097,
+      "deficit": 369,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3583,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3583,
+      "busy_unique_blocks": 3583,
+      "idle_evictable_blocks": 1097,
+      "completion_witness": [
+        "cmpl-835a3f5d1d2b45c1-0-8d7b9491"
+      ],
+      "witness_sessions": [
+        "E02:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        14
+      ],
+      "last_check_age_us": 137.105
+    },
+    {
+      "target_session": "E07:turn:2",
+      "timestamp_monotonic_ns": 1444467077562105,
+      "required": 1466,
+      "available": 1096,
+      "deficit": 370,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3584,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3584,
+      "busy_unique_blocks": 3584,
+      "idle_evictable_blocks": 1096,
+      "completion_witness": [
+        "cmpl-835a3f5d1d2b45c1-0-8d7b9491"
+      ],
+      "witness_sessions": [
+        "E02:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        2
+      ],
+      "last_check_age_us": 71.673
+    },
+    {
+      "target_session": "E04:turn:3",
+      "timestamp_monotonic_ns": 1444467093007393,
+      "required": 1335,
+      "available": 1227,
+      "deficit": 108,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2004,
+      "inflight_unique_blocks": 1449,
+      "active_or_inflight_union": 3453,
+      "busy_unique_blocks": 3453,
+      "idle_evictable_blocks": 1227,
+      "completion_witness": [
+        "cmpl-835a3f5d1d2b45c1-0-8d7b9491"
+      ],
+      "witness_sessions": [
+        "E02:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        1
+      ],
+      "last_check_age_us": 57.432
+    },
+    {
+      "target_session": "E00:turn:3",
+      "timestamp_monotonic_ns": 1444467115083033,
+      "required": 1563,
+      "available": 1291,
+      "deficit": 272,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 657,
+      "inflight_unique_blocks": 2732,
+      "active_or_inflight_union": 3389,
+      "busy_unique_blocks": 3389,
+      "idle_evictable_blocks": 1291,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1048
+      ],
+      "last_check_age_us": 58.392
+    },
+    {
+      "target_session": "E00:turn:3",
+      "timestamp_monotonic_ns": 1444467274774850,
+      "required": 1563,
+      "available": 1222,
+      "deficit": 341,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3458,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3458,
+      "busy_unique_blocks": 3458,
+      "idle_evictable_blocks": 1222,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1043
+      ],
+      "last_check_age_us": 70.702
+    },
+    {
+      "target_session": "E00:turn:3",
+      "timestamp_monotonic_ns": 1444467377394318,
+      "required": 1563,
+      "available": 1219,
+      "deficit": 344,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3461,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3461,
+      "busy_unique_blocks": 3461,
+      "idle_evictable_blocks": 1219,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1031
+      ],
+      "last_check_age_us": 62.082
+    },
+    {
+      "target_session": "E00:turn:3",
+      "timestamp_monotonic_ns": 1444467479056442,
+      "required": 1563,
+      "available": 1217,
+      "deficit": 346,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3463,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3463,
+      "busy_unique_blocks": 3463,
+      "idle_evictable_blocks": 1217,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1019
+      ],
+      "last_check_age_us": 61.912
+    },
+    {
+      "target_session": "E00:turn:3",
+      "timestamp_monotonic_ns": 1444467580620963,
+      "required": 1563,
+      "available": 1215,
+      "deficit": 348,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3465,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3465,
+      "busy_unique_blocks": 3465,
+      "idle_evictable_blocks": 1215,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        1007
+      ],
+      "last_check_age_us": 63.652
+    },
+    {
+      "target_session": "E00:turn:3",
+      "timestamp_monotonic_ns": 1444467682146953,
+      "required": 1563,
+      "available": 1213,
+      "deficit": 350,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3467,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3467,
+      "busy_unique_blocks": 3467,
+      "idle_evictable_blocks": 1213,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        995
+      ],
+      "last_check_age_us": 62.202
+    },
+    {
+      "target_session": "E01:turn:4",
+      "timestamp_monotonic_ns": 1444467714512001,
+      "required": 1583,
+      "available": 1129,
+      "deficit": 454,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 1998,
+      "inflight_unique_blocks": 1553,
+      "active_or_inflight_union": 3551,
+      "busy_unique_blocks": 3551,
+      "idle_evictable_blocks": 1129,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        992
+      ],
+      "last_check_age_us": 58.892
+    },
+    {
+      "target_session": "E01:turn:4",
+      "timestamp_monotonic_ns": 1444467819366317,
+      "required": 1583,
+      "available": 1117,
+      "deficit": 466,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3563,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3563,
+      "busy_unique_blocks": 3563,
+      "idle_evictable_blocks": 1117,
+      "completion_witness": [
+        "cmpl-81aecad39492b7b5-0-be0476c0"
+      ],
+      "witness_sessions": [
+        "E00:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        58
+      ],
+      "last_check_age_us": 134.235
+    },
+    {
+      "target_session": "E01:turn:4",
+      "timestamp_monotonic_ns": 1444467922343537,
+      "required": 1583,
+      "available": 1115,
+      "deficit": 468,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3565,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3565,
+      "busy_unique_blocks": 3565,
+      "idle_evictable_blocks": 1115,
+      "completion_witness": [
+        "cmpl-81aecad39492b7b5-0-be0476c0"
+      ],
+      "witness_sessions": [
+        "E00:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        46
+      ],
+      "last_check_age_us": 64.602
+    },
+    {
+      "target_session": "E01:turn:4",
+      "timestamp_monotonic_ns": 1444468025108250,
+      "required": 1583,
+      "available": 1114,
+      "deficit": 469,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3566,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3566,
+      "busy_unique_blocks": 3566,
+      "idle_evictable_blocks": 1114,
+      "completion_witness": [
+        "cmpl-81aecad39492b7b5-0-be0476c0"
+      ],
+      "witness_sessions": [
+        "E00:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        34
+      ],
+      "last_check_age_us": 130.094
+    },
+    {
+      "target_session": "E03:turn:4",
+      "timestamp_monotonic_ns": 1444468049229681,
+      "required": 1377,
+      "available": 997,
+      "deficit": 380,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2227,
+      "inflight_unique_blocks": 1456,
+      "active_or_inflight_union": 3683,
+      "busy_unique_blocks": 3683,
+      "idle_evictable_blocks": 997,
+      "completion_witness": [
+        "cmpl-81aecad39492b7b5-0-be0476c0"
+      ],
+      "witness_sessions": [
+        "E00:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        32
+      ],
+      "last_check_age_us": 58.142
+    },
+    {
+      "target_session": "E03:turn:4",
+      "timestamp_monotonic_ns": 1444468271135448,
+      "required": 1377,
+      "available": 869,
+      "deficit": 508,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3811,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3811,
+      "busy_unique_blocks": 3811,
+      "idle_evictable_blocks": 869,
+      "completion_witness": [
+        "cmpl-81aecad39492b7b5-0-be0476c0"
+      ],
+      "witness_sessions": [
+        "E00:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        26
+      ],
+      "last_check_age_us": 62.532
+    },
+    {
+      "target_session": "E03:turn:4",
+      "timestamp_monotonic_ns": 1444468373832558,
+      "required": 1377,
+      "available": 866,
+      "deficit": 511,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3814,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3814,
+      "busy_unique_blocks": 3814,
+      "idle_evictable_blocks": 866,
+      "completion_witness": [
+        "cmpl-81aecad39492b7b5-0-be0476c0"
+      ],
+      "witness_sessions": [
+        "E00:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        14
+      ],
+      "last_check_age_us": 63.222
+    },
+    {
+      "target_session": "E03:turn:4",
+      "timestamp_monotonic_ns": 1444468478518578,
+      "required": 1377,
+      "available": 865,
+      "deficit": 512,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3815,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3815,
+      "busy_unique_blocks": 3815,
+      "idle_evictable_blocks": 865,
+      "completion_witness": [
+        "cmpl-81aecad39492b7b5-0-be0476c0"
+      ],
+      "witness_sessions": [
+        "E00:turn:3"
+      ],
+      "witness_remaining_outputs": [
+        2
+      ],
+      "last_check_age_us": 64.062
+    },
+    {
+      "target_session": "E06:turn:3",
+      "timestamp_monotonic_ns": 1444468503098945,
+      "required": 1584,
+      "available": 1064,
+      "deficit": 520,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2249,
+      "inflight_unique_blocks": 1367,
+      "active_or_inflight_union": 3616,
+      "busy_unique_blocks": 3616,
+      "idle_evictable_blocks": 1064,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        926
+      ],
+      "last_check_age_us": 59.852
+    },
+    {
+      "target_session": "E06:turn:3",
+      "timestamp_monotonic_ns": 1444468610970075,
+      "required": 1584,
+      "available": 1051,
+      "deficit": 533,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3629,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3629,
+      "busy_unique_blocks": 3629,
+      "idle_evictable_blocks": 1051,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        917
+      ],
+      "last_check_age_us": 72.182
+    },
+    {
+      "target_session": "E06:turn:3",
+      "timestamp_monotonic_ns": 1444468715881674,
+      "required": 1584,
+      "available": 1049,
+      "deficit": 535,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3631,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3631,
+      "busy_unique_blocks": 3631,
+      "idle_evictable_blocks": 1049,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        905
+      ],
+      "last_check_age_us": 229.828
+    },
+    {
+      "target_session": "E02:turn:4",
+      "timestamp_monotonic_ns": 1444468756224740,
+      "required": 1350,
+      "available": 1075,
+      "deficit": 275,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2045,
+      "inflight_unique_blocks": 1560,
+      "active_or_inflight_union": 3605,
+      "busy_unique_blocks": 3605,
+      "idle_evictable_blocks": 1075,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        902
+      ],
+      "last_check_age_us": 60.382
+    },
+    {
+      "target_session": "E02:turn:4",
+      "timestamp_monotonic_ns": 1444468865028463,
+      "required": 1350,
+      "available": 1051,
+      "deficit": 299,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3629,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3629,
+      "busy_unique_blocks": 3629,
+      "idle_evictable_blocks": 1051,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        896
+      ],
+      "last_check_age_us": 68.862
+    },
+    {
+      "target_session": "E02:turn:4",
+      "timestamp_monotonic_ns": 1444468969231306,
+      "required": 1350,
+      "available": 1048,
+      "deficit": 302,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3632,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3632,
+      "busy_unique_blocks": 3632,
+      "idle_evictable_blocks": 1048,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        884
+      ],
+      "last_check_age_us": 134.695
+    },
+    {
+      "target_session": "E02:turn:4",
+      "timestamp_monotonic_ns": 1444469072676722,
+      "required": 1350,
+      "available": 1045,
+      "deficit": 305,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3635,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3635,
+      "busy_unique_blocks": 3635,
+      "idle_evictable_blocks": 1045,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        872
+      ],
+      "last_check_age_us": 67.392
+    },
+    {
+      "target_session": "E02:turn:4",
+      "timestamp_monotonic_ns": 1444469176259063,
+      "required": 1350,
+      "available": 1043,
+      "deficit": 307,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3637,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3637,
+      "busy_unique_blocks": 3637,
+      "idle_evictable_blocks": 1043,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        860
+      ],
+      "last_check_age_us": 73.712
+    },
+    {
+      "target_session": "E02:turn:4",
+      "timestamp_monotonic_ns": 1444469279593367,
+      "required": 1350,
+      "available": 1042,
+      "deficit": 308,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3638,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3638,
+      "busy_unique_blocks": 3638,
+      "idle_evictable_blocks": 1042,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        848
+      ],
+      "last_check_age_us": 64.073
+    },
+    {
+      "target_session": "E02:turn:4",
+      "timestamp_monotonic_ns": 1444469383024642,
+      "required": 1350,
+      "available": 1039,
+      "deficit": 311,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3641,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3641,
+      "busy_unique_blocks": 3641,
+      "idle_evictable_blocks": 1039,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        836
+      ],
+      "last_check_age_us": 63.542
+    },
+    {
+      "target_session": "E02:turn:4",
+      "timestamp_monotonic_ns": 1444469486639895,
+      "required": 1350,
+      "available": 1036,
+      "deficit": 314,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3644,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3644,
+      "busy_unique_blocks": 3644,
+      "idle_evictable_blocks": 1036,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        824
+      ],
+      "last_check_age_us": 135.845
+    },
+    {
+      "target_session": "E00:turn:4",
+      "timestamp_monotonic_ns": 1444469562091685,
+      "required": 1568,
+      "available": 1081,
+      "deficit": 487,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2260,
+      "inflight_unique_blocks": 1339,
+      "active_or_inflight_union": 3599,
+      "busy_unique_blocks": 3599,
+      "idle_evictable_blocks": 1081,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        816
+      ],
+      "last_check_age_us": 58.862
+    },
+    {
+      "target_session": "E00:turn:4",
+      "timestamp_monotonic_ns": 1444469662548977,
+      "required": 1568,
+      "available": 1068,
+      "deficit": 500,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3612,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3612,
+      "busy_unique_blocks": 3612,
+      "idle_evictable_blocks": 1068,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        808
+      ],
+      "last_check_age_us": 66.432
+    },
+    {
+      "target_session": "E00:turn:4",
+      "timestamp_monotonic_ns": 1444469765153785,
+      "required": 1568,
+      "available": 1065,
+      "deficit": 503,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3615,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3615,
+      "busy_unique_blocks": 3615,
+      "idle_evictable_blocks": 1065,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        796
+      ],
+      "last_check_age_us": 136.215
+    },
+    {
+      "target_session": "E00:turn:4",
+      "timestamp_monotonic_ns": 1444469870141605,
+      "required": 1568,
+      "available": 1064,
+      "deficit": 504,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3616,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3616,
+      "busy_unique_blocks": 3616,
+      "idle_evictable_blocks": 1064,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        784
+      ],
+      "last_check_age_us": 64.462
+    },
+    {
+      "target_session": "E00:turn:4",
+      "timestamp_monotonic_ns": 1444469972240784,
+      "required": 1568,
+      "available": 1061,
+      "deficit": 507,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3619,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3619,
+      "busy_unique_blocks": 3619,
+      "idle_evictable_blocks": 1061,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        772
+      ],
+      "last_check_age_us": 68.442
+    },
+    {
+      "target_session": "E05:turn:3",
+      "timestamp_monotonic_ns": 1444470021947747,
+      "required": 1462,
+      "available": 1091,
+      "deficit": 371,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2027,
+      "inflight_unique_blocks": 1562,
+      "active_or_inflight_union": 3589,
+      "busy_unique_blocks": 3589,
+      "idle_evictable_blocks": 1091,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        767
+      ],
+      "last_check_age_us": 58.892
+    },
+    {
+      "target_session": "E05:turn:3",
+      "timestamp_monotonic_ns": 1444470125995195,
+      "required": 1462,
+      "available": 1083,
+      "deficit": 379,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3597,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3597,
+      "busy_unique_blocks": 3597,
+      "idle_evictable_blocks": 1083,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        759
+      ],
+      "last_check_age_us": 87.513
+    },
+    {
+      "target_session": "E05:turn:3",
+      "timestamp_monotonic_ns": 1444470228569831,
+      "required": 1462,
+      "available": 1081,
+      "deficit": 381,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3599,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3599,
+      "busy_unique_blocks": 3599,
+      "idle_evictable_blocks": 1081,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        747
+      ],
+      "last_check_age_us": 76.453
+    },
+    {
+      "target_session": "E05:turn:3",
+      "timestamp_monotonic_ns": 1444470331555341,
+      "required": 1462,
+      "available": 1080,
+      "deficit": 382,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3600,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3600,
+      "busy_unique_blocks": 3600,
+      "idle_evictable_blocks": 1080,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        735
+      ],
+      "last_check_age_us": 63.392
+    },
+    {
+      "target_session": "E05:turn:3",
+      "timestamp_monotonic_ns": 1444470434657016,
+      "required": 1462,
+      "available": 1077,
+      "deficit": 385,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3603,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3603,
+      "busy_unique_blocks": 3603,
+      "idle_evictable_blocks": 1077,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        723
+      ],
+      "last_check_age_us": 63.843
+    },
+    {
+      "target_session": "E05:turn:3",
+      "timestamp_monotonic_ns": 1444470537637706,
+      "required": 1462,
+      "available": 1074,
+      "deficit": 388,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3606,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3606,
+      "busy_unique_blocks": 3606,
+      "idle_evictable_blocks": 1074,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        711
+      ],
+      "last_check_age_us": 67.192
+    },
+    {
+      "target_session": "E05:turn:3",
+      "timestamp_monotonic_ns": 1444470641284979,
+      "required": 1462,
+      "available": 1072,
+      "deficit": 390,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3608,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3608,
+      "busy_unique_blocks": 3608,
+      "idle_evictable_blocks": 1072,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        699
+      ],
+      "last_check_age_us": 64.392
+    },
+    {
+      "target_session": "E04:turn:4",
+      "timestamp_monotonic_ns": 1444470751881145,
+      "required": 1350,
+      "available": 1125,
+      "deficit": 225,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2251,
+      "inflight_unique_blocks": 1304,
+      "active_or_inflight_union": 3555,
+      "busy_unique_blocks": 3555,
+      "idle_evictable_blocks": 1125,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        687
+      ],
+      "last_check_age_us": 58.932
+    },
+    {
+      "target_session": "E04:turn:4",
+      "timestamp_monotonic_ns": 1444470969484511,
+      "required": 1350,
+      "available": 965,
+      "deficit": 385,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3715,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3715,
+      "busy_unique_blocks": 3715,
+      "idle_evictable_blocks": 965,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        681
+      ],
+      "last_check_age_us": 69.792
+    },
+    {
+      "target_session": "E04:turn:4",
+      "timestamp_monotonic_ns": 1444471069620762,
+      "required": 1350,
+      "available": 964,
+      "deficit": 386,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3716,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3716,
+      "busy_unique_blocks": 3716,
+      "idle_evictable_blocks": 964,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        675
+      ],
+      "last_check_age_us": 155.965
+    },
+    {
+      "target_session": "E04:turn:4",
+      "timestamp_monotonic_ns": 1444471172924074,
+      "required": 1350,
+      "available": 961,
+      "deficit": 389,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3719,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3719,
+      "busy_unique_blocks": 3719,
+      "idle_evictable_blocks": 961,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        663
+      ],
+      "last_check_age_us": 76.603
+    },
+    {
+      "target_session": "E04:turn:4",
+      "timestamp_monotonic_ns": 1444471276777695,
+      "required": 1350,
+      "available": 959,
+      "deficit": 391,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3721,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3721,
+      "busy_unique_blocks": 3721,
+      "idle_evictable_blocks": 959,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        651
+      ],
+      "last_check_age_us": 76.093
+    },
+    {
+      "target_session": "E04:turn:4",
+      "timestamp_monotonic_ns": 1444471380651226,
+      "required": 1350,
+      "available": 958,
+      "deficit": 392,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3722,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3722,
+      "busy_unique_blocks": 3722,
+      "idle_evictable_blocks": 958,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        639
+      ],
+      "last_check_age_us": 81.713
+    },
+    {
+      "target_session": "E04:turn:4",
+      "timestamp_monotonic_ns": 1444471484476866,
+      "required": 1350,
+      "available": 955,
+      "deficit": 395,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3725,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3725,
+      "busy_unique_blocks": 3725,
+      "idle_evictable_blocks": 955,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        627
+      ],
+      "last_check_age_us": 77.603
+    },
+    {
+      "target_session": "E04:turn:4",
+      "timestamp_monotonic_ns": 1444471588232453,
+      "required": 1350,
+      "available": 952,
+      "deficit": 398,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3728,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3728,
+      "busy_unique_blocks": 3728,
+      "idle_evictable_blocks": 952,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        615
+      ],
+      "last_check_age_us": 140.505
+    },
+    {
+      "target_session": "E04:turn:4",
+      "timestamp_monotonic_ns": 1444471691893427,
+      "required": 1350,
+      "available": 950,
+      "deficit": 400,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3730,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3730,
+      "busy_unique_blocks": 3730,
+      "idle_evictable_blocks": 950,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        603
+      ],
+      "last_check_age_us": 75.933
+    },
+    {
+      "target_session": "E04:turn:4",
+      "timestamp_monotonic_ns": 1444471795637844,
+      "required": 1350,
+      "available": 949,
+      "deficit": 401,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3731,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3731,
+      "busy_unique_blocks": 3731,
+      "idle_evictable_blocks": 949,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        591
+      ],
+      "last_check_age_us": 75.283
+    },
+    {
+      "target_session": "E07:turn:3",
+      "timestamp_monotonic_ns": 1444471820182219,
+      "required": 1471,
+      "available": 1083,
+      "deficit": 388,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2263,
+      "inflight_unique_blocks": 1334,
+      "active_or_inflight_union": 3597,
+      "busy_unique_blocks": 3597,
+      "idle_evictable_blocks": 1083,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        589
+      ],
+      "last_check_age_us": 147.875
+    },
+    {
+      "target_session": "E07:turn:3",
+      "timestamp_monotonic_ns": 1444471920798797,
+      "required": 1471,
+      "available": 1065,
+      "deficit": 406,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3615,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3615,
+      "busy_unique_blocks": 3615,
+      "idle_evictable_blocks": 1065,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        581
+      ],
+      "last_check_age_us": 131.894
+    },
+    {
+      "target_session": "E07:turn:3",
+      "timestamp_monotonic_ns": 1444472024101728,
+      "required": 1471,
+      "available": 1062,
+      "deficit": 409,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3618,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3618,
+      "busy_unique_blocks": 3618,
+      "idle_evictable_blocks": 1062,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        569
+      ],
+      "last_check_age_us": 73.952
+    },
+    {
+      "target_session": "E07:turn:3",
+      "timestamp_monotonic_ns": 1444472126515739,
+      "required": 1471,
+      "available": 1061,
+      "deficit": 410,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3619,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3619,
+      "busy_unique_blocks": 3619,
+      "idle_evictable_blocks": 1061,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        557
+      ],
+      "last_check_age_us": 64.303
+    },
+    {
+      "target_session": "E07:turn:3",
+      "timestamp_monotonic_ns": 1444472230457532,
+      "required": 1471,
+      "available": 1059,
+      "deficit": 412,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3621,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3621,
+      "busy_unique_blocks": 3621,
+      "idle_evictable_blocks": 1059,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        545
+      ],
+      "last_check_age_us": 64.482
+    },
+    {
+      "target_session": "E07:turn:3",
+      "timestamp_monotonic_ns": 1444472331632160,
+      "required": 1471,
+      "available": 1056,
+      "deficit": 415,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3624,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3624,
+      "busy_unique_blocks": 3624,
+      "idle_evictable_blocks": 1056,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        533
+      ],
+      "last_check_age_us": 74.273
+    },
+    {
+      "target_session": "E07:turn:3",
+      "timestamp_monotonic_ns": 1444472433896755,
+      "required": 1471,
+      "available": 1053,
+      "deficit": 418,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3627,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3627,
+      "busy_unique_blocks": 3627,
+      "idle_evictable_blocks": 1053,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        521
+      ],
+      "last_check_age_us": 63.862
+    },
+    {
+      "target_session": "E07:turn:3",
+      "timestamp_monotonic_ns": 1444472536320506,
+      "required": 1471,
+      "available": 1052,
+      "deficit": 419,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3628,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3628,
+      "busy_unique_blocks": 3628,
+      "idle_evictable_blocks": 1052,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        509
+      ],
+      "last_check_age_us": 67.812
+    },
+    {
+      "target_session": "E07:turn:3",
+      "timestamp_monotonic_ns": 1444472638746746,
+      "required": 1471,
+      "available": 1050,
+      "deficit": 421,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3630,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3630,
+      "busy_unique_blocks": 3630,
+      "idle_evictable_blocks": 1050,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        497
+      ],
+      "last_check_age_us": 132.944
+    },
+    {
+      "target_session": "E06:turn:4",
+      "timestamp_monotonic_ns": 1444472713539584,
+      "required": 1596,
+      "available": 938,
+      "deficit": 658,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2277,
+      "inflight_unique_blocks": 1465,
+      "active_or_inflight_union": 3742,
+      "busy_unique_blocks": 3742,
+      "idle_evictable_blocks": 938,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        489
+      ],
+      "last_check_age_us": 59.552
+    },
+    {
+      "target_session": "E06:turn:4",
+      "timestamp_monotonic_ns": 1444472819719376,
+      "required": 1596,
+      "available": 932,
+      "deficit": 664,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3748,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3748,
+      "busy_unique_blocks": 3748,
+      "idle_evictable_blocks": 932,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        481
+      ],
+      "last_check_age_us": 138.385
+    },
+    {
+      "target_session": "E06:turn:4",
+      "timestamp_monotonic_ns": 1444472923675630,
+      "required": 1596,
+      "available": 929,
+      "deficit": 667,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3751,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3751,
+      "busy_unique_blocks": 3751,
+      "idle_evictable_blocks": 929,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        469
+      ],
+      "last_check_age_us": 64.662
+    },
+    {
+      "target_session": "E06:turn:4",
+      "timestamp_monotonic_ns": 1444473028566897,
+      "required": 1596,
+      "available": 926,
+      "deficit": 670,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3754,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3754,
+      "busy_unique_blocks": 3754,
+      "idle_evictable_blocks": 926,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        457
+      ],
+      "last_check_age_us": 66.563
+    },
+    {
+      "target_session": "E06:turn:4",
+      "timestamp_monotonic_ns": 1444473132410707,
+      "required": 1596,
+      "available": 925,
+      "deficit": 671,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3755,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3755,
+      "busy_unique_blocks": 3755,
+      "idle_evictable_blocks": 925,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        445
+      ],
+      "last_check_age_us": 68.413
+    },
+    {
+      "target_session": "E05:turn:4",
+      "timestamp_monotonic_ns": 1444473191564449,
+      "required": 1501,
+      "available": 814,
+      "deficit": 687,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 2283,
+      "inflight_unique_blocks": 1583,
+      "active_or_inflight_union": 3866,
+      "busy_unique_blocks": 3866,
+      "idle_evictable_blocks": 814,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        439
+      ],
+      "last_check_age_us": 59.662
+    },
+    {
+      "target_session": "E05:turn:4",
+      "timestamp_monotonic_ns": 1444473299014755,
+      "required": 1501,
+      "available": 801,
+      "deficit": 700,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3879,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3879,
+      "busy_unique_blocks": 3879,
+      "idle_evictable_blocks": 801,
+      "completion_witness": [
+        "cmpl-951fdb6f4f290540-0-8bcc74f6"
+      ],
+      "witness_sessions": [
+        "E00:turn:4"
+      ],
+      "witness_remaining_outputs": [
+        165
+      ],
+      "last_check_age_us": 72.702
+    },
+    {
+      "target_session": "E05:turn:4",
+      "timestamp_monotonic_ns": 1444473405176476,
+      "required": 1501,
+      "available": 798,
+      "deficit": 703,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3882,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3882,
+      "busy_unique_blocks": 3882,
+      "idle_evictable_blocks": 798,
+      "completion_witness": [
+        "cmpl-951fdb6f4f290540-0-8bcc74f6"
+      ],
+      "witness_sessions": [
+        "E00:turn:4"
+      ],
+      "witness_remaining_outputs": [
+        153
+      ],
+      "last_check_age_us": 72.312
+    },
+    {
+      "target_session": "E05:turn:4",
+      "timestamp_monotonic_ns": 1444473510483837,
+      "required": 1501,
+      "available": 795,
+      "deficit": 706,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3885,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3885,
+      "busy_unique_blocks": 3885,
+      "idle_evictable_blocks": 795,
+      "completion_witness": [
+        "cmpl-951fdb6f4f290540-0-8bcc74f6"
+      ],
+      "witness_sessions": [
+        "E00:turn:4"
+      ],
+      "witness_remaining_outputs": [
+        141
+      ],
+      "last_check_age_us": 72.172
+    },
+    {
+      "target_session": "E05:turn:4",
+      "timestamp_monotonic_ns": 1444473615798099,
+      "required": 1501,
+      "available": 793,
+      "deficit": 708,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3887,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3887,
+      "busy_unique_blocks": 3887,
+      "idle_evictable_blocks": 793,
+      "completion_witness": [
+        "cmpl-951fdb6f4f290540-0-8bcc74f6"
+      ],
+      "witness_sessions": [
+        "E00:turn:4"
+      ],
+      "witness_remaining_outputs": [
+        129
+      ],
+      "last_check_age_us": 72.983
+    },
+    {
+      "target_session": "E05:turn:4",
+      "timestamp_monotonic_ns": 1444473721008276,
+      "required": 1501,
+      "available": 792,
+      "deficit": 709,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3888,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3888,
+      "busy_unique_blocks": 3888,
+      "idle_evictable_blocks": 792,
+      "completion_witness": [
+        "cmpl-951fdb6f4f290540-0-8bcc74f6"
+      ],
+      "witness_sessions": [
+        "E00:turn:4"
+      ],
+      "witness_remaining_outputs": [
+        117
+      ],
+      "last_check_age_us": 73.262
+    },
+    {
+      "target_session": "E05:turn:4",
+      "timestamp_monotonic_ns": 1444473826156332,
+      "required": 1501,
+      "available": 789,
+      "deficit": 712,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3891,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3891,
+      "busy_unique_blocks": 3891,
+      "idle_evictable_blocks": 789,
+      "completion_witness": [
+        "cmpl-951fdb6f4f290540-0-8bcc74f6"
+      ],
+      "witness_sessions": [
+        "E00:turn:4"
+      ],
+      "witness_remaining_outputs": [
+        105
+      ],
+      "last_check_age_us": 73.132
+    },
+    {
+      "target_session": "E05:turn:4",
+      "timestamp_monotonic_ns": 1444473931321469,
+      "required": 1501,
+      "available": 786,
+      "deficit": 715,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3894,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3894,
+      "busy_unique_blocks": 3894,
+      "idle_evictable_blocks": 786,
+      "completion_witness": [
+        "cmpl-951fdb6f4f290540-0-8bcc74f6"
+      ],
+      "witness_sessions": [
+        "E00:turn:4"
+      ],
+      "witness_remaining_outputs": [
+        93
+      ],
+      "last_check_age_us": 135.725
+    },
+    {
+      "target_session": "E07:turn:4",
+      "timestamp_monotonic_ns": 1444474250352131,
+      "required": 1504,
+      "available": 880,
+      "deficit": 624,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3800,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3800,
+      "busy_unique_blocks": 3800,
+      "idle_evictable_blocks": 880,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        332
+      ],
+      "last_check_age_us": 86.263
+    },
+    {
+      "target_session": "E07:turn:4",
+      "timestamp_monotonic_ns": 1444474351475366,
+      "required": 1504,
+      "available": 879,
+      "deficit": 625,
+      "inflight_reserved": 0,
+      "active_unique_blocks": 3801,
+      "inflight_unique_blocks": 0,
+      "active_or_inflight_union": 3801,
+      "busy_unique_blocks": 3801,
+      "idle_evictable_blocks": 879,
+      "completion_witness": [
+        "cmpl-854dbe1933f54fdc-0-b58b05ed"
+      ],
+      "witness_sessions": [
+        null
+      ],
+      "witness_remaining_outputs": [
+        320
+      ],
+      "last_check_age_us": 73.053
+    }
+  ],
+  "ownership_cpu_ms": 160.74501,
+  "instrumentation_snapshot_p95_us": 641.46,
+  "caveats": [
+    "100ms failure snapshots, not complete cause intervals",
+    "release witnesses freeze decode growth, reservations and other references",
+    "client intervals combine serialization/API/IPC/output observation",
+    "ownership CPU measure excludes JSON/logging; on/off calibration required"
+  ]
+}

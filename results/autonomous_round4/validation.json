@@ -1,0 +1,11 @@
+{
+  "local_unit_tests": "44 passed; Python3.13/pytest8.3.4",
+  "native_cpu_tests": "15 passed; details native_regression.log",
+  "cpu_failures": [
+    "initial setup command exit126 after successful source copy; no GPU",
+    "two invalid synthetic AST fixture edits fixed before use",
+    "final local pytest default sandbox temp permission failed 4 fixture setups (40 passed); next basetemp lacked parent; created workspace parent and all44 passed"
+  ],
+  "gpu_failure": "resource-off: allocator instrumentation changed branch indentation; repaired common-runtime pair retained separately",
+  "idle_final_gpu": "both19MiB/0% utilization; no experiment server remains"
+}

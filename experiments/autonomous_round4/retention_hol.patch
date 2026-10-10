@@ -1,0 +1,11 @@
+*** Begin Patch
+*** Update File: vllm/v1/core/sched/scheduler.py
+@@
+                 if new_blocks is None:
+                     # The request cannot be scheduled.
+-                    if (retention.program(request) is None and
+-                            retention.reclaim("BACKGROUND_DEMAND_PRESSURE")):
++                    if retention.resolve_blocked(request,
++                            list(self.waiting) + list(self.skipped_waiting)):
+                         continue
+*** End Patch

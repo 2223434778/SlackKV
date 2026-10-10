@@ -105,3 +105,20 @@
 - 新诊断：该 run 首轮 client→engine 和 engine FIRST_TOKEN→client 的逐请求中位数为 90.79/115.24 ms，原因尚未归因；48 calls 只有3对 own remote-wait，lookup None 的 follower deferral 缺少专用计量。不能相加 followers 等待或中位数组件当 E2E 收益。
 - 建议先补旧负载 K2/gate-off 同资源对照、分层计时及真实 residency，再选择一个适用已有方法作为机制对照；不直接实施 range-ready。所有候选收益与新颖性仍待证实，执行 Codex 可据证据调整。
 - 交接：docs/RESEARCH_REVIEW_AND_NEXT_ROUND_20261009.md；复算 scripts/review_round3_evidence.py；结果 results/research_review_20261009/spotcheck.json。标准库 CPU 复算断言通过，未修改 serving、未运行 GPU、未消费服务器预算。
+
+## 2026-10-10：Round4 基线与容量机会闭环开始
+
+- 从 main d403714 审查交接与实际源码；本机 clean，服务器仅历史 untracked，全部保留。独立 runtime 副本，不修改前轮 source 或环境。
+- 预注册 `docs/BASELINE_AND_OPPORTUNITY_ROUND4.md`：2/4 GiB 各三对 compiled K2/gate-off，固定交替顺序和40个实际 token 输入，完整 BGv2。主要指标 session E2E，>=10% 改善且 BG wall/TPOT <=+5%；不将开关本身算创新。首轮同时启动顺序作为实际协变量保存。
+- 普通开关只改 gate 参数，保留 allocator/in-flight/身份/取消保护与恢复事件。29项本地及服务器 CPU 回归通过。CPU setup 尾部误执行目录返回126，但 runtime copy 成功，无 GPU 操作；没有隐去该命令失败。
+- 另预注册独立诊断 on/off、真实物理引用释放 witness，以及 fixed-TTL/program-order 对照（不是完整 Continuum 或新算法）。固定1秒 TTL/age guard；优先保留普通 demand/decode/BG 的安全回退。小状态 CPU 测试先验证共享、部分复用、DMA引用、超时、取消与公平性保护，GPU invariant smoke 必须在性能筛查前通过。
+- 预算连续记录在 `results/autonomous_round4/*/execution.json`，含加载/编译/失败/清理；不通过目录重置同轮额度。初始资源边界保持每run30分钟、总4 GPU·小时。
+
+### Round4结束：排除大幅gate收益，真实物理保留仍失败
+
+- 2/4 GiB各三对compiled K2/gate-off；中位配对session变化−0.37/−0.63%，P95−1.51/+12.63%，均未达到10%整体门槛。4 GiB尾部变异大，不选择最优run或宣称稳定性。gate-off仅研究开关，默认部署路径未改变。
+- 独立共同runtime诊断OFF/ON：session+4.89%、P95+2.29%，n1观测扰动与运行变异不可分。175容量失败快照、30/32续接准入前失败；reservation全部0，median deficit390blocks；每次busy+free=4680且allocator available=free。已空闲cached block本就可分配，固定快照再idle eviction不能补缺口。173单/2双完成集合witness是静态物理可行性，非最快集合、因果时长或收益上界。
+- 生命周期可回退的physical pin先通过invariant16token冷/热一致、idle timer、HTTP取消smoke；program-order/physical-pin各n1 matched screen，session+6.87/+20.09%、P95+4.42/+22.20%，H2D未减少。pin32次取得/32释放（28HOL压力回退、4TTL），最终0。停止该具体控制，不调TTL/age，不触发预注册的反序复验；不否定全部Continuum/retention。
+- 首次resource-off因instrumentation缩进错误失败，完整51.60秒成本、日志、源码保留；修复后disabled AST等价，再独立v2 OFF/ON。CPU setup/fixture/temp-dir失败亦记录；最后44本地/15native CPU测试通过。
+- 独立复算17完整性能run全部40FG输入/输出长度、4BG输入hash与8192工作量匹配，P95/每session E2E算术一致；271导出原始hash通过。19GPU执行18VALID/1FAILED，0.5462201082 GPUh，最长111.96秒，GPU0only，最终两卡19MiB/0%且无computeapp。
+- 决策B：没有被接受的新算法。更合理的待识别问题是active KV释放/执行协作，但当前173/175单owner快照不支持共享释放集合的创新收益。下一轮优先真实外生到达/共享工作流与既有强算法对照，先验证差异机会；保持最终目标。完整owned memory-time、全40输入质量、remote DMA取消矩阵及开放负载公平性UNKNOWN。报告docs/AUTONOMOUS_RESEARCH_ROUND4.md。

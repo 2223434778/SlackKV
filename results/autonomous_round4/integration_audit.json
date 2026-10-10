@@ -1,0 +1,484 @@
+{
+  "matched_complete_performance_runs": 17,
+  "records": [
+    {
+      "name": "control-off",
+      "session_e2e_median_ms": 23746.274183,
+      "resume_p95_ms": 5365.764912,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "control-order",
+      "session_e2e_median_ms": 25377.636648,
+      "resume_p95_ms": 5603.16944,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "control-pin",
+      "session_e2e_median_ms": 28517.682129,
+      "resume_p95_ms": 6557.207516,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "gate-2-p1-k2",
+      "session_e2e_median_ms": 23557.0155365,
+      "resume_p95_ms": 6210.701193,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "gate-2-p1-off",
+      "session_e2e_median_ms": 24669.5013075,
+      "resume_p95_ms": 6203.122972,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "gate-2-p2-k2",
+      "session_e2e_median_ms": 24709.4178425,
+      "resume_p95_ms": 5689.855045,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "gate-2-p2-off",
+      "session_e2e_median_ms": 24618.534801499998,
+      "resume_p95_ms": 5603.842751,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "gate-2-p3-k2",
+      "session_e2e_median_ms": 24736.9640095,
+      "resume_p95_ms": 5312.727555,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "gate-2-p3-off",
+      "session_e2e_median_ms": 23714.8122055,
+      "resume_p95_ms": 5069.160234,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "gate-4-p1-k2",
+      "session_e2e_median_ms": 19588.803627,
+      "resume_p95_ms": 1323.72657,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "gate-4-p1-off",
+      "session_e2e_median_ms": 19384.1292775,
+      "resume_p95_ms": 1490.931523,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "gate-4-p2-k2",
+      "session_e2e_median_ms": 19501.392265000002,
+      "resume_p95_ms": 1042.75711,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "gate-4-p2-off",
+      "session_e2e_median_ms": 19378.634281,
+      "resume_p95_ms": 2048.589558,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "gate-4-p3-k2",
+      "session_e2e_median_ms": 19332.274107,
+      "resume_p95_ms": 1880.306239,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "gate-4-p3-off",
+      "session_e2e_median_ms": 19241.4593985,
+      "resume_p95_ms": 1442.648384,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "resource-off-repaired",
+      "session_e2e_median_ms": 23533.5010845,
+      "resume_p95_ms": 5482.206554,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    },
+    {
+      "name": "resource-on-repaired",
+      "session_e2e_median_ms": 24684.7857975,
+      "resume_p95_ms": 5607.502834,
+      "foreground_outputs": 3601,
+      "background": [
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ],
+        [
+          9500,
+          2048,
+          "4e88db35dbd860b67f0220da043b4d7d2a351790c5125f38c0c0c6022afa2efd"
+        ]
+      ]
+    }
+  ],
+  "observed_resume_capacity_failures": 30,
+  "pool_partition_checks": 175,
+  "claims": "independent arithmetic/work-count audit; no semantic quality or continuous cause claim"
+}

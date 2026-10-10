@@ -1,0 +1,387 @@
+[
+  {
+    "label": "baseline",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source/vllm/v1/worker/gpu_model_runner.py",
+    "archive": "provenance/baseline/vllm/v1/worker/gpu_model_runner.py.gz",
+    "bytes": 335856,
+    "sha256": "b6f9897c4bdb40afa6fe7c17d48d66ffa446e3e0c7bf1a1a4fc59577fad93238"
+  },
+  {
+    "label": "baseline",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source/vllm/v1/worker/kv_connector_model_runner_mixin.py",
+    "archive": "provenance/baseline/vllm/v1/worker/kv_connector_model_runner_mixin.py.gz",
+    "bytes": 11858,
+    "sha256": "195da9e21a20d0a842dd154b74fb46aa1e1ac082fe1dc5fdacc02e7ac7d9c48b"
+  },
+  {
+    "label": "baseline",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source/vllm/v1/engine/core.py",
+    "archive": "provenance/baseline/vllm/v1/engine/core.py.gz",
+    "bytes": 93669,
+    "sha256": "519fc8e692b9e2dce29d32045884bd34d3119445caca110dec8c68e5d314fba7"
+  },
+  {
+    "label": "baseline",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source/vllm/v1/core/sched/scheduler.py",
+    "archive": "provenance/baseline/vllm/v1/core/sched/scheduler.py.gz",
+    "bytes": 173877,
+    "sha256": "5c0ef2cd7cc65a452d86c4751e43971efebf5d97066cb5f8d8126f3f5a8e43c8"
+  },
+  {
+    "label": "baseline",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source/vllm/v1/core/sched/output.py",
+    "archive": "provenance/baseline/vllm/v1/core/sched/output.py.gz",
+    "bytes": 10729,
+    "sha256": "9867ae3dc9ec3db90cb314dd5394ebcfe3203323d698715e7345059237d97875"
+  },
+  {
+    "label": "baseline",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source/vllm/v1/core/kv_cache_manager.py",
+    "archive": "provenance/baseline/vllm/v1/core/kv_cache_manager.py.gz",
+    "bytes": 29207,
+    "sha256": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a"
+  },
+  {
+    "label": "baseline",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py",
+    "archive": "provenance/baseline/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py.gz",
+    "bytes": 8888,
+    "sha256": "546cf6a326cd5a58f75f380e9bc141488135235f5dc52ebec63db4ee11d07cf1"
+  },
+  {
+    "label": "baseline",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py",
+    "archive": "provenance/baseline/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py.gz",
+    "bytes": 3005,
+    "sha256": "611793b6a99dd1ee15260f13e52511126dd73897d9a786692612c5b41f6265a4"
+  },
+  {
+    "label": "baseline",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py",
+    "archive": "provenance/baseline/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py.gz",
+    "bytes": 64209,
+    "sha256": "bc883cf47d882d4406d7708a8d3520abe2752f545985705126f41fca66558bf0"
+  },
+  {
+    "label": "diagnostic",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-diagnostic-v2-source/vllm/v1/worker/gpu_model_runner.py",
+    "archive": "provenance/diagnostic/vllm/v1/worker/gpu_model_runner.py.gz",
+    "bytes": 335856,
+    "sha256": "b6f9897c4bdb40afa6fe7c17d48d66ffa446e3e0c7bf1a1a4fc59577fad93238"
+  },
+  {
+    "label": "diagnostic",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-diagnostic-v2-source/vllm/v1/worker/kv_connector_model_runner_mixin.py",
+    "archive": "provenance/diagnostic/vllm/v1/worker/kv_connector_model_runner_mixin.py.gz",
+    "bytes": 11858,
+    "sha256": "195da9e21a20d0a842dd154b74fb46aa1e1ac082fe1dc5fdacc02e7ac7d9c48b"
+  },
+  {
+    "label": "diagnostic",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-diagnostic-v2-source/vllm/v1/engine/core.py",
+    "archive": "provenance/diagnostic/vllm/v1/engine/core.py.gz",
+    "bytes": 93669,
+    "sha256": "519fc8e692b9e2dce29d32045884bd34d3119445caca110dec8c68e5d314fba7"
+  },
+  {
+    "label": "diagnostic",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-diagnostic-v2-source/vllm/v1/core/sched/scheduler.py",
+    "archive": "provenance/diagnostic/vllm/v1/core/sched/scheduler.py.gz",
+    "bytes": 174702,
+    "sha256": "da3f7c50dcf168bfa80260267f1da166f6cbc3a2bccb8a9bb889c4586c79e091"
+  },
+  {
+    "label": "diagnostic",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-diagnostic-v2-source/vllm/v1/core/sched/output.py",
+    "archive": "provenance/diagnostic/vllm/v1/core/sched/output.py.gz",
+    "bytes": 10729,
+    "sha256": "9867ae3dc9ec3db90cb314dd5394ebcfe3203323d698715e7345059237d97875"
+  },
+  {
+    "label": "diagnostic",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-diagnostic-v2-source/vllm/v1/core/kv_cache_manager.py",
+    "archive": "provenance/diagnostic/vllm/v1/core/kv_cache_manager.py.gz",
+    "bytes": 29775,
+    "sha256": "692f12aa2f262e37fb9643f1ff2210f209032524fc39d6e900773a8d6b038676"
+  },
+  {
+    "label": "diagnostic",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-diagnostic-v2-source/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py",
+    "archive": "provenance/diagnostic/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py.gz",
+    "bytes": 8888,
+    "sha256": "546cf6a326cd5a58f75f380e9bc141488135235f5dc52ebec63db4ee11d07cf1"
+  },
+  {
+    "label": "diagnostic",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-diagnostic-v2-source/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py",
+    "archive": "provenance/diagnostic/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py.gz",
+    "bytes": 3005,
+    "sha256": "611793b6a99dd1ee15260f13e52511126dd73897d9a786692612c5b41f6265a4"
+  },
+  {
+    "label": "diagnostic",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-diagnostic-v2-source/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py",
+    "archive": "provenance/diagnostic/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py.gz",
+    "bytes": 64209,
+    "sha256": "bc883cf47d882d4406d7708a8d3520abe2752f545985705126f41fca66558bf0"
+  },
+  {
+    "label": "control",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-control-source/vllm/v1/worker/gpu_model_runner.py",
+    "archive": "provenance/control/vllm/v1/worker/gpu_model_runner.py.gz",
+    "bytes": 335856,
+    "sha256": "b6f9897c4bdb40afa6fe7c17d48d66ffa446e3e0c7bf1a1a4fc59577fad93238"
+  },
+  {
+    "label": "control",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-control-source/vllm/v1/worker/kv_connector_model_runner_mixin.py",
+    "archive": "provenance/control/vllm/v1/worker/kv_connector_model_runner_mixin.py.gz",
+    "bytes": 11858,
+    "sha256": "195da9e21a20d0a842dd154b74fb46aa1e1ac082fe1dc5fdacc02e7ac7d9c48b"
+  },
+  {
+    "label": "control",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-control-source/vllm/v1/engine/core.py",
+    "archive": "provenance/control/vllm/v1/engine/core.py.gz",
+    "bytes": 93669,
+    "sha256": "519fc8e692b9e2dce29d32045884bd34d3119445caca110dec8c68e5d314fba7"
+  },
+  {
+    "label": "control",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-control-source/vllm/v1/core/sched/scheduler.py",
+    "archive": "provenance/control/vllm/v1/core/sched/scheduler.py.gz",
+    "bytes": 175385,
+    "sha256": "2ed33d8c00b927e419bb88e5d78f38405896b6afaf213811b6f97cd42ea25eba"
+  },
+  {
+    "label": "control",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-control-source/vllm/v1/core/sched/output.py",
+    "archive": "provenance/control/vllm/v1/core/sched/output.py.gz",
+    "bytes": 10729,
+    "sha256": "9867ae3dc9ec3db90cb314dd5394ebcfe3203323d698715e7345059237d97875"
+  },
+  {
+    "label": "control",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-control-source/vllm/v1/core/kv_cache_manager.py",
+    "archive": "provenance/control/vllm/v1/core/kv_cache_manager.py.gz",
+    "bytes": 29207,
+    "sha256": "e17f0426cfa412e08b96380564b55f471a30af7edd156f7be89e69c0699a3b5a"
+  },
+  {
+    "label": "control",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-control-source/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py",
+    "archive": "provenance/control/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py.gz",
+    "bytes": 8888,
+    "sha256": "546cf6a326cd5a58f75f380e9bc141488135235f5dc52ebec63db4ee11d07cf1"
+  },
+  {
+    "label": "control",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-control-source/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py",
+    "archive": "provenance/control/vllm/distributed/kv_transfer/kv_connector/v1/offloading/common.py.gz",
+    "bytes": 3005,
+    "sha256": "611793b6a99dd1ee15260f13e52511126dd73897d9a786692612c5b41f6265a4"
+  },
+  {
+    "label": "control",
+    "source": "/media/a6000/D/ZhaoBinHe/slackkv-round4-control-source/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py",
+    "archive": "provenance/control/vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py.gz",
+    "bytes": 64209,
+    "sha256": "bc883cf47d882d4406d7708a8d3520abe2752f545985705126f41fca66558bf0"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/__init__.py",
+    "archive": "provenance/project/experiments/autonomous_round4/__init__.py.gz",
+    "bytes": 55,
+    "sha256": "8aec2322e9506be47abf3b4342b550226dd9a48e2a5f030c43714f51d5e84334"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/analyze.py",
+    "archive": "provenance/project/experiments/autonomous_round4/analyze.py.gz",
+    "bytes": 6692,
+    "sha256": "05b1b7539e098c0e6ab18dfc96323791ddfecdd91589a986cc6903e498717094"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/audit_disabled.py",
+    "archive": "provenance/project/experiments/autonomous_round4/audit_disabled.py.gz",
+    "bytes": 1630,
+    "sha256": "5282608684951853958ffbd9b9015532069a3594b17e580cb96f181d0ea5ed2f"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/batch.py",
+    "archive": "provenance/project/experiments/autonomous_round4/batch.py.gz",
+    "bytes": 1990,
+    "sha256": "aad1c46dc8fb10f19560e1d6f878e2518c613f1acc1d1b69c73743398de81530"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/control_batch.py",
+    "archive": "provenance/project/experiments/autonomous_round4/control_batch.py.gz",
+    "bytes": 2287,
+    "sha256": "bac486a114e3a5052bf4e4be4b9a1e2bdde6e1110b408131cf88ba8976bdf9d1"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/control_run.py",
+    "archive": "provenance/project/experiments/autonomous_round4/control_run.py.gz",
+    "bytes": 1503,
+    "sha256": "c3e455858e09a1979ed78f015a42f92a3a081c65828c08185feeb8880c0bbb4b"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/control_summary.py",
+    "archive": "provenance/project/experiments/autonomous_round4/control_summary.py.gz",
+    "bytes": 6698,
+    "sha256": "573b1b0195009d98f9d44f9f513ed1dcb5574ab587bc4c97379a2fbe58c09f43"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/diagnose.py",
+    "archive": "provenance/project/experiments/autonomous_round4/diagnose.py.gz",
+    "bytes": 5916,
+    "sha256": "14f6f6e7f1fde7bf7efbcff35dba260bf2ebe3374b79ec69731c51527e91a88c"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/diagnostic.py",
+    "archive": "provenance/project/experiments/autonomous_round4/diagnostic.py.gz",
+    "bytes": 605,
+    "sha256": "042a18843ba48506e5c292799e20948628a1498528807abe5c9a48808f37f681"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/export.py",
+    "archive": "provenance/project/experiments/autonomous_round4/export.py.gz",
+    "bytes": 2309,
+    "sha256": "dd7ed2aed2ab6ef7d4b19ee93b9c58d616449edc255ee9acaf7fb8f38c673ab7"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/followup.py",
+    "archive": "provenance/project/experiments/autonomous_round4/followup.py.gz",
+    "bytes": 2135,
+    "sha256": "6e7c3ed1923c2e845cc90c57255e2b5f04fa028b9659deaa0ce2e23ac831b720"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/resources.patch",
+    "archive": "provenance/project/experiments/autonomous_round4/resources.patch.gz",
+    "bytes": 2097,
+    "sha256": "e15c4ca833ea88dc9158c5e67dd4eda5a91f3308e119b3291883184e9ab435f6"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/resources.py",
+    "archive": "provenance/project/experiments/autonomous_round4/resources.py.gz",
+    "bytes": 3372,
+    "sha256": "6759703ebc1f0ea2d0db354118b97ed95d9891b97fb77206164f1dbc300e8b34"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/retention.patch",
+    "archive": "provenance/project/experiments/autonomous_round4/retention.patch.gz",
+    "bytes": 2453,
+    "sha256": "9346af7a8e408effdd06251233a6cfc7046a9382fa3426a3e733aa97cc38f14f"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/retention.py",
+    "archive": "provenance/project/experiments/autonomous_round4/retention.py.gz",
+    "bytes": 7115,
+    "sha256": "e32a524c911ad99211545d98c3be36f8aa3d213685ff7cf766f2f56a4258643e"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/retention_hol.patch",
+    "archive": "provenance/project/experiments/autonomous_round4/retention_hol.patch.gz",
+    "bytes": 493,
+    "sha256": "bf866021baadcd77b1db7130c3a0bd8332ddc1002351bfdb07679b87e7c25930"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/run.py",
+    "archive": "provenance/project/experiments/autonomous_round4/run.py.gz",
+    "bytes": 384,
+    "sha256": "dc660e8842e87ebd16b9e0b3b594f6916dcf2c1acf9f0f236a9644e55eba42e3"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_round4/smoke.py",
+    "archive": "provenance/project/experiments/autonomous_round4/smoke.py.gz",
+    "bytes": 8285,
+    "sha256": "e776765b4daf1c25dc61939478517713f96c7f1175ecf4d81d18d713adc719fe"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_admission/run.py",
+    "archive": "provenance/project/experiments/autonomous_admission/run.py.gz",
+    "bytes": 11967,
+    "sha256": "73b184a1bb90c15a7e7245ac6f22dd4d3d07235b0ba6f6e95bd9854b0a96f18c"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_admission/analyze.py",
+    "archive": "provenance/project/experiments/autonomous_admission/analyze.py.gz",
+    "bytes": 5974,
+    "sha256": "6c1ed0c473e6c8cfbd3735fd1a4d0158c290b35d5fe9f7ea742c62c854a7241e"
+  },
+  {
+    "label": "project",
+    "source": "experiments/autonomous_capacity/summary.py",
+    "archive": "provenance/project/experiments/autonomous_capacity/summary.py.gz",
+    "bytes": 7562,
+    "sha256": "23a7b3929404985d16da1a468e366b04f9f03201436821f3314091690b030881"
+  },
+  {
+    "label": "project",
+    "source": "experiments/phase4d_a/runtime.py",
+    "archive": "provenance/project/experiments/phase4d_a/runtime.py.gz",
+    "bytes": 6469,
+    "sha256": "cc09adf4948606ced4e87969cdecf0d0584aefdd3e38c66ed6ae01cf5b49b60f"
+  },
+  {
+    "label": "project",
+    "source": "experiments/phase4d_a/experiment.py",
+    "archive": "provenance/project/experiments/phase4d_a/experiment.py.gz",
+    "bytes": 6868,
+    "sha256": "091a219c4c800550e1c55aa9549ad1d5716c486eb56ed55892107222379baa11"
+  },
+  {
+    "label": "project",
+    "source": "experiments/phase4g_a/run_phase4g_a.py",
+    "archive": "provenance/project/experiments/phase4g_a/run_phase4g_a.py.gz",
+    "bytes": 15945,
+    "sha256": "e4bdd4bc9ff316caeaf12f12c606d5b347f972031f0d6500301bbed86f3ebea8"
+  },
+  {
+    "label": "project",
+    "source": "experiments/phase4g_a/workload.py",
+    "archive": "provenance/project/experiments/phase4g_a/workload.py.gz",
+    "bytes": 5346,
+    "sha256": "46e06b88bc9de5f45a1dd43ecd7a289c5fce941582928ecf622d30e43ceaeaaf"
+  },
+  {
+    "label": "project",
+    "source": "experiments/phase4g_a_fix/run_phase4g_a_fix.py",
+    "archive": "provenance/project/experiments/phase4g_a_fix/run_phase4g_a_fix.py.gz",
+    "bytes": 21398,
+    "sha256": "c6cb9e9c2bf7afc38c381269200824fe53e4af0fe59f5384945783fd5b3f71b2"
+  },
+  {
+    "label": "project",
+    "source": "experiments/phase4g_a_fix/background.py",
+    "archive": "provenance/project/experiments/phase4g_a_fix/background.py.gz",
+    "bytes": 6523,
+    "sha256": "011207725819228b34fac7173980ef0ad4c767df646c0bedb83f3f4b242d083a"
+  },
+  {
+    "label": "project",
+    "source": "experiments/phase4g_c_fix/absolute_sleep.py",
+    "archive": "provenance/project/experiments/phase4g_c_fix/absolute_sleep.py.gz",
+    "bytes": 3349,
+    "sha256": "51aabe4f3a53975356f06bd1b3a546213a26cf18a6351409d6753e5ef407321f"
+  }
+]

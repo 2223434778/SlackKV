@@ -1,0 +1,7 @@
+{
+  "python": "3.11.16",
+  "torch": "2.11.0+cu126",
+  "cuda": "12.6",
+  "baseline_git": "d403714ea3ed91e585a2b9f80beb363023272de8",
+  "setup_failure": "CPU setup command ended with accidental directory invocation exit126 after successful runtime copy; no GPU run"
+}

@@ -17,13 +17,14 @@ def main() -> None:
     parser.add_argument("--name", required=True)
     parser.add_argument("--trace", action="store_true")
     parser.add_argument("--gate", type=int, default=2)
+    parser.add_argument("--gate-off", action="store_true")
     parser.add_argument("--backfill", type=int, choices=(0, 2), default=0)
     parser.add_argument("--execution", choices=("eager", "default"), default="eager")
     parser.add_argument("--oracle", action="store_true")
     parser.add_argument("--batch-invariant", action="store_true")
     parser.add_argument("--policy", choices=("A", "D"), default="A")
     parser.add_argument("--round-directory", default="autonomous_admission",
-                        choices=("autonomous_admission", "autonomous_capacity", "autonomous_fork"))
+                        choices=("autonomous_admission", "autonomous_capacity", "autonomous_fork", "autonomous_round4"))
     parser.add_argument("--kv-gib", type=int, choices=(2, 4, 8), default=2)
     parser.add_argument("--replay-inputs", type=Path)
     parser.add_argument("--continuation-credit", action="store_true")
@@ -32,6 +33,9 @@ def main() -> None:
     args = parser.parse_args()
     if args.gate < 1 or Path(args.name).name != args.name:
         parser.error("positive gate and plain run name required")
+    if args.gate_off and (args.policy != "A" or args.backfill or
+                         args.continuation_credit or args.working_set_epochs):
+        parser.error("gate-off requires plain OnDemand")
     if args.continuation_credit and (args.policy != "A" or args.backfill):
         parser.error("continuation credit requires OnDemand without capacity backfill")
     if args.working_set_epochs and (args.policy != "A" or args.backfill or args.continuation_credit):
@@ -65,6 +69,12 @@ def main() -> None:
     os.environ["VLLM_BATCH_INVARIANT"] = "1" if args.batch_invariant else "0"
     os.environ["SLACKKV_CONTINUATION_CREDIT"] = "1" if args.continuation_credit else "0"
     os.environ["SLACKKV_WORKING_SET_EPOCHS"] = "1" if args.working_set_epochs else "0"
+    if args.round_directory == "autonomous_round4":
+        os.environ["SLACKKV_FORK_TRACE"] = "0"
+        import socket
+        with socket.socket() as probe:
+            if probe.connect_ex(("127.0.0.1", 8000)) == 0:
+                raise RuntimeError("port 8000 occupied; refuse to replace another service")
     original_command = runtime.server_command
 
     def server_command(connector, gpu_bytes):
@@ -133,6 +143,8 @@ def main() -> None:
 
     def send(*positional, **kwargs):
         params = dict(kwargs.get("params") or {})
+        if args.gate_off and params.get("slackkv_trace_resume") is True:
+            params["slackkv_first_token_gate"] = False
         if args.trace:
             params.update(slackkv_allocator_trace=True,
                           slackkv_allocator_trace_interval_ms=100)
@@ -146,6 +158,8 @@ def main() -> None:
                 raise ValueError("constructed and transmitted replay prompts differ")
         response = original_send(*positional, **kwargs)
         record = {"session": session, "tokens": response["tokens"]}
+        if args.round_directory == "autonomous_round4":
+            record["effective_params"] = params
         if session in {"E02:turn:2", "E04:turn:1"}:
             record["prompt"] = positional[0]
         with output_lock:
@@ -159,7 +173,8 @@ def main() -> None:
 
     runtime.send = send
     metadata = {
-        "name": args.name, "gate": args.gate, "allocator_trace": args.trace,
+        "name": args.name, "gate": args.gate, "gate_enabled": not args.gate_off,
+        "allocator_trace": args.trace,
         "backfill_limit": args.backfill,
         "continuation_credit": args.continuation_credit,
         "working_set_epochs": args.working_set_epochs,
@@ -184,6 +199,12 @@ def main() -> None:
         (runtime.SRC / "vllm/v1/core/kv_cache_manager.py").read_bytes()).hexdigest()
     metadata["scheduler_sha256"] = hashlib.sha256(
         (runtime.SRC / "vllm/v1/core/sched/scheduler.py").read_bytes()).hexdigest()
+    if args.round_directory == "autonomous_round4":
+        import subprocess
+        metadata["git_head"] = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+        metadata["git_diff_sha256"] = hashlib.sha256(subprocess.check_output(
+            ["git", "diff", "--binary"], cwd=root)).hexdigest()
     path = out / "execution.json"
     path.write_text(json.dumps(metadata, indent=2) + "\n")
     started = time.monotonic()
@@ -198,6 +219,8 @@ def main() -> None:
     signal.alarm(1710)
     try:
         result = legacy.run_lifecycle(args.policy, "measured", 1)
+        if args.gate_off:
+            result["policy"] = "OnDemand-custom-gate-off"
         harness._decorate_agent_run(result, f"measured_rep1_{args.policy.lower()}")
         metadata["status"] = "VALID" if result["valid"] else "INVALID"
     except BaseException:
