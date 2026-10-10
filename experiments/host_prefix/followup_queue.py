@@ -9,6 +9,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--stage', choices=('a', 'b', 'hot', 'pressure', 'ample'), required=True)
     p.add_argument('--source', required=True)
+    p.add_argument('--name-prefix', default='', help='unique prefix for safe reruns in the same continuous budget')
     args = p.parse_args()
     specs = {
         'a': [(1, 256, 0, True, seed, policy, 'a'+str(i)+policy)
@@ -22,7 +23,7 @@ def main():
     root = Path(__file__).resolve().parents[2]
     for sessions, cpu, gpu, reset, seed, policy, name in specs[args.stage]:
         argv = [sys.executable, '-m', 'experiments.host_prefix.followup_screen', '--source', args.source,
-                '--name', name, '--sessions', str(sessions), '--cpu-mib', str(cpu), '--gpu-mib', str(gpu),
+                '--name', args.name_prefix+name, '--sessions', str(sessions), '--cpu-mib', str(cpu), '--gpu-mib', str(gpu),
                 '--seed', str(seed), '--policy', policy] + (['--reset-gpu'] if reset else [])
         print('LAUNCH', argv, flush=True)
         subprocess.run(argv, cwd=root, check=True)

@@ -1,0 +1,15 @@
+{
+  "gpu_runs": 16,
+  "completed": 16,
+  "failed_gpu_runs": 0,
+  "runner_hash_matches": true,
+  "local_tests": 30,
+  "local_test_attempt1": "26 passed, 1 setup error: sandbox temp directory not writable; fixed with explicit workspace --basetemp; test assertions unchanged",
+  "early_analysis_attempt": "EXPECTED_REFUSAL: unfinished run, budget and measurements unresolved; no partial total presented as final",
+  "native_audit_v1": "passed artificial union-protection scenario, retained; v2 uses real A and B in-flight reads and a new request listing only C keys",
+  "native_audit_v2": "PASS; metadata only",
+  "environment_warning": "existing nvidia_cutlass_dsl .pth import warning retained in logs; environment unchanged",
+  "gpu_content_oracle": "previous oracle2 one9360-token-prefix invariant input only; no new multi-session tensor-content oracle",
+  "local_archive_failure": "preserved tool_failures; fixed safe lexical extraction and empty-directory refusal",
+  "local_raw_reanalysis": "PASS: all16 runs, raw payload hashes, work, timestamps, final source conservation, H2D, pool and idle state"
+}

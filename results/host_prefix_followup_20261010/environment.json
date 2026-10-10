@@ -1,0 +1,9 @@
+{
+  "python": "3.11.16",
+  "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+  "torch": "2.11.0+cu126",
+  "vllm": "0.23.0",
+  "cuda": "12.6",
+  "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "gpu": "0, NVIDIA RTX A6000, 550.54.14, 49140 MiB\n1, NVIDIA RTX A6000, 550.54.14, 49140 MiB\n"
+}

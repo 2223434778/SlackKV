@@ -1,0 +1,14 @@
+{
+  "policy": "nohost",
+  "sessions": 2,
+  "seed": 773311,
+  "cpu_bytes": 268435456,
+  "gpu_bytes": 0,
+  "reset_gpu": true,
+  "quotas_tokens": [
+    4672,
+    4688
+  ],
+  "turns": 6,
+  "kind": "synthetic diagnostic"
+}

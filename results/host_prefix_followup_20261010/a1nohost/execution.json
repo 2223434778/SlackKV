@@ -1,0 +1,48 @@
+{
+  "status": "COMPLETE",
+  "started_unix": 1791644547.629747,
+  "gpu_count": 1,
+  "config": {
+    "policy": "nohost",
+    "sessions": 1,
+    "seed": 773311,
+    "cpu_bytes": 268435456,
+    "gpu_bytes": 0,
+    "reset_gpu": true
+  },
+  "budget_before": {
+    "autonomous_fork": 0.20048675264813937,
+    "autonomous_round4": 0.546220108203189,
+    "host_prefix_cost_20261010": 0.1388070681688583,
+    "host_prefix_followup_20261010": 0
+  },
+  "authorization_gpu_hours_before": 0.8855139290201866,
+  "code_git": "67eff77",
+  "source": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source",
+  "runner_sha256": "7ef4ab4aea2d575485a8cc3adbe29e8f5ffe14bd9418eab6aec2d579e24c2b68",
+  "scheduler_sha256": "5c0ef2cd7cc65a452d86c4751e43971efebf5d97066cb5f8d8126f3f5a8e43c8",
+  "server_command": [
+    "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/vllm",
+    "serve",
+    "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "--dtype",
+    "float16",
+    "--tensor-parallel-size",
+    "1",
+    "--enable-prefix-caching",
+    "--max-model-len",
+    "32768",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--kv-transfer-config",
+    "{\"kv_connector\": \"OffloadingConnector\", \"kv_role\": \"kv_both\", \"kv_connector_extra_config\": {\"block_size\": 16, \"cpu_bytes_to_use\": 268435456}}",
+    "--gpu-memory-utilization",
+    "0.85"
+  ],
+  "server_exit_code": 0,
+  "wall_seconds_including_setup_cleanup": 60.42692374996841,
+  "gpu_hours": 0.016785256597213447,
+  "authorization_total_gpu_hours": 0.9022991856174
+}

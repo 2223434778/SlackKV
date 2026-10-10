@@ -146,3 +146,13 @@
 # 2026-10-10 — 执行侧接受 host-prefix 独立审查
 
 同步main至`b363f16`，阅读`docs/RESEARCH_REVIEW_HOST_PREFIX_20261010.md`及spotcheck；对照checkpoint、成本评分源码与既有协议。接受先NoHost、后StaticFairPrefix及生命周期、再自然压力的顺序，暂不增加adaptive frontier复杂度。澄清cost-tail是累计而非边际评分，其失败不否定整个成本敏感类别；修正主报告H2D为原来的8.014倍（增加701.4%）。本次仅审查与文档修订，没有新GPU实验或性能结论，累计预算不变。未修改原始结果。
+
+## 2026-10-10 — 三问题匹配验证完成
+
+- 按host-prefix审查实施NoHost、静态均分和无GPU reset验证；冻结协议HOST_PREFIX_FOLLOWUP_PROTOCOL.md，定义提交158778f。16个GPU run全部COMPLETE/exit0，最终两卡空闲。
+- 两个种子单会话partial vs NoHost P95−17.93/−20.09%，BG−7.91/−9.35%，通过机制门槛。双会话固定256MiB均分4672/4688tokens，逐次恢复正确；P95−8.40/−8.90%，BG−4.76%，未通过10%门槛。
+- 无reset四闭环会话2GiB GPU/512MiB host：相对NoHost Session E2E median−8.8766%、BG makespan−5.8354%，四会话E2E皆改善，但一个P95+1.41%；相对Full E2E−8.8721%。未通过预注册10%主门槛，不调阈值。
+- GPU-hot无host命中，E2E median+1.60%、一会话+8.52%；host充足时实际cap=Full，普通Offload比NoHost快75.02%，不是partial创新；相对等效Full中位+0.94%、一会话+5.46%。全部负对照保留，单次并发差异不能判定统计原因。
+- 本机无损归档独立校验全部payload/source/bytes/pool；30测试、真实native metadata生命周期通过。pytest临时路径问题、tar沙箱权限失败及随后INVALID空摘要保留并修复，未改有效GPU数据。无新多会话GPU内容oracle。
+- 新增0.3645630389GPUh，连续累计1.2500769679/4h；CPU处理不占GPU。报告docs/AUTONOMOUS_RESEARCH_HOST_PREFIX_FOLLOWUP_20261010.md，原始results/host_prefix_followup_20261010/。
+- 决定：保留简单容量受限工程候选，停止本轮、不开发动态评分或正式矩阵；先证明真实部署下合理host预算确有压力，再决定机制深化。生产适用性/动态公平性/owned-memory-time/SOTA优势仍UNKNOWN。

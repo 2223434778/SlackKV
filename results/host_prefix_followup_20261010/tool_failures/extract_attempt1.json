@@ -1,0 +1,7 @@
+{
+  "status": "LOCAL_TOOL_FAILURE",
+  "error": "tarfile data-filter os.path.realpath PermissionError WinError5",
+  "secondary_error": "following analysis command wrote empty runs/gpu_hours0 before extraction completed; INVALID",
+  "correction": "reject empty analysis; validate exported regular-file paths lexically and copy bytes without tar metadata or links",
+  "gpu_hours": 0
+}

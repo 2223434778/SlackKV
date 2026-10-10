@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "alternating_retained_blocks": [
+    3,
+    4
+  ],
+  "in_flight_replacement": "deferred; no forced free",
+  "retired_replacement": "PASS",
+  "cancelled_store_free_blocks": 2,
+  "gpu_hours": 0,
+  "manager_sha256": "fd89bb49d46a01fdf6acfdf6c3c1867e5cb3116a0b24bc47859cc83de34841bd",
+  "qualification": "metadata only, static disjoint membership; no GPU cancellation or tensor-content proof"
+}

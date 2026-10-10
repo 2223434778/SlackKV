@@ -33,6 +33,10 @@ def main():
     if any(r['status'] == 'RUNNING' for r in prior_scope):
         raise RuntimeError('historical owned run unresolved')
     prior_hours = sum(r['gpu_hours_conservative'] for r in prior_scope)
+    followup = [json.loads(f.read_text()) for f in (root / 'results/host_prefix_followup_20261010').glob('*/execution.json')]
+    if any(r['status'] == 'RUNNING' for r in followup):
+        raise RuntimeError('follow-up owned run unresolved')
+    prior_hours += sum(r['gpu_hours'] for r in followup)
     if prior_hours + spent + .5 > 4:
         raise RuntimeError('insufficient authorized GPU budget')
     with socket.socket() as s:

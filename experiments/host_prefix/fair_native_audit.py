@@ -29,16 +29,18 @@ def main():
             native.complete_load(path, ctx)
             native.touch(path, ctx)
             assert not store(path).keys_to_store
-    # Replace retired A with C, retaining B. Native protection refuses admission
-    # until all in-flight A reads complete; no immediate free or reference bypass.
+    # Replace retired A with C while B remains in-flight. A real C request lists
+    # only C keys: protect B through its read reference, not an artificial union.
     native.prepare_load(a, ctx)
-    assert native.prepare_store(b+c, ctx) is None
+    native.prepare_load(b, ctx)
+    assert native.prepare_store(c, ctx) is None
     assert all(native.lookup(k, ctx) for k in a+b)
     native.complete_load(a, ctx)
-    replacement = store(b+c)
+    replacement = store(c)
     assert set(replacement.evicted_keys) == set(a)
     assert all(native.lookup(k, ctx) for k in b+c)
     assert all(native.lookup(k, ctx) is False for k in a)
+    native.complete_load(b, ctx)
     assert all(block.ref_cnt == 0 for block in native._policy.blocks.values())
     cancel = CPUOffloadingManager(2)
     pending = cancel.prepare_store([b'x'], ctx)

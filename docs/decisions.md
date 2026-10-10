@@ -217,3 +217,5 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - 固定cap不是pool公平性策略；双会话反例已测。保留机制、再组合capacity-conditioned admission/公平尾部与adaptive frontiers，先验证自然聚合压力而不是直接正式矩阵。新报告docs/AUTONOMOUS_RESEARCH_HOST_PREFIX_20261010.md。
 
 - 2026-10-10 host-prefix审查：按用户放宽创新标准保留真实机制收益，不因复用组件否决。推进顺序改为NoHost、静态公平额度与自然回收证据在先，动态frontier在后；若简单方案足够，接受工程价值。当前cost-tail使用累计损失而非单块边际损失，其失败不否定所有cost-aware方法。不把人为256MiB/forced-cold结果推广成生产E2E优势。详见docs/RESEARCH_REVIEW_HOST_PREFIX_20261010.md。
+
+- 2026-10-10 three_question_followup：NoHost补强单会话partial机制收益；静态均分保住两个会话前缀但只有8.4/8.9%P95收益；自然驱逐压力下会话E2E约−8.88%，未过10%预注册门槛。保留简单候选，不调阈值/动态权重。GPU-hot无额外命中，host充足应全存；普通Full比NoHost的大收益不归为partial算法。真实部署host不足尚未证实，不能从受控512MiB推断生产意义。详细报告与16run数据见AUTONOMOUS_RESEARCH_HOST_PREFIX_FOLLOWUP_20261010.md、results/host_prefix_followup_20261010/。安全复现使用name-prefix，始终同一连续budget。

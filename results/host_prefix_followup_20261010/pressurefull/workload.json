@@ -1,0 +1,16 @@
+{
+  "policy": "full",
+  "sessions": 4,
+  "seed": 773311,
+  "cpu_bytes": 536870912,
+  "gpu_bytes": 2147483648,
+  "reset_gpu": false,
+  "quotas_tokens": [
+    4672,
+    4672,
+    4672,
+    4704
+  ],
+  "turns": 6,
+  "kind": "synthetic closed-loop"
+}

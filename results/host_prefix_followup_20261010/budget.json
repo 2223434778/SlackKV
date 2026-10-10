@@ -1,0 +1,12 @@
+{
+  "families": {
+    "autonomous_fork": 0.20048675264813937,
+    "autonomous_round4": 0.546220108203189,
+    "host_prefix_cost_20261010": 0.1388070681688583,
+    "host_prefix_followup_20261010": 0.36456303888543823
+  },
+  "total_gpu_hours": 1.2500769679056247,
+  "authorized_gpu_hours": 4,
+  "remaining_gpu_hours": 2.749923032094375,
+  "scope": "conservative continuity since explicit Round3 authorization; all setup, compile and cleanup included"
+}

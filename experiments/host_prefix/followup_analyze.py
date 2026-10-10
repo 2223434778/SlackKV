@@ -2,12 +2,20 @@
 import argparse
 import hashlib
 import json
+import lzma
 from pathlib import Path
 import re
 import statistics
-from experiments.autonomous_fork.analyze import counter, read
+from experiments.autonomous_fork.analyze import counter, read as legacy_read
 from experiments.host_prefix.analyze_gpu import delta
-from experiments.host_prefix.followup_screen import TOKEN_BYTES, shares
+from experiments.host_prefix.followup_screen import TOKEN_BYTES, cap, shares
+
+
+def read(path):
+    compressed = Path(str(path)+'.xz')
+    if not path.exists() and compressed.exists():
+        return lzma.decompress(compressed.read_bytes())
+    return legacy_read(path)
 
 
 def transfer(before, after, direction, external):
@@ -35,6 +43,8 @@ def analyze(directory):
     cfg = json.loads(read(directory/'workload.json'))
     rows = json.loads(read(directory/'requests.json'))
     inputs = json.loads(read(directory/'inputs.json'))
+    quotas = shares(cfg['cpu_bytes'], cfg['sessions'])
+    assert cfg['quotas_tokens'] == quotas
     identities = {}
     for item in inputs:
         key = (item['role'], item['session'], item['turn'])
@@ -49,6 +59,8 @@ def analyze(directory):
         assert hashlib.sha256(json.dumps(prompt).encode()).hexdigest() == row['prompt_sha256']
         assert row['issue_ns'] <= row['first_ns'] <= row['done_ns']
         assert row['output_count'] == len(row['output_tokens']) == (16 if row['role'] == 'agent' else 256)
+        expected_limit = cap(cfg['policy'], row['length'], quotas[row['session']]) if row['role'] == 'agent' else 0
+        assert row['max_offload_tokens'] == expected_limit
         recorded[key] = row
     assert len(identities) == len(recorded)
     agents = [r for r in rows if r['role'] == 'agent']
@@ -111,9 +123,16 @@ def analyze(directory):
                   gpu_hours=execution['gpu_hours'],
                   per_request_source_deltas='concurrent snapshots overlap; no per-request attribution claim')
     if cfg['reset_gpu'] and cfg['policy'] == 'fair':
-        expected = 5*sum(shares(cfg['cpu_bytes'], cfg['sessions']))
+        expected = 5*sum(quotas)
+        observed = [dict(session=r['session'], turn=r['turn'],
+                        external_tokens=delta(r['metrics_before'], r['metrics_after'],
+                            'vllm:prompt_tokens_by_source_total', 'source="external_kv_transfer"')) for r in agents]
+        # Only one Agent is active at a time here; backgrounds never offload or
+        # share its prefix. Concurrent stage C cannot use this attribution.
+        result['serial_agent_external_tokens'] = observed
         result['expected_fair_external_tokens'] = expected
-        result['all_quotas_restored'] = sources['external_kv_transfer'] == expected
+        result['all_quotas_restored'] = sources['external_kv_transfer'] == expected and all(
+            r['external_tokens'] == (quotas[r['session']] if r['turn'] else 0) for r in observed)
     return result
 
 
@@ -142,12 +161,17 @@ def compare(base, candidate):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--directory', type=Path, required=True)
+    p.add_argument('--name-prefix', default='', help='select a safe rerun group without resetting its GPU ledger')
     args = p.parse_args()
-    runs = {d.name: analyze(d) for d in sorted(args.directory.iterdir()) if (d/'execution.json').exists()}
+    runs = {d.name: analyze(d) for d in sorted(args.directory.iterdir())
+            if d.name.startswith(args.name_prefix) and (d/'execution.json').exists()}
+    if not runs:
+        raise ValueError('no finalized execution evidence; empty directory is UNKNOWN')
     pairs = []
     for base, candidate in [('a1nohost', 'a1fair'), ('a2nohost', 'a2fair'),
                             ('bnohost', 'bfair'), ('bfull', 'bfair')] + [
                                 (regime+base, regime+'fair') for regime in ('hot', 'pressure', 'ample') for base in ('nohost', 'full')]:
+        base, candidate = args.name_prefix+base, args.name_prefix+candidate
         if base in runs and candidate in runs and runs[base]['status'] == runs[candidate]['status'] == 'VALID':
             pairs.append(compare(runs[base], runs[candidate]))
     result = dict(runs=runs, pairs=pairs, gpu_hours=sum(r['gpu_hours'] for r in runs.values()),

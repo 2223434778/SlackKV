@@ -41,3 +41,34 @@ def test_unfinished_execution_cannot_be_analyzed(tmp_path):
     (tmp_path/'execution.json').write_text('{"status":"RUNNING"}')
     with pytest.raises(ValueError, match='unresolved'):
         analyze(tmp_path)
+
+
+def test_compact_payload_read_is_lossless(tmp_path):
+    import lzma
+    from experiments.host_prefix.followup_analyze import read
+    path = tmp_path/'inputs.json'
+    raw = b'[{"prompt":[1,2,3]}]\n'
+    path.with_suffix('.json.xz').write_bytes(lzma.compress(raw))
+    assert read(path) == raw
+
+
+def test_budget_carries_history_and_refuses_live_run(tmp_path):
+    import json
+    from experiments.host_prefix.followup_screen import FAMILY, budget
+    for family in ('autonomous_fork', 'autonomous_round4', 'host_prefix_cost_20261010', FAMILY):
+        directory = tmp_path/'results'/family/'run'
+        directory.mkdir(parents=True)
+        field = 'gpu_hours_conservative' if family in ('autonomous_fork', 'autonomous_round4') else 'gpu_hours'
+        (directory/'execution.json').write_text(json.dumps(dict(status='COMPLETE', **{field: .2})))
+    assert sum(budget(tmp_path).values()) == pytest.approx(.8)
+    (tmp_path/'results'/FAMILY/'run/execution.json').write_text('{"status":"RUNNING"}')
+    with pytest.raises(RuntimeError, match='unresolved'):
+        budget(tmp_path)
+
+
+def test_empty_directory_cannot_report_zero_gpu_success(tmp_path, monkeypatch):
+    from experiments.host_prefix.followup_analyze import main
+    monkeypatch.setattr('sys.argv', ['followup_analyze', '--directory', str(tmp_path)])
+    with pytest.raises(ValueError, match='empty directory is UNKNOWN'):
+        main()
+    assert not (tmp_path/'analysis.json').exists()
