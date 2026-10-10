@@ -122,3 +122,10 @@
 - 首次resource-off因instrumentation缩进错误失败，完整51.60秒成本、日志、源码保留；修复后disabled AST等价，再独立v2 OFF/ON。CPU setup/fixture/temp-dir失败亦记录；最后44本地/15native CPU测试通过。
 - 独立复算17完整性能run全部40FG输入/输出长度、4BG输入hash与8192工作量匹配，P95/每session E2E算术一致；271导出原始hash通过。19GPU执行18VALID/1FAILED，0.5462201082 GPUh，最长111.96秒，GPU0only，最终两卡19MiB/0%且无computeapp。
 - 决策B：没有被接受的新算法。更合理的待识别问题是active KV释放/执行协作，但当前173/175单owner快照不支持共享释放集合的创新收益。下一轮优先真实外生到达/共享工作流与既有强算法对照，先验证差异机会；保持最终目标。完整owned memory-time、全40输入质量、remote DMA取消矩阵及开放负载公平性UNKNOWN。报告docs/AUTONOMOUS_RESEARCH_ROUND4.md。
+
+## 2026-10-10：Round4外部复核与研究机会筛选建议（无GPU）
+
+- 审查465c4d2240b34210e93d6d861e3ec0f9fc830774。原始OFF/order/pin三个run的逐session E2E复算与报告一致；六对gate CSV复算中位效果为2GiB -0.3678%、4GiB -0.6295%。不再保留K2主导排队的未支持假设。
+- 原始pin日志32 acquire/32 release/最终0；28 HOL fallback、4 TTL expiry、0 REAL_REQUEST_ALLOCATED交接；持有时间中位274.26ms。不能等同零local cache hit，也不能用单次三元组宣称稳定20.09%因果退化。
+- 阅读ownership/retention源码和诊断汇总；没有重新验证271文件或完整175快照原始审计。固定快照中idle可驱逐块已计入available；继续只调JIT/idle保留缺少正证据。
+- 建议暂停旧负载局部策略循环，下一交付先是有来源数据支持的研究机会决策，最多一个具体可证伪缺口，不预设共享超图调度。原AGENTS预算/目标保留，具体见docs/RESEARCH_REVIEW_ROUND4_20261010.md。CPU复算完成，GPU0小时；未修改serving或启动新实验。

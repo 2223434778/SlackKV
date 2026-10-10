@@ -198,3 +198,10 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - Decision: leave experimental control default-off, retain baseline and native ownership/DMA/liveness guards. Do not claim a new algorithm, defeat of full Continuum, or general impossibility. Shared-release-set scheduling has no demonstrated distinctive opportunity in this workload; do not manufacture a PoC.
 - Next: establish representative exogenous arrivals and workflow/shared ownership where actual release-dependent execution differs from ordinary priority/cost policies, with matched strong baselines and predeclared SLO/owned-memory/fairness targets. Final research goal unchanged. No formal matrix or larger-model download requested.
 - Report and all failures/UNKNOWN: docs/AUTONOMOUS_RESEARCH_ROUND4.md; results/autonomous_round4/. Cost0.5462201082GPUh,19 executions,17 complete performance+1 valid correctness+1 failed instrumentation run.
+
+## 2026-10-10 — External advisory after Round4: stop local heuristic iteration
+
+- Evidence: commit465c4d2240b34210e93d6d861e3ec0f9fc830774. Gate removal lacks the expected session benefit; physical retention has no successful request-allocation handoff in the observed performance run. Native active ownership limits cannot be eliminated by re-evicting blocks already counted as available.
+- Recommendation: stop expanding these specific variants on the old hybrid workload. Next deliver a research-opportunity decision grounded in existing/public workload data before implementing another scheduler; do not assume shared-release hypergraphs are the required next topic.
+- Rationale: previous K2/API suspicions do not explain the measured seconds-level admission delay. Conservative pin reclamation can remove the intended benefit, but deleting liveness protections or tuning TTL without a resource/fairness argument is not an acceptable remedy.
+- Scope: advisory only; no production default, safety constraint, historical result, or final Agent Serving objective changed. Full Continuum/other retention methods are not falsified. Detailed limits and reproducible evidence are in docs/RESEARCH_REVIEW_ROUND4_20261010.md.

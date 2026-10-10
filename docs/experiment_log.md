@@ -639,3 +639,12 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - Fixed1sec TTL/age programorder/pin control at2GiB: matched OFF/order/pin full work; session+6.87/+20.09%,P95+4.42/+22.20%. pinacq32/release32,28HOLfallback/4TTL; actualH2D19276.25/19276.25/19281.5MiB,D2H5172.5625each. Stop both, no reverse triplet or threshold tuning.
 - Independent17run audit matches actual FG/BG hashes and output lengths/P95/session arithmetic;175physical pool partition checks pass.44local and15native CPUtests pass after documented CPUsetup/tempfixture failures.271logical original hashes preserved by lossless gzip, actual runtime55source snapshots included.
 -19GPU ledgerentries:18VALID/1FAILED,0.5462201082GPUh,max111.96seconds,GPU0only,final GPUs19MiB/0%,no computeapp. Raw failures and all performance negatives preserved. Full reportdocs/AUTONOMOUS_RESEARCH_ROUND4.md; commands and ledgerresults/autonomous_round4/.
+
+## 2026-10-10 — External CPU review of Round4 negative screens
+
+- Reviewed commit: 465c4d2240b34210e93d6d861e3ec0f9fc830774; no new GPU execution.
+- Read Round4 report/protocol, retention and resource-witness code, diagnosis/control summaries. Independently recomputed full session E2E from the three control raw run.json.gz files and gate paired effects from metrics.csv.
+- Verified control medians: 23746.274183 / 25377.636648 / 28517.682129 ms. Gate median paired effects: -0.367807% at 2 GiB and -0.629483% at 4 GiB. All eight pin sessions slower in this one triplet; no significance/stable effect claim.
+- Raw pin log: 32 acquire/release pairs, 28 HOL fallback +4 expiry, no REAL_REQUEST_ALLOCATED release. Hold times min/median/max 1.6292/274.2577/1006.6065 ms; final pins zero. No handoff event does not imply zero ordinary local hits after fallback.
+- Reproduction command and source paths: docs/RESEARCH_REVIEW_ROUND4_20261010.md section 5. Scope excludes full archive/GPU correctness revalidation.
+- Decision recommendation: pause further same-workload JIT/gate/fixed-TTL/order tuning and first assess one evidence-backed research opportunity. No serving changes or new experiment authorization beyond existing AGENTS scope. Commit identity: Git history for this entry.
