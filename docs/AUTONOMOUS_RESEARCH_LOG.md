@@ -156,3 +156,5 @@
 - 本机无损归档独立校验全部payload/source/bytes/pool；30测试、真实native metadata生命周期通过。pytest临时路径问题、tar沙箱权限失败及随后INVALID空摘要保留并修复，未改有效GPU数据。无新多会话GPU内容oracle。
 - 新增0.3645630389GPUh，连续累计1.2500769679/4h；CPU处理不占GPU。报告docs/AUTONOMOUS_RESEARCH_HOST_PREFIX_FOLLOWUP_20261010.md，原始results/host_prefix_followup_20261010/。
 - 决定：保留简单容量受限工程候选，停止本轮、不开发动态评分或正式矩阵；先证明真实部署下合理host预算确有压力，再决定机制深化。生产适用性/动态公平性/owned-memory-time/SOTA优势仍UNKNOWN。
+
+- 2026-10-11 外部审查c62d9f6：独立复算全部16run原始requests与指标快照，确认单会话胜NoHost、多会话前缀保留及受控无reset约8.88%会话改善；未通过历史10%门槛，hot/ample单会话退化警示保留。新增GPU消耗0，未重跑payload哈希或完整GPU测试。下一自主目标为验证合理GPU/pinned-host预算下的部署价值，不追阈值调参、不规定细碎实验步骤。审查与范围docs/RESEARCH_REVIEW_FOLLOWUP_20261011.md，复算results/research_review_followup_20261011/spotcheck.json。
