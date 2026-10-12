@@ -1,0 +1,86 @@
+{
+  ".gitattributes": {
+    "bytes": 88,
+    "sha256": "703d937151448b953ef0422da4a93b36dd7bf1df7da90c334a5b28b8f0d8ffaf"
+  },
+  "commands.sh": {
+    "bytes": 1703,
+    "sha256": "0d5ad34163af6c1747e5adc48241aa48e143e957d5ea4528380bb4bdb45ecc5f"
+  },
+  "installation.json": {
+    "bytes": 555,
+    "sha256": "db78a09793d6741435ab25fb34b69d0e485e4667e5e9d87495c5dd91cf1dd5bd"
+  },
+  "local_validation.json": {
+    "bytes": 595,
+    "sha256": "10bbd0428aed36ec3adab4abc2790c80b7bf3bc4c3ef3f5b658486509880b061"
+  },
+  "native_audit_v1.json": {
+    "bytes": 3623,
+    "sha256": "2f9bd4df1a71f99a2b7acd08c2a4bbddf793e70025208dd685a61aa6244d9cb1"
+  },
+  "native_audit_v1.log": {
+    "bytes": 4600,
+    "sha256": "c17e78ca80cf49ec1527f1ec1bd37841970e6d3949e37580350e5a3b8de21b84"
+  },
+  "native_audit_v2.json": {
+    "bytes": 5503,
+    "sha256": "978f88ba818412d3f308e2528e6de7b95291dc2755cd4c10e96d96aaeda857ca"
+  },
+  "native_audit_v2.log": {
+    "bytes": 7197,
+    "sha256": "7364320f65df142715fed3e0dad36f5d0fb26dd5d0ce56a7b644ac91c480603b"
+  },
+  "summary.md": {
+    "bytes": 1604,
+    "sha256": "98b66993465ff2d8b8c60fce5d6f505a9af301896a95265d06bdf23d36419e0b"
+  },
+  "source_v1/manifest.json": {
+    "bytes": 504,
+    "sha256": "bbc69a4aa2627ff30f702db0d34af881cc4076dc192871b4c0ca09d84d5891f1"
+  },
+  "source_v2/manifest.json": {
+    "bytes": 504,
+    "sha256": "a0a0d68a359bdb329fd0265d6757311e8737746a601ffb06c1ea58267371fd3e"
+  },
+  "source_v2/slackkv/m1/controller.py": {
+    "bytes": 6008,
+    "sha256": "6efb547b3f69fc8373862544474521706541968dff248e79614ff474cda59bf5"
+  },
+  "source_v2/slackkv/m1/native.py": {
+    "bytes": 11705,
+    "sha256": "6bf1c343ed8614a464d5e3dc0babbe06ebd1d71541a0e52b0046263f3ab38059"
+  },
+  "source_v2/slackkv/m1/spec.py": {
+    "bytes": 2277,
+    "sha256": "44e23e624eb10d1febbd888594e48a5d4ef982b39259f145bfe7bf1080715de5"
+  },
+  "source_v2/experiments/system_m1/install.py": {
+    "bytes": 3672,
+    "sha256": "518a260d0306dcf55f203a5a4f0486ab30cb7551c94419e1de582c37d1de5f75"
+  },
+  "source_v2/experiments/system_m1/native_audit.py": {
+    "bytes": 16434,
+    "sha256": "74b9822943ebc6df65b7cec4ae6500ea6bd224e341cfecd23b70efddc12ebfe2"
+  },
+  "source_v1/slackkv/m1/controller.py": {
+    "bytes": 6008,
+    "sha256": "6efb547b3f69fc8373862544474521706541968dff248e79614ff474cda59bf5"
+  },
+  "source_v1/slackkv/m1/native.py": {
+    "bytes": 11172,
+    "sha256": "2691b803a05a8922b5b0a650c8a1794be7d11c17311935111ee174aa1fa84e4a"
+  },
+  "source_v1/slackkv/m1/spec.py": {
+    "bytes": 1763,
+    "sha256": "4d2439414003a8ec86eedbda83b38cfebcb36748c7e6b6e46676119cd80d668f"
+  },
+  "source_v1/experiments/system_m1/install.py": {
+    "bytes": 3672,
+    "sha256": "518a260d0306dcf55f203a5a4f0486ab30cb7551c94419e1de582c37d1de5f75"
+  },
+  "source_v1/experiments/system_m1/native_audit.py": {
+    "bytes": 11192,
+    "sha256": "12ea3252b5283f7639e44eeb43811489e4bd639b86a8570d562a442e2321c2ef"
+  }
+}

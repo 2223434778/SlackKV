@@ -1,0 +1,135 @@
+Error processing line 1 of /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/lib/python3.11/site-packages/nvidia_cutlass_dsl_packages.pth:
+
+  Traceback (most recent call last):
+    File "<frozen site>", line 195, in addpackage
+    File "<string>", line 1, in <module>
+  ModuleNotFoundError: No module named 'nvidia_cutlass_dsl'
+
+Remainder of file ignored
+W1012 16:55:35.299000 316494 site-packages/torch/utils/cpp_extension.py:140] No CUDA runtime is found, using CUDA_HOME='/usr/local/cuda'
+INFO 10-12 16:55:36 [factory.py:51] Creating offloading spec with name: SlackKVM1Spec
+WARNING 10-12 16:55:36 [base.py:382] Initializing OffloadingSpec. This API is experimental and subject to change in the future as we iterate the design.
+INFO 10-12 16:55:36 [factory.py:51] Creating offloading spec with name: SlackKVM1Spec
+WARNING 10-12 16:55:36 [base.py:382] Initializing OffloadingSpec. This API is experimental and subject to change in the future as we iterate the design.
+{
+  "status": "PASS",
+  "gpu_count": 0,
+  "gpu_hours": 0,
+  "checks": [
+    "old10_ceiling_actual5_preserves_B5",
+    "deepest_load_blocks_trim_then_tail_only_events",
+    "pending_minus1_retired_generation_duplicate_physical_settlement",
+    "failed_ancestor_orphan_tail_eventual_reclaim",
+    "shared_unknown_no_store_native_read_identity_preserved",
+    "short_lends_then_end_releases_next_request_expands",
+    "120_native_interleavings_recover_all_physical_slots",
+    "real_factory_hooks_tp2_all_workers_complete_disabled_native"
+  ],
+  "snapshots": {
+    "old_plan_new_member": {
+      "capacity_blocks": 10,
+      "plan_version": 2,
+      "members": [
+        {
+          "session": "a",
+          "generation": 0,
+          "demand_blocks": 10,
+          "target_blocks": 5,
+          "active_requests": 1,
+          "alive": true,
+          "unsupported": null
+        },
+        {
+          "session": "b",
+          "generation": 0,
+          "demand_blocks": 10,
+          "target_blocks": 5,
+          "active_requests": 1,
+          "alive": true,
+          "unsupported": null
+        }
+      ],
+      "frozen_plans": 2,
+      "generation_tombstones": 2,
+      "unmaterialized_reservations": 0,
+      "physical_ready_blocks": 10,
+      "physical_pending_store_blocks": 0,
+      "physical_load_protected_blocks": 0,
+      "physical_free_blocks": 0,
+      "physical_reserved_bytes": 41943040,
+      "members_physical": [
+        {
+          "session": "a",
+          "generation": 0,
+          "allocated_prefix_blocks": 5,
+          "ready_prefix_blocks": 5,
+          "owned_physical_blocks": 5,
+          "deferred_reclaim_blocks": 0
+        },
+        {
+          "session": "b",
+          "generation": 0,
+          "allocated_prefix_blocks": 5,
+          "ready_prefix_blocks": 5,
+          "owned_physical_blocks": 5,
+          "deferred_reclaim_blocks": 0
+        }
+      ],
+      "metrics": {
+        "observed_requests": 2,
+        "reclaimed_blocks": 0,
+        "admitted_store_blocks": 10,
+        "skipped_store_blocks": 10
+      },
+      "pending_store_batches": 0,
+      "pending_load_batches": 0,
+      "tracked_request_contexts": 2
+    },
+    "factory_connector_tp2": {
+      "capacity_blocks": 10,
+      "plan_version": 1,
+      "members": [
+        {
+          "session": "real",
+          "generation": 0,
+          "demand_blocks": 4,
+          "target_blocks": 4,
+          "active_requests": 1,
+          "alive": true,
+          "unsupported": null
+        }
+      ],
+      "frozen_plans": 1,
+      "generation_tombstones": 1,
+      "unmaterialized_reservations": 0,
+      "physical_ready_blocks": 4,
+      "physical_pending_store_blocks": 0,
+      "physical_load_protected_blocks": 0,
+      "physical_free_blocks": 6,
+      "physical_reserved_bytes": 41943040,
+      "members_physical": [
+        {
+          "session": "real",
+          "generation": 0,
+          "allocated_prefix_blocks": 4,
+          "ready_prefix_blocks": 4,
+          "owned_physical_blocks": 4,
+          "deferred_reclaim_blocks": 0
+        }
+      ],
+      "metrics": {
+        "observed_requests": 1,
+        "reclaimed_blocks": 0,
+        "admitted_store_blocks": 4,
+        "skipped_store_blocks": 0
+      },
+      "pending_store_batches": 0,
+      "pending_load_batches": 0,
+      "tracked_request_contexts": 1
+    }
+  },
+  "native_manager_sha256": "fd89bb49d46a01fdf6acfdf6c3c1867e5cb3116a0b24bc47859cc83de34841bd",
+  "torch": "2.11.0+cu126",
+  "scope": "CPU/native metadata only; synthetic request metadata; no GPU tensors/DMA/content/performance validation",
+  "cpu_wall_seconds": 27.55575060800038
+}

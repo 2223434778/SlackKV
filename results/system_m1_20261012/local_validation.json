@@ -1,0 +1,12 @@
+{
+  "baseline_commit": "f2d6af0",
+  "python": "3.13.5",
+  "command": "E:\\Software\\Anaconda\\python.exe -m pytest tests/test_system_m1.py tests/test_large_model.py tests/test_host_prefix_followup.py tests/test_deployment_opportunity.py tests/test_host_prefix.py tests/test_opportunity_decision.py -q --basetemp .tmp/pytest_m1_final",
+  "status": "PASS",
+  "passed": 64,
+  "new_controller_tests": 12,
+  "pytest_seconds": 0.39,
+  "gpu_hours": 0,
+  "historical_continuous_gpu_hours": 4.191988019727527,
+  "scope": "CPU controller and existing related regression tests; not GPU/model validation"
+}

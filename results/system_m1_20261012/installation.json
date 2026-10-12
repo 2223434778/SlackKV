@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETE",
+  "gpu_count": 0,
+  "gpu_hours": 0,
+  "base": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source",
+  "target": "/media/a6000/D/ZhaoBinHe/slackkv-system-m1-native",
+  "original_scheduler_sha256": "bc883cf47d882d4406d7708a8d3520abe2752f545985705126f41fca66558bf0",
+  "patched_scheduler_sha256": "2bbeece3ed513bceef732112e0cb511c9c93ff9b3cb2488648371a6711b73482",
+  "disabled_ast_equal": true,
+  "scope": "two opt-in scheduler metadata hooks; no worker/DMA/GPU allocator changes",
+  "cpu_wall_seconds": 0.9878258159988036
+}

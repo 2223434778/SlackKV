@@ -190,3 +190,6 @@
 - 2026-10-12执行侧审查719d856：整体接纳M1优先、成熟组件组合和预取关闭；核查实际native manager/LRU/BlockStatus/store/completion。需补清原子victim入口、冻结旧计划的未使用承诺、ref_cnt=-1写入保护/TP汇总、迟到通知物理结算、共享fallback统一计费及write游标。max-min公平不替代latency公平，M2/M3不为完整架构强行加入。审查文档docs/SLACKKV_SYSTEM_ARCHITECTURE_EXECUTION_REVIEW_20261012.md；本次无运行时实现或新实验，GPU账本不变，未扩旧预算。
 
 - 2026-10-12 接纳599b89b执行侧架构审查，原子store/reclaim、逐批准入、物理/逻辑结算分离、共享降级计费和write游标约束合并至主架构§9。审查侧检查归档manager/LRU/TP scheduler，未执行新测试或GPU。M2可与M1已有全存行为合并，M3保持可选。下一实质交付为M1实现和CPU/native验证，不再开启纯文档审查循环；预算不扩展。
+
+
+- 2026-10-12 system_m1_20261012：按 f2d6af0 主架构§9实现 M1，不再仅审查。新增 max-min 已知前缀分配、短需求借用、逐批 native 净新增准入、保护引用的连续尾部回收、跨 generation 物理结算；原生按需恢复，预取关闭。隔离 overlay 仅两处 metadata hook，disabled AST 相等，不修改旧 native tree。64项本地测试通过，native v1/v2分别8/12组PASS，每版含120次交错操作；实际 store-job builder/cursor/TP完成汇总验证通过。M1模型内容/性能/后台公平性 UNKNOWN，未把历史32B StaticFair收益记为M1成果。共享、分支、未知身份停止可选写入，不无计费切Full；显式end、tombstone GC未实现等限制完整披露。一次工具429未执行命令，未绕过审批，稍后重试通过。新增GPU0，连续4.191988019727527GPUh不变。报告docs/SLACKKV_SYSTEM_M1_REPORT.md，原始结果results/system_m1_20261012/。决定：交付CPU/native里程碑；下一步小模型内容/生命周期smoke需新数值授权，M2/M3不提前开展。

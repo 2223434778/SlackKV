@@ -679,3 +679,6 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 - 2026-10-12 用户批准分阶段系统架构交接：当前优先实现动态前缀基本份额、弹性借用与原生安全尾部回收（M1），随后压力切换（M2），有明确机会再加可选预取（M3）。复用compiled/native offload，允许成熟组件，不把旧反序多种子矩阵作为开发前置条件。文档docs/SLACKKV_SYSTEM_ARCHITECTURE_20261012.md；AGENTS新增当前入口与优先级，旧证据保留。仅文档交接，未实现运行时或新增GPU；数字预算未扩大，代码/CPU验证可先自主推进。
 
 - 2026-10-12 接纳599b89b执行侧架构审查，原子store/reclaim、逐批准入、物理/逻辑结算分离、共享降级计费和write游标约束合并至主架构§9。审查侧检查归档manager/LRU/TP scheduler，未执行新测试或GPU。M2可与M1已有全存行为合并，M3保持可选。下一实质交付为M1实现和CPU/native验证，不再开启纯文档审查循环；预算不扩展。
+
+
+- 2026-10-12 system_m1_20261012：实现基线f2d6af0。Windows Python3.13.5：python -m pytest tests/test_system_m1.py tests/test_large_model.py tests/test_host_prefix_followup.py tests/test_deployment_opportunity.py tests/test_host_prefix.py tests/test_opportunity_decision.py -q --basetemp .tmp/pytest_m1_final，64 passed/0.39s。Ubuntu vLLM0.23.0/Torch2.11.0+cu126，CUDA_VISIBLE_DEVICES=''，python -m experiments.system_m1.native_audit --output results/system_m1_20261012/native_audit_v2.json，12组PASS/6.68947s；v1为8组PASS/27.55575s。包含120次真实manager元数据交错，全部13槽回收；10块池旧ceil10/新quota5、TP2全worker汇总、native builder部分源/目标及cursor不回退通过。命令/env/冻结源码/安装SHA/两版日志见results/system_m1_20261012/；完整解释docs/SLACKKV_SYSTEM_M1_REPORT.md。无GPU tensor/DMA/model/performance验证，新增GPU0，历史账本不变。工具审批429未执行一次，稍后重试成功；未丢弃失败数据，无native FAILED run。实现提交以本条所在Git commit为准。

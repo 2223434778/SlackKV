@@ -236,3 +236,6 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - 2026-10-12 用户批准分阶段系统架构交接：当前优先实现动态前缀基本份额、弹性借用与原生安全尾部回收（M1），随后压力切换（M2），有明确机会再加可选预取（M3）。复用compiled/native offload，允许成熟组件，不把旧反序多种子矩阵作为开发前置条件。文档docs/SLACKKV_SYSTEM_ARCHITECTURE_20261012.md；AGENTS新增当前入口与优先级，旧证据保留。仅文档交接，未实现运行时或新增GPU；数字预算未扩大，代码/CPU验证可先自主推进。
 
 - 2026-10-12 接纳599b89b执行侧架构审查，原子store/reclaim、逐批准入、物理/逻辑结算分离、共享降级计费和write游标约束合并至主架构§9。审查侧检查归档manager/LRU/TP scheduler，未执行新测试或GPU。M2可与M1已有全存行为合并，M3保持可选。下一实质交付为M1实现和CPU/native验证，不再开启纯文档审查循环；预算不扩展。
+
+
+- 2026-10-12 M1原子适配决策：采用真实CPUOffloadingManager subclass而非另建物理缓存；在同一个store/reclaim锁入口使用actual free+net new，禁止受控store触发任意LRU驱逐。冻结请求上限可缩不可在本请求内随目标增长；不保留未物化整计划承诺。最深引用受保护时不能删祖先，过期generation通知仍完成物理结算，原生cursor不回退。理由：避免旧ceiling挤掉新成员、pending=-1误free和共享无计费Full回退。替代方案整计划reservation/单次缩额后任意LRU/热切换Full未采用。支持single full-attention LRU TP，其他布局拒绝；共享/未知/分支保守停止optional writes，read保留native身份。session end在scheduler线程显式传递，暂无TTL或生产tombstone GC；动态份额不等于延迟公平。CPU/native验证通过，但GPU内容与性能仍UNKNOWN，按新授权再做smoke。详见docs/SLACKKV_SYSTEM_M1_REPORT.md。
