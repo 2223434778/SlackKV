@@ -226,3 +226,5 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - 2026-10-12 deployment_opportunity：累计proxy输入不能证明同时驻留压力；离线future-needed只能定义保留目标，不能包装成在线policy或最小容量下界。模型bytes/token用真实配置计算，但proxy/目标tokenizer与endpoint/硬件时间不可直接映射。保留Full/NoHost强基线，不在未经证实的512MiB生产预算下扩展动态策略。32B TP2长上下文仅资源可行性候选，GPU池未测、需求UNKNOWN。服务器研究盘消失时不自行改挂载/安装环境/重置预算；已设计pin32实验保持NOT_STARTED而非失败或成功。详见AUTONOMOUS_RESEARCH_DEPLOYMENT_OPPORTUNITY_20261012.md。
 
 - 2026-10-12恢复：选空闲GPU1进行host诊断，不因GPU0远程桌面占用终止其他服务；历史family缺失拒绝启动。32GiB实际pin成功证明512MiB不是本机物理必要上限；27s初始化与常驻RSS说明预算不是无成本。CPU pinned allocator缓存不能等同请求引用泄漏，不用VmPin/VmLck判pin正确性。保留未挂盘历史，不将此资源诊断包装为Serving加速；继续以合理Full为基线。
+
+- 2026-10-12 外部审查b85027a：复算27 namespace汇总、32B KV/权重容量与pin32 RSS/系统内存差，支持报告边界；新增GPU0。32GiB分配成功不等于serving性能通过，27s是初始化成本而非逐请求成本。下一自主目标为明确部署下Full/NoHost的实际可避免成本，允许有依据的透明合成场景，不强制完整生产trace或自动转32B。交接docs/RESEARCH_REVIEW_DEPLOYMENT_20261012.md。

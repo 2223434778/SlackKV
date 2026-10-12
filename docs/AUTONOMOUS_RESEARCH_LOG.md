@@ -169,3 +169,5 @@
 - 新增GPU0，连续1.2500769679056248/4h；两种后续runner预算纳入新family。报告docs/AUTONOMOUS_RESEARCH_DEPLOYMENT_OPPORTUNITY_20261012.md；原始事件、容量、官方metadata与环境证据results/deployment_opportunity_20261011/。
 
 - 2026-10-12恢复：用户修复研究盘，原路径/runtime/账本可访问，保留dirty服务器工作树。GPU0先有RustDesk占用，选择GPU1；新增GPU选择和历史账本缺失拒绝启动，40 tests PASS。pin32_20261012实际32GiB pinned分配+zero27.01465s，整worker55.67864s；RSS+32.104GiB，del+GC仍缓存，进程退出后系统可用RAM恢复；VmPin/VmLck0不能否定实际is_pinned=True。无需256/512MiB物理cap，无新增模型性能证明。新增0.01574406685GPUh，累计1.2658210347572914/4。原始probe结果和报告恢复补充均已保存。
+
+- 2026-10-12 外部审查b85027a：复算27 namespace汇总、32B KV/权重容量与pin32 RSS/系统内存差，支持报告边界；新增GPU0。32GiB分配成功不等于serving性能通过，27s是初始化成本而非逐请求成本。下一自主目标为明确部署下Full/NoHost的实际可避免成本，允许有依据的透明合成场景，不强制完整生产trace或自动转32B。交接docs/RESEARCH_REVIEW_DEPLOYMENT_20261012.md。
