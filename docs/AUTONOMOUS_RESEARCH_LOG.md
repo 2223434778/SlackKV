@@ -186,3 +186,5 @@
 - 2026-10-12 独立审查eead834：复算三方法原始请求计时/记录哈希配对和迁移来源，确认Fair相对NoHost/Full会话E2E−16.44%/−18.40%，接受初步整体正结果。保留单run、配置差异与后台输出阶段代价；未重算payload SHA/完整oracle或新增GPU。下一目标为自主反序复验和少量收益边界，遵守仅完成本组三方法的4.5GPUh授权范围。详见docs/RESEARCH_REVIEW_LARGE_MODEL_20261012.md及results/research_review_large_model_20261012/spotcheck.json。
 
 - 2026-10-12 用户批准分阶段系统架构交接：当前优先实现动态前缀基本份额、弹性借用与原生安全尾部回收（M1），随后压力切换（M2），有明确机会再加可选预取（M3）。复用compiled/native offload，允许成熟组件，不把旧反序多种子矩阵作为开发前置条件。文档docs/SLACKKV_SYSTEM_ARCHITECTURE_20261012.md；AGENTS新增当前入口与优先级，旧证据保留。仅文档交接，未实现运行时或新增GPU；数字预算未扩大，代码/CPU验证可先自主推进。
+
+- 2026-10-12执行侧审查719d856：整体接纳M1优先、成熟组件组合和预取关闭；核查实际native manager/LRU/BlockStatus/store/completion。需补清原子victim入口、冻结旧计划的未使用承诺、ref_cnt=-1写入保护/TP汇总、迟到通知物理结算、共享fallback统一计费及write游标。max-min公平不替代latency公平，M2/M3不为完整架构强行加入。审查文档docs/SLACKKV_SYSTEM_ARCHITECTURE_EXECUTION_REVIEW_20261012.md；本次无运行时实现或新实验，GPU账本不变，未扩旧预算。
