@@ -232,3 +232,5 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - 2026-10-12 large_model：自然32B/TP2 GPU池17.09GiB、host64GiB、21长历史合成session，无reset；静态前缀准入比compiled NoHost/Full E2E−16.44/−18.40%，全部session和BG makespan满足冻结退化约束。Full 448.875GiB写入未复用，Fair真实前缀恢复524,288tokens，支持继续这一候选，停止条件A。P95未达10%、第三BG平均响应后段间隔恶化、同host池未降低RSS、单seed/顺序/非生产和不完整生命周期oracle均保留；不宣称SOTA或稳定性，不删除旧负对照，不继续旧JIT调参。连续4.191988/用户批准4.5GPUh，只完成冻结组。下一轮先反序复验与少量regime验证，再决定动态额度。
 
 - 2026-10-12 独立审查eead834：复算三方法原始请求计时/记录哈希配对和迁移来源，确认Fair相对NoHost/Full会话E2E−16.44%/−18.40%，接受初步整体正结果。保留单run、配置差异与后台输出阶段代价；未重算payload SHA/完整oracle或新增GPU。下一目标为自主反序复验和少量收益边界，遵守仅完成本组三方法的4.5GPUh授权范围。详见docs/RESEARCH_REVIEW_LARGE_MODEL_20261012.md及results/research_review_large_model_20261012/spotcheck.json。
+
+- 2026-10-12 用户批准分阶段系统架构交接：当前优先实现动态前缀基本份额、弹性借用与原生安全尾部回收（M1），随后压力切换（M2），有明确机会再加可选预取（M3）。复用compiled/native offload，允许成熟组件，不把旧反序多种子矩阵作为开发前置条件。文档docs/SLACKKV_SYSTEM_ARCHITECTURE_20261012.md；AGENTS新增当前入口与优先级，旧证据保留。仅文档交接，未实现运行时或新增GPU；数字预算未扩大，代码/CPU验证可先自主推进。

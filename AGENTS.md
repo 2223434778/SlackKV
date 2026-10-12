@@ -1,5 +1,25 @@
 # SlackKV Project Rules
 
+## Current implementation direction — 2026-10-12
+
+The user explicitly accepted the system design and asked to upload it so the
+execution Codex can implement it step by step. Read
+`docs/SLACKKV_SYSTEM_ARCHITECTURE_20261012.md` first for this work.
+Prioritize milestone M1: dynamic host-prefix allocation, elastic borrowing, safe
+tail reclamation, and native on-demand offload. Reuse the existing compiled
+runtime and lifecycle mechanisms. Leave speculative prefetch off initially.
+The user permits reuse of mature methods and prioritizes implementation progress;
+repeating the old reverse-order/multi-seed performance matrix is not a
+prerequisite for developing this system. Preserve correctness and truthful
+evidence; this does not retroactively validate or change historical results.
+Choose implementation details autonomously and deliver a concrete runnable
+milestone with its tested scope before expanding to M2/M3.
+The latest architecture supersedes earlier review recommendations that put
+repeatability experiments first. It does not grant a new numeric GPU budget:
+the recorded 4.5 GPU-hour exception was restricted to the prior matched triple.
+Complete authorized code/CPU validation and prepare a concrete GPU smoke plan
+before requesting additional GPU allowance if none has since been granted.
+
 ## Current authority override — 2026-10-09
 
 The user explicitly authorized autonomous algorithm research, architecture changes,
