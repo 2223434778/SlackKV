@@ -72,3 +72,27 @@ def test_event_sweep_matches_independent_interval_reference():
         assert row['active_input_proxy_tokens'] == len(active) * 64
         assert row['completed_future_needed_proxy_tokens'] == len(completed & future) * 64
         assert row['union_proxy_tokens'] == len(active | (completed & future)) * 64
+
+
+def test_pin_probe_selects_idle_device_without_disrupting_busy_peer():
+    import pytest
+    from experiments.deployment_opportunity.pin_probe import selected_gpu_idle
+    assert selected_gpu_idle('321, 0\n19, 0\n', 1)
+    assert not selected_gpu_idle('321, 0\n19, 0\n', 0)
+    assert not selected_gpu_idle('19, 1\n', 0)
+    with pytest.raises(ValueError):
+        selected_gpu_idle('19, 0\n', 1)
+
+
+def test_pin_budget_refuses_missing_history_and_preserves_continuity(tmp_path):
+    import json
+    import pytest
+    from experiments.deployment_opportunity.pin_probe import budget
+    with pytest.raises(RuntimeError, match='ledger unavailable'):
+        budget(tmp_path)
+    for family in ('autonomous_fork', 'autonomous_round4', 'host_prefix_cost_20261010', 'host_prefix_followup_20261010'):
+        path = tmp_path / 'results' / family / 'run' / 'execution.json'
+        path.parent.mkdir(parents=True)
+        field = 'gpu_hours_conservative' if family in ('autonomous_fork', 'autonomous_round4') else 'gpu_hours'
+        path.write_text(json.dumps(dict(status='COMPLETE', **{field: .2})))
+    assert sum(budget(tmp_path).values()) == pytest.approx(.8)

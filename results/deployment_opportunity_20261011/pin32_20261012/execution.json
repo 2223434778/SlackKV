@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "gpu_count": 1,
+  "gpu_hours_before": 1.2500769679056247,
+  "gpu_index": 1,
+  "gpu_before": "16, 0\n16, 0\n",
+  "budget_families": {
+    "autonomous_fork": 0.20048675264813937,
+    "autonomous_round4": 0.546220108203189,
+    "host_prefix_cost_20261010": 0.1388070681688583,
+    "host_prefix_followup_20261010": 0.36456303888543823,
+    "deployment_opportunity_20261011": 0
+  },
+  "started_unix": 1791776332.316789,
+  "bytes": 34359738368,
+  "runner_sha256": "d57e3663cb477e5f7f16e99fccbb0b4aaf055eef4935adc77e119a3c47b3729e",
+  "kind": "allocation diagnostic, no model or GPU tensor",
+  "elapsed_s": 55.678640666000035,
+  "finished_unix": 1791776387.9954238,
+  "gpu_hours": 0.015744066851666676,
+  "exit_margin_s": 1
+}

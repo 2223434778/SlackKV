@@ -167,3 +167,5 @@
 - 38项相关测试通过；独立区间集合参考检查共享/完成时序、namespace隔离。当前1.5B双重压力没有可信证据，32B长上下文只保留为资源可行性候选，部署价值UNKNOWN，不扩大任意小cap矩阵。
 - 32GiB pinned probe已设计但NOT_STARTED_ENVIRONMENT：额度恢复后研究盘/media/a6000/D不存在，repo/runtime/账本均不可访问，upload和创建临时目录失败。仅只读诊断，未挂盘/sudo/改环境；请求原挂载点或新路径。无新GPU性能或正确性结论。
 - 新增GPU0，连续1.2500769679056248/4h；两种后续runner预算纳入新family。报告docs/AUTONOMOUS_RESEARCH_DEPLOYMENT_OPPORTUNITY_20261012.md；原始事件、容量、官方metadata与环境证据results/deployment_opportunity_20261011/。
+
+- 2026-10-12恢复：用户修复研究盘，原路径/runtime/账本可访问，保留dirty服务器工作树。GPU0先有RustDesk占用，选择GPU1；新增GPU选择和历史账本缺失拒绝启动，40 tests PASS。pin32_20261012实际32GiB pinned分配+zero27.01465s，整worker55.67864s；RSS+32.104GiB，del+GC仍缓存，进程退出后系统可用RAM恢复；VmPin/VmLck0不能否定实际is_pinned=True。无需256/512MiB物理cap，无新增模型性能证明。新增0.01574406685GPUh，累计1.2658210347572914/4。原始probe结果和报告恢复补充均已保存。

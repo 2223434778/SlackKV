@@ -11,3 +11,5 @@ Resource arithmetic: FP16 KV bytes/token28672 for cached1.5B,262144 for official
 Conclusion: partial-prefix deployment value UNKNOWN. Reasonable current1.5B budgets do not establish double pressure;32B long contexts are a feasibility candidate only. Keep Full/NoHost, avoid arbitrary tiny host caps. Await existing research volume restoration before host measurement. No new correctness/fairness/performance claim. GPU added0; continuous used1.2500769679056248/4h.
 
 Full report and commands: `docs/AUTONOMOUS_RESEARCH_DEPLOYMENT_OPPORTUNITY_20261012.md`. Frozen protocol: `docs/DEPLOYMENT_OPPORTUNITY_PROTOCOL_20261011.md`.
+
+Restoration addendum: user restored original disk; pin32_20261012 PASS on GPU1. Real32GiB pinned zero allocation27.01465s, worker lifecycle55.67864s. RSS increased32.104GiB; del+GC retained pool, process exit restored system available memory.40 related tests pass. New cost0.015744066851666676GPUh, continuous1.2658210347572914/4h. Earlier NOT_STARTED and GPU0 descriptions are historical, preserved as evidence. No serving-performance/SLO claims; feasible32GiB host allocation does not justify an arbitrary512MiB deployment cap.

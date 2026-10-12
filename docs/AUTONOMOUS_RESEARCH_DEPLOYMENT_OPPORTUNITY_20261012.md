@@ -2,6 +2,8 @@
 
 2026-10-11启动，2026-10-12恢复执行；基线 `834ed5a`。回应 `RESEARCH_REVIEW_FOLLOWUP_20261011.md`：本阶段判断合理资源下是否存在机会，不重新解释前轮10%性能门槛。
 
+**恢复补充：** 用户修复掉盘后，原repo/runtime/历史账本恢复。`pin32_20261012`已完成PASS，GPU1、32GiB实际pinned分配、4CPU threads。40项相关测试通过。下文“未启动”描述第一次归档的历史状态；原环境故障证据不删除。没有新增模型性能对照。
+
 ## 结论与决策
 
 **目前没有足够证据把部分前缀升级为自然部署中的端到端优化。** 已完成真实来源的 CPU 工作集审计、模型配置容量计算和服务器资源检查。1.5B 小模型当前的合理 GPU/host 容量尚无双重不足证据；32B TP2 长上下文是更有压力的可行性候选，但实际可用 KV 池、host 成本、需求和延迟均未实测。停止在任意512MiB host上扩展复杂算法，保留既有部分前缀机制证据和完整 offload 强基线。
@@ -92,3 +94,15 @@ python -m experiments.deployment_opportunity.capacity --directory results/deploy
 ```
 
 原始文件获取见`experiments/opportunity_decision/fetch.py`与既有source_manifest。metadata重新获取会解析当时main，精确复核本次应使用已冻结revision URLs和manifest SHA。本阶段新增GPU **0**，连续预算仍为 **1.2500769679056248 / 4 GPUh**。没有重置预算；pin脚本未启动不计作GPU成功实验。
+
+## 研究盘恢复后：真实32GiB pinned-host测量
+
+上段预算为首次CPU归档状态。恢复后probe新增 **0.015744066851666676 GPUh**，当前连续 **1.2658210347572914 / 4 GPUh**。计费包括父进程等待worker启动/退出及1秒退出余量，没有重置预算。
+
+```bash
+/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python /media/a6000/D/ZhaoBinHe/SlackKV/.tmp/deployment_pin_probe_20261012.py --root /media/a6000/D/ZhaoBinHe/SlackKV --name pin32_20261012 --gpu 1
+```
+
+原始结果`results/deployment_opportunity_20261011/pin32_20261012/`。分配+zero27.01465s，整个worker含启动/退出55.67864s。分配前MemAvailable129,493,405,696bytes，分配后94,210,326,528bytes，下降约32.859GiB；worker RSS480,247,808→34,952,253,440bytes，增加32.104GiB。del+GC后RSS34,952,257,536bytes，没有马上归还pool；退出后MemAvailable129,676,283,904bytes。VmLck/VmPin均为0但tensor.is_pinned=True，不能把proc字段当pin验证。SwapFree保持不变，最终两GPU16MiB/0%。GPU0之前RustDesk占用在外部已退出；测量未终止任何其他服务。已有cutlass DSL .pth警告仍保留，没有改全局环境。
+
+判断更新：当前32GiB pinned预算可分配，512MiB不是本机物理/硬限制；初始化和常驻成本必须计入。不能外推64GiB分配、模型加载后的headroom或并发serving吞吐；没有质量/SLO验证，不认定生产预算。优先在合理Full配置下验证真正压力，当前不扩大partial矩阵。

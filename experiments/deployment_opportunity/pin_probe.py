@@ -22,6 +22,29 @@ def memory():
     return result
 
 
+def budget(root):
+    families = ('autonomous_fork', 'autonomous_round4', 'host_prefix_cost_20261010',
+                'host_prefix_followup_20261010', 'deployment_opportunity_20261011')
+    costs = {}
+    for family in families:
+        executions = [json.loads(p.read_text()) for p in (root / 'results' / family).glob('*/execution.json')]
+        if not executions and family != families[-1]:
+            raise RuntimeError('historical budget ledger unavailable: ' + family)
+        if any(row['status'] == 'RUNNING' for row in executions):
+            raise RuntimeError('unresolved owned run')
+        key = 'gpu_hours_conservative' if family in families[:2] else 'gpu_hours'
+        costs[family] = sum(row[key] for row in executions)
+    return costs
+
+
+def selected_gpu_idle(text, gpu):
+    rows = text.splitlines()
+    if gpu < 0 or gpu >= len(rows):
+        raise ValueError('selected GPU missing')
+    used, utilization = map(int, rows[gpu].split(','))
+    return used <= 64 and utilization == 0
+
+
 def allocate():
     baseline = memory()
     size = 32 * 2**30
@@ -55,23 +78,16 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--root', type=Path, required=True)
     parser.add_argument('--name', required=True)
+    parser.add_argument('--gpu', type=int, default=0)
     args = parser.parse_args()
     if Path(args.name).name != args.name or args.name in ('.', '..'):
         raise ValueError('plain unique name required')
-    families = ('autonomous_fork', 'autonomous_round4', 'host_prefix_cost_20261010',
-                'host_prefix_followup_20261010', 'deployment_opportunity_20261011')
-    costs = {}
-    for family in families:
-        executions = [json.loads(p.read_text()) for p in (args.root / 'results' / family).glob('*/execution.json')]
-        if any(row['status'] == 'RUNNING' for row in executions):
-            raise RuntimeError('unresolved owned run')
-        key = 'gpu_hours_conservative' if family in families[:2] else 'gpu_hours'
-        costs[family] = sum(row[key] for row in executions)
-    if sum(costs.values()) + 60 / 3600 > 4:
+    costs = budget(args.root)
+    if sum(costs.values()) + 61 / 3600 > 4:
         raise RuntimeError('insufficient continuous budget')
     gpu_before = subprocess.check_output(['nvidia-smi', '--query-gpu=memory.used,utilization.gpu',
                                           '--format=csv,noheader,nounits'], text=True)
-    if any(int(line.split(',')[0]) > 64 or int(line.split(',')[1]) != 0 for line in gpu_before.splitlines()):
+    if not selected_gpu_idle(gpu_before, args.gpu):
         raise RuntimeError('GPU not idle; do not disturb other services')
     size = 32 * 2**30
     baseline = memory()
@@ -81,6 +97,7 @@ def main():
     out.mkdir(parents=True, exist_ok=False)
     started = time.monotonic()
     metadata = dict(status='RUNNING', gpu_count=1, gpu_hours_before=sum(costs.values()),
+                    gpu_index=args.gpu, gpu_before=gpu_before,
                     budget_families=costs, started_unix=time.time(), bytes=size,
                     runner_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                     kind='allocation diagnostic, no model or GPU tensor')
@@ -90,7 +107,7 @@ def main():
         # Parent waits for worker exit, including driver cleanup. subprocess.run
         # kills and waits for this owned worker on timeout, even during C++ calls.
         result = subprocess.run([sys.executable, str(Path(__file__).resolve()), '--allocation-worker'],
-                                env={**os.environ, 'CUDA_VISIBLE_DEVICES': '0'},
+                                env={**os.environ, 'CUDA_VISIBLE_DEVICES': str(args.gpu)},
                                 capture_output=True, text=True, timeout=60)
         (out / 'worker.stdout.txt').write_text(result.stdout)
         (out / 'worker.stderr.txt').write_text(result.stderr)

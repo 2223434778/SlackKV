@@ -5,8 +5,8 @@
       "sha256": "730a35ae3d558080083c3103d9ac8100c3f6561678092abe341701dfa331eb1d"
     },
     "budget.json": {
-      "bytes": 378,
-      "sha256": "7068928cd02633ba27c564adfa954e66f4cbb6b2839b040fadef67cdbd11615e"
+      "bytes": 443,
+      "sha256": "32a2b1277758bea6f105ec2bc473cf3f24c6bb579a451e5e79b10fc6b6b3f8bc"
     },
     "capacity.json": {
       "bytes": 2722,
@@ -25,12 +25,32 @@
       "sha256": "4842404670094217f21661d3d3119b3452bd8b7db5624d97cb235e515872ce99"
     },
     "summary.md": {
-      "bytes": 1721,
-      "sha256": "b8e12f64635d66c031059efa624249dec791bdf6fa1191e47ffffae48e14cf32"
+      "bytes": 2252,
+      "sha256": "94e179b4b2d71c22f35f6019c491d0e5ce2eeeadc38b3d21cccbdd6332c84ce8"
     },
     "validation.json": {
-      "bytes": 1123,
-      "sha256": "4aed86fad981c05e94b25d66a88f67b71502e20d39eef4a23efc95a459d4f7a2"
+      "bytes": 1131,
+      "sha256": "6fedbeebf54b9f6791987ff8fe5af7d0f57a5219fde9ba3adcc227a07d79606c"
+    },
+    "pin32_20261012/after_worker_exit.json": {
+      "bytes": 173,
+      "sha256": "ebe0647ecc560c2e8eddd016e0fc51596678daab7714463adc0dde3aee643bec"
+    },
+    "pin32_20261012/allocation.json": {
+      "bytes": 1200,
+      "sha256": "fd52aceb71bc37677dcdc35f8dec89977fe9fa4ef7bc491a6bc2bcaa1298310c"
+    },
+    "pin32_20261012/execution.json": {
+      "bytes": 743,
+      "sha256": "6afa6f33597ea1006d018313c0f6bc9ca9b6a9e197d4a432fa14bd63d0fedd94"
+    },
+    "pin32_20261012/worker.stderr.txt": {
+      "bytes": 362,
+      "sha256": "d4af2fa72285a664facff14ef3fd7570966802dbd554383a1421c7129363355f"
+    },
+    "pin32_20261012/worker.stdout.txt": {
+      "bytes": 1052,
+      "sha256": "a385e6e720425bcc22fae115b77da7cd240eddab430092be198b1bdef8dee54e"
     },
     "qwen32b_metadata/config.json": {
       "bytes": 663,
@@ -49,6 +69,6 @@
     "experiments/deployment_opportunity/analyze.py": "a689a4cea67d1351670c91d7a8ce389c57fddd312cd2242e3e77e10ca585a951",
     "experiments/deployment_opportunity/capacity.py": "6f672bcc3e4e893ae106e11dc05534bb22555af6a200066802f8e45d7ec08f0f",
     "experiments/deployment_opportunity/fetch_model_metadata.py": "3fe11bf9a595e078587b981debd5de49c70a71846cc3fd3052289446e3f4644b",
-    "experiments/deployment_opportunity/pin_probe.py": "cb823a58329273e2f41d2b1ea032dc507302d7ee64cc379c85d5ee85c5daba24"
+    "experiments/deployment_opportunity/pin_probe.py": "d57e3663cb477e5f7f16e99fccbb0b4aaf055eef4935adc77e119a3c47b3729e"
   }
 }

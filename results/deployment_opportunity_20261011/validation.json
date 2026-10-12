@@ -1,10 +1,10 @@
 {
   "cpu_audit": "PASS",
-  "tests_passed": 38,
-  "gpu_probe": "NOT_STARTED_ENVIRONMENT",
+  "tests_passed": 40,
+  "gpu_probe": "PASS_AFTER_DISK_RESTORED",
   "baseline_git": "834ed5a",
   "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
-  "test_command": "python -m pytest -q --basetemp .tmp/pytest_deployment_20261012_3 tests/test_deployment_opportunity.py tests/test_host_prefix_followup.py tests/test_host_prefix.py tests/test_opportunity_decision.py",
+  "test_command": "python -m pytest -q --basetemp .tmp/pytest_deployment_20261012_restored tests/test_deployment_opportunity.py tests/test_host_prefix_followup.py tests/test_host_prefix.py tests/test_opportunity_decision.py",
   "checks": [
     "source complete-file SHA256",
     "official metadata byte count/SHA256",

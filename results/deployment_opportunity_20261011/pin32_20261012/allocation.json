@@ -1,0 +1,43 @@
+{
+  "torch": "2.11.0+cu126",
+  "baseline": {
+    "MemFree_bytes": 128278433792,
+    "MemAvailable_bytes": 129730441216,
+    "SwapFree_bytes": 2147479552,
+    "VmLck_bytes": 0,
+    "VmPin_bytes": 0,
+    "VmRSS_bytes": 18046976
+  },
+  "before_allocate": {
+    "MemFree_bytes": 127726956544,
+    "MemAvailable_bytes": 129493405696,
+    "SwapFree_bytes": 2147479552,
+    "VmLck_bytes": 0,
+    "VmPin_bytes": 0,
+    "VmRSS_bytes": 480247808
+  },
+  "allocated": {
+    "MemFree_bytes": 92393832448,
+    "MemAvailable_bytes": 94210326528,
+    "SwapFree_bytes": 2147479552,
+    "VmLck_bytes": 0,
+    "VmPin_bytes": 0,
+    "VmRSS_bytes": 34952253440
+  },
+  "after_del_gc": {
+    "MemFree_bytes": 92393832448,
+    "MemAvailable_bytes": 94210326528,
+    "SwapFree_bytes": 2147479552,
+    "VmLck_bytes": 0,
+    "VmPin_bytes": 0,
+    "VmRSS_bytes": 34952257536
+  },
+  "allocation_s": 27.01465071199999,
+  "is_pinned": true,
+  "sampled_zero_check": true,
+  "caveats": [
+    "VmLck/VmPin may not expose CUDA registration; zero does not mean unpinned.",
+    "Pinned allocator caching may retain RSS until process exit.",
+    "One allocation does not establish acceptable serving overhead or production budget."
+  ]
+}

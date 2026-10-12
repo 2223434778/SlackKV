@@ -12,3 +12,5 @@
 - 资源：本阶段新增 GPU 0；连续已用 `1.2500769679056248 / 4 GPUh`，不重置预算。
 
 执行 CPU 审计后新增一项预先定义的资源诊断：32 GiB `torch.zeros(pin_memory=True)`，4 CPU threads、单次60秒watchdog、无模型/无GPU tensor。安全门要求两卡空闲且起始 MemAvailable ≥80 GiB，48 GiB剩余为本次安全guard，**不是生产预算**。检查 `is_pinned` 与首尾零值，记录RSS/系统内存/删除后缓存行为；VmLck/VmPin为零不能推断未pin。保守按1 GPU计入整个进程时间，并纳入后续两类runner连续预算。
+
+2026-10-12研究盘恢复后、probe启动前修订：GPU0为RustDesk占用，GPU1空闲。只要求选定设备空闲，以`--gpu 1`隔离诊断，不终止或修改RustDesk。其他指标/内存/时间门槛不变；缺失任一历史预算family时拒绝启动。该诊断不进行GPU性能跨卡比较。
