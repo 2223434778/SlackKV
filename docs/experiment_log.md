@@ -682,3 +682,6 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 
 
 - 2026-10-12 system_m1_20261012：实现基线f2d6af0。Windows Python3.13.5：python -m pytest tests/test_system_m1.py tests/test_large_model.py tests/test_host_prefix_followup.py tests/test_deployment_opportunity.py tests/test_host_prefix.py tests/test_opportunity_decision.py -q --basetemp .tmp/pytest_m1_final，64 passed/0.39s。Ubuntu vLLM0.23.0/Torch2.11.0+cu126，CUDA_VISIBLE_DEVICES=''，python -m experiments.system_m1.native_audit --output results/system_m1_20261012/native_audit_v2.json，12组PASS/6.68947s；v1为8组PASS/27.55575s。包含120次真实manager元数据交错，全部13槽回收；10块池旧ceil10/新quota5、TP2全worker汇总、native builder部分源/目标及cursor不回退通过。命令/env/冻结源码/安装SHA/两版日志见results/system_m1_20261012/；完整解释docs/SLACKKV_SYSTEM_M1_REPORT.md。无GPU tensor/DMA/model/performance验证，新增GPU0，历史账本不变。工具审批429未执行一次，稍后重试成功；未丢弃失败数据，无native FAILED run。实现提交以本条所在Git commit为准。
+
+
+- 2026-10-12 M1修正交接（审查基线92e65cb）：独立执行原始控制器确认 end/finish/collect 后同代迟到请求重新获准（reason=None, ceiling=2, allowed=2）。指导执行侧保留独立结束状态、添加针对性控制器/native回归，并准备内容/生命周期与M1对StaticFair的小规模GPU验证；沿用架构，不扩M2/M3，不要求先做反序多种子。原64项及native审计未由审查侧重跑，本地pytest不可用；本次无代码修复/GPU运行。交接docs/SLACKKV_SYSTEM_M1_CORRECTION_20261012.md。新增0.5GPUh仍为待批准建议，先完成代码/CPU/脚本，若执行会话已有新授权则遵循之。

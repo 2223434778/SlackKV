@@ -193,3 +193,6 @@
 
 
 - 2026-10-12 system_m1_20261012：按 f2d6af0 主架构§9实现 M1，不再仅审查。新增 max-min 已知前缀分配、短需求借用、逐批 native 净新增准入、保护引用的连续尾部回收、跨 generation 物理结算；原生按需恢复，预取关闭。隔离 overlay 仅两处 metadata hook，disabled AST 相等，不修改旧 native tree。64项本地测试通过，native v1/v2分别8/12组PASS，每版含120次交错操作；实际 store-job builder/cursor/TP完成汇总验证通过。M1模型内容/性能/后台公平性 UNKNOWN，未把历史32B StaticFair收益记为M1成果。共享、分支、未知身份停止可选写入，不无计费切Full；显式end、tombstone GC未实现等限制完整披露。一次工具429未执行命令，未绕过审批，稍后重试通过。新增GPU0，连续4.191988019727527GPUh不变。报告docs/SLACKKV_SYSTEM_M1_REPORT.md，原始结果results/system_m1_20261012/。决定：交付CPU/native里程碑；下一步小模型内容/生命周期smoke需新数值授权，M2/M3不提前开展。
+
+
+- 2026-10-12 M1修正交接（审查基线92e65cb）：独立执行原始控制器确认 end/finish/collect 后同代迟到请求重新获准（reason=None, ceiling=2, allowed=2）。指导执行侧保留独立结束状态、添加针对性控制器/native回归，并准备内容/生命周期与M1对StaticFair的小规模GPU验证；沿用架构，不扩M2/M3，不要求先做反序多种子。原64项及native审计未由审查侧重跑，本地pytest不可用；本次无代码修复/GPU运行。交接docs/SLACKKV_SYSTEM_M1_CORRECTION_20261012.md。新增0.5GPUh仍为待批准建议，先完成代码/CPU/脚本，若执行会话已有新授权则遵循之。

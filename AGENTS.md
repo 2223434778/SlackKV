@@ -1,5 +1,16 @@
 # SlackKV Project Rules
 
+## Current M1 correction handoff — 2026-10-12
+
+The user requested guidance to complete the M1 corrections. Follow
+`docs/SLACKKV_SYSTEM_M1_CORRECTION_20261012.md` against implementation `92e65cb`:
+fix ended-generation resurrection after member collection, add focused controller
+and native regressions, and prepare the bounded GPU smoke runner/configuration.
+Keep the existing architecture and M2/M3 disabled. Complete code/CPU work without
+another review-only cycle. Execute GPU work only under applicable user allowance;
+this handoff does not itself add a numeric GPU budget. Preserve prior results and
+separate CPU/native validation from model-content and performance evidence.
+
 ## Current implementation direction — 2026-10-12
 
 The user explicitly accepted the system design and asked to upload it so the

@@ -239,3 +239,6 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 
 
 - 2026-10-12 M1原子适配决策：采用真实CPUOffloadingManager subclass而非另建物理缓存；在同一个store/reclaim锁入口使用actual free+net new，禁止受控store触发任意LRU驱逐。冻结请求上限可缩不可在本请求内随目标增长；不保留未物化整计划承诺。最深引用受保护时不能删祖先，过期generation通知仍完成物理结算，原生cursor不回退。理由：避免旧ceiling挤掉新成员、pending=-1误free和共享无计费Full回退。替代方案整计划reservation/单次缩额后任意LRU/热切换Full未采用。支持single full-attention LRU TP，其他布局拒绝；共享/未知/分支保守停止optional writes，read保留native身份。session end在scheduler线程显式传递，暂无TTL或生产tombstone GC；动态份额不等于延迟公平。CPU/native验证通过，但GPU内容与性能仍UNKNOWN，按新授权再做smoke。详见docs/SLACKKV_SYSTEM_M1_REPORT.md。
+
+
+- 2026-10-12 M1修正交接（审查基线92e65cb）：独立执行原始控制器确认 end/finish/collect 后同代迟到请求重新获准（reason=None, ceiling=2, allowed=2）。指导执行侧保留独立结束状态、添加针对性控制器/native回归，并准备内容/生命周期与M1对StaticFair的小规模GPU验证；沿用架构，不扩M2/M3，不要求先做反序多种子。原64项及native审计未由审查侧重跑，本地pytest不可用；本次无代码修复/GPU运行。交接docs/SLACKKV_SYSTEM_M1_CORRECTION_20261012.md。新增0.5GPUh仍为待批准建议，先完成代码/CPU/脚本，若执行会话已有新授权则遵循之。
