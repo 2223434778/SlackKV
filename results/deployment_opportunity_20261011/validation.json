@@ -1,0 +1,22 @@
+{
+  "cpu_audit": "PASS",
+  "tests_passed": 38,
+  "gpu_probe": "NOT_STARTED_ENVIRONMENT",
+  "baseline_git": "834ed5a",
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+  "test_command": "python -m pytest -q --basetemp .tmp/pytest_deployment_20261012_3 tests/test_deployment_opportunity.py tests/test_host_prefix_followup.py tests/test_host_prefix.py tests/test_opportunity_decision.py",
+  "checks": [
+    "source complete-file SHA256",
+    "official metadata byte count/SHA256",
+    "finite numeric JSON",
+    "2661 requests in 27 namespaces",
+    "independent randomized interval oracle in tests",
+    "budget carry and RUNNING rejection"
+  ],
+  "tool_failures": [
+    "Sandbox public HTTPS WinError10013, succeeded with authorized network escalation",
+    "initial runtime source guessed site-packages path missing, located isolated source",
+    "old lsblk lacks MOUNTPOINTS, successful MOUNTPOINT fallback",
+    "remote upload success:false because original research path disappeared; mkdir permission denied; probe never started"
+  ]
+}

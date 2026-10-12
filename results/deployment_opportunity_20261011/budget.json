@@ -1,0 +1,9 @@
+{
+  "status": "CPU_AUDIT_COMPLETE_GPU_PROBE_NOT_STARTED_ENVIRONMENT",
+  "gpu_hours_added": 0,
+  "continuous_gpu_hours_used": 1.2500769679056248,
+  "authorization_gpu_hours": 4,
+  "gpu_hours_remaining": 2.7499230320943752,
+  "history_budget_source": "results/host_prefix_followup_20261010/budget.json",
+  "pin_probe": "NOT_STARTED; original server research volume unavailable"
+}

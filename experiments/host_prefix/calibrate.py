@@ -37,6 +37,10 @@ def main():
     if any(r['status'] == 'RUNNING' for r in followup):
         raise RuntimeError('follow-up owned run unresolved')
     prior_hours += sum(r['gpu_hours'] for r in followup)
+    deployment = [json.loads(f.read_text()) for f in (root / 'results/deployment_opportunity_20261011').glob('*/execution.json')]
+    if any(r['status'] == 'RUNNING' for r in deployment):
+        raise RuntimeError('deployment probe unresolved')
+    prior_hours += sum(r['gpu_hours'] for r in deployment)
     if prior_hours + spent + .5 > 4:
         raise RuntimeError('insufficient authorized GPU budget')
     with socket.socket() as s:

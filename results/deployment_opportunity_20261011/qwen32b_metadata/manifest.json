@@ -1,0 +1,17 @@
+{
+  "model": "Qwen/Qwen2.5-32B-Instruct",
+  "revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+  "revision_lookup_url": "https://huggingface.co/api/models/Qwen/Qwen2.5-32B-Instruct",
+  "files": {
+    "config.json": {
+      "url": "https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/config.json",
+      "bytes": 663,
+      "sha256": "9c6772f138ef9e5b3d1c18f2c87e451bbc01f5f1a4eabb36f9bf4f53829b903e"
+    },
+    "model.safetensors.index.json": {
+      "url": "https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model.safetensors.index.json",
+      "bytes": 63248,
+      "sha256": "0183543f2e6e40d3d1e863ed0b2a8c9cdaf2ee4045ce724a45cea30e9995a0af"
+    }
+  }
+}

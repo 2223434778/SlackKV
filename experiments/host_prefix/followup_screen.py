@@ -37,7 +37,8 @@ def cap(policy, length, quota):
 
 def budget(root):
     costs = {}
-    for family in ('autonomous_fork', 'autonomous_round4', 'host_prefix_cost_20261010', FAMILY):
+    for family in ('autonomous_fork', 'autonomous_round4', 'host_prefix_cost_20261010', FAMILY,
+                   'deployment_opportunity_20261011'):
         rows = [json.loads(f.read_text()) for f in (root / 'results' / family).glob('*/execution.json')]
         if any(r['status'] == 'RUNNING' for r in rows):
             raise RuntimeError('unresolved owned execution')

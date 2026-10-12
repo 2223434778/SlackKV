@@ -221,3 +221,6 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - 2026-10-10 three_question_followup：NoHost补强单会话partial机制收益；静态均分保住两个会话前缀但只有8.4/8.9%P95收益；自然驱逐压力下会话E2E约−8.88%，未过10%预注册门槛。保留简单候选，不调阈值/动态权重。GPU-hot无额外命中，host充足应全存；普通Full比NoHost的大收益不归为partial算法。真实部署host不足尚未证实，不能从受控512MiB推断生产意义。详细报告与16run数据见AUTONOMOUS_RESEARCH_HOST_PREFIX_FOLLOWUP_20261010.md、results/host_prefix_followup_20261010/。安全复现使用name-prefix，始终同一连续budget。
 
 - 2026-10-11 外部审查c62d9f6：独立复算全部16run原始requests与指标快照，确认单会话胜NoHost、多会话前缀保留及受控无reset约8.88%会话改善；未通过历史10%门槛，hot/ample单会话退化警示保留。新增GPU消耗0，未重跑payload哈希或完整GPU测试。下一自主目标为验证合理GPU/pinned-host预算下的部署价值，不追阈值调参、不规定细碎实验步骤。审查与范围docs/RESEARCH_REVIEW_FOLLOWUP_20261011.md，复算results/research_review_followup_20261011/spotcheck.json。
+
+
+- 2026-10-12 deployment_opportunity：累计proxy输入不能证明同时驻留压力；离线future-needed只能定义保留目标，不能包装成在线policy或最小容量下界。模型bytes/token用真实配置计算，但proxy/目标tokenizer与endpoint/硬件时间不可直接映射。保留Full/NoHost强基线，不在未经证实的512MiB生产预算下扩展动态策略。32B TP2长上下文仅资源可行性候选，GPU池未测、需求UNKNOWN。服务器研究盘消失时不自行改挂载/安装环境/重置预算；已设计pin32实验保持NOT_STARTED而非失败或成功。详见AUTONOMOUS_RESEARCH_DEPLOYMENT_OPPORTUNITY_20261012.md。

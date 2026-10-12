@@ -1,0 +1,81 @@
+{
+  "dtype_bytes": 2,
+  "context_tokens": 32768,
+  "qwen1p5b_kv_bytes_per_token": 28672,
+  "qwen32b_kv_bytes_per_token": 262144,
+  "qwen32b_tp2_per_rank_kv_bytes_per_token": 131072,
+  "qwen32b_weight_payload_bytes": 65527752704,
+  "qwen1p5b_measured_gpu_pool_tokens_per_replica": 1355712,
+  "qwen1p5b_measured_pool_whole_32k_inputs_per_replica": 41,
+  "qwen32b_tp2_85pct_vram_minus_weights_upper_bytes": 22068189184,
+  "gpu_hours_added": 0,
+  "caveats": [
+    "Measured 1.5B pool from previous compiled run, not remeasured now.",
+    "32B weight-only subtraction is an optimistic KV capacity upper bound, not a runtime measurement.",
+    "Ignoring output, activation, CUDA graphs, temporary buffers, CPU model loading and service headroom.",
+    "Full-host duplicate copies differ from exclusive GPU+host placement; do not sum demand twice.",
+    "Session counts below are feasibility scenarios, not observed production demand."
+  ],
+  "scenarios": [
+    {
+      "model": "Qwen2.5-1.5B",
+      "sessions": 4,
+      "distinct_32k_input_kv_bytes": 3758096384,
+      "full_host_copies_fit_idle_memavailable": true
+    },
+    {
+      "model": "Qwen2.5-1.5B",
+      "sessions": 8,
+      "distinct_32k_input_kv_bytes": 7516192768,
+      "full_host_copies_fit_idle_memavailable": true
+    },
+    {
+      "model": "Qwen2.5-1.5B",
+      "sessions": 16,
+      "distinct_32k_input_kv_bytes": 15032385536,
+      "full_host_copies_fit_idle_memavailable": true
+    },
+    {
+      "model": "Qwen2.5-1.5B",
+      "sessions": 32,
+      "distinct_32k_input_kv_bytes": 30064771072,
+      "full_host_copies_fit_idle_memavailable": true
+    },
+    {
+      "model": "Qwen2.5-1.5B",
+      "sessions": 64,
+      "distinct_32k_input_kv_bytes": 60129542144,
+      "full_host_copies_fit_idle_memavailable": true
+    },
+    {
+      "model": "Qwen2.5-32B",
+      "sessions": 4,
+      "distinct_32k_input_kv_bytes": 34359738368,
+      "full_host_copies_fit_idle_memavailable": true
+    },
+    {
+      "model": "Qwen2.5-32B",
+      "sessions": 8,
+      "distinct_32k_input_kv_bytes": 68719476736,
+      "full_host_copies_fit_idle_memavailable": true
+    },
+    {
+      "model": "Qwen2.5-32B",
+      "sessions": 16,
+      "distinct_32k_input_kv_bytes": 137438953472,
+      "full_host_copies_fit_idle_memavailable": false
+    },
+    {
+      "model": "Qwen2.5-32B",
+      "sessions": 32,
+      "distinct_32k_input_kv_bytes": 274877906944,
+      "full_host_copies_fit_idle_memavailable": false
+    },
+    {
+      "model": "Qwen2.5-32B",
+      "sessions": 64,
+      "distinct_32k_input_kv_bytes": 549755813888,
+      "full_host_copies_fit_idle_memavailable": false
+    }
+  ]
+}

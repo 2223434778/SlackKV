@@ -1,0 +1,54 @@
+{
+  "files": {
+    ".gitattributes": {
+      "bytes": 29,
+      "sha256": "730a35ae3d558080083c3103d9ac8100c3f6561678092abe341701dfa331eb1d"
+    },
+    "budget.json": {
+      "bytes": 378,
+      "sha256": "7068928cd02633ba27c564adfa954e66f4cbb6b2839b040fadef67cdbd11615e"
+    },
+    "capacity.json": {
+      "bytes": 2722,
+      "sha256": "6a51732ffee6dd214eb87c479538c2b986501476bc378a61118f4059f47fd68d"
+    },
+    "environment_block_20261012.json": {
+      "bytes": 3598,
+      "sha256": "bcc7f9c3add0c6fe6eb6326272304d4b9961c829d3565d49a315d2fb8bbaa065"
+    },
+    "footprints.json": {
+      "bytes": 1244926,
+      "sha256": "2bd13f8db2d771b16a7755a752465be987b7b02d040729c86ed6d1ec796b05fd"
+    },
+    "server_inventory.json": {
+      "bytes": 18984,
+      "sha256": "4842404670094217f21661d3d3119b3452bd8b7db5624d97cb235e515872ce99"
+    },
+    "summary.md": {
+      "bytes": 1721,
+      "sha256": "b8e12f64635d66c031059efa624249dec791bdf6fa1191e47ffffae48e14cf32"
+    },
+    "validation.json": {
+      "bytes": 1123,
+      "sha256": "4aed86fad981c05e94b25d66a88f67b71502e20d39eef4a23efc95a459d4f7a2"
+    },
+    "qwen32b_metadata/config.json": {
+      "bytes": 663,
+      "sha256": "9c6772f138ef9e5b3d1c18f2c87e451bbc01f5f1a4eabb36f9bf4f53829b903e"
+    },
+    "qwen32b_metadata/manifest.json": {
+      "bytes": 773,
+      "sha256": "fd6d75ac47f7fa211266ec3c0525ee6d5ecb93c0f7f99afc4785d6120ded30ce"
+    },
+    "qwen32b_metadata/model.safetensors.index.json": {
+      "bytes": 63248,
+      "sha256": "0183543f2e6e40d3d1e863ed0b2a8c9cdaf2ee4045ce724a45cea30e9995a0af"
+    }
+  },
+  "sources": {
+    "experiments/deployment_opportunity/analyze.py": "a689a4cea67d1351670c91d7a8ce389c57fddd312cd2242e3e77e10ca585a951",
+    "experiments/deployment_opportunity/capacity.py": "6f672bcc3e4e893ae106e11dc05534bb22555af6a200066802f8e45d7ec08f0f",
+    "experiments/deployment_opportunity/fetch_model_metadata.py": "3fe11bf9a595e078587b981debd5de49c70a71846cc3fd3052289446e3f4644b",
+    "experiments/deployment_opportunity/pin_probe.py": "cb823a58329273e2f41d2b1ea032dc507302d7ee64cc379c85d5ee85c5daba24"
+  }
+}

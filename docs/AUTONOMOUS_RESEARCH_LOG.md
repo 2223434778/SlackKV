@@ -158,3 +158,12 @@
 - 决定：保留简单容量受限工程候选，停止本轮、不开发动态评分或正式矩阵；先证明真实部署下合理host预算确有压力，再决定机制深化。生产适用性/动态公平性/owned-memory-time/SOTA优势仍UNKNOWN。
 
 - 2026-10-11 外部审查c62d9f6：独立复算全部16run原始requests与指标快照，确认单会话胜NoHost、多会话前缀保留及受控无reset约8.88%会话改善；未通过历史10%门槛，hot/ample单会话退化警示保留。新增GPU消耗0，未重跑payload哈希或完整GPU测试。下一自主目标为验证合理GPU/pinned-host预算下的部署价值，不追阈值调参、不规定细碎实验步骤。审查与范围docs/RESEARCH_REVIEW_FOLLOWUP_20261011.md，复算results/research_review_followup_20261011/spotcheck.json。
+
+
+## 2026-10-12 — 部署机会 CPU 审计（10-11启动）
+
+- 基线834ed5a，冻结DEPLOYMENT_OPPORTUNITY_PROTOCOL_20261011。固定15条Weka源SHA，27个trace/model独立事件审计：累计唯一proxy输入最大2760192，活跃峰值769344，活跃+离线future-needed保留峰值1332032；3/27的保留目标增加峰值，不能把累计工作集当并发显存。
+- 官方配置核算1.5B FP16 KV28672B/token、32B262144B/token；32B TP2权重61.0275GiB，85%双卡扣权重仅剩至多20.5526GiB，未扣runtime、不是实测KV池。原生cpu_bytes_to_use已聚合world_size，不重复乘TP。闲置host约118.87GiB可用不能证明512MiB预算合理。
+- 38项相关测试通过；独立区间集合参考检查共享/完成时序、namespace隔离。当前1.5B双重压力没有可信证据，32B长上下文只保留为资源可行性候选，部署价值UNKNOWN，不扩大任意小cap矩阵。
+- 32GiB pinned probe已设计但NOT_STARTED_ENVIRONMENT：额度恢复后研究盘/media/a6000/D不存在，repo/runtime/账本均不可访问，upload和创建临时目录失败。仅只读诊断，未挂盘/sudo/改环境；请求原挂载点或新路径。无新GPU性能或正确性结论。
+- 新增GPU0，连续1.2500769679056248/4h；两种后续runner预算纳入新family。报告docs/AUTONOMOUS_RESEARCH_DEPLOYMENT_OPPORTUNITY_20261012.md；原始事件、容量、官方metadata与环境证据results/deployment_opportunity_20261011/。
