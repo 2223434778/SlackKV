@@ -1,0 +1,67 @@
+{
+  "status": "VALID_EXECUTION_REUSE_OBSERVED",
+  "metrics": [
+    {
+      "label": "short",
+      "ttft_ms": 673.987461,
+      "e2e_ms": 1889.340314,
+      "sources": {
+        "local_compute": 256.0,
+        "local_cache_hit": 0.0,
+        "external_kv_transfer": 0.0
+      }
+    },
+    {
+      "label": "long",
+      "ttft_ms": 13349.678709,
+      "e2e_ms": 14140.07075,
+      "sources": {
+        "local_compute": 28672.0,
+        "local_cache_hit": 0.0,
+        "external_kv_transfer": 0.0
+      }
+    },
+    {
+      "label": "gpu_reuse",
+      "ttft_ms": 169.451814,
+      "e2e_ms": 974.297965,
+      "sources": {
+        "local_compute": 16.0,
+        "local_cache_hit": 28656.0,
+        "external_kv_transfer": 0.0
+      }
+    },
+    {
+      "label": "cpu_store",
+      "ttft_ms": 3169.08266,
+      "e2e_ms": 3930.918299,
+      "sources": {
+        "local_compute": 8192.0,
+        "local_cache_hit": 0.0,
+        "external_kv_transfer": 0.0
+      }
+    },
+    {
+      "label": "cpu_resume",
+      "ttft_ms": 134.450103,
+      "e2e_ms": 894.14583,
+      "sources": {
+        "local_compute": 0.0,
+        "local_cache_hit": 0.0,
+        "external_kv_transfer": 8192.0
+      }
+    }
+  ],
+  "actual_pool_tokens": 70000,
+  "actual_pool_kv_total_bytes": 18350080000,
+  "ready_seconds": 180.5809007279995,
+  "gpu_hours": 0.11961032120000002,
+  "sequential_cold_21_sessions_3_turns_seconds": 890.8244572500001,
+  "output_equality_diagnostic": true,
+  "cpu_restore_output_equality_diagnostic": true,
+  "caveats": [
+    "Sequential extrapolation is a time-planning estimate, not mixed throughput.",
+    "Output equality diagnostic is not an independent cold/batch-invariant correctness oracle.",
+    "No matched policy comparison or speedup claim."
+  ]
+}

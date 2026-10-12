@@ -1,0 +1,6 @@
+# Uncompressed local copies remain available; Git stores lossless compact evidence.
+**/inputs.json
+**/requests.json
+**/*.log
+**/*.prom
+provenance/native_*.py

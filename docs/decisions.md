@@ -228,3 +228,5 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - 2026-10-12恢复：选空闲GPU1进行host诊断，不因GPU0远程桌面占用终止其他服务；历史family缺失拒绝启动。32GiB实际pin成功证明512MiB不是本机物理必要上限；27s初始化与常驻RSS说明预算不是无成本。CPU pinned allocator缓存不能等同请求引用泄漏，不用VmPin/VmLck判pin正确性。保留未挂盘历史，不将此资源诊断包装为Serving加速；继续以合理Full为基线。
 
 - 2026-10-12 外部审查b85027a：复算27 namespace汇总、32B KV/权重容量与pin32 RSS/系统内存差，支持报告边界；新增GPU0。32GiB分配成功不等于serving性能通过，27s是初始化成本而非逐请求成本。下一自主目标为明确部署下Full/NoHost的实际可避免成本，允许有依据的透明合成场景，不强制完整生产trace或自动转32B。交接docs/RESEARCH_REVIEW_DEPLOYMENT_20261012.md。
+
+- 2026-10-12 large_model：自然32B/TP2 GPU池17.09GiB、host64GiB、21长历史合成session，无reset；静态前缀准入比compiled NoHost/Full E2E−16.44/−18.40%，全部session和BG makespan满足冻结退化约束。Full 448.875GiB写入未复用，Fair真实前缀恢复524,288tokens，支持继续这一候选，停止条件A。P95未达10%、第三BG平均响应后段间隔恶化、同host池未降低RSS、单seed/顺序/非生产和不完整生命周期oracle均保留；不宣称SOTA或稳定性，不删除旧负对照，不继续旧JIT调参。连续4.191988/用户批准4.5GPUh，只完成冻结组。下一轮先反序复验与少量regime验证，再决定动态额度。

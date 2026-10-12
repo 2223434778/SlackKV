@@ -1,0 +1,9 @@
+{
+  "status": "FEASIBILITY_COMPLETE",
+  "pid": 94597,
+  "started_unix": 1791780063.6303506,
+  "gpu_reserved_while_waiting": 0,
+  "acquisition": "/media/a6000/D/ZhaoBinHe/SlackKV/results/large_model_20261012/acquire3/acquisition.json",
+  "gpu_hours": 0.11961032120000002,
+  "finished_unix": 1791781384.5794892
+}

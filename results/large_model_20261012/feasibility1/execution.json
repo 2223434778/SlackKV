@@ -1,0 +1,119 @@
+{
+  "status": "COMPLETE",
+  "gpu_count": 2,
+  "started_unix": 1791781169.5841033,
+  "budget_before": {
+    "autonomous_fork": 0.20048675264813937,
+    "autonomous_round4": 0.546220108203189,
+    "host_prefix_cost_20261010": 0.1388070681688583,
+    "host_prefix_followup_20261010": 0.36456303888543823,
+    "deployment_opportunity_20261011": 0.015744066851666676,
+    "large_model_20261012": 0
+  },
+  "parent_and_system_memory_before": {
+    "MemFree_bytes": 57351561216,
+    "MemAvailable_bytes": 128391008256,
+    "SwapFree_bytes": 2147479552,
+    "VmLck_bytes": 0,
+    "VmPin_bytes": 0,
+    "VmRSS_bytes": 23298048
+  },
+  "acquisition": "/media/a6000/D/ZhaoBinHe/SlackKV/results/large_model_20261012/acquire3/acquisition.json",
+  "model": "/media/a6000/D/ZhaoBinHe/slackkv-models/qwen2p5-32b-5ede1c97",
+  "source": "/media/a6000/D/ZhaoBinHe/slackkv-autonomous-round4-source",
+  "authorization_gpu_hours_before": 1.2658210347572914,
+  "gpu_before": "321, 0\n19, 0\n",
+  "server_command": [
+    "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/vllm",
+    "serve",
+    "/media/a6000/D/ZhaoBinHe/slackkv-models/qwen2p5-32b-5ede1c97",
+    "--dtype",
+    "float16",
+    "--tensor-parallel-size",
+    "2",
+    "--enable-prefix-caching",
+    "--gpu-memory-utilization",
+    "0.85",
+    "--max-model-len",
+    "32768",
+    "--max-num-seqs",
+    "16",
+    "--max-num-batched-tokens",
+    "8192",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--kv-transfer-config",
+    "{\"kv_connector\": \"OffloadingConnector\", \"kv_role\": \"kv_both\", \"kv_connector_extra_config\": {\"block_size\": 16, \"cpu_bytes_to_use\": 34359738368}}"
+  ],
+  "cpu_bytes": 34359738368,
+  "kind": "feasibility, not matched speedup",
+  "runner_sha256": "e2a753cc0fd5780ccacc6b9792d922547385ccdaa83c93cb99ed87d16df81b04",
+  "scheduler_sha256": "5c0ef2cd7cc65a452d86c4751e43971efebf5d97066cb5f8d8126f3f5a8e43c8",
+  "owned_pid": 119217,
+  "ready_seconds": 180.5809007279995,
+  "parent_and_system_memory_ready": {
+    "MemFree_bytes": 15484674048,
+    "MemAvailable_bytes": 87612821504,
+    "SwapFree_bytes": 2147479552,
+    "VmLck_bytes": 0,
+    "VmPin_bytes": 0,
+    "VmRSS_bytes": 756314112
+  },
+  "owned_group_rss_ready": [
+    {
+      "pid": 119217,
+      "state": "S",
+      "VmLck_bytes": 0,
+      "VmPin_bytes": 0,
+      "VmRSS_bytes": 1334054912
+    },
+    {
+      "pid": 120136,
+      "state": "S",
+      "VmLck_bytes": 0,
+      "VmPin_bytes": 0,
+      "VmRSS_bytes": 14225408
+    },
+    {
+      "pid": 120137,
+      "state": "S",
+      "VmLck_bytes": 0,
+      "VmPin_bytes": 0,
+      "VmRSS_bytes": 999505920
+    },
+    {
+      "pid": 120346,
+      "state": "S",
+      "VmLck_bytes": 0,
+      "VmPin_bytes": 0,
+      "VmRSS_bytes": 19416297472
+    },
+    {
+      "pid": 120347,
+      "state": "S",
+      "VmLck_bytes": 0,
+      "VmPin_bytes": 0,
+      "VmRSS_bytes": 19420827648
+    }
+  ],
+  "actual_gpu_pool_tokens": [
+    70000
+  ],
+  "server_exit_code": 0,
+  "owned_live_pids_after_cleanup": [],
+  "gpu_after": "42498 MiB, 7 %\n42196 MiB, 6 %\n",
+  "parent_and_system_memory_after": {
+    "MemFree_bytes": 20238237696,
+    "MemAvailable_bytes": 92385890304,
+    "SwapFree_bytes": 2147479552,
+    "VmLck_bytes": 0,
+    "VmPin_bytes": 0,
+    "VmRSS_bytes": 760680448
+  },
+  "wall_seconds_including_setup_cleanup": 214.29857816000003,
+  "gpu_hours": 0.11961032120000002,
+  "authorization_total_gpu_hours": 1.3854313559572913,
+  "finished_unix": 1791781383.8825998
+}

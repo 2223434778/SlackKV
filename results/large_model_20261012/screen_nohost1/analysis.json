@@ -1,0 +1,340 @@
+{
+  "run": "screen_nohost1",
+  "status": "VALID",
+  "config": {
+    "kind": "synthetic capacity stress, not production demand",
+    "policy": "nohost",
+    "sessions": 21,
+    "turns": 3,
+    "output": 128,
+    "seed": 914477,
+    "cpu_bytes_budget": 68719476736,
+    "quotas_tokens": [
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12480,
+      12544
+    ],
+    "tool_gap_s": 5,
+    "first_release_spacing_ms": 20,
+    "gpu_bytes_per_rank": 9175040000
+  },
+  "session_metrics": [
+    {
+      "session": 0,
+      "e2e_ms": 787262.92686,
+      "resume_ttft_ms": [
+        341993.935656,
+        356168.003175
+      ]
+    },
+    {
+      "session": 1,
+      "e2e_ms": 801719.632434,
+      "resume_ttft_ms": [
+        352743.694033,
+        349010.567585
+      ]
+    },
+    {
+      "session": 2,
+      "e2e_ms": 823662.934373,
+      "resume_ttft_ms": [
+        342998.296407,
+        356827.227523
+      ]
+    },
+    {
+      "session": 3,
+      "e2e_ms": 838126.193284,
+      "resume_ttft_ms": [
+        353253.199006,
+        349662.996832
+      ]
+    },
+    {
+      "session": 4,
+      "e2e_ms": 860047.876936,
+      "resume_ttft_ms": [
+        343688.89352,
+        357484.875014
+      ]
+    },
+    {
+      "session": 5,
+      "e2e_ms": 874501.590111,
+      "resume_ttft_ms": [
+        354031.039409,
+        350309.359187
+      ]
+    },
+    {
+      "session": 6,
+      "e2e_ms": 896427.016006,
+      "resume_ttft_ms": [
+        344307.854866,
+        358225.955019
+      ]
+    },
+    {
+      "session": 7,
+      "e2e_ms": 910887.950288,
+      "resume_ttft_ms": [
+        354483.620921,
+        350923.083404
+      ]
+    },
+    {
+      "session": 8,
+      "e2e_ms": 932818.928163,
+      "resume_ttft_ms": [
+        344912.168416,
+        358692.873373
+      ]
+    },
+    {
+      "session": 9,
+      "e2e_ms": 947276.306836,
+      "resume_ttft_ms": [
+        355247.54616,
+        351596.709891
+      ]
+    },
+    {
+      "session": 10,
+      "e2e_ms": 969197.388397,
+      "resume_ttft_ms": [
+        345522.311505,
+        359400.503864
+      ]
+    },
+    {
+      "session": 11,
+      "e2e_ms": 983660.09142,
+      "resume_ttft_ms": [
+        355753.711964,
+        352196.515546
+      ]
+    },
+    {
+      "session": 12,
+      "e2e_ms": 1005580.026116,
+      "resume_ttft_ms": [
+        346121.66069,
+        360027.231055
+      ]
+    },
+    {
+      "session": 13,
+      "e2e_ms": 1020038.732209,
+      "resume_ttft_ms": [
+        356482.351309,
+        352862.833935
+      ]
+    },
+    {
+      "session": 14,
+      "e2e_ms": 1041962.650181,
+      "resume_ttft_ms": [
+        346755.963284,
+        360749.262561
+      ]
+    },
+    {
+      "session": 15,
+      "e2e_ms": 1056418.706076,
+      "resume_ttft_ms": [
+        356984.233388,
+        353581.383388
+      ]
+    },
+    {
+      "session": 16,
+      "e2e_ms": 1078350.172703,
+      "resume_ttft_ms": [
+        347387.398106,
+        361368.363008
+      ]
+    },
+    {
+      "session": 17,
+      "e2e_ms": 1092807.711092,
+      "resume_ttft_ms": [
+        357618.891598,
+        354204.95343
+      ]
+    },
+    {
+      "session": 18,
+      "e2e_ms": 1114742.83826,
+      "resume_ttft_ms": [
+        348055.556324,
+        360737.054056
+      ]
+    },
+    {
+      "session": 19,
+      "e2e_ms": 1129197.489109,
+      "resume_ttft_ms": [
+        359595.458093,
+        351307.975425
+      ]
+    },
+    {
+      "session": 20,
+      "e2e_ms": 1136249.614463,
+      "resume_ttft_ms": [
+        348068.695075,
+        358721.221817
+      ]
+    }
+  ],
+  "stack_signature": {
+    "command": [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/vllm",
+      "serve",
+      "/media/a6000/D/ZhaoBinHe/slackkv-models/qwen2p5-32b-5ede1c97",
+      "--dtype",
+      "float16",
+      "--tensor-parallel-size",
+      "2",
+      "--enable-prefix-caching",
+      "--gpu-memory-utilization",
+      "0.85",
+      "--max-model-len",
+      "32768",
+      "--max-num-seqs",
+      "16",
+      "--max-num-batched-tokens",
+      "8192",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8000",
+      "--kv-cache-memory-bytes",
+      "9175040000"
+    ],
+    "scheduler_sha256": "5c0ef2cd7cc65a452d86c4751e43971efebf5d97066cb5f8d8126f3f5a8e43c8",
+    "batch_invariant": false
+  },
+  "session_e2e_median_ms": 969197.388397,
+  "resume_p95_ms": 360737.054056,
+  "background_makespan_ms": 753974.641504,
+  "background_requests": [
+    {
+      "turn": 0,
+      "e2e_ms": 37602.4179,
+      "ttft_ms": 3113.002029,
+      "first_token_to_response_end_mean_ms": 271.57020370866144
+    },
+    {
+      "turn": 1,
+      "e2e_ms": 355250.169658,
+      "ttft_ms": 334775.111255,
+      "first_token_to_response_end_mean_ms": 161.22093230708663
+    },
+    {
+      "turn": 2,
+      "e2e_ms": 360681.833597,
+      "ttft_ms": 338695.024665,
+      "first_token_to_response_end_mean_ms": 173.12447977952755
+    }
+  ],
+  "output_tokens_per_second": 7.412066577118149,
+  "total_input_tokens": 1863168,
+  "total_output_tokens": 8448,
+  "sources": {
+    "local_compute": 1863168.0,
+    "local_cache_hit": 0.0,
+    "external_kv_transfer": 0.0
+  },
+  "h2d_bytes": 0,
+  "d2h_bytes": 0,
+  "transfer_scope": "zero by absent connector configuration",
+  "input_identity": {
+    "bg:-1:0": "96f44b212818b8b9cf11f827d4ec074a365cecceed758907ae0803423cf81ba6",
+    "agent:0:0": "4965d1fa2376fca0813db78f2d9e00dd580f42d15182799444bd2272e9757021",
+    "agent:1:0": "e3ef7dacfa2aa21768f359c2653a24f5567f0499845526d8cf16d753ead71b88",
+    "agent:2:0": "5c5fed2fc55c338b0dd7914586ae8c04edfd56c5e592158ac8383269f04bbe76",
+    "agent:3:0": "1080752e72357eebd20ce0da15a7d45bf277c43a6f6beb7e6d3e58979ebff08a",
+    "agent:4:0": "852d4663d6d001d161fbe801848c629e4ed32b0e6e48777676e17497a0fe0c7c",
+    "agent:5:0": "56e2b032067f0d6c424c20f824cee302cf55bc638304da35c3ed303c74b1345f",
+    "agent:6:0": "bd09ea1176c71598f8ecf1f476f8cf5f4790fc16e0bc69c40e7bb519b69a9168",
+    "agent:7:0": "86a67c1362b51e39623d00d7f2f875dac450df7bcca3f86a13b79a236036f24b",
+    "agent:8:0": "14790470173a88f428cb2af56245aef51d14aa35dbc05cd9d1ea0519c6179830",
+    "agent:9:0": "97c2aaa6f583b30d1a3225d04f1881af33c009a8c1a23c507360c8bea7d503fb",
+    "agent:10:0": "82b32b76f4485f6df6c2b248f3655c9e7f7f5d72d35381057b73e9a09aed4e33",
+    "agent:11:0": "1618a41dd28832839cd407c59a8cb7b786fe43ca2ecd911b9e2bcc5f5cb5d0a0",
+    "agent:12:0": "ab833915a9fc59563c8786a1f3c44b13e01135cfb590e5a5e61bc7d14135413a",
+    "agent:13:0": "941312a930bda590cd046fc5ed8129c83c4c61901eee6703cb97d17a3d4a6863",
+    "agent:14:0": "0231f2b75f595fc7bc781daad44789ddba99d079bb956b9a51dfb91782bd4a1a",
+    "agent:15:0": "7591f9da71eb446a272df2b0ca542e5d23c1ea9bd8a3a11e83ca7109f57f1217",
+    "agent:16:0": "eadcb581c44fbf67b2f7cadd14264671c1ba832964cc388cebf1e2b5cf2c63a5",
+    "agent:17:0": "20badfc44c62f72312e7bcd9c5f2425f5de417223fcaf2cbcb2fbf2c499d0af7",
+    "agent:18:0": "e248fc2b01e35f8459278214cb178704f9ff7390b675d2d126fa115180001fdb",
+    "agent:19:0": "58bc738476f1a742d21df48ee7a1c585010fad6ff137f12ae37eb595ebdacd50",
+    "agent:20:0": "a28f2ad60f8d80910efd8448cf1ac85d0e8e3732bed891544cd35f00b7d8d116",
+    "bg:-1:1": "07c58314564d668a532589107292100b4192c3ebcd1cb682a62c212e0479eff5",
+    "agent:0:1": "015a959b397a7562405f1cd1f16970b4a605ae176cbbbce7fc7ad41349974845",
+    "agent:1:1": "b88c5b2138ad5ebeb19c49429ae2ce3242a837bd438b62345dfc3a0c2629a77d",
+    "agent:2:1": "e611d6e50085bfe5f044d395f602b86464aad0d774c3026ede799f228606c1b5",
+    "agent:3:1": "d6498cc40807c300695e245fda10715dc660f501b165022780e16bef86dc495a",
+    "agent:4:1": "9cdb65e9bb946922a23c20435e257c7d50427f38f1810a41a3e859d7de78800c",
+    "agent:5:1": "7db1848a78ca49605701107e54f924f06801ebe1d4c5c2c9447447459750ab65",
+    "agent:6:1": "78c4712c427f855ff3b2c985fe2c062cea4b93d8e65abd6965d12fb3a1449b62",
+    "agent:7:1": "2d776a0d16d3e3fa93f8ddfc6d7c59b8f3a6dd6aff6b5dbefe51aa909b3a1e15",
+    "agent:8:1": "0086a5f6aa27b111a4b16c3cdfcd5ff5c79a447902d84308f49d40ddb1a27040",
+    "agent:9:1": "1e723e9a88581db20f217362c8516e90deb3aefc3528ccd115437aef88ec7b3e",
+    "agent:10:1": "195d3b1061ee6b8ad9a199bd2090df178ea72e1650608613eda56ac20369c9c3",
+    "agent:11:1": "06d34b0531ca32c8d8bb7edbf3d8ec570b06e07d83934b99998c64268ee51daf",
+    "agent:12:1": "4642b462ea2f5a2fe6225487cd9082dad28d930054e21cafcb88e127362141a4",
+    "agent:13:1": "8d7575d91abaf27d5a97a3fcc40374fe47f361f33183f098bff3e57e17554e31",
+    "agent:14:1": "4725000af96e3c5db7a6b151a1805b7350309cb47f4c1ca8bfaedafef1aa5d19",
+    "agent:15:1": "cdff8b54c76cc7090e63d09f3576d6d4df7432f7c345df76ef4d17681c805224",
+    "agent:16:1": "cef0fc1e000295179871b18c4e0f5cb1f18c42aa523b779e65c63c114d1af153",
+    "agent:17:1": "bcb986b8aa780683c36be0c6e32756d20481b9e8cf830c6a0d10fc816c5735df",
+    "agent:18:1": "621e11a1626737c7e9717662872d06ee58cf4c1b4a16a4a6f6e769bfd2ce0e74",
+    "agent:19:1": "4605c226ce7b58b8bb24a7abd455b58c48029ac6cb8c06b288f81fa90959d300",
+    "bg:-1:2": "ab26c794cd15ef13dfdb628838d12552f86e7605a167329c3c158f2d9819667f",
+    "agent:20:1": "e816d54c41c29051737f0d76927f536a530c3a70477eec6433a559f9b27f435e",
+    "agent:0:2": "69192468b3d6f03b14ac33a04ca9de879b2fa23e7f25834fbdd27bf6e61c4212",
+    "agent:1:2": "ee1392c6ca3d8a131dcfe7f4bb427fe6a6de488cae5c34f498c1d131f46242ee",
+    "agent:2:2": "bbab04decc192a82bc16f0dd1cbb598438082c67f8509c0fa79117ba298b5686",
+    "agent:3:2": "efefebd64cd890e59684b17fc0e8021a5c103a661bb74cc194497a303a03501d",
+    "agent:4:2": "df8dba88db5b8beb98c8fb616e6e21dcabbf2b1b7641129102a2ce777c126eab",
+    "agent:5:2": "78e771e8ac9b31bbe8b6250b457635d604dfd433d17a6d01a3edeabc0b77eb80",
+    "agent:6:2": "0b536972abc687ea48a466ea427267dae0c1632a804b792bda6fcbb111af4379",
+    "agent:7:2": "2304fb7ef38edbd11ef6698a3917e7c016f7c1e79e4dae50299c2715643cfdfe",
+    "agent:8:2": "0e9d1d2bcd551fd3341d6467d91fb0e0f23c051bc4c1e593dade7932366422e5",
+    "agent:9:2": "e4119a314b1fe7262963e031b84a2c231e192ce0c34e93f872f96bdb9bf8d3aa",
+    "agent:10:2": "8a0af55e5bddd46faf178602cb1cebea1f69a3054511e4de50ae5a573dc4bf7d",
+    "agent:11:2": "b2c4675718bb2530f3d932a104613d0a0d82678ed361dfee77309ec0f9d22c17",
+    "agent:12:2": "0743a73bd680c81f61cb0814210528dc00d6bc9143881befc5a7f2def5adbff3",
+    "agent:13:2": "2adadb5475aaee75d2a9f904d5ce15219e6b438c985f584c6efa4d83007c1543",
+    "agent:14:2": "3a2220fdfc0e256173177f9b7e023ac3fa7825e053f5e292db8a6ab29dc80d0b",
+    "agent:15:2": "2b81dd2ce4ad2555a48d1831c01e6d16c751c1b51c62c8e11fcb305d9af243b0",
+    "agent:16:2": "34f06458db34d292de5967422387231e19a27126819591c900b3321f0d6d6999",
+    "agent:17:2": "9f2545d0e77f1b61bc265146d41345ea46d9764898a72bd969ce1e068b4f6fa3",
+    "agent:18:2": "e3f7c0e90b8e3de1fcd6c206c5a8a8908fb83860122704e3ae83ea7d54d5835f",
+    "agent:19:2": "65133430e24534a9704b15ab510beec2e392464d2e27c68f1129c93850d19c8a",
+    "agent:20:2": "ad143b38a38f395931d310d2bae6e9fbbdfc746323f19f6a2578e8e5c9b0552f"
+  },
+  "gpu_hours": 0.7084516343527776
+}

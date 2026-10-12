@@ -1,0 +1,11 @@
+{
+  "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.29",
+  "native_files": {
+    "vllm/v1/core/sched/scheduler.py": "5c0ef2cd7cc65a452d86c4751e43971efebf5d97066cb5f8d8126f3f5a8e43c8",
+    "vllm/distributed/kv_transfer/kv_connector/v1/offloading/scheduler.py": "bc883cf47d882d4406d7708a8d3520abe2752f545985705126f41fca66558bf0",
+    "vllm/v1/kv_offload/cpu/spec.py": "c5e3b39059aaf2110b66be7eb60b2d866665a4982313f9ae079790de1cf13f01"
+  },
+  "gpu": "NVIDIA RTX A6000, 550.54.14, 49140 MiB\nNVIDIA RTX A6000, 550.54.14, 49140 MiB\n",
+  "topology": "\t\u001b[4mGPU0\tGPU1\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tSYS\t0-31\t0\t\tN/A\nGPU1\tSYS\t X \t0-31\t0\t\tN/A\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n",
+  "checkout_head": "b9685aed2da6eec7675245e730732fc51b2d0b00"
+}

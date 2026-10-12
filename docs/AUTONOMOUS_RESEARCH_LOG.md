@@ -171,3 +171,14 @@
 - 2026-10-12恢复：用户修复研究盘，原路径/runtime/账本可访问，保留dirty服务器工作树。GPU0先有RustDesk占用，选择GPU1；新增GPU选择和历史账本缺失拒绝启动，40 tests PASS。pin32_20261012实际32GiB pinned分配+zero27.01465s，整worker55.67864s；RSS+32.104GiB，del+GC仍缓存，进程退出后系统可用RAM恢复；VmPin/VmLck0不能否定实际is_pinned=True。无需256/512MiB物理cap，无新增模型性能证明。新增0.01574406685GPUh，累计1.2658210347572914/4。原始probe结果和报告恢复补充均已保存。
 
 - 2026-10-12 外部审查b85027a：复算27 namespace汇总、32B KV/权重容量与pin32 RSS/系统内存差，支持报告边界；新增GPU0。32GiB分配成功不等于serving性能通过，27s是初始化成本而非逐请求成本。下一自主目标为明确部署下Full/NoHost的实际可避免成本，允许有依据的透明合成场景，不强制完整生产trace或自动转32B。交接docs/RESEARCH_REVIEW_DEPLOYMENT_20261012.md。
+
+## 2026-10-12 — 32B 自然 GPU 容量与有限 host 对照完成
+
+- 接受用户较大模型建议，但先验证资源与成本。固定官方 Qwen2.5-32B-Instruct revision、FP16/TP2/compiled，独立 checkout，保留原服务器 dirty 树。模型24文件官方hash通过；下载1中断转双路、下载2 deadline失败、下载3成功，原失败保留，下载GPU0。
+- 自然85%配置实际70,000 GPU KV tokens=17.08984GiB。21×28,672初始历史目标147GiB大于全RAM+实测GPU pool；只是合成保留压力，不称生产或必需驻留量。性能冻结相同自然池、64GiB host、21×3 turns/128outputs、5s工具gap、背景3×8K、单seed、无GPU reset。
+- 原生8K CPU restore可行；独立batch-invariant两敏感输入6请求，12,480-prefix恢复与独立cold逐16token一致，来源核算通过。随机性能输入不用于质量声明，完整取消/抢占/长期公平性仍UNKNOWN。
+- 真实NoHost/Full/Fair各66请求有效匹配。Full写448.875GiB、CPU/GPU复用0；Fair仅写64GiB、恢复128GiB/524,288tokens，compute减少28.14%。Fair E2E median相对NoHost/Full−16.44/−18.40%，背景−13.16/−15.23%，21session全部改善，通过冻结10%整体/5%退化门槛。P95仅−6.39/−8.50%，不换指标宣称全部胜出。
+- 吞吐+21.88/+24.76%，总迁移比Full少57.23%；Fair/Full仍同样实际host64GiB，未证明RSS或active GPU footprint下降。第三BG首token至响应结束平均间隔+16.94/+14.70%，代理Decode代价披露；总BG完成更快。启动123.68/155.75/280.26s的顺序差异单列，需反序复验。
+- 首次退出后GPU释放未确认，额外保留0.4724857332GPUh未知区间上界；不是实测忙碌。后续验证ownedgroup为空且两卡19MiB/0%。用户批准连续4.5GPUh仅完成这一组，最终4.1919880197，新增family2.9261669850，余额不启动额外实验。
+- 82原始文件84,782,502解压bytes SHA/长度与压缩-only本机复算通过。acquire/source版本、原始输入/metrics/日志、失败与commands保存；可行性初版runner只有SHA无完整快照的缺口明示。线程池超时清理修复未用于本次性能运行，独立测试；工程失败保留。
+- 决策A：保留简单capacity-conditioned prefix admission候选，不宣称静态均分新颖/SOTA/统计显著。下一步反序与种子复验、非均匀历史和较长输出的少量匹配筛选，先确认regime和后台Decode代价，再决定动态额度。报告docs/AUTONOMOUS_RESEARCH_LARGE_MODEL_20261012.md；结果results/large_model_20261012/。项目最终目标不变。

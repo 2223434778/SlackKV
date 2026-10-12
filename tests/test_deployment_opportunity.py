@@ -96,3 +96,10 @@ def test_pin_budget_refuses_missing_history_and_preserves_continuity(tmp_path):
         field = 'gpu_hours_conservative' if family in ('autonomous_fork', 'autonomous_round4') else 'gpu_hours'
         path.write_text(json.dumps(dict(status='COMPLETE', **{field: .2})))
     assert sum(budget(tmp_path).values()) == pytest.approx(.8)
+    path = tmp_path/'results/large_model_20261012/tp2/execution.json'
+    path.parent.mkdir(parents=True)
+    path.write_text(json.dumps(dict(status='COMPLETE', gpu_hours=.4)))
+    assert sum(budget(tmp_path).values()) == pytest.approx(1.2)
+    path.write_text(json.dumps(dict(status='RUNNING')))
+    with pytest.raises(RuntimeError, match='unresolved'):
+        budget(tmp_path)

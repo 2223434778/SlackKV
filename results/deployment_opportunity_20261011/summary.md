@@ -6,9 +6,9 @@ CPU audit completed: fixed15 traces/2661 requests/27 isolated namespaces. Cumula
 
 Resource arithmetic: FP16 KV bytes/token28672 for cached1.5B,262144 for official32B,128KiB/rank underTP2. 32B weights61.0275GiB; twoA6000 at85% minus weights leaves at most20.5526GiB before runtime overhead. Host snapshot125.65GiB total/~118.87GiB available; no512MiB process limit found. Native host budget aggregates across TP workers.
 
-38 related tests passed. Pin32 probe NOT_STARTED_ENVIRONMENT: original research disk path disappeared after server state change; repo, runtime and ledger unavailable. SSH/read-only diagnostics succeeded. No mount/env modifications, no new GPU performance comparison.
+Restored-state summary: pin32_20261012 PASS,40 related tests passed;32GiB real pinned allocation27.01465s and process-exit release verified. Historical NOT_STARTED_ENVIRONMENT occurred when the research disk disappeared; those diagnostics remain archived. No mount/env modifications were made by the agent.
 
-Conclusion: partial-prefix deployment value UNKNOWN. Reasonable current1.5B budgets do not establish double pressure;32B long contexts are a feasibility candidate only. Keep Full/NoHost, avoid arbitrary tiny host caps. Await existing research volume restoration before host measurement. No new correctness/fairness/performance claim. GPU added0; continuous used1.2500769679056248/4h.
+Conclusion at this audit stage: partial-prefix deployment value UNKNOWN. Reasonable1.5B budgets do not establish double pressure;32B long contexts remain a feasibility candidate. Keep Full/NoHost, avoid arbitrary tiny host caps. Pin probe complete, no serving-performance claim in this audit. AddedGPU0.01574406685; cumulative1.2658210347572914/4h. Subsequent32B validation is separately recorded in docs/AUTONOMOUS_RESEARCH_LARGE_MODEL_20261012.md and results/large_model_20261012/; this audit does not retroactively claim those results.
 
 Full report and commands: `docs/AUTONOMOUS_RESEARCH_DEPLOYMENT_OPPORTUNITY_20261012.md`. Frozen protocol: `docs/DEPLOYMENT_OPPORTUNITY_PROTOCOL_20261011.md`.
 

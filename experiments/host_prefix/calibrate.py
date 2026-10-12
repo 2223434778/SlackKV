@@ -41,6 +41,10 @@ def main():
     if any(r['status'] == 'RUNNING' for r in deployment):
         raise RuntimeError('deployment probe unresolved')
     prior_hours += sum(r['gpu_hours'] for r in deployment)
+    large = [json.loads(f.read_text()) for f in (root / 'results/large_model_20261012').glob('*/execution.json')]
+    if any(r['status'] == 'RUNNING' for r in large):
+        raise RuntimeError('large model run unresolved')
+    prior_hours += sum(r['gpu_hours'] for r in large)
     if prior_hours + spent + .5 > 4:
         raise RuntimeError('insufficient authorized GPU budget')
     with socket.socket() as s:

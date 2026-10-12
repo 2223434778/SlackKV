@@ -1,0 +1,17 @@
+{
+  "status": "INTERRUPTED_FOR_TWO_STREAM_DOWNLOAD",
+  "model": "Qwen/Qwen2.5-32B-Instruct",
+  "revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+  "endpoint": "https://hf-mirror.com",
+  "gpu_hours": 0,
+  "gpu_count": 0,
+  "verified_files": [
+    "config.json",
+    "generation_config.json",
+    "merges.txt",
+    "model-00001-of-00017.safetensors"
+  ],
+  "kind": "CPU/network acquisition; no GPUs reserved or model process started",
+  "wall_seconds_from_proc": 330.44000000000005,
+  "reason": "single stream ~20MiB/s cannot complete65.5GB in30min; preserve verified/partial files; GPUs unused"
+}

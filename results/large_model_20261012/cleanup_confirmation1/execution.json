@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETE",
+  "kind": "conservative unobserved cleanup interval upper bound, not measured GPU busy time",
+  "gpu_count": 2,
+  "gpu_hours": 0.47248573316468134,
+  "original_execution": "feasibility1/execution.json",
+  "original_finished_unix": 1791781383.8825998,
+  "confirmed_unix": 1791782234.3569195,
+  "confirmed_gpu": "321 MiB,0%;19 MiB,0%",
+  "reason": "original post-parent-exit snapshot retained42GB/GPU; first timestamped independent idle observation bounds unresolved release interval; raw original retained",
+  "upper_bound_only": true
+}

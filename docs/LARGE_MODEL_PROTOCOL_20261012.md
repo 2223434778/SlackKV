@@ -1,0 +1,28 @@
+# Larger-model feasibility before performance screening
+
+Baseline `b9685ae`; continuous spent1.2658210347572914/4GPUh, remaining2.7341789652427086. Do not reset history.
+
+- TargetQwen2.5-32B-Instruct official revision5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd; FP16, TP2 on2A6000, natural85%GPU utilization, compiled/CUDA Graph defaults, max model length32768. No NVLink: measured SYS topology.
+- Researchdisk492GiB free before download. Download weights to dedicated research path; never replace existing1.5B cache. Server official HF HTTPS timed out; mirror transport allowed only with official LFS SHA256/Git blob SHA1 validation. Preserve failed transfers and partial files. No GPUs reserved during acquisition, charge0GPUh.
+- FirstGPU step is feasibility, not algorithm screening: actual pool, startup/compile time, one short prompt and one long prompt, specified output count, memory/idle and cleanup. Stop/revise if TP2 cannot serve within30min/run and continuous budget. CPU32GiB pin probe does not establish serving budget or acceptable SLO.
+- GPU experiments count2×entire startup/load/compile/request/cleanup wall time. Check historical family ledgers and unresolved RUNNING before start. Do not terminateRustDesk or other services. Use an owned process group; preserve exceptions and worker cleanup evidence.
+- Decide exact sessions and reasonable host budget only after actual pool measurement, before performance outcomes. Matched compiledFull/NoHost/static-prefix comparisons retain identical model, input work, runtime and resources. No reset for principal tests. Do not call synthetic pressure production demand or lower historical10%screen.
+- Old1.5B regression retained unchanged. No large formal matrix or64GiB pin limit hunting. Initialization27s is not per-request migration cost. Correctness/performance and proxy/real-token assumptions remain separate.
+
+BeforeGPU launch add a bounded TP2 lifecycle sanity check: after short256/long28672/GPU-reuse28672, issue a separate8192-token CPU-store request, reset onlyGPU cache preservingexternal, then resume identical8192 input.16 outputs each. Observe external source/transfer counters and record output equality diagnostically; non-invariant equality is not a full correctness oracle. This reset is diagnostic only, not a principal performance workload. Reserve1GPUh for the whole feasibility run, with1710s workload/cleanup watchdog and2GPU accounting.
+
+Candidate capacity-stress assumption, not production evidence:21 independent28672-token inputs total147GiB KV, greater than125.65GiB physicalRAM plus optimistic20.55GiB GPU KV upper bound. Freeze final session/turn counts only after actual pool and cold-request time estimate; reject a matrix that cannot fit remaining budget. Consider32/64GiB host reservations with explicit tradeoffs, never interpret those as the physicalRAM limit.
+
+## Post-feasibility screen frozen before policy outcomes
+
+Observed pool70000 tokens=17.08984GiB globalKV, cold28672/16output TTFT13.35s, startup180.58s. GPU reuse and8K CPU restore observed. Original post-exit GPU snapshot stillheld~42GB/card; independent idle confirmation bounds unresolved teardown. Charge additional conservative upper0.4724857332GPUh, not actual busy time. Continuous ceiling1.8579170891/4h before oracle/screen. Add verified device-release waiting to future runs, reserve160s cleanup.
+
+Correctness first: separatebatch-invariant1, two meaningful28672-token retrieval inputs with distinct artificialCEDAR17/MAPLE42 markers in the firstprefix. Save12480-token checkpoints, resetGPU and restore each, then independentcold requests using newtop-levelcache_salt and store0. Requiremarker-sensitive cold outputs, matching16 generatedIDs and correctsource accounting; failure/UNKNOWN prohibits calling the screen correctness-validated. Oracle timings not compared with performance.
+
+Screen one seed914477,21sessions×3turns, input28672+turn×512 canonical replay,128 generatedtokens/turn, synthetic5s tool gap, firstrelease20ms/session after firstBG token. Background3 sequential8192-input/128-output jobs, allnoCPUstore. Allinput/output work identical acrosspolicies; noGPUreset. This is long-history/short-output synthetic stress, not task-success/production evidence; no broaderoutput-regime claim.
+
+Policies: genuineNoHost withoutOffloadingConnector; nativeFull with64GiB globalhost budget; StaticFair same64GiB,20×12480+1×12544-token admittedprefixes. FixGPUcache bytes/rank9175040000 to the naturalpool measurement; verify actual70000tokens in everyrun. SameFP16/TP2/model/compiler/numseq16/batchedtokens8192/flags. NoHost leaves host allowance unused; do not allocate a fictitious64GiB pool to it. Native cross-layer layout differs inherently from no-connector layout; report this configuration difference.
+
+Primaryscreen: sessionE2Emedian at least10% lower than both matchedNoHost andFull; eachsessionE2E andBGmakespan no morethan5% worse. ResumeP95/transfer/source/throughput report in full, not substitute for primary gate. One matchedtriple only; not statistical significance. No post-hocSLO or olderthreshold changes. IntendedorderNoHost/Full/Fair, dynamicwall ceiling≤30min and continuous4GPUh; refuse insufficientplannedtime, preserve incomplete results. Stop if budget or safety boundary reached.
+
+2026-10-12 user explicitly approved extending continuouscap to4.5GPUh **only to finish this frozen matchedtriple**. NoHost complete,Full started underoriginal4h; Fair may use4.5h via explicitCLI authorization. Existing costs and0.47249h cleanup-uncertainty upperbound remain included; no extra matrix/model/seed. Save executedrunner versions separately before subsequent edits.

@@ -24,11 +24,11 @@ def memory():
 
 def budget(root):
     families = ('autonomous_fork', 'autonomous_round4', 'host_prefix_cost_20261010',
-                'host_prefix_followup_20261010', 'deployment_opportunity_20261011')
+                'host_prefix_followup_20261010', 'deployment_opportunity_20261011', 'large_model_20261012')
     costs = {}
     for family in families:
         executions = [json.loads(p.read_text()) for p in (root / 'results' / family).glob('*/execution.json')]
-        if not executions and family != families[-1]:
+        if not executions and family in families[:4]:
             raise RuntimeError('historical budget ledger unavailable: ' + family)
         if any(row['status'] == 'RUNNING' for row in executions):
             raise RuntimeError('unresolved owned run')

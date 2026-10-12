@@ -56,13 +56,13 @@ def test_budget_carries_history_and_refuses_live_run(tmp_path):
     import json
     from experiments.host_prefix.followup_screen import FAMILY, budget
     for family in ('autonomous_fork', 'autonomous_round4', 'host_prefix_cost_20261010', FAMILY,
-                   'deployment_opportunity_20261011'):
+                   'deployment_opportunity_20261011', 'large_model_20261012'):
         directory = tmp_path/'results'/family/'run'
         directory.mkdir(parents=True)
         field = 'gpu_hours_conservative' if family in ('autonomous_fork', 'autonomous_round4') else 'gpu_hours'
         (directory/'execution.json').write_text(json.dumps(dict(status='COMPLETE', **{field: .2})))
-    assert sum(budget(tmp_path).values()) == pytest.approx(1.0)
-    (tmp_path/'results/deployment_opportunity_20261011/run/execution.json').write_text('{"status":"RUNNING"}')
+    assert sum(budget(tmp_path).values()) == pytest.approx(1.2)
+    (tmp_path/'results/large_model_20261012/run/execution.json').write_text('{"status":"RUNNING"}')
     with pytest.raises(RuntimeError, match='unresolved'):
         budget(tmp_path)
 

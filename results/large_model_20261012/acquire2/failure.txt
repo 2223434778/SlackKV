@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/large_model_acquire_20261012.py", line 79, in main
+    with ThreadPoolExecutor(max_workers=2) as pool:
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 619, in result_iterator
+    yield fs.pop().result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 444, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/large_model_acquire_20261012.py", line 67, in download
+    with (args.out / (row['name'] + '.download.log')).open('a') as log:
+  File "/usr/lib/python3.8/subprocess.py", line 495, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.8/subprocess.py", line 1028, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.8/subprocess.py", line 1894, in _communicate
+    self.wait(timeout=self._remaining_time(endtime))
+  File "/usr/lib/python3.8/subprocess.py", line 1083, in wait
+    return self._wait(timeout=timeout)
+  File "/usr/lib/python3.8/subprocess.py", line 1798, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['curl', '-L', '--fail', '--retry', '2', '--connect-timeout', '15', '--max-time', '255', '--continue-at', '-', '--output', '/media/a6000/D/ZhaoBinHe/slackkv-models/qwen2p5-32b-5ede1c97/model-00013-of-00017.safetensors.download', 'https://hf-mirror.com/Qwen/Qwen2.5-32B-Instruct/resolve/5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd/model-00013-of-00017.safetensors']' timed out after 259.9999182070005 seconds

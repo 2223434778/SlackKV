@@ -1,0 +1,34 @@
+{
+  "status": "PASS_SENSITIVE_PARTIAL_PREFIX_ORACLE",
+  "cases": {
+    "a": {
+      "marker": "CEDAR17",
+      "resume": {
+        "local_compute": 16192.0,
+        "local_cache_hit": 0.0,
+        "external_kv_transfer": 12480.0
+      },
+      "independent_cold": {
+        "local_compute": 28672.0,
+        "local_cache_hit": 0.0,
+        "external_kv_transfer": 0.0
+      },
+      "tokens_equal": true
+    },
+    "b": {
+      "marker": "MAPLE42",
+      "resume": {
+        "local_compute": 16192.0,
+        "local_cache_hit": 0.0,
+        "external_kv_transfer": 12480.0
+      },
+      "independent_cold": {
+        "local_compute": 28672.0,
+        "local_cache_hit": 0.0,
+        "external_kv_transfer": 0.0
+      },
+      "tokens_equal": true
+    }
+  },
+  "caveat": "two meaningful inputs, not all lifecycle/quality cases"
+}

@@ -1,0 +1,30 @@
+{
+  "status": "FAIL",
+  "model": "Qwen/Qwen2.5-32B-Instruct",
+  "revision": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+  "endpoint": "https://hf-mirror.com",
+  "gpu_hours": 0,
+  "gpu_count": 0,
+  "verified_files": [
+    "config.json",
+    "generation_config.json",
+    "merges.txt",
+    "model-00001-of-00017.safetensors",
+    "model-00002-of-00017.safetensors",
+    "model-00003-of-00017.safetensors",
+    "model-00004-of-00017.safetensors",
+    "model-00005-of-00017.safetensors",
+    "model-00006-of-00017.safetensors",
+    "model-00007-of-00017.safetensors",
+    "model-00008-of-00017.safetensors",
+    "model-00009-of-00017.safetensors",
+    "model-00010-of-00017.safetensors",
+    "model-00011-of-00017.safetensors",
+    "model-00012-of-00017.safetensors"
+  ],
+  "workers": 2,
+  "started_unix": 1791778589.0312061,
+  "runner_sha256": "fbf9182b9302b41c530ed86137fd85767091d8e77f843ba0a84c2077772252a3",
+  "kind": "CPU/network acquisition; no GPUs reserved or model process started",
+  "wall_seconds": 1804.9192161679998
+}
