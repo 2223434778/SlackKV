@@ -230,3 +230,5 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 - 2026-10-12 外部审查b85027a：复算27 namespace汇总、32B KV/权重容量与pin32 RSS/系统内存差，支持报告边界；新增GPU0。32GiB分配成功不等于serving性能通过，27s是初始化成本而非逐请求成本。下一自主目标为明确部署下Full/NoHost的实际可避免成本，允许有依据的透明合成场景，不强制完整生产trace或自动转32B。交接docs/RESEARCH_REVIEW_DEPLOYMENT_20261012.md。
 
 - 2026-10-12 large_model：自然32B/TP2 GPU池17.09GiB、host64GiB、21长历史合成session，无reset；静态前缀准入比compiled NoHost/Full E2E−16.44/−18.40%，全部session和BG makespan满足冻结退化约束。Full 448.875GiB写入未复用，Fair真实前缀恢复524,288tokens，支持继续这一候选，停止条件A。P95未达10%、第三BG平均响应后段间隔恶化、同host池未降低RSS、单seed/顺序/非生产和不完整生命周期oracle均保留；不宣称SOTA或稳定性，不删除旧负对照，不继续旧JIT调参。连续4.191988/用户批准4.5GPUh，只完成冻结组。下一轮先反序复验与少量regime验证，再决定动态额度。
+
+- 2026-10-12 独立审查eead834：复算三方法原始请求计时/记录哈希配对和迁移来源，确认Fair相对NoHost/Full会话E2E−16.44%/−18.40%，接受初步整体正结果。保留单run、配置差异与后台输出阶段代价；未重算payload SHA/完整oracle或新增GPU。下一目标为自主反序复验和少量收益边界，遵守仅完成本组三方法的4.5GPUh授权范围。详见docs/RESEARCH_REVIEW_LARGE_MODEL_20261012.md及results/research_review_large_model_20261012/spotcheck.json。

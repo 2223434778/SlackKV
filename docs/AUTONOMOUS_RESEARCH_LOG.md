@@ -182,3 +182,5 @@
 - 首次退出后GPU释放未确认，额外保留0.4724857332GPUh未知区间上界；不是实测忙碌。后续验证ownedgroup为空且两卡19MiB/0%。用户批准连续4.5GPUh仅完成这一组，最终4.1919880197，新增family2.9261669850，余额不启动额外实验。
 - 82原始文件84,782,502解压bytes SHA/长度与压缩-only本机复算通过。acquire/source版本、原始输入/metrics/日志、失败与commands保存；可行性初版runner只有SHA无完整快照的缺口明示。线程池超时清理修复未用于本次性能运行，独立测试；工程失败保留。
 - 决策A：保留简单capacity-conditioned prefix admission候选，不宣称静态均分新颖/SOTA/统计显著。下一步反序与种子复验、非均匀历史和较长输出的少量匹配筛选，先确认regime和后台Decode代价，再决定动态额度。报告docs/AUTONOMOUS_RESEARCH_LARGE_MODEL_20261012.md；结果results/large_model_20261012/。项目最终目标不变。
+
+- 2026-10-12 独立审查eead834：复算三方法原始请求计时/记录哈希配对和迁移来源，确认Fair相对NoHost/Full会话E2E−16.44%/−18.40%，接受初步整体正结果。保留单run、配置差异与后台输出阶段代价；未重算payload SHA/完整oracle或新增GPU。下一目标为自主反序复验和少量收益边界，遵守仅完成本组三方法的4.5GPUh授权范围。详见docs/RESEARCH_REVIEW_LARGE_MODEL_20261012.md及results/research_review_large_model_20261012/spotcheck.json。
