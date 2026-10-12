@@ -1,0 +1,8 @@
+Error processing line 1 of /media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/lib/python3.11/site-packages/nvidia_cutlass_dsl_packages.pth:
+
+  Traceback (most recent call last):
+    File "<frozen site>", line 195, in addpackage
+    File "<string>", line 1, in <module>
+  ModuleNotFoundError: No module named 'nvidia_cutlass_dsl'
+
+Remainder of file ignored

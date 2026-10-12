@@ -685,3 +685,6 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 
 
 - 2026-10-12 M1修正交接（审查基线92e65cb）：独立执行原始控制器确认 end/finish/collect 后同代迟到请求重新获准（reason=None, ceiling=2, allowed=2）。指导执行侧保留独立结束状态、添加针对性控制器/native回归，并准备内容/生命周期与M1对StaticFair的小规模GPU验证；沿用架构，不扩M2/M3，不要求先做反序多种子。原64项及native审计未由审查侧重跑，本地pytest不可用；本次无代码修复/GPU运行。交接docs/SLACKKV_SYSTEM_M1_CORRECTION_20261012.md。新增0.5GPUh仍为待批准建议，先完成代码/CPU/脚本，若执行会话已有新授权则遵循之。
+
+
+- 2026-10-13 system_m1_fix_20261012：基线4d1da69。新增回归旧controller1 failed/15 passed，修复后python -m pytest tests/test_system_m1.py tests/test_system_m1_smoke.py tests/test_large_model.py tests/test_host_prefix_followup.py tests/test_deployment_opportunity.py tests/test_host_prefix.py tests/test_opportunity_decision.py -q --basetemp .tmp/pytest_m1_fix_deliver，74 passed。Ubuntu CUDA_VISIBLE_DEVICES='' native_audit，旧controllerFAILED（6.360029s），修复后15组PASS（6.500098s）；source hashes/失败堆栈/日志保留。CPU smoke准备三版，不启动GPU，v1 max_model_len不适合冻结GPU池，v3为最终runner和模型/输入SHA匹配版本。环境cutlass .pth警告不影响这次CPU执行，GPU可行性未测。命令results/system_m1_fix_20261012/commands.sh，状态status.json，报告docs/SLACKKV_SYSTEM_M1_REPORT.md修正附录。新增GPU0，历史账本4.191988019727527不变，申请的0.5GPUh未授予。

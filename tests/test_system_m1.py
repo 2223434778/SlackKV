@@ -86,3 +86,41 @@ def test_reused_generation_waits_for_retired_identity_without_sticky_shared_fall
 def test_invalid_capacity_is_rejected(value):
     with pytest.raises(ValueError):
         PrefixController(value)
+
+
+@pytest.mark.parametrize('collected', [False, True])
+def test_explicit_end_survives_physical_collection_and_request_id_change(collected):
+    c = PrefixController(10)
+    p = path('s', 2)
+    original = c.observe('first', 's', 0, p)
+    c.end('s', 0)
+    c.finish('first')
+    if collected:
+        c.collect(('s', 0))
+    late = c.observe('different-request-id', 's', 0, p)
+    assert late.reason == 'ended_generation_requires_new_generation'
+    assert late.ceiling == c.allowed(late) == c.allowed(original) == 0
+    assert not any(m.alive for m in c.members.values())
+    c.finish(late.handle)
+    next_plan = c.observe('new', 's', 1, path('next', 3))
+    target = c.members[('s', 1)].target
+    c.end('s', 0)
+    c.end('s', 0)
+    old = c.observe('old-again', 's', 0, p)
+    assert old.reason == 'stale_generation'
+    assert c.allowed(next_plan) == target == 3
+
+
+def test_ordinary_finish_and_tool_idle_do_not_end_generation():
+    c = PrefixController(10)
+    c.observe('turn0', 's', 0, path('s', 2))
+    c.finish('turn0')
+    assert c.observe('turn1', 's', 0, path('s', 3)).ceiling == 3
+
+
+def test_unseen_or_future_end_is_noop_not_a_future_generation_fence():
+    c = PrefixController(10)
+    c.end('unseen', 0)
+    p = c.observe('first', 'unseen', 0, path('s', 2))
+    c.end('unseen', 99)
+    assert c.allowed(p) == 2

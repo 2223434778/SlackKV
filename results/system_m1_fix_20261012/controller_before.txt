@@ -1,0 +1,25 @@
+Failed to find real location of E:\Software\Anaconda\python.exe
+.............F..                                                         [100%]
+================================== FAILURES ===================================
+_ test_explicit_end_survives_physical_collection_and_request_id_change[True] __
+
+collected = True
+
+    @pytest.mark.parametrize('collected', [False, True])
+    def test_explicit_end_survives_physical_collection_and_request_id_change(collected):
+        c = PrefixController(10)
+        p = path('s', 2)
+        original = c.observe('first', 's', 0, p)
+        c.end('s', 0)
+        c.finish('first')
+        if collected:
+            c.collect(('s', 0))
+        late = c.observe('different-request-id', 's', 0, p)
+>       assert late.reason == 'ended_generation_requires_new_generation'
+E       AssertionError: assert None == 'ended_generation_requires_new_generation'
+E        +  where None = Plan(handle='different-request-id', token=('s', 0), path=(b's-0', b's-1'), ceiling=2, version=3, reason=None).reason
+
+tests\test_system_m1.py:101: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_system_m1.py::test_explicit_end_survives_physical_collection_and_request_id_change[True]
+1 failed, 15 passed in 0.46s

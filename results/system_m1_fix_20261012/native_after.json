@@ -1,0 +1,287 @@
+{
+  "status": "PASS",
+  "gpu_count": 0,
+  "gpu_hours": 0,
+  "checks": [
+    "old10_ceiling_actual5_preserves_B5",
+    "deepest_load_blocks_trim_then_tail_only_events",
+    "pending_minus1_retired_generation_duplicate_physical_settlement",
+    "same_identity_new_generation_next_request_rebuild_reused_request_id_safe",
+    "failed_ancestor_orphan_tail_eventual_reclaim",
+    "shared_unknown_no_store_native_read_identity_preserved",
+    "common_system_prefix_distinct_suffix_one_shared_fallback_native_read",
+    "end_collect_reset_same_generation_denied_new_generation_legal_old_end_noop",
+    "end_new_generation_load_refs_settle_late_read_no_early_free_duplicate_safe",
+    "short_lends_then_end_releases_next_request_expands",
+    "120_native_interleavings_recover_all_physical_slots",
+    "scheduler_thread_membership_guard_reset_late_completion",
+    "real_factory_hooks_tp2_all_workers_complete_disabled_native",
+    "real_store_builder_partial_src_dst_no_cursor_rewind_next_request_rebuild",
+    "unsupported_layout_and_policy_rejected_before_handlers"
+  ],
+  "snapshots": {
+    "old_plan_new_member": {
+      "capacity_blocks": 10,
+      "plan_version": 2,
+      "members": [
+        {
+          "session": "a",
+          "generation": 0,
+          "demand_blocks": 10,
+          "target_blocks": 5,
+          "active_requests": 1,
+          "alive": true,
+          "unsupported": null
+        },
+        {
+          "session": "b",
+          "generation": 0,
+          "demand_blocks": 10,
+          "target_blocks": 5,
+          "active_requests": 1,
+          "alive": true,
+          "unsupported": null
+        }
+      ],
+      "frozen_plans": 2,
+      "generation_tombstones": 2,
+      "ended_generation_tombstones": 0,
+      "unmaterialized_reservations": 0,
+      "physical_ready_blocks": 10,
+      "physical_pending_store_blocks": 0,
+      "physical_load_protected_blocks": 0,
+      "physical_free_blocks": 0,
+      "physical_reserved_bytes": 41943040,
+      "members_physical": [
+        {
+          "session": "a",
+          "generation": 0,
+          "allocated_prefix_blocks": 5,
+          "ready_prefix_blocks": 5,
+          "owned_physical_blocks": 5,
+          "deferred_reclaim_blocks": 0
+        },
+        {
+          "session": "b",
+          "generation": 0,
+          "allocated_prefix_blocks": 5,
+          "ready_prefix_blocks": 5,
+          "owned_physical_blocks": 5,
+          "deferred_reclaim_blocks": 0
+        }
+      ],
+      "metrics": {
+        "observed_requests": 2,
+        "reclaimed_blocks": 0,
+        "admitted_store_blocks": 10,
+        "skipped_store_blocks": 10
+      },
+      "pending_store_batches": 0,
+      "pending_load_batches": 0,
+      "tracked_request_contexts": 2
+    },
+    "common_system_prefix_distinct_suffix": {
+      "capacity_blocks": 8,
+      "plan_version": 2,
+      "members": [
+        {
+          "session": "a",
+          "generation": 0,
+          "demand_blocks": 4,
+          "target_blocks": 4,
+          "active_requests": 1,
+          "alive": true,
+          "unsupported": null
+        },
+        {
+          "session": "b",
+          "generation": 0,
+          "demand_blocks": 4,
+          "target_blocks": 0,
+          "active_requests": 1,
+          "alive": true,
+          "unsupported": "shared_prefix"
+        }
+      ],
+      "frozen_plans": 2,
+      "generation_tombstones": 2,
+      "ended_generation_tombstones": 0,
+      "unmaterialized_reservations": 0,
+      "physical_ready_blocks": 4,
+      "physical_pending_store_blocks": 0,
+      "physical_load_protected_blocks": 0,
+      "physical_free_blocks": 4,
+      "physical_reserved_bytes": 8,
+      "members_physical": [
+        {
+          "session": "a",
+          "generation": 0,
+          "allocated_prefix_blocks": 4,
+          "ready_prefix_blocks": 4,
+          "owned_physical_blocks": 4,
+          "deferred_reclaim_blocks": 0
+        },
+        {
+          "session": "b",
+          "generation": 0,
+          "allocated_prefix_blocks": 2,
+          "ready_prefix_blocks": 2,
+          "owned_physical_blocks": 0,
+          "deferred_reclaim_blocks": 0
+        }
+      ],
+      "metrics": {
+        "observed_requests": 2,
+        "reclaimed_blocks": 0,
+        "admitted_store_blocks": 4,
+        "skipped_store_blocks": 0,
+        "fallback_shared_prefix": 1,
+        "denied_store_batches": 1
+      },
+      "pending_store_batches": 0,
+      "pending_load_batches": 0,
+      "tracked_request_contexts": 2
+    },
+    "ended_collected_reset_new_generation": {
+      "capacity_blocks": 4,
+      "plan_version": 4,
+      "members": [
+        {
+          "session": "ended",
+          "generation": 1,
+          "demand_blocks": 4,
+          "target_blocks": 4,
+          "active_requests": 1,
+          "alive": true,
+          "unsupported": null
+        }
+      ],
+      "frozen_plans": 1,
+      "generation_tombstones": 1,
+      "ended_generation_tombstones": 0,
+      "unmaterialized_reservations": 0,
+      "physical_ready_blocks": 4,
+      "physical_pending_store_blocks": 0,
+      "physical_load_protected_blocks": 0,
+      "physical_free_blocks": 0,
+      "physical_reserved_bytes": 4,
+      "members_physical": [
+        {
+          "session": "ended",
+          "generation": 1,
+          "allocated_prefix_blocks": 4,
+          "ready_prefix_blocks": 4,
+          "owned_physical_blocks": 4,
+          "deferred_reclaim_blocks": 0
+        }
+      ],
+      "metrics": {
+        "observed_requests": 5,
+        "reclaimed_blocks": 4,
+        "admitted_store_blocks": 8,
+        "skipped_store_blocks": 0,
+        "fallback_ended_generation_requires_new_generation": 2,
+        "denied_store_batches": 2
+      },
+      "pending_store_batches": 0,
+      "pending_load_batches": 0,
+      "tracked_request_contexts": 1
+    },
+    "factory_connector_tp2": {
+      "capacity_blocks": 10,
+      "plan_version": 1,
+      "members": [
+        {
+          "session": "real",
+          "generation": 0,
+          "demand_blocks": 4,
+          "target_blocks": 4,
+          "active_requests": 1,
+          "alive": true,
+          "unsupported": null
+        }
+      ],
+      "frozen_plans": 1,
+      "generation_tombstones": 1,
+      "ended_generation_tombstones": 0,
+      "unmaterialized_reservations": 0,
+      "physical_ready_blocks": 4,
+      "physical_pending_store_blocks": 0,
+      "physical_load_protected_blocks": 0,
+      "physical_free_blocks": 6,
+      "physical_reserved_bytes": 41943040,
+      "members_physical": [
+        {
+          "session": "real",
+          "generation": 0,
+          "allocated_prefix_blocks": 4,
+          "ready_prefix_blocks": 4,
+          "owned_physical_blocks": 4,
+          "deferred_reclaim_blocks": 0
+        }
+      ],
+      "metrics": {
+        "observed_requests": 1,
+        "reclaimed_blocks": 0,
+        "admitted_store_blocks": 4,
+        "skipped_store_blocks": 0
+      },
+      "pending_store_batches": 0,
+      "pending_load_batches": 0,
+      "tracked_request_contexts": 1
+    },
+    "native_builder_partial_cursor_next_request": {
+      "capacity_blocks": 10,
+      "plan_version": 4,
+      "members": [
+        {
+          "session": "builderA",
+          "generation": 0,
+          "demand_blocks": 10,
+          "target_blocks": 10,
+          "active_requests": 1,
+          "alive": true,
+          "unsupported": null
+        }
+      ],
+      "frozen_plans": 1,
+      "generation_tombstones": 2,
+      "ended_generation_tombstones": 1,
+      "unmaterialized_reservations": 0,
+      "physical_ready_blocks": 10,
+      "physical_pending_store_blocks": 0,
+      "physical_load_protected_blocks": 0,
+      "physical_free_blocks": 0,
+      "physical_reserved_bytes": 41943040,
+      "members_physical": [
+        {
+          "session": "builderA",
+          "generation": 0,
+          "allocated_prefix_blocks": 10,
+          "ready_prefix_blocks": 10,
+          "owned_physical_blocks": 10,
+          "deferred_reclaim_blocks": 0
+        }
+      ],
+      "metrics": {
+        "observed_requests": 3,
+        "reclaimed_blocks": 5,
+        "admitted_store_blocks": 15,
+        "skipped_store_blocks": 5
+      },
+      "pending_store_batches": 0,
+      "pending_load_batches": 0,
+      "tracked_request_contexts": 1
+    }
+  },
+  "native_manager_sha256": "fd89bb49d46a01fdf6acfdf6c3c1867e5cb3116a0b24bc47859cc83de34841bd",
+  "torch": "2.11.0+cu126",
+  "scope": "CPU/native metadata only; synthetic request metadata; no GPU tensors/DMA/content/performance validation",
+  "source_sha256": {
+    "slackkv.m1.controller": "34c2450f07c17e25cd26383e162d25c01d3d33e78f08c736e8c9150c0e103709",
+    "slackkv.m1.native": "6bf1c343ed8614a464d5e3dc0babbe06ebd1d71541a0e52b0046263f3ab38059",
+    "slackkv.m1.spec": "44e23e624eb10d1febbd888594e48a5d4ef982b39259f145bfe7bf1080715de5"
+  },
+  "audit_sha256": "818b54b8b5a98292983567d7f7ad1de145e86cf424f8c22a28d80a5c965f538e",
+  "cpu_wall_seconds": 6.500098185002571
+}

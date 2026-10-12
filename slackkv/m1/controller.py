@@ -57,6 +57,8 @@ class PrefixController:
         self.plans: dict[str, Plan] = {}
         self.key_owner: dict[bytes, Token] = {}
         self.latest: dict[str, int] = {}
+        # One terminal bit for the latest generation, independent of Member GC.
+        self.ended: set[str] = set()
         self.version = self.cursor = 0
 
     def rebalance(self):
@@ -75,6 +77,8 @@ class PrefixController:
             reason = 'missing_or_invalid_membership'
         elif generation < self.latest.get(session, -1):
             reason = 'stale_generation'
+        elif generation == self.latest.get(session, -1) and session in self.ended:
+            reason = 'ended_generation_requires_new_generation'
         elif len(set(path)) != len(path):
             reason = 'duplicate_identity'
         else:
@@ -84,6 +88,7 @@ class PrefixController:
                     if old[0] == session:
                         member.alive = False
                 self.latest[session] = generation
+                self.ended.discard(session)
             member = self.members.get(token)
             if member is None:
                 member = self.members[token] = Member(token, path)
@@ -118,6 +123,11 @@ class PrefixController:
         return min(plan.ceiling, member.target)
 
     def end(self, session: str, generation: int):
+        # Unseen/future events are no-ops; only a known current generation ends.
+        # A delayed end for an older generation cannot fence a newer request.
+        if self.latest.get(session) != generation or session in self.ended:
+            return
+        self.ended.add(session)
         member = self.members.get((session, generation))
         if member is not None and member.alive:
             member.alive = False
@@ -144,4 +154,5 @@ class PrefixController:
                                   target_blocks=m.target, active_requests=len(m.active), alive=m.alive,
                                   unsupported=m.unsupported) for t, m in sorted(self.members.items())],
                     frozen_plans=len(self.plans), generation_tombstones=len(self.latest),
+                    ended_generation_tombstones=len(self.ended),
                     unmaterialized_reservations=0)

@@ -196,3 +196,6 @@
 
 
 - 2026-10-12 M1修正交接（审查基线92e65cb）：独立执行原始控制器确认 end/finish/collect 后同代迟到请求重新获准（reason=None, ceiling=2, allowed=2）。指导执行侧保留独立结束状态、添加针对性控制器/native回归，并准备内容/生命周期与M1对StaticFair的小规模GPU验证；沿用架构，不扩M2/M3，不要求先做反序多种子。原64项及native审计未由审查侧重跑，本地pytest不可用；本次无代码修复/GPU运行。交接docs/SLACKKV_SYSTEM_M1_CORRECTION_20261012.md。新增0.5GPUh仍为待批准建议，先完成代码/CPU/脚本，若执行会话已有新授权则遵循之。
+
+
+- 2026-10-13 M1修正（交接4d1da69）：先在旧92e65cb controller上跑新回归，1 failed/15 passed；同扩展native审计旧版FAILED，同代结束并物理collect后恢复store资格。新增latest终止bit独立于Member GC/reset，旧/未知/未来end no-op，更高代合法，普通finish不终止；未更改native有效DMA结算。修复后74项本地回归、15组native场景PASS（含120交错），共享system prefix不同后缀一次fallback并合法read。真实模型配置/tokenizer CPU准备smoke_v3：FP16 TP1 compiled、GPU512MiB、host224MiB/512块、模型limit18432；发现旧32K limit不适配，在GPU启动前修正，v1/v2/v3记录保留。runner/config/输入/预算锁/清理门/比较器已交付。BUG_FIXED与CPU_NATIVE_PASS=PASS，GPU_CONTENT=NOT_RUN，动态收益UNKNOWN；新增GPU0、历史4.191988019727527不变。未修改cutlass .pth警告的共享环境，GPU启动仍需真实验证。结果results/system_m1_fix_20261012/，报告M1_REPORT修正附录；唯一待决策项是新0.5GPUh授权，M2/M3关闭。

@@ -126,6 +126,63 @@ def run():
     assert snapshot(m)['physical_ready_blocks']==3
     checks.append('shared_unknown_no_store_native_read_identity_preserved')
 
+    # A common native system prefix remains shared, not hidden by session salts.
+    m = M1CPUManager(8, 16, 1)
+    common = keys('system-prefix', 2)
+    a, ak, _ = start(m, 'suffixA', 'a', 4, path=common+keys('suffixA', 2))
+    store(m, a, ak)
+    b, bk, state = start(m, 'suffixB', 'b', 4, path=common+keys('suffixB', 2))
+    assert state.max_offload_tokens == 0 and not store(m, b, bk).keys_to_store
+    m.prepare_load(common, b);m.complete_load(common, b)
+    assert snapshot(m)['metrics']['fallback_shared_prefix'] == 1
+    snapshots['common_system_prefix_distinct_suffix'] = snapshot(m)
+    checks.append('common_system_prefix_distinct_suffix_one_shared_fallback_native_read')
+
+    # End survives Member collection and cache reset; ordinary finish does not.
+    m = M1CPUManager(4, 16, 1)
+    a, ak, _ = start(m, 'ended-first', 'ended', 4)
+    store(m, a, ak);m.on_request_finished(a)
+    a1, _, state = start(m, 'ordinary-resume', 'ended', 4, path=ak)
+    assert state.max_offload_tokens == 64
+    m.end_session('ended', 0);m.on_request_finished(a1)
+    assert not m.controller.members and snapshot(m)['physical_free_blocks'] == 4
+    for reset in (False, True):
+        if reset:m.reset_cache()
+        late, _, state = start(m, f'late-{reset}', 'ended', 4, path=ak)
+        assert state.max_offload_tokens == 0 and not store(m, late, ak).keys_to_store
+        assert not m.controller.members and snapshot(m)['physical_free_blocks'] == 4
+        m.on_request_finished(late)
+    new, nk, state = start(m, 'new-generation', 'ended', 4, generation=1, path=ak)
+    assert state.max_offload_tokens == 64
+    m.end_session('ended', 0);m.end_session('ended', 0)
+    store(m, new, nk)
+    assert snapshot(m)['physical_ready_blocks'] == 4
+    snapshots['ended_collected_reset_new_generation'] = snapshot(m)
+    checks.append('end_collect_reset_same_generation_denied_new_generation_legal_old_end_noop')
+
+    # Both kinds of in-flight native references span end/new-generation.
+    m = M1CPUManager(4, 16, 1)
+    old, ok, _ = start(m, 'read-old', 'read-end', 4)
+    store(m, old, ok);m.prepare_load(ok, old)
+    m.end_session('read-end', 0);m.on_request_finished(old)
+    late, _, state = start(m, 'read-late', 'read-end', 4, path=ok)
+    assert state.max_offload_tokens == 0 and not store(m, late, ok).keys_to_store
+    # Terminal logical status does not invalidate legal native read identity.
+    m.prepare_load(ok, late)
+    new, nk, _ = start(m, 'read-new', 'read-end', 4, generation=1, path=keys('read-new', 4))
+    assert snapshot(m)['physical_load_protected_blocks'] == 4
+    assert not store(m, new, nk).keys_to_store
+    m.complete_load(ok, old)
+    assert snapshot(m)['physical_free_blocks'] == 0
+    m.complete_load(ok, late);m.on_request_finished(late)
+    assert snapshot(m)['physical_free_blocks'] == 4
+    store(m, new, nk);m.complete_load(ok, old)
+    assert all(m.lookup(k, new) for k in nk)
+    m.end_session('read-end', 1);m.on_request_finished(new)
+    assert snapshot(m)['physical_free_blocks'] == 4
+    assert snapshot(m)['tracked_request_contexts'] == 0
+    checks.append('end_new_generation_load_refs_settle_late_read_no_early_free_duplicate_safe')
+
     # Membership finish, elastic borrowing, next-normal-request rebuild.
     m = M1CPUManager(10, 16, 1)
     a, ak, _=start(m,'elasticA','a',10)

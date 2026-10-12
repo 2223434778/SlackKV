@@ -1,0 +1,12 @@
+{
+  "status": "FAILED",
+  "gpu_count": 0,
+  "gpu_hours": 0,
+  "error": "Traceback (most recent call last):\n  File \"/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/system-m1-code/experiments/system_m1/native_audit.py\", line 339, in main\n    result.update(run())\n                  ^^^^^\n  File \"/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/system-m1-code/experiments/system_m1/native_audit.py\", line 152, in run\n    assert state.max_offload_tokens == 0 and not store(m, late, ak).keys_to_store\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "source_sha256": {
+    "slackkv.m1.controller": "6efb547b3f69fc8373862544474521706541968dff248e79614ff474cda59bf5",
+    "slackkv.m1.native": "6bf1c343ed8614a464d5e3dc0babbe06ebd1d71541a0e52b0046263f3ab38059"
+  },
+  "audit_sha256": "818b54b8b5a98292983567d7f7ad1de145e86cf424f8c22a28d80a5c965f538e",
+  "cpu_wall_seconds": 6.360029235002003
+}

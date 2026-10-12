@@ -242,3 +242,6 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 
 
 - 2026-10-12 M1修正交接（审查基线92e65cb）：独立执行原始控制器确认 end/finish/collect 后同代迟到请求重新获准（reason=None, ceiling=2, allowed=2）。指导执行侧保留独立结束状态、添加针对性控制器/native回归，并准备内容/生命周期与M1对StaticFair的小规模GPU验证；沿用架构，不扩M2/M3，不要求先做反序多种子。原64项及native审计未由审查侧重跑，本地pytest不可用；本次无代码修复/GPU运行。交接docs/SLACKKV_SYSTEM_M1_CORRECTION_20261012.md。新增0.5GPUh仍为待批准建议，先完成代码/CPU/脚本，若执行会话已有新授权则遵循之。
+
+
+- 2026-10-13 M1终止契约修正：每session只保存latest generation及其终止bit；终止有效期独立于物理Member GC/cache reset。同代迟到请求仍走native合法读取/正常计算但停止optional store；更高代显式重启；重复/旧end不影响新代，未见/未来end no-op。原因是92e65cb在collect后丢失结束状态，新旧控制器/native回归已复现并修复。不采用逐代永久Member、TTL或提前丢弃DMA完成。smoke固定账本根/全policy共享额度、工作及清理计费，内容与性能模式分开；资源可行性先CPU核对，512MiB GPU KV配18432 max length，不沿用不适配的32K limit。M2/M3不启动，GPU内容和动态收益无实测，需新数值授权。

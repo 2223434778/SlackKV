@@ -1,0 +1,19 @@
+{
+  "handoff_baseline": "4d1da69898eb29d0d2e4d8696b875347fc5e83fa",
+  "old_implementation": "92e65cbfd5e4f444e7aa99470c530a2d832847ef",
+  "BUG_FIXED": "PASS",
+  "CPU_NATIVE_PASS": "PASS",
+  "GPU_CONTENT_PASS": "NOT_RUN",
+  "DYNAMIC_BENEFIT_OBSERVED": "UNKNOWN",
+  "GPU_SMOKE": "NOT_STARTED",
+  "controller_before": {"failed": 1, "passed": 15},
+  "final_local_tests": {"passed": 74},
+  "native_before": "FAILED_EXPECTED_ENDED_GENERATION_RESURRECTION",
+  "native_after": {"status": "PASS", "scenario_groups": 15, "interleavings": 120},
+  "latest_preparation": "smoke_preparation_v3",
+  "new_gpu_hours": 0,
+  "historical_gpu_hours": 4.191988019727527,
+  "requested_additional_gpu_hours": 0.5,
+  "gpu_allowance_granted": false,
+  "remaining_gate": "fresh explicit numeric GPU allowance"
+}

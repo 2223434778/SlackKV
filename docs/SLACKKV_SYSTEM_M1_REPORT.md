@@ -120,3 +120,72 @@ TP2 测试验证汇总和容量元数据，不是启动两个 GPU worker。没�
 预注册最低验收为请求完成、原生物理计数守恒、无内容/身份错误、无保护块提前释放。失败先修生命周期，不扩性能评价。
 通过后再用非均匀长度/动态成员匹配 StaticFair，验证 M1 独有的借用与退出能力；不能只与 thrashing Full 比较就声称创新或 SOTA。
 M2 仅补测量显示确实需要的压力反馈；M3 预取继续关闭。当前完成的是 M1 CPU/native 里程碑，不提前开展下一阶段。
+
+## 修正与后续验证 — 2026-10-13（交接 20261012）
+
+按 `SLACKKV_SYSTEM_M1_CORRECTION_20261012.md` 完成，拉取基线 `4d1da69`。
+本节保留并修正上文的历史适用范围：旧 `92e65cb` 的 64 项和 native v1/v2 PASS **未覆盖**已结束 generation 在 Member collection 后重新加入，不能用它们证明终止契约正确。
+
+### 缺陷、最小修复及事件契约
+
+先新增回归，在未修改 controller 上运行：**1 failed / 15 passed**。失败分支是 end → finish → collect → 改 request ID 后的同代 observe；旧代码返回 reason=None、ceiling=2。
+同一扩展 native 审计也先在旧 controller 上运行并 FAILED：真实 manager 回收物理块后，迟到同代请求仍获得 optional-store 资格。
+这是确认的生命周期缺陷；没有证据将其扩大为已观察到 KV 内容损坏。
+
+修复在 `PrefixController` 加入每 session 最新 generation 的终止 bit。它与 `latest` tombstone 同生命周期，独立于 Member 的物理回收；无需逐代永久保存完整 Member。
+observe 在创建 Member 前拒绝最新且已终止的 generation，optional ceiling=0。更高 generation 清除当前终止 bit 并正常加入；较小 generation 仍拒绝。
+end 只作用于**已见且等于 latest**的 generation。未知 session、未来 generation 的 end 是 no-op；重复与迟到旧 end 也是 no-op，不替新代设未来 fence。
+普通 request finish / tool idle 不设终止 bit。cache reset 不清除控制器 tombstone，所以无在途任务的 reset 不会重新开放已结束代。
+这没有新增 TTL、事件网络服务、预取或共享树；tombstone 仍按历史 session ID 增长，生产级 GC 尚未实现。
+
+native 完成通知的路径保持原样：逻辑拒绝不丢弃有效旧 store/load 完成，不提前 free，也不让重复旧通知影响新槽位。
+新增真实 load 场景在 end/new-generation 之间保留两份读引用，先完成旧请求引用仍不能释放；迟到请求的合法读引用也完成后才释放，随后新代可写，最终全部槽位回收。
+已有 pending-store 跨 end/new-generation 和同 native 身份等待旧引用结清的场景继续通过。
+
+### 新验证证据
+
+| 项目 | 实际结果 | 位置 |
+|---|---|---|
+| 旧 controller 的新回归 | 1 failed / 15 passed | `controller_before.txt`，旧源码 `controller_before.py` |
+| 旧 controller 的扩展 native 审计 | FAILED，终止后可重新 store | `native_before.json`（包含失败断言及源码 SHA） |
+| 修复后控制器、smoke 安全门及相关历史回归 | **74 passed** | `delivery_tests.txt` |
+| 修复后真实 native 元数据 | **15 组 PASS**，含 120 次交错 | `native_after.json`、`native_after.log` |
+| 实际模型配置和 tokenizer 的 CPU 输入准备 | GPU_NOT_STARTED | `smoke_preparation_v3/plan.json`、`inputs.json.gz` |
+
+全部新结果在 `results/system_m1_fix_20261012/`；旧 `results/system_m1_20261012/` 未覆盖或改写。
+修复后 native wall time 6.500098 s；旧失败 6.360029 s。这些是审计运行时间，不是性能对照。
+controller/native/audit 实际执行 SHA 和冻结源码齐备；原生 CPU manager SHA 仍为 `fd89bb49...`。
+共享 system prefix + 不同会话后缀诊断：1 次 `fallback_shared_prefix`、停止可选写入、共同前缀 native read 成功。没有增加 session 盐，不宣称实现了共享公平。
+CPU 环境启动时有 `nvidia_cutlass_dsl` .pth 导入警告，但审计和 tokenizer 准备完成；未修改共享环境，真正 GPU 启动仍待验证。
+
+### 已交付可执行 smoke，而非只有计划
+
+新增 `experiments/system_m1/smoke.py`、`smoke_config.json` 和 `compare_smoke.py`。默认 `--prepare` 只做 CPU 工作；执行必须明确提供新的适用 allowance。
+已在服务器实际运行 CPU 准备、核对模型配置及 tokenizer、生成固定 token 输入，并验证独立实验前缀首块不共享。原字节 gzip 归档，plan 中 SHA 指解压后的原始 JSON。
+最终 v3 的 runner SHA 为 `29d1460a1835b807a9452c03bbe7217dddc2c07e83ff03f395c070de58c02cc1`；执行时拒绝 runner、配置、输入或模型配置与准备版本不一致。
+
+冻结配置为已有 Qwen2.5-1.5B FP16、compiled、TP1、单张 A6000、512 MiB GPU KV，host 8192 tokens / **224 MiB / 512 块**。
+资源从实际模型层数/KV heads/head size 计算：28,672 bytes/token。model limit 为 **18,432**，能容纳 16,384-token 压力输入及 16 输出。
+准备过程中发现初版沿用 32K limit 装不进这一 GPU KV 池；在 GPU 启动前修正，保留 v1 的未执行记录。v2 修正资源，v3 固定最终 runner SHA；都未运行 GPU。
+
+固定序列：长 8192 → 短 1024 加入 → 独立普通压力 16384 → 长续接 → 短显式结束 → 压力 → 长下次请求扩额 → 压力 → 长再续接 → 长结束 → 同代迟到 → 新代。
+每请求 16 输出，固定串行 closed-loop / 0.15 s 间隔，没有强制清空 GPU。压力请求不保存 host KV，不能假装生产 Agent trace。
+内容模式额外查询同输入的独立冷 prefill，盐只用于这个 correctness oracle；核验 source trace 的 local/external 命中均为 0、实际 resume host restore 非零、token IDs 相同。
+同时检查实际 native store、物理计数守恒、终止代 fallback 和结束会话结清后无物理占用。
+GPU 未实际触发的取消/保护交错分支明列未覆盖；不能仅由所有请求完成推断这些分支已验证。
+
+内容模式 batch-invariant 单列。通过 A 且剩余预算足够才运行机制对照：M1 vs StaticFair，两者相同输入、输出、到达规则、GPU/host 池、source trace；性能模式关闭详细 M1 state 日志，避免只给 M1 增加密集诊断。
+StaticFair 对两个预先配置的 agent 固定均分各 4096-token cap；不使用未来长度，也不故意压低其均分份额。M1 只观察已到达需求。
+Full 和 true NoHost 均有对应命令；NoHost 不创建 connector。不承诺额度内完成所有启动、冷 oracle 和四基线，未执行项保持 NOT_RUN。
+比较器拒绝 correctness 模式和非匹配输入，不用单次时延变化自动宣布稳定动态收益。需要对照实际连续保存、后续恢复深度及重算成本再解释收益。
+
+### 资源、状态和下一步门槛
+
+runner 使用固定根目录、family-wide lock 和连续 `execution.json` 账本，所有 policy/name 的启动、编译、失败、工作和退出合计计费；改 run 名或 CLI 根目录不能绕过账本。
+每 run 整体最多 600 s，工作看门狗提前预留 90 s 清理，只终止自己启动的 process group；未确认清理或 GPU 释放则留为 RUNNING，禁止后续启动。
+预算不足不启动，旧实验例外额度不借用；原始配置和异常保留。
+
+最终状态：**BUG_FIXED=PASS；CPU_NATIVE_PASS=PASS；GPU_CONTENT_PASS=NOT_RUN；DYNAMIC_BENEFIT_OBSERVED=UNKNOWN；GPU_SMOKE=NOT_STARTED**。
+本轮新增 **0 GPU·小时**，历史连续 **4.191988019727527 GPU·小时**不变。
+唯一尚待用户决定的门槛是新的数值 GPU 授权：申请新增 **0.5 GPU·小时**，先 A 内容/生命周期，再按剩余额度做一个 M1/StaticFair 对照；每 run ≤10 min，包含启动、编译、失败和清理。
+预算不够的对照标未执行，不无限加跑、不启动 M2/M3。复现和待授权命令在结果目录 `commands.sh`，本轮代码/CPU/native交付已完成。
