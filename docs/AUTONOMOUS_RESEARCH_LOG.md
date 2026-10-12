@@ -188,3 +188,5 @@
 - 2026-10-12 用户批准分阶段系统架构交接：当前优先实现动态前缀基本份额、弹性借用与原生安全尾部回收（M1），随后压力切换（M2），有明确机会再加可选预取（M3）。复用compiled/native offload，允许成熟组件，不把旧反序多种子矩阵作为开发前置条件。文档docs/SLACKKV_SYSTEM_ARCHITECTURE_20261012.md；AGENTS新增当前入口与优先级，旧证据保留。仅文档交接，未实现运行时或新增GPU；数字预算未扩大，代码/CPU验证可先自主推进。
 
 - 2026-10-12执行侧审查719d856：整体接纳M1优先、成熟组件组合和预取关闭；核查实际native manager/LRU/BlockStatus/store/completion。需补清原子victim入口、冻结旧计划的未使用承诺、ref_cnt=-1写入保护/TP汇总、迟到通知物理结算、共享fallback统一计费及write游标。max-min公平不替代latency公平，M2/M3不为完整架构强行加入。审查文档docs/SLACKKV_SYSTEM_ARCHITECTURE_EXECUTION_REVIEW_20261012.md；本次无运行时实现或新实验，GPU账本不变，未扩旧预算。
+
+- 2026-10-12 接纳599b89b执行侧架构审查，原子store/reclaim、逐批准入、物理/逻辑结算分离、共享降级计费和write游标约束合并至主架构§9。审查侧检查归档manager/LRU/TP scheduler，未执行新测试或GPU。M2可与M1已有全存行为合并，M3保持可选。下一实质交付为M1实现和CPU/native验证，不再开启纯文档审查循环；预算不扩展。

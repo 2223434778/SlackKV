@@ -5,6 +5,11 @@
 The user explicitly accepted the system design and asked to upload it so the
 execution Codex can implement it step by step. Read
 `docs/SLACKKV_SYSTEM_ARCHITECTURE_20261012.md` first for this work.
+The execution-side review in
+`docs/SLACKKV_SYSTEM_ARCHITECTURE_EXECUTION_REVIEW_20261012.md` is accepted and
+merged into section 9 of the architecture. Apply those native lifecycle contracts;
+proceed to M1 implementation and CPU/native validation rather than another
+review-only cycle.
 Prioritize milestone M1: dynamic host-prefix allocation, elastic borrowing, safe
 tail reclamation, and native on-demand offload. Reuse the existing compiled
 runtime and lifecycle mechanisms. Leave speculative prefetch off initially.
