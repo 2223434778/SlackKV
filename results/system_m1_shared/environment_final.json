@@ -1,0 +1,55 @@
+{
+  "gpu_state": "0, NVIDIA RTX A6000, 19 MiB, 0 %, 550.54.14\n1, NVIDIA RTX A6000, 19 MiB, 0 %, 550.54.14\n",
+  "new_executions": [
+    {
+      "status": "FAILED",
+      "mode": "content",
+      "policy": "m1",
+      "gpu_hours": 0.01845790642833082,
+      "cleanup_verified": true
+    },
+    {
+      "status": "FAILED",
+      "mode": "content",
+      "policy": "m1",
+      "gpu_hours": 0.01848323913388918,
+      "cleanup_verified": true
+    },
+    {
+      "status": "FAILED",
+      "mode": "content",
+      "policy": "m1",
+      "gpu_hours": 0.013113411633336606,
+      "cleanup_verified": true
+    },
+    {
+      "status": "COMPLETE",
+      "mode": "content",
+      "policy": "m1",
+      "gpu_hours": 0.018495397286391786,
+      "cleanup_verified": true
+    },
+    {
+      "status": "COMPLETE",
+      "mode": "mechanism",
+      "policy": "m1",
+      "gpu_hours": 0.013614495415555818,
+      "cleanup_verified": true
+    },
+    {
+      "status": "COMPLETE",
+      "mode": "mechanism",
+      "policy": "fair",
+      "gpu_hours": 0.013641070907777046,
+      "cleanup_verified": true
+    },
+    {
+      "status": "COMPLETE",
+      "mode": "mechanism",
+      "policy": "full",
+      "gpu_hours": 0.013656039360830619,
+      "cleanup_verified": true
+    }
+  ],
+  "shared_increment_gpu_hours": 0.10946156016611189
+}

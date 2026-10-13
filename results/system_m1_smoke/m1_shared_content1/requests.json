@@ -1,0 +1,1187 @@
+[
+  {
+    "label": "a0",
+    "key": "a0",
+    "session": "a",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 8192,
+    "prompt_sha256": "b2bc2840dd6401026deda5fda0510b4ad2750c10bd3d368ea05d0d02de1b170a",
+    "issue_ns": 98685592713528,
+    "first_ns": 98685947592305,
+    "done_ns": 98686346999373,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803,
+      1995
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+    "ttft_ms": 354.878777,
+    "e2e_ms": 754.285845,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98685.604227332,
+        "request_id": "cmpl-8226d9a3f0268843-0-b1cc432e",
+        "session": "a0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "b0",
+    "key": "b0",
+    "session": "b",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 6144,
+    "prompt_sha256": "ab3fe1c2dd84cc991e71e196fc5e48df442693d057ba3e217af2f9e31f96a85f",
+    "issue_ns": 98686516944808,
+    "first_ns": 98686752284049,
+    "done_ns": 98687132129543,
+    "tokens": [
+      17617,
+      867,
+      19,
+      17,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      9645,
+      264,
+      13027,
+      729,
+      311,
+      11047,
+      279
+    ],
+    "text": "MAPLE42<|im_end|>\n<|endoftext|>Human: Write a Python function to calculate the",
+    "ttft_ms": 235.339241,
+    "e2e_ms": 615.184735,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 110100480.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98686.528092579,
+        "request_id": "cmpl-bd24a47fc4b43775-0-913548d3",
+        "session": "b0",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "s0",
+    "key": "s0",
+    "session": "s",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "s0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "s",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 1024,
+    "prompt_sha256": "f41b4d48d27ae73af3203cb8c3410777f18ebc69040acb7ebe7dbbc9cbe67bb0",
+    "issue_ns": 98687301599037,
+    "first_ns": 98687339298115,
+    "done_ns": 98687665664150,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803,
+      1995
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+    "ttft_ms": 37.699078,
+    "e2e_ms": 364.065113,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 14680064.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98687.30929409,
+        "request_id": "cmpl-ac02b8aef36a22ef-0-83ddb353",
+        "session": "s0",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "pressure0",
+    "key": "pressure0",
+    "session": null,
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "7eb57790661d8b4a89df2082e04a03fc6c7c47f05ff2d1d2e459417705c3420f",
+    "issue_ns": 98687834404700,
+    "first_ns": 98688614548079,
+    "done_ns": 98689103275775,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      264,
+      12126
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with a summary",
+    "ttft_ms": 780.143379,
+    "e2e_ms": 1268.871075,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98687.847791712,
+        "request_id": "cmpl-8dc6d1a9f3e4d154-0-8b07db8f",
+        "session": "pressure0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "a1",
+    "key": "a1",
+    "session": "a",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 8256,
+    "prompt_sha256": "e03ef25a2fb9add974a5dad784cdf517cdf6af3e10b16c52052e831eeb7d0f0a",
+    "issue_ns": 98689278485270,
+    "first_ns": 98689503381655,
+    "done_ns": 98689907478938,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803,
+      1995
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+    "ttft_ms": 224.896385,
+    "e2e_ms": 628.993668,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98689.292294646,
+        "request_id": "cmpl-84e07645d928e3c6-0-bd457fb5",
+        "session": "a1",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 3584
+      }
+    ]
+  },
+  {
+    "label": "b1",
+    "key": "b1",
+    "session": "b",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 6208,
+    "prompt_sha256": "7a12c97f250d177557f44e53faddd10bf41e5ee1b363671eb6c42edba9288c86",
+    "issue_ns": 98690078534846,
+    "first_ns": 98690206198410,
+    "done_ns": 98690588866523,
+    "tokens": [
+      17617,
+      867,
+      19,
+      17,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803,
+      1995
+    ],
+    "text": "MAPLE42<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+    "ttft_ms": 127.663564,
+    "e2e_ms": 510.331677,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 102760448.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98690.086038849,
+        "request_id": "cmpl-8a897ece37acc488-0-9dd59022",
+        "session": "b1",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 3584
+      }
+    ]
+  },
+  {
+    "label": "s_end",
+    "key": "s1",
+    "session": "s",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "s_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "s",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 1088,
+    "prompt_sha256": "1a72ab530d5f0e16eeddf52ad47ca1d7cdb742c29cb19b22769a642cb28776c3",
+    "issue_ns": 98690759198957,
+    "first_ns": 98690798644467,
+    "done_ns": 98691124939394,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803,
+      1995
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+    "ttft_ms": 39.44551,
+    "e2e_ms": 365.740437,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 14680064.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98690.766279914,
+        "request_id": "cmpl-8af100490d4d98e0-0-92bd700c",
+        "session": "s_end",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 512
+      }
+    ]
+  },
+  {
+    "label": "d0",
+    "key": "d0",
+    "session": "d",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "d0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "d",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 4096,
+    "prompt_sha256": "e600ac3e0a584a9c6344f33262a5b4ee3bbc0f400ecf30f939ec622e6c7a9c0e",
+    "issue_ns": 98691294645815,
+    "first_ns": 98691443501346,
+    "done_ns": 98691802985223,
+    "tokens": [
+      17617,
+      867,
+      19,
+      17,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      9645,
+      264,
+      13027,
+      2025,
+      311,
+      11047,
+      279
+    ],
+    "text": "MAPLE42<|im_end|>\n<|endoftext|>Human: Write a Python program to calculate the",
+    "ttft_ms": 148.855531,
+    "e2e_ms": 508.339408,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 73400320.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98691.305622515,
+        "request_id": "cmpl-bb88e81dcf6bcd7c-0-8449e594",
+        "session": "d0",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "pressure1",
+    "key": "pressure1",
+    "session": null,
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "d0f70fd90fdb09dcb6183879d6e83c1d992605dfef6085c2b7e0b82b45f899f2",
+    "issue_ns": 98691973481730,
+    "first_ns": 98692767020371,
+    "done_ns": 98693254417741,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      264,
+      12126
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with a summary",
+    "ttft_ms": 793.538641,
+    "e2e_ms": 1280.936011,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98691.992099023,
+        "request_id": "cmpl-83be54c6b343aceb-0-b9210edc",
+        "session": "pressure1",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "a2",
+    "key": "a2",
+    "session": "a",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a2",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 8320,
+    "prompt_sha256": "ae4ec66356e9cf50bb0e246101a52af24afc14997f65ca5c02bcbe2e157439f7",
+    "issue_ns": 98693427350814,
+    "first_ns": 98693687081603,
+    "done_ns": 98694093470482,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803,
+      1995
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+    "ttft_ms": 259.730789,
+    "e2e_ms": 666.119668,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 73400320.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98693.443533605,
+        "request_id": "cmpl-8c691b28e45f23c1-0-808b0e9e",
+        "session": "a2",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    ]
+  },
+  {
+    "label": "b2",
+    "key": "b2",
+    "session": "b",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b2",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 6272,
+    "prompt_sha256": "740399d90401a66276708d811c9e382ba51aa694d80a395febfa88ffe130b0d9",
+    "issue_ns": 98694265341315,
+    "first_ns": 98694433010487,
+    "done_ns": 98694817200026,
+    "tokens": [
+      785,
+      6234,
+      3552,
+      518,
+      279,
+      7167,
+      374,
+      330,
+      17617,
+      867,
+      19,
+      17,
+      3263,
+      151645,
+      198,
+      151643
+    ],
+    "text": "The secret password at the beginning is \"MAPLE42\".<|im_end|>\n<|endoftext|>",
+    "ttft_ms": 167.669172,
+    "e2e_ms": 551.858711,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 73400320.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98694.278277829,
+        "request_id": "cmpl-8a8f82c9af5b9335-0-b8ef1243",
+        "session": "b2",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    ]
+  },
+  {
+    "label": "d1",
+    "key": "d1",
+    "session": "d",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "d1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "d",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 4160,
+    "prompt_sha256": "498b03ba2817a8c5c4aa6041c4728e7015f80038435b148c71a80ef71990e1da",
+    "issue_ns": 98694988369908,
+    "first_ns": 98695076847685,
+    "done_ns": 98695437488096,
+    "tokens": [
+      785,
+      6234,
+      3552,
+      518,
+      279,
+      7167,
+      374,
+      3070,
+      17617,
+      867,
+      19,
+      17,
+      334,
+      13,
+      151645,
+      198
+    ],
+    "text": "The secret password at the beginning is **MAPLE42**.<|im_end|>\n",
+    "ttft_ms": 88.477777,
+    "e2e_ms": 449.118188,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 73400320.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98694.999057869,
+        "request_id": "cmpl-8d406cb5d34d1236-0-bbd5ebce",
+        "session": "d1",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    ]
+  },
+  {
+    "label": "d_end",
+    "key": "d2",
+    "session": "d",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "d_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "d",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 4224,
+    "prompt_sha256": "20d6b0e4cfe69a61180dafd0ca02e0edcc7f704c5c719593e90e4cd66c2f9b27",
+    "issue_ns": 98695608113321,
+    "first_ns": 98695648066590,
+    "done_ns": 98696006685736,
+    "tokens": [
+      785,
+      6234,
+      3552,
+      518,
+      279,
+      7167,
+      374,
+      330,
+      17617,
+      867,
+      19,
+      17,
+      3263,
+      151645,
+      198,
+      151643
+    ],
+    "text": "The secret password at the beginning is \"MAPLE42\".<|im_end|>\n<|endoftext|>",
+    "ttft_ms": 39.953269,
+    "e2e_ms": 398.572415,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98695.618547928,
+        "request_id": "cmpl-b60f5f10d49dbd91-0-8df7df22",
+        "session": "d_end",
+        "local_cached_tokens": 4160,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "pressure2",
+    "key": "pressure2",
+    "session": null,
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure2",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "31791ad5f52b7b8ed5f95420ba1f5ee9df366664d7362ae1f705fae5442ba927",
+    "issue_ns": 98696177659660,
+    "first_ns": 98696971630643,
+    "done_ns": 98697462528817,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      264,
+      12126
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with a summary",
+    "ttft_ms": 793.970983,
+    "e2e_ms": 1284.869157,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98696.196269044,
+        "request_id": "cmpl-be5ac28edebd49a9-0-aedcd846",
+        "session": "pressure2",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "a3",
+    "key": "a3",
+    "session": "a",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a3",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 8384,
+    "prompt_sha256": "7e9995542674af3d262986d8872b57c73d6af8017fb399c14eb238bcd49a1eec",
+    "issue_ns": 98697635604408,
+    "first_ns": 98697910025715,
+    "done_ns": 98698313001547,
+    "tokens": [
+      785,
+      6234,
+      3552,
+      518,
+      279,
+      7167,
+      374,
+      3070,
+      62056,
+      934,
+      16,
+      22,
+      334,
+      13,
+      151645,
+      198
+    ],
+    "text": "The secret password at the beginning is **CEDAR17**.<|im_end|>\n",
+    "ttft_ms": 274.421307,
+    "e2e_ms": 677.397139,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 36700160.0,
+      "CPU_to_GPU": 73400320.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98697.649804102,
+        "request_id": "cmpl-9805104b54577297-0-b9050146",
+        "session": "a3",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    ]
+  },
+  {
+    "label": "a_end",
+    "key": "a4",
+    "session": "a",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 8448,
+    "prompt_sha256": "43aec9a94a7b8875c2c4adae2fc182042a0591f8cf2ee257daee335aa1b0a934",
+    "issue_ns": 98698485883623,
+    "first_ns": 98698537599114,
+    "done_ns": 98698940478038,
+    "tokens": [
+      785,
+      6234,
+      3552,
+      518,
+      279,
+      7167,
+      374,
+      3070,
+      62056,
+      934,
+      16,
+      22,
+      334,
+      13,
+      151645,
+      198
+    ],
+    "text": "The secret password at the beginning is **CEDAR17**.<|im_end|>\n",
+    "ttft_ms": 51.715491,
+    "e2e_ms": 454.594415,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98698.500178894,
+        "request_id": "cmpl-986bd3728fe5a23f-0-b721803d",
+        "session": "a_end",
+        "local_cached_tokens": 8384,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "pressure3",
+    "key": "pressure3",
+    "session": null,
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure3",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "282a30900391b2e998c52afbc2f340a9aaa098a6df64ca9dc9d3757f7dc53044",
+    "issue_ns": 98699112483187,
+    "first_ns": 98699913792359,
+    "done_ns": 98700403048191,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      264,
+      12126
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with a summary",
+    "ttft_ms": 801.309172,
+    "e2e_ms": 1290.565004,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98699.131928654,
+        "request_id": "cmpl-83e176da70bbbb02-0-b845baee",
+        "session": "pressure3",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "b_after_a_end",
+    "key": "b3",
+    "session": "b",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b_after_a_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 6336,
+    "prompt_sha256": "e996fb9a290aa1ffdba97461a8281ed8251a40aaa943a0726380c19791da0216",
+    "issue_ns": 98700576485079,
+    "first_ns": 98700760119019,
+    "done_ns": 98701136611027,
+    "tokens": [
+      785,
+      6234,
+      3552,
+      518,
+      279,
+      7167,
+      374,
+      3070,
+      17617,
+      867,
+      19,
+      17,
+      334,
+      13,
+      151645,
+      198
+    ],
+    "text": "The secret password at the beginning is **MAPLE42**.<|im_end|>\n",
+    "ttft_ms": 183.63394,
+    "e2e_ms": 560.125948,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 93585408.0,
+      "CPU_to_GPU": 73400320.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98700.58774429,
+        "request_id": "cmpl-b23b166379f290e4-0-a97c7496",
+        "session": "b_after_a_end",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    ]
+  },
+  {
+    "label": "b_end",
+    "key": "b4",
+    "session": "b",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": true
+      },
+      "slackkv_checkpoint_tag": "measurement_complete"
+    },
+    "length": 6400,
+    "prompt_sha256": "3b29609864f408e84dfc8e84d5385d107a7d95a8a5feb3c3f127c7f3deb5f9c3",
+    "issue_ns": 98701308914909,
+    "first_ns": 98701350693096,
+    "done_ns": 98701731873645,
+    "tokens": [
+      785,
+      6234,
+      3552,
+      518,
+      279,
+      7167,
+      374,
+      3070,
+      17617,
+      867,
+      19,
+      17,
+      334,
+      13,
+      151645,
+      198
+    ],
+    "text": "The secret password at the beginning is **MAPLE42**.<|im_end|>\n",
+    "ttft_ms": 41.778187,
+    "e2e_ms": 422.958736,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98701.318892443,
+        "request_id": "cmpl-aeb714c950ad9dfa-0-8a7a2f02",
+        "session": "b_end",
+        "local_cached_tokens": 6336,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "new_terminal",
+    "key": "a0",
+    "session": "fresh-terminal",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "new_terminal",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "fresh-terminal",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 8192,
+    "prompt_sha256": "b2bc2840dd6401026deda5fda0510b4ad2750c10bd3d368ea05d0d02de1b170a",
+    "issue_ns": 98704458847514,
+    "first_ns": 98704799562137,
+    "done_ns": 98705206028510,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803,
+      1995
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+    "ttft_ms": 340.714623,
+    "e2e_ms": 747.180996,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98704.473042056,
+        "request_id": "cmpl-89eda9f1f77f1d09-0-ad9b97fb",
+        "session": "new_terminal",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  }
+]

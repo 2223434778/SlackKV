@@ -1,0 +1,1187 @@
+[
+  {
+    "label": "a0",
+    "key": "a0",
+    "session": "a",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 8192,
+    "prompt_sha256": "e99462a3db6f3f66dc3d980b79cf70a7e71df4cf124f0982742eeed5d77838cc",
+    "issue_ns": 98930625803510,
+    "first_ns": 98930978403394,
+    "done_ns": 98931376800675,
+    "tokens": [
+      356,
+      1479,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803
+    ],
+    "text": " CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more",
+    "ttft_ms": 352.599884,
+    "e2e_ms": 750.997165,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98930.63886421,
+        "request_id": "cmpl-b243e3e4572784a0-0-907f8bdb",
+        "session": "a0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "b0",
+    "key": "b0",
+    "session": "b",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 6144,
+    "prompt_sha256": "bdbbd714e10c46f8aae1599b8e277bd8ccf0ad5201089d146647f4b32b47f980",
+    "issue_ns": 98931547651971,
+    "first_ns": 98931790636776,
+    "done_ns": 98932166747660,
+    "tokens": [
+      27223,
+      867,
+      19,
+      17,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      9645,
+      264,
+      13027,
+      2025,
+      311,
+      11047,
+      279
+    ],
+    "text": " MAPLE42<|im_end|>\n<|endoftext|>Human: Write a Python program to calculate the",
+    "ttft_ms": 242.984805,
+    "e2e_ms": 619.095689,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 110100480.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98931.560251522,
+        "request_id": "cmpl-961aff0187662458-0-92a35700",
+        "session": "b0",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "s0",
+    "key": "s0",
+    "session": "s",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "s0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "s",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 1024,
+    "prompt_sha256": "ddc0ebe4fff34603e80106d63a82164941011e91d0c2afee344099bec6dec3ed",
+    "issue_ns": 98932336578493,
+    "first_ns": 98932371646133,
+    "done_ns": 98932698796958,
+    "tokens": [
+      356,
+      1479,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803
+    ],
+    "text": " CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more",
+    "ttft_ms": 35.06764,
+    "e2e_ms": 362.218465,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 14680064.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98932.344760329,
+        "request_id": "cmpl-b7a5e11d0f462d46-0-a7846808",
+        "session": "s0",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "pressure0",
+    "key": "pressure0",
+    "session": null,
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "601dad53b3c128391f400c8f7f719525afdc262e8714ed80f011e879d9852559",
+    "issue_ns": 98932867615105,
+    "first_ns": 98933659734118,
+    "done_ns": 98934150184590,
+    "tokens": [
+      78513,
+      277,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      264,
+      12126
+    ],
+    "text": " Cedar17<|im_end|>\n<|endoftext|>Human: Can you provide me with a summary",
+    "ttft_ms": 792.119013,
+    "e2e_ms": 1282.569485,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98932.885556085,
+        "request_id": "cmpl-9eb3dfee93500d64-0-8199682b",
+        "session": "pressure0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "a1",
+    "key": "a1",
+    "session": "a",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 8256,
+    "prompt_sha256": "aede798f873b979750e01149d1bfcd43d637f4414e06722b236d7ad9bb8357c6",
+    "issue_ns": 98934322852932,
+    "first_ns": 98934553974900,
+    "done_ns": 98934960968893,
+    "tokens": [
+      17,
+      15,
+      17,
+      18,
+      15,
+      19,
+      17,
+      15,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410
+    ],
+    "text": "20230420<|im_end|>\n<|endoftext|>Human: Can you provide",
+    "ttft_ms": 231.121968,
+    "e2e_ms": 638.115961,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98934.337479276,
+        "request_id": "cmpl-8f7e23089b5a73d0-0-b9ce44b5",
+        "session": "a1",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 3584
+      }
+    ]
+  },
+  {
+    "label": "b1",
+    "key": "b1",
+    "session": "b",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 6208,
+    "prompt_sha256": "15927e5b2eb6d88d7ee326ac6eaace939aecb5a094716ce22c1362605d1e5ae0",
+    "issue_ns": 98935132353602,
+    "first_ns": 98935270005050,
+    "done_ns": 98935654040612,
+    "tokens": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      15,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980
+    ],
+    "text": "1234567890<|im_end|>\n<|endoftext|>Human: Can",
+    "ttft_ms": 137.651448,
+    "e2e_ms": 521.68701,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 102760448.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98935.145071328,
+        "request_id": "cmpl-b59f52616518d4af-0-8448f63b",
+        "session": "b1",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 3584
+      }
+    ]
+  },
+  {
+    "label": "s_end",
+    "key": "s1",
+    "session": "s",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "s_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "s",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 1088,
+    "prompt_sha256": "bbde2ae2bae0c433ce874f3c4c444d64ff489a0a54e52d28ae6de98b30eb62e4",
+    "issue_ns": 98935824938598,
+    "first_ns": 98935865562822,
+    "done_ns": 98936193794939,
+    "tokens": [
+      17,
+      15,
+      17,
+      18,
+      15,
+      19,
+      15,
+      24,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410
+    ],
+    "text": "20230409<|im_end|>\n<|endoftext|>Human: Can you provide",
+    "ttft_ms": 40.624224,
+    "e2e_ms": 368.856341,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 14680064.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98935.831218545,
+        "request_id": "cmpl-bde9f6752c704fd8-0-b4ed6e0b",
+        "session": "s_end",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 512
+      }
+    ]
+  },
+  {
+    "label": "d0",
+    "key": "d0",
+    "session": "d",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "d0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "d",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 4096,
+    "prompt_sha256": "241c4971709d41be78b6b67c006e354bdbec05fb479e9b11916b331619b8ec40",
+    "issue_ns": 98936363631577,
+    "first_ns": 98936507548298,
+    "done_ns": 98936870047160,
+    "tokens": [
+      27223,
+      867,
+      19,
+      17,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      9645,
+      264,
+      13027,
+      2025,
+      311,
+      11047,
+      279
+    ],
+    "text": " MAPLE42<|im_end|>\n<|endoftext|>Human: Write a Python program to calculate the",
+    "ttft_ms": 143.916721,
+    "e2e_ms": 506.415583,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 73400320.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98936.371884785,
+        "request_id": "cmpl-8f97c5f02c2f5b74-0-8952c41c",
+        "session": "d0",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "pressure1",
+    "key": "pressure1",
+    "session": null,
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "853107c45f6bde18917e1c70fb3c8ed0d830ce58fa6a38ae500b1179f5ee2c06",
+    "issue_ns": 98937041026448,
+    "first_ns": 98937836948020,
+    "done_ns": 98938330054135,
+    "tokens": [
+      78513,
+      277,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      264,
+      12126
+    ],
+    "text": " Cedar17<|im_end|>\n<|endoftext|>Human: Can you provide me with a summary",
+    "ttft_ms": 795.921572,
+    "e2e_ms": 1289.027687,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98937.058302722,
+        "request_id": "cmpl-8d1b59a4433b43d4-0-9812b419",
+        "session": "pressure1",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "a2",
+    "key": "a2",
+    "session": "a",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a2",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 8320,
+    "prompt_sha256": "b1e23de4c2d68bb5c22a0c6f4db610ca9a42593342b09af90273f13c24bd1897",
+    "issue_ns": 98938503391563,
+    "first_ns": 98938762096723,
+    "done_ns": 98939170284572,
+    "tokens": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      13,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752
+    ],
+    "text": "123456.<|im_end|>\n<|endoftext|>Human: Can you provide me",
+    "ttft_ms": 258.70516,
+    "e2e_ms": 666.893009,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 73400320.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98938.518211483,
+        "request_id": "cmpl-9ca0990e724bc1ad-0-97e5653e",
+        "session": "a2",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    ]
+  },
+  {
+    "label": "b2",
+    "key": "b2",
+    "session": "b",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b2",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 6272,
+    "prompt_sha256": "6fef2769ff57ee6ecfb19e4161bcfba24ce5aee4cb3e5d517314704d1b0d5e97",
+    "issue_ns": 98939340721351,
+    "first_ns": 98939504275517,
+    "done_ns": 98939890553863,
+    "tokens": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      15,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980
+    ],
+    "text": "1234567890<|im_end|>\n<|endoftext|>Human: Can",
+    "ttft_ms": 163.554166,
+    "e2e_ms": 549.832512,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 73400320.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98939.350679831,
+        "request_id": "cmpl-9e57f2e03f108de7-0-af0f4161",
+        "session": "b2",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    ]
+  },
+  {
+    "label": "d1",
+    "key": "d1",
+    "session": "d",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "d1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "d",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 4160,
+    "prompt_sha256": "9f764cce5e7a5b582ce4b0aa31d695e247debe41c37d27efc61aab17ade645a9",
+    "issue_ns": 98940060620607,
+    "first_ns": 98940145298261,
+    "done_ns": 98940507490319,
+    "tokens": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      15,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980
+    ],
+    "text": "1234567890<|im_end|>\n<|endoftext|>Human: Can",
+    "ttft_ms": 84.677654,
+    "e2e_ms": 446.869712,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 73400320.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98940.070421168,
+        "request_id": "cmpl-82a855a1294cc6b6-0-baa37594",
+        "session": "d1",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    ]
+  },
+  {
+    "label": "d_end",
+    "key": "d2",
+    "session": "d",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "d_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "d",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 4224,
+    "prompt_sha256": "ca2eb3b4fa01ee0b0cf31624a32e6297d7d6926e252532ea0f8216652b41a6ec",
+    "issue_ns": 98940678474735,
+    "first_ns": 98940720157259,
+    "done_ns": 98941080026299,
+    "tokens": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      15,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980
+    ],
+    "text": "1234567890<|im_end|>\n<|endoftext|>Human: Can",
+    "ttft_ms": 41.682524,
+    "e2e_ms": 401.551564,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98940.689077964,
+        "request_id": "cmpl-b006b5dcf944ae6b-0-82002601",
+        "session": "d_end",
+        "local_cached_tokens": 4160,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "pressure2",
+    "key": "pressure2",
+    "session": null,
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure2",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "24acb0cbbfd4f5f294ae78e04edaedb61a76ce17bcaa6702fee98223b65076b8",
+    "issue_ns": 98941250526246,
+    "first_ns": 98942052762966,
+    "done_ns": 98942543890986,
+    "tokens": [
+      356,
+      1479,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      264
+    ],
+    "text": " CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with a",
+    "ttft_ms": 802.23672,
+    "e2e_ms": 1293.36474,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98941.268400071,
+        "request_id": "cmpl-ac4710773958ed96-0-a7f83091",
+        "session": "pressure2",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "a3",
+    "key": "a3",
+    "session": "a",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a3",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 8384,
+    "prompt_sha256": "f2e7e298c9d3f284750f0bd408da2bb0e11f563e35ec27ee5c98b861cd425da6",
+    "issue_ns": 98942717101022,
+    "first_ns": 98942988160249,
+    "done_ns": 98943393146978,
+    "tokens": [
+      17,
+      15,
+      17,
+      18,
+      15,
+      19,
+      17,
+      24,
+      13,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498
+    ],
+    "text": "20230429.<|im_end|>\n<|endoftext|>Human: Can you",
+    "ttft_ms": 271.059227,
+    "e2e_ms": 676.045956,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 36700160.0,
+      "CPU_to_GPU": 73400320.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98942.731115968,
+        "request_id": "cmpl-b737d53129deb317-0-93394e43",
+        "session": "a3",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    ]
+  },
+  {
+    "label": "a_end",
+    "key": "a4",
+    "session": "a",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 8448,
+    "prompt_sha256": "2cbf879958201495b977e11e7a9701768c5b5ef4982de7e26b8b0fbdefc641b8",
+    "issue_ns": 98943566744105,
+    "first_ns": 98943617512454,
+    "done_ns": 98944020493835,
+    "tokens": [
+      17,
+      15,
+      17,
+      18,
+      13,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      1045
+    ],
+    "text": "2023.<|im_end|>\n<|endoftext|>Human: Can you provide me with some",
+    "ttft_ms": 50.768349,
+    "e2e_ms": 453.74973,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98943.580215978,
+        "request_id": "cmpl-9da1817a76bd751b-0-92b0c253",
+        "session": "a_end",
+        "local_cached_tokens": 8384,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "pressure3",
+    "key": "pressure3",
+    "session": null,
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure3",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "1884a9935fcdf5fe4c2d7fbc1df021510780fb470bc78d06ac47ed7b53b3efc4",
+    "issue_ns": 98944192404899,
+    "first_ns": 98944993095789,
+    "done_ns": 98945486178840,
+    "tokens": [
+      356,
+      1479,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      264
+    ],
+    "text": " CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with a",
+    "ttft_ms": 800.69089,
+    "e2e_ms": 1293.773941,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98944.211492305,
+        "request_id": "cmpl-a8a1c8d7cc331848-0-bb458780",
+        "session": "pressure3",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "b_after_a_end",
+    "key": "b3",
+    "session": "b",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b_after_a_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 6336,
+    "prompt_sha256": "464a20ddf11bb33b69304812585abe81bd39f65490ff3c298a061c2e83634452",
+    "issue_ns": 98945659250899,
+    "first_ns": 98945845148380,
+    "done_ns": 98946223883173,
+    "tokens": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      13,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752
+    ],
+    "text": "123456.<|im_end|>\n<|endoftext|>Human: Can you provide me",
+    "ttft_ms": 185.897481,
+    "e2e_ms": 564.632274,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 93585408.0,
+      "CPU_to_GPU": 73400320.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98945.670224307,
+        "request_id": "cmpl-be5f9b4d0841245a-0-82d77676",
+        "session": "b_after_a_end",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    ]
+  },
+  {
+    "label": "b_end",
+    "key": "b4",
+    "session": "b",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": true
+      },
+      "slackkv_checkpoint_tag": "measurement_complete"
+    },
+    "length": 6400,
+    "prompt_sha256": "b7f77ad56f525b4f81f7ff9f419ffc93b3cc5aaf484c2647800bed53c84a6428",
+    "issue_ns": 98946395498059,
+    "first_ns": 98946436129330,
+    "done_ns": 98946820312057,
+    "tokens": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      13,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752
+    ],
+    "text": "123456.<|im_end|>\n<|endoftext|>Human: Can you provide me",
+    "ttft_ms": 40.631271,
+    "e2e_ms": 424.813998,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98946.404798505,
+        "request_id": "cmpl-88e35001a2f97af6-0-a407cdb2",
+        "session": "b_end",
+        "local_cached_tokens": 6336,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "new_terminal",
+    "key": "a0",
+    "session": "fresh-terminal",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "new_terminal",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "fresh-terminal",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 8192,
+    "prompt_sha256": "e99462a3db6f3f66dc3d980b79cf70a7e71df4cf124f0982742eeed5d77838cc",
+    "issue_ns": 98949557721574,
+    "first_ns": 98949893841952,
+    "done_ns": 98950303077860,
+    "tokens": [
+      356,
+      1479,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803
+    ],
+    "text": " CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more",
+    "ttft_ms": 336.120378,
+    "e2e_ms": 745.356286,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 98949.565669395,
+        "request_id": "cmpl-aa6b1f9b7176f1f0-0-9a552c3a",
+        "session": "new_terminal",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  }
+]

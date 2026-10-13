@@ -8,9 +8,6 @@ from pathlib import Path
 import re
 import statistics
 
-from experiments.system_m1.contention import SEQUENCE
-
-
 def read(path):
     if path.exists():return path.read_text(encoding='utf-8')
     with gzip.open(str(path)+'.gz','rt',encoding='utf-8') as f:return f.read()
@@ -25,16 +22,20 @@ def counter(raw,name,label):
     return sum(values) if values else None
 
 
-def analyze(base):
+def analyze(base,variant='contention_v1',run_suffix=None):
     runs={};reference=None
     executions={p.parent.name:load(p) for p in base.glob('*/execution.json')}
     spent=sum(e['gpu_hours'] for e in executions.values())
     if spent>.5 or any(e['status']=='RUNNING' or not e['cleanup_verified'] for e in executions.values()):
         raise ValueError('unresolved ledger or budget exceeded')
     for name,e in executions.items():
-        if e['status']!='COMPLETE' or e['mode']!='mechanism' or e['config'].get('workload_variant')!='contention_v1':continue
+        if e['status']!='COMPLETE' or e['mode']!='mechanism' or e['config'].get('workload_variant')!=variant:continue
+        if run_suffix is not None and not name.endswith(run_suffix):continue
         path=base/name;inputs=load(path/'inputs.json');rows=load(path/'requests.json');warm=load(path/'warmup.json')
-        if len(rows)!=len(SEQUENCE) or [r['label'] for r in rows]!=[s[0] for s in SEQUENCE]:raise ValueError('sequence differs')
+        sequence=e['plan']['sequence']
+        if len(rows)!=len(sequence) or [r['label'] for r in rows]!=[s[0] for s in sequence]:raise ValueError('sequence differs')
+        if e['config'].get('workload_variant')=='shared_v1' and load(path/'state_events.json'):
+            raise ValueError('detailed state logging is forbidden in shared performance screen')
         if reference is None:reference=(e['config'],inputs)
         if reference!=(e['config'],inputs):raise ValueError('unmatched resources/inputs')
         if '--enforce-eager' in e['command']:raise ValueError('not compiled baseline')
@@ -80,6 +81,7 @@ def analyze(base):
             requests=[{k:r[k] for k in ('label','ttft_ms','e2e_ms','source_trace')} for r in rows])
     if len({r['actual_gpu_tokens'] for r in runs.values()})>1:raise ValueError('actual GPU pool mismatch')
     policies={r['policy']:r for r in runs.values()};comparisons={}
+    if len(policies)!=len(runs):raise ValueError('multiple runs per policy; select an explicit cohort with --run-suffix')
     if 'm1' in policies:
         m=policies['m1']
         for p in ('fair','full'):
@@ -92,14 +94,16 @@ def analyze(base):
     return dict(runs=runs,m1_change_percent=comparisons,additional_gpu_hours=spent,
         continuous_gpu_hours=4.191988019727527+spent,
         executions={k:{f:e.get(f) for f in ('status','policy','mode','gpu_hours','cleanup_verified')} for k,e in executions.items()},
-        qualification='One serial synthetic resource-contention screen per method, equivalent disjoint shape warmup, no GPU clearing; shared terminal gate. No production, statistical or simultaneous-background-fairness claim.')
+        qualification='One serial synthetic resource-contention screen per method, equivalent disjoint shape warmup, no GPU clearing; common terminal gate. Shared_v1 has no detailed state logging. No production, statistical or simultaneous-background-fairness claim.')
 
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--base',type=Path,required=True);parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--variant',choices=('contention_v1','shared_v1'),default='contention_v1')
+    parser.add_argument('--run-suffix',help='explicit cohort selector; every family run still counts toward budget')
     args=parser.parse_args()
     if args.output.exists():raise FileExistsError(args.output)
-    args.output.write_text(json.dumps(analyze(args.base),indent=2)+'\n',encoding='utf-8')
+    args.output.write_text(json.dumps(analyze(args.base,args.variant,args.run_suffix),indent=2)+'\n',encoding='utf-8')
 
 
 if __name__=='__main__':main()

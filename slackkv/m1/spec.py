@@ -43,8 +43,11 @@ class SlackKVM1Spec(CPUOffloadingSpec):
             terminal = self.extra_config.get('slackkv_terminal_store_gate', False)
             if type(terminal) is not bool:
                 raise ValueError('slackkv_terminal_store_gate must be boolean')
+            shared = self.extra_config.get('slackkv_shared_prefix_blocks', 0)
+            if type(shared) is not int or shared < 0:
+                raise ValueError('slackkv_shared_prefix_blocks must be a non-negative integer')
             self._manager = M1CPUManager(self.num_blocks, self.gpu_block_size[0]*self.block_size_factor,
                                         self.kv_bytes_per_offloaded_block,
                                         enable_events=events is not None and events.enable_kv_cache_events, trace=trace,
-                                        terminal_store_gate=terminal)
+                                        terminal_store_gate=terminal, shared_prefix_blocks=shared)
         return self._manager

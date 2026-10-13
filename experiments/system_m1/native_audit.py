@@ -95,6 +95,133 @@ def run():
     assert len(full.prepare_store(fk[2:],ctx).keys_to_store)==2
     checks.append('common_full_terminal_gate_preserves_native_reads_and_ordinary_store')
 
+    m=M1CPUManager(512,16,1,terminal_store_gate=True)
+    a,ak,_=start(m,'terminal-demand-A','a',512);store(m,a,ak);m.on_request_finished(a)
+    before=(m.controller.cursor,m.controller.version,m.metrics['reclaimed_blocks'])
+    t,tk,state=start(m,'terminal-demand-T','t',512,end=True)
+    assert state.max_offload_tokens==0 and m.controller.members[('a',0)].target==512
+    assert snapshot(m)['physical_ready_blocks']==512
+    assert not store(m,t,tk).keys_to_store
+    m.on_request_finished(t)
+    assert (m.controller.cursor,m.controller.version,m.metrics['reclaimed_blocks'])==before
+    n,nk,_=start(m,'normal-demand-N','n',512)
+    assert m.controller.members[('a',0)].target==256
+    assert snapshot(m)['physical_ready_blocks']==256
+    checks.append('terminal_new_member_no_retention_no_trim_normal_join_still_trims')
+
+    m=M1CPUManager(9,16,1,terminal_store_gate=True)
+    a,ak,_=start(m,'grow-A0','a',8);store(m,a,ak);m.on_request_finished(a)
+    b,bk,_=start(m,'grow-B0','b',8);store(m,b,bk);m.on_request_finished(b)
+    before=({t:x.target for t,x in m.controller.members.items()},m.controller.cursor,m.metrics['reclaimed_blocks'])
+    terminal,tk,state=start(m,'grow-A-end','a',12,path=ak+keys('grow-extra',4),end=True)
+    assert state.max_offload_tokens==0
+    assert ({t:x.target for t,x in m.controller.members.items()},m.controller.cursor,m.metrics['reclaimed_blocks'])==before
+    retained=ak[:before[0][('a',0)]]
+    assert all(m.lookup(k,terminal) for k in retained)
+    m.prepare_load(retained,terminal);m.on_request_finished(terminal)
+    assert all(m.lookup(k,b) for k in bk[:before[0][('b',0)]])
+    m.complete_load(retained,terminal)
+    checks.append('terminal_growth_preserves_old_retention_remainder_and_native_read')
+
+    root=keys('shared-root',3);ak=root+keys('private-A',6);bk=root+keys('private-B',6)
+    m=M1CPUManager(9,16,1,shared_prefix_blocks=3,terminal_store_gate=True)
+    a,_,_=start(m,'shared-supported-A','a',9,path=ak)
+    assert len(store(m,a,ak).keys_to_store)==9;m.on_request_finished(a)
+    b,_,_=start(m,'shared-supported-B','b',9,path=bk)
+    assert len(store(m,b,bk).keys_to_store)==3
+    assert snapshot(m)['physical_ready_blocks']==9 and snapshot(m)['physical_shared_blocks']==3
+    assert m.controller.snapshot()['target_distinct_blocks']==9
+    assert all(m.lookup(k,b) for k in bk[:6])
+    m.on_request_finished(b);m.end_session('a',0)
+    assert snapshot(m)['physical_ready_blocks']==6 and ('a',0) not in m.controller.members
+    b,_,_=start(m,'shared-supported-B-next','b',9,path=bk)
+    assert all(m.lookup(k,b) for k in bk[:6])
+    assert len(store(m,b,bk).keys_to_store)==3
+    m.prepare_load(bk,b);m.end_session('b',0);m.on_request_finished(b)
+    assert snapshot(m)['physical_load_protected_blocks']==9
+    m.complete_load(bk,b)
+    assert snapshot(m)['physical_free_blocks']==9 and not m.controller.key_refs
+    snapshots['shared_dedup_last_release']=snapshot(m)
+    checks.append('shared_public_stored_once_private_tails_A_end_B_restore_last_load_releases_all')
+
+    m=M1CPUManager(9,16,1,shared_prefix_blocks=3)
+    a,_,_=start(m,'ancestor-A','a',9,path=ak);store(m,a,ak);m.on_request_finished(a)
+    b,_,_=start(m,'ancestor-B','b',9,path=bk);store(m,b,bk)
+    m.prepare_load(bk[5:6],b);m.end_session('b',0);m.on_request_finished(b)
+    assert all(m.lookup(k,a) for k in bk[:6])  # Protect zero-ref ancestors too.
+    m.complete_load(bk[5:6],b)
+    assert all(m.lookup(k,a) for k in ak[:6]) and all(not m.lookup(k,a) for k in bk[3:6])
+    checks.append('shared_private_deepest_load_protects_public_and_private_ancestors')
+
+    m=M1CPUManager(9,16,1,shared_prefix_blocks=3)
+    a,_,_=start(m,'deferred-A','a',9,path=ak);store(m,a,ak)
+    m.prepare_load(ak[-1:],a)
+    b,_,_=start(m,'deferred-B','b',9,path=bk)
+    physical=next(x for x in snapshot(m)['members_physical'] if x['session']=='a')
+    assert physical['owned_physical_blocks']==6 and physical['deferred_reclaim_blocks']==3
+    m.complete_load(ak[-1:],a)
+    physical=next(x for x in snapshot(m)['members_physical'] if x['session']=='a')
+    assert physical['deferred_reclaim_blocks']==0
+    checks.append('shared_deferred_exclusive_tail_not_underreported_by_public_root_depth')
+
+    root=keys('failure-root',2);ak=root+keys('failure-A',3);bk=root+keys('failure-B',3)
+    m=M1CPUManager(8,16,1,shared_prefix_blocks=2)
+    a,_,_=start(m,'failure-shared-A','a',5,path=ak)
+    pending=m.prepare_store(root,a)
+    b,_,_=start(m,'failure-shared-B','b',5,path=bk)
+    private=m.prepare_store(bk,b)
+    assert private.keys_to_store==list(bk[2:])
+    m.complete_store(pending.keys_to_store,a,success=False)
+    assert snapshot(m)['physical_pending_store_blocks']==3
+    m.complete_store(private.keys_to_store,b)
+    assert snapshot(m)['physical_free_blocks']==8  # Orphan descendants reclaimed.
+    m.on_request_finished(a);m.on_request_finished(b)
+    b,_,_=start(m,'failure-shared-B-retry','b',5,path=bk);store(m,b,bk)
+    m.complete_store(pending.keys_to_store,a,success=False)  # Old ticket cannot delete rebuilt root.
+    assert all(m.lookup(k,b) for k in bk)
+    m.end_session('a',0);m.end_session('b',0);m.on_request_finished(b)
+    assert snapshot(m)['physical_free_blocks']==8 and not m.controller.key_refs
+    checks.append('shared_pending_dedup_root_failure_orphan_cleanup_retry_duplicate_completion')
+
+    m=M1CPUManager(4,16,1,shared_prefix_blocks=6)
+    root=keys('big-root',6)
+    a,ak,_=start(m,'big-root-A','a',10,path=root+keys('big-A',4));store(m,a,ak)
+    b,bk,_=start(m,'big-root-B','b',10,path=root+keys('big-B',4))
+    assert not store(m,b,bk).keys_to_store
+    assert snapshot(m)['physical_ready_blocks']==4 and m.controller.snapshot()['target_distinct_blocks']==4
+    checks.append('shared_root_itself_capacity_bounded_not_duplicated')
+
+    root=keys('generation-root',2)
+    old_path=root+keys('generation-old',4);new_path=root+keys('generation-new',4);bp=root+keys('generation-B',4)
+    m=M1CPUManager(8,16,1,shared_prefix_blocks=2)
+    old,_,_=start(m,'generation-old','a',6,path=old_path)
+    pending=m.prepare_store(old_path,old)
+    b,_,_=start(m,'generation-B','b',6,path=bp);store(m,b,bp);m.on_request_finished(b)
+    new,_,_=start(m,'generation-new','a',6,generation=1,path=new_path)
+    assert not store(m,new,new_path).keys_to_store
+    m.on_request_finished(old);m.complete_store(pending.keys_to_store,old)
+    assert ('a',0) not in m.controller.members and all(m.lookup(k,b) for k in root)
+    assert len(store(m,new,new_path).keys_to_store)==3
+    m.complete_store(pending.keys_to_store,old,success=False)
+    assert all(m.lookup(k,new) for k in new_path[:5])
+    m.end_session('a',0);assert m.controller.members[('a',1)].alive
+    m.end_session('a',1);m.on_request_finished(new);m.end_session('b',0)
+    assert snapshot(m)['physical_free_blocks']==8 and not m.controller.key_refs
+    checks.append('shared_old_generation_pending_settles_public_survives_stale_completion_and_end')
+
+    root=keys('reset-root',2)
+    m=M1CPUManager(6,16,1,shared_prefix_blocks=2)
+    a,ak,_=start(m,'shared-reset-A','a',4,path=root+keys('reset-A',2))
+    pending=m.prepare_store(ak,a)
+    m.reset_cache()  # Same scheduler flush/stale-job boundary as native reset.
+    m.on_request_finished(a)
+    b,bk,_=start(m,'shared-reset-B','b',4,path=root+keys('reset-B',2));store(m,b,bk)
+    m.complete_store(pending.keys_to_store,a)
+    assert all(m.lookup(k,b) for k in bk)
+    m.end_session('a',0);m.end_session('b',0);m.on_request_finished(b)
+    assert snapshot(m)['physical_free_blocks']==6 and not m.controller.key_refs
+    checks.append('shared_native_reset_boundary_old_ticket_cannot_modify_reused_public_slots')
+
     # External-module loggers may inherit WARNING and silently drop INFO traces.
     import io
     import logging
@@ -105,11 +232,16 @@ def run():
         assert adapter.logger.isEnabledFor(logging.INFO)
         traced=M1CPUManager(1,16,1,trace=True)
         ctx,path,_=start(traced,'traced','trace',1,end=True)
+        ctx.kv_transfer_params['slackkv_checkpoint_tag']='warmup_complete'
         store(traced,ctx,path);traced.on_request_finished(ctx)
         assert stream.getvalue().count('SLACKKV_M1_STATE')==3
+        line=next(x for x in stream.getvalue().splitlines() if 'SLACKKV_POOL_CHECKPOINT ' in x)
+        checkpoint=json.loads(line.split('SLACKKV_POOL_CHECKPOINT ',1)[1])
+        assert checkpoint['free_blocks']==1 and checkpoint['retained_members']==0
     finally:
         adapter.logger.removeHandler(handler);handler.close()
     checks.append('trace_true_visible_at_native_vllm_info_level')
+    checks.append('common_lightweight_checkpoint_reports_final_physical_cleanup')
 
     # Required 10-block counterexample: old ceiling persists, actual stores do not.
     m = M1CPUManager(10, 16, 4*2**20, enable_events=True)

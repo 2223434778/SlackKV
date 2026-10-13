@@ -1,0 +1,30 @@
+{
+  "scope": "content4 observed fixed path only; not a global bound or full attribution of performance-run extra DMA",
+  "initial_A_tail": {
+    "ready_depth_before_blocks": 512,
+    "ready_depth_after_B_S_join_blocks": 256,
+    "removed_private_blocks_before_first_A_resume": 256,
+    "bytes": 117440512,
+    "mib": 112.0,
+    "qualification": "A0 writes and subsequent quota trim precede first A1 host restore; other sessions share only root32, not these tail keys"
+  },
+  "last_B_expansion": {
+    "ready_depth_before_blocks": 192,
+    "ready_depth_after_blocks": 396,
+    "added_blocks": 204,
+    "bytes": 93585408,
+    "mib": 89.25,
+    "next_request_B_end_source": [
+      {
+        "timestamp_monotonic": 99405.93267601,
+        "request_id": "cmpl-83829efcd589e011-0-8b165a00",
+        "session": "b_end",
+        "local_cached_tokens": 6336,
+        "external_cached_tokens": 0
+      }
+    ],
+    "qualification": "B-after-A-end fills new host tail; the only later B request uses6336 GPU-local tokens and zero host, then ends"
+  },
+  "known_path_unused_store_mib": 201.25,
+  "no_claim": "No free-deletion counterfactual, no predicted production reuse, no total-DMA causal decomposition across modes"
+}

@@ -1,0 +1,19 @@
+{
+  "baseline": "b242f2d",
+  "new_gpu_runs": 7,
+  "same_continuous_allowance": 0.5,
+  "prior_spent_gpu_hours": 0.21011529948083787,
+  "new_gpu_hours": 0.10946156016611189,
+  "allowance_spent_gpu_hours": 0.3195768596469497,
+  "failures": [
+    "content1 retained FAILED: decoded correct post-end MAPLE42 affirmative sentence did not start with code; restore/cold IDs were equal but format gate failed.",
+    "content2 retained FAILED: assistant prefix priming produced incorrect numeric passwords in cold references.",
+    "content3 retained FAILED: one cold B chose CEDAR17; fail-fast cold checks prevented formal sequence."
+  ],
+  "oracle_revision": "content4 restores content1 input SHA and keeps exact all16 output-ID comparison. Identity acceptance is separate from code-only formatting. Final code only accepts expected code or fixed affirmative full sentence before EOS; rejects negation, mere word occurrence, ambiguity, repeated/incorrect code and post-EOS answer. Actual three content4 cold answers are revalidated offline. No failed run rewritten.",
+  "source_snapshots": "Four content runner SHA snapshots match recorded plans. executed_sources matches performance module SHA/runner SHA. After GPU, collector docstring was clarified and snapshot deferred-exclusive-tail counting corrected with native_audit4 regression; allocator/reclaim/DMA behavior unchanged. Final oracle grammar is stricter and actual cold answers revalidated offline. Actual execution bytes preserved.",
+  "fair_rule": "All three performance runs use shared root512 charged once plus fixed1920 private tokens per four configured agents =2432 logical cap. Rule frozen before all performance; no latency-based adjustment.",
+  "content_to_performance": "Content4 is M1 only using preparation4. Performance preparation5 has same exact inputs; changes the Fair rule and its description, not M1 behavior or resources.",
+  "analysis_roundoff": "Linux vsWindows summation of23 execution GPU costs differs only by5.6e-17GPUh due to filesystem iteration order. All other analysis including performance metrics and continuous total matches exactly. Independent row/source/timestamp checks do not rely on this sum ordering.",
+  "limits": "Serial synthetic resource contention, bounded shared root and distinct tails, TP1 GPU. No general DAG/fork/shared-depth production coverage, no new NoHost, no simultaneous background-fairness/quality/memory-time/statistical claim. M2/M3 off."
+}

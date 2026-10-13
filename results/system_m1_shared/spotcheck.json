@@ -1,0 +1,130 @@
+{
+  "m1_shared_m11": {
+    "source_tokens_from_admissions": {
+      "local_compute": 108096,
+      "local_cache_hit": 24512,
+      "external_kv_transfer": 20480
+    },
+    "session_e2e_ms": {
+      "a": 8023.184419,
+      "b": 9144.379017,
+      "s": 2247.23009,
+      "d": 2738.191445
+    },
+    "common_checkpoints": [
+      {
+        "tag": "warmup_complete",
+        "capacity_blocks": 512,
+        "ready_blocks": 0,
+        "pending_store_blocks": 0,
+        "load_protected_blocks": 0,
+        "free_blocks": 512,
+        "retained_members": 0
+      },
+      {
+        "tag": "measurement_complete",
+        "capacity_blocks": 512,
+        "ready_blocks": 0,
+        "pending_store_blocks": 0,
+        "load_protected_blocks": 0,
+        "free_blocks": 512,
+        "retained_members": 0
+      }
+    ],
+    "detailed_state_logs": 0,
+    "all_input_output_work_verified": true
+  },
+  "m1_shared_fair1": {
+    "source_tokens_from_admissions": {
+      "local_compute": 114624,
+      "local_cache_hit": 24512,
+      "external_kv_transfer": 13952
+    },
+    "session_e2e_ms": {
+      "a": 8099.105589,
+      "b": 9263.756367,
+      "s": 2319.018771,
+      "d": 2757.104704
+    },
+    "common_checkpoints": [
+      {
+        "tag": "warmup_complete",
+        "capacity_blocks": 512,
+        "ready_blocks": 0,
+        "pending_store_blocks": 0,
+        "load_protected_blocks": 0,
+        "free_blocks": 512,
+        "retained_members": null
+      },
+      {
+        "tag": "measurement_complete",
+        "capacity_blocks": 512,
+        "ready_blocks": 424,
+        "pending_store_blocks": 0,
+        "load_protected_blocks": 0,
+        "free_blocks": 88,
+        "retained_members": null
+      }
+    ],
+    "detailed_state_logs": 0,
+    "all_input_output_work_verified": true
+  },
+  "m1_shared_full1": {
+    "source_tokens_from_admissions": {
+      "local_compute": 116992,
+      "local_cache_hit": 24512,
+      "external_kv_transfer": 11584
+    },
+    "session_e2e_ms": {
+      "a": 8260.897253,
+      "b": 9360.178879,
+      "s": 2400.93008,
+      "d": 2765.06989
+    },
+    "common_checkpoints": [
+      {
+        "tag": "warmup_complete",
+        "capacity_blocks": 512,
+        "ready_blocks": 0,
+        "pending_store_blocks": 0,
+        "load_protected_blocks": 0,
+        "free_blocks": 512,
+        "retained_members": null
+      },
+      {
+        "tag": "measurement_complete",
+        "capacity_blocks": 512,
+        "ready_blocks": 512,
+        "pending_store_blocks": 0,
+        "load_protected_blocks": 0,
+        "free_blocks": 0,
+        "retained_members": null
+      }
+    ],
+    "detailed_state_logs": 0,
+    "all_input_output_work_verified": true
+  },
+  "content4": {
+    "cold_marker_answers": [
+      "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+      "MAPLE42<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+      "The secret password at the beginning is **MAPLE42**.<|im_end|>\n"
+    ],
+    "all_three_exact_16_ids": true,
+    "cold_sources_zero": true,
+    "shared_root_tokens": 512,
+    "distinct_private_first_blocks": 4,
+    "state_snapshots": 70,
+    "max_physical_shared_blocks": 32,
+    "final_free_blocks": 512,
+    "post_A_end_B_source": [
+      {
+        "timestamp_monotonic": 99405.198793061,
+        "request_id": "cmpl-ade9fe1911f55ad6-0-9919cba7",
+        "session": "b_after_a_end",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    ]
+  }
+}

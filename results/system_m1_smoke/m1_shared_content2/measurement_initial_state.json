@@ -1,0 +1,41 @@
+{
+  "native_state": {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 5,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 5,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  "gpu_caches": "not cleared; disjoint warmup roots and identical shape coverage",
+  "warmup_requests": 5,
+  "checkpoint": {
+    "tag": "warmup_complete",
+    "capacity_blocks": 512,
+    "ready_blocks": 0,
+    "pending_store_blocks": 0,
+    "load_protected_blocks": 0,
+    "free_blocks": 512,
+    "retained_members": 0
+  },
+  "warmup_seconds": 4.249177662
+}

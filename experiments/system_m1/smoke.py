@@ -74,6 +74,8 @@ def command(config, policy, mode, host_bytes):
             if config.get('terminal_store_gate', False):
                 extra['slackkv_terminal_store_gate'] = True
             if config.get('trace_states', False):extra['slackkv_m1_trace'] = True
+            if config.get('shared_prefix_blocks', 0):
+                extra['slackkv_shared_prefix_blocks'] = config['shared_prefix_blocks']
         elif config.get('terminal_store_gate', False):
             extra.update(spec_name='TerminalCPUOffloadingSpec', spec_module_path='slackkv.m1.spec')
         argv += ['--kv-transfer-config', json.dumps(dict(kv_connector='OffloadingConnector',
@@ -82,7 +84,7 @@ def command(config, policy, mode, host_bytes):
 
 
 def prepare(config, out):
-    if config.get('workload_variant') == 'contention_v1':
+    if config.get('workload_variant') in ('contention_v1','shared_v1'):
         from experiments.system_m1.contention import prepare_inputs
         return prepare_inputs(config,out)
     from transformers import AutoTokenizer
@@ -133,7 +135,7 @@ def transfer_delta(before, after):
 
 
 def workload(config, plan, policy, mode, out):
-    if config.get('workload_variant') == 'contention_v1':
+    if config.get('workload_variant') in ('contention_v1','shared_v1'):
         from experiments.system_m1.contention import workload as contention_workload
         return contention_workload(config,plan,policy,mode,out)
     inputs = json.loads((plan/'inputs.json').read_text())

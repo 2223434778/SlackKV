@@ -5,6 +5,10 @@
 
 ## 当前状态导航（2026-10-13更新）
 
+最新增量见`SLACKKV_SYSTEM_M1_SHARED_20261013.md`：terminal无意义挤占修复、有界共享root/私有tail支持；87项本地回归、29组native审计及真实共享恢复验证通过。共享单次筛选M1/Fair median仅−0.87%且DMA+93.52%，保留可选、不默认替换静态方法。授权累计0.3195768596469497/0.5GPUh，历史旧阶段正文保持原样。
+
+最终补充：修正共享deferred诊断低报后，native审计29组PASS；435原文件校验。固定机制路径发现201.25MiB未复用写入，支持下一步成本归因，不能当全局上界或完整性能因果结论。
+
 下面早期阶段正文保留历史。M1 已完成真实 GPU 生命周期/内容 smoke，见
 `SLACKKV_SYSTEM_M1_GPU_REPORT_20261013.md`；最新 terminal gate 与四会话净收益筛选见
 `SLACKKV_SYSTEM_M1_NET_BENEFIT_20261013.md`。新筛选 M1/Full median E2E −7.40%，

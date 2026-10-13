@@ -21,7 +21,7 @@ def analyze(base):
     runs={};reference=None
     for name,e in executions.items():
         if e['status']!='COMPLETE' or e['mode']!='mechanism':continue
-        if e['config'].get('workload_variant') == 'contention_v1':continue
+        if e['config'].get('workload_variant') in ('contention_v1','shared_v1'):continue
         if '--enforce-eager' in e['command']:raise ValueError('weak eager baseline')
         inputs=load(base/name/'inputs.json')
         if reference is None:reference=(e['config'],inputs)

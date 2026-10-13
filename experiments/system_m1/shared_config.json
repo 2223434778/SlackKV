@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "ledger_root": "/media/a6000/D/ZhaoBinHe/SlackKV",
+  "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "native_source": "/media/a6000/D/ZhaoBinHe/slackkv-system-m1-native",
+  "env_root": "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix",
+  "port": 8000,
+  "block_tokens": 16,
+  "gpu_kv_bytes": 536870912,
+  "max_model_len": 18432,
+  "host_tokens": 8192,
+  "expected_kv_bytes_per_token": 28672,
+  "session_tokens": {
+    "d": 4096,
+    "b": 6144,
+    "a": 8192,
+    "s": 1024
+  },
+  "pressure_tokens": 16384,
+  "output_tokens": 16,
+  "max_run_seconds_including_cleanup": 600,
+  "cleanup_reserve_seconds": 90,
+  "tool_gap_seconds": 0.15,
+  "requested_additional_gpu_hours": 0.5,
+  "static_fair_members": [
+    "a",
+    "b",
+    "s",
+    "d"
+  ],
+  "static_fair_rule": "root-aware static equal private shares:512 shared-root tokens charged once, remaining7680 tokens split1920 per four configured agents;2432 logical-depth cap each, no borrowing or future length knowledge",
+  "purpose": "bounded shared 512-token system root and serial independent private histories; lifecycle/content check then one matched screen with common checkpoints and no detailed performance state logs",
+  "priority": [
+    "m1_content",
+    "m1_mechanism",
+    "fair_mechanism",
+    "full_mechanism",
+    "nohost_mechanism"
+  ],
+  "workload_variant": "shared_v1",
+  "terminal_store_gate": true,
+  "trace_states": false,
+  "shared_prefix_blocks": 32
+}

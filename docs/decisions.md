@@ -257,3 +257,9 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 
 
 - 2026-10-13 独立审查375c28e：CPU复算三性能run输入哈希、warmup、原始计时、起止prom及双marker内容记录，M1/Full median−7.3951%、总DMA−35.7966%；M1/Fair median−1.7908%、总DMA+74.0057%，认可独立前缀M1工程里程碑和本筛选正结果，动态仍opt-in。独立controller复现terminal-only加入使A目标512→256→512；结合native先observe/reclaim后禁写的路径，要求补齐不新增未来保留需求语义，未执行该反例native/GPU。发现性能trace_states=true/M1有57详细快照，开销未测，下次性能测量调整，不为此单独大复验。下一实现增量优先有限共享system-prefix+私有后缀的单次物理计费/安全释放，M2/M3关闭，当前场景不再追参。审查新增GPU0，未重跑完整服务器测试或manifest；既有0.5授权累计0.21011529948083787不重置。详见docs/RESEARCH_REVIEW_M1_NET_20261013.md，results/research_review_m1_net_20261013/spotcheck.json。
+
+
+- 2026-10-13 M1 bounded shared-root：采用有界共享root与private tail、多逻辑key_refs，目标按native key集合并集max-min计费，真实free/net-new gate和pending/load祖先闭包回收，避免共享重复收费或一会话结束删除其他前缀。terminal仅更新身份路径，不扩大future demand/无效转余数，完成前保留旧缓存可读；默认共享关闭，超界同私有历史/merge/fork仍fallback。性能StaticFair公共root计一次、固定private份额，不用重复计root的弱基线；详细状态只在content，性能三个方法均两个公共checkpoint。四会话单次M1/Fair median−0.87%但总DMA+93.52%，保持动态opt-in、StaticFair可用，不扩大旧矩阵。失败oracle全部保留、完整16IDs比较未放松，最后严格肯定文法拒绝否定/EOS后答案；共享内容验证是限定身份检查，不是逐字节证明。报告SLACKKV_SYSTEM_M1_SHARED_20261013.md；0.5授权累计0.3195768596469497GPUh，没有扩预算或挪旧4.5例外。
+
+
+- 2026-10-13 system_m1_shared归档补充：content4固定机制路径可定位A初次512→256块尾部112MiB在首次恢复前回收，B末段192→396块补写89.25MiB后仅一次B_end全6336GPU-local/host0再结束；共201.25MiB未复用写入，原始状态/prom/来源证据在unused_write_evidence.json，不作性能全成本/生产上界/删除反事实归因。另修正共享deferred独占尾部诊断低报（含公共根target不能直接从独占数减），audit4新增回归后最终29组PASS，无分配/回收/DMA改变，旧GPU快照原样；原文件总435校验。分析器按cohort筛选，重复同policy不再隐式选最后一run；预算仍计所有family。最终86项相关测试PASS，额外GPU0，累计0.3195768596469497不变。

@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/system-m1-code/experiments/system_m1/smoke.py", line 290, in execute
+    workload(config,plan,policy,mode,out)
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/system-m1-code/experiments/system_m1/smoke.py", line 140, in workload
+    return contention_workload(config,plan,policy,mode,out)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/system-m1-code/experiments/system_m1/contention.py", line 154, in workload
+    raise AssertionError('cold model cannot distinguish marker '+marker)
+AssertionError: cold model cannot distinguish marker MAPLE42
