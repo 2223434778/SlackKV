@@ -1,5 +1,21 @@
 # SlackKV Project Rules
 
+## Current M1 shared-result review — 2026-10-13
+
+Read `docs/RESEARCH_REVIEW_M1_SHARED_20261013.md` for review of `c07976b`.
+Accept the bounded shared-prefix/terminal implementation. Dynamic M1 adds less
+than 1% median benefit over root-aware StaticFair with about 94% more DMA in this
+screen; keep it optional, with StaticFair as the engineering reference.
+Next do one bounded CPU/event cost diagnosis using existing evidence, including
+shared reclaim traversal. Make an equivalent small fix only if measured; propose
+at most one online policy candidate only if evidence justifies it. Otherwise
+recommend stopping this dynamic variant's performance optimization.
+Do not keep tuning the same sequence or launch another matrix/M2/M3 by default.
+The existing 0.5 GPU-hour allowance has consumed 0.3195768596469497 GPU-hours;
+retain its original scope, ledger and limits. This review adds no allowance.
+Earlier review headings below are historical handoffs.
+
+
 ## Current M1 contention review — 2026-10-13
 
 Read `docs/RESEARCH_REVIEW_M1_NET_20261013.md` for review of `375c28e`.

@@ -1,0 +1,174 @@
+{
+  "reviewed_commit": "c07976b1e9a9a3a6a1031cb0b0a4f42de472a59b",
+  "runs": {
+    "m1": {
+      "session_e2e_ms": {
+        "a": 8023.184419,
+        "b": 9144.379017,
+        "s": 2247.23009,
+        "d": 2738.191445
+      },
+      "median_ms": 5380.687932,
+      "sequence_ms": 9734.075578,
+      "sources": {
+        "local_cache_hit": 24512,
+        "external_kv_transfer": 20480,
+        "local_compute": 108096
+      },
+      "dma_mib": {
+        "GPU_to_CPU": 537.25,
+        "CPU_to_GPU": 560.0
+      },
+      "summed_model_request_ms": 6651.907732,
+      "summed_pressure_ms": 3318.13074,
+      "checkpoints": [
+        {
+          "tag": "warmup_complete",
+          "capacity_blocks": 512,
+          "ready_blocks": 0,
+          "pending_store_blocks": 0,
+          "load_protected_blocks": 0,
+          "free_blocks": 512,
+          "retained_members": 0
+        },
+        {
+          "tag": "measurement_complete",
+          "capacity_blocks": 512,
+          "ready_blocks": 0,
+          "pending_store_blocks": 0,
+          "load_protected_blocks": 0,
+          "free_blocks": 512,
+          "retained_members": 0
+        }
+      ]
+    },
+    "fair": {
+      "session_e2e_ms": {
+        "a": 8099.105589,
+        "b": 9263.756367,
+        "s": 2319.018771,
+        "d": 2757.104704
+      },
+      "median_ms": 5428.1051465,
+      "sequence_ms": 9832.791687,
+      "sources": {
+        "local_cache_hit": 24512,
+        "external_kv_transfer": 13952,
+        "local_compute": 114624
+      },
+      "dma_mib": {
+        "GPU_to_CPU": 185.5,
+        "CPU_to_GPU": 381.5
+      },
+      "summed_model_request_ms": 6786.683314,
+      "summed_pressure_ms": 3342.802229,
+      "checkpoints": [
+        {
+          "tag": "warmup_complete",
+          "capacity_blocks": 512,
+          "ready_blocks": 0,
+          "pending_store_blocks": 0,
+          "load_protected_blocks": 0,
+          "free_blocks": 512,
+          "retained_members": null
+        },
+        {
+          "tag": "measurement_complete",
+          "capacity_blocks": 512,
+          "ready_blocks": 424,
+          "pending_store_blocks": 0,
+          "load_protected_blocks": 0,
+          "free_blocks": 88,
+          "retained_members": null
+        }
+      ]
+    },
+    "full": {
+      "session_e2e_ms": {
+        "a": 8260.897253,
+        "b": 9360.178879,
+        "s": 2400.93008,
+        "d": 2765.06989
+      },
+      "median_ms": 5512.9835715,
+      "sequence_ms": 9935.195162,
+      "sources": {
+        "local_cache_hit": 24512,
+        "external_kv_transfer": 11584,
+        "local_compute": 116992
+      },
+      "dma_mib": {
+        "GPU_to_CPU": 957.25,
+        "CPU_to_GPU": 316.75
+      },
+      "summed_model_request_ms": 6855.918028,
+      "summed_pressure_ms": 3368.940368,
+      "checkpoints": [
+        {
+          "tag": "warmup_complete",
+          "capacity_blocks": 512,
+          "ready_blocks": 0,
+          "pending_store_blocks": 0,
+          "load_protected_blocks": 0,
+          "free_blocks": 512,
+          "retained_members": null
+        },
+        {
+          "tag": "measurement_complete",
+          "capacity_blocks": 512,
+          "ready_blocks": 512,
+          "pending_store_blocks": 0,
+          "load_protected_blocks": 0,
+          "free_blocks": 0,
+          "retained_members": null
+        }
+      ]
+    }
+  },
+  "changes_percent": {
+    "fair": {
+      "median": -0.8735500367117011,
+      "sequence": -1.0039479340390622,
+      "dma": 93.5185185185185
+    },
+    "full": {
+      "median": -2.399710388834053,
+      "sequence": -2.024314376523162,
+      "dma": -13.873626373626369
+    }
+  },
+  "content": {
+    "exact_three_16ids_match": true,
+    "cold_texts": [
+      "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+      "MAPLE42<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+      "The secret password at the beginning is **MAPLE42**.<|im_end|>\n"
+    ],
+    "snapshots": 70,
+    "max_shared_blocks": 32,
+    "post_a_end_restore": [
+      {
+        "timestamp_monotonic": 99405.198793061,
+        "request_id": "cmpl-ade9fe1911f55ad6-0-9919cba7",
+        "session": "b_after_a_end",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    ],
+    "b_end_source": [
+      {
+        "timestamp_monotonic": 99405.93267601,
+        "request_id": "cmpl-83829efcd589e011-0-8b165a00",
+        "session": "b_end",
+        "local_cached_tokens": 6336,
+        "external_cached_tokens": 0
+      }
+    ],
+    "b_expansion_dma": {
+      "GPU_to_CPU": 93585408.0,
+      "CPU_to_GPU": 73400320.0
+    },
+    "final_free_blocks": 512
+  },
+  "scope": "Independent CPU recomputation of three performance runs from raw requests, inputs and start/end metrics; archived three restore/cold comparisons, state invariants and checkpoints. No new GPU execution, no complete native/test/manifest rerun or causal timing attribution."
+}

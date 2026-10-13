@@ -217,3 +217,6 @@
 
 
 - 2026-10-13 system_m1_shared归档补充：content4固定机制路径可定位A初次512→256块尾部112MiB在首次恢复前回收，B末段192→396块补写89.25MiB后仅一次B_end全6336GPU-local/host0再结束；共201.25MiB未复用写入，原始状态/prom/来源证据在unused_write_evidence.json，不作性能全成本/生产上界/删除反事实归因。另修正共享deferred独占尾部诊断低报（含公共根target不能直接从独占数减），audit4新增回归后最终29组PASS，无分配/回收/DMA改变，旧GPU快照原样；原文件总435校验。分析器按cohort筛选，重复同policy不再隐式选最后一run；预算仍计所有family。最终86项相关测试PASS，额外GPU0，累计0.3195768596469497不变。
+
+
+- 2026-10-13 独立审查c07976b：复算共享三性能run原始计时/输入哈希/起止prom/来源/checkpoint及content4三组16IDs与70状态守恒，确认M1/Fair median−0.87355%、DMA+93.51852%；M1/Full−2.39971%、DMA−13.87363%。输入/顺序/Fair规则改变，不能以旧百分比判断版本退化。接受有限共享与terminal功能，动态仅保留可选，root-aware StaticFair为工程参考。下一步只做一次有上限CPU/已有事件成本定位，核查shared重复祖先遍历，测得明显开销才做等价优化，有在线信号才提出最多一个候选；否则停止该动态变体性能优化，不扩矩阵/M2M3。201.25MiB事后未复用不是在线可免费消除的上界。审查新增GPU0，服务器完整测试/native/manifest未重跑；既有0.5授权已用0.3195768596469497。详见docs/RESEARCH_REVIEW_M1_SHARED_20261013.md及results/research_review_m1_shared_20261013/spotcheck.json。
