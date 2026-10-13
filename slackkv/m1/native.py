@@ -159,7 +159,8 @@ class M1CPUManager(CPUOffloadingManager):
         keep=set(needed)
         protected=set(protected)|{k for k,b in self._policy.blocks.items() if b.ref_cnt!=0}
         for key in protected:
-            while key is not None and key in parents:
+            # Needed prefixes and previously visited chains are ancestor closed.
+            while key is not None and key in parents and key not in keep:
                 keep.add(key);key=parents[key]
         removed=[]
         for key in sorted(self._policy.blocks,key=lambda k:depths.get(k,-1),reverse=True):

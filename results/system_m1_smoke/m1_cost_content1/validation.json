@@ -1,0 +1,267 @@
+{
+  "status": "COMPLETE",
+  "gpu_content": "PASS",
+  "dynamic_benefit": "UNKNOWN",
+  "initial_state": {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 5,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 5,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  "sources": [
+    {
+      "timestamp_monotonic": 115228.528709047,
+      "request_id": "cmpl-83b2dc4adf81add4-0-a2fa500c",
+      "session": "warmup0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115229.093527258,
+      "request_id": "cmpl-888bb4fad9583bce-0-a2e5c13c",
+      "session": "warmup1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115229.781335238,
+      "request_id": "cmpl-9ec3342725eb35d0-0-b8d772c9",
+      "session": "warmup2",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115230.579234268,
+      "request_id": "cmpl-81fe792b98112b4e-0-84dbc7ba",
+      "session": "warmup3",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115231.501891142,
+      "request_id": "cmpl-a76789e2da69faf3-0-86a288a4",
+      "session": "warmup4",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115235.478206446,
+      "request_id": "cmpl-9bad1e23124a80a0-0-89f6ac65",
+      "session": "cold_a",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115236.404986654,
+      "request_id": "cmpl-813a90f24da7bbfc-0-9c578005",
+      "session": "cold_b",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115237.207109433,
+      "request_id": "cmpl-b74fe770994185f2-0-ac88273a",
+      "session": "cold_b_after_a_end",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115238.020242206,
+      "request_id": "cmpl-ae3d0d2613282e69-0-863a8d6f",
+      "session": "a0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115238.934728503,
+      "request_id": "cmpl-84c6fa9cc6896b09-0-846c353a",
+      "session": "b0",
+      "local_cached_tokens": 512,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115239.718929011,
+      "request_id": "cmpl-9310738ad597e1de-0-8ae282f6",
+      "session": "s0",
+      "local_cached_tokens": 512,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115240.262398697,
+      "request_id": "cmpl-b7633c8ab3ffafbc-0-91ce4a53",
+      "session": "pressure0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115241.71884771,
+      "request_id": "cmpl-898694d3467978bd-0-ae930101",
+      "session": "a1",
+      "local_cached_tokens": 512,
+      "external_cached_tokens": 3584
+    },
+    {
+      "timestamp_monotonic": 115242.516069138,
+      "request_id": "cmpl-a3ea4fa85784044d-0-94cbe8c9",
+      "session": "b1",
+      "local_cached_tokens": 512,
+      "external_cached_tokens": 3584
+    },
+    {
+      "timestamp_monotonic": 115243.197338351,
+      "request_id": "cmpl-aee5036316a10e23-0-9fa31706",
+      "session": "s_end",
+      "local_cached_tokens": 512,
+      "external_cached_tokens": 512
+    },
+    {
+      "timestamp_monotonic": 115243.735246086,
+      "request_id": "cmpl-8f7548d4559959b6-0-a8fbd342",
+      "session": "d0",
+      "local_cached_tokens": 512,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115244.420211781,
+      "request_id": "cmpl-be8563326c10c7e3-0-8dfeac4d",
+      "session": "pressure1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115245.874903389,
+      "request_id": "cmpl-af7e68c5db28f726-0-acefa8e4",
+      "session": "a2",
+      "local_cached_tokens": 512,
+      "external_cached_tokens": 2560
+    },
+    {
+      "timestamp_monotonic": 115246.705874789,
+      "request_id": "cmpl-9ebaebc659b6d951-0-80da01ea",
+      "session": "b2",
+      "local_cached_tokens": 512,
+      "external_cached_tokens": 2560
+    },
+    {
+      "timestamp_monotonic": 115247.423542992,
+      "request_id": "cmpl-bc5b5bd614785840-0-8dfbc958",
+      "session": "d1",
+      "local_cached_tokens": 512,
+      "external_cached_tokens": 2560
+    },
+    {
+      "timestamp_monotonic": 115248.035303641,
+      "request_id": "cmpl-982d4cfbaa78920a-0-b332d0d3",
+      "session": "d_end",
+      "local_cached_tokens": 4160,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115248.607437944,
+      "request_id": "cmpl-a569573aafd5bf99-0-a1d6f5e7",
+      "session": "pressure2",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115250.063203855,
+      "request_id": "cmpl-92579c45fcb132ec-0-afd18125",
+      "session": "a3",
+      "local_cached_tokens": 512,
+      "external_cached_tokens": 2560
+    },
+    {
+      "timestamp_monotonic": 115250.908343561,
+      "request_id": "cmpl-b1be6e3233c66d08-0-bd10f374",
+      "session": "a_end",
+      "local_cached_tokens": 8384,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115251.543840199,
+      "request_id": "cmpl-980a8103bdb3acd7-0-b58717d5",
+      "session": "pressure3",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115253.002926012,
+      "request_id": "cmpl-86e741c4ba2b8a6c-0-9a8dc71b",
+      "session": "b_after_a_end",
+      "local_cached_tokens": 512,
+      "external_cached_tokens": 2560
+    },
+    {
+      "timestamp_monotonic": 115253.731836466,
+      "request_id": "cmpl-99392db40412aa23-0-8c593c17",
+      "session": "b_end",
+      "local_cached_tokens": 6336,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 115254.333180452,
+      "request_id": "cmpl-b2e7998e88b379f4-0-8e926dd1",
+      "session": "new_terminal",
+      "local_cached_tokens": 512,
+      "external_cached_tokens": 0
+    }
+  ],
+  "not_covered": [
+    "GPU in-flight forced cancellation",
+    "shared-prefix ownership",
+    "simultaneous compute/background fairness",
+    "production trace",
+    "statistical significance"
+  ],
+  "native_final_state": {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 15,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 10,
+    "ended_generation_tombstones": 10,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 28,
+      "terminal_no_retention_requests": 10,
+      "reclaimed_blocks": 1228,
+      "fallback_missing_or_invalid_membership": 7,
+      "admitted_store_blocks": 1228,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  }
+}

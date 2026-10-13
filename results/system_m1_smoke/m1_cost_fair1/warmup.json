@@ -1,0 +1,283 @@
+[
+  {
+    "label": "warmup0",
+    "key": "warmup0",
+    "session": null,
+    "end": true,
+    "cold": false,
+    "phase": "warmup",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "warmup0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 1024,
+    "prompt_sha256": "e91cdab9a7be0c3b0a169ed174419615d77cdf08017da97aaf0c7f62de5ce88d",
+    "issue_ns": 115337834932807,
+    "first_ns": 115337935455972,
+    "done_ns": 115338019267055,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803,
+      1995
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+    "ttft_ms": 100.523165,
+    "e2e_ms": 184.334248,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 115337.851913412,
+        "request_id": "cmpl-9b5f6cea1a5e9848-0-a5de72ba",
+        "session": "warmup0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "warmup1",
+    "key": "warmup1",
+    "session": null,
+    "end": true,
+    "cold": false,
+    "phase": "warmup",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "warmup1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 4096,
+    "prompt_sha256": "a715c27eb509b7a7ff4443606090e14a3f5105344c77c8e3e065d699af5903d3",
+    "issue_ns": 115338183347032,
+    "first_ns": 115338323410641,
+    "done_ns": 115338411408227,
+    "tokens": [
+      17617,
+      867,
+      19,
+      17,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803,
+      1995
+    ],
+    "text": "MAPLE42<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+    "ttft_ms": 140.063609,
+    "e2e_ms": 228.061195,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 115338.19031898,
+        "request_id": "cmpl-81245af283be056c-0-be48c2b8",
+        "session": "warmup1",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "warmup2",
+    "key": "warmup2",
+    "session": null,
+    "end": true,
+    "cold": false,
+    "phase": "warmup",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "warmup2",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 6144,
+    "prompt_sha256": "20afbdbd96b7078effcbce34226b60ef0f382ea5683c37b0e7cf4c83273ae783",
+    "issue_ns": 115338581635520,
+    "first_ns": 115338800672728,
+    "done_ns": 115338889466548,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      264,
+      12126
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with a summary",
+    "ttft_ms": 219.037208,
+    "e2e_ms": 307.831028,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 115338.590808097,
+        "request_id": "cmpl-8598b4103cc52b59-0-aa253ecc",
+        "session": "warmup2",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "warmup3",
+    "key": "warmup3",
+    "session": null,
+    "end": true,
+    "cold": false,
+    "phase": "warmup",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "warmup3",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 8192,
+    "prompt_sha256": "ce687ad7e6e16549a29ffae0e2c5480e528c1c54b8cd95f7aeb5cdfc1ef4d4c8",
+    "issue_ns": 115339054022079,
+    "first_ns": 115339362303012,
+    "done_ns": 115339450078612,
+    "tokens": [
+      17617,
+      867,
+      19,
+      17,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      803,
+      1995
+    ],
+    "text": "MAPLE42<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+    "ttft_ms": 308.280933,
+    "e2e_ms": 396.056533,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 115339.064645264,
+        "request_id": "cmpl-a320f4a9ccc3d532-0-a4ee86f9",
+        "session": "warmup3",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "warmup4",
+    "key": "warmup4",
+    "session": null,
+    "end": true,
+    "cold": false,
+    "phase": "warmup",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "warmup4",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_checkpoint_tag": "warmup_complete",
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "91d66a452db5710efab5632088d41771cebb1a3d0ac65c11c0926dc606a185f5",
+    "issue_ns": 115339625422345,
+    "first_ns": 115340376084813,
+    "done_ns": 115340464178341,
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645,
+      198,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      264,
+      12126
+    ],
+    "text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with a summary",
+    "ttft_ms": 750.662468,
+    "e2e_ms": 838.755996,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 115339.644458904,
+        "request_id": "cmpl-96cbc1eb6b0670fe-0-85dc4a74",
+        "session": "warmup4",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  }
+]

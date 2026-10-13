@@ -1,0 +1,2146 @@
+{
+  "gpu_hours": 0,
+  "gpu_count": 0,
+  "repeats": 100,
+  "batches": 5,
+  "reference_sha256": "e265e103c74a21adc5e2b8d07e12a843ec40164d8debbd7cacb60b2b43745e4d",
+  "installed_sha256": "e265e103c74a21adc5e2b8d07e12a843ec40164d8debbd7cacb60b2b43745e4d",
+  "candidate_change": {
+    "old": "while key is not None and key in parents:",
+    "new": "while key is not None and key in parents and key not in keep:"
+  },
+  "scope": "CPU metadata only; synthetic native audit/state replay; no GPU critical-path attribution",
+  "native_audit": {
+    "reference": {
+      "checks": [
+        "terminal_gate_preserves_load_until_settlement_new_generation_no_store_tombstone",
+        "terminal_gate_old_pending_batch_completes_without_leak",
+        "common_full_terminal_gate_preserves_native_reads_and_ordinary_store",
+        "terminal_new_member_no_retention_no_trim_normal_join_still_trims",
+        "terminal_growth_preserves_old_retention_remainder_and_native_read",
+        "shared_public_stored_once_private_tails_A_end_B_restore_last_load_releases_all",
+        "shared_private_deepest_load_protects_public_and_private_ancestors",
+        "shared_deferred_exclusive_tail_not_underreported_by_public_root_depth",
+        "shared_pending_dedup_root_failure_orphan_cleanup_retry_duplicate_completion",
+        "shared_root_itself_capacity_bounded_not_duplicated",
+        "shared_old_generation_pending_settles_public_survives_stale_completion_and_end",
+        "shared_native_reset_boundary_old_ticket_cannot_modify_reused_public_slots",
+        "trace_true_visible_at_native_vllm_info_level",
+        "common_lightweight_checkpoint_reports_final_physical_cleanup",
+        "old10_ceiling_actual5_preserves_B5",
+        "deepest_load_blocks_trim_then_tail_only_events",
+        "pending_minus1_retired_generation_duplicate_physical_settlement",
+        "same_identity_new_generation_next_request_rebuild_reused_request_id_safe",
+        "failed_ancestor_orphan_tail_eventual_reclaim",
+        "shared_unknown_no_store_native_read_identity_preserved",
+        "common_system_prefix_distinct_suffix_one_shared_fallback_native_read",
+        "end_collect_reset_same_generation_denied_new_generation_legal_old_end_noop",
+        "end_new_generation_load_refs_settle_late_read_no_early_free_duplicate_safe",
+        "short_lends_then_end_releases_next_request_expands",
+        "120_native_interleavings_recover_all_physical_slots",
+        "scheduler_thread_membership_guard_reset_late_completion",
+        "real_factory_hooks_tp2_all_workers_complete_disabled_native",
+        "real_store_builder_partial_src_dst_no_cursor_rewind_next_request_rebuild",
+        "unsupported_layout_and_policy_rejected_before_handlers"
+      ],
+      "calls": [
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 16400,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 9,
+          "ref_protected_blocks": 0,
+          "ns": 13490,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 15820,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 11770,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 20890,
+          "removed_blocks": 3
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 6,
+          "explicit_protected_blocks": 9,
+          "ref_protected_blocks": 0,
+          "ns": 18980,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 16351,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 17590,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 24480,
+          "removed_blocks": 3
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 6,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 10790,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 6,
+          "explicit_protected_blocks": 9,
+          "ref_protected_blocks": 0,
+          "ns": 14321,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 11830,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 9,
+          "ns": 15410,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 9,
+          "ns": 14950,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 19590,
+          "removed_blocks": 9
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7450,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 9,
+          "ref_protected_blocks": 0,
+          "ns": 10310,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 12791,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 10680,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 17550,
+          "removed_blocks": 3
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 6,
+          "explicit_protected_blocks": 9,
+          "ref_protected_blocks": 0,
+          "ns": 17450,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 14800,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 1,
+          "ns": 15961,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 1,
+          "ns": 16080,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 20791,
+          "removed_blocks": 3
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 6920,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 9,
+          "ref_protected_blocks": 0,
+          "ns": 10520,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 11890,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 1,
+          "ns": 17180,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 16800,
+          "removed_blocks": 3
+        },
+        {
+          "members": 1,
+          "path_blocks": 5,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 6500,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 5,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 2,
+          "ref_protected_blocks": 0,
+          "ns": 5100,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 2,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 2,
+          "ns": 11380,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 2,
+          "explicit_protected_blocks": 5,
+          "ref_protected_blocks": 2,
+          "ns": 11410,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 3,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 3,
+          "ns": 11420,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 3,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 10910,
+          "removed_blocks": 3
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7240,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 6050,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7280,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 5,
+          "ref_protected_blocks": 0,
+          "ns": 8290,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 5,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 11990,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 5,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 14810,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 5,
+          "physical_blocks": 5,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 9670,
+          "removed_blocks": 5
+        },
+        {
+          "members": 1,
+          "path_blocks": 5,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7630,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 10,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7510,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 10,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 10,
+          "ref_protected_blocks": 0,
+          "ns": 11831,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 10,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 9370,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 20,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 13660,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 20,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 10,
+          "ref_protected_blocks": 0,
+          "ns": 16671,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 6,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 6270,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 6,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 6,
+          "ref_protected_blocks": 0,
+          "ns": 7131,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 6,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 6,
+          "ns": 14781,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 6,
+          "explicit_protected_blocks": 6,
+          "ref_protected_blocks": 6,
+          "ns": 15070,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 8,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 6,
+          "ns": 14791,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 8,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 6,
+          "ns": 13290,
+          "removed_blocks": 0
+        },
+        {
+          "members": 3,
+          "path_blocks": 18,
+          "physical_blocks": 8,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 6,
+          "ns": 17100,
+          "removed_blocks": 0
+        },
+        {
+          "members": 3,
+          "path_blocks": 18,
+          "physical_blocks": 8,
+          "explicit_protected_blocks": 6,
+          "ref_protected_blocks": 6,
+          "ns": 24621,
+          "removed_blocks": 0
+        },
+        {
+          "members": 3,
+          "path_blocks": 18,
+          "physical_blocks": 8,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 6,
+          "ns": 17680,
+          "removed_blocks": 0
+        },
+        {
+          "members": 3,
+          "path_blocks": 18,
+          "physical_blocks": 8,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 19411,
+          "removed_blocks": 4
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 6,
+          "ref_protected_blocks": 0,
+          "ns": 13430,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 7,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 12441,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 7,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 11470,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 7,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 12721,
+          "removed_blocks": 3
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 13150,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 6,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 12230,
+          "removed_blocks": 4
+        },
+        {
+          "members": 1,
+          "path_blocks": 4,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 5930,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 4,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 4,
+          "ref_protected_blocks": 0,
+          "ns": 5631,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 4,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 4810,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 4,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 3660,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 8,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7500,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 8,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 4,
+          "ref_protected_blocks": 0,
+          "ns": 7490,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 8,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 10760,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 8,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 12820,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 4,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 8890,
+          "removed_blocks": 4
+        },
+        {
+          "members": 1,
+          "path_blocks": 4,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 6970,
+          "removed_blocks": 0
+        }
+      ],
+      "call_count": 75,
+      "cumulative_ms": 0.938605
+    },
+    "candidate": {
+      "checks": [
+        "terminal_gate_preserves_load_until_settlement_new_generation_no_store_tombstone",
+        "terminal_gate_old_pending_batch_completes_without_leak",
+        "common_full_terminal_gate_preserves_native_reads_and_ordinary_store",
+        "terminal_new_member_no_retention_no_trim_normal_join_still_trims",
+        "terminal_growth_preserves_old_retention_remainder_and_native_read",
+        "shared_public_stored_once_private_tails_A_end_B_restore_last_load_releases_all",
+        "shared_private_deepest_load_protects_public_and_private_ancestors",
+        "shared_deferred_exclusive_tail_not_underreported_by_public_root_depth",
+        "shared_pending_dedup_root_failure_orphan_cleanup_retry_duplicate_completion",
+        "shared_root_itself_capacity_bounded_not_duplicated",
+        "shared_old_generation_pending_settles_public_survives_stale_completion_and_end",
+        "shared_native_reset_boundary_old_ticket_cannot_modify_reused_public_slots",
+        "trace_true_visible_at_native_vllm_info_level",
+        "common_lightweight_checkpoint_reports_final_physical_cleanup",
+        "old10_ceiling_actual5_preserves_B5",
+        "deepest_load_blocks_trim_then_tail_only_events",
+        "pending_minus1_retired_generation_duplicate_physical_settlement",
+        "same_identity_new_generation_next_request_rebuild_reused_request_id_safe",
+        "failed_ancestor_orphan_tail_eventual_reclaim",
+        "shared_unknown_no_store_native_read_identity_preserved",
+        "common_system_prefix_distinct_suffix_one_shared_fallback_native_read",
+        "end_collect_reset_same_generation_denied_new_generation_legal_old_end_noop",
+        "end_new_generation_load_refs_settle_late_read_no_early_free_duplicate_safe",
+        "short_lends_then_end_releases_next_request_expands",
+        "120_native_interleavings_recover_all_physical_slots",
+        "scheduler_thread_membership_guard_reset_late_completion",
+        "real_factory_hooks_tp2_all_workers_complete_disabled_native",
+        "real_store_builder_partial_src_dst_no_cursor_rewind_next_request_rebuild",
+        "unsupported_layout_and_policy_rejected_before_handlers"
+      ],
+      "calls": [
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 18090,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 9,
+          "ref_protected_blocks": 0,
+          "ns": 11260,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 15290,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 11661,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 20761,
+          "removed_blocks": 3
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 6,
+          "explicit_protected_blocks": 9,
+          "ref_protected_blocks": 0,
+          "ns": 16280,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 16060,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 16980,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 25410,
+          "removed_blocks": 3
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 6,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 11140,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 6,
+          "explicit_protected_blocks": 9,
+          "ref_protected_blocks": 0,
+          "ns": 11480,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 11860,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 9,
+          "ns": 13440,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 9,
+          "ns": 13420,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 20200,
+          "removed_blocks": 9
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7510,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 9,
+          "ref_protected_blocks": 0,
+          "ns": 8200,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 12450,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 10620,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 17690,
+          "removed_blocks": 3
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 6,
+          "explicit_protected_blocks": 9,
+          "ref_protected_blocks": 0,
+          "ns": 15380,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 14830,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 1,
+          "ns": 15931,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 1,
+          "ns": 16080,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 20981,
+          "removed_blocks": 3
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 6940,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 9,
+          "ref_protected_blocks": 0,
+          "ns": 8350,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 9,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 12320,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 1,
+          "ns": 16670,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 18,
+          "physical_blocks": 9,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 16690,
+          "removed_blocks": 3
+        },
+        {
+          "members": 1,
+          "path_blocks": 5,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 6210,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 5,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 2,
+          "ref_protected_blocks": 0,
+          "ns": 5251,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 2,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 2,
+          "ns": 11241,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 2,
+          "explicit_protected_blocks": 5,
+          "ref_protected_blocks": 2,
+          "ns": 10300,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 3,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 3,
+          "ns": 11110,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 3,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 10850,
+          "removed_blocks": 3
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7340,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 6510,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7460,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 5,
+          "ref_protected_blocks": 0,
+          "ns": 7910,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 5,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 11721,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 10,
+          "physical_blocks": 5,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 15070,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 5,
+          "physical_blocks": 5,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 9811,
+          "removed_blocks": 5
+        },
+        {
+          "members": 1,
+          "path_blocks": 5,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7570,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 10,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7290,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 10,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 10,
+          "ref_protected_blocks": 0,
+          "ns": 9020,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 10,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 9590,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 20,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 13580,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 20,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 10,
+          "ref_protected_blocks": 0,
+          "ns": 14180,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 6,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 6590,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 6,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 6,
+          "ref_protected_blocks": 0,
+          "ns": 6520,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 6,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 6,
+          "ns": 13711,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 6,
+          "explicit_protected_blocks": 6,
+          "ref_protected_blocks": 6,
+          "ns": 13490,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 8,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 6,
+          "ns": 14021,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 8,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 6,
+          "ns": 12200,
+          "removed_blocks": 0
+        },
+        {
+          "members": 3,
+          "path_blocks": 18,
+          "physical_blocks": 8,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 6,
+          "ns": 16440,
+          "removed_blocks": 0
+        },
+        {
+          "members": 3,
+          "path_blocks": 18,
+          "physical_blocks": 8,
+          "explicit_protected_blocks": 6,
+          "ref_protected_blocks": 6,
+          "ns": 15940,
+          "removed_blocks": 0
+        },
+        {
+          "members": 3,
+          "path_blocks": 18,
+          "physical_blocks": 8,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 6,
+          "ns": 17330,
+          "removed_blocks": 0
+        },
+        {
+          "members": 3,
+          "path_blocks": 18,
+          "physical_blocks": 8,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 19440,
+          "removed_blocks": 4
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 6,
+          "ref_protected_blocks": 0,
+          "ns": 12460,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 7,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 12750,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 7,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 11600,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 7,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 12750,
+          "removed_blocks": 3
+        },
+        {
+          "members": 2,
+          "path_blocks": 12,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 13260,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 6,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 12450,
+          "removed_blocks": 4
+        },
+        {
+          "members": 1,
+          "path_blocks": 4,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 5870,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 4,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 4,
+          "ref_protected_blocks": 0,
+          "ns": 5540,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 4,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 4740,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 4,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 3700,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 8,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7380,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 8,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 4,
+          "ref_protected_blocks": 0,
+          "ns": 6910,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 8,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 10880,
+          "removed_blocks": 0
+        },
+        {
+          "members": 2,
+          "path_blocks": 8,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 13200,
+          "removed_blocks": 0
+        },
+        {
+          "members": 1,
+          "path_blocks": 4,
+          "physical_blocks": 4,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 9361,
+          "removed_blocks": 4
+        },
+        {
+          "members": 1,
+          "path_blocks": 4,
+          "physical_blocks": 0,
+          "explicit_protected_blocks": 0,
+          "ref_protected_blocks": 0,
+          "ns": 7120,
+          "removed_blocks": 0
+        }
+      ],
+      "call_count": 75,
+      "cumulative_ms": 0.901641
+    }
+  },
+  "native_audit_equivalent": true,
+  "benchmarks": [
+    {
+      "label": "single_idle",
+      "lengths": [
+        512
+      ],
+      "mode": "idle",
+      "snapshot": {
+        "capacity_blocks": 512,
+        "plan_version": 1,
+        "members": [
+          {
+            "session": "0",
+            "generation": 0,
+            "demand_blocks": 512,
+            "request_path_blocks": 512,
+            "target_blocks": 512,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          }
+        ],
+        "frozen_plans": 0,
+        "generation_tombstones": 1,
+        "ended_generation_tombstones": 0,
+        "shared_prefix_blocks": 32,
+        "target_distinct_blocks": 512,
+        "unmaterialized_reservations": 0,
+        "physical_ready_blocks": 512,
+        "physical_pending_store_blocks": 0,
+        "physical_load_protected_blocks": 0,
+        "physical_free_blocks": 0,
+        "physical_reserved_bytes": 234881024,
+        "physical_shared_blocks": 0,
+        "members_physical": [
+          {
+            "session": "0",
+            "generation": 0,
+            "allocated_prefix_blocks": 512,
+            "ready_prefix_blocks": 512,
+            "owned_physical_blocks": 512,
+            "deferred_reclaim_blocks": 0
+          }
+        ],
+        "metrics": {
+          "observed_requests": 1,
+          "reclaimed_blocks": 0,
+          "admitted_store_blocks": 512,
+          "skipped_store_blocks": 0
+        },
+        "pending_store_batches": 0,
+        "pending_load_batches": 0,
+        "tracked_request_contexts": 0
+      },
+      "explicit_protected_blocks": 0,
+      "mean_call_ms_by_batch": {
+        "reference": [
+          0.33533366,
+          0.33561346000000003,
+          0.33544716999999996,
+          0.33468225,
+          0.33280112
+        ],
+        "candidate": [
+          0.33634118,
+          0.34640375,
+          0.33474486,
+          0.33430165,
+          0.33360634
+        ]
+      },
+      "median_call_ms": {
+        "reference": 0.33533366,
+        "candidate": 0.33474486
+      }
+    },
+    {
+      "label": "single_load",
+      "lengths": [
+        512
+      ],
+      "mode": "load",
+      "snapshot": {
+        "capacity_blocks": 512,
+        "plan_version": 1,
+        "members": [
+          {
+            "session": "0",
+            "generation": 0,
+            "demand_blocks": 512,
+            "request_path_blocks": 512,
+            "target_blocks": 512,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          }
+        ],
+        "frozen_plans": 0,
+        "generation_tombstones": 1,
+        "ended_generation_tombstones": 0,
+        "shared_prefix_blocks": 32,
+        "target_distinct_blocks": 512,
+        "unmaterialized_reservations": 0,
+        "physical_ready_blocks": 512,
+        "physical_pending_store_blocks": 0,
+        "physical_load_protected_blocks": 512,
+        "physical_free_blocks": 0,
+        "physical_reserved_bytes": 234881024,
+        "physical_shared_blocks": 0,
+        "members_physical": [
+          {
+            "session": "0",
+            "generation": 0,
+            "allocated_prefix_blocks": 512,
+            "ready_prefix_blocks": 512,
+            "owned_physical_blocks": 512,
+            "deferred_reclaim_blocks": 0
+          }
+        ],
+        "metrics": {
+          "observed_requests": 1,
+          "reclaimed_blocks": 0,
+          "admitted_store_blocks": 512,
+          "skipped_store_blocks": 0
+        },
+        "pending_store_batches": 0,
+        "pending_load_batches": 1,
+        "tracked_request_contexts": 1
+      },
+      "explicit_protected_blocks": 0,
+      "mean_call_ms_by_batch": {
+        "reference": [
+          8.93160462,
+          8.97279154,
+          9.011632220000001,
+          8.98468088,
+          8.98297866
+        ],
+        "candidate": [
+          0.37598015,
+          0.37603545,
+          0.37442243,
+          0.37493864,
+          0.37489393
+        ]
+      },
+      "median_call_ms": {
+        "reference": 8.98297866,
+        "candidate": 0.37493864
+      }
+    },
+    {
+      "label": "single_pending",
+      "lengths": [
+        512
+      ],
+      "mode": "pending",
+      "snapshot": {
+        "capacity_blocks": 512,
+        "plan_version": 1,
+        "members": [
+          {
+            "session": "0",
+            "generation": 0,
+            "demand_blocks": 512,
+            "request_path_blocks": 512,
+            "target_blocks": 512,
+            "active_requests": 1,
+            "alive": true,
+            "unsupported": null
+          }
+        ],
+        "frozen_plans": 1,
+        "generation_tombstones": 1,
+        "ended_generation_tombstones": 0,
+        "shared_prefix_blocks": 32,
+        "target_distinct_blocks": 512,
+        "unmaterialized_reservations": 0,
+        "physical_ready_blocks": 0,
+        "physical_pending_store_blocks": 512,
+        "physical_load_protected_blocks": 0,
+        "physical_free_blocks": 0,
+        "physical_reserved_bytes": 234881024,
+        "physical_shared_blocks": 0,
+        "members_physical": [
+          {
+            "session": "0",
+            "generation": 0,
+            "allocated_prefix_blocks": 512,
+            "ready_prefix_blocks": 0,
+            "owned_physical_blocks": 512,
+            "deferred_reclaim_blocks": 0
+          }
+        ],
+        "metrics": {
+          "observed_requests": 1,
+          "reclaimed_blocks": 0,
+          "admitted_store_blocks": 512,
+          "skipped_store_blocks": 0
+        },
+        "pending_store_batches": 1,
+        "pending_load_batches": 0,
+        "tracked_request_contexts": 1
+      },
+      "explicit_protected_blocks": 0,
+      "mean_call_ms_by_batch": {
+        "reference": [
+          9.08530441,
+          9.04383505,
+          8.9872264,
+          8.98989789,
+          9.010158449999999
+        ],
+        "candidate": [
+          0.37705527,
+          0.37582295,
+          0.37556154999999997,
+          0.37582665000000004,
+          0.3905108
+        ]
+      },
+      "median_call_ms": {
+        "reference": 9.010158449999999,
+        "candidate": 0.37582665000000004
+      }
+    },
+    {
+      "label": "single_incoming",
+      "lengths": [
+        512
+      ],
+      "mode": "incoming",
+      "snapshot": {
+        "capacity_blocks": 512,
+        "plan_version": 1,
+        "members": [
+          {
+            "session": "0",
+            "generation": 0,
+            "demand_blocks": 512,
+            "request_path_blocks": 512,
+            "target_blocks": 512,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          }
+        ],
+        "frozen_plans": 0,
+        "generation_tombstones": 1,
+        "ended_generation_tombstones": 0,
+        "shared_prefix_blocks": 32,
+        "target_distinct_blocks": 512,
+        "unmaterialized_reservations": 0,
+        "physical_ready_blocks": 512,
+        "physical_pending_store_blocks": 0,
+        "physical_load_protected_blocks": 0,
+        "physical_free_blocks": 0,
+        "physical_reserved_bytes": 234881024,
+        "physical_shared_blocks": 0,
+        "members_physical": [
+          {
+            "session": "0",
+            "generation": 0,
+            "allocated_prefix_blocks": 512,
+            "ready_prefix_blocks": 512,
+            "owned_physical_blocks": 512,
+            "deferred_reclaim_blocks": 0
+          }
+        ],
+        "metrics": {
+          "observed_requests": 1,
+          "reclaimed_blocks": 0,
+          "admitted_store_blocks": 512,
+          "skipped_store_blocks": 0
+        },
+        "pending_store_batches": 0,
+        "pending_load_batches": 0,
+        "tracked_request_contexts": 0
+      },
+      "explicit_protected_blocks": 512,
+      "mean_call_ms_by_batch": {
+        "reference": [
+          8.92682325,
+          8.99919109,
+          8.97445731,
+          8.979749210000001,
+          8.98569634
+        ],
+        "candidate": [
+          0.36907214,
+          0.36954885,
+          0.38121204999999997,
+          0.36950365,
+          0.37007377
+        ]
+      },
+      "median_call_ms": {
+        "reference": 8.979749210000001,
+        "candidate": 0.36954885
+      }
+    },
+    {
+      "label": "four_idle",
+      "lengths": [
+        512,
+        384,
+        64,
+        256
+      ],
+      "mode": "idle",
+      "snapshot": {
+        "capacity_blocks": 512,
+        "plan_version": 4,
+        "members": [
+          {
+            "session": "0",
+            "generation": 0,
+            "demand_blocks": 512,
+            "request_path_blocks": 512,
+            "target_blocks": 181,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          },
+          {
+            "session": "1",
+            "generation": 0,
+            "demand_blocks": 384,
+            "request_path_blocks": 384,
+            "target_blocks": 181,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          },
+          {
+            "session": "2",
+            "generation": 0,
+            "demand_blocks": 64,
+            "request_path_blocks": 64,
+            "target_blocks": 64,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          },
+          {
+            "session": "3",
+            "generation": 0,
+            "demand_blocks": 256,
+            "request_path_blocks": 256,
+            "target_blocks": 182,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          }
+        ],
+        "frozen_plans": 0,
+        "generation_tombstones": 4,
+        "ended_generation_tombstones": 0,
+        "shared_prefix_blocks": 32,
+        "target_distinct_blocks": 512,
+        "unmaterialized_reservations": 0,
+        "physical_ready_blocks": 512,
+        "physical_pending_store_blocks": 0,
+        "physical_load_protected_blocks": 0,
+        "physical_free_blocks": 0,
+        "physical_reserved_bytes": 234881024,
+        "physical_shared_blocks": 32,
+        "members_physical": [
+          {
+            "session": "0",
+            "generation": 0,
+            "allocated_prefix_blocks": 181,
+            "ready_prefix_blocks": 181,
+            "owned_physical_blocks": 149,
+            "deferred_reclaim_blocks": 0
+          },
+          {
+            "session": "1",
+            "generation": 0,
+            "allocated_prefix_blocks": 181,
+            "ready_prefix_blocks": 181,
+            "owned_physical_blocks": 149,
+            "deferred_reclaim_blocks": 0
+          },
+          {
+            "session": "2",
+            "generation": 0,
+            "allocated_prefix_blocks": 64,
+            "ready_prefix_blocks": 64,
+            "owned_physical_blocks": 32,
+            "deferred_reclaim_blocks": 0
+          },
+          {
+            "session": "3",
+            "generation": 0,
+            "allocated_prefix_blocks": 182,
+            "ready_prefix_blocks": 182,
+            "owned_physical_blocks": 150,
+            "deferred_reclaim_blocks": 0
+          }
+        ],
+        "metrics": {
+          "observed_requests": 4,
+          "reclaimed_blocks": 422,
+          "admitted_store_blocks": 934,
+          "skipped_store_blocks": 186,
+          "denied_store_batches": 4
+        },
+        "pending_store_batches": 0,
+        "pending_load_batches": 0,
+        "tracked_request_contexts": 0
+      },
+      "explicit_protected_blocks": 0,
+      "mean_call_ms_by_batch": {
+        "reference": [
+          0.45807186,
+          0.45657362,
+          0.45482778999999995,
+          0.46877604,
+          0.45610131
+        ],
+        "candidate": [
+          0.45674332,
+          0.45649523,
+          0.45529581,
+          0.4550708,
+          0.45573132
+        ]
+      },
+      "median_call_ms": {
+        "reference": 0.45657362,
+        "candidate": 0.45573132
+      }
+    },
+    {
+      "label": "four_load",
+      "lengths": [
+        512,
+        384,
+        64,
+        256
+      ],
+      "mode": "load",
+      "snapshot": {
+        "capacity_blocks": 512,
+        "plan_version": 4,
+        "members": [
+          {
+            "session": "0",
+            "generation": 0,
+            "demand_blocks": 512,
+            "request_path_blocks": 512,
+            "target_blocks": 181,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          },
+          {
+            "session": "1",
+            "generation": 0,
+            "demand_blocks": 384,
+            "request_path_blocks": 384,
+            "target_blocks": 181,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          },
+          {
+            "session": "2",
+            "generation": 0,
+            "demand_blocks": 64,
+            "request_path_blocks": 64,
+            "target_blocks": 64,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          },
+          {
+            "session": "3",
+            "generation": 0,
+            "demand_blocks": 256,
+            "request_path_blocks": 256,
+            "target_blocks": 182,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          }
+        ],
+        "frozen_plans": 0,
+        "generation_tombstones": 4,
+        "ended_generation_tombstones": 0,
+        "shared_prefix_blocks": 32,
+        "target_distinct_blocks": 512,
+        "unmaterialized_reservations": 0,
+        "physical_ready_blocks": 512,
+        "physical_pending_store_blocks": 0,
+        "physical_load_protected_blocks": 181,
+        "physical_free_blocks": 0,
+        "physical_reserved_bytes": 234881024,
+        "physical_shared_blocks": 32,
+        "members_physical": [
+          {
+            "session": "0",
+            "generation": 0,
+            "allocated_prefix_blocks": 181,
+            "ready_prefix_blocks": 181,
+            "owned_physical_blocks": 149,
+            "deferred_reclaim_blocks": 0
+          },
+          {
+            "session": "1",
+            "generation": 0,
+            "allocated_prefix_blocks": 181,
+            "ready_prefix_blocks": 181,
+            "owned_physical_blocks": 149,
+            "deferred_reclaim_blocks": 0
+          },
+          {
+            "session": "2",
+            "generation": 0,
+            "allocated_prefix_blocks": 64,
+            "ready_prefix_blocks": 64,
+            "owned_physical_blocks": 32,
+            "deferred_reclaim_blocks": 0
+          },
+          {
+            "session": "3",
+            "generation": 0,
+            "allocated_prefix_blocks": 182,
+            "ready_prefix_blocks": 182,
+            "owned_physical_blocks": 150,
+            "deferred_reclaim_blocks": 0
+          }
+        ],
+        "metrics": {
+          "observed_requests": 4,
+          "reclaimed_blocks": 422,
+          "admitted_store_blocks": 934,
+          "skipped_store_blocks": 186,
+          "denied_store_batches": 4
+        },
+        "pending_store_batches": 0,
+        "pending_load_batches": 1,
+        "tracked_request_contexts": 1
+      },
+      "explicit_protected_blocks": 0,
+      "mean_call_ms_by_batch": {
+        "reference": [
+          1.52894248,
+          1.4944895900000001,
+          1.5060908899999998,
+          1.50844153,
+          1.50814672
+        ],
+        "candidate": [
+          0.47237109000000005,
+          0.47782938,
+          0.47530775,
+          0.47514254,
+          0.47602346
+        ]
+      },
+      "median_call_ms": {
+        "reference": 1.50814672,
+        "candidate": 0.47530775
+      }
+    },
+    {
+      "label": "four_incoming",
+      "lengths": [
+        512,
+        384,
+        64,
+        256
+      ],
+      "mode": "incoming",
+      "snapshot": {
+        "capacity_blocks": 512,
+        "plan_version": 4,
+        "members": [
+          {
+            "session": "0",
+            "generation": 0,
+            "demand_blocks": 512,
+            "request_path_blocks": 512,
+            "target_blocks": 181,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          },
+          {
+            "session": "1",
+            "generation": 0,
+            "demand_blocks": 384,
+            "request_path_blocks": 384,
+            "target_blocks": 181,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          },
+          {
+            "session": "2",
+            "generation": 0,
+            "demand_blocks": 64,
+            "request_path_blocks": 64,
+            "target_blocks": 64,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          },
+          {
+            "session": "3",
+            "generation": 0,
+            "demand_blocks": 256,
+            "request_path_blocks": 256,
+            "target_blocks": 182,
+            "active_requests": 0,
+            "alive": true,
+            "unsupported": null
+          }
+        ],
+        "frozen_plans": 0,
+        "generation_tombstones": 4,
+        "ended_generation_tombstones": 0,
+        "shared_prefix_blocks": 32,
+        "target_distinct_blocks": 512,
+        "unmaterialized_reservations": 0,
+        "physical_ready_blocks": 512,
+        "physical_pending_store_blocks": 0,
+        "physical_load_protected_blocks": 0,
+        "physical_free_blocks": 0,
+        "physical_reserved_bytes": 234881024,
+        "physical_shared_blocks": 32,
+        "members_physical": [
+          {
+            "session": "0",
+            "generation": 0,
+            "allocated_prefix_blocks": 181,
+            "ready_prefix_blocks": 181,
+            "owned_physical_blocks": 149,
+            "deferred_reclaim_blocks": 0
+          },
+          {
+            "session": "1",
+            "generation": 0,
+            "allocated_prefix_blocks": 181,
+            "ready_prefix_blocks": 181,
+            "owned_physical_blocks": 149,
+            "deferred_reclaim_blocks": 0
+          },
+          {
+            "session": "2",
+            "generation": 0,
+            "allocated_prefix_blocks": 64,
+            "ready_prefix_blocks": 64,
+            "owned_physical_blocks": 32,
+            "deferred_reclaim_blocks": 0
+          },
+          {
+            "session": "3",
+            "generation": 0,
+            "allocated_prefix_blocks": 182,
+            "ready_prefix_blocks": 182,
+            "owned_physical_blocks": 150,
+            "deferred_reclaim_blocks": 0
+          }
+        ],
+        "metrics": {
+          "observed_requests": 4,
+          "reclaimed_blocks": 422,
+          "admitted_store_blocks": 934,
+          "skipped_store_blocks": 186,
+          "denied_store_batches": 4
+        },
+        "pending_store_batches": 0,
+        "pending_load_batches": 0,
+        "tracked_request_contexts": 0
+      },
+      "explicit_protected_blocks": 256,
+      "mean_call_ms_by_batch": {
+        "reference": [
+          2.82394489,
+          2.80591399,
+          2.79229158,
+          2.80747842,
+          2.79321939
+        ],
+        "candidate": [
+          0.48980919,
+          0.48908746999999997,
+          0.51228427,
+          0.50922672,
+          0.48792186
+        ]
+      },
+      "median_call_ms": {
+        "reference": 2.80591399,
+        "candidate": 0.48980919
+      }
+    }
+  ],
+  "status": "PASS",
+  "python": "3.11.16 (main, Aug 27 2026, 14:44:21) [GCC 14.3.0]",
+  "torch": "2.11.0+cu126",
+  "cpu_wall_seconds": 24.453492596003343,
+  "diagnosis_sha256": "d88c534973c32b82e2c2d719050263c15488b29f7c868cc69025a0fde3833d69"
+}

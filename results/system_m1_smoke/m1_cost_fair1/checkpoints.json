@@ -1,0 +1,20 @@
+[
+  {
+    "tag": "warmup_complete",
+    "capacity_blocks": 512,
+    "ready_blocks": 0,
+    "pending_store_blocks": 0,
+    "load_protected_blocks": 0,
+    "free_blocks": 512,
+    "retained_members": null
+  },
+  {
+    "tag": "measurement_complete",
+    "capacity_blocks": 512,
+    "ready_blocks": 424,
+    "pending_store_blocks": 0,
+    "load_protected_blocks": 0,
+    "free_blocks": 88,
+    "retained_members": null
+  }
+]

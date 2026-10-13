@@ -1,0 +1,4422 @@
+[
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [
+      {
+        "session": "warmup0",
+        "generation": 0,
+        "demand_blocks": 0,
+        "request_path_blocks": 64,
+        "target_blocks": 0,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 1,
+    "ended_generation_tombstones": 0,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "warmup0",
+        "generation": 0,
+        "allocated_prefix_blocks": 0,
+        "ready_prefix_blocks": 0,
+        "owned_physical_blocks": 0,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 1,
+      "terminal_no_retention_requests": 1,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 1,
+    "ended_generation_tombstones": 1,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 1,
+      "terminal_no_retention_requests": 1,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [
+      {
+        "session": "warmup1",
+        "generation": 0,
+        "demand_blocks": 0,
+        "request_path_blocks": 256,
+        "target_blocks": 0,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 2,
+    "ended_generation_tombstones": 1,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "warmup1",
+        "generation": 0,
+        "allocated_prefix_blocks": 0,
+        "ready_prefix_blocks": 0,
+        "owned_physical_blocks": 0,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 2,
+      "terminal_no_retention_requests": 2,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 2,
+    "ended_generation_tombstones": 2,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 2,
+      "terminal_no_retention_requests": 2,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [
+      {
+        "session": "warmup2",
+        "generation": 0,
+        "demand_blocks": 0,
+        "request_path_blocks": 384,
+        "target_blocks": 0,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 3,
+    "ended_generation_tombstones": 2,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "warmup2",
+        "generation": 0,
+        "allocated_prefix_blocks": 0,
+        "ready_prefix_blocks": 0,
+        "owned_physical_blocks": 0,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 3,
+      "terminal_no_retention_requests": 3,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 3,
+    "ended_generation_tombstones": 3,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 3,
+      "terminal_no_retention_requests": 3,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [
+      {
+        "session": "warmup3",
+        "generation": 0,
+        "demand_blocks": 0,
+        "request_path_blocks": 512,
+        "target_blocks": 0,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 4,
+    "ended_generation_tombstones": 3,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "warmup3",
+        "generation": 0,
+        "allocated_prefix_blocks": 0,
+        "ready_prefix_blocks": 0,
+        "owned_physical_blocks": 0,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 4,
+      "terminal_no_retention_requests": 4,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 4,
+    "ended_generation_tombstones": 4,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 4,
+      "terminal_no_retention_requests": 4,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [
+      {
+        "session": "warmup4",
+        "generation": 0,
+        "demand_blocks": 0,
+        "request_path_blocks": 1024,
+        "target_blocks": 0,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 5,
+    "ended_generation_tombstones": 4,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "warmup4",
+        "generation": 0,
+        "allocated_prefix_blocks": 0,
+        "ready_prefix_blocks": 0,
+        "owned_physical_blocks": 0,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 5,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 5,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 5,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 1,
+    "generation_tombstones": 5,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 6,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0,
+      "fallback_missing_or_invalid_membership": 1
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 5,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 6,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0,
+      "fallback_missing_or_invalid_membership": 1
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 1,
+    "generation_tombstones": 5,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 7,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0,
+      "fallback_missing_or_invalid_membership": 2
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 5,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 7,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0,
+      "fallback_missing_or_invalid_membership": 2
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 1,
+    "generation_tombstones": 5,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 8,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0,
+      "fallback_missing_or_invalid_membership": 3
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 0,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 5,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 8,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0,
+      "fallback_missing_or_invalid_membership": 3
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 1,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 512,
+        "request_path_blocks": 512,
+        "target_blocks": 512,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 6,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 0,
+        "ready_prefix_blocks": 0,
+        "owned_physical_blocks": 0,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 9,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0,
+      "fallback_missing_or_invalid_membership": 3
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_store",
+    "capacity_blocks": 512,
+    "plan_version": 1,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 512,
+        "request_path_blocks": 512,
+        "target_blocks": 512,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 6,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 512,
+        "ready_prefix_blocks": 512,
+        "owned_physical_blocks": 512,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 9,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0,
+      "fallback_missing_or_invalid_membership": 3,
+      "admitted_store_blocks": 512,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 1,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 512,
+        "request_path_blocks": 512,
+        "target_blocks": 512,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 6,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 512,
+        "ready_prefix_blocks": 512,
+        "owned_physical_blocks": 512,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 9,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 0,
+      "fallback_missing_or_invalid_membership": 3,
+      "admitted_store_blocks": 512,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 2,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 512,
+        "request_path_blocks": 512,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 384,
+        "request_path_blocks": 384,
+        "target_blocks": 272,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 7,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 272,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 240,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 272,
+        "ready_prefix_blocks": 272,
+        "owned_physical_blocks": 240,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 32,
+        "ready_prefix_blocks": 32,
+        "owned_physical_blocks": 0,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 10,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 240,
+      "fallback_missing_or_invalid_membership": 3,
+      "admitted_store_blocks": 512,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_store",
+    "capacity_blocks": 512,
+    "plan_version": 2,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 512,
+        "request_path_blocks": 512,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 384,
+        "request_path_blocks": 384,
+        "target_blocks": 272,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 7,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 272,
+        "ready_prefix_blocks": 272,
+        "owned_physical_blocks": 240,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 272,
+        "ready_prefix_blocks": 272,
+        "owned_physical_blocks": 240,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 10,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 240,
+      "fallback_missing_or_invalid_membership": 3,
+      "admitted_store_blocks": 752,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 2,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 512,
+        "request_path_blocks": 512,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 384,
+        "request_path_blocks": 384,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 7,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 272,
+        "ready_prefix_blocks": 272,
+        "owned_physical_blocks": 240,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 272,
+        "ready_prefix_blocks": 272,
+        "owned_physical_blocks": 240,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 10,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 240,
+      "fallback_missing_or_invalid_membership": 3,
+      "admitted_store_blocks": 752,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 3,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 512,
+        "request_path_blocks": 512,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 384,
+        "request_path_blocks": 384,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 64,
+        "target_blocks": 64,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 480,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 32,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 32,
+        "ready_prefix_blocks": 32,
+        "owned_physical_blocks": 0,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 11,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 3,
+      "admitted_store_blocks": 752,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_store",
+    "capacity_blocks": 512,
+    "plan_version": 3,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 512,
+        "request_path_blocks": 512,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 384,
+        "request_path_blocks": 384,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 64,
+        "target_blocks": 64,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 64,
+        "ready_prefix_blocks": 64,
+        "owned_physical_blocks": 32,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 11,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 3,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 3,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 512,
+        "request_path_blocks": 512,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 384,
+        "request_path_blocks": 384,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 64,
+        "target_blocks": 64,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 64,
+        "ready_prefix_blocks": 64,
+        "owned_physical_blocks": 32,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 11,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 3,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 3,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 512,
+        "request_path_blocks": 512,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 384,
+        "request_path_blocks": 384,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 64,
+        "target_blocks": 64,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 64,
+        "ready_prefix_blocks": 64,
+        "owned_physical_blocks": 32,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 12,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 3,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 512,
+        "request_path_blocks": 512,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 384,
+        "request_path_blocks": 384,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 64,
+        "target_blocks": 64,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 64,
+        "ready_prefix_blocks": 64,
+        "owned_physical_blocks": 32,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 12,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 4,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 256,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 384,
+        "request_path_blocks": 384,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 64,
+        "target_blocks": 64,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 64,
+        "ready_prefix_blocks": 64,
+        "owned_physical_blocks": 32,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 13,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_load",
+    "capacity_blocks": 512,
+    "plan_version": 4,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 256,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 384,
+        "request_path_blocks": 384,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 64,
+        "target_blocks": 64,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 64,
+        "ready_prefix_blocks": 64,
+        "owned_physical_blocks": 32,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 13,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 4,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 384,
+        "request_path_blocks": 384,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 64,
+        "target_blocks": 64,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 64,
+        "ready_prefix_blocks": 64,
+        "owned_physical_blocks": 32,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 13,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 5,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 256,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 64,
+        "target_blocks": 64,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 64,
+        "ready_prefix_blocks": 64,
+        "owned_physical_blocks": 32,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 14,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_load",
+    "capacity_blocks": 512,
+    "plan_version": 5,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 256,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 64,
+        "target_blocks": 64,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 64,
+        "ready_prefix_blocks": 64,
+        "owned_physical_blocks": 32,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 14,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 5,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 64,
+        "target_blocks": 64,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 64,
+        "ready_prefix_blocks": 64,
+        "owned_physical_blocks": 32,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 14,
+      "terminal_no_retention_requests": 5,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 5,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 68,
+        "target_blocks": 64,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 64,
+        "ready_prefix_blocks": 64,
+        "owned_physical_blocks": 32,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 15,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_load",
+    "capacity_blocks": 512,
+    "plan_version": 5,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 256,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "demand_blocks": 64,
+        "request_path_blocks": 68,
+        "target_blocks": 64,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 5,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "s",
+        "generation": 0,
+        "allocated_prefix_blocks": 64,
+        "ready_prefix_blocks": 64,
+        "owned_physical_blocks": 32,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 15,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 272,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 6,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 8,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 480,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 32,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 256,
+        "ready_prefix_blocks": 256,
+        "owned_physical_blocks": 224,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 15,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 304,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 7,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 256,
+        "request_path_blocks": 256,
+        "target_blocks": 192,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 352,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 160,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 32,
+        "ready_prefix_blocks": 32,
+        "owned_physical_blocks": 0,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 16,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 784,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_store",
+    "capacity_blocks": 512,
+    "plan_version": 7,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 256,
+        "request_path_blocks": 256,
+        "target_blocks": 192,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 16,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 7,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 256,
+        "request_path_blocks": 256,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 16,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 4,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 7,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 256,
+        "request_path_blocks": 256,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 17,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 7,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 516,
+        "request_path_blocks": 516,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 256,
+        "request_path_blocks": 256,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 17,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 8,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 192,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 256,
+        "request_path_blocks": 256,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 18,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_load",
+    "capacity_blocks": 512,
+    "plan_version": 8,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 192,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 256,
+        "request_path_blocks": 256,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 18,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 8,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 388,
+        "request_path_blocks": 388,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 256,
+        "request_path_blocks": 256,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 18,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 9,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 192,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 256,
+        "request_path_blocks": 256,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 19,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_load",
+    "capacity_blocks": 512,
+    "plan_version": 9,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 192,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 256,
+        "request_path_blocks": 256,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 19,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 9,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 256,
+        "request_path_blocks": 256,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 19,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 10,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 260,
+        "request_path_blocks": 260,
+        "target_blocks": 192,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 20,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_load",
+    "capacity_blocks": 512,
+    "plan_version": 10,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 260,
+        "request_path_blocks": 260,
+        "target_blocks": 192,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 20,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 10,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 260,
+        "request_path_blocks": 260,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 20,
+      "terminal_no_retention_requests": 6,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 10,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 192,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "demand_blocks": 260,
+        "request_path_blocks": 264,
+        "target_blocks": 192,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 6,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 512,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 0,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "d",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 21,
+      "terminal_no_retention_requests": 7,
+      "reclaimed_blocks": 432,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 11,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 7,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 352,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 160,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 21,
+      "terminal_no_retention_requests": 7,
+      "reclaimed_blocks": 592,
+      "fallback_missing_or_invalid_membership": 5,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 11,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 7,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 352,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 160,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 22,
+      "terminal_no_retention_requests": 7,
+      "reclaimed_blocks": 592,
+      "fallback_missing_or_invalid_membership": 6,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 11,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 520,
+        "request_path_blocks": 520,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 7,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 352,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 160,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 22,
+      "terminal_no_retention_requests": 7,
+      "reclaimed_blocks": 592,
+      "fallback_missing_or_invalid_membership": 6,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 12,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 524,
+        "request_path_blocks": 524,
+        "target_blocks": 272,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 7,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 352,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 160,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 23,
+      "terminal_no_retention_requests": 7,
+      "reclaimed_blocks": 592,
+      "fallback_missing_or_invalid_membership": 6,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_load",
+    "capacity_blocks": 512,
+    "plan_version": 12,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 524,
+        "request_path_blocks": 524,
+        "target_blocks": 272,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 7,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 352,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 160,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 23,
+      "terminal_no_retention_requests": 7,
+      "reclaimed_blocks": 592,
+      "fallback_missing_or_invalid_membership": 6,
+      "admitted_store_blocks": 944,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_store",
+    "capacity_blocks": 512,
+    "plan_version": 12,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 524,
+        "request_path_blocks": 524,
+        "target_blocks": 272,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 7,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 432,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 80,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 272,
+        "ready_prefix_blocks": 272,
+        "owned_physical_blocks": 240,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 23,
+      "terminal_no_retention_requests": 7,
+      "reclaimed_blocks": 592,
+      "fallback_missing_or_invalid_membership": 6,
+      "admitted_store_blocks": 1024,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 12,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 524,
+        "request_path_blocks": 524,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 7,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 432,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 80,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 272,
+        "ready_prefix_blocks": 272,
+        "owned_physical_blocks": 240,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 23,
+      "terminal_no_retention_requests": 7,
+      "reclaimed_blocks": 592,
+      "fallback_missing_or_invalid_membership": 6,
+      "admitted_store_blocks": 1024,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 12,
+    "members": [
+      {
+        "session": "a",
+        "generation": 0,
+        "demand_blocks": 524,
+        "request_path_blocks": 528,
+        "target_blocks": 272,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 272,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 7,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 512,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 432,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 80,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 32,
+    "members_physical": [
+      {
+        "session": "a",
+        "generation": 0,
+        "allocated_prefix_blocks": 272,
+        "ready_prefix_blocks": 272,
+        "owned_physical_blocks": 240,
+        "deferred_reclaim_blocks": 0
+      },
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 160,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 24,
+      "terminal_no_retention_requests": 8,
+      "reclaimed_blocks": 592,
+      "fallback_missing_or_invalid_membership": 6,
+      "admitted_store_blocks": 1024,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 13,
+    "members": [
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 392,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 8,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 392,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 192,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 320,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 192,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 24,
+      "terminal_no_retention_requests": 8,
+      "reclaimed_blocks": 832,
+      "fallback_missing_or_invalid_membership": 6,
+      "admitted_store_blocks": 1024,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 13,
+    "members": [
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 392,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 8,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 392,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 192,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 320,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 192,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 25,
+      "terminal_no_retention_requests": 8,
+      "reclaimed_blocks": 832,
+      "fallback_missing_or_invalid_membership": 7,
+      "admitted_store_blocks": 1024,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 13,
+    "members": [
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 392,
+        "request_path_blocks": 392,
+        "target_blocks": 392,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 8,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 392,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 192,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 320,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 192,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 25,
+      "terminal_no_retention_requests": 8,
+      "reclaimed_blocks": 832,
+      "fallback_missing_or_invalid_membership": 7,
+      "admitted_store_blocks": 1024,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 14,
+    "members": [
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 396,
+        "request_path_blocks": 396,
+        "target_blocks": 396,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 8,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 396,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 192,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 320,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 192,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 26,
+      "terminal_no_retention_requests": 8,
+      "reclaimed_blocks": 832,
+      "fallback_missing_or_invalid_membership": 7,
+      "admitted_store_blocks": 1024,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_load",
+    "capacity_blocks": 512,
+    "plan_version": 14,
+    "members": [
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 396,
+        "request_path_blocks": 396,
+        "target_blocks": 396,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 8,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 396,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 192,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 320,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 192,
+        "ready_prefix_blocks": 192,
+        "owned_physical_blocks": 192,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 26,
+      "terminal_no_retention_requests": 8,
+      "reclaimed_blocks": 832,
+      "fallback_missing_or_invalid_membership": 7,
+      "admitted_store_blocks": 1024,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "complete_store",
+    "capacity_blocks": 512,
+    "plan_version": 14,
+    "members": [
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 396,
+        "request_path_blocks": 396,
+        "target_blocks": 396,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 8,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 396,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 396,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 116,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 396,
+        "ready_prefix_blocks": 396,
+        "owned_physical_blocks": 396,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 26,
+      "terminal_no_retention_requests": 8,
+      "reclaimed_blocks": 832,
+      "fallback_missing_or_invalid_membership": 7,
+      "admitted_store_blocks": 1228,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 14,
+    "members": [
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 396,
+        "request_path_blocks": 396,
+        "target_blocks": 396,
+        "active_requests": 0,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 8,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 396,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 396,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 116,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 396,
+        "ready_prefix_blocks": 396,
+        "owned_physical_blocks": 396,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 26,
+      "terminal_no_retention_requests": 8,
+      "reclaimed_blocks": 832,
+      "fallback_missing_or_invalid_membership": 7,
+      "admitted_store_blocks": 1228,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 14,
+    "members": [
+      {
+        "session": "b",
+        "generation": 0,
+        "demand_blocks": 396,
+        "request_path_blocks": 400,
+        "target_blocks": 396,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 8,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 396,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 396,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 116,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "b",
+        "generation": 0,
+        "allocated_prefix_blocks": 396,
+        "ready_prefix_blocks": 396,
+        "owned_physical_blocks": 396,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 27,
+      "terminal_no_retention_requests": 9,
+      "reclaimed_blocks": 832,
+      "fallback_missing_or_invalid_membership": 7,
+      "admitted_store_blocks": 1228,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 15,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 9,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 27,
+      "terminal_no_retention_requests": 9,
+      "reclaimed_blocks": 1228,
+      "fallback_missing_or_invalid_membership": 7,
+      "admitted_store_blocks": 1228,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  {
+    "event": "observe",
+    "capacity_blocks": 512,
+    "plan_version": 15,
+    "members": [
+      {
+        "session": "fresh-terminal",
+        "generation": 0,
+        "demand_blocks": 0,
+        "request_path_blocks": 512,
+        "target_blocks": 0,
+        "active_requests": 1,
+        "alive": true,
+        "unsupported": null
+      }
+    ],
+    "frozen_plans": 1,
+    "generation_tombstones": 10,
+    "ended_generation_tombstones": 9,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [
+      {
+        "session": "fresh-terminal",
+        "generation": 0,
+        "allocated_prefix_blocks": 0,
+        "ready_prefix_blocks": 0,
+        "owned_physical_blocks": 0,
+        "deferred_reclaim_blocks": 0
+      }
+    ],
+    "metrics": {
+      "observed_requests": 28,
+      "terminal_no_retention_requests": 10,
+      "reclaimed_blocks": 1228,
+      "fallback_missing_or_invalid_membership": 7,
+      "admitted_store_blocks": 1228,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 1
+  },
+  {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 15,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 10,
+    "ended_generation_tombstones": 10,
+    "shared_prefix_blocks": 32,
+    "target_distinct_blocks": 0,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "physical_shared_blocks": 0,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 28,
+      "terminal_no_retention_requests": 10,
+      "reclaimed_blocks": 1228,
+      "fallback_missing_or_invalid_membership": 7,
+      "admitted_store_blocks": 1228,
+      "skipped_store_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  }
+]

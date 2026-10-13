@@ -1,0 +1,12 @@
+{
+  "stage": "first remote post-analysis, before output written",
+  "error": "FileNotFoundError: /media/a6000/D/ZhaoBinHe/SlackKV/results/system_m1_shared/unused_write_evidence.json.gz",
+  "reason": "The committed report artifact existed in the local/GitHub checkout, but not the preserved remote raw experiment tree.",
+  "resolution": "Copy the unchanged committed evidence to the new cost results directory and pass --unused-evidence explicitly. Do not overwrite historical raw data.",
+  "second_attempt": {
+    "error": "TypeError: analyze() takes from 1 to 2 positional arguments but 3 were given",
+    "reason": "The isolated remote analyzer dependency predates the committed explicit-cohort guard.",
+    "resolution": "Upload the committed analyze_contention.py dependency and rerun CPU post-analysis; preserve analysis_attempt2.log."
+  },
+  "gpu_effect": "None: all four GPU executions had completed and verified cleanup. No retry of GPU work."
+}

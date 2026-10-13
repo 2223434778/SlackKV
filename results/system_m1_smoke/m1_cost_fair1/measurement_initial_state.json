@@ -1,0 +1,15 @@
+{
+  "native_state": null,
+  "gpu_caches": "not cleared; disjoint warmup roots and identical shape coverage",
+  "warmup_requests": 5,
+  "checkpoint": {
+    "tag": "warmup_complete",
+    "capacity_blocks": 512,
+    "ready_blocks": 0,
+    "pending_store_blocks": 0,
+    "load_protected_blocks": 0,
+    "free_blocks": 512,
+    "retained_members": null
+  },
+  "warmup_seconds": 2.629245534
+}

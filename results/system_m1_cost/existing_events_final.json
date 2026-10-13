@@ -1,0 +1,586 @@
+{
+  "existing_event_diagnosis": {
+    "requests": [
+      {
+        "label": "a0",
+        "session": "a",
+        "state_indices": [
+          16,
+          17,
+          18
+        ],
+        "admitted_blocks": 512,
+        "reclaimed_blocks": 0,
+        "phase": "initial_fill",
+        "ready_depth_before": 0,
+        "ready_depth_after_store": 512,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99390.118387677,
+            "request_id": "cmpl-a161188f31064ec4-0-b48753cf",
+            "session": "a0",
+            "local_cached_tokens": 0,
+            "external_cached_tokens": 0
+          }
+        ]
+      },
+      {
+        "label": "b0",
+        "session": "b",
+        "state_indices": [
+          19,
+          20,
+          21
+        ],
+        "admitted_blocks": 240,
+        "reclaimed_blocks": 240,
+        "phase": "initial_fill",
+        "ready_depth_before": 0,
+        "ready_depth_after_store": 272,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99391.051379608,
+            "request_id": "cmpl-a750ce7b6cfb8234-0-b878514e",
+            "session": "b0",
+            "local_cached_tokens": 512,
+            "external_cached_tokens": 0
+          }
+        ]
+      },
+      {
+        "label": "s0",
+        "session": "s",
+        "state_indices": [
+          22,
+          23,
+          24
+        ],
+        "admitted_blocks": 32,
+        "reclaimed_blocks": 32,
+        "phase": "initial_fill",
+        "ready_depth_before": 0,
+        "ready_depth_after_store": 64,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99391.838242974,
+            "request_id": "cmpl-a95c4a58529f2317-0-bd3c8250",
+            "session": "s0",
+            "local_cached_tokens": 512,
+            "external_cached_tokens": 0
+          }
+        ]
+      },
+      {
+        "label": "pressure0",
+        "session": null,
+        "state_indices": [
+          25,
+          26
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 0,
+        "phase": "no_new_write",
+        "ready_depth_before": 0,
+        "ready_depth_after_store": 0,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99392.38304093,
+            "request_id": "cmpl-aa58050cfafa4df7-0-86696f59",
+            "session": "pressure0",
+            "local_cached_tokens": 0,
+            "external_cached_tokens": 0
+          }
+        ]
+      },
+      {
+        "label": "a1",
+        "session": "a",
+        "state_indices": [
+          27,
+          28,
+          29
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 0,
+        "phase": "no_new_write",
+        "ready_depth_before": 256,
+        "ready_depth_after_store": 256,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99393.834424154,
+            "request_id": "cmpl-951c2a9d34e42b25-0-88d427a2",
+            "session": "a1",
+            "local_cached_tokens": 512,
+            "external_cached_tokens": 3584
+          }
+        ]
+      },
+      {
+        "label": "b1",
+        "session": "b",
+        "state_indices": [
+          30,
+          31,
+          32
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 0,
+        "phase": "no_new_write",
+        "ready_depth_before": 256,
+        "ready_depth_after_store": 256,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99394.638251596,
+            "request_id": "cmpl-a8cd3bb14449ec8a-0-bb6b1438",
+            "session": "b1",
+            "local_cached_tokens": 512,
+            "external_cached_tokens": 3584
+          }
+        ]
+      },
+      {
+        "label": "s_end",
+        "session": "s",
+        "state_indices": [
+          33,
+          34,
+          35
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 32,
+        "phase": "no_new_write",
+        "ready_depth_before": 64,
+        "ready_depth_after_store": 64,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99395.329545741,
+            "request_id": "cmpl-80c7288ec8a2a178-0-80b4a918",
+            "session": "s_end",
+            "local_cached_tokens": 512,
+            "external_cached_tokens": 512
+          }
+        ]
+      },
+      {
+        "label": "d0",
+        "session": "d",
+        "state_indices": [
+          36,
+          37,
+          38
+        ],
+        "admitted_blocks": 160,
+        "reclaimed_blocks": 128,
+        "phase": "initial_fill",
+        "ready_depth_before": 0,
+        "ready_depth_after_store": 192,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99395.872403358,
+            "request_id": "cmpl-bfbc58925147f719-0-997330f1",
+            "session": "d0",
+            "local_cached_tokens": 512,
+            "external_cached_tokens": 0
+          }
+        ]
+      },
+      {
+        "label": "pressure1",
+        "session": null,
+        "state_indices": [
+          39,
+          40
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 0,
+        "phase": "no_new_write",
+        "ready_depth_before": 0,
+        "ready_depth_after_store": 0,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99396.566156449,
+            "request_id": "cmpl-a542f356523f0d6f-0-a70e51f5",
+            "session": "pressure1",
+            "local_cached_tokens": 0,
+            "external_cached_tokens": 0
+          }
+        ]
+      },
+      {
+        "label": "a2",
+        "session": "a",
+        "state_indices": [
+          41,
+          42,
+          43
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 0,
+        "phase": "no_new_write",
+        "ready_depth_before": 192,
+        "ready_depth_after_store": 192,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99398.02834206,
+            "request_id": "cmpl-978aa79d1465117a-0-8b08dda1",
+            "session": "a2",
+            "local_cached_tokens": 512,
+            "external_cached_tokens": 2560
+          }
+        ]
+      },
+      {
+        "label": "b2",
+        "session": "b",
+        "state_indices": [
+          44,
+          45,
+          46
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 0,
+        "phase": "no_new_write",
+        "ready_depth_before": 192,
+        "ready_depth_after_store": 192,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99398.867093466,
+            "request_id": "cmpl-bc956d957ee1ab32-0-bee042db",
+            "session": "b2",
+            "local_cached_tokens": 512,
+            "external_cached_tokens": 2560
+          }
+        ]
+      },
+      {
+        "label": "d1",
+        "session": "d",
+        "state_indices": [
+          47,
+          48,
+          49
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 0,
+        "phase": "no_new_write",
+        "ready_depth_before": 192,
+        "ready_depth_after_store": 192,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99399.591129953,
+            "request_id": "cmpl-aa3b8512811bfdb9-0-8d82ad54",
+            "session": "d1",
+            "local_cached_tokens": 512,
+            "external_cached_tokens": 2560
+          }
+        ]
+      },
+      {
+        "label": "d_end",
+        "session": "d",
+        "state_indices": [
+          50,
+          51
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 160,
+        "phase": "no_new_write",
+        "ready_depth_before": 192,
+        "ready_depth_after_store": 192,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99400.212530942,
+            "request_id": "cmpl-87c338a5a2b881b6-0-9018b9c8",
+            "session": "d_end",
+            "local_cached_tokens": 4160,
+            "external_cached_tokens": 0
+          }
+        ]
+      },
+      {
+        "label": "pressure2",
+        "session": null,
+        "state_indices": [
+          52,
+          53
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 0,
+        "phase": "no_new_write",
+        "ready_depth_before": 0,
+        "ready_depth_after_store": 0,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99400.791010832,
+            "request_id": "cmpl-96ecdfbd13f23897-0-a09dbcc1",
+            "session": "pressure2",
+            "local_cached_tokens": 0,
+            "external_cached_tokens": 0
+          }
+        ]
+      },
+      {
+        "label": "a3",
+        "session": "a",
+        "state_indices": [
+          54,
+          55,
+          56,
+          57
+        ],
+        "admitted_blocks": 80,
+        "reclaimed_blocks": 0,
+        "phase": "expanded_quota_rewrite_or_extension",
+        "ready_depth_before": 192,
+        "ready_depth_after_store": 272,
+        "prefix_depth_inferred_rewritten_blocks": 80,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99402.25433755,
+            "request_id": "cmpl-8a29bc459c4233de-0-b94f48f1",
+            "session": "a3",
+            "local_cached_tokens": 512,
+            "external_cached_tokens": 2560
+          }
+        ]
+      },
+      {
+        "label": "a_end",
+        "session": "a",
+        "state_indices": [
+          58,
+          59
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 240,
+        "phase": "no_new_write",
+        "ready_depth_before": 272,
+        "ready_depth_after_store": 272,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99403.105073604,
+            "request_id": "cmpl-900cdbff2f446caa-0-929e4171",
+            "session": "a_end",
+            "local_cached_tokens": 8384,
+            "external_cached_tokens": 0
+          }
+        ]
+      },
+      {
+        "label": "pressure3",
+        "session": null,
+        "state_indices": [
+          60,
+          61
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 0,
+        "phase": "no_new_write",
+        "ready_depth_before": 0,
+        "ready_depth_after_store": 0,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99403.739147507,
+            "request_id": "cmpl-8c0f4ba6bf27484f-0-a98558d8",
+            "session": "pressure3",
+            "local_cached_tokens": 0,
+            "external_cached_tokens": 0
+          }
+        ]
+      },
+      {
+        "label": "b_after_a_end",
+        "session": "b",
+        "state_indices": [
+          62,
+          63,
+          64,
+          65
+        ],
+        "admitted_blocks": 204,
+        "reclaimed_blocks": 0,
+        "phase": "expanded_quota_rewrite_or_extension",
+        "ready_depth_before": 192,
+        "ready_depth_after_store": 396,
+        "prefix_depth_inferred_rewritten_blocks": 80,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99405.198793061,
+            "request_id": "cmpl-ade9fe1911f55ad6-0-9919cba7",
+            "session": "b_after_a_end",
+            "local_cached_tokens": 512,
+            "external_cached_tokens": 2560
+          }
+        ]
+      },
+      {
+        "label": "b_end",
+        "session": "b",
+        "state_indices": [
+          66,
+          67
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 396,
+        "phase": "no_new_write",
+        "ready_depth_before": 396,
+        "ready_depth_after_store": 396,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99405.93267601,
+            "request_id": "cmpl-83829efcd589e011-0-8b165a00",
+            "session": "b_end",
+            "local_cached_tokens": 6336,
+            "external_cached_tokens": 0
+          }
+        ]
+      },
+      {
+        "label": "new_terminal",
+        "session": "fresh-terminal",
+        "state_indices": [
+          68,
+          69
+        ],
+        "admitted_blocks": 0,
+        "reclaimed_blocks": 0,
+        "phase": "no_new_write",
+        "ready_depth_before": 0,
+        "ready_depth_after_store": 0,
+        "prefix_depth_inferred_rewritten_blocks": 0,
+        "source_trace": [
+          {
+            "timestamp_monotonic": 99406.530581853,
+            "request_id": "cmpl-b1e560d06091c251-0-a52cf863",
+            "session": "new_terminal",
+            "local_cached_tokens": 512,
+            "external_cached_tokens": 0
+          }
+        ]
+      }
+    ],
+    "admitted_blocks": 1228,
+    "reclaimed_blocks": 1228,
+    "written_mib": 537.25,
+    "prefix_depth_inferred_rewritten_mib": 70.0,
+    "known_unused_write_cases": {
+      "scope": "content4 observed fixed path only; not a global bound or full attribution of performance-run extra DMA",
+      "initial_A_tail": {
+        "ready_depth_before_blocks": 512,
+        "ready_depth_after_B_S_join_blocks": 256,
+        "removed_private_blocks_before_first_A_resume": 256,
+        "bytes": 117440512,
+        "mib": 112.0,
+        "qualification": "A0 writes and subsequent quota trim precede first A1 host restore; other sessions share only root32, not these tail keys"
+      },
+      "last_B_expansion": {
+        "ready_depth_before_blocks": 192,
+        "ready_depth_after_blocks": 396,
+        "added_blocks": 204,
+        "bytes": 93585408,
+        "mib": 89.25,
+        "next_request_B_end_source": [
+          {
+            "timestamp_monotonic": 99405.93267601,
+            "request_id": "cmpl-83829efcd589e011-0-8b165a00",
+            "session": "b_end",
+            "local_cached_tokens": 6336,
+            "external_cached_tokens": 0
+          }
+        ],
+        "qualification": "B-after-A-end fills new host tail; the only later B request uses6336 GPU-local tokens and zero host, then ends"
+      },
+      "known_path_unused_store_mib": 201.25,
+      "no_claim": "No free-deletion counterfactual, no predicted production reuse, no total-DMA causal decomposition across modes"
+    },
+    "evidence_limit": "Aggregate state/order and unchanged private prefixes imply depths; no per-key time/identity trace. Rewritten and unused categories overlap; do not add them.",
+    "online_signals": {
+      "initial_A": "No earlier host reuse at A0; future B/S joins are unknown.",
+      "last_B": "B has already demonstrated host reuse by expansion; reuse-history gating would not exclude the observed final unused tail.",
+      "decision": "No demonstrated signal that safely removes both cases without sacrificing future hits. No new policy GPU trial."
+    },
+    "original_screen_cost_decomposition": {
+      "m1_shared_m11": {
+        "request_sequence_ms": 9734.075578,
+        "request_e2e_sum_ms": 6651.907732,
+        "pressure_request_e2e_sum_ms": 3318.13074,
+        "between_requests_ms": 3082.1678460000003,
+        "configured_gap_ms": 2699.9999999999995,
+        "transfer_measured_time": {
+          "GPU_to_CPU": {
+            "seconds": 0.027344511449337007,
+            "initial": null,
+            "final": 0.027344511449337007
+          },
+          "CPU_to_GPU": {
+            "seconds": 0.0277297602891922,
+            "initial": null,
+            "final": 0.0277297602891922
+          }
+        }
+      },
+      "m1_shared_fair1": {
+        "request_sequence_ms": 9832.791687,
+        "request_e2e_sum_ms": 6786.683314,
+        "pressure_request_e2e_sum_ms": 3342.802229,
+        "between_requests_ms": 3046.108373000001,
+        "configured_gap_ms": 2699.9999999999995,
+        "transfer_measured_time": {
+          "GPU_to_CPU": {
+            "seconds": 0.013256287813186645,
+            "initial": null,
+            "final": 0.013256287813186645
+          },
+          "CPU_to_GPU": {
+            "seconds": 0.02607516825199127,
+            "initial": null,
+            "final": 0.02607516825199127
+          }
+        }
+      },
+      "m1_shared_full1": {
+        "request_sequence_ms": 9935.195162,
+        "request_e2e_sum_ms": 6855.918028,
+        "pressure_request_e2e_sum_ms": 3368.940368,
+        "between_requests_ms": 3079.277134,
+        "configured_gap_ms": 2699.9999999999995,
+        "transfer_measured_time": {
+          "GPU_to_CPU": {
+            "seconds": 0.06161120033264161,
+            "initial": null,
+            "final": 0.06161120033264161
+          },
+          "CPU_to_GPU": {
+            "seconds": 0.020337215662002563,
+            "initial": null,
+            "final": 0.020337215662002563
+          }
+        }
+      }
+    },
+    "unknown": [
+      "GPU critical-path CPU time/call count in old runs",
+      "blocking/overlap of individual DMA jobs",
+      "causal E2E cost of 201.25 MiB",
+      "production reuse/survival probability"
+    ]
+  },
+  "analyzer_sha256": "6997ecd0f6493ae84debff76274ea00fff947df9eaec8322d39b935bb4d39e17"
+}

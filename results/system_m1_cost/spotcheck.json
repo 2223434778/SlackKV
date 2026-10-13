@@ -1,0 +1,184 @@
+{
+  "performance": {
+    "m1_cost_ref1": {
+      "sources_from_actual_admissions": {
+        "local_cache_hit": 24512,
+        "external_kv_transfer": 20480,
+        "local_compute": 108096
+      },
+      "compiled": true,
+      "checkpoints": [
+        {
+          "tag": "warmup_complete",
+          "capacity_blocks": 512,
+          "ready_blocks": 0,
+          "pending_store_blocks": 0,
+          "load_protected_blocks": 0,
+          "free_blocks": 512,
+          "retained_members": 0
+        },
+        {
+          "tag": "measurement_complete",
+          "capacity_blocks": 512,
+          "ready_blocks": 0,
+          "pending_store_blocks": 0,
+          "load_protected_blocks": 0,
+          "free_blocks": 512,
+          "retained_members": 0
+        }
+      ],
+      "source_hashes_verified": true
+    },
+    "m1_cost_opt1": {
+      "sources_from_actual_admissions": {
+        "local_cache_hit": 24512,
+        "external_kv_transfer": 20480,
+        "local_compute": 108096
+      },
+      "compiled": true,
+      "checkpoints": [
+        {
+          "tag": "warmup_complete",
+          "capacity_blocks": 512,
+          "ready_blocks": 0,
+          "pending_store_blocks": 0,
+          "load_protected_blocks": 0,
+          "free_blocks": 512,
+          "retained_members": 0
+        },
+        {
+          "tag": "measurement_complete",
+          "capacity_blocks": 512,
+          "ready_blocks": 0,
+          "pending_store_blocks": 0,
+          "load_protected_blocks": 0,
+          "free_blocks": 512,
+          "retained_members": 0
+        }
+      ],
+      "source_hashes_verified": true
+    },
+    "m1_cost_fair1": {
+      "sources_from_actual_admissions": {
+        "local_cache_hit": 24512,
+        "external_kv_transfer": 13952,
+        "local_compute": 114624
+      },
+      "compiled": true,
+      "checkpoints": [
+        {
+          "tag": "warmup_complete",
+          "capacity_blocks": 512,
+          "ready_blocks": 0,
+          "pending_store_blocks": 0,
+          "load_protected_blocks": 0,
+          "free_blocks": 512,
+          "retained_members": null
+        },
+        {
+          "tag": "measurement_complete",
+          "capacity_blocks": 512,
+          "ready_blocks": 424,
+          "pending_store_blocks": 0,
+          "load_protected_blocks": 0,
+          "free_blocks": 88,
+          "retained_members": null
+        }
+      ],
+      "source_hashes_verified": true
+    }
+  },
+  "content": [
+    {
+      "label": "a1",
+      "expected": "CEDAR17",
+      "full_16_ids_match": true,
+      "strict_current_grammar_pass": true,
+      "cold_text": "CEDAR17<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+      "source": {
+        "timestamp_monotonic": 115241.71884771,
+        "request_id": "cmpl-898694d3467978bd-0-ae930101",
+        "session": "a1",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 3584
+      }
+    },
+    {
+      "label": "b1",
+      "expected": "MAPLE42",
+      "full_16_ids_match": true,
+      "strict_current_grammar_pass": true,
+      "cold_text": "MAPLE42<|im_end|>\n<|endoftext|>Human: Can you provide me with more information",
+      "source": {
+        "timestamp_monotonic": 115242.516069138,
+        "request_id": "cmpl-a3ea4fa85784044d-0-94cbe8c9",
+        "session": "b1",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 3584
+      }
+    },
+    {
+      "label": "b_after_a_end",
+      "expected": "MAPLE42",
+      "full_16_ids_match": true,
+      "strict_current_grammar_pass": true,
+      "cold_text": "The secret password at the beginning is **MAPLE42**.<|im_end|>\n",
+      "source": {
+        "timestamp_monotonic": 115253.002926012,
+        "request_id": "cmpl-86e741c4ba2b8a6c-0-9a8dc71b",
+        "session": "b_after_a_end",
+        "local_cached_tokens": 512,
+        "external_cached_tokens": 2560
+      }
+    }
+  ],
+  "content_state_count": 70,
+  "native_audit_groups": 29,
+  "new_gpu_hours": 0.05931228920166985,
+  "additional_gpu_hours": 0.37888914884861963,
+  "local_server_float_differences": [
+    {
+      "path": "/existing_event_diagnosis/original_screen_cost_decomposition/m1_shared_m11/request_e2e_sum_ms",
+      "server": 6651.907731999999,
+      "local": 6651.907732
+    },
+    {
+      "path": "/existing_event_diagnosis/original_screen_cost_decomposition/m1_shared_m11/between_requests_ms",
+      "server": 3082.167846000001,
+      "local": 3082.1678460000003
+    },
+    {
+      "path": "/existing_event_diagnosis/original_screen_cost_decomposition/m1_shared_fair1/request_e2e_sum_ms",
+      "server": 6786.683314000001,
+      "local": 6786.683314
+    },
+    {
+      "path": "/existing_event_diagnosis/original_screen_cost_decomposition/m1_shared_fair1/between_requests_ms",
+      "server": 3046.108373,
+      "local": 3046.108373000001
+    },
+    {
+      "path": "/existing_event_diagnosis/original_screen_cost_decomposition/m1_shared_full1/pressure_request_e2e_sum_ms",
+      "server": 3368.9403679999996,
+      "local": 3368.940368
+    },
+    {
+      "path": "/cohort/additional_gpu_hours",
+      "server": 0.37888914884861963,
+      "local": 0.3788891488486196
+    }
+  ],
+  "executed_source_supplement": [
+    {
+      "path": "results/system_m1_cost/executed_sources/contention.py",
+      "bytes": 16246,
+      "sha256": "1e95b3c13d25c8ec72dc8e746505583604644c6768ada315be85928cf5e72ab3"
+    },
+    {
+      "path": "results/system_m1_cost/executed_sources/smoke.py",
+      "bytes": 21375,
+      "sha256": "35a249b966eb187dee78ae6d1df1f70fef363772de5cff5bcbc5452d994f7921"
+    }
+  ],
+  "qualification": "Current strict oracle offline verified; remote runner bytes pinned by preparation hash. No reinterpretation of failures or new GPU run."
+}
