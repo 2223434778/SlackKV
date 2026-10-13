@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "cpu_tests": 8,
+  "gpu_hours_added": 0,
+  "base_commit": "2cdf515d7f56339714a1800d135a05d04e69e210",
+  "source_sha256": {
+    "experiments/research_direction_after_m1.py": "3651591b28e41bfc470d957343900dd05b67f573a055e05d724d2d39f6faae23",
+    "tests/test_research_direction_after_m1.py": "3c9dc905244a1ce868d97bd2e859dc13972f80309628ac6461b223d5bca81c33"
+  },
+  "commands": [
+    "python -m experiments.research_direction_after_m1 --large-model results/large_model_20261012 --proxy .tmp/opportunity_trace_prefix.jsonl --output results/research_direction_after_m1/evidence_verified.json",
+    "python -m pytest tests/test_research_direction_after_m1.py -q --basetemp .tmp/pytest-after-m1-final"
+  ],
+  "qualification": "CPU archival/accounting and conditional offline oracle only. No serving/default changes, GPU experiment, independent performance repeats or realized online gain."
+}

@@ -1,0 +1,830 @@
+{
+  "gpu_hours_added": 0,
+  "large_model": {
+    "archive_validation": {
+      "validated_files": 82,
+      "uncompressed_bytes": 84782502
+    },
+    "matched_input_identities": 66,
+    "reports": {
+      "nohost": {
+        "session_e2e_median_ms": 969197.388397,
+        "resume_p95_ms": 360737.054056,
+        "sources": {
+          "local_compute": 1863168.0,
+          "local_cache_hit": 0.0,
+          "external_kv_transfer": 0.0
+        },
+        "h2d_bytes": 0,
+        "d2h_bytes": 0,
+        "background_requests": [
+          {
+            "turn": 0,
+            "e2e_ms": 37602.4179,
+            "ttft_ms": 3113.002029,
+            "first_token_to_response_end_mean_ms": 271.57020370866144
+          },
+          {
+            "turn": 1,
+            "e2e_ms": 355250.169658,
+            "ttft_ms": 334775.111255,
+            "first_token_to_response_end_mean_ms": 161.22093230708663
+          },
+          {
+            "turn": 2,
+            "e2e_ms": 360681.833597,
+            "ttft_ms": 338695.024665,
+            "first_token_to_response_end_mean_ms": 173.12447977952755
+          }
+        ],
+        "by_turn": {
+          "0": {
+            "requests": 21,
+            "median_ttft_ms": 188911.717267,
+            "median_first_to_end_mean_ms": 156.3634704488189
+          },
+          "1": {
+            "requests": 21,
+            "median_ttft_ms": 348068.695075,
+            "median_first_to_end_mean_ms": 170.15281824409448
+          },
+          "2": {
+            "requests": 21,
+            "median_ttft_ms": 356168.003175,
+            "median_first_to_end_mean_ms": 172.8450011023622
+          }
+        },
+        "total_input_tokens": 1863168,
+        "total_output_tokens": 8448
+      },
+      "full": {
+        "session_e2e_median_ms": 992499.888631,
+        "resume_p95_ms": 369051.428303,
+        "sources": {
+          "local_compute": 1863168.0,
+          "local_cache_hit": 0.0,
+          "external_kv_transfer": 0.0
+        },
+        "h2d_bytes": 0,
+        "d2h_bytes": 481975861248.0,
+        "background_requests": [
+          {
+            "turn": 0,
+            "e2e_ms": 38453.384815,
+            "ttft_ms": 3085.007155,
+            "first_token_to_response_end_mean_ms": 278.49116267716533
+          },
+          {
+            "turn": 1,
+            "e2e_ms": 364590.72632,
+            "ttft_ms": 343567.267346,
+            "first_token_to_response_end_mean_ms": 165.53904703937008
+          },
+          {
+            "turn": 2,
+            "e2e_ms": 368827.346694,
+            "ttft_ms": 346411.537955,
+            "first_token_to_response_end_mean_ms": 176.50243101574804
+          }
+        ],
+        "by_turn": {
+          "0": {
+            "requests": 21,
+            "median_ttft_ms": 193826.720709,
+            "median_first_to_end_mean_ms": 160.2364904409449
+          },
+          "1": {
+            "requests": 21,
+            "median_ttft_ms": 356315.607564,
+            "median_first_to_end_mean_ms": 173.214901007874
+          },
+          "2": {
+            "requests": 21,
+            "median_ttft_ms": 364324.597635,
+            "median_first_to_end_mean_ms": 175.94658023622048
+          }
+        },
+        "total_input_tokens": 1863168,
+        "total_output_tokens": 8448
+      },
+      "fair": {
+        "session_e2e_median_ms": 809891.598486,
+        "resume_p95_ms": 337671.635748,
+        "sources": {
+          "local_compute": 1338880.0,
+          "local_cache_hit": 0.0,
+          "external_kv_transfer": 524288.0
+        },
+        "h2d_bytes": 137438953472.0,
+        "d2h_bytes": 68719476736.0,
+        "background_requests": [
+          {
+            "turn": 0,
+            "e2e_ms": 38211.285197,
+            "ttft_ms": 3102.364246,
+            "first_token_to_response_end_mean_ms": 276.44819646456693
+          },
+          {
+            "turn": 1,
+            "e2e_ms": 355636.620585,
+            "ttft_ms": 338654.12038,
+            "first_token_to_response_end_mean_ms": 133.7204740551181
+          },
+          {
+            "turn": 2,
+            "e2e_ms": 260400.280275,
+            "ttft_ms": 234688.883354,
+            "first_token_to_response_end_mean_ms": 202.45194425984252
+          }
+        ],
+        "by_turn": {
+          "0": {
+            "requests": 21,
+            "median_ttft_ms": 192045.742902,
+            "median_first_to_end_mean_ms": 153.60625762992126
+          },
+          "1": {
+            "requests": 21,
+            "median_ttft_ms": 297999.368487,
+            "median_first_to_end_mean_ms": 95.70341680314961
+          },
+          "2": {
+            "requests": 21,
+            "median_ttft_ms": 261101.104891,
+            "median_first_to_end_mean_ms": 61.690343559055115
+          }
+        },
+        "total_input_tokens": 1863168,
+        "total_output_tokens": 8448
+      }
+    },
+    "fixed_prefix_reference": {
+      "saved_tokens": 524288,
+      "shares_tokens": {
+        "0": 28672,
+        "1": 28672,
+        "2": 28672,
+        "3": 28672,
+        "4": 28672,
+        "5": 28672,
+        "6": 28672,
+        "7": 28672,
+        "8": 28672,
+        "9": 4096,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "scope": "Offline future-aware fixed-prefix allocation, private paths, initial write only; token-count objective. Not online, not a global KV policy/E2E upper bound.",
+      "host_capacity_tokens": 262144,
+      "observed_fair_restored_tokens": 524288.0,
+      "extra_saved_tokens": 0.0,
+      "qualification": "All21 roots28672 tokens and two resumptions. Fair fills the fixed-prefix token reuse bound; alternative allocation can change fairness/nonlinear compute cost. New writes/recycling/tier placement fall outside this bound."
+    },
+    "unbounded_storage_reference": {
+      "reusable_prior_prompt_tokens": 1214976,
+      "compulsory_input_tokens_including_background": 648192,
+      "fair_remaining_reusable_compute_tokens": 690688.0,
+      "qualification": "Unlimited usable prior-input KV, no load/setup cost. Token reference only; infeasible at the frozen capacity in general, not a latency prediction."
+    },
+    "uniform_storage_target": {
+      "initial_all_roots_gib": 147.0,
+      "gpu_pool_gib": 17.08984375,
+      "host_budget_gib": 64,
+      "qualification": "Persistent all-root retention target, not actual simultaneous residency or a production/minimum-capacity claim."
+    },
+    "unknown": [
+      "scheduler admission/compute/remote-load critical-path decomposition",
+      "per-prefix saved GPU time curve and queueing sensitivity",
+      "physical GPU/host overlap or reclaimable memory-time",
+      "same-budget rolling or cost-weighted prefix opportunity",
+      "independent-run repeatability and stronger related-work baselines"
+    ]
+  },
+  "proxy": {
+    "source_sha256": "d078503145b09533298928438fe186bbbc40c726901f920872510df04cd47994",
+    "request_count": 2661,
+    "container_model_groups": 65,
+    "calls_per_container_model": {
+      "n": 65,
+      "min": 1,
+      "median": 20,
+      "p95": 220,
+      "max": 311
+    },
+    "proxy_input_tokens": {
+      "n": 2661,
+      "min": 384,
+      "median": 118208,
+      "p95": 624320,
+      "max": 769344
+    },
+    "output_tokens": {
+      "n": 2661,
+      "min": 0,
+      "median": 460,
+      "p95": 5053,
+      "max": 26571
+    },
+    "entire_container_model_fitting_old_max_model_len": 2,
+    "multi_call_entire_container_model_fitting_old_max_model_len": 0,
+    "requests_over_32768_proxy_input": 2476,
+    "containers": [
+      {
+        "trace_index": 0,
+        "container": "root",
+        "model": "claude-opus-4-8",
+        "requests": 131,
+        "input_min": 448,
+        "input_max": 396224,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 0,
+        "container": "child:48",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 7,
+        "input_min": 35008,
+        "input_max": 69120,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 0,
+        "container": "child:49",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 38,
+        "input_min": 35008,
+        "input_max": 113536,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 0,
+        "container": "child:50",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 16,
+        "input_min": 35008,
+        "input_max": 102720,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 0,
+        "container": "child:80",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 6,
+        "input_min": 35264,
+        "input_max": 148224,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 1,
+        "container": "root",
+        "model": "claude-opus-4-8",
+        "requests": 33,
+        "input_min": 448,
+        "input_max": 120320,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 2,
+        "container": "root",
+        "model": "claude-fable-5",
+        "requests": 29,
+        "input_min": 640,
+        "input_max": 169024,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 2,
+        "container": "child:5",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 2,
+        "input_min": 34880,
+        "input_max": 67008,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 2,
+        "container": "child:6",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 2,
+        "input_min": 34944,
+        "input_max": 69184,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 2,
+        "container": "child:7",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 2,
+        "input_min": 34880,
+        "input_max": 54976,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 3,
+        "container": "root",
+        "model": "claude-opus-4-8",
+        "requests": 199,
+        "input_min": 448,
+        "input_max": 682304,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 3,
+        "container": "child:9",
+        "model": "claude-opus-4-7",
+        "requests": 6,
+        "input_min": 25984,
+        "input_max": 105408,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 3,
+        "container": "child:10",
+        "model": "claude-opus-4-7",
+        "requests": 18,
+        "input_min": 26304,
+        "input_max": 154944,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 3,
+        "container": "child:11",
+        "model": "claude-opus-4-7",
+        "requests": 10,
+        "input_min": 26240,
+        "input_max": 140544,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 4,
+        "container": "root",
+        "model": "claude-opus-4-8",
+        "requests": 255,
+        "input_min": 7360,
+        "input_max": 518464,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 4,
+        "container": "child:6",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 33,
+        "input_min": 17536,
+        "input_max": 78400,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 4,
+        "container": "child:7",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 24,
+        "input_min": 17408,
+        "input_max": 63680,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 4,
+        "container": "child:15",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 34,
+        "input_min": 17600,
+        "input_max": 67712,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 4,
+        "container": "child:23",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 26,
+        "input_min": 17664,
+        "input_max": 66688,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 4,
+        "container": "child:24",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 21,
+        "input_min": 17792,
+        "input_max": 76928,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 4,
+        "container": "child:159",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 18,
+        "input_min": 17728,
+        "input_max": 86464,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 4,
+        "container": "child:214",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 55,
+        "input_min": 17792,
+        "input_max": 80128,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 5,
+        "container": "root",
+        "model": "claude-fable-5",
+        "requests": 41,
+        "input_min": 640,
+        "input_max": 315648,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 5,
+        "container": "child:2",
+        "model": "claude-opus-4-6",
+        "requests": 6,
+        "input_min": 26368,
+        "input_max": 64832,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 5,
+        "container": "child:3",
+        "model": "claude-opus-4-6",
+        "requests": 2,
+        "input_min": 26368,
+        "input_max": 48640,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 5,
+        "container": "child:4",
+        "model": "claude-opus-4-6",
+        "requests": 3,
+        "input_min": 26304,
+        "input_max": 78400,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 5,
+        "container": "child:9",
+        "model": "claude-opus-4-6",
+        "requests": 14,
+        "input_min": 28800,
+        "input_max": 91584,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 5,
+        "container": "child:41",
+        "model": "claude-opus-4-6",
+        "requests": 28,
+        "input_min": 30528,
+        "input_max": 85568,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 5,
+        "container": "child:42",
+        "model": "claude-opus-4-6",
+        "requests": 5,
+        "input_min": 30144,
+        "input_max": 56576,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 5,
+        "container": "child:43",
+        "model": "claude-opus-4-6",
+        "requests": 8,
+        "input_min": 30144,
+        "input_max": 47872,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 6,
+        "container": "root",
+        "model": "claude-fable-5",
+        "requests": 54,
+        "input_min": 448,
+        "input_max": 165248,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 6,
+        "container": "root",
+        "model": "claude-opus-4-8",
+        "requests": 299,
+        "input_min": 2944,
+        "input_max": 769344,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 6,
+        "container": "root",
+        "model": "claude-opus-4-6",
+        "requests": 311,
+        "input_min": 640,
+        "input_max": 447936,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 6,
+        "container": "child:509",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 21,
+        "input_min": 23104,
+        "input_max": 50560,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 6,
+        "container": "child:619",
+        "model": "claude-opus-4-6",
+        "requests": 12,
+        "input_min": 18176,
+        "input_max": 43584,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 6,
+        "container": "child:620",
+        "model": "claude-opus-4-6",
+        "requests": 2,
+        "input_min": 26880,
+        "input_max": 30080,
+        "all_input_plus_output_within_32768": true
+      },
+      {
+        "trace_index": 6,
+        "container": "child:621",
+        "model": "claude-opus-4-6",
+        "requests": 9,
+        "input_min": 27264,
+        "input_max": 87296,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 6,
+        "container": "child:622",
+        "model": "claude-opus-4-6",
+        "requests": 41,
+        "input_min": 27264,
+        "input_max": 82816,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 6,
+        "container": "child:623",
+        "model": "claude-opus-4-6",
+        "requests": 8,
+        "input_min": 27264,
+        "input_max": 69248,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 6,
+        "container": "child:624",
+        "model": "claude-opus-4-6",
+        "requests": 38,
+        "input_min": 18496,
+        "input_max": 88256,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 7,
+        "container": "root",
+        "model": "claude-opus-4-8",
+        "requests": 7,
+        "input_min": 384,
+        "input_max": 77568,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 7,
+        "container": "child:3",
+        "model": "claude-opus-4-8",
+        "requests": 18,
+        "input_min": 2944,
+        "input_max": 72000,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 8,
+        "container": "root",
+        "model": "claude-opus-4-8",
+        "requests": 36,
+        "input_min": 448,
+        "input_max": 180544,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 9,
+        "container": "root",
+        "model": "claude-opus-4-8",
+        "requests": 52,
+        "input_min": 448,
+        "input_max": 122304,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 10,
+        "container": "root",
+        "model": "claude-opus-4-8",
+        "requests": 38,
+        "input_min": 2560,
+        "input_max": 113984,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 10,
+        "container": "child:13",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 35,
+        "input_min": 16512,
+        "input_max": 76416,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 11,
+        "container": "root",
+        "model": "claude-opus-4-8",
+        "requests": 220,
+        "input_min": 640,
+        "input_max": 704768,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 11,
+        "container": "child:15",
+        "model": "claude-opus-4-8",
+        "requests": 19,
+        "input_min": 29568,
+        "input_max": 87040,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 11,
+        "container": "child:16",
+        "model": "claude-opus-4-8",
+        "requests": 25,
+        "input_min": 29760,
+        "input_max": 110848,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 11,
+        "container": "child:17",
+        "model": "claude-opus-4-8",
+        "requests": 20,
+        "input_min": 29504,
+        "input_max": 59328,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 11,
+        "container": "child:18",
+        "model": "claude-opus-4-8",
+        "requests": 16,
+        "input_min": 29824,
+        "input_max": 87680,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 11,
+        "container": "child:20",
+        "model": "claude-opus-4-8",
+        "requests": 23,
+        "input_min": 30528,
+        "input_max": 122368,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 11,
+        "container": "child:21",
+        "model": "claude-opus-4-8",
+        "requests": 17,
+        "input_min": 30784,
+        "input_max": 105984,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 11,
+        "container": "child:22",
+        "model": "claude-opus-4-8",
+        "requests": 4,
+        "input_min": 28864,
+        "input_max": 43328,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 11,
+        "container": "child:23",
+        "model": "claude-opus-4-8",
+        "requests": 8,
+        "input_min": 29440,
+        "input_max": 67008,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 12,
+        "container": "root",
+        "model": "claude-fable-5",
+        "requests": 34,
+        "input_min": 45824,
+        "input_max": 112000,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 12,
+        "container": "root",
+        "model": "claude-haiku-4-5-20251001",
+        "requests": 1,
+        "input_min": 384,
+        "input_max": 384,
+        "all_input_plus_output_within_32768": true
+      },
+      {
+        "trace_index": 13,
+        "container": "root",
+        "model": "claude-fable-5",
+        "requests": 9,
+        "input_min": 50560,
+        "input_max": 72704,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 13,
+        "container": "child:8",
+        "model": "claude-sonnet-4-6",
+        "requests": 32,
+        "input_min": 30912,
+        "input_max": 117696,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 13,
+        "container": "child:9",
+        "model": "claude-sonnet-4-6",
+        "requests": 62,
+        "input_min": 30848,
+        "input_max": 111424,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 13,
+        "container": "child:10",
+        "model": "claude-sonnet-4-6",
+        "requests": 16,
+        "input_min": 30784,
+        "input_max": 83072,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 14,
+        "container": "root",
+        "model": "claude-opus-4-8",
+        "requests": 20,
+        "input_min": 1088,
+        "input_max": 221568,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 14,
+        "container": "child:8",
+        "model": "claude-opus-4-7",
+        "requests": 29,
+        "input_min": 25728,
+        "input_max": 145280,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 14,
+        "container": "child:9",
+        "model": "claude-opus-4-7",
+        "requests": 35,
+        "input_min": 25984,
+        "input_max": 171264,
+        "all_input_plus_output_within_32768": false
+      },
+      {
+        "trace_index": 14,
+        "container": "child:10",
+        "model": "claude-opus-4-7",
+        "requests": 18,
+        "input_min": 26048,
+        "input_max": 224640,
+        "all_input_plus_output_within_32768": false
+      }
+    ],
+    "qualification": "Existing hashed-prefix public proxy metadata, original Claude models/endpoints. Containers are not proven linear sessions; timestamps and proxy tokens are not Qwen runtime. Fitting fragments must not be selected as representative or truncated to obtain a favorable test."
+  },
+  "analysis_sha256": "6cb4c5d5ff89f43610f92339f9f938cced57d5ad4aec12e2dde0d3bfccac8a03"
+}
