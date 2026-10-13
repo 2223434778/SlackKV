@@ -1,0 +1,114 @@
+[
+  {
+    "label": "cold_a",
+    "key": "a1",
+    "session": null,
+    "end": false,
+    "cold": true,
+    "phase": "cold",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "cold_a",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 8256,
+    "prompt_sha256": "30cb3a26aec9c970308dbb94224de9798cd35172c7d6165ca4141100fed0953e",
+    "issue_ns": 90056231911593,
+    "first_ns": 90056597284742,
+    "done_ns": 90057001985818,
+    "tokens": [
+      56648,
+      2390,
+      25,
+      9489,
+      18132,
+      13,
+      576,
+      2856,
+      2038,
+      374,
+      356,
+      1479,
+      934,
+      16,
+      22,
+      13
+    ],
+    "text": " Cedar project: independent archive. The initial code is CEDAR17.",
+    "ttft_ms": 365.373149,
+    "e2e_ms": 770.074225,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90056.240390021,
+        "request_id": "cmpl-9c7d5787e01d634d-0-a40a7ea8",
+        "session": "cold_a",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "cold_b",
+    "key": "b1",
+    "session": null,
+    "end": false,
+    "cold": true,
+    "phase": "cold",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "cold_b",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 6208,
+    "prompt_sha256": "b6b0857038771bc7859ed0d4d18886848c414aa58a7226033cb5e687d6f5e477",
+    "issue_ns": 90057168056065,
+    "first_ns": 90057415430050,
+    "done_ns": 90057802529331,
+    "tokens": [
+      4710,
+      73594,
+      2186,
+      273,
+      198,
+      2,
+      4127,
+      6119,
+      271,
+      13874,
+      19324,
+      9112,
+      25,
+      576,
+      3897,
+      2038
+    ],
+    "text": " \n\n```maple\n# Initial Code\n\n```\n\nNote: The provided code",
+    "ttft_ms": 247.373985,
+    "e2e_ms": 634.473266,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90057.176292344,
+        "request_id": "cmpl-a8b9010883325868-0-a331ab7a",
+        "session": "cold_b",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  }
+]

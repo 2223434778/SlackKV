@@ -1,0 +1,169 @@
+{
+  "status": "COMPLETE",
+  "gpu_content": "NOT_RUN",
+  "dynamic_benefit": "UNKNOWN",
+  "initial_state": null,
+  "sources": [
+    {
+      "timestamp_monotonic": 90387.008778173,
+      "request_id": "cmpl-ace24ae2ebf508b0-0-b87d973c",
+      "session": "warmup0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90387.359419942,
+      "request_id": "cmpl-bc880fbf284e57b8-0-a2e9dac0",
+      "session": "warmup1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90387.761553118,
+      "request_id": "cmpl-9bb18ed264fcc248-0-91a63071",
+      "session": "warmup2",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90388.244412564,
+      "request_id": "cmpl-baa2d412a2905dff-0-87b5c00d",
+      "session": "warmup3",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90388.819705378,
+      "request_id": "cmpl-bf11fa2815590c78-0-9935b1da",
+      "session": "warmup4",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90392.342791285,
+      "request_id": "cmpl-bf3b9d82b9062e96-0-8f29100d",
+      "session": "a0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90392.911486668,
+      "request_id": "cmpl-83c927ad3cef0676-0-a6642c3d",
+      "session": "b0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90393.38316198,
+      "request_id": "cmpl-8d3963f19d528cf4-0-8f700c9e",
+      "session": "s0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90393.690655722,
+      "request_id": "cmpl-9124ebdf1611fd46-0-9d06bc67",
+      "session": "pressure0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90394.691759806,
+      "request_id": "cmpl-b4095ed6fe55f5d2-0-b1bd4225",
+      "session": "a1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 2048
+    },
+    {
+      "timestamp_monotonic": 90395.210765777,
+      "request_id": "cmpl-a43a773ac96635a0-0-aff6da24",
+      "session": "b1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 2048
+    },
+    {
+      "timestamp_monotonic": 90395.640376509,
+      "request_id": "cmpl-bbc0434e415e693e-0-8554dbf7",
+      "session": "s_end",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 1024
+    },
+    {
+      "timestamp_monotonic": 90395.927778479,
+      "request_id": "cmpl-a978c668d259749a-0-b4fbf659",
+      "session": "d0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90396.338226092,
+      "request_id": "cmpl-b5fca9131781948f-0-ad7bad71",
+      "session": "pressure1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90397.343727234,
+      "request_id": "cmpl-9e95dd7ed14823ff-0-820e6aad",
+      "session": "a2",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 2048
+    },
+    {
+      "timestamp_monotonic": 90397.863332677,
+      "request_id": "cmpl-829db6f9ff65fdce-0-b135dab3",
+      "session": "b2",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 2048
+    },
+    {
+      "timestamp_monotonic": 90398.296468726,
+      "request_id": "cmpl-af543f7b063db866-0-8acccae8",
+      "session": "d1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 2048
+    },
+    {
+      "timestamp_monotonic": 90398.646955283,
+      "request_id": "cmpl-bef4ba0121b0dc5c-0-930a98bf",
+      "session": "d_end",
+      "local_cached_tokens": 4160,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90398.939440855,
+      "request_id": "cmpl-acf70ec8dfe98d6d-0-94a1e3ce",
+      "session": "pressure2",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90399.946190073,
+      "request_id": "cmpl-b0e4b5182305ded0-0-acb34f75",
+      "session": "a3",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 2048
+    },
+    {
+      "timestamp_monotonic": 90400.473260243,
+      "request_id": "cmpl-91c67d79d25f9af4-0-badee9e5",
+      "session": "b_end",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 2048
+    },
+    {
+      "timestamp_monotonic": 90400.912585051,
+      "request_id": "cmpl-98a1db34aafb471e-0-89535e49",
+      "session": "a_end",
+      "local_cached_tokens": 8384,
+      "external_cached_tokens": 0
+    }
+  ],
+  "not_covered": [
+    "GPU in-flight forced cancellation",
+    "shared-prefix ownership",
+    "simultaneous compute/background fairness",
+    "production trace",
+    "statistical significance"
+  ]
+}

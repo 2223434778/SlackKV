@@ -71,12 +71,20 @@ def command(config, policy, mode, host_bytes):
         if policy == 'm1':
             extra.update(spec_name='SlackKVM1Spec', spec_module_path='slackkv.m1.spec',
                          slackkv_m1_trace=mode == 'content')
+            if config.get('terminal_store_gate', False):
+                extra['slackkv_terminal_store_gate'] = True
+            if config.get('trace_states', False):extra['slackkv_m1_trace'] = True
+        elif config.get('terminal_store_gate', False):
+            extra.update(spec_name='TerminalCPUOffloadingSpec', spec_module_path='slackkv.m1.spec')
         argv += ['--kv-transfer-config', json.dumps(dict(kv_connector='OffloadingConnector',
                                                        kv_role='kv_both', kv_connector_extra_config=extra))]
     return argv
 
 
 def prepare(config, out):
+    if config.get('workload_variant') == 'contention_v1':
+        from experiments.system_m1.contention import prepare_inputs
+        return prepare_inputs(config,out)
     from transformers import AutoTokenizer
     model = Path(config['model'])
     layout = resources(config, model)
@@ -125,6 +133,9 @@ def transfer_delta(before, after):
 
 
 def workload(config, plan, policy, mode, out):
+    if config.get('workload_variant') == 'contention_v1':
+        from experiments.system_m1.contention import workload as contention_workload
+        return contention_workload(config,plan,policy,mode,out)
     inputs = json.loads((plan/'inputs.json').read_text())
     rows = []
     base = f'http://127.0.0.1:{config["port"]}'
@@ -234,6 +245,9 @@ def execute(config, plan, root, policy, mode, gpu, name, allowance):
         prepared=json.loads((plan/'plan.json').read_text())
         if prepared['runner_sha256'] != digest(Path(__file__)):
             raise ValueError('runner changed since frozen CPU preparation')
+        for source_name, expected in prepared.get('additional_runner_sources', {}).items():
+            if digest(Path(__file__).with_name(source_name)) != expected:
+                raise ValueError('additional frozen runner changed')
         if prepared['config']!=config or prepared['inputs_sha256']!=digest(plan/'inputs.json') or prepared['config_model_sha256']!=digest(Path(config['model'])/'config.json'):
             raise ValueError('frozen preparation/model differs')
         if policy != 'm1' or mode != 'content':

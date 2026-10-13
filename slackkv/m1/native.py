@@ -13,8 +13,22 @@ from slackkv.m1.controller import PrefixController
 logger = init_logger('vllm.slackkv_m1')
 
 
+def terminal_independent(ctx):
+    meta = (ctx.kv_transfer_params or {}).get('slackkv_terminal', {})
+    return (isinstance(meta, dict) and meta.get('independent') is True
+            and meta.get('end_after_request') is True)
+
+
+class TerminalCPUManager(CPUOffloadingManager):
+    """Native Full with the same explicitly independent terminal-store signal."""
+    def prepare_store(self, keys, ctx):
+        if terminal_independent(ctx):
+            return PrepareStoreOutput([], self._get_load_store_spec([], []), [])
+        return super().prepare_store(keys, ctx)
+
+
 class M1CPUManager(CPUOffloadingManager):
-    def __init__(self, num_blocks: int, block_tokens: int, block_bytes: int, enable_events: bool = False, trace: bool = False):
+    def __init__(self, num_blocks: int, block_tokens: int, block_bytes: int, enable_events: bool = False, trace: bool = False, terminal_store_gate: bool = False):
         super().__init__(num_blocks, cache_policy='lru', enable_events=enable_events)
         if block_tokens <= 0 or block_bytes <= 0:
             raise ValueError('positive native block dimensions required')
@@ -29,6 +43,7 @@ class M1CPUManager(CPUOffloadingManager):
         self._finished = set()
         self.metrics = Counter()
         self.trace = trace
+        self.terminal_store_gate = terminal_store_gate
 
     def _emit(self, event):
         if self.trace:
@@ -111,6 +126,14 @@ class M1CPUManager(CPUOffloadingManager):
         with self._lock:
             keys = list(keys)
             plan = self._plan(ctx)
+            # Observe and load normally; end only at actual request completion.
+            # Known shared/fallback paths never acquire this independent gate.
+            meta = (ctx.kv_transfer_params or {}).get('slackkv_m1', {})
+            if (self.terminal_store_gate and plan and plan.token and not plan.reason
+                    and isinstance(meta, dict) and meta.get('end_after_request') is True):
+                self.metrics['terminal_skipped_store_batches'] += 1
+                self.metrics['terminal_skipped_requested_blocks'] += len(keys)
+                return self._empty()
             if plan is None or not (bound := self.controller.allowed(plan)):
                 self.metrics['denied_store_batches'] += 1
                 return self._empty()

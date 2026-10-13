@@ -1,0 +1,1070 @@
+[
+  {
+    "label": "a0",
+    "key": "a0",
+    "session": "a",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 8192,
+    "prompt_sha256": "41f90127e0c892f0504d9a56b8e227884475824bd2abbbafc1020bf15d1f264d",
+    "issue_ns": 90041911866975,
+    "first_ns": 90042256872032,
+    "done_ns": 90042648520871,
+    "tokens": [
+      56648,
+      16,
+      22,
+      271,
+      73594,
+      151643,
+      33975,
+      25,
+      358,
+      2776,
+      14589,
+      11,
+      714,
+      358,
+      646,
+      944
+    ],
+    "text": " Cedar17\n\n```<|endoftext|>Human: I'm sorry, but I can't",
+    "ttft_ms": 345.005057,
+    "e2e_ms": 736.653896,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90041.921678749,
+        "request_id": "cmpl-983b8d9472ba415e-0-81a1d1c0",
+        "session": "a0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "b0",
+    "key": "b0",
+    "session": "b",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 6144,
+    "prompt_sha256": "d591e6ac5b1a830d7c663ccdbd232313c14660b0526975d5f6d615fd3470744a",
+    "issue_ns": 90042816603634,
+    "first_ns": 90043060540993,
+    "done_ns": 90043437756068,
+    "tokens": [
+      4710,
+      6341,
+      6119,
+      1447,
+      73594,
+      2186,
+      273,
+      198,
+      2,
+      1096,
+      374,
+      264,
+      6077,
+      43470,
+      5316,
+      369
+    ],
+    "text": " \n\nInitial Code:\n\n```maple\n# This is a sample Maple script for",
+    "ttft_ms": 243.937359,
+    "e2e_ms": 621.152434,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 117440512.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90042.825154284,
+        "request_id": "cmpl-8f678c8df1ee5385-0-aaba103d",
+        "session": "b0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "s0",
+    "key": "s0",
+    "session": "s",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "s0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "s",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 1024,
+    "prompt_sha256": "5562a7478471e02d1655e02c2580e5f9ad7f29ac8404022b1170b9fb0fe51a84",
+    "issue_ns": 90043607561651,
+    "first_ns": 90043654938760,
+    "done_ns": 90043984183845,
+    "tokens": [
+      54275,
+      66,
+      198,
+      1067,
+      366,
+      10345,
+      860,
+      1339,
+      396,
+      1887,
+      368,
+      341,
+      262,
+      442,
+      4615,
+      2038
+    ],
+    "text": " ```c\n#include <stdio.h>\n\nint main() {\n    // Your code",
+    "ttft_ms": 47.377109,
+    "e2e_ms": 376.622194,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 29360128.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90043.613172938,
+        "request_id": "cmpl-80641ce9aed6a283-0-9f4a5d7e",
+        "session": "s0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "pressure0",
+    "key": "pressure0",
+    "session": null,
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "341613199c1208534e29a5596a10027fd97a81f4991c6d9ab81da29edef5540b",
+    "issue_ns": 90044151833004,
+    "first_ns": 90044948100380,
+    "done_ns": 90045438734456,
+    "tokens": [
+      4710,
+      62056,
+      934,
+      16,
+      22,
+      271,
+      785,
+      2856,
+      2038,
+      369,
+      356,
+      1479,
+      934,
+      16,
+      22,
+      374
+    ],
+    "text": " \n\nCEDAR17\n\nThe initial code for CEDAR17 is",
+    "ttft_ms": 796.267376,
+    "e2e_ms": 1286.901452,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90044.169784613,
+        "request_id": "cmpl-8ad5b49d554fcd28-0-9a206211",
+        "session": "pressure0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "a1",
+    "key": "a1",
+    "session": "a",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 8256,
+    "prompt_sha256": "30cb3a26aec9c970308dbb94224de9798cd35172c7d6165ca4141100fed0953e",
+    "issue_ns": 90045610749948,
+    "first_ns": 90045844787181,
+    "done_ns": 90046249981077,
+    "tokens": [
+      56648,
+      2390,
+      25,
+      9489,
+      18132,
+      13,
+      576,
+      2856,
+      2038,
+      374,
+      356,
+      1479,
+      934,
+      16,
+      22,
+      13
+    ],
+    "text": " Cedar project: independent archive. The initial code is CEDAR17.",
+    "ttft_ms": 234.037233,
+    "e2e_ms": 639.231129,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90045.621546966,
+        "request_id": "cmpl-b54a9a314d179900-0-ba6e44a2",
+        "session": "a1",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 3584
+      }
+    ]
+  },
+  {
+    "label": "b1",
+    "key": "b1",
+    "session": "b",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 6208,
+    "prompt_sha256": "b6b0857038771bc7859ed0d4d18886848c414aa58a7226033cb5e687d6f5e477",
+    "issue_ns": 90046419767021,
+    "first_ns": 90046558328463,
+    "done_ns": 90046943823259,
+    "tokens": [
+      4710,
+      73594,
+      2186,
+      273,
+      198,
+      2,
+      4127,
+      6119,
+      271,
+      13874,
+      19324,
+      9112,
+      25,
+      576,
+      3897,
+      2038
+    ],
+    "text": " \n\n```maple\n# Initial Code\n\n```\n\nNote: The provided code",
+    "ttft_ms": 138.561442,
+    "e2e_ms": 524.056238,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 102760448.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90046.428104093,
+        "request_id": "cmpl-8b01f35fcb4ae9b2-0-9b1d6b84",
+        "session": "b1",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 3584
+      }
+    ]
+  },
+  {
+    "label": "s_end",
+    "key": "s1",
+    "session": "s",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "s_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "s",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 1088,
+    "prompt_sha256": "521549ba6618c9bdff6d580c66ba7ed8c1f122f7c794313e93f316ec2f77f717",
+    "issue_ns": 90047112761834,
+    "first_ns": 90047148829027,
+    "done_ns": 90047477057769,
+    "tokens": [
+      4710,
+      62056,
+      934,
+      16,
+      22,
+      271,
+      785,
+      2856,
+      2038,
+      3897,
+      572,
+      330,
+      62056,
+      934,
+      16,
+      22
+    ],
+    "text": " \n\nCEDAR17\n\nThe initial code provided was \"CEDAR17",
+    "ttft_ms": 36.067193,
+    "e2e_ms": 364.295935,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 29360128.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90047.118851897,
+        "request_id": "cmpl-b2ba2c30ac796109-0-90a455bd",
+        "session": "s_end",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 1024
+      }
+    ]
+  },
+  {
+    "label": "d0",
+    "key": "d0",
+    "session": "d",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "d0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "d",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 4096,
+    "prompt_sha256": "41581ca9aaaa5f888b2028e1f27f70134166b5301ee6488a58df098cb68f3015",
+    "issue_ns": 90047646665267,
+    "first_ns": 90047801661194,
+    "done_ns": 90048166303481,
+    "tokens": [
+      2014,
+      17179,
+      279,
+      2856,
+      2038,
+      11,
+      358,
+      686,
+      1795,
+      1493,
+      7354,
+      1447,
+      16,
+      13,
+      64547,
+      279
+    ],
+    "text": " To retrieve the initial code, I will follow these steps:\n\n1. Identify the",
+    "ttft_ms": 154.995927,
+    "e2e_ms": 519.638214,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 77987840.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90047.652617845,
+        "request_id": "cmpl-bf8cbfc3a573a7e0-0-92c3bb98",
+        "session": "d0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "pressure1",
+    "key": "pressure1",
+    "session": null,
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "ffa191639e41d030ef15a56aceb0aaae017dca9109fe96a056b9c4f7133ab5a8",
+    "issue_ns": 90048337379031,
+    "first_ns": 90049131844649,
+    "done_ns": 90049624346404,
+    "tokens": [
+      4710,
+      62056,
+      934,
+      16,
+      22,
+      271,
+      785,
+      2856,
+      2038,
+      369,
+      356,
+      1479,
+      934,
+      16,
+      22,
+      374
+    ],
+    "text": " \n\nCEDAR17\n\nThe initial code for CEDAR17 is",
+    "ttft_ms": 794.465618,
+    "e2e_ms": 1286.967373,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90048.354554863,
+        "request_id": "cmpl-87bbf004da0ca5df-0-8f429102",
+        "session": "pressure1",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "a2",
+    "key": "a2",
+    "session": "a",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a2",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 8320,
+    "prompt_sha256": "987b0535f17cec19ff639be4b6fc6a222dd8b375b86b4a2c6b8242b0c51295b6",
+    "issue_ns": 90049795533548,
+    "first_ns": 90050061601305,
+    "done_ns": 90050469053183,
+    "tokens": [
+      56648,
+      2390,
+      25,
+      9489,
+      18132,
+      13,
+      576,
+      2856,
+      2038,
+      374,
+      356,
+      1479,
+      934,
+      16,
+      22,
+      13
+    ],
+    "text": " Cedar project: independent archive. The initial code is CEDAR17.",
+    "ttft_ms": 266.067757,
+    "e2e_ms": 673.519635,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 77987840.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90049.807050732,
+        "request_id": "cmpl-97a90d36735c27af-0-9d54cc6f",
+        "session": "a2",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 2720
+      }
+    ]
+  },
+  {
+    "label": "b2",
+    "key": "b2",
+    "session": "b",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b2",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 6272,
+    "prompt_sha256": "f151b30456bc6de94dea6941f0198fe1fd1ca4bbb2f5603a4517b51d8e440002",
+    "issue_ns": 90050642167995,
+    "first_ns": 90050816072765,
+    "done_ns": 90051202804368,
+    "tokens": [
+      15474,
+      16076,
+      1487,
+      25,
+      32529,
+      23933,
+      11,
+      2639,
+      4622,
+      624,
+      15474,
+      16076,
+      1487,
+      25,
+      32529,
+      23933
+    ],
+    "text": "Inspection log: checksum verified, status normal.\nInspection log: checksum verified",
+    "ttft_ms": 173.90477,
+    "e2e_ms": 560.636373,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 77987840.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90050.65342702,
+        "request_id": "cmpl-9d3567c3bcbcabb9-0-8d92c308",
+        "session": "b2",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 2720
+      }
+    ]
+  },
+  {
+    "label": "d1",
+    "key": "d1",
+    "session": "d",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "d1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "d",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 4160,
+    "prompt_sha256": "32da2821d39ab442bc58bbd761ebf243f782b70e2b7ceb1c50bee699d620bebb",
+    "issue_ns": 90051374357655,
+    "first_ns": 90051467071582,
+    "done_ns": 90051828992197,
+    "tokens": [
+      4710,
+      17617,
+      867,
+      19,
+      17,
+      271,
+      785,
+      2856,
+      2038,
+      3897,
+      572,
+      330,
+      17617,
+      867,
+      19,
+      17
+    ],
+    "text": " \n\nMAPLE42\n\nThe initial code provided was \"MAPLE42",
+    "ttft_ms": 92.713927,
+    "e2e_ms": 454.634542,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 77987840.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90051.383847548,
+        "request_id": "cmpl-92ee17487880702b-0-a7a2de9c",
+        "session": "d1",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 2720
+      }
+    ]
+  },
+  {
+    "label": "d_end",
+    "key": "d2",
+    "session": "d",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "d_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "d",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 4224,
+    "prompt_sha256": "076fe12b9c4e13f6f85bfc2d224493fe5face8ccb2baf19b7fb98ee7632db4dc",
+    "issue_ns": 90052000168821,
+    "first_ns": 90052034193413,
+    "done_ns": 90052394204031,
+    "tokens": [
+      15474,
+      16076,
+      1487,
+      25,
+      32529,
+      23933,
+      11,
+      2639,
+      4622,
+      624,
+      15474,
+      16076,
+      1487,
+      25,
+      32529,
+      23933
+    ],
+    "text": "Inspection log: checksum verified, status normal.\nInspection log: checksum verified",
+    "ttft_ms": 34.024592,
+    "e2e_ms": 394.03521,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90052.006750532,
+        "request_id": "cmpl-a9b83335573f0eb1-0-9c06fde3",
+        "session": "d_end",
+        "local_cached_tokens": 4160,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "pressure2",
+    "key": "pressure2",
+    "session": null,
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure2",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "bea99067dc9baf15ff3f13815e22ebec1bc13f427527317d79224314fc90822f",
+    "issue_ns": 90052564768564,
+    "first_ns": 90053358143740,
+    "done_ns": 90053850231154,
+    "tokens": [
+      4710,
+      62056,
+      934,
+      16,
+      22,
+      271,
+      785,
+      2856,
+      2038,
+      369,
+      356,
+      1479,
+      934,
+      16,
+      22,
+      374
+    ],
+    "text": " \n\nCEDAR17\n\nThe initial code for CEDAR17 is",
+    "ttft_ms": 793.375176,
+    "e2e_ms": 1285.46259,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90052.579460239,
+        "request_id": "cmpl-a632deda072219f1-0-b554647c",
+        "session": "pressure2",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "a3",
+    "key": "a3",
+    "session": "a",
+    "end": false,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a3",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": false
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "length": 8384,
+    "prompt_sha256": "4084d240439d8c393b64aa5f2d961303b32d119138502a703713a82821ed43ed",
+    "issue_ns": 90054023038046,
+    "first_ns": 90054298647429,
+    "done_ns": 90054705708016,
+    "tokens": [
+      56648,
+      2390,
+      25,
+      9489,
+      18132,
+      13,
+      576,
+      2856,
+      2038,
+      374,
+      356,
+      1479,
+      934,
+      16,
+      22,
+      13
+    ],
+    "text": " Cedar project: independent archive. The initial code is CEDAR17.",
+    "ttft_ms": 275.609383,
+    "e2e_ms": 682.66997,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 39452672.0,
+      "CPU_to_GPU": 77987840.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90054.032215918,
+        "request_id": "cmpl-9bafee8076931721-0-86659926",
+        "session": "a3",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 2720
+      }
+    ]
+  },
+  {
+    "label": "b_end",
+    "key": "b3",
+    "session": "b",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "b_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "b",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 6336,
+    "prompt_sha256": "0d08b70a0606f9fb628e2dc68a0c4f2fb2f0fe75e1842230ad649e2633184b9c",
+    "issue_ns": 90054874191498,
+    "first_ns": 90055058729281,
+    "done_ns": 90055444590566,
+    "tokens": [
+      15474,
+      16076,
+      1487,
+      25,
+      32529,
+      23933,
+      11,
+      2639,
+      4622,
+      624,
+      15474,
+      16076,
+      1487,
+      25,
+      32529,
+      23933
+    ],
+    "text": "Inspection log: checksum verified, status normal.\nInspection log: checksum verified",
+    "ttft_ms": 184.537783,
+    "e2e_ms": 570.399068,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 77987840.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90054.884213368,
+        "request_id": "cmpl-bc570d1f5a92102f-0-94566b41",
+        "session": "b_end",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 2720
+      }
+    ]
+  },
+  {
+    "label": "a_end",
+    "key": "a4",
+    "session": "a",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "a_end",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "a",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 8448,
+    "prompt_sha256": "49c26dcb7350bf5ce0c1886edb09fd16a2d32de8a665e573bc32b87ca98a6d31",
+    "issue_ns": 90055616423985,
+    "first_ns": 90055659816545,
+    "done_ns": 90056062715847,
+    "tokens": [
+      56648,
+      2390,
+      25,
+      9489,
+      18132,
+      13,
+      576,
+      2856,
+      2038,
+      374,
+      356,
+      1479,
+      934,
+      16,
+      22,
+      13
+    ],
+    "text": " Cedar project: independent archive. The initial code is CEDAR17.",
+    "ttft_ms": 43.39256,
+    "e2e_ms": 446.291862,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90055.626038202,
+        "request_id": "cmpl-85fcb5fbd798b09a-0-a42063ad",
+        "session": "a_end",
+        "local_cached_tokens": 8384,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "new_terminal",
+    "key": "a0",
+    "session": "fresh-terminal",
+    "end": true,
+    "cold": false,
+    "phase": "measured",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "new_terminal",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "fresh-terminal",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "length": 8192,
+    "prompt_sha256": "41f90127e0c892f0504d9a56b8e227884475824bd2abbbafc1020bf15d1f264d",
+    "issue_ns": 90057970467673,
+    "first_ns": 90058174435139,
+    "done_ns": 90058581974145,
+    "tokens": [
+      56648,
+      16,
+      22,
+      271,
+      73594,
+      151643,
+      33975,
+      25,
+      358,
+      2776,
+      14589,
+      11,
+      714,
+      358,
+      646,
+      944
+    ],
+    "text": " Cedar17\n\n```<|endoftext|>Human: I'm sorry, but I can't",
+    "ttft_ms": 203.967466,
+    "e2e_ms": 611.506472,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90057.980593698,
+        "request_id": "cmpl-b89ffe334c898349-0-a544c62c",
+        "session": "new_terminal",
+        "local_cached_tokens": 4208,
+        "external_cached_tokens": 0
+      }
+    ]
+  }
+]

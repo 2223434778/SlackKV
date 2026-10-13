@@ -43,6 +43,58 @@ def run():
         assert result['physical_load_protected_blocks']<=result['physical_ready_blocks']
         return result
 
+    # The gate does not retire identity before load, nor discard old DMA tickets.
+    m=M1CPUManager(4,16,1,terminal_store_gate=True)
+    initial,ik,_=start(m,'ordinary','terminal',4)
+    pending=m.prepare_store(ik[:2],initial)
+    m.complete_store(pending.keys_to_store,initial)
+    m.on_request_finished(initial)
+    terminal,tk,_=start(m,'terminal-read','terminal',4,end=True)
+    assert all(m.lookup(k,terminal) for k in tk[:2])
+    m.prepare_load(tk[:2],terminal)
+    assert not m.prepare_store(tk[2:],terminal).keys_to_store
+    assert 'terminal' not in m.controller.ended
+    m.on_request_finished(terminal)
+    assert snapshot(m)['physical_load_protected_blocks']==2
+    m.complete_load(tk[:2],terminal)
+    assert snapshot(m)['physical_free_blocks']==4
+    higher,hk,_=start(m,'new-terminal','terminal',4,generation=1,end=True)
+    assert not m.prepare_store(hk,higher).keys_to_store
+    m.on_request_finished(higher)
+    late,lk,_=start(m,'late-terminal','terminal',4,generation=1)
+    assert not m.prepare_store(lk,late).keys_to_store
+    m.on_request_finished(late)
+    assert snapshot(m)['physical_free_blocks']==4
+    assert m.metrics['terminal_skipped_store_batches']==2
+    checks.append('terminal_gate_preserves_load_until_settlement_new_generation_no_store_tombstone')
+
+    m=M1CPUManager(4,16,1,terminal_store_gate=True)
+    initial,ik,_=start(m,'inflight','inflight',4)
+    pending=m.prepare_store(ik,initial)
+    initial.kv_transfer_params['slackkv_m1']['end_after_request']=True
+    assert not m.prepare_store(ik,initial).keys_to_store
+    m.on_request_finished(initial)
+    assert snapshot(m)['physical_pending_store_blocks']==4
+    m.complete_store(pending.keys_to_store,initial)
+    assert snapshot(m)['physical_free_blocks']==4
+    checks.append('terminal_gate_old_pending_batch_completes_without_leak')
+
+    from slackkv.m1.native import TerminalCPUManager
+    full=TerminalCPUManager(4,cache_policy='lru')
+    ctx=ReqContext('full-ordinary',{})
+    full.on_new_request(ctx)
+    fk=keys('full-terminal',4)
+    pending=full.prepare_store(fk[:2],ctx)
+    full.complete_store(pending.keys_to_store,ctx)
+    terminal=ReqContext('full-terminal',{'slackkv_terminal':dict(independent=True,end_after_request=True)})
+    full.on_new_request(terminal)
+    assert all(full.lookup(k,terminal) for k in fk[:2])
+    full.prepare_load(fk[:2],terminal)
+    assert not full.prepare_store(fk[2:],terminal).keys_to_store
+    full.complete_load(fk[:2],terminal)
+    assert len(full.prepare_store(fk[2:],ctx).keys_to_store)==2
+    checks.append('common_full_terminal_gate_preserves_native_reads_and_ordinary_store')
+
     # External-module loggers may inherit WARNING and silently drop INFO traces.
     import io
     import logging

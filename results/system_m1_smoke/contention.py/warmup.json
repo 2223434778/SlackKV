@@ -1,0 +1,307 @@
+[
+  {
+    "label": "warmup0",
+    "key": "warmup0",
+    "session": null,
+    "end": true,
+    "cold": false,
+    "phase": "warmup",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "warmup0",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "warmup0",
+        "generation": 0,
+        "end_after_request": true
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 1024,
+    "prompt_sha256": "359dabf946ff8571854b22d0054d63b3266ff7f59f426609dc2cceff1b67f374",
+    "issue_ns": 90034975157016,
+    "first_ns": 90035070732570,
+    "done_ns": 90035379961060,
+    "tokens": [
+      4710,
+      6341,
+      6119,
+      510,
+      73594,
+      12669,
+      198,
+      474,
+      8591,
+      438,
+      2595,
+      271,
+      750,
+      64890,
+      2075,
+      982
+    ],
+    "text": " \n\nInitial Code:\n```python\nimport numpy as np\n\ndef sigmoid(x):\n",
+    "ttft_ms": 95.575554,
+    "e2e_ms": 404.804044,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90034.990271695,
+        "request_id": "cmpl-af4d1d9979abeccb-0-829d4c66",
+        "session": "warmup0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "warmup1",
+    "key": "warmup1",
+    "session": null,
+    "end": true,
+    "cold": false,
+    "phase": "warmup",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "warmup1",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "warmup1",
+        "generation": 0,
+        "end_after_request": true
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 4096,
+    "prompt_sha256": "c45fbd02d414fd0e98fab443a85f20288e1abe9356bb24be139485a490870a78",
+    "issue_ns": 90035549611017,
+    "first_ns": 90035707814532,
+    "done_ns": 90036069000741,
+    "tokens": [
+      4710,
+      17617,
+      867,
+      19,
+      17,
+      271,
+      73594,
+      2186,
+      273,
+      198,
+      2,
+      4127,
+      6119,
+      369,
+      27223,
+      867
+    ],
+    "text": " \n\nMAPLE42\n\n```maple\n# Initial Code for MAPLE",
+    "ttft_ms": 158.203515,
+    "e2e_ms": 519.389724,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90035.558420665,
+        "request_id": "cmpl-b98a1c84a67d0380-0-a2d739d7",
+        "session": "warmup1",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "warmup2",
+    "key": "warmup2",
+    "session": null,
+    "end": true,
+    "cold": false,
+    "phase": "warmup",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "warmup2",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "warmup2",
+        "generation": 0,
+        "end_after_request": true
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 6144,
+    "prompt_sha256": "68848bcce092d386a8b7a0d281038ac7c648d823e1c7d01d9e48a431764192a3",
+    "issue_ns": 90036238272774,
+    "first_ns": 90036481155043,
+    "done_ns": 90036864513718,
+    "tokens": [
+      4710,
+      62056,
+      934,
+      16,
+      22,
+      271,
+      73594,
+      12669,
+      198,
+      2,
+      13213,
+      5871,
+      20186,
+      198,
+      474,
+      8591
+    ],
+    "text": " \n\nCEDAR17\n\n```python\n# Import necessary libraries\nimport numpy",
+    "ttft_ms": 242.882269,
+    "e2e_ms": 626.240944,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90036.248294735,
+        "request_id": "cmpl-91661f48eb4c2315-0-9a09dedd",
+        "session": "warmup2",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "warmup3",
+    "key": "warmup3",
+    "session": null,
+    "end": true,
+    "cold": false,
+    "phase": "warmup",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "warmup3",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "warmup3",
+        "generation": 0,
+        "end_after_request": true
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 8192,
+    "prompt_sha256": "f2cb65a3315641df145e5e1787ecd7fe395ee4774c9a1fd99fa56f2e3b7acb76",
+    "issue_ns": 90037033562914,
+    "first_ns": 90037373151337,
+    "done_ns": 90037775416155,
+    "tokens": [
+      4710,
+      17617,
+      867,
+      19,
+      17,
+      198,
+      73594,
+      12669,
+      198,
+      2,
+      4127,
+      2038,
+      369,
+      27223,
+      867,
+      19
+    ],
+    "text": " \n\nMAPLE42\n```python\n# Initial code for MAPLE4",
+    "ttft_ms": 339.588423,
+    "e2e_ms": 741.853241,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90037.047150009,
+        "request_id": "cmpl-b36692eb3de07db7-0-b9dda4b6",
+        "session": "warmup3",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "warmup4",
+    "key": "warmup4",
+    "session": null,
+    "end": true,
+    "cold": false,
+    "phase": "warmup",
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "warmup4",
+      "slackkv_terminal": {
+        "independent": true,
+        "end_after_request": true
+      },
+      "slackkv_m1": {
+        "session_id": "warmup4",
+        "generation": 0,
+        "end_after_request": true
+      },
+      "max_offload_tokens": 0
+    },
+    "length": 16384,
+    "prompt_sha256": "0ed6adad3d8bde64a0516b139438ca6d02a84ea85de9823fbd29c5558664bdfa",
+    "issue_ns": 90037942947427,
+    "first_ns": 90038734331442,
+    "done_ns": 90039222937413,
+    "tokens": [
+      4710,
+      62056,
+      934,
+      16,
+      22,
+      271,
+      785,
+      2856,
+      2038,
+      369,
+      356,
+      1479,
+      934,
+      16,
+      22,
+      374
+    ],
+    "text": " \n\nCEDAR17\n\nThe initial code for CEDAR17 is",
+    "ttft_ms": 791.384015,
+    "e2e_ms": 1279.989986,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 90037.959976053,
+        "request_id": "cmpl-99a8e01963432720-0-b1e46fd1",
+        "session": "warmup4",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  }
+]

@@ -251,3 +251,6 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 
 
 - 2026-10-13 独立审查82bf363：CPU复算7个性能run原始请求/解压输入哈希及三处prom，确认M1/Fair median +2.83197%/-6.01401%、来源守恒和H2D=external×28672；核对content4原始16IDs/cold零命中/35状态快照，独立复现终止generation修复。接受M1基础实现及被测GPU路径，不接受稳定胜Full；long3 Full与M1均约42ms，末尾224MiB写入不在原会话E2E范围。下一步小幅terminal准入优化、等价warmup/不同marker oracle、单个多会话竞争筛选；共享覆盖先于无证据M3，不重写主架构、不要求大矩阵。已知新增0.5GPUh授权有效，已用0.13476591384806347，按原范围/账本执行，不重复申请已有许可。审查新增GPU0，未重跑服务器测试/native或完整manifest。详见docs/RESEARCH_REVIEW_M1_GPU_20261013.md，复算results/research_review_m1_20261013/spotcheck.json。
+
+
+- 2026-10-13 M1 bounded net-benefit：采用显式、默认关闭的terminal optional-store gate；在完整观察/读取后仅拒绝未来新增写入，仍按真正完成结束。Full/StaticFair提供同信号native gate，避免通用优化归因于动态max-min。固定五形状非正式输入预热，不清GPU，首正式请求完整计入。单次四会话资源竞争中M1/Fair E2E median仅−1.79%而D2H多280MiB，M1/Full−7.40%且Full host有效恢复低；故保留M1 opt-in，不默认替换StaticFair，不扩JIT或大矩阵。共享覆盖优先于M2/M3；未测并发公平/生产/SLO和新NoHost不作收益主张。失败oracle和目录shadow bug均保留。详见SLACKKV_SYSTEM_M1_NET_BENEFIT_20261013.md；沿用0.5授权及原锁/账本，累计0.21011529948083787GPUh，未扩预算。

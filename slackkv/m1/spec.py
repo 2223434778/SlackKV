@@ -1,7 +1,16 @@
 """Load through the existing native OffloadingSpecFactory configuration."""
 from vllm.v1.kv_cache_interface import FullAttentionSpec
 from vllm.v1.kv_offload.cpu.spec import CPUOffloadingSpec
-from slackkv.m1.native import M1CPUManager
+from slackkv.m1.native import M1CPUManager, TerminalCPUManager
+
+
+class TerminalCPUOffloadingSpec(CPUOffloadingSpec):
+    def get_manager(self):
+        if self._manager is None:
+            events = self.vllm_config.kv_events_config
+            self._manager = TerminalCPUManager(self.num_blocks, cache_policy=self.eviction_policy,
+                enable_events=events is not None and events.enable_kv_cache_events)
+        return self._manager
 
 
 class SlackKVM1Spec(CPUOffloadingSpec):
@@ -31,7 +40,11 @@ class SlackKVM1Spec(CPUOffloadingSpec):
             trace = self.extra_config.get('slackkv_m1_trace', False)
             if type(trace) is not bool:
                 raise ValueError('slackkv_m1_trace must be boolean')
+            terminal = self.extra_config.get('slackkv_terminal_store_gate', False)
+            if type(terminal) is not bool:
+                raise ValueError('slackkv_terminal_store_gate must be boolean')
             self._manager = M1CPUManager(self.num_blocks, self.gpu_block_size[0]*self.block_size_factor,
                                         self.kv_bytes_per_offloaded_block,
-                                        enable_events=events is not None and events.enable_kv_cache_events, trace=trace)
+                                        enable_events=events is not None and events.enable_kv_cache_events, trace=trace,
+                                        terminal_store_gate=terminal)
         return self._manager

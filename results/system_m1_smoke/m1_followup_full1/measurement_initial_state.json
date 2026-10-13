@@ -1,0 +1,6 @@
+{
+  "native_state": null,
+  "gpu_caches": "not cleared; disjoint warmup roots and identical shape coverage",
+  "warmup_requests": 5,
+  "warmup_seconds": 2.650450122
+}

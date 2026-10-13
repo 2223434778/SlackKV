@@ -1,0 +1,44 @@
+{
+  "m1_followup_m11": {
+    "source_tokens_from_each_actual_admission": {
+      "local_compute": 95968,
+      "local_cache_hit": 12544,
+      "external_kv_transfer": 21792
+    },
+    "session_times_from_raw_timestamps_ms": {
+      "a": 8547.921071,
+      "b": 7677.735777,
+      "s": 2291.635427,
+      "d": 2791.825046
+    },
+    "all_inputs_outputs_verified": true
+  },
+  "m1_followup_fair1": {
+    "source_tokens_from_each_actual_admission": {
+      "local_compute": 102400,
+      "local_cache_hit": 12544,
+      "external_kv_transfer": 15360
+    },
+    "session_times_from_raw_timestamps_ms": {
+      "a": 8694.036981,
+      "b": 7829.914633,
+      "s": 2371.077176,
+      "d": 2830.552964
+    },
+    "all_inputs_outputs_verified": true
+  },
+  "m1_followup_full1": {
+    "source_tokens_from_each_actual_admission": {
+      "local_compute": 116736,
+      "local_cache_hit": 12544,
+      "external_kv_transfer": 1024
+    },
+    "session_times_from_raw_timestamps_ms": {
+      "a": 9139.905045,
+      "b": 8275.170925,
+      "s": 2485.885896,
+      "d": 3030.451104
+    },
+    "all_inputs_outputs_verified": true
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "status": "GPU_NOT_STARTED",
+  "config": {
+    "schema": 1,
+    "ledger_root": "/media/a6000/D/ZhaoBinHe/SlackKV",
+    "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "native_source": "/media/a6000/D/ZhaoBinHe/slackkv-system-m1-native",
+    "env_root": "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix",
+    "port": 8000,
+    "block_tokens": 16,
+    "gpu_kv_bytes": 536870912,
+    "max_model_len": 18432,
+    "host_tokens": 8192,
+    "expected_kv_bytes_per_token": 28672,
+    "session_tokens": {
+      "d": 4096,
+      "b": 6144,
+      "a": 8192,
+      "s": 1024
+    },
+    "pressure_tokens": 16384,
+    "output_tokens": 16,
+    "max_run_seconds_including_cleanup": 600,
+    "cleanup_reserve_seconds": 90,
+    "tool_gap_seconds": 0.15,
+    "requested_additional_gpu_hours": 0.5,
+    "static_fair_members": [
+      "a",
+      "b",
+      "s",
+      "d"
+    ],
+    "static_fair_rule": "equal immutable 2048-token shares for four configured independent agents, no borrowing or future length knowledge",
+    "purpose": "single frozen synthetic independent-prefix multi-session resource-contention screen; common terminal gate and disjoint shape warmup; not concurrent compute or production",
+    "priority": [
+      "m1_content",
+      "m1_mechanism",
+      "fair_mechanism",
+      "full_mechanism",
+      "nohost_mechanism"
+    ],
+    "workload_variant": "contention_v1",
+    "terminal_store_gate": true,
+    "trace_states": true
+  },
+  "layout": {
+    "kv_bytes_per_token": 28672,
+    "host_bytes": 234881024,
+    "host_blocks": 512
+  },
+  "config_model_sha256": "98d2ff8cc47488d08a2b0b3acf4eb99ef210779b42bd48605f6b8e36acdbf670",
+  "inputs_sha256": "9057fb7ce0b8e5907a4e145d3ab273b56c5d1bfaf5f1d9c5b9690d9ba828da41",
+  "runner_sha256": "0812c20d451a4df365d263977ea4104d957b622e42da1e73d807328b198dbc43",
+  "additional_runner_sources": {
+    "contention.py": "51f9419d37700ad4529e8038904430a326470b12990836ac35e96991d534cecb"
+  },
+  "markers": {
+    "d0": "MAPLE42",
+    "d1": "MAPLE42",
+    "d2": "MAPLE42",
+    "d3": "MAPLE42",
+    "d4": "MAPLE42",
+    "b0": "MAPLE42",
+    "b1": "MAPLE42",
+    "b2": "MAPLE42",
+    "b3": "MAPLE42",
+    "b4": "MAPLE42",
+    "a0": "CEDAR17",
+    "a1": "CEDAR17",
+    "a2": "CEDAR17",
+    "a3": "CEDAR17",
+    "a4": "CEDAR17",
+    "s0": "CEDAR17",
+    "s1": "CEDAR17",
+    "s2": "CEDAR17",
+    "s3": "CEDAR17",
+    "s4": "CEDAR17"
+  },
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "sequence": [
+    [
+      "a0",
+      "a",
+      0,
+      false
+    ],
+    [
+      "b0",
+      "b",
+      0,
+      false
+    ],
+    [
+      "s0",
+      "s",
+      0,
+      false
+    ],
+    [
+      "pressure0",
+      "pressure0",
+      0,
+      false
+    ],
+    [
+      "a1",
+      "a",
+      1,
+      false
+    ],
+    [
+      "b1",
+      "b",
+      1,
+      false
+    ],
+    [
+      "s_end",
+      "s",
+      1,
+      true
+    ],
+    [
+      "d0",
+      "d",
+      0,
+      false
+    ],
+    [
+      "pressure1",
+      "pressure1",
+      0,
+      false
+    ],
+    [
+      "a2",
+      "a",
+      2,
+      false
+    ],
+    [
+      "b2",
+      "b",
+      2,
+      false
+    ],
+    [
+      "d1",
+      "d",
+      1,
+      false
+    ],
+    [
+      "d_end",
+      "d",
+      2,
+      true
+    ],
+    [
+      "pressure2",
+      "pressure2",
+      0,
+      false
+    ],
+    [
+      "a3",
+      "a",
+      3,
+      false
+    ],
+    [
+      "b_end",
+      "b",
+      3,
+      true
+    ],
+    [
+      "a_end",
+      "a",
+      4,
+      true
+    ]
+  ],
+  "warmup_keys": [
+    "warmup0",
+    "warmup1",
+    "warmup2",
+    "warmup3",
+    "warmup4"
+  ],
+  "resource_model": {
+    "host_tokens": 8192,
+    "initial_known_demand": 15360,
+    "after_join_nominal_demand": 19456,
+    "kind": "synthetic independent-prefix resource contention"
+  },
+  "acceptance": "Screen only: examine all session E2E, aggregate completion, resume TTFT, compute/traffic and actual prefix changes. No stable superiority claim from one run.",
+  "commands": {
+    "m1_content": [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/vllm",
+      "serve",
+      "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "--dtype",
+      "float16",
+      "--tensor-parallel-size",
+      "1",
+      "--enable-prefix-caching",
+      "--kv-cache-memory-bytes",
+      "536870912",
+      "--max-model-len",
+      "18432",
+      "--max-num-seqs",
+      "4",
+      "--max-num-batched-tokens",
+      "8192",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8000",
+      "--kv-transfer-config",
+      "{\"kv_connector\": \"OffloadingConnector\", \"kv_role\": \"kv_both\", \"kv_connector_extra_config\": {\"block_size\": 16, \"cpu_bytes_to_use\": 234881024, \"spec_name\": \"SlackKVM1Spec\", \"spec_module_path\": \"slackkv.m1.spec\", \"slackkv_m1_trace\": true, \"slackkv_terminal_store_gate\": true}}"
+    ],
+    "m1_mechanism": [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/vllm",
+      "serve",
+      "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "--dtype",
+      "float16",
+      "--tensor-parallel-size",
+      "1",
+      "--enable-prefix-caching",
+      "--kv-cache-memory-bytes",
+      "536870912",
+      "--max-model-len",
+      "18432",
+      "--max-num-seqs",
+      "4",
+      "--max-num-batched-tokens",
+      "8192",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8000",
+      "--kv-transfer-config",
+      "{\"kv_connector\": \"OffloadingConnector\", \"kv_role\": \"kv_both\", \"kv_connector_extra_config\": {\"block_size\": 16, \"cpu_bytes_to_use\": 234881024, \"spec_name\": \"SlackKVM1Spec\", \"spec_module_path\": \"slackkv.m1.spec\", \"slackkv_m1_trace\": true, \"slackkv_terminal_store_gate\": true}}"
+    ],
+    "fair_mechanism": [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/vllm",
+      "serve",
+      "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "--dtype",
+      "float16",
+      "--tensor-parallel-size",
+      "1",
+      "--enable-prefix-caching",
+      "--kv-cache-memory-bytes",
+      "536870912",
+      "--max-model-len",
+      "18432",
+      "--max-num-seqs",
+      "4",
+      "--max-num-batched-tokens",
+      "8192",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8000",
+      "--kv-transfer-config",
+      "{\"kv_connector\": \"OffloadingConnector\", \"kv_role\": \"kv_both\", \"kv_connector_extra_config\": {\"block_size\": 16, \"cpu_bytes_to_use\": 234881024, \"spec_name\": \"TerminalCPUOffloadingSpec\", \"spec_module_path\": \"slackkv.m1.spec\"}}"
+    ],
+    "full_mechanism": [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/vllm",
+      "serve",
+      "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "--dtype",
+      "float16",
+      "--tensor-parallel-size",
+      "1",
+      "--enable-prefix-caching",
+      "--kv-cache-memory-bytes",
+      "536870912",
+      "--max-model-len",
+      "18432",
+      "--max-num-seqs",
+      "4",
+      "--max-num-batched-tokens",
+      "8192",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8000",
+      "--kv-transfer-config",
+      "{\"kv_connector\": \"OffloadingConnector\", \"kv_role\": \"kv_both\", \"kv_connector_extra_config\": {\"block_size\": 16, \"cpu_bytes_to_use\": 234881024, \"spec_name\": \"TerminalCPUOffloadingSpec\", \"spec_module_path\": \"slackkv.m1.spec\"}}"
+    ]
+  }
+}

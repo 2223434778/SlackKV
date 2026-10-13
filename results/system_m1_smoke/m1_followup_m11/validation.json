@@ -1,0 +1,219 @@
+{
+  "status": "COMPLETE",
+  "gpu_content": "NOT_RUN",
+  "dynamic_benefit": "UNKNOWN",
+  "initial_state": {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 10,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 5,
+    "ended_generation_tombstones": 5,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 5,
+      "reclaimed_blocks": 0
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  },
+  "sources": [
+    {
+      "timestamp_monotonic": 90339.306388512,
+      "request_id": "cmpl-b0b64d3575301ddd-0-bdf03223",
+      "session": "warmup0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90339.653583434,
+      "request_id": "cmpl-9e08f4d9a490399c-0-b6cc9fe9",
+      "session": "warmup1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90340.055520514,
+      "request_id": "cmpl-a7678f6dbc871f7b-0-ba6b2852",
+      "session": "warmup2",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90340.540588866,
+      "request_id": "cmpl-9c8420dfba689762-0-9bdeccd5",
+      "session": "warmup3",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90341.111138376,
+      "request_id": "cmpl-bdaa97b1b4de6b7e-0-96dd304e",
+      "session": "warmup4",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90344.631095925,
+      "request_id": "cmpl-bf9a1c69f9a38e71-0-bfdacd1d",
+      "session": "a0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90345.202075673,
+      "request_id": "cmpl-ad00d19591ce3864-0-996ab90b",
+      "session": "b0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90345.679050632,
+      "request_id": "cmpl-b42a6c072ac38093-0-9a2921f8",
+      "session": "s0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90345.991742744,
+      "request_id": "cmpl-8b205565eb93bfae-0-84c2e252",
+      "session": "pressure0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90346.990899504,
+      "request_id": "cmpl-b531960f4ef4d464-0-9617aa87",
+      "session": "a1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 3584
+    },
+    {
+      "timestamp_monotonic": 90347.462082079,
+      "request_id": "cmpl-943f25b6257e40a6-0-99432277",
+      "session": "b1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 3584
+    },
+    {
+      "timestamp_monotonic": 90347.849042512,
+      "request_id": "cmpl-bd307b94f720011b-0-8f4c1356",
+      "session": "s_end",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 1024
+    },
+    {
+      "timestamp_monotonic": 90348.140858695,
+      "request_id": "cmpl-a877adef87faaed9-0-935b86da",
+      "session": "d0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90348.557461288,
+      "request_id": "cmpl-93d91288caec9233-0-897b803f",
+      "session": "pressure1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90349.563758813,
+      "request_id": "cmpl-b35ff37fab0a28a6-0-986b235e",
+      "session": "a2",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 2720
+    },
+    {
+      "timestamp_monotonic": 90350.068234008,
+      "request_id": "cmpl-93bf9d04e8cb2504-0-b927f679",
+      "session": "b2",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 2720
+    },
+    {
+      "timestamp_monotonic": 90350.48055877,
+      "request_id": "cmpl-a3dcee1f18e3e321-0-9d6d2974",
+      "session": "d1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 2720
+    },
+    {
+      "timestamp_monotonic": 90350.818133915,
+      "request_id": "cmpl-9253872bee3dadcd-0-91157985",
+      "session": "d_end",
+      "local_cached_tokens": 4160,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90351.113898079,
+      "request_id": "cmpl-9bdda646bdfa7fdc-0-bb9185fc",
+      "session": "pressure2",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 90352.117824133,
+      "request_id": "cmpl-8c093fee47037ae6-0-b2e6a4f5",
+      "session": "a3",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 2720
+    },
+    {
+      "timestamp_monotonic": 90352.628666805,
+      "request_id": "cmpl-828d7ce0ea636a85-0-b319b4fc",
+      "session": "b_end",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 2720
+    },
+    {
+      "timestamp_monotonic": 90353.055803192,
+      "request_id": "cmpl-8fc5556b43d9566f-0-bbe1eec2",
+      "session": "a_end",
+      "local_cached_tokens": 8384,
+      "external_cached_tokens": 0
+    }
+  ],
+  "not_covered": [
+    "GPU in-flight forced cancellation",
+    "shared-prefix ownership",
+    "simultaneous compute/background fairness",
+    "production trace",
+    "statistical significance"
+  ],
+  "native_final_state": {
+    "event": "request_finished",
+    "capacity_blocks": 512,
+    "plan_version": 28,
+    "members": [],
+    "frozen_plans": 0,
+    "generation_tombstones": 9,
+    "ended_generation_tombstones": 9,
+    "unmaterialized_reservations": 0,
+    "physical_ready_blocks": 0,
+    "physical_pending_store_blocks": 0,
+    "physical_load_protected_blocks": 0,
+    "physical_free_blocks": 512,
+    "physical_reserved_bytes": 234881024,
+    "members_physical": [],
+    "metrics": {
+      "observed_requests": 22,
+      "reclaimed_blocks": 1088,
+      "admitted_store_blocks": 1088,
+      "skipped_store_blocks": 0,
+      "fallback_missing_or_invalid_membership": 3,
+      "terminal_skipped_store_batches": 4,
+      "terminal_skipped_requested_blocks": 773
+    },
+    "pending_store_batches": 0,
+    "pending_load_batches": 0,
+    "tracked_request_contexts": 0
+  }
+}

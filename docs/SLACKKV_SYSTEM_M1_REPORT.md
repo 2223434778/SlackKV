@@ -3,6 +3,15 @@
 日期：2026-10-12。实现基线：`f2d6af0`，以本报告所在提交为最终代码版本。
 主架构：`SLACKKV_SYSTEM_ARCHITECTURE_20261012.md`，特别是第 9 节。
 
+## 当前状态导航（2026-10-13更新）
+
+下面早期阶段正文保留历史。M1 已完成真实 GPU 生命周期/内容 smoke，见
+`SLACKKV_SYSTEM_M1_GPU_REPORT_20261013.md`；最新 terminal gate 与四会话净收益筛选见
+`SLACKKV_SYSTEM_M1_NET_BENEFIT_20261013.md`。新筛选 M1/Full median E2E −7.40%，
+M1/StaticFair −1.79%，均为单次合成对照；动态机制多付迁移成本，不宣称稳定优势。
+本轮62项相关本地测试、19组native审计和双marker真实恢复检查通过；累计新增授权
+已用0.21011529948083787/0.5GPUh。M2/M3关闭。
+
 ## 交付结论
 
 M1 已有可加载的最小实现和真实 vLLM CPU/native 元数据验证，尚未完成模型/GPU验证。

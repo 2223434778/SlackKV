@@ -1,0 +1,10 @@
+{
+  "failed_run_actual_directory": "results/system_m1_smoke/contention.py",
+  "failed_run_intended_name": "m1_followup_content1",
+  "failure": "Plain completion cold oracle could not distinguish both specified markers; remains FAILED. Runner source-validation loop also shadowed the run-name variable; accounting still used the shared ledger.",
+  "failed_source_reconstruction": "source_before_chat SHA matches execution runner_sha256 and plan additional_runner_sources; verified without rewriting original records.",
+  "inputs_revision": "The failed plain-completion preparation and successful chat preparation are separate. Only successful chat inputs were used for all three performance runs; no failure-version performance comparison.",
+  "post_run_metadata_correction": "Executed preparation.resource_model.after_join_nominal_demand=19456 represented all four configured base demands, not active demand after S exit. Actual A+B+D base demand then is18432. Future prepare uses explicit all_configured_nominal_demand19456 and after_short_exit_then_join_demand18432. Inputs and execution behavior do not change. executed_sources preserves actual executed bytes.",
+  "source_metrics_zero_labels": "Analyzer records initial/final label presence separately. For prompt sources only, absent initial dynamic zero labels are resolved using fresh process, five warmup admission traces with zero local/external hits, source conservation and actual H2D. Missing transfer labels remain null.",
+  "scope": "Serial synthetic resource competition; not simultaneous compute contention or production. No new NoHost, no shared-prefix coverage experiment, no M2/M3. Common terminal gate for M1/Full/StaticFair; no gain attributed solely to dynamic allocation from the generic gate."
+}
