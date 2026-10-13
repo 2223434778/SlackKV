@@ -1,5 +1,19 @@
 # SlackKV Project Rules
 
+## Current M1 GPU review — 2026-10-13
+
+Read `docs/RESEARCH_REVIEW_M1_GPU_20261013.md` for the latest review of `82bf363`.
+The M1 implementation and measured GPU lifecycle milestone are accepted; stable
+performance superiority over Full is unproven. Prioritize a small terminal-store
+gate, discriminative content checks, equivalent warmup and one bounded multi-session
+contention screen. Keep the existing architecture and M2/M3 disabled.
+The user has since approved the additional 0.5 GPU-hour M1 allowance, recorded in
+`results/system_m1_smoke/authorization.json`; prior statements that this allowance
+is still unapproved are historical. Already spent: 0.13476591384806347 GPU-hours.
+Preserve the original scope, shared ledger and limits; do not request that same
+permission again or treat this review as a new/expanded numeric allowance.
+
+
 ## Current M1 correction handoff — 2026-10-12
 
 The user requested guidance to complete the M1 corrections. Follow

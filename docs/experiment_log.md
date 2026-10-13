@@ -691,3 +691,6 @@ Capacity-guard wiring and one Stage-A execution committed as INCOMPLETE/EXPERIME
 
 
 - 2026-10-13 system_m1_smoke：授权新增0.5GPUh。python -m experiments.system_m1.smoke --execute --root /media/a6000/D/ZhaoBinHe/SlackKV --plan results/system_m1_smoke/preparation_path_fix --name NAME --policy POLICY --mode MODE --gpu 0 --authorized-additional-gpu-hours 0.5（确切绝对argv与版本见各launch.json）。1.5B FP16 TP1 compiled GPU512MiB/18720tokens，host224MiB/512blocks，原输入不改、不清空GPU，invariant只用于A。3FAILED均记录/纠正启动或logging问题；Acontent4正常恢复/cold16IDs相同/结束清理PASS；7performance完整配对，M1/Fair median+2.83%/-6.01%，NoHost两对-9.20%/-10.00%，相对Full无稳健优势。source输入合计108544、输出192、H2D实际byte与恢复token严格匹配。analyze_smoke压缩-only复算，原始324文件hash PASS，目录results/system_m1_smoke/。新增含启动/清理0.13476591384806347GPUh，连续4.326753933575591；全部owned组和GPU释放确认，不再运行M2/M3。详细限制/末尾224MiB无重用写入/首请求差异在GPU报告；最终commit以本条所在提交为准。
+
+
+- 2026-10-13 独立审查82bf363：CPU复算7个性能run原始请求/解压输入哈希及三处prom，确认M1/Fair median +2.83197%/-6.01401%、来源守恒和H2D=external×28672；核对content4原始16IDs/cold零命中/35状态快照，独立复现终止generation修复。接受M1基础实现及被测GPU路径，不接受稳定胜Full；long3 Full与M1均约42ms，末尾224MiB写入不在原会话E2E范围。下一步小幅terminal准入优化、等价warmup/不同marker oracle、单个多会话竞争筛选；共享覆盖先于无证据M3，不重写主架构、不要求大矩阵。已知新增0.5GPUh授权有效，已用0.13476591384806347，按原范围/账本执行，不重复申请已有许可。审查新增GPU0，未重跑服务器测试/native或完整manifest。详见docs/RESEARCH_REVIEW_M1_GPU_20261013.md，复算results/research_review_m1_20261013/spotcheck.json。

@@ -202,3 +202,6 @@
 
 
 - 2026-10-13 system_m1_smoke：用户批准新增0.5GPUh，冻结efb74ae输入/模型/资源做A后B。三次FAILED依次为PATH缺已有ninja、隔离native旧scheduler依赖缺失、INFO trace被logger层级过滤；原数据保留，修复后content4真实13请求PASS，host5904token恢复/cold零命中/16IDs相同、目标448→512实际保存、终止代拒绝写入、最终512free。native16组PASS/本地75项。compiled7个匹配性能run每个108544输入/192输出，M1/Fair前序+2.83%/反序-6.01%median E2E，M1/NoHost-9.20%/-10.00%；M1repeat与单Full接近，不宣称稳定收益。首请求1124→463ms、NoHost1114→450ms，具体原因UNKNOWN，全部计入。全协议M1 D2H504MiB/H2D512.3125 vsFull336/485.1875；会话后terminal新代多写224MiB没重用，未来准入机会，本次未改策略。324原始文件hash/压缩-only复算及源/真实H2D校验PASS。新增0.13476591384806347GPUh/0.5，连续4.326753933575591；11run全部清理、两卡19MiB/0%，停止GPU且M2/M3关闭。报告SLACKKV_SYSTEM_M1_GPU_REPORT_20261013.md；下一步预注册等价warmup并研究无用terminal写入与共享prefix覆盖，不能把阶段完成替代整体收益。
+
+
+- 2026-10-13 独立审查82bf363：CPU复算7个性能run原始请求/解压输入哈希及三处prom，确认M1/Fair median +2.83197%/-6.01401%、来源守恒和H2D=external×28672；核对content4原始16IDs/cold零命中/35状态快照，独立复现终止generation修复。接受M1基础实现及被测GPU路径，不接受稳定胜Full；long3 Full与M1均约42ms，末尾224MiB写入不在原会话E2E范围。下一步小幅terminal准入优化、等价warmup/不同marker oracle、单个多会话竞争筛选；共享覆盖先于无证据M3，不重写主架构、不要求大矩阵。已知新增0.5GPUh授权有效，已用0.13476591384806347，按原范围/账本执行，不重复申请已有许可。审查新增GPU0，未重跑服务器测试/native或完整manifest。详见docs/RESEARCH_REVIEW_M1_GPU_20261013.md，复算results/research_review_m1_20261013/spotcheck.json。

@@ -248,3 +248,6 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 
 
 - 2026-10-13 M1 GPU闭环决策：修复owned服务器PATH、补齐禁用的继承scheduler模块依赖、使用vllm logger层级保证trace可见；没有修改旧数据或KV策略来强行通过。GPU内容gate只承诺本输入与正常结束路径，取消/强制交错及bitwise数据未全面验证。第一M1/Fair整体负结果保留，因首真实请求额外成本做一次反序复验并补NoHostrepeat，仍保持全部首请求计入，不给复杂SOTA/稳定性能结论。全协议M1额外224MiB terminal无重用写入是可优化候选而非本次成果；会话阶段和全协议流量分列，不换主指标隐藏成本。M1可进入下一次受控strongFull比较，先统一预注册warmup和更强身份oracle/共享prefix，再决定压力反馈或预取；M2/M3现在不启动。
+
+
+- 2026-10-13 独立审查82bf363：CPU复算7个性能run原始请求/解压输入哈希及三处prom，确认M1/Fair median +2.83197%/-6.01401%、来源守恒和H2D=external×28672；核对content4原始16IDs/cold零命中/35状态快照，独立复现终止generation修复。接受M1基础实现及被测GPU路径，不接受稳定胜Full；long3 Full与M1均约42ms，末尾224MiB写入不在原会话E2E范围。下一步小幅terminal准入优化、等价warmup/不同marker oracle、单个多会话竞争筛选；共享覆盖先于无证据M3，不重写主架构、不要求大矩阵。已知新增0.5GPUh授权有效，已用0.13476591384806347，按原范围/账本执行，不重复申请已有许可。审查新增GPU0，未重跑服务器测试/native或完整manifest。详见docs/RESEARCH_REVIEW_M1_GPU_20261013.md，复算results/research_review_m1_20261013/spotcheck.json。

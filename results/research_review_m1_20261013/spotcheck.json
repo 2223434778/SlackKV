@@ -1,0 +1,294 @@
+{
+  "reviewed_commit": "82bf36393e99943d8a647f476dce7005b34de70f",
+  "runs": {
+    "fair_mechanism1": {
+      "session_e2e_ms": {
+        "long": 5670.836891,
+        "short": 1857.234504
+      },
+      "median_ms": 3764.0356975,
+      "sources": {
+        "local_compute": 70704.0,
+        "local_cache_hit": 29360.0,
+        "external_kv_transfer": 8480.0
+      },
+      "traffic_bytes": {
+        "GPU_to_CPU": 146800640.0,
+        "CPU_to_GPU": 243138560.0
+      },
+      "traffic_at_end_bytes": {
+        "GPU_to_CPU": 146800640.0,
+        "CPU_to_GPU": 243138560.0
+      },
+      "first_e2e_ms": 454.217133,
+      "long3": {
+        "ttft_ms": 186.121035,
+        "sources": [
+          {
+            "timestamp_monotonic": 82011.438038185,
+            "request_id": "cmpl-93edbc3517e307a6-0-a7173409",
+            "session": "long3",
+            "local_cached_tokens": 2304,
+            "external_cached_tokens": 1792
+          }
+        ]
+      },
+      "terminal_new_transfer": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 0.0
+      }
+    },
+    "fair_mechanism2": {
+      "session_e2e_ms": {
+        "long": 5665.512546,
+        "short": 1851.27738
+      },
+      "median_ms": 3758.3949629999997,
+      "sources": {
+        "local_compute": 70704.0,
+        "local_cache_hit": 29360.0,
+        "external_kv_transfer": 8480.0
+      },
+      "traffic_bytes": {
+        "GPU_to_CPU": 146800640.0,
+        "CPU_to_GPU": 243138560.0
+      },
+      "traffic_at_end_bytes": {
+        "GPU_to_CPU": 146800640.0,
+        "CPU_to_GPU": 243138560.0
+      },
+      "first_e2e_ms": 451.8516,
+      "long3": {
+        "ttft_ms": 187.044263,
+        "sources": [
+          {
+            "timestamp_monotonic": 83081.044255142,
+            "request_id": "cmpl-82b3533a95b2b9f3-0-ae183631",
+            "session": "long3",
+            "local_cached_tokens": 2304,
+            "external_cached_tokens": 1792
+          }
+        ]
+      },
+      "terminal_new_transfer": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 0.0
+      }
+    },
+    "full_mechanism1": {
+      "session_e2e_ms": {
+        "long": 5332.720503,
+        "short": 1773.41099
+      },
+      "median_ms": 3553.0657465,
+      "sources": {
+        "local_compute": 61440.0,
+        "local_cache_hit": 29360.0,
+        "external_kv_transfer": 17744.0
+      },
+      "traffic_bytes": {
+        "GPU_to_CPU": 352321536.0,
+        "CPU_to_GPU": 508755968.0
+      },
+      "traffic_at_end_bytes": {
+        "GPU_to_CPU": 352321536.0,
+        "CPU_to_GPU": 507838464.0
+      },
+      "first_e2e_ms": 458.135093,
+      "long3": {
+        "ttft_ms": 42.157732,
+        "sources": [
+          {
+            "timestamp_monotonic": 82482.767341093,
+            "request_id": "cmpl-a2ad6da21b812c64-0-b9b4237e",
+            "session": "long3",
+            "local_cached_tokens": 2304,
+            "external_cached_tokens": 5888
+          }
+        ]
+      },
+      "terminal_new_transfer": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 458752.0
+      }
+    },
+    "m1_mechanism1": {
+      "session_e2e_ms": {
+        "long": 5990.152976,
+        "short": 1751.110882
+      },
+      "median_ms": 3870.631929,
+      "sources": {
+        "local_compute": 60448.0,
+        "local_cache_hit": 29360.0,
+        "external_kv_transfer": 18736.0
+      },
+      "traffic_bytes": {
+        "GPU_to_CPU": 528482304.0,
+        "CPU_to_GPU": 537198592.0
+      },
+      "traffic_at_end_bytes": {
+        "GPU_to_CPU": 293601280.0,
+        "CPU_to_GPU": 537198592.0
+      },
+      "first_e2e_ms": 1124.356714,
+      "long3": {
+        "ttft_ms": 42.471624,
+        "sources": [
+          {
+            "timestamp_monotonic": 81828.126950579,
+            "request_id": "cmpl-a14616f29cb630f6-0-87bb88a2",
+            "session": "long3",
+            "local_cached_tokens": 2304,
+            "external_cached_tokens": 5888
+          }
+        ]
+      },
+      "terminal_new_transfer": {
+        "GPU_to_CPU": 234881024.0,
+        "CPU_to_GPU": 0.0
+      }
+    },
+    "m1_mechanism2": {
+      "session_e2e_ms": {
+        "long": 5313.940467,
+        "short": 1750.788758
+      },
+      "median_ms": 3532.3646125,
+      "sources": {
+        "local_compute": 60448.0,
+        "local_cache_hit": 29360.0,
+        "external_kv_transfer": 18736.0
+      },
+      "traffic_bytes": {
+        "GPU_to_CPU": 528482304.0,
+        "CPU_to_GPU": 537198592.0
+      },
+      "traffic_at_end_bytes": {
+        "GPU_to_CPU": 293601280.0,
+        "CPU_to_GPU": 537198592.0
+      },
+      "first_e2e_ms": 462.908591,
+      "long3": {
+        "ttft_ms": 42.975438,
+        "sources": [
+          {
+            "timestamp_monotonic": 83267.515361375,
+            "request_id": "cmpl-ab918605afcac363-0-8aaca157",
+            "session": "long3",
+            "local_cached_tokens": 2304,
+            "external_cached_tokens": 5888
+          }
+        ]
+      },
+      "terminal_new_transfer": {
+        "GPU_to_CPU": 234881024.0,
+        "CPU_to_GPU": 0.0
+      }
+    },
+    "nohost_mechanism1": {
+      "session_e2e_ms": {
+        "long": 6565.683002,
+        "short": 1960.400206
+      },
+      "median_ms": 4263.041604,
+      "sources": {
+        "local_compute": 79184.0,
+        "local_cache_hit": 29360.0,
+        "external_kv_transfer": 0.0
+      },
+      "traffic_bytes": {
+        "GPU_to_CPU": null,
+        "CPU_to_GPU": null
+      },
+      "traffic_at_end_bytes": {
+        "GPU_to_CPU": null,
+        "CPU_to_GPU": null
+      },
+      "first_e2e_ms": 1113.953937,
+      "long3": {
+        "ttft_ms": 242.881077,
+        "sources": []
+      },
+      "terminal_new_transfer": {
+        "GPU_to_CPU": null,
+        "CPU_to_GPU": null
+      }
+    },
+    "nohost_mechanism2": {
+      "session_e2e_ms": {
+        "long": 5895.402686,
+        "short": 1954.560105
+      },
+      "median_ms": 3924.9813955,
+      "sources": {
+        "local_compute": 79184.0,
+        "local_cache_hit": 29360.0,
+        "external_kv_transfer": 0.0
+      },
+      "traffic_bytes": {
+        "GPU_to_CPU": null,
+        "CPU_to_GPU": null
+      },
+      "traffic_at_end_bytes": {
+        "GPU_to_CPU": null,
+        "CPU_to_GPU": null
+      },
+      "first_e2e_ms": 450.027475,
+      "long3": {
+        "ttft_ms": 240.109798,
+        "sources": []
+      },
+      "terminal_new_transfer": {
+        "GPU_to_CPU": null,
+        "CPU_to_GPU": null
+      }
+    }
+  },
+  "m1_vs_fair_percent": {
+    "1": 2.831966539817876,
+    "2": -6.014012702900695
+  },
+  "content": {
+    "token_ids_match": true,
+    "state_snapshots": 35,
+    "final_state": {
+      "event": "request_finished",
+      "capacity_blocks": 512,
+      "plan_version": 11,
+      "members": [],
+      "frozen_plans": 0,
+      "generation_tombstones": 2,
+      "ended_generation_tombstones": 2,
+      "unmaterialized_reservations": 0,
+      "physical_ready_blocks": 0,
+      "physical_pending_store_blocks": 0,
+      "physical_load_protected_blocks": 0,
+      "physical_free_blocks": 512,
+      "physical_reserved_bytes": 234881024,
+      "members_physical": [],
+      "metrics": {
+        "observed_requests": 13,
+        "reclaimed_blocks": 1152,
+        "admitted_store_blocks": 1152,
+        "skipped_store_blocks": 0,
+        "fallback_missing_or_invalid_membership": 4,
+        "fallback_ended_generation_requires_new_generation": 1
+      },
+      "pending_store_batches": 0,
+      "pending_load_batches": 0,
+      "tracked_request_contexts": 0
+    },
+    "long_allocated_depths": [
+      0,
+      448,
+      512
+    ]
+  },
+  "controller_reproduction": {
+    "late_reason": "ended_generation_requires_new_generation",
+    "late_allowed": 0,
+    "new_generation_allowed": 2
+  },
+  "scope": "Independent CPU recomputation of seven archived request sets, payload hashes, endpoint counters, one content oracle/state trace and controller reproducer. No new GPU execution; no full server-log/native audit rerun or all-file manifest verification."
+}
