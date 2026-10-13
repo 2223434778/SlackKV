@@ -6,6 +6,7 @@ import math
 import os
 from pathlib import Path
 import re
+import shutil
 import signal
 import socket
 import subprocess
@@ -152,7 +153,7 @@ def workload(config, plan, policy, mode, out):
                 tokens.extend(ids)
         done = time.monotonic_ns()
         if first is None or len(tokens) != config['output_tokens']:raise ValueError('prescribed model output count differs')
-        rows.append(dict(label=label,key=key,generation=generation,end=end,cold=cold,params=params,
+        rows.append(dict(label=label,key=key,generation=generation,end=end,cold=cold,params=payload.get('kv_transfer_params'),
                          cache_salt=payload.get('cache_salt'),length=len(prompt),prompt_sha256=hashlib.sha256(json.dumps(prompt).encode()).hexdigest(),
                          issue_ns=issue,first_ns=first,done_ns=done,tokens=tokens,ttft_ms=(first-issue)/1e6,e2e_ms=(done-issue)/1e6))
         save(out/'requests.json',rows)
@@ -207,6 +208,18 @@ def owned_group(pgid):
     return result
 
 
+def server_environment(config, mode, gpu):
+    env={**os.environ,'CUDA_VISIBLE_DEVICES':str(gpu),'HF_HUB_OFFLINE':'1','TRANSFORMERS_OFFLINE':'1',
+         'PYTHONPATH':config['native_source']+':'+str(Path(__file__).resolve().parents[2]),
+         'VLLM_BATCH_INVARIANT':str(int(mode=='content')),'VLLM_SERVER_DEV_MODE':'0'}
+    envroot=Path(config['env_root'])
+    env['PATH']=f'{envroot}/bin:'+env.get('PATH','')
+    env['LD_LIBRARY_PATH']=f'{envroot}/targets/x86_64-linux/lib:{envroot}/lib/python3.11/site-packages/nvidia/cuda_runtime/lib:{envroot}/lib/python3.11/site-packages/nvidia/cuda_nvrtc/lib:'+env.get('LD_LIBRARY_PATH','')
+    for key in ('SLACKKV_CONTINUATION_CREDIT','SLACKKV_WORKING_SET_EPOCHS','SLACKKV_CAPACITY_BACKFILL_LIMIT',
+                'SLACKKV_RETENTION_CONTROL','SLACKKV_RETENTION_PIN','SLACKKV_FORK_TRACE','SLACKKV_ROUND4_RESOURCE_TRACE'):env[key]='0'
+    return env
+
+
 def execute(config, plan, root, policy, mode, gpu, name, allowance):
     if root.resolve() != Path(config['ledger_root']).resolve():
         raise ValueError('frozen ledger root required; renaming output cannot reset accounting')
@@ -232,22 +245,18 @@ def execute(config, plan, root, policy, mode, gpu, name, allowance):
             return subprocess.check_output(['nvidia-smi','-i',str(gpu),'--query-gpu=memory.used,utilization.gpu','--format=csv,noheader,nounits'],text=True).strip()
         before=gpu_state()
         if int(before.split(',')[0])>512 or int(before.split(',')[1])!=0:raise RuntimeError('selected GPU is occupied')
+        env=server_environment(config,mode,gpu)
+        ninja=shutil.which('ninja',path=env['PATH'])
+        if ninja is None:raise RuntimeError('ninja unavailable in server PATH; refuse GPU startup')
         out=base/name;out.mkdir(exist_ok=False)
         argv=command(config,policy,mode,prepared['layout']['host_bytes'])
         metadata=dict(status='RUNNING',gpu_count=1,gpu_hours=0,cleanup_verified=False,started_unix=time.time(),
                       additional_allowance_gpu_hours=allowance,family_spent_before=spent,wall_limit_seconds=limit,
                       historical_gpu_hours_before_new_allowance=4.191988019727527,
-                      policy=policy,mode=mode,gpu=gpu,command=argv,config=config,plan=prepared,
+                      policy=policy,mode=mode,gpu=gpu,command=argv,config=config,plan=prepared,ninja_path=ninja,
                       runner_sha256=digest(Path(__file__)),sources={p.name:digest(p) for p in (Path(__file__).parents[2]/'slackkv/m1').glob('*.py')})
         save(out/'execution.json',metadata);save(out/'inputs.json',json.loads((plan/'inputs.json').read_text()))
         started=time.monotonic();proc=None
-        env={**os.environ,'CUDA_VISIBLE_DEVICES':str(gpu),'HF_HUB_OFFLINE':'1','TRANSFORMERS_OFFLINE':'1',
-             'PYTHONPATH':config['native_source']+':'+str(Path(__file__).resolve().parents[2]),
-             'VLLM_BATCH_INVARIANT':str(int(mode=='content')),'VLLM_SERVER_DEV_MODE':'0'}
-        envroot=Path(config['env_root'])
-        env['LD_LIBRARY_PATH']=f'{envroot}/targets/x86_64-linux/lib:{envroot}/lib/python3.11/site-packages/nvidia/cuda_runtime/lib:{envroot}/lib/python3.11/site-packages/nvidia/cuda_nvrtc/lib:'+env.get('LD_LIBRARY_PATH','')
-        for key in ('SLACKKV_CONTINUATION_CREDIT','SLACKKV_WORKING_SET_EPOCHS','SLACKKV_CAPACITY_BACKFILL_LIMIT',
-                    'SLACKKV_RETENTION_CONTROL','SLACKKV_RETENTION_PIN','SLACKKV_FORK_TRACE','SLACKKV_ROUND4_RESOURCE_TRACE'):env[key]='0'
         def timeout(*_):raise TimeoutError('work watchdog: cleanup reserve included')
         signal.signal(signal.SIGALRM,timeout);signal.alarm(limit-config['cleanup_reserve_seconds'])
         try:

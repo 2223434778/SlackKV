@@ -43,6 +43,22 @@ def run():
         assert result['physical_load_protected_blocks']<=result['physical_ready_blocks']
         return result
 
+    # External-module loggers may inherit WARNING and silently drop INFO traces.
+    import io
+    import logging
+    import slackkv.m1.native as adapter
+    stream=io.StringIO();handler=logging.StreamHandler(stream)
+    adapter.logger.addHandler(handler)
+    try:
+        assert adapter.logger.isEnabledFor(logging.INFO)
+        traced=M1CPUManager(1,16,1,trace=True)
+        ctx,path,_=start(traced,'traced','trace',1,end=True)
+        store(traced,ctx,path);traced.on_request_finished(ctx)
+        assert stream.getvalue().count('SLACKKV_M1_STATE')==3
+    finally:
+        adapter.logger.removeHandler(handler);handler.close()
+    checks.append('trace_true_visible_at_native_vllm_info_level')
+
     # Required 10-block counterexample: old ceiling persists, actual stores do not.
     m = M1CPUManager(10, 16, 4*2**20, enable_events=True)
     a, ak, astate = start(m, 'a0', 'a', 10)

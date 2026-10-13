@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from experiments.system_m1.smoke import budget, command, execute, resources, transfer_delta, wall_limit
+from experiments.system_m1.smoke import budget, command, execute, resources, server_environment, transfer_delta, wall_limit
 
 
 def config():
@@ -68,3 +68,14 @@ def test_comparison_refuses_content_mode_as_performance_evidence(tmp_path):
     from experiments.system_m1.compare_smoke import load
     (tmp_path/'execution.json').write_text(json.dumps(dict(status='COMPLETE',cleanup_verified=True,mode='content',policy='m1')))
     with pytest.raises(ValueError,match='mechanism'):load(tmp_path,'m1')
+
+
+def test_server_inherits_conda_build_tools_and_isolates_modes(monkeypatch):
+    monkeypatch.setenv('PATH', '/usr/bin')
+    monkeypatch.setenv('SLACKKV_RETENTION_CONTROL', '1')
+    c=config()
+    env=server_environment(c,'content',1)
+    assert env['PATH']==str(Path(c['env_root']))+'/bin:/usr/bin'
+    assert env['CUDA_VISIBLE_DEVICES']=='1' and env['SLACKKV_RETENTION_CONTROL']=='0'
+    assert env['VLLM_BATCH_INVARIANT']=='1'
+    assert server_environment(c,'mechanism',1)['VLLM_BATCH_INVARIANT']=='0'

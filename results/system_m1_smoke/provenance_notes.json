@@ -1,0 +1,16 @@
+{
+  "implementation_baseline": "efb74ae384b7800e8a96726796c59745d1f50375",
+  "gpu_allowance": "human approved additional 0.5 GPU hours on 2026-10-13",
+  "wire_request_note": "In the executed runner, NoHost requests.json params contains constructed diagnostic metadata, but payload does NOT include kv_transfer_params for NoHost. Inspect source_path_fix/experiments/system_m1/smoke.py. A subsequent logging-only fix stores actual payload params/None; original records preserved.",
+  "content1_runner": "runner_before_path_fix.py",
+  "content2_and_later_runner": "source_path_fix/experiments/system_m1/smoke.py",
+  "content1_to_3_native": "source_path_fix/slackkv/m1/native.py",
+  "content4_and_performance_native": "source_trace_fix/slackkv/m1/native.py",
+  "legacy_dependencies": "legacy_dependencies/; imported with experimental switches disabled",
+  "compression": "raw_manifest.json hashes and sizes refer to original decompressed bytes. Files ending in .log/.prom and inputs.json are archived as .gz; originals preserved on server.",
+  "invalid_attempts": ["m1_content1 missing ninja in child PATH", "m1_content2 isolated code missing legacy scheduler imports", "m1_content3 absent INFO state trace despite completed model requests"],
+  "full_launch_transport_timeout": "No execution/launch record existed after initial SSH timeout; confirmed before retry. No duplicate GPU run or extra GPU cost.",
+  "metric_scope": "Session E2E ends at long_end/short_end; whole protocol traffic includes subsequent late/new-generation diagnostic requests. Both scopes reported, not substituted.",
+  "first_request": "All first requests retained in primary metrics; two M1/Fair pairs include forward and reverse order. First real request extra cost disappears on repeats; exact JIT/cache mechanism not identified.",
+  "uncertainties": ["bitwise KV tensors not compared", "only one restored long input/16 output IDs matched to invariant cold", "all semantic markers are CEDAR17; stronger diverse identity oracles remain needed", "GPU cancellation/forced in-flight end collisions not explicitly triggered", "no concurrent background fairness test", "TP2 validated in CPU metadata only", "no statistical significance or production trace claim"]
+}

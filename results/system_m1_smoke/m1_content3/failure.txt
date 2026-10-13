@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/system-m1-code/experiments/system_m1/smoke.py", line 274, in execute
+    workload(config,plan,policy,mode,out)
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/system-m1-code/experiments/system_m1/smoke.py", line 184, in workload
+    if not states:raise AssertionError('native state trace absent')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: native state trace absent

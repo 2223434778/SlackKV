@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETE",
+  "gpu_content": "NOT_RUN",
+  "dynamic_benefit": "UNKNOWN",
+  "sources": [],
+  "not_covered": [
+    "explicit GPU in-flight cancellation/forced end collision",
+    "background fairness",
+    "production workload",
+    "formal performance significance"
+  ]
+}

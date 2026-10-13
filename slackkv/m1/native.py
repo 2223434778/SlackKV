@@ -9,7 +9,8 @@ from vllm.logger import init_logger
 
 from slackkv.m1.controller import PrefixController
 
-logger = init_logger(__name__)
+# vLLM configures the vllm logger hierarchy, not external module names.
+logger = init_logger('vllm.slackkv_m1')
 
 
 class M1CPUManager(CPUOffloadingManager):

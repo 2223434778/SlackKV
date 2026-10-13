@@ -1,0 +1,7 @@
+{
+  "approved_additional_gpu_hours": 0.5,
+  "prior_continuous_gpu_hours": 4.191988019727527,
+  "date": "2026-10-13",
+  "source": "human explicitly approved after efb74ae delivery",
+  "scope": "M1 content/lifecycle first, matched M1/StaticFair if budget remains; all startup/failures/cleanup included"
+}

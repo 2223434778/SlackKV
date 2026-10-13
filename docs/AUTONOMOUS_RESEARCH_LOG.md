@@ -199,3 +199,6 @@
 
 
 - 2026-10-13 M1修正（交接4d1da69）：先在旧92e65cb controller上跑新回归，1 failed/15 passed；同扩展native审计旧版FAILED，同代结束并物理collect后恢复store资格。新增latest终止bit独立于Member GC/reset，旧/未知/未来end no-op，更高代合法，普通finish不终止；未更改native有效DMA结算。修复后74项本地回归、15组native场景PASS（含120交错），共享system prefix不同后缀一次fallback并合法read。真实模型配置/tokenizer CPU准备smoke_v3：FP16 TP1 compiled、GPU512MiB、host224MiB/512块、模型limit18432；发现旧32K limit不适配，在GPU启动前修正，v1/v2/v3记录保留。runner/config/输入/预算锁/清理门/比较器已交付。BUG_FIXED与CPU_NATIVE_PASS=PASS，GPU_CONTENT=NOT_RUN，动态收益UNKNOWN；新增GPU0、历史4.191988019727527不变。未修改cutlass .pth警告的共享环境，GPU启动仍需真实验证。结果results/system_m1_fix_20261012/，报告M1_REPORT修正附录；唯一待决策项是新0.5GPUh授权，M2/M3关闭。
+
+
+- 2026-10-13 system_m1_smoke：用户批准新增0.5GPUh，冻结efb74ae输入/模型/资源做A后B。三次FAILED依次为PATH缺已有ninja、隔离native旧scheduler依赖缺失、INFO trace被logger层级过滤；原数据保留，修复后content4真实13请求PASS，host5904token恢复/cold零命中/16IDs相同、目标448→512实际保存、终止代拒绝写入、最终512free。native16组PASS/本地75项。compiled7个匹配性能run每个108544输入/192输出，M1/Fair前序+2.83%/反序-6.01%median E2E，M1/NoHost-9.20%/-10.00%；M1repeat与单Full接近，不宣称稳定收益。首请求1124→463ms、NoHost1114→450ms，具体原因UNKNOWN，全部计入。全协议M1 D2H504MiB/H2D512.3125 vsFull336/485.1875；会话后terminal新代多写224MiB没重用，未来准入机会，本次未改策略。324原始文件hash/压缩-only复算及源/真实H2D校验PASS。新增0.13476591384806347GPUh/0.5，连续4.326753933575591；11run全部清理、两卡19MiB/0%，停止GPU且M2/M3关闭。报告SLACKKV_SYSTEM_M1_GPU_REPORT_20261013.md；下一步预注册等价warmup并研究无用terminal写入与共享prefix覆盖，不能把阶段完成替代整体收益。

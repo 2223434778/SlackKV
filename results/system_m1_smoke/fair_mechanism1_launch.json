@@ -1,0 +1,24 @@
+{
+  "pid": 954031,
+  "argv": [
+    "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python",
+    "-m",
+    "experiments.system_m1.smoke",
+    "--execute",
+    "--root",
+    "/media/a6000/D/ZhaoBinHe/SlackKV",
+    "--plan",
+    "/media/a6000/D/ZhaoBinHe/SlackKV/results/system_m1_smoke/preparation_path_fix",
+    "--name",
+    "fair_mechanism1",
+    "--policy",
+    "fair",
+    "--mode",
+    "mechanism",
+    "--gpu",
+    "0",
+    "--authorized-additional-gpu-hours",
+    "0.5"
+  ],
+  "launched_unix": 1791857852.7849061
+}

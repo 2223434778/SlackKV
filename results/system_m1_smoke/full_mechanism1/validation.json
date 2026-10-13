@@ -1,0 +1,97 @@
+{
+  "status": "COMPLETE",
+  "gpu_content": "NOT_RUN",
+  "dynamic_benefit": "UNKNOWN",
+  "sources": [
+    {
+      "timestamp_monotonic": 82477.863756005,
+      "request_id": "cmpl-8a668b7729deb2fe-0-aee14c76",
+      "session": "long0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 82478.475661571,
+      "request_id": "cmpl-a53896a1bcdd65a1-0-a0501c2b",
+      "session": "short0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 82478.79325749,
+      "request_id": "cmpl-b96ccb775bff3ce5-0-aa1c885c",
+      "session": "pressure0",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 82479.786236439,
+      "request_id": "cmpl-810959f09b6f88f0-0-9236a01a",
+      "session": "long1",
+      "local_cached_tokens": 1264,
+      "external_cached_tokens": 5904
+    },
+    {
+      "timestamp_monotonic": 82480.121528271,
+      "request_id": "cmpl-995970ed66bd5dbe-0-951812ca",
+      "session": "short_end",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 82480.43031797,
+      "request_id": "cmpl-b8d029261a01572a-0-a25570a0",
+      "session": "pressure1",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 82481.425176913,
+      "request_id": "cmpl-b2370e5cc124b63c-0-93f9c3e3",
+      "session": "long2_expand",
+      "local_cached_tokens": 1264,
+      "external_cached_tokens": 5904
+    },
+    {
+      "timestamp_monotonic": 82481.77465523,
+      "request_id": "cmpl-97abfcba79a78dcd-0-ababe916",
+      "session": "pressure2",
+      "local_cached_tokens": 0,
+      "external_cached_tokens": 0
+    },
+    {
+      "timestamp_monotonic": 82482.767341093,
+      "request_id": "cmpl-a2ad6da21b812c64-0-b9b4237e",
+      "session": "long3",
+      "local_cached_tokens": 2304,
+      "external_cached_tokens": 5888
+    },
+    {
+      "timestamp_monotonic": 82483.066466685,
+      "request_id": "cmpl-84b2778cf7b7ae92-0-b4a91177",
+      "session": "long_end",
+      "local_cached_tokens": 8176,
+      "external_cached_tokens": 16
+    },
+    {
+      "timestamp_monotonic": 82483.35779387,
+      "request_id": "cmpl-99008e24fd6bc331-0-8858f5a2",
+      "session": "long_late",
+      "local_cached_tokens": 8176,
+      "external_cached_tokens": 16
+    },
+    {
+      "timestamp_monotonic": 82483.646095024,
+      "request_id": "cmpl-94ce74248c8fbd1d-0-a48dabe7",
+      "session": "long_new",
+      "local_cached_tokens": 8176,
+      "external_cached_tokens": 16
+    }
+  ],
+  "not_covered": [
+    "explicit GPU in-flight cancellation/forced end collision",
+    "background fairness",
+    "production workload",
+    "formal performance significance"
+  ]
+}

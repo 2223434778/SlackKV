@@ -1,0 +1,384 @@
+{
+  "kind": "single synthetic matched pair, not stable/significant benefit",
+  "actual_gpu_pool_tokens": [
+    18720
+  ],
+  "per_request": {
+    "long0": {
+      "m1_ttft_ms": 1043.949286,
+      "fair_ttft_ms": 372.826346,
+      "m1_source": [
+        {
+          "timestamp_monotonic": 81822.56821158,
+          "request_id": "cmpl-ac385b8474227b2e-0-b01943fd",
+          "session": "long0",
+          "local_cached_tokens": 0,
+          "external_cached_tokens": 0
+        }
+      ],
+      "fair_source": [
+        {
+          "timestamp_monotonic": 82006.347783797,
+          "request_id": "cmpl-b4747a8ae978b6d8-0-b4dc23b1",
+          "session": "long0",
+          "local_cached_tokens": 0,
+          "external_cached_tokens": 0
+        }
+      ],
+      "m1_transfer_delta": {
+        "GPU_to_CPU": null,
+        "CPU_to_GPU": null
+      },
+      "fair_transfer_delta": {
+        "GPU_to_CPU": null,
+        "CPU_to_GPU": null
+      }
+    },
+    "short0": {
+      "m1_ttft_ms": 45.058207,
+      "fair_ttft_ms": 46.772124,
+      "m1_source": [
+        {
+          "timestamp_monotonic": 81823.842764615,
+          "request_id": "cmpl-9d60d8d37f8ab417-0-9a3a29ff",
+          "session": "short0",
+          "local_cached_tokens": 0,
+          "external_cached_tokens": 0
+        }
+      ],
+      "fair_source": [
+        {
+          "timestamp_monotonic": 82006.95417249,
+          "request_id": "cmpl-b5506d28d1571caa-0-9d727dfc",
+          "session": "short0",
+          "local_cached_tokens": 0,
+          "external_cached_tokens": 0
+        }
+      ],
+      "m1_transfer_delta": {
+        "GPU_to_CPU": 29360128.0,
+        "CPU_to_GPU": null
+      },
+      "fair_transfer_delta": {
+        "GPU_to_CPU": 29360128.0,
+        "CPU_to_GPU": null
+      }
+    },
+    "pressure0": {
+      "m1_ttft_ms": 743.786972,
+      "fair_ttft_ms": 739.114085,
+      "m1_source": [
+        {
+          "timestamp_monotonic": 81824.157429216,
+          "request_id": "cmpl-89463be6f776d6b5-0-8c67c65d",
+          "session": "pressure0",
+          "local_cached_tokens": 0,
+          "external_cached_tokens": 0
+        }
+      ],
+      "fair_source": [
+        {
+          "timestamp_monotonic": 82007.267055945,
+          "request_id": "cmpl-a73dea0c87325cdb-0-92b8750a",
+          "session": "pressure0",
+          "local_cached_tokens": 0,
+          "external_cached_tokens": 0
+        }
+      ],
+      "m1_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": null
+      },
+      "fair_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": null
+      }
+    },
+    "long1": {
+      "m1_ttft_ms": 81.770406,
+      "fair_ttft_ms": 188.825833,
+      "m1_source": [
+        {
+          "timestamp_monotonic": 81825.153951168,
+          "request_id": "cmpl-9e2288b5e1f03c42-0-8790eb73",
+          "session": "long1",
+          "local_cached_tokens": 1264,
+          "external_cached_tokens": 5904
+        }
+      ],
+      "fair_source": [
+        {
+          "timestamp_monotonic": 82008.261039338,
+          "request_id": "cmpl-ac00af2a97e21a3d-0-a6686ffd",
+          "session": "long1",
+          "local_cached_tokens": 1264,
+          "external_cached_tokens": 2832
+        }
+      ],
+      "m1_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": null
+      },
+      "fair_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": null
+      }
+    },
+    "short_end": {
+      "m1_ttft_ms": 22.049209,
+      "fair_ttft_ms": 23.155805,
+      "m1_source": [
+        {
+          "timestamp_monotonic": 81825.483958998,
+          "request_id": "cmpl-b8a522477f7f9289-0-a44bccdf",
+          "session": "short_end",
+          "local_cached_tokens": 0,
+          "external_cached_tokens": 1024
+        }
+      ],
+      "fair_source": [
+        {
+          "timestamp_monotonic": 82008.702033242,
+          "request_id": "cmpl-9731751f33599b1a-0-ba801e15",
+          "session": "short_end",
+          "local_cached_tokens": 0,
+          "external_cached_tokens": 1024
+        }
+      ],
+      "m1_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 29360128.0
+      },
+      "fair_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 29360128.0
+      }
+    },
+    "pressure1": {
+      "m1_ttft_ms": 745.977125,
+      "fair_ttft_ms": 745.343665,
+      "m1_source": [
+        {
+          "timestamp_monotonic": 81825.774906151,
+          "request_id": "cmpl-a9b16a2a7e6d1017-0-88236255",
+          "session": "pressure1",
+          "local_cached_tokens": 0,
+          "external_cached_tokens": 0
+        }
+      ],
+      "fair_source": [
+        {
+          "timestamp_monotonic": 82008.991195916,
+          "request_id": "cmpl-83188b557d859ca5-0-bdefecc5",
+          "session": "pressure1",
+          "local_cached_tokens": 0,
+          "external_cached_tokens": 0
+        }
+      ],
+      "m1_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 0.0
+      },
+      "fair_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 0.0
+      }
+    },
+    "long2_expand": {
+      "m1_ttft_ms": 82.290551,
+      "fair_ttft_ms": 188.241675,
+      "m1_source": [
+        {
+          "timestamp_monotonic": 81826.774545995,
+          "request_id": "cmpl-82835aac4329347e-0-a20320d4",
+          "session": "long2_expand",
+          "local_cached_tokens": 1264,
+          "external_cached_tokens": 5904
+        }
+      ],
+      "fair_source": [
+        {
+          "timestamp_monotonic": 82009.989466564,
+          "request_id": "cmpl-904d730592841a2c-0-acb0931e",
+          "session": "long2_expand",
+          "local_cached_tokens": 1264,
+          "external_cached_tokens": 2832
+        }
+      ],
+      "m1_transfer_delta": {
+        "GPU_to_CPU": 29360128.0,
+        "CPU_to_GPU": 169279488.0
+      },
+      "fair_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 81199104.0
+      }
+    },
+    "pressure2": {
+      "m1_ttft_ms": 747.341675,
+      "fair_ttft_ms": 741.419413,
+      "m1_source": [
+        {
+          "timestamp_monotonic": 81827.127407117,
+          "request_id": "cmpl-9b58d9023c1144a0-0-9cff2d96",
+          "session": "pressure2",
+          "local_cached_tokens": 0,
+          "external_cached_tokens": 0
+        }
+      ],
+      "fair_source": [
+        {
+          "timestamp_monotonic": 82010.441762273,
+          "request_id": "cmpl-a1533d18d4e3bd00-0-918d89ec",
+          "session": "pressure2",
+          "local_cached_tokens": 0,
+          "external_cached_tokens": 0
+        }
+      ],
+      "m1_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 0.0
+      },
+      "fair_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 0.0
+      }
+    },
+    "long3": {
+      "m1_ttft_ms": 42.471624,
+      "fair_ttft_ms": 186.121035,
+      "m1_source": [
+        {
+          "timestamp_monotonic": 81828.126950579,
+          "request_id": "cmpl-a14616f29cb630f6-0-87bb88a2",
+          "session": "long3",
+          "local_cached_tokens": 2304,
+          "external_cached_tokens": 5888
+        }
+      ],
+      "fair_source": [
+        {
+          "timestamp_monotonic": 82011.438038185,
+          "request_id": "cmpl-93edbc3517e307a6-0-a7173409",
+          "session": "long3",
+          "local_cached_tokens": 2304,
+          "external_cached_tokens": 1792
+        }
+      ],
+      "m1_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 168820736.0
+      },
+      "fair_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 51380224.0
+      }
+    },
+    "long_end": {
+      "m1_ttft_ms": 34.039103,
+      "fair_ttft_ms": 35.809589,
+      "m1_source": [
+        {
+          "timestamp_monotonic": 81828.423314617,
+          "request_id": "cmpl-aac67a39585d31ea-0-967fd9c0",
+          "session": "long_end",
+          "local_cached_tokens": 8176,
+          "external_cached_tokens": 16
+        }
+      ],
+      "fair_source": [
+        {
+          "timestamp_monotonic": 82011.885206227,
+          "request_id": "cmpl-993519571c715831-0-b4c1413b",
+          "session": "long_end",
+          "local_cached_tokens": 8176,
+          "external_cached_tokens": 0
+        }
+      ],
+      "m1_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 458752.0
+      },
+      "fair_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 0.0
+      }
+    },
+    "long_late": {
+      "m1_ttft_ms": 39.436508,
+      "fair_ttft_ms": 38.031602,
+      "m1_source": [
+        {
+          "timestamp_monotonic": 81828.713070828,
+          "request_id": "cmpl-b13d3841dce692e4-0-882ca053",
+          "session": "long_late",
+          "local_cached_tokens": 8176,
+          "external_cached_tokens": 0
+        }
+      ],
+      "fair_source": [
+        {
+          "timestamp_monotonic": 82012.174470294,
+          "request_id": "cmpl-99916486971deb47-0-b3212f8a",
+          "session": "long_late",
+          "local_cached_tokens": 8176,
+          "external_cached_tokens": 0
+        }
+      ],
+      "m1_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 0.0
+      },
+      "fair_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 0.0
+      }
+    },
+    "long_new": {
+      "m1_ttft_ms": 49.241847,
+      "fair_ttft_ms": 34.138241,
+      "m1_source": [
+        {
+          "timestamp_monotonic": 81829.009841218,
+          "request_id": "cmpl-aa46ad363b251420-0-b77fb338",
+          "session": "long_new",
+          "local_cached_tokens": 8176,
+          "external_cached_tokens": 0
+        }
+      ],
+      "fair_source": [
+        {
+          "timestamp_monotonic": 82012.47132364,
+          "request_id": "cmpl-89208f67953338cf-0-b20a69ca",
+          "session": "long_new",
+          "local_cached_tokens": 8176,
+          "external_cached_tokens": 0
+        }
+      ],
+      "m1_transfer_delta": {
+        "GPU_to_CPU": 234881024.0,
+        "CPU_to_GPU": 0.0
+      },
+      "fair_transfer_delta": {
+        "GPU_to_CPU": 0.0,
+        "CPU_to_GPU": 0.0
+      }
+    }
+  },
+  "session_e2e_ms": {
+    "m1": {
+      "long": 5990.152976,
+      "short": 1751.110882
+    },
+    "fair": {
+      "long": 5670.836891,
+      "short": 1857.234504
+    }
+  },
+  "median_session_e2e_change_percent": 2.831966539817876,
+  "dynamic_benefit_observed": "UNKNOWN",
+  "not_run_baselines": [
+    "Full/NoHost not evaluated by this comparison"
+  ],
+  "causal_note": "Compare long3 external depth/compute and store traffic; timing alone does not prove elasticity benefit."
+}

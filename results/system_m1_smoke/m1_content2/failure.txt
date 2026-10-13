@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/system-m1-code/experiments/system_m1/smoke.py", line 267, in execute
+    if proc.poll() is not None:raise RuntimeError('server exited before ready')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: server exited before ready

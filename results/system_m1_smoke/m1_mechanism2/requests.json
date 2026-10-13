@@ -1,0 +1,650 @@
+[
+  {
+    "label": "long0",
+    "key": "long",
+    "generation": 0,
+    "end": false,
+    "cold": false,
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "long0",
+      "slackkv_m1": {
+        "session_id": "long",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "cache_salt": null,
+    "length": 8192,
+    "prompt_sha256": "44762f99640eade0968aeebe32879d3d9108a62b901e8d51373477b5f6abe91c",
+    "issue_ns": 83262608717419,
+    "first_ns": 83262990310540,
+    "done_ns": 83263071626010,
+    "tokens": [
+      56648,
+      16,
+      22,
+      271,
+      73594,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      279,
+      25683,
+      18422
+    ],
+    "ttft_ms": 381.593121,
+    "e2e_ms": 462.908591,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": null,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 83262.633502917,
+        "request_id": "cmpl-a5e0ac59baf9ff39-0-b484284b",
+        "session": "long0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "short0",
+    "key": "short",
+    "generation": 0,
+    "end": false,
+    "cold": false,
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "short0",
+      "slackkv_m1": {
+        "session_id": "short",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "cache_salt": null,
+    "length": 1024,
+    "prompt_sha256": "4e0e49373cb74781277f3d8f226f727798085160a57fd70e64b1f1b43adb12a0",
+    "issue_ns": 83263242305194,
+    "first_ns": 83263290789703,
+    "done_ns": 83263377449946,
+    "tokens": [
+      54275,
+      66,
+      198,
+      1067,
+      366,
+      10345,
+      860,
+      1339,
+      396,
+      1887,
+      368,
+      341,
+      262,
+      442,
+      4615,
+      2038
+    ],
+    "ttft_ms": 48.484509,
+    "e2e_ms": 135.144752,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 29360128.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 83263.24798526,
+        "request_id": "cmpl-8a0f5e73bccd8443-0-b161c6e2",
+        "session": "short0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "pressure0",
+    "key": "pressure0",
+    "generation": 0,
+    "end": false,
+    "cold": false,
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure0",
+      "max_offload_tokens": 0
+    },
+    "cache_salt": null,
+    "length": 16384,
+    "prompt_sha256": "69ba9d878b40a87215b6c92d35f32da2912cad1cf26efc680e01f49b7b3fee2d",
+    "issue_ns": 83263547417740,
+    "first_ns": 83264283997546,
+    "done_ns": 83264374008391,
+    "tokens": [
+      356,
+      1479,
+      934,
+      16,
+      22,
+      271,
+      62056,
+      934,
+      16,
+      22,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      4486
+    ],
+    "ttft_ms": 736.579806,
+    "e2e_ms": 826.590651,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 83263.562077364,
+        "request_id": "cmpl-b3c106f4a9fa8ae5-0-8c58bfbd",
+        "session": "pressure0",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "long1",
+    "key": "long",
+    "generation": 0,
+    "end": false,
+    "cold": false,
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "long1",
+      "slackkv_m1": {
+        "session_id": "long",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "cache_salt": null,
+    "length": 8192,
+    "prompt_sha256": "44762f99640eade0968aeebe32879d3d9108a62b901e8d51373477b5f6abe91c",
+    "issue_ns": 83264545425741,
+    "first_ns": 83264626649772,
+    "done_ns": 83264714000847,
+    "tokens": [
+      56648,
+      16,
+      22,
+      271,
+      73594,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      279,
+      25683,
+      18422
+    ],
+    "ttft_ms": 81.224031,
+    "e2e_ms": 168.575106,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": null
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 83264.554790834,
+        "request_id": "cmpl-a12212c5a6d682ae-0-82870028",
+        "session": "long1",
+        "local_cached_tokens": 1264,
+        "external_cached_tokens": 5904
+      }
+    ]
+  },
+  {
+    "label": "short_end",
+    "key": "short",
+    "generation": 0,
+    "end": true,
+    "cold": false,
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "short_end",
+      "slackkv_m1": {
+        "session_id": "short",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "cache_salt": null,
+    "length": 1024,
+    "prompt_sha256": "4e0e49373cb74781277f3d8f226f727798085160a57fd70e64b1f1b43adb12a0",
+    "issue_ns": 83264884771136,
+    "first_ns": 83264906451288,
+    "done_ns": 83264993093952,
+    "tokens": [
+      54275,
+      66,
+      198,
+      1067,
+      366,
+      10345,
+      860,
+      1339,
+      396,
+      1887,
+      368,
+      341,
+      262,
+      442,
+      4615,
+      2038
+    ],
+    "ttft_ms": 21.680152,
+    "e2e_ms": 108.322816,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 29360128.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 83264.889386567,
+        "request_id": "cmpl-84eceb513149fa17-0-87ae1585",
+        "session": "short_end",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 1024
+      }
+    ]
+  },
+  {
+    "label": "pressure1",
+    "key": "pressure1",
+    "generation": 0,
+    "end": false,
+    "cold": false,
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure1",
+      "max_offload_tokens": 0
+    },
+    "cache_salt": null,
+    "length": 16384,
+    "prompt_sha256": "f6c2aa7fde6949d6ff57a5f607f362832eab0459f3e359ae1cf0cfb148ac1d47",
+    "issue_ns": 83265164520791,
+    "first_ns": 83265902698520,
+    "done_ns": 83265990447352,
+    "tokens": [
+      356,
+      1479,
+      934,
+      16,
+      22,
+      271,
+      73594,
+      151643,
+      33975,
+      25,
+      358,
+      2776,
+      14589,
+      11,
+      714,
+      358
+    ],
+    "ttft_ms": 738.177729,
+    "e2e_ms": 825.926561,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 83265.17950184,
+        "request_id": "cmpl-b68adfc54b5d401d-0-ba94d368",
+        "session": "pressure1",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "long2_expand",
+    "key": "long",
+    "generation": 0,
+    "end": false,
+    "cold": false,
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "long2_expand",
+      "slackkv_m1": {
+        "session_id": "long",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "cache_salt": null,
+    "length": 8192,
+    "prompt_sha256": "44762f99640eade0968aeebe32879d3d9108a62b901e8d51373477b5f6abe91c",
+    "issue_ns": 83266163372396,
+    "first_ns": 83266244293864,
+    "done_ns": 83266330990940,
+    "tokens": [
+      56648,
+      16,
+      22,
+      271,
+      73594,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      279,
+      25683,
+      18422
+    ],
+    "ttft_ms": 80.921468,
+    "e2e_ms": 167.618544,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 29360128.0,
+      "CPU_to_GPU": 169279488.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 83266.172378124,
+        "request_id": "cmpl-9d1bc5c884c09c30-0-90756d11",
+        "session": "long2_expand",
+        "local_cached_tokens": 1264,
+        "external_cached_tokens": 5904
+      }
+    ]
+  },
+  {
+    "label": "pressure2",
+    "key": "pressure2",
+    "generation": 0,
+    "end": false,
+    "cold": false,
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "pressure2",
+      "max_offload_tokens": 0
+    },
+    "cache_salt": null,
+    "length": 16384,
+    "prompt_sha256": "2f56b0299e973dd3b2829ed949588ba4c425086c3893b3dc3d007be4b54add84",
+    "issue_ns": 83266501867876,
+    "first_ns": 83267242043117,
+    "done_ns": 83267330374010,
+    "tokens": [
+      356,
+      1479,
+      934,
+      16,
+      22,
+      271,
+      73594,
+      151643,
+      33975,
+      25,
+      358,
+      2776,
+      14589,
+      11,
+      714,
+      358
+    ],
+    "ttft_ms": 740.175241,
+    "e2e_ms": 828.506134,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 83266.517011568,
+        "request_id": "cmpl-a6029abd440e844e-0-88a4d73c",
+        "session": "pressure2",
+        "local_cached_tokens": 0,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "long3",
+    "key": "long",
+    "generation": 0,
+    "end": false,
+    "cold": false,
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "long3",
+      "slackkv_m1": {
+        "session_id": "long",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "cache_salt": null,
+    "length": 8192,
+    "prompt_sha256": "44762f99640eade0968aeebe32879d3d9108a62b901e8d51373477b5f6abe91c",
+    "issue_ns": 83267503573694,
+    "first_ns": 83267546549132,
+    "done_ns": 83267631475324,
+    "tokens": [
+      56648,
+      16,
+      22,
+      271,
+      73594,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      279,
+      25683,
+      18422
+    ],
+    "ttft_ms": 42.975438,
+    "e2e_ms": 127.90163,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 168820736.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 83267.515361375,
+        "request_id": "cmpl-ab918605afcac363-0-8aaca157",
+        "session": "long3",
+        "local_cached_tokens": 2304,
+        "external_cached_tokens": 5888
+      }
+    ]
+  },
+  {
+    "label": "long_end",
+    "key": "long",
+    "generation": 0,
+    "end": true,
+    "cold": false,
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "long_end",
+      "slackkv_m1": {
+        "session_id": "long",
+        "generation": 0,
+        "end_after_request": true
+      }
+    },
+    "cache_salt": null,
+    "length": 8192,
+    "prompt_sha256": "44762f99640eade0968aeebe32879d3d9108a62b901e8d51373477b5f6abe91c",
+    "issue_ns": 83267803002922,
+    "first_ns": 83267836273852,
+    "done_ns": 83267922657886,
+    "tokens": [
+      56648,
+      16,
+      22,
+      271,
+      73594,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      279,
+      25683,
+      18422
+    ],
+    "ttft_ms": 33.27093,
+    "e2e_ms": 119.654964,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 458752.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 83267.813539454,
+        "request_id": "cmpl-bec349838813910b-0-aeccb110",
+        "session": "long_end",
+        "local_cached_tokens": 8176,
+        "external_cached_tokens": 16
+      }
+    ]
+  },
+  {
+    "label": "long_late",
+    "key": "long",
+    "generation": 0,
+    "end": false,
+    "cold": false,
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "long_late",
+      "slackkv_m1": {
+        "session_id": "long",
+        "generation": 0,
+        "end_after_request": false
+      }
+    },
+    "cache_salt": null,
+    "length": 8192,
+    "prompt_sha256": "44762f99640eade0968aeebe32879d3d9108a62b901e8d51373477b5f6abe91c",
+    "issue_ns": 83268096236446,
+    "first_ns": 83268137165002,
+    "done_ns": 83268222137815,
+    "tokens": [
+      56648,
+      16,
+      22,
+      271,
+      73594,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      279,
+      25683,
+      18422
+    ],
+    "ttft_ms": 40.928556,
+    "e2e_ms": 125.901369,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 0.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 83268.107266024,
+        "request_id": "cmpl-b247101f05fa24d9-0-b01d20c4",
+        "session": "long_late",
+        "local_cached_tokens": 8176,
+        "external_cached_tokens": 0
+      }
+    ]
+  },
+  {
+    "label": "long_new",
+    "key": "long",
+    "generation": 1,
+    "end": true,
+    "cold": false,
+    "params": {
+      "slackkv_trace_resume": true,
+      "slackkv_session": "long_new",
+      "slackkv_m1": {
+        "session_id": "long",
+        "generation": 1,
+        "end_after_request": true
+      }
+    },
+    "cache_salt": null,
+    "length": 8192,
+    "prompt_sha256": "44762f99640eade0968aeebe32879d3d9108a62b901e8d51373477b5f6abe91c",
+    "issue_ns": 83268395480362,
+    "first_ns": 83268438754105,
+    "done_ns": 83268524327797,
+    "tokens": [
+      56648,
+      16,
+      22,
+      271,
+      73594,
+      151643,
+      33975,
+      25,
+      2980,
+      498,
+      3410,
+      752,
+      448,
+      279,
+      25683,
+      18422
+    ],
+    "ttft_ms": 43.273743,
+    "e2e_ms": 128.847435,
+    "transfer_bytes_delta": {
+      "GPU_to_CPU": 234881024.0,
+      "CPU_to_GPU": 0.0
+    },
+    "source_trace": [
+      {
+        "timestamp_monotonic": 83268.405131689,
+        "request_id": "cmpl-9a114abc9f84159f-0-95206145",
+        "session": "long_new",
+        "local_cached_tokens": 8176,
+        "external_cached_tokens": 0
+      }
+    ]
+  }
+]

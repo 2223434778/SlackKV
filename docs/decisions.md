@@ -245,3 +245,6 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 
 
 - 2026-10-13 M1终止契约修正：每session只保存latest generation及其终止bit；终止有效期独立于物理Member GC/cache reset。同代迟到请求仍走native合法读取/正常计算但停止optional store；更高代显式重启；重复/旧end不影响新代，未见/未来end no-op。原因是92e65cb在collect后丢失结束状态，新旧控制器/native回归已复现并修复。不采用逐代永久Member、TTL或提前丢弃DMA完成。smoke固定账本根/全policy共享额度、工作及清理计费，内容与性能模式分开；资源可行性先CPU核对，512MiB GPU KV配18432 max length，不沿用不适配的32K limit。M2/M3不启动，GPU内容和动态收益无实测，需新数值授权。
+
+
+- 2026-10-13 M1 GPU闭环决策：修复owned服务器PATH、补齐禁用的继承scheduler模块依赖、使用vllm logger层级保证trace可见；没有修改旧数据或KV策略来强行通过。GPU内容gate只承诺本输入与正常结束路径，取消/强制交错及bitwise数据未全面验证。第一M1/Fair整体负结果保留，因首真实请求额外成本做一次反序复验并补NoHostrepeat，仍保持全部首请求计入，不给复杂SOTA/稳定性能结论。全协议M1额外224MiB terminal无重用写入是可优化候选而非本次成果；会话阶段和全协议流量分列，不换主指标隐藏成本。M1可进入下一次受控strongFull比较，先统一预注册warmup和更强身份oracle/共享prefix，再决定压力反馈或预取；M2/M3现在不启动。

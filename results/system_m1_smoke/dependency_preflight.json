@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "cuda_initialized": false,
+  "dependencies": {
+    "experiments/autonomous_admission/backfill.py": "7b074b55b2a1ef412b43dd5483cf2dabbcc3a1f16053222784c784d8caa66726",
+    "experiments/autonomous_capacity/continuation.py": "fc020b91fbaa45649291df5ec3a50828c195978d4dcbda008fe55605a80fab7f",
+    "experiments/autonomous_capacity/epochs.py": "6d9f39392400ffa566eb13df00d0bce6ff2695e8803e986c6d593f2160f6cac3"
+  }
+}

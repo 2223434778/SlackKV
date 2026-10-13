@@ -1,0 +1,17 @@
+{
+  "BUG_FIXED": "PASS",
+  "CPU_NATIVE_PASS": "PASS_16_GROUPS",
+  "GPU_CONTENT_PASS": "PASS_ONE_RESTORED_INPUT_16_TOKEN_ORACLE",
+  "DYNAMIC_MECHANISM_OBSERVED": "YES_TARGET_448_TO_512_ACTUALLY_STORED",
+  "DYNAMIC_BENEFIT_OBSERVED": "MIXED_NOT_STABLE_OVERALL",
+  "additional_gpu_hours": 0.13476591384806347,
+  "approved_additional_gpu_hours": 0.5,
+  "continuous_gpu_hours": 4.326753933575591,
+  "gpu_runs": 11,
+  "failed_runs": 3,
+  "content_valid_runs": 1,
+  "matched_performance_runs": 7,
+  "cleanup_verified_all": true,
+  "gpu_work_stopped": true,
+  "M2_M3": "DISABLED"
+}
