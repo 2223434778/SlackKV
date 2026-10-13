@@ -1,0 +1,104 @@
+{
+  "reviewed_commit": "375c28e0502d63281dcd562a0950e81b8c53573b",
+  "runs": {
+    "m1": {
+      "session_e2e_ms": {
+        "a": 8547.921071,
+        "b": 7677.735777,
+        "s": 2291.635427,
+        "d": 2791.825046
+      },
+      "median_ms": 5234.7804115,
+      "sequence_ms": 8547.921071,
+      "resume_n": 10,
+      "resume_p95_ms": 252.168231,
+      "sources": {
+        "local_compute": 95968.0,
+        "local_cache_hit": 12544.0,
+        "external_kv_transfer": 21792.0
+      },
+      "traffic_mib": {
+        "GPU_to_CPU": 476.0,
+        "CPU_to_GPU": 595.875
+      },
+      "terminal_writes_zero": true,
+      "first_e2e_ms": 402.303645
+    },
+    "fair": {
+      "session_e2e_ms": {
+        "a": 8694.036981,
+        "b": 7829.914633,
+        "s": 2371.077176,
+        "d": 2830.552964
+      },
+      "median_ms": 5330.2337985,
+      "sequence_ms": 8694.036981,
+      "resume_n": 10,
+      "resume_p95_ms": 262.407075,
+      "sources": {
+        "local_compute": 102400.0,
+        "local_cache_hit": 12544.0,
+        "external_kv_transfer": 15360.0
+      },
+      "traffic_mib": {
+        "GPU_to_CPU": 196.0,
+        "CPU_to_GPU": 420.0
+      },
+      "terminal_writes_zero": true,
+      "first_e2e_ms": 401.031607
+    },
+    "full": {
+      "session_e2e_ms": {
+        "a": 9139.905045,
+        "b": 8275.170925,
+        "s": 2485.885896,
+        "d": 3030.451104
+      },
+      "median_ms": 5652.8110145,
+      "sequence_ms": 9139.905045,
+      "resume_n": 10,
+      "resume_p95_ms": 345.561681,
+      "sources": {
+        "local_compute": 116736.0,
+        "local_cache_hit": 12544.0,
+        "external_kv_transfer": 1024.0
+      },
+      "traffic_mib": {
+        "GPU_to_CPU": 1641.5,
+        "CPU_to_GPU": 28.0
+      },
+      "terminal_writes_zero": true,
+      "first_e2e_ms": 405.264604
+    }
+  },
+  "changes_percent": {
+    "fair": {
+      "median": -1.7907917477627766,
+      "sequence": -1.6806451401037426,
+      "total_dma": 74.00568181818181
+    },
+    "full": {
+      "median": -7.3950924934110045,
+      "sequence": -6.476916019207934,
+      "total_dma": -35.79664570230609
+    }
+  },
+  "content": {
+    "two_distinct_oracles_match": true,
+    "state_snapshots": 63,
+    "final_free_blocks": 512,
+    "new_terminal_d2h": 0
+  },
+  "performance_state_logging": {
+    "enabled": true,
+    "m1_snapshots": 57,
+    "note": "M1 detailed state logging is enabled in this performance screen; Fair/Full do not have the M1 state serializer. Cost not measured."
+  },
+  "scope": "Independent CPU recomputation of three runs: inputs/work hashes, raw timings, start/end counters, source traces, terminal transfers; two archived content oracles and state invariants. No new GPU or full native/test/server-log/manifest rerun.",
+  "terminal_membership_counterexample": {
+    "a_target_before": 512,
+    "a_target_during_terminal_join": 256,
+    "a_target_after_terminal_end": 512,
+    "scope": "Logical target reproducer; actual terminal metadata handled in native.prepare_store only, after observe has called reclaim_tails. No native/GPU replay of this new counterexample."
+  }
+}

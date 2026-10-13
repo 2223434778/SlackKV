@@ -1,5 +1,19 @@
 # SlackKV Project Rules
 
+## Current M1 contention review — 2026-10-13
+
+Read `docs/RESEARCH_REVIEW_M1_NET_20261013.md` for review of `375c28e`.
+Accept the independent-prefix M1 implementation milestone and the bounded positive
+screen versus Full; dynamic M1 remains optional beside StaticFair. Next implement
+the small terminal-retention-demand correction and limited shared system-prefix /
+private-tail support, with physical deduplication and safe reference settlement.
+Do not tune the existing sequence or expand M2/M3. Keep implementation decisions
+autonomous within these contracts and deliver code plus scoped validation.
+The existing 0.5 GPU-hour M1 allowance has consumed 0.21011529948083787 GPU-hours;
+keep its original scope, ledger and limits. This review adds no numeric allowance.
+The earlier review sections below are historical handoffs.
+
+
 ## Current M1 GPU review — 2026-10-13
 
 Read `docs/RESEARCH_REVIEW_M1_GPU_20261013.md` for the latest review of `82bf363`.

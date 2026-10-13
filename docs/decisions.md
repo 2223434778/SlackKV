@@ -254,3 +254,6 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 
 
 - 2026-10-13 M1 bounded net-benefit：采用显式、默认关闭的terminal optional-store gate；在完整观察/读取后仅拒绝未来新增写入，仍按真正完成结束。Full/StaticFair提供同信号native gate，避免通用优化归因于动态max-min。固定五形状非正式输入预热，不清GPU，首正式请求完整计入。单次四会话资源竞争中M1/Fair E2E median仅−1.79%而D2H多280MiB，M1/Full−7.40%且Full host有效恢复低；故保留M1 opt-in，不默认替换StaticFair，不扩JIT或大矩阵。共享覆盖优先于M2/M3；未测并发公平/生产/SLO和新NoHost不作收益主张。失败oracle和目录shadow bug均保留。详见SLACKKV_SYSTEM_M1_NET_BENEFIT_20261013.md；沿用0.5授权及原锁/账本，累计0.21011529948083787GPUh，未扩预算。
+
+
+- 2026-10-13 独立审查375c28e：CPU复算三性能run输入哈希、warmup、原始计时、起止prom及双marker内容记录，M1/Full median−7.3951%、总DMA−35.7966%；M1/Fair median−1.7908%、总DMA+74.0057%，认可独立前缀M1工程里程碑和本筛选正结果，动态仍opt-in。独立controller复现terminal-only加入使A目标512→256→512；结合native先observe/reclaim后禁写的路径，要求补齐不新增未来保留需求语义，未执行该反例native/GPU。发现性能trace_states=true/M1有57详细快照，开销未测，下次性能测量调整，不为此单独大复验。下一实现增量优先有限共享system-prefix+私有后缀的单次物理计费/安全释放，M2/M3关闭，当前场景不再追参。审查新增GPU0，未重跑完整服务器测试或manifest；既有0.5授权累计0.21011529948083787不重置。详见docs/RESEARCH_REVIEW_M1_NET_20261013.md，results/research_review_m1_net_20261013/spotcheck.json。
