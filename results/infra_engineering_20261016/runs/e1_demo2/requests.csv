@@ -1,0 +1,7 @@
+session_id,generation,request_id,ttft_first_content_ms,response_ms,first_content_to_end_mean_ms,prompt_tokens,completion_tokens
+maple,0,chatcmpl-8d6d16c54c579b06,94.078801,173.620114,5.681522357142857,38,15
+cedar,0,chatcmpl-a58d6c9e806ddb86,95.310726,197.037998,6.3579545,38,17
+maple,0,chatcmpl-95591a105a4095f5,24.948798,150.403793,5.974047380952381,117,22
+cedar,0,chatcmpl-a65b8e0c51ddcace,25.289165,149.051083,6.1880959,118,21
+maple,0,chatcmpl-b410f20a0c2755cc,23.705482,183.548474,5.920110814814815,166,28
+cedar,0,chatcmpl-b79d11cb4afbee18,25.126631,171.627061,5.8600172,166,26

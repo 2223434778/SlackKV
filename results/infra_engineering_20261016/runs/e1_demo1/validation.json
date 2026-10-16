@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "requests": 6,
+  "sessions": 2,
+  "history": "actual assistant text included next turn",
+  "tool": "client-selected local JSON lookup",
+  "physical_close": "terminal skips new optional stores; physical cached data follows native LRU"
+}

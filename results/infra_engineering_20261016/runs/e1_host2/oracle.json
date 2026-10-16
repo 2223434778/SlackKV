@@ -1,0 +1,130 @@
+{
+  "store": {
+    "text": "CEDAR17",
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645
+    ],
+    "usage": {
+      "prompt_tokens": 8192,
+      "total_tokens": 8197,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null
+    },
+    "finish_reason": "stop",
+    "issue_ns": 354409591871277,
+    "first_ns": null,
+    "done_ns": 354410062035382,
+    "request_id": "cmpl-87954ff28f9d7300"
+  },
+  "pressure": {
+    "text": ". Unrelated shipping ledger. Unrelated shipping ledger. Unrelated shipping ledger.",
+    "tokens": [
+      13,
+      1230,
+      9721,
+      11601,
+      46933,
+      13,
+      1230,
+      9721,
+      11601,
+      46933,
+      13,
+      1230,
+      9721,
+      11601,
+      46933,
+      13
+    ],
+    "usage": {
+      "prompt_tokens": 16384,
+      "total_tokens": 16400,
+      "completion_tokens": 16,
+      "prompt_tokens_details": null
+    },
+    "finish_reason": "length",
+    "issue_ns": 354410064456191,
+    "first_ns": null,
+    "done_ns": 354411356210256,
+    "request_id": "cmpl-aac97223d512c34a"
+  },
+  "resumed": {
+    "text": "CEDAR17",
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645
+    ],
+    "usage": {
+      "prompt_tokens": 8192,
+      "total_tokens": 8197,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null
+    },
+    "finish_reason": "stop",
+    "issue_ns": 354411367625850,
+    "first_ns": null,
+    "done_ns": 354411679607934,
+    "request_id": "cmpl-ae121da2b9f9de3b"
+  },
+  "cold": {
+    "text": "CEDAR17",
+    "tokens": [
+      62056,
+      934,
+      16,
+      22,
+      151645
+    ],
+    "usage": {
+      "prompt_tokens": 8192,
+      "total_tokens": 8197,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null
+    },
+    "finish_reason": "stop",
+    "issue_ns": 354411690558018,
+    "first_ns": null,
+    "done_ns": 354412138995402,
+    "request_id": "cmpl-8ea21fba319e2f5b"
+  },
+  "prompt_tokens": 8192,
+  "retained_cap_tokens": 4096,
+  "config": {
+    "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "runtime": "/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/infra-native-0fc695fc6",
+    "policy": "fair",
+    "gpu": 0,
+    "host": "127.0.0.1",
+    "port": 8000,
+    "gpu_kv_bytes": 536870912,
+    "host_kv_bytes": 234881024,
+    "max_model_len": 18432,
+    "session_slots": 2,
+    "max_output_tokens": 128,
+    "request_timeout_seconds": 120,
+    "ready_timeout_seconds": 240,
+    "max_run_seconds": 600,
+    "batch_invariant": true
+  },
+  "scope": "controlled pressure/content; not real-chat performance",
+  "physical_evidence": {
+    "external_resume_tokens": 1792.0,
+    "h2d_resume_bytes": 51380224.0,
+    "d2h_total_bytes": 117440512.0,
+    "initial_h2d_label": null,
+    "initial_zero_proof": true,
+    "qualification": "isolated fresh native service, no prefetch, zero external source before first restore; no generic absent-label zero substitution"
+  },
+  "cold_sources": {
+    "local_compute": 8192.0,
+    "local_cache_hit": 0.0,
+    "external_kv_transfer": 0.0
+  }
+}

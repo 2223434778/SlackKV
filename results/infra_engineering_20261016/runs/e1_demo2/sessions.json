@@ -1,0 +1,76 @@
+[
+  {
+    "session_id": "cedar",
+    "generation": 0,
+    "state": "CLOSED",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a concise helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "我们正在检查cedar项目。请用一句话说明你会根据提供的项目资料回答。"
+      },
+      {
+        "role": "assistant",
+        "content": "我会根据提供的 Cedar 项目的具体资料来回答相关问题或提供解决方案。"
+      },
+      {
+        "role": "user",
+        "content": "客户端本地工具查到资料：{\"project\": \"Cedar\", \"owner\": \"Lin\", \"release\": \"2026-10-20\", \"status\": \"testing\"}。项目负责人和发布日期是什么？请简短回答。"
+      },
+      {
+        "role": "assistant",
+        "content": "项目负责人是 Lin，发布日期是 2026-10-20。"
+      },
+      {
+        "role": "user",
+        "content": "根据刚才的资料，用一句话总结这个项目的负责人、发布日期和当前状态。"
+      },
+      {
+        "role": "assistant",
+        "content": "项目负责人是 Lin，发布日期是 2026-10-20，当前状态为测试。"
+      }
+    ],
+    "started_ns": 354580035288668,
+    "done_ns": 354580557187270
+  },
+  {
+    "session_id": "maple",
+    "generation": 0,
+    "state": "CLOSED",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a concise helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "我们正在检查maple项目。请用一句话说明你会根据提供的项目资料回答。"
+      },
+      {
+        "role": "assistant",
+        "content": "我会根据提供的Maple项目的资料，提供详细的解答和信息。"
+      },
+      {
+        "role": "user",
+        "content": "客户端本地工具查到资料：{\"project\": \"Maple\", \"owner\": \"Chen\", \"release\": \"2026-10-24\", \"status\": \"review\"}。项目负责人和发布日期是什么？请简短回答。"
+      },
+      {
+        "role": "assistant",
+        "content": "项目负责人是Chen，发布日期是2026年10月24日。"
+      },
+      {
+        "role": "user",
+        "content": "根据刚才的资料，用一句话总结这个项目的负责人、发布日期和当前状态。"
+      },
+      {
+        "role": "assistant",
+        "content": "项目负责人是Chen，发布日期是2026年10月24日，当前状态为待审查。"
+      }
+    ],
+    "started_ns": 354580034085072,
+    "done_ns": 354580545654526
+  }
+]

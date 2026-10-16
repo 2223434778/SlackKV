@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "cpu_tests": 19,
+  "native_cpu_contracts": 6,
+  "new_gpu_hours": 0.05247793131362414,
+  "continuous_gpu_hours": 4.623355099889771,
+  "run_statuses": {
+    "e1_demo1": "COMPLETE",
+    "e1_demo2": "COMPLETE",
+    "e1_host1": "FAILED",
+    "e1_host2": "COMPLETE",
+    "e1_host3": "COMPLETE"
+  },
+  "archived_raw_files": 102,
+  "scope": "real-chat + discriminative host oracle; Full/NoHost GPU and strict benchmark not yet tested",
+  "post_gpu_portability_fix": "explicit UTF8 reads; Linux executed source preserved"
+}

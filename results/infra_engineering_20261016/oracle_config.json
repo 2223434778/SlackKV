@@ -1,0 +1,17 @@
+{
+  "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "runtime": "/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/infra-native-0fc695fc6",
+  "policy": "fair",
+  "gpu": 0,
+  "host": "127.0.0.1",
+  "port": 8000,
+  "gpu_kv_bytes": 536870912,
+  "host_kv_bytes": 234881024,
+  "max_model_len": 18432,
+  "session_slots": 2,
+  "max_output_tokens": 128,
+  "request_timeout_seconds": 120,
+  "ready_timeout_seconds": 240,
+  "max_run_seconds": 600,
+  "batch_invariant": true
+}

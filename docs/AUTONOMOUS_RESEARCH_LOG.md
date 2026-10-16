@@ -229,3 +229,6 @@
 
 
 - 2026-10-16 infra_engineering_handoff：用户明确转为面向 infra 实习的完整可运行项目。新增 docs/INFRA_ENGINEERING_HANDOFF_20261016.md 并更新 AGENTS.md 当前入口；StaticFair 工程主线、NoHost/Full 对照、M1 opt-in，不继续 M2/M3。E1 统一启动/真实多轮/报告，E2 可靠性与观测/小型对比，E3 复现与面试讲解。任务允许范围内自主实现，E1 工程 smoke 自设0.5GPUh上限、单次30分钟含清理，新账本累计历史而不挪用旧专用余额。此次仅文档交接，GPU新增0，没有已实现或已测工程版本的声明。旧证据与配置不覆盖。
+
+
+- 2026-10-16 infra E1（d38e1b8工程交接）：固定上游0fc695fc6完整Python树+匹配编译库隔离overlay，原生max_offload_tokens+薄terminal spec；CLI/配置/doctor/owned进程/固定槽位/真实三轮历史/本地JSON工具/报告实现。18CPU回归、6native CPU契约PASS、wheel构建成功。两真实demo，各2session×3turn且有交叠；最终host3 marker3018:3023处于host2304:4096，H2D49MiB/D2H112MiB、1792external，独立cold8192compute/零命中、完整IDs一致。host1失败为HF5 BatchEncoding长度误判，修正/预检提前并保留失败；host2弱marker检查不作为最终敏感验证。102原文件校验。5GPUrun累计0.052477931313624139/0.5工程GPUh、历史4.6233550998897712，含启动/清理、全部cleanup，未挪旧预算/未改环境。独立close仅逻辑；单Pool限制，不宣称网关/共享/生产SLA。报告docs/INFRA_E1_STATUS_20261016.md，数据results/infra_engineering_20261016。先提交E1，再按已授权交接继续E2/E3。

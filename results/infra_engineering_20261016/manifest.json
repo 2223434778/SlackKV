@@ -1,0 +1,716 @@
+[
+  {
+    "source": "authorization.json",
+    "stored": "authorization.json",
+    "bytes": 282,
+    "sha256": "85dd18bbda095e449bb49ceb4294a1985376d6e1c1f74150e3e39d50c552cecd",
+    "stored_sha256": "85dd18bbda095e449bb49ceb4294a1985376d6e1c1f74150e3e39d50c552cecd"
+  },
+  {
+    "source": "demo_config.json",
+    "stored": "demo_config.json",
+    "bytes": 542,
+    "sha256": "af5df6056c5ad0916b7a0d589402f3e5630649eea7fe5e6e7aeb431f7614b922",
+    "stored_sha256": "af5df6056c5ad0916b7a0d589402f3e5630649eea7fe5e6e7aeb431f7614b922"
+  },
+  {
+    "source": "doctor.json",
+    "stored": "doctor.json",
+    "bytes": 1931,
+    "sha256": "96147ddc8a0edc69d0b50dcf9b4692455be3086d87314df9e0a6ec200847421c",
+    "stored_sha256": "96147ddc8a0edc69d0b50dcf9b4692455be3086d87314df9e0a6ec200847421c"
+  },
+  {
+    "source": "doctor_verified.json",
+    "stored": "doctor_verified.json",
+    "bytes": 1569,
+    "sha256": "100e3edc7c54a4f35ca43224c973281d2328c4beee487130b3f4f0a8d133147f",
+    "stored_sha256": "100e3edc7c54a4f35ca43224c973281d2328c4beee487130b3f4f0a8d133147f"
+  },
+  {
+    "source": "doctor_verified_stderr.log",
+    "stored": "doctor_verified_stderr.log.gz",
+    "bytes": 362,
+    "sha256": "d4af2fa72285a664facff14ef3fd7570966802dbd554383a1421c7129363355f",
+    "stored_sha256": "b7b24b291e31eac1c40cb6b97876beb5fc1bb2de2b6eae5fa6e835499cf05921"
+  },
+  {
+    "source": "e1_demo1_launcher.log",
+    "stored": "e1_demo1_launcher.log.gz",
+    "bytes": 444,
+    "sha256": "57c48c85e157457a09395318b86c50621336c2f65c491f04469ea6ce29ddce39",
+    "stored_sha256": "0954677f5888c0d7f0cc8826fa4c38b1162362c9281935ed975c43a32dbc6708"
+  },
+  {
+    "source": "e1_demo2_launcher.log",
+    "stored": "e1_demo2_launcher.log.gz",
+    "bytes": 444,
+    "sha256": "6febd9db31be5796b05a1864772d4c4fc13f92b3a17df1809c7e31d069e5a52a",
+    "stored_sha256": "292d02974c36749797b9b3e7655a2639ea94c215066f5ef3de80328d49e578cf"
+  },
+  {
+    "source": "e1_finish_launch.json",
+    "stored": "e1_finish_launch.json",
+    "bytes": 931,
+    "sha256": "643b7876289b59563f0d71ece95133d6ac5b2daeb69e848a6372db0a16fdefd5",
+    "stored_sha256": "643b7876289b59563f0d71ece95133d6ac5b2daeb69e848a6372db0a16fdefd5"
+  },
+  {
+    "source": "e1_finish_launcher.log",
+    "stored": "e1_finish_launcher.log.gz",
+    "bytes": 362,
+    "sha256": "d4af2fa72285a664facff14ef3fd7570966802dbd554383a1421c7129363355f",
+    "stored_sha256": "b7b24b291e31eac1c40cb6b97876beb5fc1bb2de2b6eae5fa6e835499cf05921"
+  },
+  {
+    "source": "e1_host1_launcher.log",
+    "stored": "e1_host1_launcher.log.gz",
+    "bytes": 456,
+    "sha256": "93283cb0ad61c8c21029beb043fda1b388f9f8aa45d24cbe5f2770f40e974b6a",
+    "stored_sha256": "b9719f64d456c134dc22e07fee1f474358c8d16ff31bd5721ea9b1088db93446"
+  },
+  {
+    "source": "e1_host2_launcher.log",
+    "stored": "e1_host2_launcher.log.gz",
+    "bytes": 444,
+    "sha256": "ff92f2cf656aba2152ee0b5d5b2f9d0903c729a587f8f7d83f4140cea0240a5d",
+    "stored_sha256": "87ac30ba77e04f15967177287df308d676547605f2b8812d53cf463b4ccf0893"
+  },
+  {
+    "source": "e1_host3_launcher.log",
+    "stored": "e1_host3_launcher.log.gz",
+    "bytes": 444,
+    "sha256": "68533d98a863783e27ca87a2ac8e6349584e7c128661de4226151fe9753a8cec",
+    "stored_sha256": "6fa43838bd5987bf7c131c6dbc15be1ab6bd6ee903a6c0ab0d7fd7f768252410"
+  },
+  {
+    "source": "native_audit_e1.log",
+    "stored": "native_audit_e1.log.gz",
+    "bytes": 830,
+    "sha256": "fcf58b4afbfcc57299a607430d75f27a65a2852acd1a9d6b36a8ee1ba2fdd1a2",
+    "stored_sha256": "33e5c5cd8ce7d7fc39062853ee379ec3b27ce8e90729ef4b0090707fcf42579d"
+  },
+  {
+    "source": "oracle_config.json",
+    "stored": "oracle_config.json",
+    "bytes": 541,
+    "sha256": "2959559ad6d3be8452d5b1de08df0b694c8b91f2355289ebec1eaa4e17c188d7",
+    "stored_sha256": "2959559ad6d3be8452d5b1de08df0b694c8b91f2355289ebec1eaa4e17c188d7"
+  },
+  {
+    "source": "provenance/e1_host2_source/configs/local.json",
+    "stored": "provenance/e1_host2_source/configs/local.json",
+    "bytes": 395,
+    "sha256": "a3a0f4be6768ed0af16fb14fdedd79965f85346219fa52edeca5f64f43f410fe",
+    "stored_sha256": "a3a0f4be6768ed0af16fb14fdedd79965f85346219fa52edeca5f64f43f410fe"
+  },
+  {
+    "source": "provenance/e1_host2_source/pyproject.toml",
+    "stored": "provenance/e1_host2_source/pyproject.toml",
+    "bytes": 492,
+    "sha256": "b5a9fad9ff7fb69d4fa2b0edc1b2326096b9d0a6da67531de5dfade4fedfafe9",
+    "stored_sha256": "b5a9fad9ff7fb69d4fa2b0edc1b2326096b9d0a6da67531de5dfade4fedfafe9"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/__init__.py",
+    "stored": "provenance/e1_host2_source/slackkv/__init__.py",
+    "bytes": 35,
+    "sha256": "453cfb106aec5a3c3a2c22fd412dba8172ca43f3f7c626a800226e77458dc6fd",
+    "stored_sha256": "453cfb106aec5a3c3a2c22fd412dba8172ca43f3f7c626a800226e77458dc6fd"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/__init__.py",
+    "stored": "provenance/e1_host2_source/slackkv/infra/__init__.py",
+    "bytes": 78,
+    "sha256": "89530cb07b601ca876cf1f8f17d769b74e8482536102d55039a8e7a6bed2c743",
+    "stored_sha256": "89530cb07b601ca876cf1f8f17d769b74e8482536102d55039a8e7a6bed2c743"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/__main__.py",
+    "stored": "provenance/e1_host2_source/slackkv/infra/__main__.py",
+    "bytes": 43,
+    "sha256": "a101bf6819bccba23f55b58e7cf1d56d4352c63d08aa276198b0dd87342cfc62",
+    "stored_sha256": "a101bf6819bccba23f55b58e7cf1d56d4352c63d08aa276198b0dd87342cfc62"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/audit.py",
+    "stored": "provenance/e1_host2_source/slackkv/infra/audit.py",
+    "bytes": 1876,
+    "sha256": "45b74ef5d14f64478f022c165fb1bad7b386eefa20742567a397149b8c5e73f4",
+    "stored_sha256": "45b74ef5d14f64478f022c165fb1bad7b386eefa20742567a397149b8c5e73f4"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/cli.py",
+    "stored": "provenance/e1_host2_source/slackkv/infra/cli.py",
+    "bytes": 3181,
+    "sha256": "9b64f8f4670474474403a2db378dad89c9f317253a489eeda53685e70c6ea441",
+    "stored_sha256": "9b64f8f4670474474403a2db378dad89c9f317253a489eeda53685e70c6ea441"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/config.py",
+    "stored": "provenance/e1_host2_source/slackkv/infra/config.py",
+    "bytes": 3992,
+    "sha256": "0c5f317226a7b6a1f6a2b95af771f37a93842500d37f346346f15b89f495cd74",
+    "stored_sha256": "0c5f317226a7b6a1f6a2b95af771f37a93842500d37f346346f15b89f495cd74"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/documents.json",
+    "stored": "provenance/e1_host2_source/slackkv/infra/documents.json",
+    "bytes": 193,
+    "sha256": "7f5f0433ce72b99829fbdc2b0d0bfb297999509567f38c73524f651c577077dc",
+    "stored_sha256": "7f5f0433ce72b99829fbdc2b0d0bfb297999509567f38c73524f651c577077dc"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/http.py",
+    "stored": "provenance/e1_host2_source/slackkv/infra/http.py",
+    "bytes": 2437,
+    "sha256": "bedc5c64e657bb45b7d3d5d72270b1eaf510dd813118377bf50e852d503ceee0",
+    "stored_sha256": "bedc5c64e657bb45b7d3d5d72270b1eaf510dd813118377bf50e852d503ceee0"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/native.py",
+    "stored": "provenance/e1_host2_source/slackkv/infra/native.py",
+    "bytes": 1782,
+    "sha256": "82c6505789e3dcbfe56007e5432000f2cb2c8182a3738ae4d05dd4fe02b7a210",
+    "stored_sha256": "82c6505789e3dcbfe56007e5432000f2cb2c8182a3738ae4d05dd4fe02b7a210"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/report.py",
+    "stored": "provenance/e1_host2_source/slackkv/infra/report.py",
+    "bytes": 3609,
+    "sha256": "0efb06fbc96cc15ef3789e2f251b6088c6e5a3b329a9f833973072612838864c",
+    "stored_sha256": "0efb06fbc96cc15ef3789e2f251b6088c6e5a3b329a9f833973072612838864c"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/runtime.py",
+    "stored": "provenance/e1_host2_source/slackkv/infra/runtime.py",
+    "bytes": 4533,
+    "sha256": "4ed4b49b4fdbc19aabc8857a2b899064a891c3bcb2446df6b941b6d52efe5848",
+    "stored_sha256": "4ed4b49b4fdbc19aabc8857a2b899064a891c3bcb2446df6b941b6d52efe5848"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/service.py",
+    "stored": "provenance/e1_host2_source/slackkv/infra/service.py",
+    "bytes": 10918,
+    "sha256": "a12f46e8c3c70cadec00072fd0672bfdda9498d46fb00c1910b6d81e5d9de4ea",
+    "stored_sha256": "a12f46e8c3c70cadec00072fd0672bfdda9498d46fb00c1910b6d81e5d9de4ea"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/sessions.py",
+    "stored": "provenance/e1_host2_source/slackkv/infra/sessions.py",
+    "bytes": 4174,
+    "sha256": "dc7496977e754012c422c94b634d22ea658e441e31828ce18f9c3ff1f4b4aee4",
+    "stored_sha256": "dc7496977e754012c422c94b634d22ea658e441e31828ce18f9c3ff1f4b4aee4"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/infra/workloads.py",
+    "stored": "provenance/e1_host2_source/slackkv/infra/workloads.py",
+    "bytes": 9598,
+    "sha256": "108bb453d715ca848c6629b482acf0b8d763c5353aef094836a25b8aadfac3b6",
+    "stored_sha256": "108bb453d715ca848c6629b482acf0b8d763c5353aef094836a25b8aadfac3b6"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/m1/__init__.py",
+    "stored": "provenance/e1_host2_source/slackkv/m1/__init__.py",
+    "bytes": 68,
+    "sha256": "232e56d89a18e46e0ecccbc57706468e942b6cf9d7fba998e90d55132455b5b1",
+    "stored_sha256": "232e56d89a18e46e0ecccbc57706468e942b6cf9d7fba998e90d55132455b5b1"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/m1/controller.py",
+    "stored": "provenance/e1_host2_source/slackkv/m1/controller.py",
+    "bytes": 9953,
+    "sha256": "22fedfa8bddb1b0794df8452b6418c5bf4ee66a4000f328169c1aa80f5af4ebe",
+    "stored_sha256": "22fedfa8bddb1b0794df8452b6418c5bf4ee66a4000f328169c1aa80f5af4ebe"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/m1/native.py",
+    "stored": "provenance/e1_host2_source/slackkv/m1/native.py",
+    "bytes": 16963,
+    "sha256": "0a116d49e4a5ade950a70dea5cea27c45036e373a646d05234ec165068e330c8",
+    "stored_sha256": "0a116d49e4a5ade950a70dea5cea27c45036e373a646d05234ec165068e330c8"
+  },
+  {
+    "source": "provenance/e1_host2_source/slackkv/m1/spec.py",
+    "stored": "provenance/e1_host2_source/slackkv/m1/spec.py",
+    "bytes": 3212,
+    "sha256": "1d9824beb80a8dce4c31360102bc5e5116554f86fd1484921b7f74dd9138f95d",
+    "stored_sha256": "1d9824beb80a8dce4c31360102bc5e5116554f86fd1484921b7f74dd9138f95d"
+  },
+  {
+    "source": "provenance/e1_initial_source/configs/local.json",
+    "stored": "provenance/e1_initial_source/configs/local.json",
+    "bytes": 395,
+    "sha256": "a3a0f4be6768ed0af16fb14fdedd79965f85346219fa52edeca5f64f43f410fe",
+    "stored_sha256": "a3a0f4be6768ed0af16fb14fdedd79965f85346219fa52edeca5f64f43f410fe"
+  },
+  {
+    "source": "provenance/e1_initial_source/pyproject.toml",
+    "stored": "provenance/e1_initial_source/pyproject.toml",
+    "bytes": 492,
+    "sha256": "b5a9fad9ff7fb69d4fa2b0edc1b2326096b9d0a6da67531de5dfade4fedfafe9",
+    "stored_sha256": "b5a9fad9ff7fb69d4fa2b0edc1b2326096b9d0a6da67531de5dfade4fedfafe9"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/__init__.py",
+    "stored": "provenance/e1_initial_source/slackkv/__init__.py",
+    "bytes": 35,
+    "sha256": "453cfb106aec5a3c3a2c22fd412dba8172ca43f3f7c626a800226e77458dc6fd",
+    "stored_sha256": "453cfb106aec5a3c3a2c22fd412dba8172ca43f3f7c626a800226e77458dc6fd"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/__init__.py",
+    "stored": "provenance/e1_initial_source/slackkv/infra/__init__.py",
+    "bytes": 78,
+    "sha256": "89530cb07b601ca876cf1f8f17d769b74e8482536102d55039a8e7a6bed2c743",
+    "stored_sha256": "89530cb07b601ca876cf1f8f17d769b74e8482536102d55039a8e7a6bed2c743"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/__main__.py",
+    "stored": "provenance/e1_initial_source/slackkv/infra/__main__.py",
+    "bytes": 43,
+    "sha256": "a101bf6819bccba23f55b58e7cf1d56d4352c63d08aa276198b0dd87342cfc62",
+    "stored_sha256": "a101bf6819bccba23f55b58e7cf1d56d4352c63d08aa276198b0dd87342cfc62"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/audit.py",
+    "stored": "provenance/e1_initial_source/slackkv/infra/audit.py",
+    "bytes": 1876,
+    "sha256": "45b74ef5d14f64478f022c165fb1bad7b386eefa20742567a397149b8c5e73f4",
+    "stored_sha256": "45b74ef5d14f64478f022c165fb1bad7b386eefa20742567a397149b8c5e73f4"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/cli.py",
+    "stored": "provenance/e1_initial_source/slackkv/infra/cli.py",
+    "bytes": 3083,
+    "sha256": "ea8a196299309c213bcd0ad0a08ab03edd8e8ae1532390f0a7076e2f92743fc0",
+    "stored_sha256": "ea8a196299309c213bcd0ad0a08ab03edd8e8ae1532390f0a7076e2f92743fc0"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/config.py",
+    "stored": "provenance/e1_initial_source/slackkv/infra/config.py",
+    "bytes": 3992,
+    "sha256": "0c5f317226a7b6a1f6a2b95af771f37a93842500d37f346346f15b89f495cd74",
+    "stored_sha256": "0c5f317226a7b6a1f6a2b95af771f37a93842500d37f346346f15b89f495cd74"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/documents.json",
+    "stored": "provenance/e1_initial_source/slackkv/infra/documents.json",
+    "bytes": 193,
+    "sha256": "7f5f0433ce72b99829fbdc2b0d0bfb297999509567f38c73524f651c577077dc",
+    "stored_sha256": "7f5f0433ce72b99829fbdc2b0d0bfb297999509567f38c73524f651c577077dc"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/http.py",
+    "stored": "provenance/e1_initial_source/slackkv/infra/http.py",
+    "bytes": 2437,
+    "sha256": "bedc5c64e657bb45b7d3d5d72270b1eaf510dd813118377bf50e852d503ceee0",
+    "stored_sha256": "bedc5c64e657bb45b7d3d5d72270b1eaf510dd813118377bf50e852d503ceee0"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/native.py",
+    "stored": "provenance/e1_initial_source/slackkv/infra/native.py",
+    "bytes": 1782,
+    "sha256": "82c6505789e3dcbfe56007e5432000f2cb2c8182a3738ae4d05dd4fe02b7a210",
+    "stored_sha256": "82c6505789e3dcbfe56007e5432000f2cb2c8182a3738ae4d05dd4fe02b7a210"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/report.py",
+    "stored": "provenance/e1_initial_source/slackkv/infra/report.py",
+    "bytes": 3609,
+    "sha256": "0efb06fbc96cc15ef3789e2f251b6088c6e5a3b329a9f833973072612838864c",
+    "stored_sha256": "0efb06fbc96cc15ef3789e2f251b6088c6e5a3b329a9f833973072612838864c"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/runtime.py",
+    "stored": "provenance/e1_initial_source/slackkv/infra/runtime.py",
+    "bytes": 4533,
+    "sha256": "4ed4b49b4fdbc19aabc8857a2b899064a891c3bcb2446df6b941b6d52efe5848",
+    "stored_sha256": "4ed4b49b4fdbc19aabc8857a2b899064a891c3bcb2446df6b941b6d52efe5848"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/service.py",
+    "stored": "provenance/e1_initial_source/slackkv/infra/service.py",
+    "bytes": 10918,
+    "sha256": "a12f46e8c3c70cadec00072fd0672bfdda9498d46fb00c1910b6d81e5d9de4ea",
+    "stored_sha256": "a12f46e8c3c70cadec00072fd0672bfdda9498d46fb00c1910b6d81e5d9de4ea"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/sessions.py",
+    "stored": "provenance/e1_initial_source/slackkv/infra/sessions.py",
+    "bytes": 4174,
+    "sha256": "dc7496977e754012c422c94b634d22ea658e441e31828ce18f9c3ff1f4b4aee4",
+    "stored_sha256": "dc7496977e754012c422c94b634d22ea658e441e31828ce18f9c3ff1f4b4aee4"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/infra/workloads.py",
+    "stored": "provenance/e1_initial_source/slackkv/infra/workloads.py",
+    "bytes": 7013,
+    "sha256": "a6323671bd701e7361fc64889a3cec613a69333ce12667d113bf1037bb1f9093",
+    "stored_sha256": "a6323671bd701e7361fc64889a3cec613a69333ce12667d113bf1037bb1f9093"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/m1/__init__.py",
+    "stored": "provenance/e1_initial_source/slackkv/m1/__init__.py",
+    "bytes": 68,
+    "sha256": "232e56d89a18e46e0ecccbc57706468e942b6cf9d7fba998e90d55132455b5b1",
+    "stored_sha256": "232e56d89a18e46e0ecccbc57706468e942b6cf9d7fba998e90d55132455b5b1"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/m1/controller.py",
+    "stored": "provenance/e1_initial_source/slackkv/m1/controller.py",
+    "bytes": 9953,
+    "sha256": "22fedfa8bddb1b0794df8452b6418c5bf4ee66a4000f328169c1aa80f5af4ebe",
+    "stored_sha256": "22fedfa8bddb1b0794df8452b6418c5bf4ee66a4000f328169c1aa80f5af4ebe"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/m1/native.py",
+    "stored": "provenance/e1_initial_source/slackkv/m1/native.py",
+    "bytes": 16963,
+    "sha256": "0a116d49e4a5ade950a70dea5cea27c45036e373a646d05234ec165068e330c8",
+    "stored_sha256": "0a116d49e4a5ade950a70dea5cea27c45036e373a646d05234ec165068e330c8"
+  },
+  {
+    "source": "provenance/e1_initial_source/slackkv/m1/spec.py",
+    "stored": "provenance/e1_initial_source/slackkv/m1/spec.py",
+    "bytes": 3212,
+    "sha256": "1d9824beb80a8dce4c31360102bc5e5116554f86fd1484921b7f74dd9138f95d",
+    "stored_sha256": "1d9824beb80a8dce4c31360102bc5e5116554f86fd1484921b7f74dd9138f95d"
+  },
+  {
+    "source": "runs/e1_demo1/config.json",
+    "stored": "runs/e1_demo1/config.json",
+    "bytes": 542,
+    "sha256": "af5df6056c5ad0916b7a0d589402f3e5630649eea7fe5e6e7aeb431f7614b922",
+    "stored_sha256": "af5df6056c5ad0916b7a0d589402f3e5630649eea7fe5e6e7aeb431f7614b922"
+  },
+  {
+    "source": "runs/e1_demo1/doctor.json",
+    "stored": "runs/e1_demo1/doctor.json",
+    "bytes": 1569,
+    "sha256": "844f7c27da6ef970e6d65cbebfd3897a32c81342a90568ac6f29cd7fa9fc8523",
+    "stored_sha256": "844f7c27da6ef970e6d65cbebfd3897a32c81342a90568ac6f29cd7fa9fc8523"
+  },
+  {
+    "source": "runs/e1_demo1/execution.json",
+    "stored": "runs/e1_demo1/execution.json",
+    "bytes": 3351,
+    "sha256": "b8d2075a58b7c3d93612954a4d44bc50c696832a2ffee64bb6698ad77f4e12ce",
+    "stored_sha256": "b8d2075a58b7c3d93612954a4d44bc50c696832a2ffee64bb6698ad77f4e12ce"
+  },
+  {
+    "source": "runs/e1_demo1/metrics_after.prom",
+    "stored": "runs/e1_demo1/metrics_after.prom.gz",
+    "bytes": 51325,
+    "sha256": "d2b76069a1da29fe13ca4472cf66847609cc8021e6e6362ac52ed77e91cff875",
+    "stored_sha256": "4268d1d94e14bc62e867d50224802e511479a0b915070eba949cbc51c2722244"
+  },
+  {
+    "source": "runs/e1_demo1/metrics_before.prom",
+    "stored": "runs/e1_demo1/metrics_before.prom.gz",
+    "bytes": 46760,
+    "sha256": "95c2ac79857878c8220c9c9d0a96b51793b630954da760c82d402d601e3a1538",
+    "stored_sha256": "996231f80e7100949aefd49f400e9cfbbb63934a6f3618e474caf3e1e8b58a4f"
+  },
+  {
+    "source": "runs/e1_demo1/report.json",
+    "stored": "runs/e1_demo1/report.json",
+    "bytes": 2656,
+    "sha256": "a5a8946e3ae6c0d6fc4e0d9c5591ad8ae2efb61b0c5b4687b3bfd82602385aa2",
+    "stored_sha256": "a5a8946e3ae6c0d6fc4e0d9c5591ad8ae2efb61b0c5b4687b3bfd82602385aa2"
+  },
+  {
+    "source": "runs/e1_demo1/requests.csv",
+    "stored": "runs/e1_demo1/requests.csv",
+    "bytes": 596,
+    "sha256": "9ed51b9b50270d9085e85af6c2a7421d943cc2978313fe460a5944bd14f3ad13",
+    "stored_sha256": "9ed51b9b50270d9085e85af6c2a7421d943cc2978313fe460a5944bd14f3ad13"
+  },
+  {
+    "source": "runs/e1_demo1/requests.json",
+    "stored": "runs/e1_demo1/requests.json",
+    "bytes": 7265,
+    "sha256": "6242771465dd8e684de5802b3af0edb65ed662ecdfb03e95a67cbc5b034e7a61",
+    "stored_sha256": "6242771465dd8e684de5802b3af0edb65ed662ecdfb03e95a67cbc5b034e7a61"
+  },
+  {
+    "source": "runs/e1_demo1/server.log",
+    "stored": "runs/e1_demo1/server.log.gz",
+    "bytes": 21211,
+    "sha256": "34cd4a3194e42fb3d9756bdd2e4b3694eaaaf246779138bf62aea9bcea0e6c36",
+    "stored_sha256": "f43a068a386e03a5f2dc204d121d0d2344dc804cc0b6541dfdc3991265848e61"
+  },
+  {
+    "source": "runs/e1_demo1/sessions.json",
+    "stored": "runs/e1_demo1/sessions.json",
+    "bytes": 2563,
+    "sha256": "6e6d14786bf59ea42ef91c6e9a34ddfa4b5a9cb44a001994c4ae7bf42d038b98",
+    "stored_sha256": "6e6d14786bf59ea42ef91c6e9a34ddfa4b5a9cb44a001994c4ae7bf42d038b98"
+  },
+  {
+    "source": "runs/e1_demo1/summary.md",
+    "stored": "runs/e1_demo1/summary.md",
+    "bytes": 1128,
+    "sha256": "5df8d3f83a3722ac246812e9c4c6290ba23b32e43be3108f1f5744643672f178",
+    "stored_sha256": "5df8d3f83a3722ac246812e9c4c6290ba23b32e43be3108f1f5744643672f178"
+  },
+  {
+    "source": "runs/e1_demo1/tools.json",
+    "stored": "runs/e1_demo1/tools.json",
+    "bytes": 717,
+    "sha256": "e718ec49e8d361d140f9b5d124441304efbf00c0565d98c08b08a4e94fd9fab5",
+    "stored_sha256": "e718ec49e8d361d140f9b5d124441304efbf00c0565d98c08b08a4e94fd9fab5"
+  },
+  {
+    "source": "runs/e1_demo1/validation.json",
+    "stored": "runs/e1_demo1/validation.json",
+    "bytes": 260,
+    "sha256": "672bd3219a39d5bc243ddb92e16b534d35a05c7bf5bf52e693af2639ea26a27f",
+    "stored_sha256": "672bd3219a39d5bc243ddb92e16b534d35a05c7bf5bf52e693af2639ea26a27f"
+  },
+  {
+    "source": "runs/e1_demo2/config.json",
+    "stored": "runs/e1_demo2/config.json",
+    "bytes": 542,
+    "sha256": "af5df6056c5ad0916b7a0d589402f3e5630649eea7fe5e6e7aeb431f7614b922",
+    "stored_sha256": "af5df6056c5ad0916b7a0d589402f3e5630649eea7fe5e6e7aeb431f7614b922"
+  },
+  {
+    "source": "runs/e1_demo2/doctor.json",
+    "stored": "runs/e1_demo2/doctor.json",
+    "bytes": 1569,
+    "sha256": "3ed431519dc7857ba812ebd2dd5f2b9749e24de054195c846af011b70e5f8e26",
+    "stored_sha256": "3ed431519dc7857ba812ebd2dd5f2b9749e24de054195c846af011b70e5f8e26"
+  },
+  {
+    "source": "runs/e1_demo2/execution.json",
+    "stored": "runs/e1_demo2/execution.json",
+    "bytes": 3369,
+    "sha256": "6f35b00e78165b6676ae949d02ba88d92fa6552b8bb4ac8a01f9190a4b3f8da7",
+    "stored_sha256": "6f35b00e78165b6676ae949d02ba88d92fa6552b8bb4ac8a01f9190a4b3f8da7"
+  },
+  {
+    "source": "runs/e1_demo2/metrics_after.prom",
+    "stored": "runs/e1_demo2/metrics_after.prom.gz",
+    "bytes": 51334,
+    "sha256": "ea427e656e01a57be0f8c0d5e308d6fb60fa7a7c6b408fe48d8ccbfa536ff4b6",
+    "stored_sha256": "b87e4d36bbb2d3ccaae8dec8e0216c92a6c0d36065f2bd582439a62cec28ce13"
+  },
+  {
+    "source": "runs/e1_demo2/metrics_before.prom",
+    "stored": "runs/e1_demo2/metrics_before.prom.gz",
+    "bytes": 46764,
+    "sha256": "0aea816b09c200e494f18c34f6c7aaeeb323caba977177a6f31538cf98f96d3b",
+    "stored_sha256": "39d1b2b38facae5c649001f0115449d4444d954a5ab6c96b9b90e0dad2ebf956"
+  },
+  {
+    "source": "runs/e1_demo2/report.json",
+    "stored": "runs/e1_demo2/report.json",
+    "bytes": 2647,
+    "sha256": "9b789c99bc477f0d7961cab27359f79cdfb64ac511a0ec700294922bb6f63438",
+    "stored_sha256": "9b789c99bc477f0d7961cab27359f79cdfb64ac511a0ec700294922bb6f63438"
+  },
+  {
+    "source": "runs/e1_demo2/requests.csv",
+    "stored": "runs/e1_demo2/requests.csv",
+    "bytes": 589,
+    "sha256": "d8361ade35db45290b5e9eae218ae3388ec0b5cd10a296fe041114034199acb7",
+    "stored_sha256": "d8361ade35db45290b5e9eae218ae3388ec0b5cd10a296fe041114034199acb7"
+  },
+  {
+    "source": "runs/e1_demo2/requests.json",
+    "stored": "runs/e1_demo2/requests.json",
+    "bytes": 7265,
+    "sha256": "1d77cfb04fda73291e6d5baebaf9fd205a5a514443ecad60b1f1b5640063c0e7",
+    "stored_sha256": "1d77cfb04fda73291e6d5baebaf9fd205a5a514443ecad60b1f1b5640063c0e7"
+  },
+  {
+    "source": "runs/e1_demo2/server.log",
+    "stored": "runs/e1_demo2/server.log.gz",
+    "bytes": 21131,
+    "sha256": "1233a71f7164ee081c78d2d3d0db1da371f6818f12803d73938e10391c7a0188",
+    "stored_sha256": "c35e67832e46e31dd4f8a29d09f4202e1f6386ac334a3fb5e1a4e26de38d37d0"
+  },
+  {
+    "source": "runs/e1_demo2/sessions.json",
+    "stored": "runs/e1_demo2/sessions.json",
+    "bytes": 2563,
+    "sha256": "ebe4924dc92d499ec8d94724ce5ec0a46ead0fef8b67701170720da9238a0d28",
+    "stored_sha256": "ebe4924dc92d499ec8d94724ce5ec0a46ead0fef8b67701170720da9238a0d28"
+  },
+  {
+    "source": "runs/e1_demo2/summary.md",
+    "stored": "runs/e1_demo2/summary.md",
+    "bytes": 1126,
+    "sha256": "3d575b8d2ebb5f82e730af2f076855aeb7f87d26257f5fed32c7dbcb55491d8d",
+    "stored_sha256": "3d575b8d2ebb5f82e730af2f076855aeb7f87d26257f5fed32c7dbcb55491d8d"
+  },
+  {
+    "source": "runs/e1_demo2/tools.json",
+    "stored": "runs/e1_demo2/tools.json",
+    "bytes": 717,
+    "sha256": "9606534270a3d49ea90b5509e24e902b053f8c9fe153913c75fe4d25c6d2acb2",
+    "stored_sha256": "9606534270a3d49ea90b5509e24e902b053f8c9fe153913c75fe4d25c6d2acb2"
+  },
+  {
+    "source": "runs/e1_demo2/validation.json",
+    "stored": "runs/e1_demo2/validation.json",
+    "bytes": 260,
+    "sha256": "672bd3219a39d5bc243ddb92e16b534d35a05c7bf5bf52e693af2639ea26a27f",
+    "stored_sha256": "672bd3219a39d5bc243ddb92e16b534d35a05c7bf5bf52e693af2639ea26a27f"
+  },
+  {
+    "source": "runs/e1_host1/doctor.json",
+    "stored": "runs/e1_host1/doctor.json",
+    "bytes": 1568,
+    "sha256": "22fb3cd797eede7facdd3a41032ecde2771cba46df9825533dce5974785e7917",
+    "stored_sha256": "22fb3cd797eede7facdd3a41032ecde2771cba46df9825533dce5974785e7917"
+  },
+  {
+    "source": "runs/e1_host1/execution.json",
+    "stored": "runs/e1_host1/execution.json",
+    "bytes": 3462,
+    "sha256": "c7e740cb58be0fc864e67b1410ae0b25645e0fbc16d4ad09b6da74a239e75e6f",
+    "stored_sha256": "c7e740cb58be0fc864e67b1410ae0b25645e0fbc16d4ad09b6da74a239e75e6f"
+  },
+  {
+    "source": "runs/e1_host1/server.log",
+    "stored": "runs/e1_host1/server.log.gz",
+    "bytes": 22071,
+    "sha256": "829cbed0c753ab21c1ad4cb38469813063e51c5895839657a383450d3f0fa8c8",
+    "stored_sha256": "25b0cd1b23c0ee44078687893787676ac3d59bcbd0d2d54c085f3d443985fd41"
+  },
+  {
+    "source": "runs/e1_host2/after_cold.prom",
+    "stored": "runs/e1_host2/after_cold.prom.gz",
+    "bytes": 53154,
+    "sha256": "84c5d04beb369c67d7e911cc0a727a6d412706a28a794faea0b0057959a8de73",
+    "stored_sha256": "2a4f962938321dfd089e8123ce480494fee6854c58dd71082bccb626548d9738"
+  },
+  {
+    "source": "runs/e1_host2/after_resume.prom",
+    "stored": "runs/e1_host2/after_resume.prom.gz",
+    "bytes": 53151,
+    "sha256": "08947165dad8be54f673c59491b279b28b05c47d48447ae65b4cd78d6dc7c9d6",
+    "stored_sha256": "0fe84e8a1a3f0358419453e921e011a362d6cc0271b9f83faebe4e1363a1d774"
+  },
+  {
+    "source": "runs/e1_host2/before.prom",
+    "stored": "runs/e1_host2/before.prom.gz",
+    "bytes": 46760,
+    "sha256": "7b336dc84d4dce9eb3296c8c1b354a7a6b1bfb5bed97612b6c51bc4d62dfb189",
+    "stored_sha256": "fba15e1713d49bc48184dcd04ef6e23eec0a076cd2cae4779c139c4dbd9d7889"
+  },
+  {
+    "source": "runs/e1_host2/before_resume.prom",
+    "stored": "runs/e1_host2/before_resume.prom.gz",
+    "bytes": 51244,
+    "sha256": "e49019286464a0a945fff6947eb5c1b0d46dff3091e603c4f5296e190e168365",
+    "stored_sha256": "0b0e91ade5a107606261e533cd139e1f3b11db6f3cf811cab2fde06843e06f06"
+  },
+  {
+    "source": "runs/e1_host2/doctor.json",
+    "stored": "runs/e1_host2/doctor.json",
+    "bytes": 1568,
+    "sha256": "80bec3c3c8f3d421ace781e5c3f34519daeb2aa325fd66240950dbcf9fd829c0",
+    "stored_sha256": "80bec3c3c8f3d421ace781e5c3f34519daeb2aa325fd66240950dbcf9fd829c0"
+  },
+  {
+    "source": "runs/e1_host2/execution.json",
+    "stored": "runs/e1_host2/execution.json",
+    "bytes": 3367,
+    "sha256": "bad37f33ca0be5f0dc3495b014bfd42f57e8cae4b87feca174802263d0ee789f",
+    "stored_sha256": "bad37f33ca0be5f0dc3495b014bfd42f57e8cae4b87feca174802263d0ee789f"
+  },
+  {
+    "source": "runs/e1_host2/oracle.json",
+    "stored": "runs/e1_host2/oracle.json",
+    "bytes": 3095,
+    "sha256": "218dd623cbf435296806581291a19f2ca1b2a0740c7a92eb5249bc0e05299f49",
+    "stored_sha256": "218dd623cbf435296806581291a19f2ca1b2a0740c7a92eb5249bc0e05299f49"
+  },
+  {
+    "source": "runs/e1_host2/server.log",
+    "stored": "runs/e1_host2/server.log.gz",
+    "bytes": 24257,
+    "sha256": "3c09c02b7ac476946cfe3e934a0e7e608fa5ca04c345e25eb746048bfa605ff5",
+    "stored_sha256": "1d97328582a4ef01825244f2546afb9181cf30abb61d4ca104303207e4226c2d"
+  },
+  {
+    "source": "runs/e1_host2/validation.json",
+    "stored": "runs/e1_host2/validation.json",
+    "bytes": 99,
+    "sha256": "786562320541cb87955bb109b1eca5f51d5f6681cd5cdf3e3bc99eb3e5019e67",
+    "stored_sha256": "786562320541cb87955bb109b1eca5f51d5f6681cd5cdf3e3bc99eb3e5019e67"
+  },
+  {
+    "source": "runs/e1_host3/after_cold.prom",
+    "stored": "runs/e1_host3/after_cold.prom.gz",
+    "bytes": 53160,
+    "sha256": "fdcde77bc3f5b0b686fdceec5ca5715b88846d39bc9a8f6fdbe1a4cd54fa678d",
+    "stored_sha256": "2e4850ac30464fec5b1ef1d245f78c4461824c391b1d7b99553f023a1b37691d"
+  },
+  {
+    "source": "runs/e1_host3/after_resume.prom",
+    "stored": "runs/e1_host3/after_resume.prom.gz",
+    "bytes": 53157,
+    "sha256": "dd893907e1188269e9429e54ad08df3bd767758fdc9decc23fb0f13fff7ea0e7",
+    "stored_sha256": "663c228b4d802841fbb30da0267e5aabdee2000647fe3737cd22ebb03b61a3cf"
+  },
+  {
+    "source": "runs/e1_host3/before.prom",
+    "stored": "runs/e1_host3/before.prom.gz",
+    "bytes": 46761,
+    "sha256": "813414f0fdcb4a1de6b120567be1259ff2f380e2d5fcb29f2b4bc17fd2b830b9",
+    "stored_sha256": "882cc3f2aeb74f86e9d39e1818a2a2b45afe40b9627b940eb90da2bcd033075f"
+  },
+  {
+    "source": "runs/e1_host3/before_resume.prom",
+    "stored": "runs/e1_host3/before_resume.prom.gz",
+    "bytes": 51249,
+    "sha256": "f72356cadb892f893e6e708a0f24ffe431428043247e3d8dd72f97158ca75ac6",
+    "stored_sha256": "a0a7cc1ec575e92c5b03bd3f66b6192a09ed428ad420bc9bfa80001a66837724"
+  },
+  {
+    "source": "runs/e1_host3/doctor.json",
+    "stored": "runs/e1_host3/doctor.json",
+    "bytes": 1568,
+    "sha256": "e0d60b5ca65e553638dc8a64f1ee5826f9ce3722d6fa3d758510a719b4e19ecc",
+    "stored_sha256": "e0d60b5ca65e553638dc8a64f1ee5826f9ce3722d6fa3d758510a719b4e19ecc"
+  },
+  {
+    "source": "runs/e1_host3/execution.json",
+    "stored": "runs/e1_host3/execution.json",
+    "bytes": 3369,
+    "sha256": "a9f9b94aca969c16a658e385e969c40c7bc465112e0b28e02016637585861c41",
+    "stored_sha256": "a9f9b94aca969c16a658e385e969c40c7bc465112e0b28e02016637585861c41"
+  },
+  {
+    "source": "runs/e1_host3/oracle.json",
+    "stored": "runs/e1_host3/oracle.json",
+    "bytes": 3173,
+    "sha256": "f2e6ccdbaf95262caf7a110945d18b22db3bbde5e7a52a92acb3553a016831b6",
+    "stored_sha256": "f2e6ccdbaf95262caf7a110945d18b22db3bbde5e7a52a92acb3553a016831b6"
+  },
+  {
+    "source": "runs/e1_host3/server.log",
+    "stored": "runs/e1_host3/server.log.gz",
+    "bytes": 23090,
+    "sha256": "21927dd967c5d22cb6026e5a937885732c2ca62b61c2666b1da7046c5734aa7f",
+    "stored_sha256": "6d372d868cc1c673263bb228ab0cccf067459c4ffa5adbd1afcb22d885b2a82f"
+  },
+  {
+    "source": "runs/e1_host3/validation.json",
+    "stored": "runs/e1_host3/validation.json",
+    "bytes": 99,
+    "sha256": "786562320541cb87955bb109b1eca5f51d5f6681cd5cdf3e3bc99eb3e5019e67",
+    "stored_sha256": "786562320541cb87955bb109b1eca5f51d5f6681cd5cdf3e3bc99eb3e5019e67"
+  },
+  {
+    "source": "runtime_manifest.json",
+    "stored": "runtime_manifest.json",
+    "bytes": 216912,
+    "sha256": "d21f0b98d94e32f64a25028af2a6e2f5af68f718e365bf8610c9702b98906feb",
+    "stored_sha256": "d21f0b98d94e32f64a25028af2a6e2f5af68f718e365bf8610c9702b98906feb"
+  }
+]

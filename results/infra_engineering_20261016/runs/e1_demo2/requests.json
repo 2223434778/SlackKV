@@ -1,0 +1,224 @@
+[
+  {
+    "session_id": "maple",
+    "generation": 0,
+    "slot": 1,
+    "client_request_id": "3994d47f3e0f4f95b7ffc613c0a8c515",
+    "messages_submitted": [
+      {
+        "role": "system",
+        "content": "You are a concise helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "我们正在检查maple项目。请用一句话说明你会根据提供的项目资料回答。"
+      }
+    ],
+    "terminal": false,
+    "text": "我会根据提供的Maple项目的资料，提供详细的解答和信息。",
+    "tokens": null,
+    "usage": {
+      "prompt_tokens": 38,
+      "total_tokens": 53,
+      "completion_tokens": 15
+    },
+    "finish_reason": "stop",
+    "issue_ns": 354580034085072,
+    "first_ns": 354580128163873,
+    "done_ns": 354580207705186,
+    "request_id": "chatcmpl-8d6d16c54c579b06"
+  },
+  {
+    "session_id": "cedar",
+    "generation": 0,
+    "slot": 0,
+    "client_request_id": "7ecb4dc09265454ebff6aa8de6181014",
+    "messages_submitted": [
+      {
+        "role": "system",
+        "content": "You are a concise helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "我们正在检查cedar项目。请用一句话说明你会根据提供的项目资料回答。"
+      }
+    ],
+    "terminal": false,
+    "text": "我会根据提供的 Cedar 项目的具体资料来回答相关问题或提供解决方案。",
+    "tokens": null,
+    "usage": {
+      "prompt_tokens": 38,
+      "total_tokens": 55,
+      "completion_tokens": 17
+    },
+    "finish_reason": "stop",
+    "issue_ns": 354580035288668,
+    "first_ns": 354580130599394,
+    "done_ns": 354580232326666,
+    "request_id": "chatcmpl-a58d6c9e806ddb86"
+  },
+  {
+    "session_id": "maple",
+    "generation": 0,
+    "slot": 1,
+    "client_request_id": "10829040f0e140988b749c197f70832d",
+    "messages_submitted": [
+      {
+        "role": "system",
+        "content": "You are a concise helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "我们正在检查maple项目。请用一句话说明你会根据提供的项目资料回答。"
+      },
+      {
+        "role": "assistant",
+        "content": "我会根据提供的Maple项目的资料，提供详细的解答和信息。"
+      },
+      {
+        "role": "user",
+        "content": "客户端本地工具查到资料：{\"project\": \"Maple\", \"owner\": \"Chen\", \"release\": \"2026-10-24\", \"status\": \"review\"}。项目负责人和发布日期是什么？请简短回答。"
+      }
+    ],
+    "terminal": false,
+    "text": "项目负责人是Chen，发布日期是2026年10月24日。",
+    "tokens": null,
+    "usage": {
+      "prompt_tokens": 117,
+      "total_tokens": 139,
+      "completion_tokens": 22
+    },
+    "finish_reason": "stop",
+    "issue_ns": 354580209874971,
+    "first_ns": 354580234823769,
+    "done_ns": 354580360278764,
+    "request_id": "chatcmpl-95591a105a4095f5"
+  },
+  {
+    "session_id": "cedar",
+    "generation": 0,
+    "slot": 0,
+    "client_request_id": "5d823685b82d456699a36f8969a3f70a",
+    "messages_submitted": [
+      {
+        "role": "system",
+        "content": "You are a concise helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "我们正在检查cedar项目。请用一句话说明你会根据提供的项目资料回答。"
+      },
+      {
+        "role": "assistant",
+        "content": "我会根据提供的 Cedar 项目的具体资料来回答相关问题或提供解决方案。"
+      },
+      {
+        "role": "user",
+        "content": "客户端本地工具查到资料：{\"project\": \"Cedar\", \"owner\": \"Lin\", \"release\": \"2026-10-20\", \"status\": \"testing\"}。项目负责人和发布日期是什么？请简短回答。"
+      }
+    ],
+    "terminal": false,
+    "text": "项目负责人是 Lin，发布日期是 2026-10-20。",
+    "tokens": null,
+    "usage": {
+      "prompt_tokens": 118,
+      "total_tokens": 139,
+      "completion_tokens": 21
+    },
+    "finish_reason": "stop",
+    "issue_ns": 354580234568954,
+    "first_ns": 354580259858119,
+    "done_ns": 354580383620037,
+    "request_id": "chatcmpl-a65b8e0c51ddcace"
+  },
+  {
+    "session_id": "maple",
+    "generation": 0,
+    "slot": 1,
+    "client_request_id": "2d92c1b824f24dcb9d255d153d87e9fd",
+    "messages_submitted": [
+      {
+        "role": "system",
+        "content": "You are a concise helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "我们正在检查maple项目。请用一句话说明你会根据提供的项目资料回答。"
+      },
+      {
+        "role": "assistant",
+        "content": "我会根据提供的Maple项目的资料，提供详细的解答和信息。"
+      },
+      {
+        "role": "user",
+        "content": "客户端本地工具查到资料：{\"project\": \"Maple\", \"owner\": \"Chen\", \"release\": \"2026-10-24\", \"status\": \"review\"}。项目负责人和发布日期是什么？请简短回答。"
+      },
+      {
+        "role": "assistant",
+        "content": "项目负责人是Chen，发布日期是2026年10月24日。"
+      },
+      {
+        "role": "user",
+        "content": "根据刚才的资料，用一句话总结这个项目的负责人、发布日期和当前状态。"
+      }
+    ],
+    "terminal": true,
+    "text": "项目负责人是Chen，发布日期是2026年10月24日，当前状态为待审查。",
+    "tokens": null,
+    "usage": {
+      "prompt_tokens": 166,
+      "total_tokens": 194,
+      "completion_tokens": 28
+    },
+    "finish_reason": "stop",
+    "issue_ns": 354580362106052,
+    "first_ns": 354580385811534,
+    "done_ns": 354580545654526,
+    "request_id": "chatcmpl-b410f20a0c2755cc"
+  },
+  {
+    "session_id": "cedar",
+    "generation": 0,
+    "slot": 0,
+    "client_request_id": "b0906c0ae9f94d649121e1ad4d8a78a5",
+    "messages_submitted": [
+      {
+        "role": "system",
+        "content": "You are a concise helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "我们正在检查cedar项目。请用一句话说明你会根据提供的项目资料回答。"
+      },
+      {
+        "role": "assistant",
+        "content": "我会根据提供的 Cedar 项目的具体资料来回答相关问题或提供解决方案。"
+      },
+      {
+        "role": "user",
+        "content": "客户端本地工具查到资料：{\"project\": \"Cedar\", \"owner\": \"Lin\", \"release\": \"2026-10-20\", \"status\": \"testing\"}。项目负责人和发布日期是什么？请简短回答。"
+      },
+      {
+        "role": "assistant",
+        "content": "项目负责人是 Lin，发布日期是 2026-10-20。"
+      },
+      {
+        "role": "user",
+        "content": "根据刚才的资料，用一句话总结这个项目的负责人、发布日期和当前状态。"
+      }
+    ],
+    "terminal": true,
+    "text": "项目负责人是 Lin，发布日期是 2026-10-20，当前状态为测试。",
+    "tokens": null,
+    "usage": {
+      "prompt_tokens": 166,
+      "total_tokens": 192,
+      "completion_tokens": 26
+    },
+    "finish_reason": "stop",
+    "issue_ns": 354580385560209,
+    "first_ns": 354580410686840,
+    "done_ns": 354580557187270,
+    "request_id": "chatcmpl-b79d11cb4afbee18"
+  }
+]

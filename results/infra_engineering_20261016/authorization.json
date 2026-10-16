@@ -1,0 +1,7 @@
+{
+  "grant": "infra-e1-20261016",
+  "limit_gpu_hours": 0.5,
+  "ledger_path": "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016",
+  "historical_gpu_hours": 4.570877168576147,
+  "scope": "E1 functional smoke and scoped E2 validation; all startup/cleanup included"
+}

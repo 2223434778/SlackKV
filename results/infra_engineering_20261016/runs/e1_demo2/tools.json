@@ -1,0 +1,30 @@
+[
+  {
+    "session_id": "maple",
+    "tool": "local_json_lookup",
+    "arguments": "maple",
+    "result": {
+      "project": "Maple",
+      "owner": "Chen",
+      "release": "2026-10-24",
+      "status": "review"
+    },
+    "started_ns": 354580208282288,
+    "done_ns": 354580208284168,
+    "selection": "client-driven, not autonomous model tool choice"
+  },
+  {
+    "session_id": "cedar",
+    "tool": "local_json_lookup",
+    "arguments": "cedar",
+    "result": {
+      "project": "Cedar",
+      "owner": "Lin",
+      "release": "2026-10-20",
+      "status": "testing"
+    },
+    "started_ns": 354580232987090,
+    "done_ns": 354580232988491,
+    "selection": "client-driven, not autonomous model tool choice"
+  }
+]
