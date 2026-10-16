@@ -1,5 +1,22 @@
 # SlackKV Project Rules
 
+## Current objective — runnable infra portfolio project, 2026-10-16
+
+The user explicitly changed the goal from a paper-oriented research effort to a
+complete, runnable LLM infra project for internship interviews.
+Read `docs/INFRA_ENGINEERING_HANDOFF_20261016.md` first and implement E1, then E2/E3
+incrementally. Reuse the validated native vLLM offload stack; use StaticFair as
+the engineering mainline with NoHost/Full comparisons and dynamic M1 opt-in.
+Do not resume M1 tuning, M2/M3, or algorithm opportunity research by default.
+Deliver working code and scoped validation, not another proposal-only round.
+The handoff defines engineering smoke limits and accounting; preserve historical
+restricted experiment allowances and all evidence. Do not reset or repurpose them.
+The current user goal supersedes earlier research-objective and phase restrictions.
+All "Current" review/authority headings below are historical provenance; their
+task instructions and stale budget snapshots are not new execution requests.
+Correctness, honest reporting, process ownership and non-destructive git rules
+continue to apply.
+
 ## Current M1 shared-result review — 2026-10-13
 
 Read `docs/RESEARCH_REVIEW_M1_SHARED_20261013.md` for review of `c07976b`.

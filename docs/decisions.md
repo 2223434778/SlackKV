@@ -272,3 +272,6 @@ Reference: Zhu et al., *TraceLab: Characterizing Coding Agent Workloads for LLM 
 
 
 - 2026-10-13 research_direction_after_m1（用户收尾M1后的新任务，基线2cdf515）：CPU机会判断，建议暂缓新系统，保留32BStaticFair正结果/生命周期工具/全部历史，不动默认、不开发M2M3/即时动态额度。独立重校82归档文件84782502原字节、三方法198请求/哈希/128输出及prom/时戳；固定私有初始前缀、只首次写入且两次复用的future-aware token分配参考上限524288=Fair实际external，额外0；仅该条件类的token界，不是rolling/compute/E2E全局上界。无限KV输入连续性参考1214976可复用、Fair仍重算690688；不推导可达加速。公共hash代理SHA d078503...重新统计2661调用/65container-model组，calls median20/P95220/max311，无完整>=3调用组满足旧32Kproxy输入+输出；不是Qwen实tokens/线性Agent，不能挑短片段制造新实测。读取EfficientAgent准入/实现条件、RR-Evict公平tail/结束回收、MORIsticky tier及KVFlow图预取；不把普通组件当主创新。唯一条件候选为异质长期会话持久部分前缀价值分配，缺强公平baseline损失/在线区分/成本曲线，未立项PoC；仅提出一个带事前token机会/在线信号停止门槛的CPU最小验证方案，当前不申请GPU。8项新CPU/归档回归PASS；GPU新增0，历史4.570877168576147及M1授权已用0.37888914884861963不变。报告docs/RESEARCH_DIRECTION_AFTER_M1.md，证据results/research_direction_after_m1/evidence_verified.json；无历史文件覆盖。提交push完成本阶段。
+
+
+- 2026-10-16 infra_engineering_handoff：用户明确转为面向 infra 实习的完整可运行项目。新增 docs/INFRA_ENGINEERING_HANDOFF_20261016.md 并更新 AGENTS.md 当前入口；StaticFair 工程主线、NoHost/Full 对照、M1 opt-in，不继续 M2/M3。E1 统一启动/真实多轮/报告，E2 可靠性与观测/小型对比，E3 复现与面试讲解。任务允许范围内自主实现，E1 工程 smoke 自设0.5GPUh上限、单次30分钟含清理，新账本累计历史而不挪用旧专用余额。此次仅文档交接，GPU新增0，没有已实现或已测工程版本的声明。旧证据与配置不覆盖。
