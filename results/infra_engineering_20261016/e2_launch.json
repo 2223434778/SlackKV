@@ -1,0 +1,188 @@
+{
+  "base_commit": "b6773c7318c06e7e429a87b6b23ededefb45196f",
+  "commands": [
+    [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python",
+      "-m",
+      "slackkv.infra",
+      "bench",
+      "--config",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/bench-hot-config.json",
+      "--plan",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/plans/hot",
+      "--policy",
+      "nohost",
+      "--ledger",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016",
+      "--name",
+      "e2_hot_nohost1"
+    ],
+    [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python",
+      "-m",
+      "slackkv.infra",
+      "bench",
+      "--config",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/bench-hot-config.json",
+      "--plan",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/plans/hot",
+      "--policy",
+      "full",
+      "--ledger",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016",
+      "--name",
+      "e2_hot_full1"
+    ],
+    [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python",
+      "-m",
+      "slackkv.infra",
+      "bench",
+      "--config",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/bench-hot-config.json",
+      "--plan",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/plans/hot",
+      "--policy",
+      "fair",
+      "--ledger",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016",
+      "--name",
+      "e2_hot_fair1"
+    ],
+    [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python",
+      "-m",
+      "slackkv.infra",
+      "bench",
+      "--config",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/bench-host-enough-config.json",
+      "--plan",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/plans/host-enough",
+      "--policy",
+      "nohost",
+      "--ledger",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016",
+      "--name",
+      "e2_host-enough_nohost1"
+    ],
+    [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python",
+      "-m",
+      "slackkv.infra",
+      "bench",
+      "--config",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/bench-host-enough-config.json",
+      "--plan",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/plans/host-enough",
+      "--policy",
+      "full",
+      "--ledger",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016",
+      "--name",
+      "e2_host-enough_full1"
+    ],
+    [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python",
+      "-m",
+      "slackkv.infra",
+      "bench",
+      "--config",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/bench-host-enough-config.json",
+      "--plan",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/plans/host-enough",
+      "--policy",
+      "fair",
+      "--ledger",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016",
+      "--name",
+      "e2_host-enough_fair1"
+    ],
+    [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python",
+      "-m",
+      "slackkv.infra",
+      "bench",
+      "--config",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/bench-host-limited-config.json",
+      "--plan",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/plans/host-limited",
+      "--policy",
+      "nohost",
+      "--ledger",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016",
+      "--name",
+      "e2_host-limited_nohost1"
+    ],
+    [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python",
+      "-m",
+      "slackkv.infra",
+      "bench",
+      "--config",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/bench-host-limited-config.json",
+      "--plan",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/plans/host-limited",
+      "--policy",
+      "full",
+      "--ledger",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016",
+      "--name",
+      "e2_host-limited_full1"
+    ],
+    [
+      "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python",
+      "-m",
+      "slackkv.infra",
+      "bench",
+      "--config",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/bench-host-limited-config.json",
+      "--plan",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/plans/host-limited",
+      "--policy",
+      "fair",
+      "--ledger",
+      "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016",
+      "--name",
+      "e2_host-limited_fair1"
+    ]
+  ],
+  "completed": [
+    {
+      "name": "e2_hot_nohost1",
+      "exit_code": 0
+    },
+    {
+      "name": "e2_hot_full1",
+      "exit_code": 0
+    },
+    {
+      "name": "e2_hot_fair1",
+      "exit_code": 0
+    },
+    {
+      "name": "e2_host-enough_nohost1",
+      "exit_code": 0
+    },
+    {
+      "name": "e2_host-enough_full1",
+      "exit_code": 0
+    },
+    {
+      "name": "e2_host-enough_fair1",
+      "exit_code": 0
+    },
+    {
+      "name": "e2_host-limited_nohost1",
+      "exit_code": 0
+    },
+    {
+      "name": "e2_host-limited_full1",
+      "exit_code": 0
+    },
+    {
+      "name": "e2_host-limited_fair1",
+      "exit_code": 0
+    }
+  ],
+  "selection": "one predeclared run per case/policy, no outcome-based retuning; same budget including failures"
+}

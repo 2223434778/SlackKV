@@ -45,27 +45,39 @@ def run_demo(config,out):
     pool=SessionPool(config,layout(config)['quota_tokens'],token_count=count)
     docs=json.loads(Path(__file__).with_name('documents.json').read_text(encoding='utf-8'))
     if config.session_slots<2:raise ValueError('demo requires at least two session slots')
-    rows=[];tools=[];lock=threading.Lock();barrier=threading.Barrier(2)
+    rows=[];tools=[];lock=threading.Lock();barrier=threading.Barrier(2);cancel=threading.Event()
     save(out/'config.json',config.snapshot())
     (out/'metrics_before.prom').write_text(get(config.url+'/metrics'),encoding='utf-8')
     def agent(key):
         s=pool.open(key);barrier.wait(timeout=10)
-        first=pool.send(key,f'我们正在检查{key}项目。请用一句话说明你会根据提供的项目资料回答。')
+        first=pool.send(key,f'我们正在检查{key}项目。请用一句话说明你会根据提供的项目资料回答。',cancel=cancel)
         with lock:rows.append(first);save(out/'requests.json',rows)
         started=time.monotonic_ns();value=docs[key];ended=time.monotonic_ns()
         with lock:
             tools.append(dict(session_id=key,tool='local_json_lookup',arguments=key,result=value,
                               started_ns=started,done_ns=ended,selection='client-driven, not autonomous model tool choice'))
             save(out/'tools.json',tools)
-        second=pool.send(key,'客户端本地工具查到资料：'+json.dumps(value,ensure_ascii=False)+'。项目负责人和发布日期是什么？请简短回答。')
+        second=pool.send(key,'客户端本地工具查到资料：'+json.dumps(value,ensure_ascii=False)+'。项目负责人和发布日期是什么？请简短回答。',cancel=cancel)
         with lock:rows.append(second);save(out/'requests.json',rows)
-        third=pool.send(key,'根据刚才的资料，用一句话总结这个项目的负责人、发布日期和当前状态。',terminal=True)
+        third=pool.send(key,'根据刚才的资料，用一句话总结这个项目的负责人、发布日期和当前状态。',terminal=True,cancel=cancel)
         with lock:rows.append(third);save(out/'requests.json',rows)
         return dict(session_id=key,generation=s.generation,state=s.state,messages=s.messages,
                     started_ns=s.started_ns,done_ns=s.done_ns)
-    with ThreadPoolExecutor(max_workers=2) as executor:
+    executor=ThreadPoolExecutor(max_workers=2)
+    try:
         futures=[executor.submit(agent,key) for key in ('cedar','maple')]
         sessions=[f.result() for f in futures]
+    except BaseException as error:
+        cancel.set()
+        with pool.lock:
+            save(out/'client_failure.json',dict(error=type(error).__name__+': '+str(error),
+                sessions=[dict(session_id=s.session_id,state=s.state,pending=s.pending,messages=s.messages) for s in pool.sessions.values()],
+                scope='client snapshot before owned server cleanup; pending native settlement not inferred'))
+        raise
+    finally:
+        # On failure return to ManagedService cleanup before waiting on readers.
+        # Killing owned server closes their sockets; interpreter can then join.
+        executor.shutdown(wait=False,cancel_futures=True)
     save(out/'sessions.json',sessions)
     (out/'metrics_after.prom').write_text(get(config.url+'/metrics'),encoding='utf-8')
     return dict(status='PASS',requests=len(rows),sessions=len(sessions),history='actual assistant text included next turn',

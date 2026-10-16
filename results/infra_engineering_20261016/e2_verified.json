@@ -1,0 +1,197 @@
+{
+  "status": "PASS",
+  "archived_raw_files": 261,
+  "gpu_hours_engineering": 0.1454743116594586,
+  "gpu_hours_e2": 0.09299638034583445,
+  "continuous_gpu_hours": 4.7163514802356055,
+  "runs": 15,
+  "cases": {
+    "hot": [
+      {
+        "policy": "nohost",
+        "sequence_ms": 517.361182,
+        "session_e2e_ms": {
+          "cedar": 512.578778,
+          "maple": 516.55628
+        },
+        "source_tokens": {
+          "local_compute": 2304.0,
+          "local_cache_hit": 4224.0,
+          "external_kv_transfer": 0.0
+        },
+        "transfer_bytes": {
+          "GPU_to_CPU": 0,
+          "CPU_to_GPU": 0
+        },
+        "actual_gpu_tokens": 18720,
+        "input_tokens": 6528,
+        "output_tokens": 96
+      },
+      {
+        "policy": "full",
+        "sequence_ms": 411.00399,
+        "session_e2e_ms": {
+          "cedar": 411.00399,
+          "maple": 409.831717
+        },
+        "source_tokens": {
+          "local_compute": 2304.0,
+          "local_cache_hit": 4224.0,
+          "external_kv_transfer": 0.0
+        },
+        "transfer_bytes": {
+          "GPU_to_CPU": 62390272.0,
+          "CPU_to_GPU": null
+        },
+        "actual_gpu_tokens": 18720,
+        "input_tokens": 6528,
+        "output_tokens": 96
+      },
+      {
+        "policy": "fair",
+        "sequence_ms": 413.996017,
+        "session_e2e_ms": {
+          "cedar": 413.996017,
+          "maple": 408.080453
+        },
+        "source_tokens": {
+          "local_compute": 2304.0,
+          "local_cache_hit": 4224.0,
+          "external_kv_transfer": 0.0
+        },
+        "transfer_bytes": {
+          "GPU_to_CPU": 62390272.0,
+          "CPU_to_GPU": null
+        },
+        "actual_gpu_tokens": 18720,
+        "input_tokens": 6528,
+        "output_tokens": 96
+      }
+    ],
+    "host-enough": [
+      {
+        "policy": "nohost",
+        "sequence_ms": 3820.385241,
+        "session_e2e_ms": {
+          "cedar": 3815.124635,
+          "maple": 3818.565871
+        },
+        "source_tokens": {
+          "local_compute": 82304.0,
+          "local_cache_hit": 0.0,
+          "external_kv_transfer": 0.0
+        },
+        "transfer_bytes": {
+          "GPU_to_CPU": 0,
+          "CPU_to_GPU": 0
+        },
+        "actual_gpu_tokens": 18720,
+        "input_tokens": 82304,
+        "output_tokens": 128
+      },
+      {
+        "policy": "full",
+        "sequence_ms": 2750.538986,
+        "session_e2e_ms": {
+          "cedar": 2739.056152,
+          "maple": 2748.756747
+        },
+        "source_tokens": {
+          "local_compute": 49408.0,
+          "local_cache_hit": 0.0,
+          "external_kv_transfer": 32896.0
+        },
+        "transfer_bytes": {
+          "GPU_to_CPU": 473432064.0,
+          "CPU_to_GPU": 943194112.0
+        },
+        "actual_gpu_tokens": 18720,
+        "input_tokens": 82304,
+        "output_tokens": 128
+      },
+      {
+        "policy": "fair",
+        "sequence_ms": 2755.488642,
+        "session_e2e_ms": {
+          "cedar": 2744.104302,
+          "maple": 2753.701263
+        },
+        "source_tokens": {
+          "local_compute": 49408.0,
+          "local_cache_hit": 0.0,
+          "external_kv_transfer": 32896.0
+        },
+        "transfer_bytes": {
+          "GPU_to_CPU": 473432064.0,
+          "CPU_to_GPU": 943194112.0
+        },
+        "actual_gpu_tokens": 18720,
+        "input_tokens": 82304,
+        "output_tokens": 128
+      }
+    ],
+    "host-limited": [
+      {
+        "policy": "nohost",
+        "sequence_ms": 3778.925192,
+        "session_e2e_ms": {
+          "cedar": 3778.925192,
+          "maple": 3771.885001
+        },
+        "source_tokens": {
+          "local_compute": 80000.0,
+          "local_cache_hit": 2304.0,
+          "external_kv_transfer": 0.0
+        },
+        "transfer_bytes": {
+          "GPU_to_CPU": 0,
+          "CPU_to_GPU": 0
+        },
+        "actual_gpu_tokens": 18720,
+        "input_tokens": 82304,
+        "output_tokens": 128
+      },
+      {
+        "policy": "full",
+        "sequence_ms": 3590.184094,
+        "session_e2e_ms": {
+          "cedar": 3590.184094,
+          "maple": 3583.150233
+        },
+        "source_tokens": {
+          "local_compute": 74176.0,
+          "local_cache_hit": 0.0,
+          "external_kv_transfer": 8128.0
+        },
+        "transfer_bytes": {
+          "GPU_to_CPU": 706478080.0,
+          "CPU_to_GPU": 233046016.0
+        },
+        "actual_gpu_tokens": 18720,
+        "input_tokens": 82304,
+        "output_tokens": 128
+      },
+      {
+        "policy": "fair",
+        "sequence_ms": 3369.3815,
+        "session_e2e_ms": {
+          "cedar": 3357.791818,
+          "maple": 3367.560331
+        },
+        "source_tokens": {
+          "local_compute": 65920.0,
+          "local_cache_hit": 4608.0,
+          "external_kv_transfer": 11776.0
+        },
+        "transfer_bytes": {
+          "GPU_to_CPU": 234881024.0,
+          "CPU_to_GPU": 337641472.0
+        },
+        "actual_gpu_tokens": 18720,
+        "input_tokens": 82304,
+        "output_tokens": 128
+      }
+    ]
+  },
+  "reliability": "real disconnect, atomic history, new generation, idle and external owner stop verified; abort acknowledgement UNKNOWN"
+}

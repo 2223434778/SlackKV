@@ -1,0 +1,14 @@
+{
+  "serve": [
+    "/media/a6000/D/ZhaoBinHe/.conda-envs/slackkv-phase2c-fix/bin/python",
+    "-m",
+    "slackkv.infra",
+    "serve",
+    "--config",
+    "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016/demo_config.json",
+    "--ledger",
+    "/media/a6000/D/ZhaoBinHe/SlackKV/results/infra_engineering_20261016",
+    "--name",
+    "e2_reliability1"
+  ]
+}

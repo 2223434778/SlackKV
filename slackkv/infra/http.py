@@ -11,7 +11,8 @@ def get(url,timeout=5):
     with urllib.request.urlopen(url,timeout=timeout) as response:return response.read().decode()
 
 
-def post(url,body,timeout=120,cancel=None):
+def post(url,body,timeout=120,cancel=None,on_first=None):
+    if cancel is not None and cancel.is_set():raise IncompleteResponse('cancelled before HTTP submission')
     request=urllib.request.Request(url,data=json.dumps(body).encode(),headers={'Content-Type':'application/json'})
     issue=time.monotonic_ns();first=None;parts=[];ids=[];usage=None;reason=None;completed=False
     with urllib.request.urlopen(request,timeout=timeout) as response:
@@ -33,7 +34,9 @@ def post(url,body,timeout=120,cancel=None):
             if event.get('usage') is not None:usage=event['usage']
             for choice in event.get('choices',[]):
                 text=choice.get('text',choice.get('delta',{}).get('content')) or ''
-                if text and first is None:first=time.monotonic_ns()
+                if text and first is None:
+                    first=time.monotonic_ns()
+                    if on_first is not None:on_first(dict(request_id=request_id,first_ns=first))
                 parts.append(text)
                 ids.extend(choice.get('token_ids') or [])
                 if choice.get('finish_reason') is not None:reason=choice['finish_reason']

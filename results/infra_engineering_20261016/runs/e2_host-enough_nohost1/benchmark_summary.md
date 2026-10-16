@@ -1,0 +1,89 @@
+# Frozen-work engineering smoke
+
+```json
+{
+  "status": "PASS",
+  "scenario": "host-enough",
+  "policy": "nohost",
+  "source_tokens": {
+    "local_compute": 82304.0,
+    "local_cache_hit": 0.0,
+    "external_kv_transfer": 0.0
+  },
+  "actual_gpu_tokens": 18720,
+  "request_metrics": [
+    {
+      "label": "cedar0",
+      "ttft_first_content_ms": 316.34232,
+      "response_ms": 693.461025,
+      "first_content_to_end_mean_ms": 25.141247
+    },
+    {
+      "label": "maple0",
+      "ttft_first_content_ms": 609.601074,
+      "response_ms": 703.143392,
+      "first_content_to_end_mean_ms": 6.236154533333333
+    },
+    {
+      "label": "pressure0",
+      "ttft_first_content_ms": 742.017863,
+      "response_ms": 832.081135,
+      "first_content_to_end_mean_ms": 6.0042181333333335
+    },
+    {
+      "label": "cedar1",
+      "ttft_first_content_ms": 606.067224,
+      "response_ms": 708.174518,
+      "first_content_to_end_mean_ms": 6.807152933333334
+    },
+    {
+      "label": "maple1",
+      "ttft_first_content_ms": 617.673544,
+      "response_ms": 711.622053,
+      "first_content_to_end_mean_ms": 6.263233933333333
+    },
+    {
+      "label": "pressure1",
+      "ttft_first_content_ms": 743.431389,
+      "response_ms": 831.302331,
+      "first_content_to_end_mean_ms": 5.8580628
+    },
+    {
+      "label": "cedar2",
+      "ttft_first_content_ms": 607.434857,
+      "response_ms": 714.560828,
+      "first_content_to_end_mean_ms": 7.1417314
+    },
+    {
+      "label": "maple2",
+      "ttft_first_content_ms": 625.846623,
+      "response_ms": 718.291071,
+      "first_content_to_end_mean_ms": 6.1629632
+    }
+  ],
+  "transfer_bytes": {
+    "GPU_to_CPU": 0,
+    "CPU_to_GPU": 0
+  },
+  "session_e2e_ms": {
+    "cedar": 3815.124635,
+    "maple": 3818.565871
+  },
+  "cross_session_overlap": true,
+  "total_requests": 8,
+  "input_tokens": 82304,
+  "output_tokens": 128,
+  "sequence_ms": 3820.385241,
+  "prompt_identity": {
+    "cedar0": "788f85dd91bffc94999de65be99ee35c0a2dfa73aa0d07c457c1e01ce3468c29",
+    "maple0": "9a639d5c435e95e44165f2406400e2b803b5d2e272a438cc3cd985748fd0ed29",
+    "pressure0": "1215225a8230c477f95cd76479c584ab6bae072b35af519d202e12d361d8baa1",
+    "cedar1": "11c60d752392f516fd8b62ae3ce9f75abd3f2291586617c6ee0c1d84cfd11c6e",
+    "maple1": "02eb071654df7f1b78bd481fd39196b24010e5803e4704857b47072b4d3ebbbd",
+    "pressure1": "1215225a8230c477f95cd76479c584ab6bae072b35af519d202e12d361d8baa1",
+    "cedar2": "72fb5525137118a6392052ef8c1bf52fcf8de92527ad1f223b195e0d91b82e99",
+    "maple2": "5a8a085b2342736f84cfaae21394875dab60da9efc49e21135246c8f05956146"
+  },
+  "qualification": "one frozen-work engineering smoke, no statistical speedup or task-quality claim; Full/Fair same connector, NoHost absent connector; null traffic UNKNOWN, NoHost0 by config"
+}
+```

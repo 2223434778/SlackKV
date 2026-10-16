@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "cancel_after_first_content": [
+    {
+      "request_id": "chatcmpl-94168020cd7c72b5",
+      "first_ns": 355912964592217
+    }
+  ],
+  "failed_history_messages": 1,
+  "old_generation": 0,
+  "new_generation": 1,
+  "close": {
+    "status": "logical_closed",
+    "physical_release": "native LRU and in-flight settlement; no ordered native close API"
+  },
+  "followup": {
+    "session_id": "disconnect",
+    "generation": 1,
+    "slot": 0,
+    "client_request_id": "41f7465145b94587b2c81359cb0cbc26",
+    "messages_submitted": [
+      {
+        "role": "system",
+        "content": "You are a concise helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "Say READY."
+      }
+    ],
+    "terminal": true,
+    "text": "Understood! I'm ready to assist you further.",
+    "tokens": null,
+    "usage": {
+      "prompt_tokens": 23,
+      "total_tokens": 35,
+      "completion_tokens": 12
+    },
+    "finish_reason": "stop",
+    "issue_ns": 355912965529143,
+    "first_ns": 355912990710299,
+    "done_ns": 355913055698885,
+    "request_id": "chatcmpl-b28800dc33777781"
+  },
+  "observed_running": 0.0,
+  "observed_waiting": 0.0,
+  "limit": "client transport really closed; server abort vs natural finish UNKNOWN; idle observed, no claim of immediate physical KV release"
+}

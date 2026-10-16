@@ -16,6 +16,10 @@ from slackkv.infra.runtime import PINNED,check_runtime,digest,save,versions
 HISTORY_GPU_HOURS=4.570877168576147
 
 
+class ServiceStopped(RuntimeError):
+    """Acknowledged user stop, distinct from watchdog/startup/workload failure."""
+
+
 def init_budget(path):
     path=Path(path).resolve();path.mkdir(parents=True,exist_ok=True)
     with (path/'authorization.json').open('x',encoding='utf-8') as f:
@@ -88,6 +92,12 @@ class ManagedService:
         self.proc=None;self.started=None;self.record=None;self.lock=None;self.old_handlers={}
 
     def __enter__(self):
+        try:return self._enter()
+        except BaseException:
+            if self.lock and self.started is None:self.lock.close()
+            raise
+
+    def _enter(self):
         if os.name!='posix':raise RuntimeError('serve requires Linux; doctor --config-only/demo unit tests work without GPUs')
         import fcntl
         self.lock=(self.ledger/'budget.lock').open('a')
@@ -117,7 +127,9 @@ class ManagedService:
             self.proc=subprocess.Popen(argv,env=env,stdout=self.log,stderr=subprocess.STDOUT,start_new_session=True)
             self.record.update(owned_pgid=self.proc.pid,owned_birth=birth(self.proc.pid))
             save(self.out/'execution.json',self.record)
-            def interrupted(signum,frame):raise TimeoutError('owned service interrupted/watchdog')
+            def interrupted(signum,frame):
+                if signum==signal.SIGALRM:raise TimeoutError('owned service watchdog')
+                raise ServiceStopped('requested owned service stop')
             for sig in (signal.SIGALRM,signal.SIGTERM,signal.SIGINT):
                 self.old_handlers[sig]=signal.signal(sig,interrupted)
             signal.alarm(limit-35)
@@ -166,6 +178,8 @@ class ManagedService:
             self.record['owned_live_pids_after']=remaining
             self.record['cleanup_verified']=not remaining and released
             self.record['status']=('FAILED' if error else 'COMPLETE') if self.record['cleanup_verified'] else 'RUNNING'
+            if isinstance(error,ServiceStopped) and self.record['cleanup_verified']:
+                self.record['status']='STOPPED'
             if error:self.record['error']=str(error)
         finally:
             elapsed=time.monotonic()-self.started
@@ -176,13 +190,16 @@ class ManagedService:
             self.started=None
             if self.lock:self.lock.close()
 
-    def __exit__(self,kind,error,tb):self.stop(error)
+    def __exit__(self,kind,error,tb):
+        self.stop(error)
+        return isinstance(error,ServiceStopped)
 
 
 def stop_owned(out):
     record=json.loads((Path(out)/'execution.json').read_text(encoding='utf-8'))
     if record['status']!='RUNNING':return 'already stopped'
     pid=record['parent_pid']
-    if birth(pid)!=record['parent_birth']:raise RuntimeError('owner absent or PID changed; manual reconciliation needed; no signal sent')
+    if type(pid) is not int or pid<=1 or record.get('parent_birth') is None or birth(pid)!=record['parent_birth']:
+        raise RuntimeError('owner absent or PID changed; manual reconciliation needed; no signal sent')
     os.kill(pid,signal.SIGTERM)
     return 'termination sent to verified owner; poll execution.json for cleanup acknowledgement'
