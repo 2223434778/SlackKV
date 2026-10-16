@@ -29,6 +29,16 @@ def versions():
     return result
 
 
+def source_tree_digest(package):
+    # setuptools-scm creates this file during a build; validate its commit
+    # separately on the compiled donor, not as part of upstream source identity.
+    package=Path(package)
+    rows=[p.relative_to(package).as_posix()+'\0'+hashlib.sha256(p.read_bytes().replace(b'\r\n',b'\n')).hexdigest()+'\n'
+          for p in sorted(package.rglob('*.py'),key=lambda p:p.relative_to(package).as_posix())
+          if p!=package/'_version.py']
+    return hashlib.sha256(''.join(rows).encode()).hexdigest()
+
+
 def prepare(source,compiled,target):
     source,compiled,target=map(lambda p:Path(p).resolve(),(source,compiled,target))
     if source==target or compiled==target or source in target.parents or compiled in target.parents:
@@ -41,9 +51,7 @@ def prepare(source,compiled,target):
         return record
     if target.exists():raise FileExistsError('refuse to overwrite partial/unknown target: '+str(target))
     package=source/'vllm'
-    rows=[p.relative_to(package).as_posix()+'\0'+hashlib.sha256(p.read_bytes().replace(b'\r\n',b'\n')).hexdigest()+'\n'
-          for p in sorted(package.rglob('*.py'),key=lambda p:p.relative_to(package).as_posix())]
-    if hashlib.sha256(''.join(rows).encode()).hexdigest()!=SOURCE_TREE_SHA256:
+    if source_tree_digest(package)!=SOURCE_TREE_SHA256:
         raise ValueError('upstream Python tree does not match pinned commit; no research or unreviewed patches accepted')
     generated=compiled/'vllm/_version.py'
     if COMMIT not in generated.read_text(encoding='utf-8'):raise ValueError('compiled snapshot commit does not match '+COMMIT)

@@ -20,7 +20,7 @@ def main(argv=None):
             if name=='bench':p.add_argument('--plan',required=True)
     p=sub.add_parser('prepare-runtime');p.add_argument('--source',required=True);p.add_argument('--compiled',required=True);p.add_argument('--target',required=True)
     p=sub.add_parser('init-budget');p.add_argument('--ledger',required=True)
-    p=sub.add_parser('report');p.add_argument('--directory',required=True)
+    p=sub.add_parser('report');p.add_argument('--directory',required=True);p.add_argument('--output')
     p=sub.add_parser('stop');p.add_argument('--directory',required=True)
     p=sub.add_parser('bench-prepare');p.add_argument('--config',required=True);p.add_argument('--scenario',choices=('hot','host-enough','host-limited'),required=True);p.add_argument('--directory',required=True)
     p=sub.add_parser('bench-compare');p.add_argument('--directories',nargs=3,required=True);p.add_argument('--output',required=True)
@@ -43,7 +43,7 @@ def main(argv=None):
             run(Config.load(args.config),args.directory);print(args.directory);return
         if args.action=='report':
             from slackkv.infra.report import create
-            print(json.dumps(create(args.directory),ensure_ascii=False,indent=2));return
+            print(json.dumps(create(args.directory,args.output),ensure_ascii=False,indent=2));return
         config=Config.load(args.config,args.policy)
         if args.action=='doctor':print(json.dumps(doctor(config,args.config_only),ensure_ascii=False,indent=2));return
         from slackkv.infra.workloads import host_inputs,run_demo,verify_host

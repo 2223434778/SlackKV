@@ -136,3 +136,40 @@ def test_utf8_report_reads_real_non_ascii_history(tmp_path):
     result=create_report(tmp_path)
     assert result['session_e2e_ms']['项目甲']==2e-6
     assert all(v is None for v in result['transfer_bytes'].values())
+
+
+def test_terminal_slot_cannot_be_reused_before_request_settlement():
+    pool=SessionPool(config(session_slots=1),[16]);s=pool.open('a')
+    # Reachable between terminal commit and the send() finally block.
+    s.state='CLOSED';s.pending=True
+    with pytest.raises(SessionError):pool.open('a')
+    with pytest.raises(SessionError):pool.open('b')
+    assert pool.generations['a']==0
+    s.pending=False
+    assert pool.open('a').generation==1
+
+
+def test_archived_metrics_report_writes_separate_output(tmp_path):
+    import gzip
+    test_utf8_report_reads_real_non_ascii_history(tmp_path)
+    original=(tmp_path/'report.json').read_bytes()
+    for name in ('metrics_before.prom','metrics_after.prom'):
+        path=tmp_path/name
+        with gzip.open(str(path)+'.gz','wb') as stream:stream.write(path.read_bytes())
+        path.unlink()
+    destination=tmp_path/'regenerated'
+    assert create_report(tmp_path,destination)['requests']==1
+    assert (destination/'requests.csv').is_file()
+    assert (tmp_path/'report.json').read_bytes()==original
+
+
+def test_source_digest_ignores_only_generated_top_level_version(tmp_path):
+    from slackkv.infra.runtime import source_tree_digest
+    (tmp_path/'module.py').write_bytes(b'x=1\n')
+    before=source_tree_digest(tmp_path)
+    (tmp_path/'_version.py').write_text('generated')
+    assert source_tree_digest(tmp_path)==before
+    (tmp_path/'module.py').write_bytes(b'x=1\r\n')
+    assert source_tree_digest(tmp_path)==before
+    nested=tmp_path/'nested';nested.mkdir();(nested/'_version.py').write_text('upstream')
+    assert source_tree_digest(tmp_path)!=before

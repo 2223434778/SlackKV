@@ -1,0 +1,110 @@
+{
+  "status": "PASS",
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+  "wheel_sha256": "12af3ee31043ac67d744c7767b51820854c3f8df9261cda07601c9ec2f435fb6",
+  "scope": "offline wheel build/install in isolated target; installed CLI outside source tree; no CUDA or model load",
+  "commands": [
+    {
+      "command": [
+        "E:\\Software\\Anaconda\\python.exe",
+        "-m",
+        "pip",
+        "wheel",
+        "--no-index",
+        "--no-deps",
+        "--no-build-isolation",
+        "--wheel-dir",
+        "E:\\PycharmProject\\SlackKV\\research-repo\\.tmp\\e3-package\\wheels",
+        "."
+      ],
+      "cwd": "E:\\PycharmProject\\SlackKV\\research-repo",
+      "returncode": 0,
+      "stdout": "Processing e:\\pycharmproject\\slackkv\\research-repo\n  Preparing metadata (pyproject.toml): started\n  Preparing metadata (pyproject.toml): finished with status 'done'\nBuilding wheels for collected packages: slackkv\n  Building wheel for slackkv (pyproject.toml): started\n  Building wheel for slackkv (pyproject.toml): finished with status 'done'\n  Created wheel for slackkv: filename=slackkv-0.1.0-py3-none-any.whl size=44326 sha256=12af3ee31043ac67d744c7767b51820854c3f8df9261cda07601c9ec2f435fb6\n  Stored in directory: c:\\users\\taishanglaojun\\appdata\\local\\packages\\sandbox.{48786378-5aa6-434c-9fec-ed9a92c034c6}\\ac\\pip\\cache\\wheels\\51\\98\\95\\0969da949c334cd5888e29a5649a511ac38acdc1fe87579c58\nSuccessfully built slackkv\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "E:\\Software\\Anaconda\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--target",
+        "E:\\PycharmProject\\SlackKV\\research-repo\\.tmp\\e3-package\\installed",
+        "E:\\PycharmProject\\SlackKV\\research-repo\\.tmp\\e3-package\\wheels\\slackkv-0.1.0-py3-none-any.whl"
+      ],
+      "cwd": "E:\\PycharmProject\\SlackKV\\research-repo",
+      "returncode": 0,
+      "stdout": "Processing e:\\pycharmproject\\slackkv\\research-repo\\.tmp\\e3-package\\wheels\\slackkv-0.1.0-py3-none-any.whl\nInstalling collected packages: slackkv\nSuccessfully installed slackkv-0.1.0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "E:\\Software\\Anaconda\\python.exe",
+        "-c",
+        "import json,pathlib,slackkv.infra;print(json.dumps({\"module\":slackkv.infra.__file__,\"documents\":(pathlib.Path(slackkv.infra.__file__).parent/\"documents.json\").is_file()}))"
+      ],
+      "cwd": "E:\\PycharmProject\\SlackKV\\research-repo\\.tmp\\e3-package\\outside-source",
+      "returncode": 0,
+      "stdout": "{\"module\": \"E:\\\\PycharmProject\\\\SlackKV\\\\research-repo\\\\.tmp\\\\e3-package\\\\installed\\\\slackkv\\\\infra\\\\__init__.py\", \"documents\": true}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "E:\\Software\\Anaconda\\python.exe",
+        "-m",
+        "slackkv.infra",
+        "doctor",
+        "--config",
+        "E:\\PycharmProject\\SlackKV\\research-repo\\configs\\local.json",
+        "--config-only"
+      ],
+      "cwd": "E:\\PycharmProject\\SlackKV\\research-repo\\.tmp\\e3-package\\outside-source",
+      "returncode": 0,
+      "stdout": "{\n  \"config\": {\n    \"model\": \"${SLACKKV_MODEL}\",\n    \"runtime\": \"${SLACKKV_RUNTIME}\",\n    \"policy\": \"fair\",\n    \"gpu\": 0,\n    \"host\": \"127.0.0.1\",\n    \"port\": 8000,\n    \"gpu_kv_bytes\": 536870912,\n    \"host_kv_bytes\": 234881024,\n    \"max_model_len\": 18432,\n    \"session_slots\": 2,\n    \"max_output_tokens\": 128,\n    \"request_timeout_seconds\": 120,\n    \"ready_timeout_seconds\": 240,\n    \"max_run_seconds\": 600,\n    \"batch_invariant\": false\n  },\n  \"config_valid\": true,\n  \"gpu_initialized\": false,\n  \"status\": \"PASS\",\n  \"scope\": \"schema only; no model/native/content proof\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "E:\\Software\\Anaconda\\python.exe",
+        "-m",
+        "slackkv.infra",
+        "report",
+        "--directory",
+        "E:\\PycharmProject\\SlackKV\\research-repo\\results\\infra_engineering_20261016\\runs\\e1_demo2",
+        "--output",
+        "E:\\PycharmProject\\SlackKV\\research-repo\\.tmp\\e3-package\\installed-report"
+      ],
+      "cwd": "E:\\PycharmProject\\SlackKV\\research-repo\\.tmp\\e3-package\\outside-source",
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"COMPLETE\",\n  \"requests\": 6,\n  \"sessions\": 2,\n  \"cross_session_request_overlap\": true,\n  \"session_e2e_ms\": {\n    \"cedar\": 521.898602,\n    \"maple\": 511.569454\n  },\n  \"prompt_sources\": {\n    \"local_compute\": 291.0,\n    \"local_cache_hit\": 352.0,\n    \"external_kv_transfer\": 0.0\n  },\n  \"transfer_bytes\": {\n    \"GPU_to_CPU\": null,\n    \"CPU_to_GPU\": null\n  },\n  \"requests_table\": [\n    {\n      \"session_id\": \"maple\",\n      \"generation\": 0,\n      \"request_id\": \"chatcmpl-8d6d16c54c579b06\",\n      \"ttft_first_content_ms\": 94.078801,\n      \"response_ms\": 173.620114,\n      \"first_content_to_end_mean_ms\": 5.681522357142857,\n      \"prompt_tokens\": 38,\n      \"completion_tokens\": 15\n    },\n    {\n      \"session_id\": \"cedar\",\n      \"generation\": 0,\n      \"request_id\": \"chatcmpl-a58d6c9e806ddb86\",\n      \"ttft_first_content_ms\": 95.310726,\n      \"response_ms\": 197.037998,\n      \"first_content_to_end_mean_ms\": 6.3579545,\n      \"prompt_tokens\": 38,\n      \"completion_tokens\": 17\n    },\n    {\n      \"session_id\": \"maple\",\n      \"generation\": 0,\n      \"request_id\": \"chatcmpl-95591a105a4095f5\",\n      \"ttft_first_content_ms\": 24.948798,\n      \"response_ms\": 150.403793,\n      \"first_content_to_end_mean_ms\": 5.974047380952381,\n      \"prompt_tokens\": 117,\n      \"completion_tokens\": 22\n    },\n    {\n      \"session_id\": \"cedar\",\n      \"generation\": 0,\n      \"request_id\": \"chatcmpl-a65b8e0c51ddcace\",\n      \"ttft_first_content_ms\": 25.289165,\n      \"response_ms\": 149.051083,\n      \"first_content_to_end_mean_ms\": 6.1880959,\n      \"prompt_tokens\": 118,\n      \"completion_tokens\": 21\n    },\n    {\n      \"session_id\": \"maple\",\n      \"generation\": 0,\n      \"request_id\": \"chatcmpl-b410f20a0c2755cc\",\n      \"ttft_first_content_ms\": 23.705482,\n      \"response_ms\": 183.548474,\n      \"first_content_to_end_mean_ms\": 5.920110814814815,\n      \"prompt_tokens\": 166,\n      \"completion_tokens\": 28\n    },\n    {\n      \"session_id\": \"cedar\",\n      \"generation\": 0,\n      \"request_id\": \"chatcmpl-b79d11cb4afbee18\",\n      \"ttft_first_content_ms\": 25.126631,\n      \"response_ms\": 171.627061,\n      \"first_content_to_end_mean_ms\": 5.8600172,\n      \"prompt_tokens\": 166,\n      \"completion_tokens\": 26\n    }\n  ],\n  \"missing\": \"null means UNKNOWN; absent transfer labels are not filled with zero\",\n  \"attribution\": \"global counters over this demo; no per-request attribution during overlap\",\n  \"timing\": \"client first nonempty SSE content; interval proxy is not a TPOT distribution\",\n  \"physical_host_occupancy\": \"UNKNOWN; configured capacity is not actual occupancy\",\n  \"comparison\": \"free generation histories can differ by policy; not a strict throughput ranking\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "E:\\Software\\Anaconda\\python.exe",
+        "-m",
+        "slackkv.infra",
+        "--help"
+      ],
+      "cwd": "E:\\PycharmProject\\SlackKV\\research-repo\\.tmp\\e3-package\\outside-source",
+      "returncode": 0,
+      "stdout": "usage: __main__.py [-h]\n                   {doctor,serve,demo,verify-host,bench,prepare-runtime,init-budget,report,stop,bench-prepare,bench-compare,reliability} ...\n\nSlackKV native-offload infra prototype\n\npositional arguments:\n  {doctor,serve,demo,verify-host,bench,prepare-runtime,init-budget,report,stop,bench-prepare,bench-compare,reliability}\n\noptions:\n  -h, --help            show this help message and exit\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "E:\\Software\\Anaconda\\python.exe",
+        "-m",
+        "slackkv.infra",
+        "report",
+        "--help"
+      ],
+      "cwd": "E:\\PycharmProject\\SlackKV\\research-repo\\.tmp\\e3-package\\outside-source",
+      "returncode": 0,
+      "stdout": "usage: __main__.py report [-h] --directory DIRECTORY [--output OUTPUT]\n\noptions:\n  -h, --help            show this help message and exit\n  --directory DIRECTORY\n  --output OUTPUT\n",
+      "stderr": ""
+    }
+  ]
+}

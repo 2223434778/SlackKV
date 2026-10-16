@@ -1,0 +1,249 @@
+{
+  "status": "PASS",
+  "gpu_hours_added": 0,
+  "windows_cpu": {
+    "passed": 68,
+    "skipped": 3,
+    "command": "python -m pytest tests/test_infra.py tests/test_infra_reliability.py tests/test_infra_benchmark.py tests/test_infra_native.py tests/test_system_m1.py tests/test_system_m1_shared.py -q --basetemp .tmp/pytest-infra-e3"
+  },
+  "linux_cpu": {
+    "passed": 71,
+    "failed": 0,
+    "cuda_visible_devices": "",
+    "runtime_overlay": "infra-native-0fc695fc6",
+    "working_directory": "/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/infra-e3-code-20261016",
+    "invocation": "CUDA_VISIBLE_DEVICES='' PYTHONPATH=<pinned-runtime>:<E3-code> <pinned-python> -m pytest tests/test_infra.py tests/test_infra_reliability.py tests/test_infra_benchmark.py tests/test_infra_native.py tests/test_system_m1.py tests/test_system_m1_shared.py -q",
+    "initial_failure": "61 PASS/10 FAIL: minimal upload omitted experiments modules and historical test fixtures; preserved log; packaged exact required fixtures then71 PASS"
+  },
+  "source_sha256": {
+    "slackkv/infra/audit.py": "45b74ef5d14f64478f022c165fb1bad7b386eefa20742567a397149b8c5e73f4",
+    "slackkv/infra/benchmark.py": "8703e4314c281f00c56162a8e91b7ea76254c56c0fe0ca7b37e93dd14df6f5cc",
+    "slackkv/infra/cli.py": "1c5be0cfedaebce50848638a8b4668df1d3721bad780269377748258aa08abb8",
+    "slackkv/infra/config.py": "a3e5d1e3478f8943ebb6aef24b396d75bae44abb29191c592154e765ce4f1978",
+    "slackkv/infra/http.py": "3ae52fa9634bc63fc771e3e7c03c593cec17bf070485bb17c930d564f5658301",
+    "slackkv/infra/native.py": "82c6505789e3dcbfe56007e5432000f2cb2c8182a3738ae4d05dd4fe02b7a210",
+    "slackkv/infra/reliability.py": "2383f0869643fb69945ac82a013322fdee7c11efecef28590959d2a75016e731",
+    "slackkv/infra/report.py": "fa3a6194203e70cadacfa4eb46742ad3aca55e703361359102d773a5751ce99b",
+    "slackkv/infra/runtime.py": "a75605bc5980e6502b8df37e0dff8cb7260f8d3928586dcfdfbcf45b798b7cab",
+    "slackkv/infra/service.py": "c7045cfb256f84d73c5c07dbbf6adb1b1685b966fe8423737523357542c65023",
+    "slackkv/infra/sessions.py": "b1f5d850c691c04bf1d0bb9147b7472ab0153503623aaa06346880753cae79fd",
+    "slackkv/infra/workloads.py": "a3820afb6e7092c2bbceac1cdbdd9f5a858f3d31dfa69164624d245b7621729d",
+    "slackkv/infra/__init__.py": "89530cb07b601ca876cf1f8f17d769b74e8482536102d55039a8e7a6bed2c743",
+    "slackkv/infra/__main__.py": "a101bf6819bccba23f55b58e7cf1d56d4352c63d08aa276198b0dd87342cfc62",
+    "slackkv/infra/documents.json": "7f5f0433ce72b99829fbdc2b0d0bfb297999509567f38c73524f651c577077dc",
+    "pyproject.toml": "b5a9fad9ff7fb69d4fa2b0edc1b2326096b9d0a6da67531de5dfade4fedfafe9",
+    "tests/test_infra.py": "0ed5542f72cbd3eb5b1abffee2fe64f92c33cec2ad351904f1726518130d4614"
+  },
+  "package_validation": "package_validation.json: offline wheel build/install and7 subprocess checks PASS",
+  "raw_artifacts_recheck": {
+    "status": "PASS",
+    "archived_raw_files": 261,
+    "gpu_hours_engineering": 0.1454743116594586,
+    "gpu_hours_e2": 0.09299638034583445,
+    "continuous_gpu_hours": 4.7163514802356055,
+    "runs": 15,
+    "cases": {
+      "hot": [
+        {
+          "policy": "nohost",
+          "sequence_ms": 517.361182,
+          "session_e2e_ms": {
+            "cedar": 512.578778,
+            "maple": 516.55628
+          },
+          "source_tokens": {
+            "local_compute": 2304.0,
+            "local_cache_hit": 4224.0,
+            "external_kv_transfer": 0.0
+          },
+          "transfer_bytes": {
+            "GPU_to_CPU": 0,
+            "CPU_to_GPU": 0
+          },
+          "actual_gpu_tokens": 18720,
+          "input_tokens": 6528,
+          "output_tokens": 96
+        },
+        {
+          "policy": "full",
+          "sequence_ms": 411.00399,
+          "session_e2e_ms": {
+            "cedar": 411.00399,
+            "maple": 409.831717
+          },
+          "source_tokens": {
+            "local_compute": 2304.0,
+            "local_cache_hit": 4224.0,
+            "external_kv_transfer": 0.0
+          },
+          "transfer_bytes": {
+            "GPU_to_CPU": 62390272.0,
+            "CPU_to_GPU": null
+          },
+          "actual_gpu_tokens": 18720,
+          "input_tokens": 6528,
+          "output_tokens": 96
+        },
+        {
+          "policy": "fair",
+          "sequence_ms": 413.996017,
+          "session_e2e_ms": {
+            "cedar": 413.996017,
+            "maple": 408.080453
+          },
+          "source_tokens": {
+            "local_compute": 2304.0,
+            "local_cache_hit": 4224.0,
+            "external_kv_transfer": 0.0
+          },
+          "transfer_bytes": {
+            "GPU_to_CPU": 62390272.0,
+            "CPU_to_GPU": null
+          },
+          "actual_gpu_tokens": 18720,
+          "input_tokens": 6528,
+          "output_tokens": 96
+        }
+      ],
+      "host-enough": [
+        {
+          "policy": "nohost",
+          "sequence_ms": 3820.385241,
+          "session_e2e_ms": {
+            "cedar": 3815.124635,
+            "maple": 3818.565871
+          },
+          "source_tokens": {
+            "local_compute": 82304.0,
+            "local_cache_hit": 0.0,
+            "external_kv_transfer": 0.0
+          },
+          "transfer_bytes": {
+            "GPU_to_CPU": 0,
+            "CPU_to_GPU": 0
+          },
+          "actual_gpu_tokens": 18720,
+          "input_tokens": 82304,
+          "output_tokens": 128
+        },
+        {
+          "policy": "full",
+          "sequence_ms": 2750.538986,
+          "session_e2e_ms": {
+            "cedar": 2739.056152,
+            "maple": 2748.756747
+          },
+          "source_tokens": {
+            "local_compute": 49408.0,
+            "local_cache_hit": 0.0,
+            "external_kv_transfer": 32896.0
+          },
+          "transfer_bytes": {
+            "GPU_to_CPU": 473432064.0,
+            "CPU_to_GPU": 943194112.0
+          },
+          "actual_gpu_tokens": 18720,
+          "input_tokens": 82304,
+          "output_tokens": 128
+        },
+        {
+          "policy": "fair",
+          "sequence_ms": 2755.488642,
+          "session_e2e_ms": {
+            "cedar": 2744.104302,
+            "maple": 2753.701263
+          },
+          "source_tokens": {
+            "local_compute": 49408.0,
+            "local_cache_hit": 0.0,
+            "external_kv_transfer": 32896.0
+          },
+          "transfer_bytes": {
+            "GPU_to_CPU": 473432064.0,
+            "CPU_to_GPU": 943194112.0
+          },
+          "actual_gpu_tokens": 18720,
+          "input_tokens": 82304,
+          "output_tokens": 128
+        }
+      ],
+      "host-limited": [
+        {
+          "policy": "nohost",
+          "sequence_ms": 3778.925192,
+          "session_e2e_ms": {
+            "cedar": 3778.925192,
+            "maple": 3771.885001
+          },
+          "source_tokens": {
+            "local_compute": 80000.0,
+            "local_cache_hit": 2304.0,
+            "external_kv_transfer": 0.0
+          },
+          "transfer_bytes": {
+            "GPU_to_CPU": 0,
+            "CPU_to_GPU": 0
+          },
+          "actual_gpu_tokens": 18720,
+          "input_tokens": 82304,
+          "output_tokens": 128
+        },
+        {
+          "policy": "full",
+          "sequence_ms": 3590.184094,
+          "session_e2e_ms": {
+            "cedar": 3590.184094,
+            "maple": 3583.150233
+          },
+          "source_tokens": {
+            "local_compute": 74176.0,
+            "local_cache_hit": 0.0,
+            "external_kv_transfer": 8128.0
+          },
+          "transfer_bytes": {
+            "GPU_to_CPU": 706478080.0,
+            "CPU_to_GPU": 233046016.0
+          },
+          "actual_gpu_tokens": 18720,
+          "input_tokens": 82304,
+          "output_tokens": 128
+        },
+        {
+          "policy": "fair",
+          "sequence_ms": 3369.3815,
+          "session_e2e_ms": {
+            "cedar": 3357.791818,
+            "maple": 3367.560331
+          },
+          "source_tokens": {
+            "local_compute": 65920.0,
+            "local_cache_hit": 4608.0,
+            "external_kv_transfer": 11776.0
+          },
+          "transfer_bytes": {
+            "GPU_to_CPU": 234881024.0,
+            "CPU_to_GPU": 337641472.0
+          },
+          "actual_gpu_tokens": 18720,
+          "input_tokens": 82304,
+          "output_tokens": 128
+        }
+      ]
+    },
+    "reliability": "real disconnect, atomic history, new generation, idle and external owner stop verified; abort acknowledgement UNKNOWN"
+  },
+  "upstream_source_tree_sha256": "a4dfca00a96977e7068774fedf254d98af11e36fac4863e7feedae23305dbeb8",
+  "gpu_idle_after_cpu_checks": [
+    {
+      "gpu": 0,
+      "memory_mib": 19,
+      "utilization_percent": 0
+    },
+    {
+      "gpu": 1,
+      "memory_mib": 19,
+      "utilization_percent": 0
+    }
+  ],
+  "limitation": "final E3 CPU fixes not relabeled as new GPU runs; GPU evidence belongs to frozen E1/E2 snapshots; clean full vLLM source build not performed"
+}

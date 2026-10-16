@@ -1,0 +1,49 @@
+{
+  "config": {
+    "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "runtime": "/media/a6000/D/ZhaoBinHe/SlackKV/.tmp/infra-native-0fc695fc6",
+    "policy": "fair",
+    "gpu": 0,
+    "host": "127.0.0.1",
+    "port": 8000,
+    "gpu_kv_bytes": 536870912,
+    "host_kv_bytes": 234881024,
+    "max_model_len": 18432,
+    "session_slots": 2,
+    "max_output_tokens": 128,
+    "request_timeout_seconds": 120,
+    "ready_timeout_seconds": 240,
+    "max_run_seconds": 600,
+    "batch_invariant": false
+  },
+  "config_valid": true,
+  "gpu_initialized": false,
+  "layout": {
+    "kv_bytes_per_token": 28672,
+    "host_blocks": 512,
+    "quota_tokens": [
+      4096,
+      4096
+    ],
+    "unused_host_bytes": 0,
+    "sharing": "cache_salt isolates sessions/generations; no cross-session shared-root discount",
+    "idle_quota": "unused slots and short histories do not lend quota; exhaustion rejects immediately"
+  },
+  "versions": {
+    "vllm": "0.23.0+cu126",
+    "torch": "2.11.0+cu126",
+    "transformers": "5.17.0"
+  },
+  "runtime": {
+    "upstream_commit": "0fc695fc6",
+    "patch": "none: native max_offload_tokens; project InfraCPUSpec loaded via native factory",
+    "manifest_sha256": "d21f0b98d94e32f64a25028af2a6e2f5af68f718e365bf8610c9702b98906feb"
+  },
+  "gpu": {
+    "memory_mib": 19,
+    "utilization_percent": 0
+  },
+  "host_mem_available_bytes": 127942361088,
+  "status": "PASS",
+  "scope": "static checks; runtime factory and real content need integration validation"
+}

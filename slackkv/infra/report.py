@@ -1,9 +1,8 @@
 """Global aggregate metrics; absent data is UNKNOWN, never per-request attribution."""
 import csv
+import gzip
 import json
 from pathlib import Path
-import re
-import statistics
 
 from slackkv.infra.runtime import save
 
@@ -24,9 +23,17 @@ def delta(before,after,name,label):
     return b-a
 
 
-def create(out):
-    out=Path(out);rows=json.loads((out/'requests.json').read_text(encoding='utf-8'));sessions=json.loads((out/'sessions.json').read_text(encoding='utf-8'))
-    before=(out/'metrics_before.prom').read_text(encoding='utf-8');after=(out/'metrics_after.prom').read_text(encoding='utf-8')
+def read_metrics(path):
+    path=Path(path)
+    if path.exists():return path.read_text(encoding='utf-8')
+    with gzip.open(str(path)+'.gz','rt',encoding='utf-8') as stream:return stream.read()
+
+
+def create(directory,output=None):
+    source=Path(directory);out=Path(output) if output is not None else source
+    rows=json.loads((source/'requests.json').read_text(encoding='utf-8'));sessions=json.loads((source/'sessions.json').read_text(encoding='utf-8'))
+    if not rows or not sessions:raise ValueError('report requires completed request and session records')
+    before=read_metrics(source/'metrics_before.prom');after=read_metrics(source/'metrics_after.prom')
     metrics={s:delta(before,after,'vllm:prompt_tokens_by_source_total',f'source="{s}"')
              for s in ('local_compute','local_cache_hit','external_kv_transfer')}
     traffic={d:delta(before,after,'vllm:kv_offload_total_bytes_total',f'transfer_type="{d}"')

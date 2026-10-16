@@ -20,6 +20,9 @@ CPU 自检无需 GPU、torch、模型或网络：
 python -m pip install -e '.[test]'
 slackkv doctor --config configs/local.json --config-only
 python -m pytest tests/test_infra.py -q
+# 无GPU也能从已保存的真实记录重建报告；输出到新目录，保留历史文件。
+slackkv report --directory results/infra_engineering_20261016/runs/e1_demo2 --output .tmp/reader-report
+python scripts/verify_infra.py --directory results/infra_engineering_20261016 --output .tmp/reader-verification.json
 ```
 
 真实服务目前限定 Linux、单卡、Qwen2.5-1.5B-Instruct full attention，固定栈：Python3.11、vLLM distribution0.23.0+cu126、PyTorch2.11.0+cu126、transformers5.17.0，已用RTX A6000/CUDA12.6/driver550.54.14。其他版本、模型或硬件不能由CPU自检推定兼容。
@@ -62,7 +65,7 @@ slackkv serve --config configs/local.json --ledger "$PWD/results/infra_engineeri
 slackkv stop --directory results/infra_engineering_20261016/runs/my-service-unique
 ```
 
-`stop`只给具有匹配进程出生时间的owner发信号，由owner清理自己的process group。单run含启动/清理最多30分钟；工程E1总上限0.5GPUh，所有run/失败/启动/清理共用同一账本，不因换名称重置。`RUNNING`或清理未确认会阻止下一次启动。默认本机绑定，拒绝占用端口或非空闲GPU，不停止其他服务。
+`stop`只给具有匹配进程出生时间的owner发信号，由owner清理自己的process group。单run含启动/清理最多30分钟；本次工程E1–E3共用0.5GPUh上限，所有run/失败/启动/清理共用同一账本，不因换名称重置。`RUNNING`或清理未确认会阻止下一次启动。默认本机绑定，拒绝占用端口或非空闲GPU，不停止其他服务。
 
 ## 三种模式
 
@@ -95,6 +98,15 @@ slackkv verify-host --config /path/to/oracle-config.json --ledger "$PWD/results/
 
 ## 历史与工程状态
 
-工程交付与实际验证记录放在 `results/infra_engineering_20261016/`，各阶段状态见后续工程文档。CPU单测不是GPU证据；未实测的安装/模型组合明确不承诺。
+已完成E1真实纵向流程、E2可靠性/观测/三策略smoke、E3打包与阅读材料。入口：
+
+- [交付清单与验证范围](docs/INFRA_DELIVERY_20261016.md)
+- [架构和上游边界](docs/INFRA_ARCHITECTURE.md) · [安装、复现与排障](docs/INFRA_OPERATIONS.md)
+- [30秒/3分钟讲解与追问](docs/INFRA_INTERVIEW.md) · [亲自动手清单](docs/INFRA_HANDS_ON.md)
+- [E1实际记录](docs/INFRA_E1_STATUS_20261016.md) · [E2实际记录](docs/INFRA_E2_STATUS_20261016.md)
+
+已保存2会话×3轮真实对话与受压内容检查，九次冻结输入benchmark覆盖三用途/三策略；真实首段断流后历史保持原子、换generation恢复，独立停止确认清理。host受限的单次工程smoke中，NoHost/Full/StaticFair全序列分别3779/3590/3369ms，Fair H2D322MiB、D2H224MiB；不是稳定性能或生产SLO声明。GPU热场景没有host恢复，不归因于offload。
+
+工程交付与原始记录放在 `results/infra_engineering_20261016/`，15次run（含1次失败）累计0.1454743GPUh，均确认清理。CPU单测不是GPU证据；未实测的安装/模型组合明确不承诺。压缩日志/指标可直接读取或用gzip展开；`report --output`从归档重建到新目录，避免覆盖历史。`bench-prepare`、`bench`、`bench-compare`和`reliability`的完整命令见操作指南。
 
 此前32B StaticFair在一次合成匹配筛选中E2E相对NoHost−16.44%，不代表所有配置：[原报告](docs/AUTONOMOUS_RESEARCH_LARGE_MODEL_20261012.md)。动态M1局部CPU修补未转为整体收益：[负结果](docs/SLACKKV_SYSTEM_M1_COST_20261013.md)。历史报告、原始数据和研究工具均保留；最新工程目标见[交接](docs/INFRA_ENGINEERING_HANDOFF_20261016.md)。

@@ -30,8 +30,8 @@ class SessionPool:
     def open(self,session_id,system='You are a concise helpful assistant.'):
         with self.lock:
             if not isinstance(session_id,str) or not session_id or len(session_id)>128:raise SessionError('invalid session_id')
-            if session_id in self.sessions and self.sessions[session_id].state!='CLOSED':raise SessionError('session already exists; close it before a new generation')
-            used={s.slot for s in self.sessions.values() if s.state!='CLOSED'}
+            if session_id in self.sessions and (self.sessions[session_id].state!='CLOSED' or self.sessions[session_id].pending):raise SessionError('session already exists or is settling; close it before a new generation')
+            used={s.slot for s in self.sessions.values() if s.state!='CLOSED' or s.pending}
             free=[i for i in range(self.config.session_slots) if i not in used]
             if not free:raise SessionError('session capacity exhausted; no implicit queue or borrowing')
             generation=self.generations.get(session_id,-1)+1;self.generations[session_id]=generation
